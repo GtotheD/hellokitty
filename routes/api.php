@@ -11,6 +11,7 @@
 |
 */
 use Illuminate\Http\Request;
+use App\Repositories\SectionRepository;
 
 $router->get('/', function () use ($router) {
     return $router->app->version();
@@ -19,6 +20,23 @@ $router->get('/', function () use ($router) {
 
 // Api Group
 $router->group(['namespace' => 'Api'], function() use ($router) {
+
+    // 固定コンテンツ取得API
+    $router->get('version', function () {
+        $varsion =
+            [
+            'appinfo' => [
+                'latestVersion' => '7.5.0',     // 最新バージョン
+                'lowestVersion' => '7.4.3',   // アップデートなしでサポートする最低バージョン
+                'alert' => '7.5.0がリリースされました。現在お使いのバージョンからアップデートをお願いします。', // 更新必須の場合のアラート
+                'nugde' =>  '新バージョンがリリースされました。アップデートをお願いします。',  // アップデートを促すメッセージ
+                'infomation' => ['7.5.0の新機能","https://store-tsutaya.tsite.jp/appinfo/whatsnewinthisversion.html'] // アプリ新機能紹介ページ
+              ],
+              'update' => '2017/10/04 10:00:00',  //更新日時。単なる文字列扱いでもいいかなと思います。
+              'version' => '1507115185'            // API出力時にバージョン制御のシリアル値を出力した方がいいかもしれない。
+            ];
+        return response()->json($varsion);
+    });
 
     // 固定コンテンツ取得API
     $router->get('fixed/banner', function () {
@@ -128,53 +146,11 @@ $router->group(['namespace' => 'Api'], function() use ($router) {
     // 通常セクション取得API
     $router->get('section/{goodsName:[A-Za-z]+}/{typeName:[A-Za-z]+}/{sectionName:[A-Za-z]+}', function ($goodsName, $typeName, $sectionName) {
 
+        $sectionRepository = new SectionRepository;
+        $sectionData = $sectionRepository->ranking($goodsName, $typeName, $sectionName);
 //        $sectionData = $section->get($goodsName, $typeName, $sectionName);
-        $sectionData = [
-            'totalCount' => 10,
-            'limit' => 10,
-            'offset' => 0,
-            'page' => 1,
-            'hasNext' => true,
-            'rows' => [
-                [
-                    'dispStartDate'=> '2017-01-01',
-                    'dispEndDate'=> '2017-01-01',
-                    'saleStartDate'=> '2017-01-01',
-                    'rentalStartDate'=> '2017-01-01',
-                    'imageUrl'=> 'https://tsutaya.jp/image/a.jpg',
-                    'title' => 'ラ・ラ・ランド',
-                    'supplement' => 'エマ・ストーン', // アーティスト名、著者、機種等
-                    'code' => 'JAN_CODE',
-                    'urlCode' => 'url code',
-                    'rate' => 2
-                ],
-                [
-                    'dispStartDate'=> '2017-01-01',
-                    'dispEndDate'=> '2017-01-01',
-                    'saleStartDate'=> '2017-01-01',
-                    'rentalStartDate'=> '2017-01-01',
-                    'imageUrl'=> 'https://tsutaya.jp/image/a.jpg',
-                    'title' => 'ワイルド・スピード　ＩＣＥ　ＢＲＥＡＫ',
-                    'supplement' => 'ヴィン・ディーゼル', // アーティスト名、著者、機種等
-                    'code' => 'JAN_CODE',
-                    'urlCode' => 'url code',
-                    'rate' => 3
-                ],
-                [
-                    'dispStartDate'=> '2017-01-01',
-                    'dispEndDate'=> '2017-01-01',
-                    'saleStartDate'=> '2017-01-01',
-                    'rentalStartDate'=> '2017-01-01',
-                    'imageUrl'=> 'https://tsutaya.jp/image/a.jpg',
-                    'title' => '美女と野獣',
-                    'supplement' => 'エマ・ワトソン', // アーティスト名、著者、機種等
-                    'code' => 'JAN_CODE',
-                    'urlCode' => 'url code',
-                    'rate' => 4
-                ],
 
-            ]
-        ];
+
 
         return response()->json($sectionData);
 
@@ -187,7 +163,7 @@ $router->group(['namespace' => 'Api'], function() use ($router) {
     });
 
     // レコメンドセクション取得API
-    $router->get('section/recommend/{himoGenreId:[A-Za-z]+}', function (himoGenreId) {
+    $router->get('section/recommend/{himoGenreId:[A-Za-z]+}', function ($himoGenreId) {
         return 'section banner';
         // TWS APIと利用。himoGenreIdを変換する、classを作成する。
     });
