@@ -23,7 +23,7 @@ class TWSRepository
     private $queryParams;
 
 
-    public function __construct($sort = 'asc', $offset = 0, $limit = 100)
+    public function __construct($sort = 'asc', $offset = 0, $limit = 10)
     {
         $this->sort = $sort;
         $this->offset = $offset;
@@ -47,7 +47,7 @@ class TWSRepository
                 ['query' => $this->queryParams]
             );
         } catch (ClientException $e) {
-            // todo: Exceptionへ飛ばす
+            throw new $e;
         }
 
         return json_decode($result->getBody()->getContents(), true);
@@ -57,13 +57,13 @@ class TWSRepository
     /*
      * ランキン儀情報をメンバ変数にセットする
      */
-    public function ranking($rankingConcentrationCdList) {
+    public function ranking($rankingConcentrationCd) {
         $this->apiPath = '/media/v0/works/tsutayarankingresult.json';
         $this->queryParams = [
             'api_key' => $this->apiKey,
-            'rankingConcentrationCd' => $rankingConcentrationCdList,
+            'rankingConcentrationCd' => $rankingConcentrationCd,
             'tolPlatformCode' => '00',
-            'rankinglimit' => '100',
+            'rankinglimit' => $this->limit,
             'dispNums' => '100',
             '_secure' => '1'
         ];
