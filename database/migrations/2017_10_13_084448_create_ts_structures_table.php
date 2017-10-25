@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStructuresTable extends Migration
+class CreateTsStructuresTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateStructuresTable extends Migration
      */
     public function up()
     {
-        Schema::create('structures', function (Blueprint $table) {
+        Schema::create('ts_structures', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('sort');
             $table->unsignedTinyInteger('goods_type');
@@ -38,6 +38,6 @@ class CreateStructuresTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('structures');
+        Schema::dropIfExists('ts_structures');
     }
 }
