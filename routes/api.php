@@ -145,6 +145,7 @@ $router->group(['namespace' => 'Api'], function() use ($router) {
 
     // 通常セクション取得API
     $router->get('section/{goodsName:[A-Za-z]+}/{typeName:[A-Za-z]+}/{sectionName:[A-Za-z]+}', function ($goodsName, $typeName, $sectionName) {
+        return 'section banner';
 
     });
 
