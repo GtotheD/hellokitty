@@ -145,14 +145,7 @@ $router->group(['namespace' => 'Api'], function() use ($router) {
 
     // 通常セクション取得API
     $router->get('section/{goodsName:[A-Za-z]+}/{typeName:[A-Za-z]+}/{sectionName:[A-Za-z]+}', function ($goodsName, $typeName, $sectionName) {
-
-        $sectionRepository = new SectionRepository;
-        $sectionData = $sectionRepository->ranking($goodsName, $typeName, $sectionName);
-//        $sectionData = $section->get($goodsName, $typeName, $sectionName);
-
-
-
-        return response()->json($sectionData);
+        return 'section banner';
 
     });
 
@@ -163,8 +156,11 @@ $router->group(['namespace' => 'Api'], function() use ($router) {
     });
 
     // レコメンドセクション取得API
-    $router->get('section/recommend/{himoGenreId:[A-Za-z]+}', function ($himoGenreId) {
-        return 'section banner';
+    $router->get('section/recommend/ranking/{himoGenreId:[A-Za-z]+}', function ($himoGenreId) {
+
+        $sectionRepository = new SectionRepository;
+        $sectionData = $sectionRepository->ranking($goodsName, $typeName, $sectionName);
+        return $sectionData;
         // TWS APIと利用。himoGenreIdを変換する、classを作成する。
     });
 });
