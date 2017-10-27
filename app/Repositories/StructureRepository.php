@@ -1,4 +1,6 @@
 <?php
+namespace App\Repositories;
+
 /**
  * Created by PhpStorm.
  * User: ayumu
@@ -8,8 +10,15 @@
 
 class StructureRepository
 {
-    public function get($goodsName, $typeName) {
+    const DVD = '1';
+    const BOOK = '2';
+    const CD = '3';
+    const GAME = '4';
 
+    const RENTAL = '1';
+    const SELL = '2';
+
+    public function get($goodsType, $saleType) {
         return [
                 'totalCount' => 6,
                 'limit' => 10,
@@ -76,5 +85,31 @@ class StructureRepository
                         ]
                     ]
             ];
+    }
+
+    private function convertGoodsTypeToId ($goodsType) {
+        switch ($goodsType) {
+            case 'dvd':
+                return self::DVD;
+            case 'book':
+                return self::BOOK;
+            case 'cd':
+                return self::CD;
+            case 'game':
+                return self::GAME;
+            default:
+                return false;
+        }
+    }
+
+    private function convertSaleTypeToId ($saleType) {
+        switch ($saleType) {
+            case 'rental':
+                return self::RENTAL;
+            case 'sell':
+                return self::SELL;
+            default:
+                return false;
+        }
     }
 }

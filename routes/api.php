@@ -11,10 +11,12 @@
 |
 */
 use Illuminate\Http\Request;
+use App\Repositories\StructureRepository;
 use App\Repositories\SectionRepository;
+use Swagger\Annotations\Swagger;
 
 // Api Group
-$router->group(['prefix' => env('API_VERSION')], function() use ($router) {
+$router->group(['prefix' => env('URL_PATH_PREFIX') . env('API_VERSION')], function() use ($router) {
 
     // 固定コンテンツ取得API
     $router->get('version', function () {
@@ -23,29 +25,31 @@ $router->group(['prefix' => env('API_VERSION')], function() use ($router) {
         return response()->json($version);
     });
 
-    // 固定コンテンツ取得API
-    $router->get('fixed/banner', function () {
-        return 'this is fixed banner';
-    });
-
     // コンテンツ構成取得API
-    $router->get('structure/{goodsName::dvd|book|cd|game}/{typeName:rental|sell}', function ($goodsName, $typeName) {
-        $structureData = $structure->get($goodsName, $typeName);
+    $router->get('structure/{goodsType:dvd|book|cd|game}/{saleType:rental|sell}', function ($goodsType, $saleType) {
+        $structureRepository = new StructureRepository;
+        $structureData = $structureRepository->get($goodsType, $saleType);
         return response()->json($structureData);
     });
 
+    // 固定コンテンツ取得API
+    $router->get('fixed/banner', function () {
+        $sectionRepository = new SectionRepository;
+        $sectionData = $sectionRepository->fixedBanner();
+        return response()->json($sectionData);
+    });
 
     // ランキングセクション取得API
-    $router->get('section/{goodsName::dvd|book|cd|game}/{typeName:rental|sell}/ranking', function ($goodsName, $typeName) {
+    $router->get('section/{goodsType:dvd|book|cd|game}/{saleType:rental|sell}/ranking', function ($goodsType, $saleType) {
         $sectionRepository = new SectionRepository;
-        $sectionData = $sectionRepository->normal($goodsName, $typeName, 'ranking');
+        $sectionData = $sectionRepository->normal($goodsType, $saleType, 'ranking');
         return response()->json($sectionData);
     });
 
     // 通常セクション取得API
-    $router->get('section/{goodsName:dvd|book|cd|game}/{typeName:rental|sell}/{sectionName}', function ($goodsName, $typeName, $sectionName) {
+    $router->get('section/{goodsType:dvd|book|cd|game}/{saleType:rental|sell}/{sectionName}', function ($goodsType, $saleType, $sectionName) {
         $sectionRepository = new SectionRepository;
-        $sectionData = $sectionRepository->normal($goodsName, $typeName, $sectionName);
+        $sectionData = $sectionRepository->normal($goodsType, $saleType, $sectionName);
         return $sectionData;
 
     });
@@ -64,4 +68,11 @@ $router->group(['prefix' => env('API_VERSION')], function() use ($router) {
         $sectionData = $sectionRepository->ranking($himoGenreId);
         return $sectionData;
     });
+
 });
+// APIドキュメント
+$router->get('docs/swagger.json', function () {
+    $swagger = \Swagger\scan(base_path('routes'));
+    return response()->json($swagger);
+});
+
