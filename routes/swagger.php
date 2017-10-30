@@ -5,6 +5,7 @@
  *     description="バージョンを管理する為の情報を取得する",
  *     produces={"application/json"},
  *     tags={"Version"},
+ *     security={{"api_key":{}}},
  *     @SWG\Response(response=200, description="Success"),
  *     @SWG\Response(response=500, description="Server error")
  * )

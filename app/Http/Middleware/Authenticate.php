@@ -3,42 +3,19 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Illuminate\Contracts\Auth\Factory as Auth;
+use Illuminate\Auth\Access\AuthorizationException;
 
 class Authenticate
 {
-    /**
-     * The authentication guard factory instance.
-     *
-     * @var \Illuminate\Contracts\Auth\Factory
-     */
-    protected $auth;
-
-    /**
-     * Create a new middleware instance.
-     *
-     * @param  \Illuminate\Contracts\Auth\Factory  $auth
-     * @return void
-     */
-    public function __construct(Auth $auth)
+    public function handle($request, Closure $next)
     {
-        $this->auth = $auth;
-    }
-
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @param  string|null  $guard
-     * @return mixed
-     */
-    public function handle($request, Closure $next, $guard = null)
-    {
-        if ($this->auth->guard($guard)->guest()) {
-            return response('Unauthorized.', 401);
+        $apiKey = $request->header('Authorization');
+        if ($apiKey) {
+            $apiKeys = config('api_key');
+            if (in_array($apiKey, $apiKeys)) {
+                return $next($request);
+            }
         }
-
-        return $next($request);
+        throw new AuthorizationException();
     }
 }

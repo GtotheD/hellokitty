@@ -16,7 +16,10 @@ use App\Repositories\SectionRepository;
 use Swagger\Annotations\Swagger;
 
 // Api Group
-$router->group(['prefix' => env('URL_PATH_PREFIX') . env('API_VERSION')], function() use ($router) {
+$router->group([
+    'prefix' => env('URL_PATH_PREFIX') . env('API_VERSION'),
+    'middleware' => ['auth']
+    ], function() use ($router) {
 
     // 固定コンテンツ取得API
     $router->get('version', function () {
@@ -68,10 +71,11 @@ $router->group(['prefix' => env('URL_PATH_PREFIX') . env('API_VERSION')], functi
         return $sectionData;
     });
 
+});
+$router->group(['prefix' => env('URL_PATH_PREFIX') . env('API_VERSION') ], function() use ($router) {
     // APIドキュメント
     $router->get('docs/swagger.json', function () {
         $swagger = \Swagger\scan(base_path('routes'));
         return response()->json($swagger);
     });
 });
-
