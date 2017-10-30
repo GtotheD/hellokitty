@@ -14,14 +14,32 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class SectionRepository
 {
 
-    public function fixBanner() {
+    public function fixedBanner() {
         $rows = [
+            [
+                'linkUrl' => 'https://tsutaya.jp/a.html',
+                'imageUrl'=> 'https://tsutaya.jp/image/a.jpg',
+                'isTapOn' => false
 
+            ],
+            [
+                'linkUrl' => 'https://tsutaya.jp/b.html',
+                'imageUrl'=> 'https://tsutaya.jp/image/b.jpg',
+                'isTapOn' => true
+
+            ],
+            [
+                'linkUrl' => 'https://tsutaya.jp/c.html',
+                'imageUrl'=> 'https://tsutaya.jp/image/d.jpg',
+                'isTapOn' => false
+
+            ]
         ];
         return $rows;
     }
 
     public function normal($goodsName, $typeName, $sectionName) {
+
         $rows = [
             'totalCount' => 10,
             'limit' => 10,
@@ -72,7 +90,24 @@ class SectionRepository
 
     public function banner($goodsName, $typeName, $sectionName) {
         $rows = [
+            [
+                'linkUrl' => 'https://tsutaya.jp/a.html',
+                'imageUrl'=> 'https://tsutaya.jp/image/a.jpg',
+                'isTapOn' => false
 
+            ],
+            [
+                'linkUrl' => 'https://tsutaya.jp/b.html',
+                'imageUrl'=> 'https://tsutaya.jp/image/b.jpg',
+                'isTapOn' => true
+
+            ],
+            [
+                'linkUrl' => 'https://tsutaya.jp/c.html',
+                'imageUrl'=> 'https://tsutaya.jp/image/d.jpg',
+                'isTapOn' => false
+
+            ]
         ];
         return $rows;
     }

@@ -1,0 +1,25 @@
+<?php
+namespace App\Model;
+use Illuminate\Support\Facades\DB;
+
+/**
+ * Created by PhpStorm.
+ * User: ayumu
+ * Date: 2017/10/27
+ * Time: 19:47
+ */
+class Structure
+{
+    const TABLE = 'ts_structures';
+
+    public function getStructure($goodsType, $saleType) {
+        return DB::table(self::TABLE)
+            ->where([
+                'goods_type' => $goodsType,
+                'sale_type' => $saleType
+                ])
+            ->where('display_start_date', '<', DB::raw('now()'))
+            ->where('display_end_date', '>', DB::raw('now()'))
+            ->get();
+    }
+}

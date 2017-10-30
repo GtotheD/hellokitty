@@ -55,6 +55,20 @@ class TWSRepository
     }
 
     /*
+ * ランキン儀情報をメンバ変数にセットする
+ */
+    public function detail($janCode) {
+        $this->apiPath = '/store/v0/products/detail.json';
+        $this->queryParams = [
+            'api_key' => $this->apiKey,
+            'productKey' => $janCode,
+            'tolPlatformCode' => '00',
+            '_secure' => '1'
+        ];
+        return $this;
+    }
+
+    /*
      * ランキン儀情報をメンバ変数にセットする
      */
     public function ranking($rankingConcentrationCd) {
