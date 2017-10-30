@@ -50,8 +50,7 @@ $router->group(['prefix' => env('URL_PATH_PREFIX') . env('API_VERSION')], functi
     $router->get('section/{goodsType:dvd|book|cd|game}/{saleType:rental|sell}/{sectionName}', function ($goodsType, $saleType, $sectionName) {
         $sectionRepository = new SectionRepository;
         $sectionData = $sectionRepository->normal($goodsType, $saleType, $sectionName);
-        return $sectionData;
-
+        return response()->json($sectionData);
     });
 
     // バナーセクション取得API

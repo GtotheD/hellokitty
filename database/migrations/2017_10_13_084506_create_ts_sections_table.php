@@ -28,7 +28,6 @@ class CreateTsSectionsTable extends Migration
             $table->text('image_url', 255);
             $table->text('title', 255);
             $table->text('supplement', 255);
-            $table->unsignedTinyInteger('rate');
             $table->timestamps();
         });
     }
@@ -42,4 +41,5 @@ class CreateTsSectionsTable extends Migration
     {
         Schema::dropIfExists('ts_sections');
     }
+
 }

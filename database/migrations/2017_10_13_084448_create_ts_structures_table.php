@@ -21,8 +21,8 @@ class CreateTsStructuresTable extends Migration
             $table->unsignedTinyInteger('section_type');
             $table->dateTime('display_start_date');
             $table->dateTime('display_end_date');
-            $table->text('title', 255);
-            $table->text('link_url', 255);
+            $table->text('title');
+            $table->text('link_url');
             $table->unsignedTinyInteger('is_tap_on');
             $table->unsignedTinyInteger('is_ranking');
             $table->text('api_url');

@@ -39,6 +39,7 @@ class SectionRepository
     }
 
     public function normal($goodsName, $typeName, $sectionName) {
+
         $rows = [
             'totalCount' => 10,
             'limit' => 10,
