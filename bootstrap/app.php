@@ -63,9 +63,9 @@ $app->singleton(
     App\Http\Middleware\ResponseMiddleware::class
  ]);
 
-// $app->routeMiddleware([
-//     'auth' => App\Http\Middleware\Authenticate::class,
-// ]);
+ $app->routeMiddleware([
+     'auth' => App\Http\Middleware\Authenticate::class,
+ ]);
 
 /*
 |--------------------------------------------------------------------------
@@ -99,6 +99,7 @@ $app->router->group([
     require __DIR__.'/../routes/api.php';
 });
 
+$app->configure('api_key');
 $app->configure('genre_map');
 $app->configure('version');
 

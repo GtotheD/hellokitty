@@ -15,14 +15,15 @@
  *   securityDefinition="api_key",
  *   type="apiKey",
  *   in="header",
- *   name="Authorization: Bearer"
+ *   name="Authorization",
+ *   description="アクセス用Key (Vta6sbfDXqgs)",
  * )
  *
  * API全体で共通なクエリパラメータ
  * 認証関連
  * @SWG\Parameter(
- *     name="Authorization: Bearer",
- *     description="アクセス用Token",
+ *     name="api_key",
+ *     description="アクセス用Key",
  *     in="header",
  *     required=true,
  *     type="string"
