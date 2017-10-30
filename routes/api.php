@@ -21,7 +21,7 @@ $router->group(['prefix' => env('URL_PATH_PREFIX') . env('API_VERSION')], functi
     // 固定コンテンツ取得API
     $router->get('version', function () {
         $version = config('version');
-
+        $version['version'] = hash('sha256', serialize($version));
         return response()->json($version);
     });
 
