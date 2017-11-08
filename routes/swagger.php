@@ -404,16 +404,29 @@
  */
 /**
  * @SWG\Get(
- *     path="/section/recommend/ranking/{himoGenreId}",
+ *     path="/section/ranking/{codeType}/{code}/{period}",
  *     description="DVD-セルのTOP構造を返却する",
  *     produces={"application/json"},
  *     tags={"Section"},
  *     security={{"api_key":{}}},
  *     @SWG\Parameter(
- *       name="himoGenreId",
+ *       name="codeType",
  *       in="path",
- *       description="HimoジャンルID（例：EXT0000005F2）",
+ *       description="コード種別(himo|agg)：Himoジャンルコードもしくは、ランキング集約コード",
  *       required=true,
+ *       type="string"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="code",
+ *       in="path",
+ *       description="HimoジャンルID（例：EXT0000005F2）もしくは、ランキング集約コード（例：M086　月間コミックレンタル）",
+ *       required=true,
+ *       type="string"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="period",
+ *       in="path",
+ *       description="集計期間：実行月からn月前の月頭から月終わりまで",
  *       type="string"
  *     ),
  *     @SWG\Response(response=200, description="Success"),
