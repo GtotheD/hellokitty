@@ -111,7 +111,7 @@ class SectionRepository
             throw new NotFoundHttpException();
         }
         $tws = new TWSRepository;
-        $rows = $this->convertFormatFromRanking($tws->ranking($rankingConcentrationCd)->get());
+        $rows =$tws->ranking($rankingConcentrationCd)->get();
 //        return $tws->ranking($rankingConcentrationCd)->get();
         $response = [
             'hasNext' => null,
@@ -119,21 +119,22 @@ class SectionRepository
             'limit' => null,
             'offset' => null,
             'page' => null,
-            'rows' => $rows,
+            'rows' =>  $this->convertFormatFromRanking($rows),
         ];
         return $response;
     }
 
-    public function releaseAuto() {
+    public function releaseAuto($genreId, $storeProductItemCd, $itemCode) {
+//        dd($genreId, $storeProductItemCd, $itemCode);
         $tws = new TWSRepository;
-        $rows = $this->convertFormatFromRelease($tws->release('2017-11-01', '002')->get());
+        $rows = $tws->release($genreId, $storeProductItemCd, $itemCode)->get();
         $response = [
             'hasNext' => null,
-            'totalCount' => null,
+            'totalCount' => $rows['totalResults'],
             'limit' => null,
             'offset' => null,
             'page' => null,
-            'rows' => $rows,
+            'rows' => $this->convertFormatFromRelease($rows),
         ];
         return $response;
     }
