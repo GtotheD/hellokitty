@@ -454,22 +454,29 @@
  */
 /**
  * @SWG\Get(
- *     path="/section/release/auto/{categoryId}/{releaseDateTo}",
+ *     path="/section/release/auto/{largeGenreCd}/{storeProductItemCd}/{itemCode}",
  *     description="自動取得のリリースカレンダー情報を返却する（TWSのサーチを利用）",
  *     produces={"application/json"},
  *     tags={"Section"},
  *     security={{"api_key":{}}},
  *     @SWG\Parameter(
- *       name="tapCategoryId",
+ *       name="largeGenreCd",
  *       in="path",
- *       description="カテゴリ識別子（例：01）",
+ *       description="大ジャンルコード（25）",
  *       required=true,
  *       type="string"
  *     ),
  *     @SWG\Parameter(
- *       name="releaseDateTo",
+ *       name="storeProductItemCd",
  *       in="path",
- *       description="リリース開始起算日",
+ *       description="店舗取扱いアイテムコード（221）",
+ *       required=true,
+ *       type="string"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="itemCode",
+ *       in="path",
+ *       description="アイテムコード（002）",
  *       required=true,
  *       type="string"
  *     ),

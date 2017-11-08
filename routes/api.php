@@ -79,10 +79,18 @@ $router->group([
         return $sectionData;
     });
 
+
     // レコメンドセクション取得API
-    $router->get('section/release/auto', function () {
+    $router->get('section/release/manual/{genreId}/{storeProductItemCd}/{itemCode}', function ($genreId, $storeProductItemCd, $itemCode) {
         $sectionRepository = new SectionRepository;
-        $sectionData = $sectionRepository->releaseAuto();
+        $sectionData = $sectionRepository->releaseAuto($genreId, $storeProductItemCd, $itemCode);
+        return $sectionData;
+    });
+
+    // レコメンドセクション取得API
+    $router->get('section/release/auto/{genreId}/{storeProductItemCd}/{itemCode}', function ($genreId, $storeProductItemCd, $itemCode) {
+        $sectionRepository = new SectionRepository;
+        $sectionData = $sectionRepository->releaseAuto($genreId, $storeProductItemCd, $itemCode);
         return $sectionData;
     });
 

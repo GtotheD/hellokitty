@@ -87,7 +87,7 @@ class TWSRepository
     /*
      * 日付ベースの検索結果を取得するAPIをセットする
      */
-    public function release($startDate, $itemCode) {
+    public function release($genreId, $storeProductItemCd, $itemCode) {
         $this->apiPath = '/store/v0/products/searchDetail.json';
         $this->queryParams = [
             'api_key' => $this->apiKey,
@@ -97,12 +97,12 @@ class TWSRepository
             'adultAuthOK' => '0',
             'adultFlag'=> '1',
             'sortingOrder'=> '2',
-            'storeProductItemCd' => '221',
-            'lg' => '25', // アイテム集約コード
-            'ic' => '002',
-            'dfy'=> '2017',
-            'dfm'=> '11',
-            'dfd'=> '04'
+            'lg' => $genreId, // 大ジャンルコード
+            'ic' => $itemCode, // アイテム集約コード
+            'storeProductItemCd' => $storeProductItemCd, // 店舗取扱いアイテムコード
+            'dfy'=> date('Y'),
+            'dfm'=> date('m'),
+            'dfd'=> date('d')
         ];
         return $this;
     }
