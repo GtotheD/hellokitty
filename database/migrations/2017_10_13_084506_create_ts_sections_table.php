@@ -41,5 +41,4 @@ class CreateTsSectionsTable extends Migration
     {
         Schema::dropIfExists('ts_sections');
     }
-
 }

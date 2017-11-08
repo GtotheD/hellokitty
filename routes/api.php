@@ -29,8 +29,10 @@ $router->group([
     });
 
     // コンテンツ構成取得API
-    $router->get('structure/{goodsType:dvd|book|cd|game}/{saleType:rental|sell}', function ($goodsType, $saleType) {
+    $router->get('structure/{goodsType:dvd|book|cd|game}/{saleType:rental|sell}', function (Request $request, $goodsType, $saleType) {
         $structureRepository = new StructureRepository;
+        $structureRepository->setLimit($request->input('limit', 10));
+        $structureRepository->setOffset($request->input('offset', 0));
         $structures = $structureRepository->get($goodsType, $saleType);
         $response = [
                 'hasNext' => $structures->getHasNext(),
@@ -67,7 +69,7 @@ $router->group([
     // バナーセクション取得API
     $router->get('section/banner/{sectionName}', function ($sectionName) {
         $sectionRepository = new SectionRepository;
-        $sectionData = $sectionRepository->banner($goodsName, $typeName, $sectionName);
+        $sectionData = $sectionRepository->banner($sectionName);
         return $sectionData;
 
     });

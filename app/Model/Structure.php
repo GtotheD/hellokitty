@@ -12,14 +12,29 @@ class Structure
 {
     const TABLE = 'ts_structures';
 
-    public function getStructure($goodsType, $saleType) {
-        return DB::table(self::TABLE)
+    protected $dbObject;
+    protected $limit;
+    protected $offset;
+
+    public function set($goodsType, $saleType) {
+        $this->dbObject =  DB::table(self::TABLE)
             ->where([
                 'goods_type' => $goodsType,
                 'sale_type' => $saleType
                 ])
             ->where('display_start_date', '<', DB::raw('now()'))
-            ->where('display_end_date', '>', DB::raw('now()'))
+            ->where('display_end_date', '>', DB::raw('now()'));
+        return $this;
+    }
+
+    public function count() {
+        return $this->dbObject->count();
+    }
+
+    public function get($limit = 100, $offset = 0) {
+        return $this->dbObject
+            ->skip($offset)->take($limit)
             ->get();
     }
+
 }

@@ -79,7 +79,7 @@ class SectionRepository
         return $rows;
     }
 
-    public function banner($goodsName, $typeName, $sectionName) {
+    public function banner($sectionName) {
         $rows = [
             [
                 'linkUrl' => 'https://tsutaya.jp/a.html',
@@ -135,6 +135,12 @@ class SectionRepository
             return null;
         }
         return $response;
+    }
+
+
+    // 01:レンタルDVD 02:レンタルCD 03:レンタルコミック 04:販売DVD 05:販売CD 06:販売ゲーム 07:販売本・コミック
+    public function releaseManual() {
+
     }
 
     public function releaseAuto($genreId, $storeProductItemCd, $itemCode) {
