@@ -79,7 +79,7 @@ class SectionRepository
         return $rows;
     }
 
-    public function banner($goodsName, $typeName, $sectionName) {
+    public function banner($sectionName) {
         $rows = [
             [
                 'linkUrl' => 'https://tsutaya.jp/a.html',
@@ -103,16 +103,26 @@ class SectionRepository
         return $rows;
     }
 
-    public function ranking($genreCode) {
-        $genreMap = config('genre_map');
-        if (key_exists($genreCode, $genreMap)) {
-            $rankingConcentrationCd = $genreMap[$genreCode];
+    public function ranking($codeType, $genreCode, $period) {
+        // himoだった場合は集約コードに変更する
+        if ($codeType == 'himo') {
+            $genreMap = config('genre_map');
+            if (key_exists($genreCode, $genreMap)) {
+                $rankingConcentrationCd = $genreMap[$genreCode];
+            } else {
+                throw new NotFoundHttpException();
+            }
         } else {
-            throw new NotFoundHttpException();
+            $rankingConcentrationCd = $genreCode;
+        }
+
+        if ($period) {
+            $period = $this->getPeriod($period);
+        } else {
+            $period = null;
         }
         $tws = new TWSRepository;
-        $rows =$tws->ranking($rankingConcentrationCd)->get();
-//        return $tws->ranking($rankingConcentrationCd)->get();
+        $rows =$tws->ranking($rankingConcentrationCd, $period)->get();
         $response = [
             'hasNext' => null,
             'totalCount' => null,
@@ -121,7 +131,16 @@ class SectionRepository
             'page' => null,
             'rows' =>  $this->convertFormatFromRanking($rows),
         ];
+        if (empty($response['rows'])) {
+            return null;
+        }
         return $response;
+    }
+
+
+    // 01:レンタルDVD 02:レンタルCD 03:レンタルコミック 04:販売DVD 05:販売CD 06:販売ゲーム 07:販売本・コミック
+    public function releaseManual() {
+
     }
 
     public function releaseAuto($genreId, $storeProductItemCd, $itemCode) {
@@ -136,6 +155,9 @@ class SectionRepository
             'page' => null,
             'rows' => $this->convertFormatFromRelease($rows),
         ];
+        if (empty($response['rows'])) {
+            return null;
+        }
         return $response;
     }
 
@@ -144,6 +166,9 @@ class SectionRepository
      */
     private function convertFormatFromRelease($rows) {
         foreach ($rows['entry'] as $row) {
+            if (empty($row)) {
+                return null;
+            }
             $formatedRows[] =
                 [
                     'saleStartDate'=> $row['saleDate'],
@@ -163,6 +188,9 @@ class SectionRepository
      */
     private function convertFormatFromRanking($rows) {
         foreach ($rows['entry'] as $row) {
+            if (empty($row)) {
+                return null;
+            }
             $formatedRows[] =
                 [
                     'saleStartDate'=> null,
@@ -185,5 +213,10 @@ class SectionRepository
             $artist = $data;
         }
         return $artist;
+    }
+
+    private function getPeriod ($period) {
+        $targetDay = date("Ym01");
+        return date("Ym01",strtotime($targetDay . ' -' .$period.' month'));
     }
 }

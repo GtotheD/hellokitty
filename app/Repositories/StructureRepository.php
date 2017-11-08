@@ -25,6 +25,7 @@ class StructureRepository
     protected $hasNext;
     protected $totalCount;
     protected $page;
+    protected $rows;
 
 
     public function __construct()
@@ -45,7 +46,7 @@ class StructureRepository
      */
     public function getLimit()
     {
-        return $this->limit;
+        return (int)$this->limit;
     }
 
     /**
@@ -53,7 +54,7 @@ class StructureRepository
      */
     public function getOffset()
     {
-        return $this->offset;
+        return (int)$this->offset;
     }
 
     /**
@@ -69,7 +70,7 @@ class StructureRepository
      */
     public function getStructure()
     {
-        return $this->structure;
+        return $this->rows;
     }
 
     /**
@@ -81,12 +82,34 @@ class StructureRepository
     }
 
     /**
+     * @param mixed $limit
+     */
+    public function setLimit($limit)
+    {
+        $this->limit = $limit;
+    }
+
+    /**
+     * @param mixed $offset
+     */
+    public function setOffset($offset)
+    {
+        $this->offset = $offset;
+    }
+    /**
      * @return object
      */
     public function get($goodsType, $saleType) {
         $goodsType = $this->convertGoodsTypeToId($goodsType);
         $saleType = $this->convertSaleTypeToId($saleType);
-        $structures = $this->structure->getStructure($goodsType, $saleType);
+        $this->structure->set($goodsType, $saleType);
+        $this->totalCount = $this->structure->count();
+        $structures = $this->structure->get($this->limit, $this->offset);
+        if (count($structures) + $this->offset < $this->totalCount) {
+            $this->hasNext = true;
+        } else {
+            $this->hasNext = false;
+        }
         $rows = [];
         foreach ($structures as $structure) {
             $apiUrl = null;
@@ -109,10 +132,8 @@ class StructureRepository
                     'isDisplayReleaseDate' => false,
                 ];
         }
-        $this->structure = $rows;
-
+        $this->rows = $rows;
         return $this;
-
     }
 
     /**

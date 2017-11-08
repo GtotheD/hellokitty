@@ -29,8 +29,10 @@ $router->group([
     });
 
     // コンテンツ構成取得API
-    $router->get('structure/{goodsType:dvd|book|cd|game}/{saleType:rental|sell}', function ($goodsType, $saleType) {
+    $router->get('structure/{goodsType:dvd|book|cd|game}/{saleType:rental|sell}', function (Request $request, $goodsType, $saleType) {
         $structureRepository = new StructureRepository;
+        $structureRepository->setLimit($request->input('limit', 10));
+        $structureRepository->setOffset($request->input('offset', 0));
         $structures = $structureRepository->get($goodsType, $saleType);
         $response = [
                 'hasNext' => $structures->getHasNext(),
@@ -67,18 +69,24 @@ $router->group([
     // バナーセクション取得API
     $router->get('section/banner/{sectionName}', function ($sectionName) {
         $sectionRepository = new SectionRepository;
-        $sectionData = $sectionRepository->banner($goodsName, $typeName, $sectionName);
+        $sectionData = $sectionRepository->banner($sectionName);
         return $sectionData;
 
     });
 
     // レコメンドセクション取得API
-    $router->get('section/recommend/ranking/{himoGenreId}', function ($himoGenreId) {
+    $router->get('section/ranking/{codeType:himo|agg}/{code}', function ($codeType, $code, $period = null) {
         $sectionRepository = new SectionRepository;
-        $sectionData = $sectionRepository->ranking($himoGenreId);
+        $sectionData = $sectionRepository->ranking($codeType, $code, $period);
         return $sectionData;
     });
 
+    // レコメンドセクション取得API（何故か任意パラメーターで追加できないので…）
+    $router->get('section/ranking/{codeType:himo|agg}/{code}/{period}', function ($codeType, $code, $period = null) {
+        $sectionRepository = new SectionRepository;
+        $sectionData = $sectionRepository->ranking($codeType, $code, $period);
+        return $sectionData;
+    });
 
     // レコメンドセクション取得API
     $router->get('section/release/manual/{genreId}/{storeProductItemCd}/{itemCode}', function ($genreId, $storeProductItemCd, $itemCode) {
