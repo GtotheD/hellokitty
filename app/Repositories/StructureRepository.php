@@ -20,12 +20,69 @@ class StructureRepository
     const SELL = '2';
 
     protected $structure;
+    protected $limit;
+    protected $offset;
+    protected $hasNext;
+    protected $totalCount;
+    protected $page;
+
 
     public function __construct()
     {
         $this->structure = New Structure;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getHasNext()
+    {
+        return $this->hasNext;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLimit()
+    {
+        return $this->limit;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOffset()
+    {
+        return $this->offset;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTotalCount()
+    {
+        return $this->totalCount;
+    }
+
+    /**
+     * @return Array
+     */
+    public function getStructure()
+    {
+        return $this->structure;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPage()
+    {
+        return $this->page;
+    }
+
+    /**
+     * @return object
+     */
     public function get($goodsType, $saleType) {
         $goodsType = $this->convertGoodsTypeToId($goodsType);
         $saleType = $this->convertSaleTypeToId($saleType);
@@ -40,17 +97,27 @@ class StructureRepository
             }
             $rows[] =
                 [
-                    'areaType' => $structure->section_type,
+                    'sectionType' => $structure->section_type,
                     'title' => $structure->title,
                     'apiUrl' => $apiUrl,
-                    'linkUrl' => '',
-                    'isTapOn' => $structure->is_tap_on,
-                    'isRanking' => $structure->is_ranking,
+                    'linkUrl' => $structure->link_url,
+                    'isTapOn' => $structure->is_tap_on? true:false,
+                    'isRanking' => $structure->is_ranking? true:false,
+//                    'isDisplayDvdArtist' => $structure->displayDvdArtistDisplay,
+//                    'isDisplayReleaseDate' => $structure->displayReleaseDateDisplay,
+                    'isDisplayDvdArtist' => true,
+                    'isDisplayReleaseDate' => false,
                 ];
         }
-        return $rows;
+        $this->structure = $rows;
+
+        return $this;
+
     }
 
+    /**
+     * @return integer
+     */
     private function convertGoodsTypeToId($goodsType) {
         switch ($goodsType) {
             case 'dvd':
@@ -66,6 +133,9 @@ class StructureRepository
         }
     }
 
+    /**
+     * @return integer
+     */
     private function convertSaleTypeToId($saleType) {
         switch ($saleType) {
             case 'rental':

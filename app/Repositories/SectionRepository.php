@@ -41,47 +41,38 @@ class SectionRepository
     public function normal($goodsName, $typeName, $sectionName) {
 
         $rows = [
-            'totalCount' => 10,
-            'limit' => 10,
-            'offset' => 0,
-            'page' => 1,
-            'hasNext' => true,
+            'hasNext' => null,
+            'totalCount' => null,
+            'limit' => null,
+            'offset' => null,
+            'page' => null,
             'rows' => [
                 [
-                    'dispStartDate'=> '2017-01-01',
-                    'dispEndDate'=> '2017-01-01',
                     'saleStartDate'=> '2017-01-01',
                     'rentalStartDate'=> '2017-01-01',
                     'imageUrl'=> 'https://tsutaya.jp/image/a.jpg',
                     'title' => 'ラ・ラ・ランド',
                     'supplement' => 'エマ・ストーン', // アーティスト名、著者、機種等
                     'code' => 'JAN_CODE',
-                    'urlCode' => 'url code',
-                    'rate' => 2
+                    'urlCode' => 'url code'
                 ],
                 [
-                    'dispStartDate'=> '2017-01-01',
-                    'dispEndDate'=> '2017-01-01',
                     'saleStartDate'=> '2017-01-01',
                     'rentalStartDate'=> '2017-01-01',
                     'imageUrl'=> 'https://tsutaya.jp/image/a.jpg',
                     'title' => 'ワイルド・スピード　ＩＣＥ　ＢＲＥＡＫ',
                     'supplement' => 'ヴィン・ディーゼル', // アーティスト名、著者、機種等
                     'code' => 'JAN_CODE',
-                    'urlCode' => 'url code',
-                    'rate' => 3
+                    'urlCode' => 'url code'
                 ],
                 [
-                    'dispStartDate'=> '2017-01-01',
-                    'dispEndDate'=> '2017-01-01',
                     'saleStartDate'=> '2017-01-01',
                     'rentalStartDate'=> '2017-01-01',
                     'imageUrl'=> 'https://tsutaya.jp/image/a.jpg',
                     'title' => '美女と野獣',
                     'supplement' => 'エマ・ワトソン', // アーティスト名、著者、機種等
                     'code' => 'JAN_CODE',
-                    'urlCode' => 'url code',
-                    'rate' => 4
+                    'urlCode' => 'url code'
                 ],
             ]
         ];
@@ -120,6 +111,78 @@ class SectionRepository
             throw new NotFoundHttpException();
         }
         $tws = new TWSRepository;
-        return $tws->ranking($rankingConcentrationCd)->get();
+        $rows = $this->convertFormatFromRanking($tws->ranking($rankingConcentrationCd)->get());
+//        return $tws->ranking($rankingConcentrationCd)->get();
+        $response = [
+            'hasNext' => null,
+            'totalCount' => null,
+            'limit' => null,
+            'offset' => null,
+            'page' => null,
+            'rows' => $rows,
+        ];
+        return $response;
+    }
+
+    public function releaseAuto() {
+        $tws = new TWSRepository;
+        $rows = $this->convertFormatFromRelease($tws->release('2017-11-01', '002')->get());
+        $response = [
+            'hasNext' => null,
+            'totalCount' => null,
+            'limit' => null,
+            'offset' => null,
+            'page' => null,
+            'rows' => $rows,
+        ];
+        return $response;
+    }
+
+    /*
+     * 成形用メソッド：TWSからのリリースカレンダーのレスポンスを成形する
+     */
+    private function convertFormatFromRelease($rows) {
+        foreach ($rows['entry'] as $row) {
+            $formatedRows[] =
+                [
+                    'saleStartDate'=> $row['saleDate'],
+                    'rentalStartDate'=> null,
+                    'imageUrl'=> $row['image']['large'],
+                    'title' => $row['productName'],
+                    'supplement' => $row['artistList'][0]['artistName'], // アーティスト名、著者、機種等
+                    'code' => $row['janCd'],
+                    'urlCode' => $row['urlCd']
+                ];
+        }
+        return $formatedRows;
+    }
+
+    /*
+     * 成形用メソッド：TWSからのランキングのレスポンスを成形する
+     */
+    private function convertFormatFromRanking($rows) {
+        foreach ($rows['entry'] as $row) {
+            $formatedRows[] =
+                [
+                    'saleStartDate'=> null,
+                    'rentalStartDate'=> null,
+                    'imageUrl'=> $row['productImage']['large'],
+                    'title' => $row['productTitle'],
+                    'supplement' => $this->getOneArtist($row['artistInfoList']['artistInfo'])['artistName'], // アーティスト名、著者、機種等
+                    // todo: １人の場合はレスポンス形式が異なる為、成形ロジックは別で実装する
+                    'code' => $row['productKey'],
+                    'urlCode' => $row['urlCd']
+                ];
+        }
+        return $formatedRows;
+    }
+
+    private function getOneArtist($data) {
+        if (array_key_exists('0', $data)) {
+            $artist = array_values($data)[0];
+        } else {
+            $artist = $data;
+        }
+        return $artist;
     }
 }

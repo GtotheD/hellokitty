@@ -55,8 +55,8 @@ class TWSRepository
     }
 
     /*
- * ランキン儀情報をメンバ変数にセットする
- */
+     * 詳細情報を取得するAPIをセットする
+     */
     public function detail($janCode) {
         $this->apiPath = '/store/v0/products/detail.json';
         $this->queryParams = [
@@ -69,7 +69,7 @@ class TWSRepository
     }
 
     /*
-     * ランキン儀情報をメンバ変数にセットする
+     * ランキング情報を取得するAPIをセットする
      */
     public function ranking($rankingConcentrationCd) {
         $this->apiPath = '/media/v0/works/tsutayarankingresult.json';
@@ -78,9 +78,35 @@ class TWSRepository
             'rankingConcentrationCd' => $rankingConcentrationCd,
             'tolPlatformCode' => '00',
             'rankinglimit' => $this->limit,
-            'dispNums' => '100',
+//            'dispNums' => '100', todo: rankinglimitで制限されているからいらない？
             '_secure' => '1'
         ];
         return $this;
     }
+
+    /*
+     * 日付ベースの検索結果を取得するAPIをセットする
+     */
+    public function release($startDate, $itemCode) {
+        $this->apiPath = '/store/v0/products/searchDetail.json';
+        $this->queryParams = [
+            'api_key' => $this->apiKey,
+            '_secure' => '1',
+            'page' => '1',
+            'dispNums' => '10',
+            'adultAuthOK' => '0',
+            'adultFlag'=> '1',
+            'sortingOrder'=> '2',
+            'storeProductItemCd' => '221',
+            'lg' => '25', // アイテム集約コード
+            'ic' => '002',
+            'dfy'=> '2017',
+            'dfm'=> '11',
+            'dfd'=> '04'
+        ];
+        return $this;
+    }
+
+
+
 }

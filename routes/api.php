@@ -21,7 +21,7 @@ $router->group([
     'middleware' => ['auth']
     ], function() use ($router) {
 
-    // 固定コンテンツ取得API
+    // バージョン取得API
     $router->get('version', function () {
         $version = config('version');
         $version['version'] = hash('sha256', serialize($version));
@@ -31,8 +31,16 @@ $router->group([
     // コンテンツ構成取得API
     $router->get('structure/{goodsType:dvd|book|cd|game}/{saleType:rental|sell}', function ($goodsType, $saleType) {
         $structureRepository = new StructureRepository;
-        $structureData = $structureRepository->get($goodsType, $saleType);
-        return response()->json($structureData);
+        $structures = $structureRepository->get($goodsType, $saleType);
+        $response = [
+                'hasNext' => $structures->getHasNext(),
+                'totalCount' => $structures->getTotalCount(),
+                'limit' => $structures->getLimit(),
+                'offset' => $structures->getOffset(),
+                'page' => $structures->getPage(),
+                'rows' => $structures->getStructure(),
+            ];
+        return response()->json($response);
     });
 
     // 固定コンテンツ取得API
@@ -68,6 +76,13 @@ $router->group([
     $router->get('section/recommend/ranking/{himoGenreId}', function ($himoGenreId) {
         $sectionRepository = new SectionRepository;
         $sectionData = $sectionRepository->ranking($himoGenreId);
+        return $sectionData;
+    });
+
+    // レコメンドセクション取得API
+    $router->get('section/release/auto', function () {
+        $sectionRepository = new SectionRepository;
+        $sectionData = $sectionRepository->releaseAuto();
         return $sectionData;
     });
 
