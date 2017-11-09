@@ -34,7 +34,7 @@ class TestDataSeeder extends Seeder
                 'link_url' => 'https://tsutaya.tsite.jp/',
                 'is_tap_on' => 0,
                 'is_ranking' => 0,
-                'api_url'  => '/section/release/manual/01',
+                'api_url'  => 'section/release/manual/01',
                 'section_file_name' => ''
             ],
             [
@@ -48,7 +48,7 @@ class TestDataSeeder extends Seeder
                 'link_url' => 'https://tsutaya.tsite.jp/',
                 'is_tap_on' => 0,
                 'is_ranking' => 0,
-                'api_url'  => '/section/ranking/agg/D045',
+                'api_url'  => 'section/ranking/agg/D045',
                 'section_file_name' => ''
             ],
             [
@@ -62,7 +62,7 @@ class TestDataSeeder extends Seeder
                 'link_url' => 'https://tsutaya.tsite.jp/',
                 'is_tap_on' => 0,
                 'is_ranking' => 0,
-                'api_url'  => '/section/normal',
+                'api_url'  => 'section/normal',
                 'section_file_name' => 'dvd_rental_normal_section1'
             ],
             [
@@ -76,7 +76,7 @@ class TestDataSeeder extends Seeder
                 'link_url' => 'https://tsutaya.tsite.jp/',
                 'is_tap_on' => 0,
                 'is_ranking' => 0,
-                'api_url'  => '/section/ranking/himo/{code}',
+                'api_url'  => 'section/ranking/himo/{code}',
                 'section_file_name' => ''
             ],
             [
@@ -90,7 +90,7 @@ class TestDataSeeder extends Seeder
                 'link_url' => 'https://tsutaya.tsite.jp/',
                 'is_tap_on' => 0,
                 'is_ranking' => 0,
-                'api_url'  => '/section/ranking/himo/{code}',
+                'api_url'  => 'section/ranking/himo/{code}',
                 'section_file_name' => ''
             ],
             [
@@ -104,7 +104,7 @@ class TestDataSeeder extends Seeder
                 'link_url' => 'https://tsutaya.tsite.jp/',
                 'is_tap_on' => 0,
                 'is_ranking' => 0,
-                'api_url'  => '/section/ranking/himo/{code}',
+                'api_url'  => 'section/ranking/himo/{code}',
                 'section_file_name' => ''
             ],
             [
@@ -118,7 +118,7 @@ class TestDataSeeder extends Seeder
                 'link_url' => 'https://tsutaya.tsite.jp/',
                 'is_tap_on' => 0,
                 'is_ranking' => 0,
-                'api_url'  => '/section/ranking/himo/{code}',
+                'api_url'  => 'section/ranking/himo/{code}',
                 'section_file_name' => ''
             ],
             [
@@ -132,7 +132,7 @@ class TestDataSeeder extends Seeder
                 'link_url' => 'https://tsutaya.tsite.jp/',
                 'is_tap_on' => 0,
                 'is_ranking' => 0,
-                'api_url'  => '/section/ranking/himo/{code}',
+                'api_url'  => 'section/ranking/himo/{code}',
                 'section_file_name' => ''
             ],
             [
@@ -146,7 +146,7 @@ class TestDataSeeder extends Seeder
                 'link_url' => 'https://tsutaya.tsite.jp/',
                 'is_tap_on' => 0,
                 'is_ranking' => 1,
-                'api_url'  => '/section/dvd/rental',
+                'api_url'  => 'section/dvd/rental',
                 'section_file_name' => 'a'
             ],
             [
@@ -160,7 +160,7 @@ class TestDataSeeder extends Seeder
                 'link_url' => 'https://tsutaya.tsite.jp/',
                 'is_tap_on' => 0,
                 'is_ranking' => 0,
-                'api_url'  => '/section/dvd/rental',
+                'api_url'  => 'section/dvd/rental',
                 'section_file_name' => 'b'
             ],
             [
@@ -174,7 +174,7 @@ class TestDataSeeder extends Seeder
                 'link_url' => 'https://tsutaya.tsite.jp/',
                 'is_tap_on' => 0,
                 'is_ranking' => 0,
-                'api_url'  => '/section/dvd/rental',
+                'api_url'  => 'section/dvd/rental',
                 'section_file_name' => 'c'
             ],
             [
@@ -188,7 +188,7 @@ class TestDataSeeder extends Seeder
                 'link_url' => 'https://tsutaya.tsite.jp/',
                 'is_tap_on' => 0,
                 'is_ranking' => 1,
-                'api_url'  => '/section/release/auto/27/011',
+                'api_url'  => 'section/release/auto/27/011',
                 'section_file_name' => ''
             ],
             [
@@ -202,7 +202,7 @@ class TestDataSeeder extends Seeder
                 'link_url' => 'https://tsutaya.tsite.jp/',
                 'is_tap_on' => 0,
                 'is_ranking' => 1,
-                'api_url'  => '/section/release/auto/29/011',
+                'api_url'  => 'section/release/auto/29/011',
                 'section_file_name' => ''
             ],
             [
@@ -244,123 +244,9 @@ class TestDataSeeder extends Seeder
                 'link_url' => 'https://tsutaya.tsite.jp/',
                 'is_tap_on' => 0,
                 'is_ranking' => 1,
-                'api_url'  => '/section/dvd/rental',
+                'api_url'  => 'section/dvd/rental',
                 'section_file_name' => 'd'
-            ],
-
-            // DVD-SELL
-            [
-                'sort' => 1,
-                'goods_type' => 1,
-                'sale_type' => 2,
-                'section_type' => 1,
-                'display_start_date' => '2017-01-01',
-                'display_end_date' => '2018-01-01',
-                'title' => 'DVD-SELL バナーセクション',
-                'link_url' => 'http://',
-                'is_tap_on' => 0,
-                'is_ranking' => 0,
-                'api_url'  => '/section/banner',
-                'section_file_name' => 'dvd_sell_banner_section1'
-            ],
-            [
-                'sort' => 2,
-                'goods_type' => 1,
-                'sale_type' => 2,
-                'section_type' => 2,
-                'display_start_date' => '2017-01-01',
-                'display_end_date' => '2018-01-01',
-                'title' => 'DVD-SELL 通常セクション',
-                'link_url' => 'http://',
-                'is_tap_on' => 0,
-                'is_ranking' => 0,
-                'api_url'  => '/section/normal',
-                'section_file_name' => 'dvd_sell_normal_section1'
-            ],
-            [
-                'sort' => 3,
-                'goods_type' => 1,
-                'sale_type' => 2,
-                'section_type' => 3,
-                'display_start_date' => '2017-01-01',
-                'display_end_date' => '2018-01-01',
-                'title' => 'DVD-SELL 手動運用リリカレセクション（tap api経由）',
-                'link_url' => 'http://',
-                'is_tap_on' => 0,
-                'is_ranking' => 0,
-                'api_url'  => '/section/release',
-                'section_file_name' => ''
-            ],
-            [
-                'sort' => 3,
-                'goods_type' => 1,
-                'sale_type' => 2,
-                'section_type' => 4,
-                'display_start_date' => '2017-01-01',
-                'display_end_date' => '2018-01-01',
-                'title' => 'DVD-SELL 自動運用リリカレセクション',
-                'link_url' => 'http://',
-                'is_tap_on' => 0,
-                'is_ranking' => 0,
-                'api_url'  => '/section/release/D045',
-                'section_file_name' => ''
-            ],
-            [
-                'sort' => 3,
-                'goods_type' => 1,
-                'sale_type' => 2,
-                'section_type' => 5,
-                'display_start_date' => '2017-01-01',
-                'display_end_date' => '2018-01-01',
-                'title' => 'DVD-SELL ランキングセクション',
-                'link_url' => 'http://',
-                'is_tap_on' => 0,
-                'is_ranking' => 1,
-                'api_url'  => '/section/ranking',
-                'section_file_name' => ''
-            ],
-            [
-                'sort' => 4,
-                'goods_type' => 1,
-                'sale_type' => 2,
-                'section_type' => 6,
-                'display_start_date' => '2017-01-01',
-                'display_end_date' => '2018-01-01',
-                'title' => 'DVD-SELL お気に入りセクション',
-                'link_url' => 'http://',
-                'is_tap_on' => 0,
-                'is_ranking' => 0,
-                'api_url'  => '',
-                'section_file_name' => ''
-            ],
-            [
-                'sort' => 4,
-                'goods_type' => 1,
-                'sale_type' => 2,
-                'section_type' => 7,
-                'display_start_date' => '2017-01-01',
-                'display_end_date' => '2018-01-01',
-                'title' => 'DVD-SELL チェックセクション',
-                'link_url' => 'http://',
-                'is_tap_on' => 0,
-                'is_ranking' => 0,
-                'api_url'  => '',
-                'section_file_name' => ''
-            ],
-            [
-                'sort' => 4,
-                'goods_type' => 1,
-                'sale_type' => 2,
-                'section_type' => 8,
-                'display_start_date' => '2017-01-01',
-                'display_end_date' => '2018-01-01',
-                'title' => 'DVD-SELL レコメンドセクション',
-                'link_url' => 'http://',
-                'is_tap_on' => 0,
-                'is_ranking' => 1,
-                'api_url'  => '/section/recommend/ranking',
-                'section_file_name' => ''
-            ],
+            ]
         ];
     }
 
