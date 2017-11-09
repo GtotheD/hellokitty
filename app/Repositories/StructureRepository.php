@@ -139,7 +139,7 @@ class StructureRepository
     /**
      * @return integer
      */
-    private function convertGoodsTypeToId($goodsType) {
+    public function convertGoodsTypeToId($goodsType) {
         switch ($goodsType) {
             case 'dvd':
                 return self::DVD;
@@ -157,7 +157,7 @@ class StructureRepository
     /**
      * @return integer
      */
-    private function convertSaleTypeToId($saleType) {
+    public function convertSaleTypeToId($saleType) {
         switch ($saleType) {
             case 'rental':
                 return self::RENTAL;

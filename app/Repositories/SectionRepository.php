@@ -1,7 +1,10 @@
 <?php
 namespace App\Repositories;
 
+use App\Model\Structure;
 use App\Repositories\TWSRepository;
+use App\Repositories\SectionRepository;
+use App\Model\Section;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
@@ -13,6 +16,20 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class SectionRepository
 {
+
+    protected $section;
+    protected $limit;
+    protected $offset;
+    protected $hasNext;
+    protected $totalCount;
+    protected $page;
+    protected $rows;
+
+
+    public function __construct()
+    {
+        $this->section = New Section;
+    }
 
     public function fixedBanner() {
         $rows = [
@@ -38,7 +55,13 @@ class SectionRepository
         return $rows;
     }
 
-    public function normal($goodsName, $typeName, $sectionName) {
+    public function normal($goodsType, $saleType, $sectionName) {
+//        $structureRepository = new StructureRepository();
+//        $goodsType = $structureRepository->convertGoodsTypeToId($goodsType);
+//        $saleType = $structureRepository->convertSaleTypeToId($saleType);
+//
+//        $this->section->set($goodsType, $saleType, $sectionName);
+//        $count = $this->section->count();
 
         $rows = [
             'hasNext' => null,
