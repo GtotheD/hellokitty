@@ -33,7 +33,7 @@ class TWSRepository extends ApiRequesterRepository
      * 詳細情報を取得するAPIをセットする
      */
     public function detail($janCode) {
-        $this->apiPath = $this->apiHost . 'store/v0/products/detail.json';
+        $this->apiPath = $this->apiHost . '/store/v0/products/detail.json';
         $this->queryParams = [
             'api_key' => $this->apiKey,
             'productKey' => $janCode,
@@ -48,7 +48,7 @@ class TWSRepository extends ApiRequesterRepository
      * ランキング情報を取得するAPIをセットする
      */
     public function ranking($rankingConcentrationCd, $period) {
-        $this->apiPath = $this->apiHost .'media/v0/works/tsutayarankingresult.json';
+        $this->apiPath = $this->apiHost .'/media/v0/works/tsutayarankingresult.json';
         $this->queryParams = [
             'api_key' => $this->apiKey,
             'rankingConcentrationCd' => $rankingConcentrationCd,
@@ -68,7 +68,7 @@ class TWSRepository extends ApiRequesterRepository
      * 日付ベースの検索結果を取得するAPIをセットする
      */
     public function release($genreId, $storeProductItemCd) {
-        $this->apiPath = $this->apiHost .'store/v0/products/searchDetail.json';
+        $this->apiPath = $this->apiHost .'/store/v0/products/searchDetail.json';
         $this->queryParams = [
             'api_key' => $this->apiKey,
             '_secure' => '1',
