@@ -27,7 +27,7 @@ class TestDataSeeder extends Seeder
                 'sort' => 1,
                 'goods_type' => 1,
                 'sale_type' => 1,
-                'section_type' => 1,
+                'section_type' => 2,
                 'display_start_date' => '2017-01-01',
                 'display_end_date' => '2018-01-01',
                 'title' => 'リリース情報',
@@ -253,79 +253,75 @@ class TestDataSeeder extends Seeder
     private function getSectionTestData() {
         return [
             // バナーセクション定義
-            [
-                'ts_structure_id' => 1,
-                'code_type' => 1,
-                'code' => '4988013468993'
-            ],
-            [
-                'ts_structure_id' => 1,
-                'code_type' => 1,
-                'code' => '4988013468993'
-            ],
-            [
-                'ts_structure_id' => 1,
-                'code_type' => 1,
-                'code' => '4988013468993'
-            ],
-            [
-                'ts_structure_id' => 1,
-                'code_type' => 1,
-                'code' => '4988013468993'
-            ],
-            [
-                'ts_structure_id' => 1,
-                'code_type' => 1,
-                'code' => '4988013468993'
-            ],
+//            [
+//                'ts_structure_id' => 1,
+//                'code_type' => 1,
+//                'image_url' => 'asset/image/banner_sample/banner.jpg'
+//            ],
+//            [
+//                'ts_structure_id' => 1,
+//                'code_type' => 1,
+//                'image_url' => 'asset/image/banner_sample/banner2.jpg'
+//            ],
+//            [
+//                'ts_structure_id' => 1,
+//                'code_type' => 1,
+//                'image_url' => 'asset/image/banner_sample/banner3.jpg'
+//            ],
+//            [
+//                'ts_structure_id' => 1,
+//                'code_type' => 1,
+//                'image_url' => 'asset/image/banner_sample/banner4.jpg'
+//            ],
+
             // 通常セクション定義
             [
-                'ts_structure_id' => 2,
+                'ts_structure_id' => 9,
                 'code_type' => 1,
                 'code' => '4988013468993'
             ],
             [
-                'ts_structure_id' => 2,
+                'ts_structure_id' => 9,
                 'code_type' => 1,
                 'code' => '4532612131866'
             ],
             [
-                'ts_structure_id' => 2,
+                'ts_structure_id' => 9,
                 'code_type' => 1,
                 'code' => '4988142949721'
             ],
             [
-                'ts_structure_id' => 2,
+                'ts_structure_id' => 9,
                 'code_type' => 1,
                 'code' => '4988142946720'
             ],
             [
-                'ts_structure_id' => 2,
+                'ts_structure_id' => 10,
                 'code_type' => 1,
                 'code' => '4988142311719'
             ],
             [
-                'ts_structure_id' => 2,
+                'ts_structure_id' => 10,
                 'code_type' => 1,
                 'code' => '4988142284914'
             ],
             [
-                'ts_structure_id' => 2,
+                'ts_structure_id' => 11,
                 'code_type' => 1,
                 'code' => '4547462074416'
             ],
             [
-                'ts_structure_id' => 2,
+                'ts_structure_id' => 11,
                 'code_type' => 1,
                 'code' => '4548967343472'
             ],
             [
-                'ts_structure_id' => 2,
+                'ts_structure_id' => 16,
                 'code_type' => 1,
                 'code' => '4988126207625'
             ],
             [
-                'ts_structure_id' => 2,
+                'ts_structure_id' => 16,
                 'code_type' => 1,
                 'code' => '4907953084902'
             ]
