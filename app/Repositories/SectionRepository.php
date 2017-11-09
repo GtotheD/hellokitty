@@ -194,9 +194,6 @@ class SectionRepository
         $response = [
             'hasNext' => null,
             'totalCount' => null,
-            'limit' => null,
-            'offset' => null,
-            'page' => null,
             'rows' =>  $this->convertFormatFromRanking($rows),
         ];
         if (empty($response['rows'])) {
@@ -212,15 +209,11 @@ class SectionRepository
     }
 
     public function releaseAuto($genreId, $storeProductItemCd, $itemCode) {
-//        dd($genreId, $storeProductItemCd, $itemCode);
         $tws = new TWSRepository;
         $rows = $tws->release($genreId, $storeProductItemCd, $itemCode)->get();
         $response = [
             'hasNext' => null,
             'totalCount' => $rows['totalResults'],
-            'limit' => null,
-            'offset' => null,
-            'page' => null,
             'rows' => $this->convertFormatFromRelease($rows),
         ];
         if (empty($response['rows'])) {

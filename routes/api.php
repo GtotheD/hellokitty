@@ -36,9 +36,6 @@ $router->group([
         $response = [
                 'hasNext' => $structures->getHasNext(),
                 'totalCount' => $structures->getTotalCount(),
-                'limit' => $structures->getLimit(),
-                'offset' => $structures->getOffset(),
-                'page' => $structures->getPage(),
                 'rows' => $structures->getRows(),
             ];
         return response()->json($response);
@@ -67,9 +64,6 @@ $router->group([
         $response = [
             'hasNext' => $section->getHasNext(),
             'totalCount' => $section->getTotalCount(),
-            'limit' => $section->getLimit(),
-            'offset' => $section->getOffset(),
-            'page' => $section->getPage(),
             'rows' => $section->getRows()
         ];
 
