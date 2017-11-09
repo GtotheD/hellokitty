@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Repositories;
 
 use App\Model\Structure;
@@ -13,7 +14,6 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  * Date: 2017/10/13
  * Time: 15:02
  */
-
 class SectionRepository
 {
 
@@ -30,6 +30,7 @@ class SectionRepository
     {
         $this->section = New Section;
     }
+
     /**
      * @return mixed
      */
@@ -65,7 +66,7 @@ class SectionRepository
     /**
      * @return Array
      */
-    public function getRows ()
+    public function getRows()
     {
         return $this->rows;
     }
@@ -94,23 +95,24 @@ class SectionRepository
         $this->offset = $offset;
     }
 
-    public function fixedBanner() {
+    public function fixedBanner()
+    {
         $rows = [
             [
                 'linkUrl' => 'https://tsutaya.jp/a.html',
-                'imageUrl'=> 'https://tsutaya.jp/image/a.jpg',
+                'imageUrl' => 'https://tsutaya.jp/image/a.jpg',
                 'isTapOn' => false
 
             ],
             [
                 'linkUrl' => 'https://tsutaya.jp/b.html',
-                'imageUrl'=> 'https://tsutaya.jp/image/b.jpg',
+                'imageUrl' => 'https://tsutaya.jp/image/b.jpg',
                 'isTapOn' => true
 
             ],
             [
                 'linkUrl' => 'https://tsutaya.jp/c.html',
-                'imageUrl'=> 'https://tsutaya.jp/image/d.jpg',
+                'imageUrl' => 'https://tsutaya.jp/image/d.jpg',
                 'isTapOn' => false
 
             ]
@@ -118,11 +120,12 @@ class SectionRepository
         return $rows;
     }
 
-    public function normal($goodsType, $saleType, $sectionName) {
+    public function normal($goodsType, $saleType, $sectionName)
+    {
         $structureRepository = new StructureRepository();
         $goodsType = $structureRepository->convertGoodsTypeToId($goodsType);
         $saleType = $structureRepository->convertSaleTypeToId($saleType);
-        $this->section->set($goodsType, $saleType, $sectionName);
+        $this->section->conditionSectionFromStructure($goodsType, $saleType, $sectionName);
         $this->totalCount = $this->section->count();
         $sections = $this->section->get();
         if (count($sections) + $this->offset < $this->totalCount) {
@@ -133,9 +136,9 @@ class SectionRepository
         foreach ($sections as $section) {
             $rows[] =
                 [
-                    'saleStartDate'=> $section->rental_start_date,
-                    'rentalStartDate'=> $section->sale_start_date,
-                    'imageUrl'=> $section->image_url,
+                    'saleStartDate' => $section->rental_start_date,
+                    'rentalStartDate' => $section->sale_start_date,
+                    'imageUrl' => $section->image_url,
                     'title' => $section->title,
                     'supplement' => $section->supplement, // アーティスト名、著者、機種等
                     'code' => $section->code,
@@ -147,23 +150,24 @@ class SectionRepository
         return $this;
     }
 
-    public function banner($sectionName) {
+    public function banner($sectionName)
+    {
         $rows = [
             [
                 'linkUrl' => 'https://tsutaya.jp/a.html',
-                'imageUrl'=> 'https://tsutaya.jp/image/a.jpg',
+                'imageUrl' => 'https://tsutaya.jp/image/a.jpg',
                 'isTapOn' => false
 
             ],
             [
                 'linkUrl' => 'https://tsutaya.jp/b.html',
-                'imageUrl'=> 'https://tsutaya.jp/image/b.jpg',
+                'imageUrl' => 'https://tsutaya.jp/image/b.jpg',
                 'isTapOn' => true
 
             ],
             [
                 'linkUrl' => 'https://tsutaya.jp/c.html',
-                'imageUrl'=> 'https://tsutaya.jp/image/d.jpg',
+                'imageUrl' => 'https://tsutaya.jp/image/d.jpg',
                 'isTapOn' => false
 
             ]
@@ -171,7 +175,8 @@ class SectionRepository
         return $rows;
     }
 
-    public function ranking($codeType, $genreCode, $period) {
+    public function ranking($codeType, $genreCode, $period)
+    {
         // himoだった場合は集約コードに変更する
         if ($codeType == 'himo') {
             $genreMap = config('genre_map');
@@ -190,11 +195,11 @@ class SectionRepository
             $period = null;
         }
         $tws = new TWSRepository;
-        $rows =$tws->ranking($rankingConcentrationCd, $period)->get();
+        $rows = $tws->ranking($rankingConcentrationCd, $period)->get();
         $response = [
             'hasNext' => null,
             'totalCount' => null,
-            'rows' =>  $this->convertFormatFromRanking($rows),
+            'rows' => $this->convertFormatFromRanking($rows),
         ];
         if (empty($response['rows'])) {
             return null;
@@ -204,11 +209,13 @@ class SectionRepository
 
 
     // 01:レンタルDVD 02:レンタルCD 03:レンタルコミック 04:販売DVD 05:販売CD 06:販売ゲーム 07:販売本・コミック
-    public function releaseManual() {
+    public function releaseManual()
+    {
 
     }
 
-    public function releaseAuto($genreId, $storeProductItemCd, $itemCode) {
+    public function releaseAuto($genreId, $storeProductItemCd, $itemCode)
+    {
         $tws = new TWSRepository;
         $rows = $tws->release($genreId, $storeProductItemCd, $itemCode)->get();
         $response = [
@@ -225,49 +232,51 @@ class SectionRepository
     /*
      * 成形用メソッド：TWSからのリリースカレンダーのレスポンスを成形する
      */
-    private function convertFormatFromRelease($rows) {
+    private function convertFormatFromRelease($rows)
+    {
         foreach ($rows['entry'] as $row) {
             if (empty($row)) {
                 return null;
             }
-            $formatedRows[] =
+            $formattedRows[] =
                 [
-                    'saleStartDate'=> $row['saleDate'],
-                    'rentalStartDate'=> null,
-                    'imageUrl'=> $row['image']['large'],
+                    'saleStartDate' => $row['saleDate'],
+                    'rentalStartDate' => null,
+                    'imageUrl' => $row['image']['large'],
                     'title' => $row['productName'],
                     'supplement' => $row['artistList'][0]['artistName'], // アーティスト名、著者、機種等
                     'code' => $row['janCd'],
                     'urlCode' => $row['urlCd']
                 ];
         }
-        return $formatedRows;
+        return $formattedRows;
     }
 
     /*
      * 成形用メソッド：TWSからのランキングのレスポンスを成形する
      */
-    private function convertFormatFromRanking($rows) {
+    private function convertFormatFromRanking($rows)
+    {
         foreach ($rows['entry'] as $row) {
             if (empty($row)) {
                 return null;
             }
-            $formatedRows[] =
+            $formattedRows[] =
                 [
-                    'saleStartDate'=> null,
-                    'rentalStartDate'=> null,
-                    'imageUrl'=> $row['productImage']['large'],
+                    'saleStartDate' => null,
+                    'rentalStartDate' => null,
+                    'imageUrl' => $row['productImage']['large'],
                     'title' => $row['productTitle'],
                     'supplement' => $this->getOneArtist($row['artistInfoList']['artistInfo'])['artistName'], // アーティスト名、著者、機種等
-                    // todo: １人の場合はレスポンス形式が異なる為、成形ロジックは別で実装する
                     'code' => $row['productKey'],
                     'urlCode' => $row['urlCd']
                 ];
         }
-        return $formatedRows;
+        return $formattedRows;
     }
 
-    private function getOneArtist($data) {
+    private function getOneArtist($data)
+    {
         if (array_key_exists('0', $data)) {
             $artist = array_values($data)[0];
         } else {
@@ -276,8 +285,27 @@ class SectionRepository
         return $artist;
     }
 
-    private function getPeriod ($period) {
+    private function getPeriod($period)
+    {
         $targetDay = date("Ym01");
-        return date("Ym01",strtotime($targetDay . ' -' .$period.' month'));
+        return date("Ym01", strtotime($targetDay . ' -' . $period . ' month'));
+    }
+
+    // DB登録後の情報取得処理
+    public function updateProductInfo()
+    {
+        $sections = $this->section->conditionAll()->get();
+        $tws = new TWSRepository;
+        foreach ($sections as $sectionRow) {
+            $res = $tws->detail($sectionRow->code)->get();
+            $updateValues = [
+                'title' => $res['entry']['productName'],
+                'image_url' => $res['entry']['image']['large'],
+                'url_code' => $res['entry']['urlCd'],
+                'sale_start_date' => $res['entry']['saleDate'],
+                'supplement' => $this->getOneArtist($res['entry']['artistInfo'])['artistName']
+            ];
+            $this->section->update($sectionRow->id, $updateValues);
+        }
     }
 }

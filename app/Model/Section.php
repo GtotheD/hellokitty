@@ -22,7 +22,7 @@ class Section
     protected $limit;
     protected $offset;
 
-    public function set($goodsType, $saleType, $sectionFileName) {
+    public function conditionSectionFromStructure($goodsType, $saleType, $sectionFileName) {
         $this->dbObject =  DB::table(self::TABLE)
             ->select('ts_sections.*')
             ->join('ts_structures', function ($join) use ($goodsType, $saleType, $sectionFileName) {
@@ -42,6 +42,17 @@ class Section
             ->orWhere('ts_sections.display_start_date', '=', '0000-00-00 00:00:00')
             ->orWhere('ts_sections.display_end_date', '=', '0000-00-00 00:00:00');
         return $this;
+    }
+
+    public function conditionAll() {
+        $this->dbObject =  DB::table(self::TABLE);
+        return $this;
+    }
+
+    public function update($id, $values) {
+        return DB::table(self::TABLE)
+                ->where('id', $id)
+                ->update($values);
     }
 
     public function count() {
