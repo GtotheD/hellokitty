@@ -147,20 +147,6 @@
  *     @SWG\Response(response=500, description="Server error")
  * )
  */
-/**
- * @SWG\Get(
- *     path="/section/dvd/rental/ranking",
- *     description="DVD-レンタルのランキング情報を返却する",
- *     produces={"application/json"},
- *     tags={"Section"},
- *     security={{"api_key":{}}},
- *     @SWG\Response(response=200, description="Success"),
- *     @SWG\Response(response=204, description="Contents not found"),
- *     @SWG\Response(response=401, description="Auth error"),
- *     @SWG\Response(response=404, description="Page not found"),
- *     @SWG\Response(response=500, description="Server error")
- * )
- */
 
 /**
  * @SWG\Get(
@@ -176,20 +162,6 @@
  *       required=true,
  *       type="string"
  *     ),
- *     @SWG\Response(response=200, description="Success"),
- *     @SWG\Response(response=204, description="Contents not found"),
- *     @SWG\Response(response=401, description="Auth error"),
- *     @SWG\Response(response=404, description="Page not found"),
- *     @SWG\Response(response=500, description="Server error")
- * )
- */
-/**
- * @SWG\Get(
- *     path="/section/dvd/sell/ranking",
- *     description="DVD-セルのランキングを返却する",
- *     produces={"application/json"},
- *     tags={"Section"},
- *     security={{"api_key":{}}},
  *     @SWG\Response(response=200, description="Success"),
  *     @SWG\Response(response=204, description="Contents not found"),
  *     @SWG\Response(response=401, description="Auth error"),
@@ -219,20 +191,6 @@
  *     @SWG\Response(response=500, description="Server error")
  * )
  */
-/**
- * @SWG\Get(
- *     path="/section/book/rental/ranking",
- *     description="DVD-セルのランキング情報を返却する",
- *     produces={"application/json"},
- *     tags={"Section"},
- *     security={{"api_key":{}}},
- *     @SWG\Response(response=200, description="Success"),
- *     @SWG\Response(response=204, description="Contents not found"),
- *     @SWG\Response(response=401, description="Auth error"),
- *     @SWG\Response(response=404, description="Page not found"),
- *     @SWG\Response(response=500, description="Server error")
- * )
- */
 
 /**
  * @SWG\Get(
@@ -248,20 +206,6 @@
  *       required=true,
  *       type="string"
  *     ),
- *     @SWG\Response(response=200, description="Success"),
- *     @SWG\Response(response=204, description="Contents not found"),
- *     @SWG\Response(response=401, description="Auth error"),
- *     @SWG\Response(response=404, description="Page not found"),
- *     @SWG\Response(response=500, description="Server error")
- * )
- */
-/**
- * @SWG\Get(
- *     path="/section/book/sell/ranking",
- *     description="DVD-セルのランキング情報を返却する",
- *     produces={"application/json"},
- *     tags={"Section"},
- *     security={{"api_key":{}}},
  *     @SWG\Response(response=200, description="Success"),
  *     @SWG\Response(response=204, description="Contents not found"),
  *     @SWG\Response(response=401, description="Auth error"),
@@ -291,22 +235,6 @@
  *     @SWG\Response(response=500, description="Server error")
  * )
  */
-/**
- * @SWG\Get(
- *     path="/section/cd/rental/ranking",
- *     description="DVD-セルのランキング情報を返却する",
- *     produces={"application/json"},
- *     tags={"Section"},
- *     security={{"api_key":{}}},
- *     @SWG\Response(response=200, description="Success"),
- *     @SWG\Response(response=204, description="Contents not found"),
- *     @SWG\Response(response=401, description="Auth error"),
- *     @SWG\Response(response=404, description="Page not found"),
- *     @SWG\Response(response=500, description="Server error")
- * )
- */
-
-
 
 /**
  * @SWG\Get(
@@ -329,21 +257,6 @@
  *     @SWG\Response(response=500, description="Server error")
  * )
  */
-/**
- * @SWG\Get(
- *     path="/section/cd/sell/ranking",
- *     description="DVD-セルのランキング情報を返却する",
- *     produces={"application/json"},
- *     tags={"Section"},
- *     security={{"api_key":{}}},
- *     @SWG\Response(response=200, description="Success"),
- *     @SWG\Response(response=204, description="Contents not found"),
- *     @SWG\Response(response=401, description="Auth error"),
- *     @SWG\Response(response=404, description="Page not found"),
- *     @SWG\Response(response=500, description="Server error")
- * )
- */
-
 
 /**
  * @SWG\Get(
@@ -359,20 +272,6 @@
  *       required=true,
  *       type="string"
  *     ),
- *     @SWG\Response(response=200, description="Success"),
- *     @SWG\Response(response=204, description="Contents not found"),
- *     @SWG\Response(response=401, description="Auth error"),
- *     @SWG\Response(response=404, description="Page not found"),
- *     @SWG\Response(response=500, description="Server error")
- * )
- */
-/**
- * @SWG\Get(
- *     path="/section/game/sell/ranking",
- *     description="DVD-セルのTOP構造を返却する",
- *     produces={"application/json"},
- *     tags={"Section"},
- *     security={{"api_key":{}}},
  *     @SWG\Response(response=200, description="Success"),
  *     @SWG\Response(response=204, description="Contents not found"),
  *     @SWG\Response(response=401, description="Auth error"),
@@ -467,7 +366,7 @@
  */
 /**
  * @SWG\Get(
- *     path="/section/release/auto/{largeGenreCd}/{storeProductItemCd}/{itemCode}",
+ *     path="/section/release/auto/{largeGenreCd}/{storeProductItemCd}",
  *     description="自動取得のリリースカレンダー情報を返却する（TWSのサーチを利用）",
  *     produces={"application/json"},
  *     tags={"Section"},
@@ -483,13 +382,6 @@
  *       name="storeProductItemCd",
  *       in="path",
  *       description="店舗取扱いアイテムコード（221）",
- *       required=true,
- *       type="string"
- *     ),
- *     @SWG\Parameter(
- *       name="itemCode",
- *       in="path",
- *       description="アイテムコード（002）",
  *       required=true,
  *       type="string"
  *     ),

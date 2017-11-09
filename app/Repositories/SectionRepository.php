@@ -214,10 +214,10 @@ class SectionRepository
 
     }
 
-    public function releaseAuto($genreId, $storeProductItemCd, $itemCode)
+    public function releaseAuto($genreId, $storeProductItemCd)
     {
         $tws = new TWSRepository;
-        $rows = $tws->release($genreId, $storeProductItemCd, $itemCode)->get();
+        $rows = $tws->release($genreId, $storeProductItemCd)->get();
         $response = [
             'hasNext' => null,
             'totalCount' => $rows['totalResults'],
