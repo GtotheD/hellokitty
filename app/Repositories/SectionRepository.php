@@ -30,6 +30,69 @@ class SectionRepository
     {
         $this->section = New Section;
     }
+    /**
+     * @return mixed
+     */
+    public function getHasNext()
+    {
+        return $this->hasNext;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLimit()
+    {
+        return (int)$this->limit;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOffset()
+    {
+        return (int)$this->offset;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTotalCount()
+    {
+        return $this->totalCount;
+    }
+
+    /**
+     * @return Array
+     */
+    public function getRows ()
+    {
+        return $this->rows;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPage()
+    {
+        return $this->page;
+    }
+
+    /**
+     * @param mixed $limit
+     */
+    public function setLimit($limit)
+    {
+        $this->limit = $limit;
+    }
+
+    /**
+     * @param mixed $offset
+     */
+    public function setOffset($offset)
+    {
+        $this->offset = $offset;
+    }
 
     public function fixedBanner() {
         $rows = [
@@ -56,50 +119,32 @@ class SectionRepository
     }
 
     public function normal($goodsType, $saleType, $sectionName) {
-//        $structureRepository = new StructureRepository();
-//        $goodsType = $structureRepository->convertGoodsTypeToId($goodsType);
-//        $saleType = $structureRepository->convertSaleTypeToId($saleType);
-//
-//        $this->section->set($goodsType, $saleType, $sectionName);
-//        $count = $this->section->count();
+        $structureRepository = new StructureRepository();
+        $goodsType = $structureRepository->convertGoodsTypeToId($goodsType);
+        $saleType = $structureRepository->convertSaleTypeToId($saleType);
+        $this->section->set($goodsType, $saleType, $sectionName);
+        $this->totalCount = $this->section->count();
+        $sections = $this->section->get();
+        if (count($sections) + $this->offset < $this->totalCount) {
+            $this->hasNext = true;
+        } else {
+            $this->hasNext = false;
+        }
+        foreach ($sections as $section) {
+            $rows[] =
+                [
+                    'saleStartDate'=> $section->rental_start_date,
+                    'rentalStartDate'=> $section->sale_start_date,
+                    'imageUrl'=> $section->image_url,
+                    'title' => $section->title,
+                    'supplement' => $section->supplement, // アーティスト名、著者、機種等
+                    'code' => $section->code,
+                    'urlCode' => $section->url_code
+                ];
 
-        $rows = [
-            'hasNext' => null,
-            'totalCount' => null,
-            'limit' => null,
-            'offset' => null,
-            'page' => null,
-            'rows' => [
-                [
-                    'saleStartDate'=> '2017-01-01',
-                    'rentalStartDate'=> '2017-01-01',
-                    'imageUrl'=> 'https://tsutaya.jp/image/a.jpg',
-                    'title' => 'ラ・ラ・ランド',
-                    'supplement' => 'エマ・ストーン', // アーティスト名、著者、機種等
-                    'code' => 'JAN_CODE',
-                    'urlCode' => 'url code'
-                ],
-                [
-                    'saleStartDate'=> '2017-01-01',
-                    'rentalStartDate'=> '2017-01-01',
-                    'imageUrl'=> 'https://tsutaya.jp/image/a.jpg',
-                    'title' => 'ワイルド・スピード　ＩＣＥ　ＢＲＥＡＫ',
-                    'supplement' => 'ヴィン・ディーゼル', // アーティスト名、著者、機種等
-                    'code' => 'JAN_CODE',
-                    'urlCode' => 'url code'
-                ],
-                [
-                    'saleStartDate'=> '2017-01-01',
-                    'rentalStartDate'=> '2017-01-01',
-                    'imageUrl'=> 'https://tsutaya.jp/image/a.jpg',
-                    'title' => '美女と野獣',
-                    'supplement' => 'エマ・ワトソン', // アーティスト名、著者、機種等
-                    'code' => 'JAN_CODE',
-                    'urlCode' => 'url code'
-                ],
-            ]
-        ];
-        return $rows;
+        }
+        $this->rows = $rows;
+        return $this;
     }
 
     public function banner($sectionName) {

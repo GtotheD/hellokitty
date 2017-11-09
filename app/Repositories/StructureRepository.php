@@ -68,7 +68,7 @@ class StructureRepository
     /**
      * @return Array
      */
-    public function getStructure()
+    public function getRows()
     {
         return $this->rows;
     }
@@ -126,8 +126,6 @@ class StructureRepository
                     'linkUrl' => $structure->link_url,
                     'isTapOn' => $structure->is_tap_on? true:false,
                     'isRanking' => $structure->is_ranking? true:false,
-//                    'isDisplayDvdArtist' => $structure->displayDvdArtistDisplay,
-//                    'isDisplayReleaseDate' => $structure->displayReleaseDateDisplay,
                     'isDisplayDvdArtist' => true,
                     'isDisplayReleaseDate' => false,
                 ];

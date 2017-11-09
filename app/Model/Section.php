@@ -24,6 +24,7 @@ class Section
 
     public function set($goodsType, $saleType, $sectionFileName) {
         $this->dbObject =  DB::table(self::TABLE)
+            ->select('ts_sections.*')
             ->join('ts_structures', function ($join) use ($goodsType, $saleType, $sectionFileName) {
                 $join->on('ts_structure_id', '=', 'ts_structures.id')
                     ->where([

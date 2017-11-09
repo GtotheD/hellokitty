@@ -13,7 +13,6 @@
 use Illuminate\Http\Request;
 use App\Repositories\StructureRepository;
 use App\Repositories\SectionRepository;
-use Swagger\Annotations\Swagger;
 
 // Api Group
 $router->group([
@@ -40,7 +39,7 @@ $router->group([
                 'limit' => $structures->getLimit(),
                 'offset' => $structures->getOffset(),
                 'page' => $structures->getPage(),
-                'rows' => $structures->getStructure(),
+                'rows' => $structures->getRows(),
             ];
         return response()->json($response);
     });
@@ -60,10 +59,21 @@ $router->group([
     });
 
     // 通常セクション取得API
-    $router->get('section/{goodsType:dvd|book|cd|game}/{saleType:rental|sell}/{sectionName}', function ($goodsType, $saleType, $sectionName) {
+    $router->get('section/{goodsType:dvd|book|cd|game}/{saleType:rental|sell}/{sectionName}', function (Request $request, $goodsType, $saleType, $sectionName) {
         $sectionRepository = new SectionRepository;
-        $sectionData = $sectionRepository->normal($goodsType, $saleType, $sectionName);
-        return response()->json($sectionData);
+        $sectionRepository->setLimit($request->input('limit', 10));
+        $sectionRepository->setOffset($request->input('offset', 0));
+        $section = $sectionRepository->normal($goodsType, $saleType, $sectionName);
+        $response = [
+            'hasNext' => $section->getHasNext(),
+            'totalCount' => $section->getTotalCount(),
+            'limit' => $section->getLimit(),
+            'offset' => $section->getOffset(),
+            'page' => $section->getPage(),
+            'rows' => $section->getRows()
+        ];
+
+        return response()->json($response);
     });
 
     // バナーセクション取得API
