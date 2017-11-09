@@ -11,7 +11,7 @@ use GuzzleHttp\Exception\ClientException;
  * Time: 15:01
  */
 
-class TWSRepository
+class TWSRepository extends ApiRequesterRepository
 {
 
     private $sort;
@@ -19,8 +19,6 @@ class TWSRepository
     private $limit;
     private $apiHost;
     private $apiKey;
-    private $apiPath;
-    private $queryParams;
 
     public function __construct($sort = 'asc', $offset = 0, $limit = 10)
     {
@@ -32,28 +30,10 @@ class TWSRepository
     }
 
     /*
-     * 取得の実行
-     */
-    public function get() {
-        $url = $this->apiHost . $this->apiPath;
-        $client = new Client();
-        try {
-            $result = $client->request(
-                'GET',
-                $url,
-                ['query' => $this->queryParams]
-            );
-        } catch (ClientException $e) {
-            throw new $e;
-        }
-        return json_decode($result->getBody()->getContents(), true);
-    }
-
-    /*
      * 詳細情報を取得するAPIをセットする
      */
     public function detail($janCode) {
-        $this->apiPath = '/store/v0/products/detail.json';
+        $this->apiPath = $this->apiHost . 'store/v0/products/detail.json';
         $this->queryParams = [
             'api_key' => $this->apiKey,
             'productKey' => $janCode,
@@ -68,7 +48,7 @@ class TWSRepository
      * ランキング情報を取得するAPIをセットする
      */
     public function ranking($rankingConcentrationCd, $period) {
-        $this->apiPath = '/media/v0/works/tsutayarankingresult.json';
+        $this->apiPath = $this->apiHost .'media/v0/works/tsutayarankingresult.json';
         $this->queryParams = [
             'api_key' => $this->apiKey,
             'rankingConcentrationCd' => $rankingConcentrationCd,
@@ -87,8 +67,8 @@ class TWSRepository
     /*
      * 日付ベースの検索結果を取得するAPIをセットする
      */
-    public function release($genreId, $storeProductItemCd, $itemCode) {
-        $this->apiPath = '/store/v0/products/searchDetail.json';
+    public function release($genreId, $storeProductItemCd) {
+        $this->apiPath = $this->apiHost .'store/v0/products/searchDetail.json';
         $this->queryParams = [
             'api_key' => $this->apiKey,
             '_secure' => '1',
@@ -98,7 +78,7 @@ class TWSRepository
             'adultFlag'=> '1',
             'sortingOrder'=> '2',
             'lg' => $genreId, // 大ジャンルコード
-            'ic' => $itemCode, // アイテム集約コード
+            'ic' => $this->itemCodeMapping($storeProductItemCd), // アイテム集約コード
             'storeProductItemCd' => $storeProductItemCd, // 店舗取扱いアイテムコード
             'dfy'=> date('Y'),
             'dfm'=> date('m'),
@@ -106,5 +86,22 @@ class TWSRepository
             '_pretty' => '1'
         ];
         return $this;
+    }
+
+    private function itemCodeMapping($storeProductItemCd) {
+        $maps =  [
+            '011' => '002',
+            '012' => '002',
+            '013' => '002',
+            '020' => '001',
+            '030' => '010',
+            '111' => '002',
+            '112' => '002',
+            '113' => '002',
+            '120' => '001',
+            '130' => '010',
+            '140' => '003'
+            ];
+        return $maps[$storeProductItemCd];
     }
 }

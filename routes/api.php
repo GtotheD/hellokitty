@@ -48,13 +48,6 @@ $router->group([
         return response()->json($sectionData);
     });
 
-    // ランキングセクション取得API
-    $router->get('section/{goodsType:dvd|book|cd|game}/{saleType:rental|sell}/ranking', function ($goodsType, $saleType) {
-        $sectionRepository = new SectionRepository;
-        $sectionData = $sectionRepository->normal($goodsType, $saleType, 'ranking');
-        return response()->json($sectionData);
-    });
-
     // 通常セクション取得API
     $router->get('section/{goodsType:dvd|book|cd|game}/{saleType:rental|sell}/{sectionName}', function (Request $request, $goodsType, $saleType, $sectionName) {
         $sectionRepository = new SectionRepository;
@@ -93,16 +86,16 @@ $router->group([
     });
 
     // レコメンドセクション取得API
-    $router->get('section/release/manual/{genreId}/{storeProductItemCd}/{itemCode}', function ($genreId, $storeProductItemCd, $itemCode) {
+    $router->get('section/release/manual/{genreId}/{storeProductItemCd}', function ($genreId, $storeProductItemCd) {
         $sectionRepository = new SectionRepository;
-        $sectionData = $sectionRepository->releaseAuto($genreId, $storeProductItemCd, $itemCode);
+        $sectionData = $sectionRepository->releaseAuto($genreId, $storeProductItemCd);
         return $sectionData;
     });
 
     // レコメンドセクション取得API
-    $router->get('section/release/auto/{genreId}/{storeProductItemCd}/{itemCode}', function ($genreId, $storeProductItemCd, $itemCode) {
+    $router->get('section/release/auto/{genreId}/{storeProductItemCd}', function ($genreId, $storeProductItemCd) {
         $sectionRepository = new SectionRepository;
-        $sectionData = $sectionRepository->releaseAuto($genreId, $storeProductItemCd, $itemCode);
+        $sectionData = $sectionRepository->releaseAuto($genreId, $storeProductItemCd);
         return $sectionData;
     });
 
