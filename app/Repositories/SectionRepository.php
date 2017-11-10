@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Model\Structure;
 use App\Repositories\TWSRepository;
+use App\Repositories\TAPRepository;
 use App\Repositories\SectionRepository;
 use App\Model\Section;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -136,8 +137,7 @@ class SectionRepository
         foreach ($sections as $section) {
             $rows[] =
                 [
-                    'saleStartDate' => $section->rental_start_date,
-                    'rentalStartDate' => $section->sale_start_date,
+                    'saleStartDate' => $this->dateFormat($section->sale_start_date),
                     'imageUrl' => $section->image_url,
                     'title' => $section->title,
                     'supplement' => $section->supplement, // アーティスト名、著者、機種等
@@ -198,7 +198,7 @@ class SectionRepository
         $rows = $tws->ranking($rankingConcentrationCd, $period)->get();
         $response = [
             'hasNext' => null,
-            'totalCount' => null,
+            'totalCount' => $rows['totalResults'],
             'rows' => $this->convertFormatFromRanking($rows),
         ];
         if (empty($response['rows'])) {
@@ -209,9 +209,19 @@ class SectionRepository
 
 
     // 01:レンタルDVD 02:レンタルCD 03:レンタルコミック 04:販売DVD 05:販売CD 06:販売ゲーム 07:販売本・コミック
-    public function releaseManual()
+    public function releaseManual($category, $releaseDateTo)
     {
-
+        $tap = new TAPRepository;
+        $rows = $tap->release($category, $releaseDateTo)->get();
+        $response = [
+            'hasNext' => false,
+            'totalCount' => $rows['count'],
+            'rows' => $this->convertFormatFromTAPRelease($rows),
+        ];
+        if (empty($response['rows'])) {
+            return null;
+        }
+        return $response;
     }
 
     public function releaseAuto($genreId, $storeProductItemCd)
@@ -219,9 +229,9 @@ class SectionRepository
         $tws = new TWSRepository;
         $rows = $tws->release($genreId, $storeProductItemCd)->get();
         $response = [
-            'hasNext' => null,
+            'hasNext' => false,
             'totalCount' => $rows['totalResults'],
-            'rows' => $this->convertFormatFromRelease($rows),
+            'rows' => $this->convertFormatFromTWSRelease($rows),
         ];
         if (empty($response['rows'])) {
             return null;
@@ -230,9 +240,32 @@ class SectionRepository
     }
 
     /*
+     * 成形用メソッド：TAPからのリリースカレンダーのレスポンスを成形する
+     */
+    private function convertFormatFromTAPRelease($rows)
+    {
+        foreach ($rows['release'] as $row) {
+            if (empty($row)) {
+                return null;
+            }
+            $formattedRows[] =
+                [
+                    'saleStartDate' => $this->dateFormat($row['releaseDate']),
+                    'imageUrl' => $row['imageUrl'],
+                    'title' => $row['productName'],
+                    'supplement' => $row['cast'], // アーティスト名、著者、機種等
+                    'code' => $row['productId'],
+                    'urlCode' => $row['urlCd']
+                ];
+        }
+        return $formattedRows;
+    }
+
+
+    /*
      * 成形用メソッド：TWSからのリリースカレンダーのレスポンスを成形する
      */
-    private function convertFormatFromRelease($rows)
+    private function convertFormatFromTWSRelease($rows)
     {
         foreach ($rows['entry'] as $row) {
             if (empty($row)) {
@@ -240,8 +273,7 @@ class SectionRepository
             }
             $formattedRows[] =
                 [
-                    'saleStartDate' => $row['saleDate'],
-                    'rentalStartDate' => null,
+                    'saleStartDate' => $this->dateFormat($row['saleDate']),
                     'imageUrl' => $row['image']['large'],
                     'title' => $row['productName'],
                     'supplement' => $row['artistList'][0]['artistName'], // アーティスト名、著者、機種等
@@ -263,8 +295,7 @@ class SectionRepository
             }
             $formattedRows[] =
                 [
-                    'saleStartDate' => null,
-                    'rentalStartDate' => null,
+                    'saleStartDate' => false,
                     'imageUrl' => $row['productImage']['large'],
                     'title' => $row['productTitle'],
                     'supplement' => $this->getOneArtist($row['artistInfoList']['artistInfo'])['artistName'], // アーティスト名、著者、機種等
@@ -307,5 +338,10 @@ class SectionRepository
             ];
             $this->section->update($sectionRow->id, $updateValues);
         }
+    }
+
+    private function dateFormat($date)
+    {
+        return date('Y-m-d', strtotime($date));
     }
 }

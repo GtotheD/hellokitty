@@ -10,6 +10,7 @@
 | and give it the Closure to call when that URI is requested.
 |
 */
+
 use Illuminate\Http\Request;
 use App\Repositories\StructureRepository;
 use App\Repositories\SectionRepository;
@@ -18,7 +19,7 @@ use App\Repositories\SectionRepository;
 $router->group([
     'prefix' => env('URL_PATH_PREFIX') . env('API_VERSION'),
     'middleware' => ['auth']
-    ], function() use ($router) {
+], function () use ($router) {
 
     // バージョン取得API
     $router->get('version', function () {
@@ -34,10 +35,10 @@ $router->group([
         $structureRepository->setOffset($request->input('offset', 0));
         $structures = $structureRepository->get($goodsType, $saleType);
         $response = [
-                'hasNext' => $structures->getHasNext(),
-                'totalCount' => $structures->getTotalCount(),
-                'rows' => $structures->getRows(),
-            ];
+            'hasNext' => $structures->getHasNext(),
+            'totalCount' => $structures->getTotalCount(),
+            'rows' => $structures->getRows(),
+        ];
         return response()->json($response);
     });
 
@@ -59,7 +60,6 @@ $router->group([
             'totalCount' => $section->getTotalCount(),
             'rows' => $section->getRows()
         ];
-
         return response()->json($response);
     });
 
@@ -68,27 +68,22 @@ $router->group([
         $sectionRepository = new SectionRepository;
         $sectionData = $sectionRepository->banner($sectionName);
         return $sectionData;
-
     });
 
     // レコメンドセクション取得API
-    $router->get('section/ranking/{codeType:himo|agg}/{code}', function ($codeType, $code, $period = null) {
-        $sectionRepository = new SectionRepository;
-        $sectionData = $sectionRepository->ranking($codeType, $code, $period);
-        return $sectionData;
-    });
-
-    // レコメンドセクション取得API（何故か任意パラメーターで追加できないので…）
-    $router->get('section/ranking/{codeType:himo|agg}/{code}/{period}', function ($codeType, $code, $period = null) {
+    $router->get('section/ranking/{codeType:himo|agg}/{code}[/{period}]', function ($codeType, $code, $period = null) {
         $sectionRepository = new SectionRepository;
         $sectionData = $sectionRepository->ranking($codeType, $code, $period);
         return $sectionData;
     });
 
     // レコメンドセクション取得API
-    $router->get('section/release/manual/{genreId}/{storeProductItemCd}', function ($genreId, $storeProductItemCd) {
+    $router->get('section/release/manual/{tapCategoryId}[/{releaseDateTo}]', function ($tapCategoryId, $releaseDateTo = null) {
+        if (empty($releaseDateTo)) {
+            $releaseDateTo = date('Ymd');
+        }
         $sectionRepository = new SectionRepository;
-        $sectionData = $sectionRepository->releaseAuto($genreId, $storeProductItemCd);
+        $sectionData = $sectionRepository->releaseManual($tapCategoryId, $releaseDateTo);
         return $sectionData;
     });
 
@@ -100,7 +95,7 @@ $router->group([
     });
 
 });
-$router->group(['prefix' => env('URL_PATH_PREFIX') . env('API_VERSION') ], function() use ($router) {
+$router->group(['prefix' => env('URL_PATH_PREFIX') . env('API_VERSION')], function () use ($router) {
     // APIドキュメント
     $router->get('docs/swagger.json', function () {
         $swagger = \Swagger\scan(base_path('routes'));

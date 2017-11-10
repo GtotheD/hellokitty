@@ -33,23 +33,12 @@ class TAPRepository extends ApiRequesterRepository
     /*
      * 日付ベースの検索結果を取得するAPIをセットする
      */
-    public function release($genreId, $storeProductItemCd) {
-        $this->apiPath = $this->apiHost . 'store/v0/products/searchDetail.json';
+    public function release($category, $releaseDateTo) {
+        $this->apiPath = $this->apiHost . '/tsutayaappapi/Release';
         $this->queryParams = [
-            'api_key' => $this->apiKey,
-            '_secure' => '1',
-            'page' => '1',
-            'dispNums' => '10',
-            'adultAuthOK' => '0',
-            'adultFlag'=> '1',
-            'sortingOrder'=> '2',
-            'lg' => $genreId, // 大ジャンルコード
-            'ic' => $this->itemCodeMapping($storeProductItemCd), // アイテム集約コード
-            'storeProductItemCd' => $storeProductItemCd, // 店舗取扱いアイテムコード
-            'dfy'=> date('Y'),
-            'dfm'=> date('m'),
-            'dfd'=> date('d'),
-            '_pretty' => '1'
+            'apiKey' => $this->apiKey,
+            'category' => $category,
+            'releaseDateTo' => $releaseDateTo
         ];
         return $this;
     }
