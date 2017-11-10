@@ -17,6 +17,18 @@
  *     produces={"application/json"},
  *     tags={"Structure"},
  *     security={{"api_key":{}}},
+ *     @SWG\Parameter(
+ *       name="limit",
+ *       in="query",
+ *       description="表示件数",
+ *       type="integer"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="offset",
+ *       in="query",
+ *       description="オフセット",
+ *       type="integer"
+ *     ),
  *     @SWG\Response(response=200, description="Success"),
  *     @SWG\Response(response=204, description="Contents not found"),
  *     @SWG\Response(response=401, description="Auth error"),
@@ -31,6 +43,18 @@
  *     produces={"application/json"},
  *     tags={"Structure"},
  *     security={{"api_key":{}}},
+ *     @SWG\Parameter(
+ *       name="limit",
+ *       in="query",
+ *       description="表示件数",
+ *       type="integer"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="offset",
+ *       in="query",
+ *       description="オフセット",
+ *       type="integer"
+ *     ),
  *     @SWG\Response(response=200, description="Success"),
  *     @SWG\Response(response=204, description="Contents not found"),
  *     @SWG\Response(response=401, description="Auth error"),
@@ -45,6 +69,18 @@
  *     produces={"application/json"},
  *     tags={"Structure"},
  *     security={{"api_key":{}}},
+ *     @SWG\Parameter(
+ *       name="limit",
+ *       in="query",
+ *       description="表示件数",
+ *       type="integer"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="offset",
+ *       in="query",
+ *       description="オフセット",
+ *       type="integer"
+ *     ),
  *     @SWG\Response(response=200, description="Success"),
  *     @SWG\Response(response=204, description="Contents not found"),
  *     @SWG\Response(response=401, description="Auth error"),
@@ -59,6 +95,18 @@
  *     produces={"application/json"},
  *     tags={"Structure"},
  *     security={{"api_key":{}}},
+ *     @SWG\Parameter(
+ *       name="limit",
+ *       in="query",
+ *       description="表示件数",
+ *       type="integer"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="offset",
+ *       in="query",
+ *       description="オフセット",
+ *       type="integer"
+ *     ),
  *     @SWG\Response(response=200, description="Success"),
  *     @SWG\Response(response=204, description="Contents not found"),
  *     @SWG\Response(response=401, description="Auth error"),
@@ -73,6 +121,18 @@
  *     produces={"application/json"},
  *     tags={"Structure"},
  *     security={{"api_key":{}}},
+ *     @SWG\Parameter(
+ *       name="limit",
+ *       in="query",
+ *       description="表示件数",
+ *       type="integer"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="offset",
+ *       in="query",
+ *       description="オフセット",
+ *       type="integer"
+ *     ),
  *     @SWG\Response(response=200, description="Success"),
  *     @SWG\Response(response=204, description="Contents not found"),
  *     @SWG\Response(response=401, description="Auth error"),
@@ -87,6 +147,18 @@
  *     produces={"application/json"},
  *     tags={"Structure"},
  *     security={{"api_key":{}}},
+ *     @SWG\Parameter(
+ *       name="limit",
+ *       in="query",
+ *       description="表示件数",
+ *       type="integer"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="offset",
+ *       in="query",
+ *       description="オフセット",
+ *       type="integer"
+ *     ),
  *     @SWG\Response(response=200, description="Success"),
  *     @SWG\Response(response=204, description="Contents not found"),
  *     @SWG\Response(response=401, description="Auth error"),
@@ -101,6 +173,18 @@
  *     produces={"application/json"},
  *     tags={"Structure"},
  *     security={{"api_key":{}}},
+ *     @SWG\Parameter(
+ *       name="limit",
+ *       in="query",
+ *       description="表示件数",
+ *       type="integer"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="offset",
+ *       in="query",
+ *       description="オフセット",
+ *       type="integer"
+ *     ),
  *     @SWG\Response(response=200, description="Success"),
  *     @SWG\Response(response=204, description="Contents not found"),
  *     @SWG\Response(response=401, description="Auth error"),
@@ -117,6 +201,18 @@
  *     produces={"application/json"},
  *     tags={"Fixed"},
  *     security={{"api_key":{}}},
+ *     @SWG\Parameter(
+ *       name="limit",
+ *       in="query",
+ *       description="表示件数",
+ *       type="integer"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="offset",
+ *       in="query",
+ *       description="オフセット",
+ *       type="integer"
+ *     ),
  *     @SWG\Response(response=200, description="Success"),
  *     @SWG\Response(response=204, description="Contents not found"),
  *     @SWG\Response(response=401, description="Auth error"),
@@ -140,6 +236,18 @@
  *       required=true,
  *       type="string"
  *     ),
+ *     @SWG\Parameter(
+ *       name="limit",
+ *       in="query",
+ *       description="表示件数",
+ *       type="integer"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="offset",
+ *       in="query",
+ *       description="オフセット",
+ *       type="integer"
+ *     ),
  *     @SWG\Response(response=200, description="Success"),
  *     @SWG\Response(response=204, description="Contents not found"),
  *     @SWG\Response(response=401, description="Auth error"),
@@ -161,6 +269,18 @@
  *       description="セクション名",
  *       required=true,
  *       type="string"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="limit",
+ *       in="query",
+ *       description="表示件数",
+ *       type="integer"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="offset",
+ *       in="query",
+ *       description="オフセット",
+ *       type="integer"
  *     ),
  *     @SWG\Response(response=200, description="Success"),
  *     @SWG\Response(response=204, description="Contents not found"),
@@ -184,6 +304,18 @@
  *       required=true,
  *       type="string"
  *     ),
+ *     @SWG\Parameter(
+ *       name="limit",
+ *       in="query",
+ *       description="表示件数",
+ *       type="integer"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="offset",
+ *       in="query",
+ *       description="オフセット",
+ *       type="integer"
+ *     ),
  *     @SWG\Response(response=200, description="Success"),
  *     @SWG\Response(response=204, description="Contents not found"),
  *     @SWG\Response(response=401, description="Auth error"),
@@ -205,6 +337,18 @@
  *       description="セクション名",
  *       required=true,
  *       type="string"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="limit",
+ *       in="query",
+ *       description="表示件数",
+ *       type="integer"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="offset",
+ *       in="query",
+ *       description="オフセット",
+ *       type="integer"
  *     ),
  *     @SWG\Response(response=200, description="Success"),
  *     @SWG\Response(response=204, description="Contents not found"),
@@ -228,6 +372,18 @@
  *       required=true,
  *       type="string"
  *     ),
+ *     @SWG\Parameter(
+ *       name="limit",
+ *       in="query",
+ *       description="表示件数",
+ *       type="integer"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="offset",
+ *       in="query",
+ *       description="オフセット",
+ *       type="integer"
+ *     ),
  *     @SWG\Response(response=200, description="Success"),
  *     @SWG\Response(response=204, description="Contents not found"),
  *     @SWG\Response(response=401, description="Auth error"),
@@ -249,6 +405,18 @@
  *       description="セクション名",
  *       required=true,
  *       type="string"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="limit",
+ *       in="query",
+ *       description="表示件数",
+ *       type="integer"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="offset",
+ *       in="query",
+ *       description="オフセット",
+ *       type="integer"
  *     ),
  *     @SWG\Response(response=200, description="Success"),
  *     @SWG\Response(response=204, description="Contents not found"),
@@ -272,6 +440,18 @@
  *       required=true,
  *       type="string"
  *     ),
+ *     @SWG\Parameter(
+ *       name="limit",
+ *       in="query",
+ *       description="表示件数",
+ *       type="integer"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="offset",
+ *       in="query",
+ *       description="オフセット",
+ *       type="integer"
+ *     ),
  *     @SWG\Response(response=200, description="Success"),
  *     @SWG\Response(response=204, description="Contents not found"),
  *     @SWG\Response(response=401, description="Auth error"),
@@ -293,6 +473,18 @@
  *       description="セクション名",
  *       required=true,
  *       type="string"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="limit",
+ *       in="query",
+ *       description="表示件数",
+ *       type="integer"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="offset",
+ *       in="query",
+ *       description="オフセット",
+ *       type="integer"
  *     ),
  *     @SWG\Response(response=200, description="Success"),
  *     @SWG\Response(response=204, description="Contents not found"),
@@ -353,8 +545,7 @@
  *     @SWG\Parameter(
  *       name="releaseDateTo",
  *       in="path",
- *       description="リリース開始起算日",
- *       required=true,
+ *       description="リリース開始起算日（例：20171022）",
  *       type="string"
  *     ),
  *     @SWG\Response(response=200, description="Success"),
