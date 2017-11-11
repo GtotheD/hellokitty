@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Repositories;
 
 use GuzzleHttp\Client;
@@ -10,7 +11,6 @@ use GuzzleHttp\Exception\ClientException;
  * Date: 2017/10/13
  * Time: 15:01
  */
-
 class TWSRepository extends ApiRequesterRepository
 {
 
@@ -32,7 +32,8 @@ class TWSRepository extends ApiRequesterRepository
     /*
      * 詳細情報を取得するAPIをセットする
      */
-    public function detail($janCode) {
+    public function detail($janCode)
+    {
         $this->apiPath = $this->apiHost . '/store/v0/products/detail.json';
         $this->queryParams = [
             'api_key' => $this->apiKey,
@@ -47,8 +48,9 @@ class TWSRepository extends ApiRequesterRepository
     /*
      * ランキング情報を取得するAPIをセットする
      */
-    public function ranking($rankingConcentrationCd, $period) {
-        $this->apiPath = $this->apiHost .'/media/v0/works/tsutayarankingresult.json';
+    public function ranking($rankingConcentrationCd, $period)
+    {
+        $this->apiPath = $this->apiHost . '/media/v0/works/tsutayarankingresult.json';
         $this->queryParams = [
             'api_key' => $this->apiKey,
             'rankingConcentrationCd' => $rankingConcentrationCd,
@@ -67,29 +69,31 @@ class TWSRepository extends ApiRequesterRepository
     /*
      * 日付ベースの検索結果を取得するAPIをセットする
      */
-    public function release($genreId, $storeProductItemCd) {
-        $this->apiPath = $this->apiHost .'/store/v0/products/searchDetail.json';
+    public function release($genreId, $storeProductItemCd)
+    {
+        $this->apiPath = $this->apiHost . '/store/v0/products/searchDetail.json';
         $this->queryParams = [
             'api_key' => $this->apiKey,
             '_secure' => '1',
             'page' => '1',
             'dispNums' => '10',
             'adultAuthOK' => '0',
-            'adultFlag'=> '1',
-            'sortingOrder'=> '2',
+            'adultFlag' => '1',
+            'sortingOrder' => '2',
             'lg' => $genreId, // 大ジャンルコード
             'ic' => $this->itemCodeMapping($storeProductItemCd), // アイテム集約コード
             'storeProductItemCd' => $storeProductItemCd, // 店舗取扱いアイテムコード
-            'dfy'=> date('Y'),
-            'dfm'=> date('m'),
-            'dfd'=> date('d'),
+            'dfy' => date('Y'),
+            'dfm' => date('m'),
+            'dfd' => date('d'),
             '_pretty' => '1'
         ];
         return $this;
     }
 
-    private function itemCodeMapping($storeProductItemCd) {
-        $maps =  [
+    private function itemCodeMapping($storeProductItemCd)
+    {
+        $maps = [
             '011' => '002',
             '012' => '002',
             '013' => '002',
@@ -101,7 +105,7 @@ class TWSRepository extends ApiRequesterRepository
             '120' => '001',
             '130' => '010',
             '140' => '003'
-            ];
+        ];
         return $maps[$storeProductItemCd];
     }
 }
