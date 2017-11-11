@@ -7,7 +7,7 @@ use App\Repositories\TWSRepository;
 use App\Repositories\TAPRepository;
 use App\Repositories\SectionRepository;
 use App\Model\Section;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use App\Exceptions\NoContentsException;
 
 /**
  * Created by PhpStorm.
@@ -183,7 +183,7 @@ class SectionRepository
             if (key_exists($genreCode, $genreMap)) {
                 $rankingConcentrationCd = $genreMap[$genreCode];
             } else {
-                throw new NotFoundHttpException();
+                throw new NoContentsException();
             }
         } else {
             $rankingConcentrationCd = $genreCode;
@@ -213,6 +213,9 @@ class SectionRepository
     {
         $tap = new TAPRepository;
         $rows = $tap->release($category, $releaseDateTo)->get();
+        if (!array_key_exists('release', $rows)) {
+            throw new NoContentsException();
+        }
         $response = [
             'hasNext' => false,
             'totalCount' => $rows['count'],
@@ -244,7 +247,7 @@ class SectionRepository
      */
     private function convertFormatFromTAPRelease($rows)
     {
-        foreach ($rows['release'] as $row) {
+        foreach ($rows as $row) {
             if (empty($row)) {
                 return null;
             }

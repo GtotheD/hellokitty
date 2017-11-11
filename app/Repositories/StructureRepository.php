@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Repositories;
 
 use App\Model\Structure;
@@ -26,7 +27,6 @@ class StructureRepository
     protected $totalCount;
     protected $page;
     protected $rows;
-
 
     public function __construct()
     {
@@ -96,10 +96,12 @@ class StructureRepository
     {
         $this->offset = $offset;
     }
+
     /**
      * @return object
      */
-    public function get($goodsType, $saleType) {
+    public function get($goodsType, $saleType)
+    {
         $goodsType = $this->convertGoodsTypeToId($goodsType);
         $saleType = $this->convertSaleTypeToId($saleType);
         $this->structure->set($goodsType, $saleType);
@@ -124,8 +126,8 @@ class StructureRepository
                     'title' => $structure->title,
                     'apiUrl' => $apiUrl,
                     'linkUrl' => $structure->link_url,
-                    'isTapOn' => $structure->is_tap_on? true:false,
-                    'isRanking' => $structure->is_ranking? true:false,
+                    'isTapOn' => $structure->is_tap_on ? true : false,
+                    'isRanking' => $structure->is_ranking ? true : false,
                     'isDisplayDvdArtist' => true,
                     'isDisplayReleaseDate' => false,
                 ];
@@ -137,7 +139,8 @@ class StructureRepository
     /**
      * @return integer
      */
-    public function convertGoodsTypeToId($goodsType) {
+    public function convertGoodsTypeToId($goodsType)
+    {
         switch ($goodsType) {
             case 'dvd':
                 return self::DVD;
@@ -155,7 +158,8 @@ class StructureRepository
     /**
      * @return integer
      */
-    public function convertSaleTypeToId($saleType) {
+    public function convertSaleTypeToId($saleType)
+    {
         switch ($saleType) {
             case 'rental':
                 return self::RENTAL;
