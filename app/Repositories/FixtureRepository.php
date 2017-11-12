@@ -6,16 +6,18 @@ use League\Csv\Writer;
 
 class FixtureRepository
 {
-    private $basePath = 'app/';
 
     public function getGenreMap()
     {
-        $reader = Reader::createFromPath(storage_path('app/maps.csv'), 'r')
+        $reader = Reader::createFromPath($this->getConfigPath().'/maps.csv', 'r')
             ->setHeaderOffset(0);
         $records = $reader->getRecords();
         foreach ($records as $record) {
             $maps[$record['HimoGenreCode']] = $record;
         }
         return $maps;
+    }
+    public function getConfigPath() {
+        return base_path(). '/config';
     }
 }
