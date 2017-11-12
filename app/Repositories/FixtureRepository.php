@@ -2,7 +2,6 @@
 namespace App\Repositories;
 
 use League\Csv\Reader;
-use League\Csv\Writer;
 
 class FixtureRepository
 {

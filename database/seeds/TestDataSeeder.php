@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use League\Csv\Reader;
 
 class TestDataSeeder extends Seeder
 {
@@ -13,9 +14,31 @@ class TestDataSeeder extends Seeder
     {
         $structuresTable = 'ts_structures';
         $sectionsTable = 'ts_sections';
+        $reader = Reader::createFromPath(base_path().'/tests/fixture/structure.csv', 'r')
+            ->setHeaderOffset(0);
+        $records = $reader->getRecords();
+        $sortIndex = 1;
+        foreach ($records as $record) {
+            $structure[] =
+                [
+                    'sort' => $sortIndex,
+                    'goods_type' => $record['goods_type'],
+                    'sale_type' => $record['sale_type'],
+                    'section_type' => $record['section_type'],
+                    'display_start_date' => $record['display_start_date'],
+                    'display_end_date' => $record['display_end_date'],
+                    'title' => $record['title'],
+                    'link_url' => $record['link_url'],
+                    'is_tap_on' => $record['is_tap_on'],
+                    'is_ranking' => $record['is_ranking'],
+                    'api_url'  => $record['api_url'],
+                    'section_file_name' => $record['section_file_name']
+                ];
+            $sortIndex++;
+        }
 
         DB::table($structuresTable)->truncate();
-        DB::table($structuresTable)->insert($this->getStructureTestData());
+        DB::table($structuresTable)->insert($structure);
 
         DB::table($sectionsTable)->truncate();
         DB::table($sectionsTable)->insert($this->getSectionTestData());
@@ -247,6 +270,50 @@ class TestDataSeeder extends Seeder
                 'api_url'  => 'section/dvd/rental',
                 'section_file_name' => 'd'
             ]
+// 販売リスト
+            ,[
+                'sort' => 4,
+                'goods_type' => 1,
+                'sale_type' => 2,
+                'section_type' => 2,
+                'display_start_date' => '2017-01-01',
+                'display_end_date' => '2018-01-01',
+                'title' => 'リリース情報',
+                'link_url' => 'https://tsutaya.tsite.jp/',
+                'is_tap_on' => 0,
+                'is_ranking' => 0,
+                'api_url'  => '/section/release/manual/04',
+                'section_file_name' => ''
+            ]
+            ,[
+                'sort' => 4,
+                'goods_type' => 1,
+                'sale_type' => 2,
+                'section_type' => 2,
+                'display_start_date' => '2017-01-01',
+                'display_end_date' => '2018-01-01',
+                'title' => 'ランキング総合',
+                'link_url' => 'https://tsutaya.tsite.jp/',
+                'is_tap_on' => 0,
+                'is_ranking' => 1,
+                'api_url'  => '/section/ranking/agg/D050',
+                'section_file_name' => ''
+            ]
+            ,[
+                'sort' => 4,
+                'goods_type' => 1,
+                'sale_type' => 2,
+                'section_type' => 2,
+                'display_start_date' => '2017-01-01',
+                'display_end_date' => '2018-01-01',
+                'title' => 'ランキング：総合',
+                'link_url' => 'https://tsutaya.tsite.jp/',
+                'is_tap_on' => 0,
+                'is_ranking' => 1,
+                'api_url'  => '/section/ranking/agg/D051',
+                'section_file_name' => ''
+            ]
+
         ];
     }
 
