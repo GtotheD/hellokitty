@@ -13,8 +13,8 @@ use App\Model\Structure;
 class StructureRepository
 {
     const DVD = '1';
-    const BOOK = '2';
-    const CD = '3';
+    const CD = '2';
+    const BOOK = '3';
     const GAME = '4';
 
     const RENTAL = '1';
@@ -116,7 +116,7 @@ class StructureRepository
         foreach ($structures as $structure) {
             $apiUrl = null;
             if (!empty($structure->section_file_name)) {
-                $apiUrl = $structure->api_url . '/' . $structure->section_file_name;
+                $apiUrl = $structure->api_url . $structure->section_file_name;
             } else {
                 $apiUrl = $structure->api_url;
             }
@@ -128,8 +128,6 @@ class StructureRepository
                     'linkUrl' => $structure->link_url,
                     'isTapOn' => $structure->is_tap_on ? true : false,
                     'isRanking' => $structure->is_ranking ? true : false,
-                    'isDisplayDvdArtist' => true,
-                    'isDisplayReleaseDate' => false,
                 ];
         }
         $this->rows = $rows;
