@@ -6,6 +6,7 @@ use App\Model\Structure;
 use App\Repositories\TWSRepository;
 use App\Repositories\TAPRepository;
 use App\Repositories\SectionRepository;
+use App\Repositories\FixtureRepository;
 use App\Model\Section;
 use App\Exceptions\NoContentsException;
 
@@ -179,9 +180,10 @@ class SectionRepository
     {
         // himoだった場合は集約コードに変更する
         if ($codeType == 'himo') {
-            $genreMap = config('genre_map');
+            $fixtureRepository = new FixtureRepository;
+            $genreMap = $fixtureRepository->getGenreMap();
             if (key_exists($genreCode, $genreMap)) {
-                $rankingConcentrationCd = $genreMap[$genreCode];
+                $rankingConcentrationCd = $genreMap[$genreCode]['AggregationCode'];
             } else {
                 throw new NoContentsException();
             }
@@ -199,6 +201,7 @@ class SectionRepository
         $response = [
             'hasNext' => null,
             'totalCount' => $rows['totalResults'],
+            'title' => $genreMap[$genreCode]['HimoBigGenreName'].':'.$genreMap[$genreCode]['HimoMiddleGenreName'],
             'rows' => $this->convertFormatFromRanking($rows),
         ];
         if (empty($response['rows'])) {

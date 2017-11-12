@@ -1,12 +1,21 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: ayumu
- * Date: 2017/10/13
- * Time: 15:01
- */
+namespace App\Repositories;
+
+use League\Csv\Reader;
+use League\Csv\Writer;
 
 class FixtureRepository
 {
+    private $basePath = 'app/';
 
+    public function getGenreMap()
+    {
+        $reader = Reader::createFromPath(storage_path('app/maps.csv'), 'r')
+            ->setHeaderOffset(0);
+        $records = $reader->getRecords();
+        foreach ($records as $record) {
+            $maps[$record['HimoGenreCode']] = $record;
+        }
+        return $maps;
+    }
 }
