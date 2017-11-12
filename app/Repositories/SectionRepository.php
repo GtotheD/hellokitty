@@ -178,6 +178,7 @@ class SectionRepository
 
     public function ranking($codeType, $genreCode, $period)
     {
+        $title = null;
         // himoだった場合は集約コードに変更する
         if ($codeType == 'himo') {
             $fixtureRepository = new FixtureRepository;
@@ -187,6 +188,7 @@ class SectionRepository
             } else {
                 throw new NoContentsException();
             }
+            $title = $genreMap[$genreCode]['HimoBigGenreName'].':'.$genreMap[$genreCode]['HimoMiddleGenreName'];
         } else {
             $rankingConcentrationCd = $genreCode;
         }
@@ -201,9 +203,11 @@ class SectionRepository
         $response = [
             'hasNext' => null,
             'totalCount' => $rows['totalResults'],
-            'title' => $genreMap[$genreCode]['HimoBigGenreName'].':'.$genreMap[$genreCode]['HimoMiddleGenreName'],
             'rows' => $this->convertFormatFromRanking($rows),
         ];
+        if ($title) {
+            $response['title'] = $title;
+        }
         if (empty($response['rows'])) {
             return null;
         }
