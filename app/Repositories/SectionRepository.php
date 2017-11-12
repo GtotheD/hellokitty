@@ -226,7 +226,7 @@ class SectionRepository
         $response = [
             'hasNext' => false,
             'totalCount' => $rows['count'],
-            'rows' => $this->convertFormatFromTAPRelease($rows),
+            'rows' => $this->convertFormatFromTAPRelease($rows['release']),
         ];
         if (empty($response['rows'])) {
             return null;
