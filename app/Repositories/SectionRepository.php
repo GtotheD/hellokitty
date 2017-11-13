@@ -124,6 +124,7 @@ class SectionRepository
 
     public function normal($goodsType, $saleType, $sectionName)
     {
+        $rows = null;
         $structureRepository = new StructureRepository();
         $goodsType = $structureRepository->convertGoodsTypeToId($goodsType);
         $saleType = $structureRepository->convertSaleTypeToId($saleType);
@@ -316,7 +317,7 @@ class SectionRepository
         return $formattedRows;
     }
 
-    private function getOneArtist($data)
+    public function getOneArtist($data)
     {
         if (array_key_exists('0', $data)) {
             $artist = array_values($data)[0];
@@ -330,24 +331,6 @@ class SectionRepository
     {
         $targetDay = date("Ym01");
         return date("Ym01", strtotime($targetDay . ' -' . $period . ' month'));
-    }
-
-    // DB登録後の情報取得処理
-    public function updateProductInfo()
-    {
-        $sections = $this->section->conditionAll()->get();
-        $tws = new TWSRepository;
-        foreach ($sections as $sectionRow) {
-            $res = $tws->detail($sectionRow->code)->get();
-            $updateValues = [
-                'title' => $res['entry']['productName'],
-                'image_url' => $res['entry']['image']['large'],
-                'url_code' => $res['entry']['urlCd'],
-                'sale_start_date' => $res['entry']['saleDate'],
-                'supplement' => $this->getOneArtist($res['entry']['artistInfo'])['artistName']
-            ];
-            $this->section->update($sectionRow->id, $updateValues);
-        }
     }
 
     private function dateFormat($date)

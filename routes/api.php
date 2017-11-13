@@ -14,6 +14,7 @@
 use Illuminate\Http\Request;
 use App\Repositories\StructureRepository;
 use App\Repositories\SectionRepository;
+use App\Exceptions\NoContentsException;
 
 // Api Group
 $router->group([
@@ -34,6 +35,9 @@ $router->group([
         $structureRepository->setLimit($request->input('limit', 10));
         $structureRepository->setOffset($request->input('offset', 0));
         $structures = $structureRepository->get($goodsType, $saleType);
+        if ($structures->getTotalCount() == 0) {
+            throw new NoContentsException;
+        }
         $response = [
             'hasNext' => $structures->getHasNext(),
             'totalCount' => $structures->getTotalCount(),
@@ -55,6 +59,9 @@ $router->group([
         $sectionRepository->setLimit($request->input('limit', 10));
         $sectionRepository->setOffset($request->input('offset', 0));
         $section = $sectionRepository->normal($goodsType, $saleType, $sectionName);
+        if ($section->getTotalCount() == 0) {
+            throw new NoContentsException;
+        }
         $response = [
             'hasNext' => $section->getHasNext(),
             'totalCount' => $section->getTotalCount(),
