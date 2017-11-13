@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 use App\Repositories\StructureRepository;
 use App\Repositories\SectionRepository;
 use App\Exceptions\NoContentsException;
+use App\Repositories\BannerRepository;
 
 // Api Group
 $router->group([
@@ -48,9 +49,16 @@ $router->group([
 
     // 固定コンテンツ取得API
     $router->get('fixed/banner', function () {
-        $sectionRepository = new SectionRepository;
-        $sectionData = $sectionRepository->fixedBanner();
-        return response()->json($sectionData);
+        $bannerRepository = new BannerRepository;
+        $banner = $bannerRepository->banner('fixed_banner');
+        $response = [
+            'hasNext' => $banner->getHasNext(),
+            'totalCount' => $banner->getTotalCount(),
+            'width' => $banner->getWidth(),
+            'height' => $banner->getHeight(),
+            'rows' => $banner->getRows()
+        ];
+        return response()->json($response);
     });
 
     // 通常セクション取得API
@@ -72,9 +80,16 @@ $router->group([
 
     // バナーセクション取得API
     $router->get('section/banner/{sectionName}', function ($sectionName) {
-        $sectionRepository = new SectionRepository;
-        $sectionData = $sectionRepository->banner($sectionName);
-        return $sectionData;
+        $bannerRepository = new BannerRepository;
+        $banner = $bannerRepository->banner($sectionName);
+        $response = [
+            'hasNext' => $banner->getHasNext(),
+            'totalCount' => $banner->getTotalCount(),
+            'width' => $banner->getWidth(),
+            'height' => $banner->getHeight(),
+            'rows' => $banner->getRows()
+        ];
+        return response()->json($response);
     });
 
     // レコメンドセクション取得API
