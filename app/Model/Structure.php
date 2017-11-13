@@ -10,17 +10,18 @@ use Illuminate\Support\Facades\DB;
  * Date: 2017/10/27
  * Time: 19:47
  */
-class Structure
+class Structure extends Model
 {
     const TABLE = 'ts_structures';
 
-    protected $dbObject;
-    protected $limit;
-    protected $offset;
+    function __construct()
+    {
+        parent::__construct(self::TABLE);
+    }
 
     public function set($goodsType, $saleType, $fileName = null)
     {
-        $this->dbObject = DB::table(self::TABLE)
+        $this->dbObject = DB::table($this->table)
             ->where([
                 'goods_type' => $goodsType,
                 'sale_type' => $saleType
@@ -35,7 +36,7 @@ class Structure
 
     public function conditionFindBannerWithSectionFileName($fileName)
     {
-        $this->dbObject = DB::table(self::TABLE)
+        $this->dbObject = DB::table($this->table)
             ->where([
                 'section_type' => 1,
                 'section_file_name' => $fileName
@@ -54,10 +55,4 @@ class Structure
             ->skip($offset)->take($limit)
             ->get();
     }
-
-    public function getOne()
-    {
-        return $this->dbObject->first();
-    }
-
 }

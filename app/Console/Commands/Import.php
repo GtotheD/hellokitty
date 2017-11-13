@@ -46,7 +46,7 @@ class Import extends Command
     {
         $sectionRepository = new SectionRepository;
         $section = new Section;
-        $sections = $section->conditionNoUrlCode()->get();
+        $sections = $section->conditionNoUrlCode()->get(10000);
         $tws = new TWSRepository;
         foreach ($sections as $sectionRow) {
             $this->info($sectionRow->id);

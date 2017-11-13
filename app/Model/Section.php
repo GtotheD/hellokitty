@@ -20,9 +20,14 @@ class Section extends Model
     const TYPE_HISTORY = 4; // 4 閲覧履歴（チェックした作品)
     const TYPE_RECOMMEND = 5; // 5 PDMPレコメンド
 
+    function __construct()
+    {
+        parent::__construct(self::TABLE);
+    }
+
     public function conditionSectionFromStructure($goodsType, $saleType, $sectionFileName)
     {
-        $this->dbObject = DB::table(self::TABLE)
+        $this->dbObject = DB::table($this->table)
             ->select('ts_sections.*')
             ->join('ts_structures', function ($join) use ($goodsType, $saleType, $sectionFileName) {
                 $join->on('ts_structure_id', '=', 'ts_structures.id')
@@ -45,7 +50,7 @@ class Section extends Model
 
     public function conditionNoUrlCode()
     {
-        $this->dbObject = DB::table(self::TABLE)
+        $this->dbObject = DB::table($this->table)
             ->where('code', '<>', '')
             ->where('title', '=', '');
         return $this;
