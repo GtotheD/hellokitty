@@ -8,6 +8,7 @@ use App\Repositories\TAPRepository;
 use App\Repositories\SectionRepository;
 use App\Repositories\FixtureRepository;
 use App\Model\Section;
+use App\Model\Banner;
 use App\Exceptions\NoContentsException;
 
 /**
@@ -97,31 +98,6 @@ class SectionRepository
         $this->offset = $offset;
     }
 
-    public function fixedBanner()
-    {
-        $rows = [
-            [
-                'linkUrl' => 'https://tsutaya.jp/a.html',
-                'imageUrl' => 'https://tsutaya.jp/image/a.jpg',
-                'isTapOn' => false
-
-            ],
-            [
-                'linkUrl' => 'https://tsutaya.jp/b.html',
-                'imageUrl' => 'https://tsutaya.jp/image/b.jpg',
-                'isTapOn' => true
-
-            ],
-            [
-                'linkUrl' => 'https://tsutaya.jp/c.html',
-                'imageUrl' => 'https://tsutaya.jp/image/d.jpg',
-                'isTapOn' => false
-
-            ]
-        ];
-        return $rows;
-    }
-
     public function normal($goodsType, $saleType, $sectionName)
     {
         $rows = null;
@@ -150,31 +126,6 @@ class SectionRepository
         }
         $this->rows = $rows;
         return $this;
-    }
-
-    public function banner($sectionName)
-    {
-        $rows = [
-            [
-                'linkUrl' => 'https://tsutaya.jp/a.html',
-                'imageUrl' => 'https://tsutaya.jp/image/a.jpg',
-                'isTapOn' => false
-
-            ],
-            [
-                'linkUrl' => 'https://tsutaya.jp/b.html',
-                'imageUrl' => 'https://tsutaya.jp/image/b.jpg',
-                'isTapOn' => true
-
-            ],
-            [
-                'linkUrl' => 'https://tsutaya.jp/c.html',
-                'imageUrl' => 'https://tsutaya.jp/image/d.jpg',
-                'isTapOn' => false
-
-            ]
-        ];
-        return $rows;
     }
 
     public function ranking($codeType, $genreCode, $period)

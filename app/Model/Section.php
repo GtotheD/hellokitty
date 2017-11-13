@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Model;
+
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -8,7 +10,7 @@ use Illuminate\Support\Facades\DB;
  * Date: 2017/10/27
  * Time: 19:47
  */
-class Section
+class Section extends Model
 {
     const TABLE = 'ts_sections';
 
@@ -18,12 +20,9 @@ class Section
     const TYPE_HISTORY = 4; // 4 閲覧履歴（チェックした作品)
     const TYPE_RECOMMEND = 5; // 5 PDMPレコメンド
 
-    protected $dbObject;
-    protected $limit;
-    protected $offset;
-
-    public function conditionSectionFromStructure($goodsType, $saleType, $sectionFileName) {
-        $this->dbObject =  DB::table(self::TABLE)
+    public function conditionSectionFromStructure($goodsType, $saleType, $sectionFileName)
+    {
+        $this->dbObject = DB::table(self::TABLE)
             ->select('ts_sections.*')
             ->join('ts_structures', function ($join) use ($goodsType, $saleType, $sectionFileName) {
                 $join->on('ts_structure_id', '=', 'ts_structures.id')
@@ -44,32 +43,12 @@ class Section
         return $this;
     }
 
-    public function conditionAll() {
-        $this->dbObject =  DB::table(self::TABLE);
+    public function conditionNoUrlCode()
+    {
+        $this->dbObject = DB::table(self::TABLE)
+            ->where('code', '<>', '')
+            ->where('title', '=', '');
         return $this;
-    }
-
-    public function conditionNoUrlCode() {
-        $this->dbObject =  DB::table(self::TABLE)
-        ->where('code', '<>', '')
-        ->where('title', '=', '');
-        return $this;
-    }
-
-    public function update($id, $values) {
-        return DB::table(self::TABLE)
-                ->where('id', $id)
-                ->update($values);
-    }
-
-    public function count() {
-        return $this->dbObject->count();
-    }
-
-    public function get($limit = 100, $offset = 0) {
-        return $this->dbObject
-            ->skip($offset)->take($limit)
-            ->get();
     }
 
 }
