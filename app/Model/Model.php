@@ -8,16 +8,23 @@
 
 namespace App\Model;
 
+use Illuminate\Support\Facades\DB;
 
 class Model
 {
+    protected $table;
     protected $dbObject;
     protected $limit;
     protected $offset;
 
+    function __construct($table)
+    {
+        $this->table = $table;
+    }
+
     public function update($id, $values)
     {
-        return DB::table(self::TABLE)
+        return DB::table($this->table)
             ->where('id', $id)
             ->update($values);
     }
@@ -33,7 +40,11 @@ class Model
     }
     public function conditionAll()
     {
-        $this->dbObject = DB::table(self::TABLE);
+        $this->dbObject = DB::table($this->table);
         return $this;
+    }
+    public function getOne()
+    {
+        return $this->dbObject->first();
     }
 }

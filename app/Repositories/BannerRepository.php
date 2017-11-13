@@ -132,7 +132,7 @@ class BannerRepository
             $rows[] =
                 [
                     'imageUrl' => $banner->image_url,
-                    'isTapOn' => $banner->is_tap_on,
+                    'isTapOn' => $banner->is_tap_on? true : false,
                     'linkUrl' => $banner->link_url
                 ];
             $this->width = $banner->banner_width;

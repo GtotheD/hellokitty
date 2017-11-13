@@ -15,9 +15,10 @@ class Banner extends Model
 {
     const TABLE = 'ts_banners';
 
-    protected $dbObject;
-    protected $limit;
-    protected $offset;
+    function __construct()
+    {
+        parent::__construct(self::TABLE);
+    }
 
     public function conditionSectionBanner($bannerName)
     {
