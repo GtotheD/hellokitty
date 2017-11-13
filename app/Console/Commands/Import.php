@@ -10,6 +10,8 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use App\Repositories\SectionRepository;
+use App\Repositories\TWSRepository;
+use App\Model\Section;
 
 class Import extends Command
 {
@@ -43,6 +45,27 @@ class Import extends Command
     public function handle()
     {
         $sectionRepository = new SectionRepository;
-        $sectionRepository->updateProductInfo();
+        $section = new Section;
+        $sections = $section->conditionNoUrlCode()->get();
+        $tws = new TWSRepository;
+        foreach ($sections as $sectionRow) {
+            $this->info($sectionRow->id);
+            if (!empty($sectionRow->code)) {
+                $res = $tws->detail($sectionRow->code)->get()['entry'];
+                $updateValues = [
+                    'title' => $res['productName'],
+                    'image_url' => $res['image']['large'],
+                    'url_code' => $res['urlCd'],
+                    'sale_start_date' => $res['saleDate'],
+                ];
+                if (array_key_exists('artistInfo', $res)) {
+                    $updateValues['supplement'] = $sectionRepository->getOneArtist($res['artistInfo'])['artistName'];
+                } else if (array_key_exists('modelName', $res)) {
+                    $updateValues['supplement'] = $res['modelName'];
+
+                }
+                $section->update($sectionRow->id, $updateValues);
+            }
+        }
     }
 }

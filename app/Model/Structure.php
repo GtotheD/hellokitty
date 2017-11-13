@@ -16,7 +16,7 @@ class Structure
     protected $limit;
     protected $offset;
 
-    public function set($goodsType, $saleType) {
+    public function set($goodsType, $saleType, $fileName = null) {
         $this->dbObject =  DB::table(self::TABLE)
             ->where([
                 'goods_type' => $goodsType,
@@ -24,6 +24,9 @@ class Structure
                 ])
             ->where('display_start_date', '<', DB::raw('now()'))
             ->where('display_end_date', '>', DB::raw('now()'));
+        if ($fileName) {
+            $this->dbObject->where('section_file_name', $fileName);
+        }
         return $this;
     }
 
@@ -35,6 +38,10 @@ class Structure
         return $this->dbObject
             ->skip($offset)->take($limit)
             ->get();
+    }
+
+    public function getOne() {
+        return $this->dbObject->first();
     }
 
 }

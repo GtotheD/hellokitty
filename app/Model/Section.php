@@ -49,6 +49,13 @@ class Section
         return $this;
     }
 
+    public function conditionNoUrlCode() {
+        $this->dbObject =  DB::table(self::TABLE)
+        ->where('code', '<>', '')
+        ->where('title', '=', '');
+        return $this;
+    }
+
     public function update($id, $values) {
         return DB::table(self::TABLE)
                 ->where('id', $id)
