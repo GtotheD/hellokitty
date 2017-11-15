@@ -1,11 +1,11 @@
 title,api_url,goods_type,sale_type,section_type,display_start_date,display_end_date,link_url,is_tap_on,is_ranking,section_file_name,banner_width,banner_height
 リリース情報,section/release/manual/01,1,1,2,2000/1/1,2020/1/1,https://tsutaya.tsite.jp/,0,0,
 ランキング：総合,section/ranking/agg/D045,1,1,2,2000/1/1,2020/1/1,https://tsutaya.tsite.jp/,1,1,
-あなたにオススメ！[大ジャンル名:中ジャンル名]ランキング,section/ranking/himo/{code},1,1,2,2000/1/1,2020/1/1,https://tsutaya.tsite.jp/,0,1,
-あなたにオススメ！[大ジャンル名:中ジャンル名]ランキング,section/ranking/himo/{code},1,1,5,2000/1/1,2020/1/1,https://tsutaya.tsite.jp/,1,1,
-あなたにオススメ！[大ジャンル名:中ジャンル名]ランキング,section/ranking/himo/{code},1,1,5,2000/1/1,2020/1/1,https://tsutaya.tsite.jp/,0,1,
-あなたにオススメ！[大ジャンル名:中ジャンル名]ランキング,section/ranking/himo/{code},1,1,5,2000/1/1,2020/1/1,https://tsutaya.tsite.jp/,1,1,
-あなたにオススメ！[大ジャンル名:中ジャンル名]ランキング,section/ranking/himo/{code},1,1,5,2000/1/1,2020/1/1,https://tsutaya.tsite.jp/,0,0,
+あなたにオススメ！,section/ranking/himo/{code},1,1,2,2000/1/1,2020/1/1,https://tsutaya.tsite.jp/,0,1,
+あなたにオススメ！,section/ranking/himo/{code},1,1,5,2000/1/1,2020/1/1,https://tsutaya.tsite.jp/,1,1,
+あなたにオススメ！,section/ranking/himo/{code},1,1,5,2000/1/1,2020/1/1,https://tsutaya.tsite.jp/,0,1,
+あなたにオススメ！,section/ranking/himo/{code},1,1,5,2000/1/1,2020/1/1,https://tsutaya.tsite.jp/,1,1,
+あなたにオススメ！,section/ranking/himo/{code},1,1,5,2000/1/1,2020/1/1,https://tsutaya.tsite.jp/,0,0,
 見逃していませんか,,1,1,2,2000/1/1,2020/1/1,https://tsutaya.tsite.jp/,1,,
 まだまだ話題作！,,1,1,2,2000/1/1,2020/1/1,https://tsutaya.tsite.jp/,,,
 洋画,section/dvd/rental/,1,1,2,2000/1/1,2020/1/1,https://tsutaya.tsite.jp/,1,0,a

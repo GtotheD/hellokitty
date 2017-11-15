@@ -286,6 +286,10 @@ class SectionRepository
 
     private function dateFormat($date)
     {
-        return date('Y-m-d', strtotime($date));
+        if (!empty($date) &&$date != '0000-00-00 00:00:00') {
+            return date('Y-m-d', strtotime($date));
+        } else {
+            return null;
+        }
     }
 }
