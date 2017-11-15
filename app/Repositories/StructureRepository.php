@@ -120,15 +120,20 @@ class StructureRepository
             } else {
                 $apiUrl = $structure->api_url;
             }
-            $rows[] =
-                [
-                    'sectionType' => $structure->section_type,
-                    'title' => $structure->title,
-                    'apiUrl' => $apiUrl,
-                    'linkUrl' => $structure->link_url,
-                    'isTapOn' => $structure->is_tap_on ? true : false,
-                    'isRanking' => $structure->is_ranking ? true : false,
-                ];
+            $unit = [
+                'sectionType' => $structure->section_type,
+                'title' => $structure->title,
+                'apiUrl' => $apiUrl,
+                'linkUrl' => $structure->link_url,
+                'isTapOn' => $structure->is_tap_on ? true : false,
+                'isRanking' => $structure->is_ranking ? true : false,
+            ];
+            if ($structure->section_type == 1) {
+                $unit['width'] = $structure->banner_width;
+                $unit['height'] =$structure->banner_height;
+            }
+            $rows[] = $unit;
+
         }
         $this->rows = $rows;
         return $this;
