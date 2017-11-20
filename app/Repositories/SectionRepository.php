@@ -255,15 +255,21 @@ class SectionRepository
             if (empty($row)) {
                 return null;
             }
-            $formattedRows[] =
-                [
-                    'saleStartDate' => false,
-                    'imageUrl' => $row['productImage']['large'],
-                    'title' => $row['productTitle'],
-                    'supplement' => $this->getOneArtist($row['artistInfoList']['artistInfo'])['artistName'], // アーティスト名、著者、機種等
-                    'code' => $row['productKey'],
-                    'urlCode' => $row['urlCd']
-                ];
+            $rowUnit = [
+                'saleStartDate' => false,
+                'imageUrl' => $row['productImage']['large'],
+                'title' => $row['productTitle'],
+                'code' => $row['productKey'],
+                'urlCode' => $row['urlCd']
+            ];
+
+            // modelNameがあったゲームなので、ゲーム名を取得するようにする。
+            if (array_key_exists('modelName', $row) ) {
+                $rowUnit['supplement'] = $row['modelName'];
+            } else {
+                $rowUnit['supplement'] = $this->getOneArtist($row['artistInfoList']['artistInfo'])['artistName'];
+            }
+            $formattedRows[] = $rowUnit;
         }
         return $formattedRows;
     }

@@ -44,6 +44,18 @@ class Import extends Command
      */
     public function handle()
     {
+        $this->importStructureData();
+
+        $this->updateSerctionsData();
+
+    }
+
+    private function importStructureData() {
+
+
+    }
+
+    private function updateSerctionsData() {
         $sectionRepository = new SectionRepository;
         $section = new Section;
         $sections = $section->conditionNoUrlCode()->get(10000);
