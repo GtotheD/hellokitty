@@ -56,7 +56,7 @@ class TWSRepository extends ApiRequesterRepository
             'rankingConcentrationCd' => $rankingConcentrationCd,
             'tolPlatformCode' => '00',
             'rankinglimit' => $this->limit,
-            'dispNums' => '10',
+            'dispNums' => '20',
             '_secure' => '1',
             '_pretty' => '1'
         ];
@@ -76,7 +76,7 @@ class TWSRepository extends ApiRequesterRepository
             'api_key' => $this->apiKey,
             '_secure' => '1',
             'page' => '1',
-            'dispNums' => '10',
+            'dispNums' => '20',
             'adultAuthOK' => '0',
             'adultFlag' => '1',
             'sortingOrder' => '2',
