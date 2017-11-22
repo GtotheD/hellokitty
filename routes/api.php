@@ -102,7 +102,7 @@ $router->group([
     // レコメンドセクション取得API
     $router->get('section/release/manual/{tapCategoryId}[/{releaseDateTo}]', function ($tapCategoryId, $releaseDateTo = null) {
         if (empty($releaseDateTo)) {
-            $releaseDateTo = date('Ymd');
+            $releaseDateTo = date('Ymd',strtotime('next sunday'));
         }
         $sectionRepository = new SectionRepository;
         $sectionData = $sectionRepository->releaseManual($tapCategoryId, $releaseDateTo);
