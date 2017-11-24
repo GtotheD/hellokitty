@@ -54,6 +54,12 @@ class Import extends Command
      * section table name
      */
     const SECTION_TABLE = 'ts_sections';
+
+    /*
+     * section table name
+     */
+    const BANNER_TABLE = 'ts_banners';
+
     /**
      *  structureRepository
      * @var StructureRepository
@@ -106,7 +112,7 @@ class Import extends Command
                 } else if($goodType == self::BANNER_TYPE) {
                     // case banner
                     $bannerFolder = $root . DIRECTORY_SEPARATOR . $goodType;
-                    $this->importSectionFolder($bannerFolder);
+                    $this->importBannerFolder($bannerFolder);
                 }
 
             }
@@ -248,6 +254,38 @@ class Import extends Command
         }
     }
 
+    private function importBannerFolder($folderPath)
+    {
+        if (is_dir($folderPath)) {
+
+            //section folder
+            $bannerFiles = scandir($folderPath);
+            //remove empty file in folder
+            unset($bannerFiles[array_search('.', $bannerFiles, true)]);
+            unset($bannerFiles[array_search('..', $bannerFiles, true)]);
+
+            if (count($bannerFiles) > 0) {
+
+                foreach ($bannerFiles as $bannerFile) {
+                    $bannerFileRealpath = $folderPath . DIRECTORY_SEPARATOR . $bannerFile;
+                    if (is_file($bannerFileRealpath)) {
+                        $dataSection = json_decode($this->file_get_contents_utf8($bannerFileRealpath), true);
+                        $bannerArray = [];
+                        foreach ($dataSection as $row) {
+                            $bannerData = array();
+                            foreach ($row as $field => $value) {
+                                $fieldName = snake_case($field);
+
+                                $bannerData[$fieldName] = $value;
+                            }
+                            $bannerArray[] = $bannerData;
+                        }
+                        app('db')->table(self::BANNER_TABLE)->insert($bannerArray);
+                    }
+                }
+            }
+        }
+    }
     /*
      * convert file json encode SJIS to utf-8
      */
