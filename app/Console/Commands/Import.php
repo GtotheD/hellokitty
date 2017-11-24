@@ -267,18 +267,18 @@ class Import extends Command
             if (count($bannerFiles) > 0) {
 
                 foreach ($bannerFiles as $bannerFile) {
+
                     $bannerFileRealpath = $folderPath . DIRECTORY_SEPARATOR . $bannerFile;
                     if (is_file($bannerFileRealpath)) {
-                        $dataSection = json_decode($this->file_get_contents_utf8($bannerFileRealpath), true);
+                        $dataBanner = json_decode($this->file_get_contents_utf8($bannerFileRealpath), true);
                         $bannerArray = [];
-                        foreach ($dataSection as $row) {
-                            $bannerData = array();
-                            foreach ($row as $field => $value) {
-                                $fieldName = snake_case($field);
-
-                                $bannerData[$fieldName] = $value;
-                            }
-                            $bannerArray[] = $bannerData;
+                        foreach ($dataBanner['rows'] as $row) {
+                            $bannerArray[] = [
+                                'link_url' => $row['linkUrl'],
+                                'is_tap_on' => $row['isTapOn'],
+                                'image_url' => $row['imageUrl'],
+                                'login_type' => $row['loginType'],
+                            ];
                         }
                         app('db')->table(self::BANNER_TABLE)->insert($bannerArray);
                     }
