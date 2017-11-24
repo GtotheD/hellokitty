@@ -48,9 +48,13 @@ $router->group([
     });
 
     // 固定コンテンツ取得API
-    $router->get('fixed/banner', function () {
+    $router->get('fixed/banner', function (Request $request) {
         $bannerRepository = new BannerRepository;
-        $banner = $bannerRepository->banner('fixed_banner');
+        $bannerRepository->setLoginType($request->input('isLoggedIn', false));
+        $banner = $bannerRepository->banner('fixed_banner', true);
+        if ($banner->getTotalCount() == 0) {
+            throw new NoContentsException;
+        }
         $response = [
             'hasNext' => $banner->getHasNext(),
             'totalCount' => $banner->getTotalCount(),
@@ -79,9 +83,13 @@ $router->group([
     });
 
     // バナーセクション取得API
-    $router->get('section/banner/{sectionName}', function ($sectionName) {
+    $router->get('section/banner/{sectionName}', function (Request $request, $sectionName) {
         $bannerRepository = new BannerRepository;
+        $bannerRepository->setLoginType($request->input('isLoggedIn', false));
         $banner = $bannerRepository->banner($sectionName);
+        if ($banner->getTotalCount() == 0) {
+            throw new NoContentsException;
+        }
         $response = [
             'hasNext' => $banner->getHasNext(),
             'totalCount' => $banner->getTotalCount(),
@@ -104,6 +112,7 @@ $router->group([
         if (empty($releaseDateTo)) {
             $releaseDateTo = date('Ymd');
         }
+        dd($releaseDateTo);
         $sectionRepository = new SectionRepository;
         $sectionData = $sectionRepository->releaseManual($tapCategoryId, $releaseDateTo);
         return $sectionData;

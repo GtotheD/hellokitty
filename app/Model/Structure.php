@@ -34,13 +34,27 @@ class Structure extends Model
         return $this;
     }
 
-    public function conditionFindBannerWithSectionFileName($fileName)
+    public function condtionFindFilename($goodsType, $saleType, $fileName)
     {
         $this->dbObject = DB::table($this->table)
             ->where([
-                'section_type' => 1,
-                'section_file_name' => $fileName
+                'goods_type' => $goodsType,
+                'sale_type' => $saleType
             ]);
+        if ($fileName) {
+            $this->dbObject->where('section_file_name', $fileName);
+        }
+        return $this;
+    }
+
+    public function conditionFindBannerWithSectionFileName($fileName)
+    {
+        $this->dbObject = DB::table($this->table)
+            ->where('section_file_name', $fileName)
+            ->where(function ($query) {
+                $query->where('section_type', 1)
+                    ->orWhere('section_type', 99);
+            });
         return $this;
     }
 
