@@ -42,16 +42,6 @@ class Import extends Command
     const SECTION_FOLDER_NAME = 'section';
 
     /*
-     *  good type
-     */
-    const GOOD_TYPE = array('dvd', 'book', 'cd', 'game');
-
-    /*
-     * sale type
-     */
-    const SALE_TYPE = array('rental', 'sell');
-
-    /*
      * banner type name
      */
     const BANNER_TYPE = 'banner';
@@ -96,14 +86,32 @@ class Import extends Command
     {
         $root = env('STRUCTURE_DATA_FOLDER_PATH');
 
-        //impport good type folder
-        foreach (self::GOOD_TYPE as $goodType) {
-            $this->importByGoodType($goodType, $root);
+        //section folder
+        $rootFolder = scandir($root);
+        //remove empty file in folder
+        unset($rootFolder[array_search('.', $rootFolder, true)]);
+        unset($rootFolder[array_search('..', $rootFolder, true)]);
+
+
+        if (count($rootFolder) > 0) {
+            foreach ($rootFolder as $goodType) {
+                $goodType = strtolower($goodType);
+
+                //scan folder
+                $subDirectory = glob($root . DIRECTORY_SEPARATOR . $goodType . DIRECTORY_SEPARATOR . '*', GLOB_ONLYDIR);
+                if (count($subDirectory) > 0) {
+                    //check has sub directory rental or sale
+                    //case good type
+                    $this->importByGoodType($goodType, $root);
+                } else if($goodType == self::BANNER_TYPE) {
+                    // case banner
+                    $bannerFolder = $root . DIRECTORY_SEPARATOR . $goodType;
+                    $this->importSectionFolder($bannerFolder);
+                }
+
+            }
         }
 
-        //import banner folder to section
-        $bannerFolder = $root . DIRECTORY_SEPARATOR . self::BANNER_TYPE;
-        $this->importSectionFolder($bannerFolder);
     }
 
     private function updateSerctionsData() {
@@ -133,6 +141,8 @@ class Import extends Command
     }
 
 
+
+
     /**
      * read data from file in folder By Good Type name
      * @param $goodType
@@ -141,15 +151,29 @@ class Import extends Command
      */
     private function importByGoodType($goodType, $directory)
     {
-        if (!in_array($goodType, self::GOOD_TYPE)) {
+        if (!$this->structureRepository->convertGoodsTypeToId($goodType)) {
             return false;
         }
 
-        $root = $directory . DIRECTORY_SEPARATOR . $goodType;
+        $goodTypePath = $directory . DIRECTORY_SEPARATOR . $goodType;
 
-        foreach (self::SALE_TYPE as $saleType) {
-            $baseFile = $root . DIRECTORY_SEPARATOR . $saleType . DIRECTORY_SEPARATOR . self::BASE_FILE_NAME;
-            $sectionFolder = $root . DIRECTORY_SEPARATOR . $saleType . DIRECTORY_SEPARATOR . self::SECTION_FOLDER_NAME;
+        $goodTypeFolder = scandir($goodTypePath);
+        //remove dump file . and .. in folder
+        unset($goodTypeFolder[array_search('.', $goodTypeFolder, true)]);
+        unset($goodTypeFolder[array_search('..', $goodTypeFolder, true)]);
+
+        foreach ($goodTypeFolder as $saleType) {
+            $saleType = strtolower($saleType);
+
+            if (
+                !$this->structureRepository->convertSaleTypeToId($saleType)
+                || !is_dir($goodTypePath . DIRECTORY_SEPARATOR . $saleType)
+            ) {
+                continue;
+            }
+
+            $baseFile = $goodTypePath . DIRECTORY_SEPARATOR . $saleType . DIRECTORY_SEPARATOR . self::BASE_FILE_NAME;
+            $sectionFolder = $goodTypePath . DIRECTORY_SEPARATOR . $saleType . DIRECTORY_SEPARATOR . self::SECTION_FOLDER_NAME;
 
             $this->importBaseJSON($goodType, $saleType, $baseFile);
 
