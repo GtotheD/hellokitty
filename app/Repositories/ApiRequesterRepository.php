@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
+use App\Exceptions\NoContentsException;
 
 /**
  * Created by PhpStorm.
@@ -35,6 +36,10 @@ class ApiRequesterRepository
                 ['query' => $this->queryParams]
             );
         } catch (ClientException $e) {
+            $statusCode = $e->getResponse()->getStatusCode();
+            if ($statusCode == '404') {
+                throw new NoContentsException;
+            }
             throw new $e;
         }
         return json_decode($result->getBody()->getContents(), true);

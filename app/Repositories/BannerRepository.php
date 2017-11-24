@@ -29,6 +29,7 @@ class BannerRepository
     protected $rows;
     protected $height;
     protected $width;
+    protected $loginType;
 
 
     public function __construct()
@@ -85,6 +86,22 @@ class BannerRepository
     }
 
     /**
+     * @return mixed
+     */
+    public function getHeight()
+    {
+        return $this->height;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getWidth()
+    {
+        return $this->width;
+    }
+
+    /**
      * @param mixed $limit
      */
     public function setLimit($limit)
@@ -101,26 +118,25 @@ class BannerRepository
     }
 
     /**
-     * @return mixed
+     * @param mixed $loginType
      */
-    public function getHeight()
+    public function setLoginType($loginType)
     {
-        return $this->height;
+        $this->loginType = $loginType;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getWidth()
-    {
-        return $this->width;
-    }
-
-    public function banner($bannerName)
+    public function banner($bannerName, $isFixBanner = false)
     {
         $rows = null;
         $this->banner = new Banner;
-        $this->banner->conditionSectionBanner($bannerName);
+        $loginType = $this->loginType === 'true' ? 0 : 1;
+        $this->banner->setLoginType($loginType);
+
+        if ($isFixBanner) {
+            $this->banner->conditionSectionFixedBanner($bannerName);
+        } else {
+            $this->banner->conditionSectionBanner($bannerName);
+        }
         $this->totalCount = $this->banner->count();
         $banners = $this->banner->get();
         if (count($banners) + $this->offset < $this->totalCount) {
@@ -132,7 +148,7 @@ class BannerRepository
             $rows[] =
                 [
                     'imageUrl' => $banner->image_url,
-                    'isTapOn' => $banner->is_tap_on? true : false,
+                    'isTapOn' => $banner->is_tap_on ? true : false,
                     'linkUrl' => $banner->link_url
                 ];
             $this->width = $banner->banner_width;

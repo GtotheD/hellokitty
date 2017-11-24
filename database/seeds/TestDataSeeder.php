@@ -56,13 +56,12 @@ class TestDataSeeder extends Seeder
                 'link_url' => $banner['link_url'],
                 'is_tap_on' => $banner['is_tap_on'],
                 'image_url' => $banner['image_url'],
+                'login_type' => $banner['login_type'],
                 'ts_structure_id' => $tsStructureId
             ];
         }
         DB::table($bannersTable)->truncate();
         DB::table($bannersTable)->insert($banners);
-
-
     }
 
     private function getStructureTestData() {
@@ -125,7 +124,8 @@ class TestDataSeeder extends Seeder
                     'link_url' => $record['link_url'],
                     'is_tap_on' => $record['is_tap_on'],
                     'image_url' => $record['image_url'],
-                    'section_file_name' => $record['section_file_name']
+                    'section_file_name' => $record['section_file_name'],
+                    'login_type' => $record['login_type']
                 ];
             $sortIndex++;
         }

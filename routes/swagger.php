@@ -202,6 +202,12 @@
  *     tags={"Fixed"},
  *     security={{"api_key":{}}},
  *     @SWG\Parameter(
+ *       name="isLoggedIn",
+ *       in="query",
+ *       description="ログイン状態",
+ *       type="boolean"
+ *     ),
+ *     @SWG\Parameter(
  *       name="limit",
  *       in="query",
  *       description="表示件数",
@@ -473,6 +479,12 @@
  *       description="セクション名",
  *       required=true,
  *       type="string"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="isLoggedIn",
+ *       in="query",
+ *       description="ログイン状態",
+ *       type="boolean"
  *     ),
  *     @SWG\Parameter(
  *       name="limit",
