@@ -99,8 +99,38 @@ $app->router->group([
     require __DIR__.'/../routes/api.php';
 });
 
+/*
+|--------------------------------------------------------------------------
+| Load Config Files
+|--------------------------------------------------------------------------
+|
+|
+*/
 $app->configure('api_key');
 $app->configure('genre_map');
 $app->configure('version');
+
+/*
+|--------------------------------------------------------------------------
+| Log Setting
+|--------------------------------------------------------------------------
+|
+|
+*/
+use Monolog\Formatter\LineFormatter;
+use Monolog\Handler\RotatingFileHandler;
+$app->configureMonologUsing(function ($monolog) {
+    $maxFiles = env('LOG_MAX_FILE', 10);
+    $file = env('LOG_FILE', '');
+    if (empty($file)) {
+        $file = storage_path('logs/lumen.log');
+    }
+    $rotatingLogHandler = (new RotatingFileHandler($file, $maxFiles))
+        ->setFormatter(new LineFormatter(null, null, true, true))
+        ->setLevel(env('LOG_LEVEL', 'error'));
+    $rotatingLogHandler->setFilenameFormat('{filename}{date}', 'Ymd');
+    $monolog->setHandlers([$rotatingLogHandler]);
+    return $monolog;
+});
 
 return $app;
