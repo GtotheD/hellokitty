@@ -151,6 +151,7 @@ class SectionRepository
             $period = null;
         }
         $tws = new TWSRepository;
+        $tws->setLimit($this->limit);
         $rows = $tws->ranking($rankingConcentrationCd, $period)->get();
         $response = [
             'hasNext' => null,
@@ -233,15 +234,20 @@ class SectionRepository
             if (empty($row)) {
                 return null;
             }
-            $formattedRows[] =
-                [
+            $formattedRow = [
                     'saleStartDate' => $this->dateFormat($row['saleDate']),
                     'imageUrl' => $row['image']['large'],
                     'title' => $row['productName'],
-                    'supplement' => $row['artistList'][0]['artistName'], // アーティスト名、著者、機種等
                     'code' => $row['janCd'],
                     'urlCode' => $row['urlCd']
                 ];
+            if (array_key_exists('artistList', $row) ) {
+                $formattedRow['supplement'] = $row['artistList'][0]['artistName'];
+            } else {
+                $formattedRow['supplement'] = null;
+            }
+
+            $formattedRows[] = $formattedRow;
         }
         return $formattedRows;
     }
@@ -256,7 +262,7 @@ class SectionRepository
                 return null;
             }
             $rowUnit = [
-                'saleStartDate' => false,
+                'saleStartDate' => null,
                 'imageUrl' => $row['productImage']['large'],
                 'title' => $row['productTitle'],
                 'code' => $row['productKey'],
@@ -266,8 +272,10 @@ class SectionRepository
             // modelNameがあったゲームなので、ゲーム名を取得するようにする。
             if (array_key_exists('modelName', $row) ) {
                 $rowUnit['supplement'] = $row['modelName'];
-            } else {
+            } else if (array_key_exists('artistInfoList', $row) ) {
                 $rowUnit['supplement'] = $this->getOneArtist($row['artistInfoList']['artistInfo'])['artistName'];
+            } else {
+                $rowUnit['supplement'] = null;
             }
             $formattedRows[] = $rowUnit;
         }

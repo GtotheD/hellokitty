@@ -14,11 +14,11 @@ use GuzzleHttp\Exception\ClientException;
 class TWSRepository extends ApiRequesterRepository
 {
 
-    private $sort;
-    private $offset;
-    private $limit;
-    private $apiHost;
-    private $apiKey;
+    protected $sort;
+    protected $offset;
+    protected $limit;
+    protected  $apiHost;
+    protected $apiKey;
 
     public function __construct($sort = 'asc', $offset = 0, $limit = 10)
     {
@@ -27,6 +27,14 @@ class TWSRepository extends ApiRequesterRepository
         $this->limit = $limit;
         $this->apiHost = env('TWS_API_HOST');
         $this->apiKey = env('TWS_API_KEY');
+    }
+
+    /**
+     * @param int $limit
+     */
+    public function setLimit($limit)
+    {
+        $this->limit = $limit;
     }
 
     /*
