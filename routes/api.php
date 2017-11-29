@@ -51,7 +51,7 @@ $router->group([
     $router->get('fixed/banner', function (Request $request) {
         $bannerRepository = new BannerRepository;
         $bannerRepository->setLoginType($request->input('isLoggedIn', false));
-        $banner = $bannerRepository->banner('fixed_banner', true);
+        $banner = $bannerRepository->banner('static', true);
         if ($banner->getTotalCount() == 0) {
             throw new NoContentsException;
         }
@@ -112,7 +112,6 @@ $router->group([
         if (empty($releaseDateTo)) {
             $releaseDateTo = date('Ymd',strtotime('next sunday'));
         }
-        dd($releaseDateTo);
         $sectionRepository = new SectionRepository;
         $sectionData = $sectionRepository->releaseManual($tapCategoryId, $releaseDateTo);
         return $sectionData;

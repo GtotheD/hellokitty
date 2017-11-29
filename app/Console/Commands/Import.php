@@ -108,6 +108,9 @@ class Import extends Command
         $bannerFolder = $this->root . DIRECTORY_SEPARATOR . self::BANNER_TYPE;
         $this->importBannerFolder($bannerFolder);
 
+        $this->info('Import Fixed Banner');
+        $this->importFiexedBanner(env('STRUCTURE_DATA_FOLDER_PATH') . DIRECTORY_SEPARATOR . 'banner');
+
         $this->info('Update Srctions Table Data.');
         $this->updateSerctionsData();
         $this->info('Finish!');
@@ -179,13 +182,10 @@ class Import extends Command
         }
 
         $goodTypePath = $directory . DIRECTORY_SEPARATOR . $goodType;
-        $goodTypeFolder = scandir($goodTypePath);
+        $goodTypeFolder = $this->createFileList($goodTypePath);
         foreach ($goodTypeFolder as $saleType) {
             $baseFile = null;
             $sectionFolder = null;
-            if (preg_match('/^\./', $saleType, $matches) > 0) {
-                continue;
-            }
             $saleType = strtolower($saleType);
             if (
                 !$this->structureRepository->convertSaleTypeToId($saleType)
@@ -224,17 +224,35 @@ class Import extends Command
             return false;
         }
         //base file
-        $dataBase = json_decode($this->file_get_contents_utf8($filePath), true);
-        $structureArray = [];
+        $dataBase = json_decode($this->fileGetContentsUtf8($filePath), true);
+        $structureData = [];
         foreach ($dataBase['rows'] as $row) {
-            $structureData = [];
-            $structureData['goods_type'] = $goodType;
-            $structureData['sale_type'] = $saleType;
-            foreach ($row as $field => $value) {
-                $fieldName = snake_case($field);
-                $structureData[$fieldName] = $value;
+            $structureArray = [
+                'goods_type' => $goodType,
+                'sale_type' => $saleType,
+                'sort' => $row['sort'],
+                'section_type' => $row['sectionType'],
+                'display_start_date' => $row['displayStartDate'],
+                'display_end_date' => $row['displayEndDate'],
+                'title' => $row['title'],
+                'link_url' => $row['linkUrl'],
+                'is_tap_on' => $row['isTapOn'],
+                'api_url' => $row['apiUrl']
+            ];
+            if (array_key_exists('isRanking', $row)) {
+                $structureArray['is_ranking'] = $row['isRanking'];
             }
-            $this->structureTable->insert($structureData);
+            if (array_key_exists('sectionFileName', $row)) {
+                $structureArray['section_file_name'] = $row['sectionFileName'];
+            }
+            if (array_key_exists('bannerWidth', $row)) {
+                $structureArray['banner_width'] = $row['bannerWidth'];
+            }
+            if (array_key_exists('bannerHeight', $row)) {
+                $structureArray['banner_height'] = $row['bannerHeight'];
+            }
+
+            $this->structureTable->insert($structureArray);
         }
     }
 
@@ -249,20 +267,17 @@ class Import extends Command
             return false;
         }
         //section folder
-        $sectionFiles = scandir($folderPath);
+        $sectionFiles = $this->createFileList($folderPath);
         if (count($sectionFiles) < 1) {
             return false;
         }
         foreach ($sectionFiles as $sectionFile) {
-            if (preg_match('/^\./', $sectionFile, $matches) > 0) {
-                continue;
-            }
             $sectionFileBaseName = pathinfo($sectionFile)['filename'];
             $sectionFileRealPath = $folderPath . DIRECTORY_SEPARATOR . $sectionFile;
             if (!is_file($sectionFileRealPath)) {
                 return false;
             }
-            $dataSection = json_decode($this->file_get_contents_utf8($sectionFileRealPath), true);
+            $dataSection = json_decode($this->fileGetContentsUtf8($sectionFileRealPath), true);
             $sectionArray = [];
             foreach ($dataSection['rows'] as $row) {
                 $sectionData = array();
@@ -295,17 +310,14 @@ class Import extends Command
         if (is_dir($folderPath)) {
 
             //section folder
-            $bannerFiles = scandir($folderPath);
+            $bannerFiles = $this->createFileList($folderPath);
 
             if (count($bannerFiles) > 0) {
                 foreach ($bannerFiles as $bannerFile) {
-                    if (preg_match('/^\./', $bannerFile, $matches) > 0) {
-                        continue;
-                    }
                     $bannerFileBaseName = pathinfo($bannerFile)['filename'];
                     $bannerFileRealpath = $folderPath . DIRECTORY_SEPARATOR . $bannerFile;
                     if (is_file($bannerFileRealpath)) {
-                        $dataBanner = json_decode($this->file_get_contents_utf8($bannerFileRealpath), true);
+                        $dataBanner = json_decode($this->fileGetContentsUtf8($bannerFileRealpath), true);
                         $bannerArray = [];
                         $structure = new Structure;
                         $structureObj = $structure->conditionFindBannerWithSectionFileName($bannerFileBaseName)->getOne();
@@ -330,15 +342,80 @@ class Import extends Command
         }
     }
 
+    private function importFiexedBanner($folderPath)
+    {
+        if (!is_dir($folderPath)) {
+            return false;
+        }
+        //section folder
+        $files = $this->createFileList($folderPath);
+
+        foreach ($files as $file) {
+            $banner = json_decode($this->fileGetContentsUtf8($folderPath.DIRECTORY_SEPARATOR.$file), true);
+            $fileBaseName = $this->getBaseName($file);
+            $structureArray = [
+                'goods_type' => 0,
+                'sale_type' => 0,
+                'sort' => 0,
+                'section_type' => 99,
+                'title' => $banner['bannerTitle'],
+                'section_file_name' => $fileBaseName,
+                'banner_width' => $banner['bannerWidth'],
+                'banner_height' => $banner['bannerHeight']
+            ];
+            $this->structureTable->insert($structureArray);
+
+            $bannerArray = [];
+            $structure = new Structure;
+            $structureObj = $structure->conditionFindBannerWithSectionFileName($fileBaseName)->getOne();
+            if (is_object($structureObj)) {
+                if (property_exists($structureObj, 'id')) {
+                    $tsStructureId = $structureObj->id;
+                }
+            }
+            foreach ($banner['rows'] as $row) {
+                $bannerArray[] = [
+                    'link_url' => $row['linkUrl'],
+                    'is_tap_on' => $row['isTapOn'],
+                    'image_url' => $row['imageUrl'],
+                    'login_type' => $row['loginType'],
+                    'ts_structure_id' => $tsStructureId
+                ];
+            }
+            app('db')->table(self::BANNER_TABLE)->insert($bannerArray);
+
+        }
+    }
+
     /*
      * convert file json encode SJIS to utf-8
      */
-    function file_get_contents_utf8($fn)
+    function fileGetContentsUtf8($fn)
     {
         $content = file_get_contents($fn);
         return mb_convert_encoding($content, 'UTF-8',
             mb_detect_encoding($content, 'UTF-8, SJIS', true));
     }
 
+    /*
+     * 隠しファイル以外を取得する
+     */
+    private function createFileList($folderPath)
+    {
+        $response = null;
+        $files = scandir($folderPath);
+        foreach ($files as $file) {
+            if (preg_match('/^\./', $file, $matches) > 0) {
+                continue;
+            }
+            $response[] = $file;
+        }
+        return $response;
+    }
 
+    private function getBaseName($file)
+    {
+        return pathinfo($file)['filename'];
+
+    }
 }
