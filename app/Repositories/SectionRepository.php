@@ -257,13 +257,12 @@ class SectionRepository
      */
     private function convertFormatFromRanking($rows)
     {
-        dd($rows);
         foreach ($rows['entry'] as $row) {
             if (empty($row)) {
                 return null;
             }
             $rowUnit = [
-                'saleStartDate' => false,
+                'saleStartDate' => null,
                 'imageUrl' => $row['productImage']['large'],
                 'title' => $row['productTitle'],
                 'code' => $row['productKey'],
