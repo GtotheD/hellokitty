@@ -151,6 +151,7 @@ class SectionRepository
             $period = null;
         }
         $tws = new TWSRepository;
+        $tws->setLimit($this->limit);
         $rows = $tws->ranking($rankingConcentrationCd, $period)->get();
         $response = [
             'hasNext' => null,

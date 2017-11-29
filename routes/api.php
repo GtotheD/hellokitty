@@ -103,6 +103,7 @@ $router->group([
     // レコメンドセクション取得API
     $router->get('section/ranking/{codeType:himo|agg}/{code}[/{period}]', function ($codeType, $code, $period = null) {
         $sectionRepository = new SectionRepository;
+        $sectionRepository->setLimit(20);
         $sectionData = $sectionRepository->ranking($codeType, $code, $period);
         return $sectionData;
     });
