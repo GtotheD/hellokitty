@@ -14,7 +14,7 @@ use App\Repositories\StructureRepository;
 use App\Repositories\TWSRepository;
 use App\Model\Section;
 use App\Model\Structure;
-
+use App\Exceptions\NoContentsException;
 
 class Import extends Command
 {
@@ -155,10 +155,15 @@ class Import extends Command
                     $res = $tws->detail($sectionRow->code)->get()['entry'];
                     $updateValues = [
                         'title' => $res['productName'],
-                        'image_url' => $res['image']['large'],
                         'url_code' => $res['urlCd'],
                         'updated_at' => date('Y-m-d H:i:s')
                     ];
+
+                    if (array_key_exists('image', $res) && array_key_exists('large', $res['image'])) {
+                        if (!empty($res['image']['large'])) {
+                            $updateValues['image_url'] = $res['image']['large'];
+                        }
+                    }
 
                     if ($res['isRental'] == 1) {
                         if (array_key_exists('rentalStartDate', $res)) {
@@ -175,7 +180,6 @@ class Import extends Command
                         $updateValues['supplement'] = $sectionRepository->getOneArtist($res['artistInfo'])['artistName'];
                     } else if (array_key_exists('modelName', $res)) {
                         $updateValues['supplement'] = $res['modelName'];
-
                     }
                     $section->update($sectionRow->id, $updateValues);
                 } catch (NoContentsException $e) {
@@ -243,6 +247,9 @@ class Import extends Command
         $dataBase = json_decode($this->fileGetContentsUtf8($filePath), true);
         $structureData = [];
         foreach ($dataBase['rows'] as $row) {
+
+            if ($row['disp'] == 0) continue;
+
             $structureArray = [
                 'goods_type' => $goodType,
                 'sale_type' => $saleType,
@@ -310,6 +317,7 @@ class Import extends Command
                     }
                     $sectionData = [
                         'code' => $row['jan'],
+                        'image_url' => (array_key_exists('imageUrl', $row) ? $row['imageUrl'] : ""),
                         'display_start_date' => $row['displayStartDate'],
                         'display_end_date' => $row['displayEndDate'],
                         'ts_structure_id' => $tsStructureId,
@@ -341,7 +349,11 @@ class Import extends Command
                         if (is_object($structureObj)) {
                             if (property_exists($structureObj, 'id')) {
                                 $tsStructureId = $structureObj->id;
+                            } else {
+                                continue; // idが存在しない場合紐付けができないのでスキップ
                             }
+                        } else {
+                            continue; // idが存在しない場合紐付けができないのでスキップ
                         }
                         foreach ($dataBanner['rows'] as $row) {
                             $bannerArray[] = [
@@ -373,7 +385,6 @@ class Import extends Command
         foreach ($files as $file) {
             $banner = json_decode($this->fileGetContentsUtf8($folderPath . DIRECTORY_SEPARATOR . $file), true);
             $fileBaseName = $this->getBaseName($file);
-
             $structureArray = [
                 'goods_type' => 0,
                 'sale_type' => 0,
@@ -381,8 +392,8 @@ class Import extends Command
                 'section_type' => 99,
                 'title' => $banner['bannerTitle'],
                 'section_file_name' => $fileBaseName,
-//                'display_start_date' => $banner['displayStartDate'],
-//                'display_end_date' => $banner['displayEndDate'],
+                'display_start_date' => $banner['displayStartDate'],
+                'display_end_date' => $banner['displayEndDate'],
                 'banner_width' => $banner['bannerWidth'],
                 'banner_height' => $banner['bannerHeight'],
                 'created_at' => date('Y-m-d H:i:s')
@@ -395,7 +406,11 @@ class Import extends Command
             if (is_object($structureObj)) {
                 if (property_exists($structureObj, 'id')) {
                     $tsStructureId = $structureObj->id;
+                } else {
+                    continue; // idが存在しない場合紐付けができないのでスキップ
                 }
+            } else {
+                continue; // idが存在しない場合紐付けができないのでスキップ
             }
             foreach ($banner['rows'] as $row) {
                 $bannerArray[] = [
