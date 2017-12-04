@@ -35,15 +35,19 @@ class Section extends Model
                         'goods_type' => $goodsType,
                         'sale_type' => $saleType,
                         'section_file_name' => $sectionFileName
-                    ])
-                    ->where('ts_structures.display_start_date', '<', DB::raw('now()'))
-                    ->where('ts_structures.display_end_date', '>', DB::raw('now()'))
-                    ->orWhere('ts_structures.display_start_date', '=', '0000-00-00 00:00:00')
-                    ->orWhere('ts_structures.display_end_date', '=', '0000-00-00 00:00:00');
+                    ]);
+
             })
+
+            // add inoue
+            ->where('ts_structures.display_start_date', '<', DB::raw('now()'))
+            ->orWhere('ts_structures.display_start_date', '=', '0000-00-00 00:00:00')
+            ->where('ts_structures.display_end_date', '>', DB::raw('now()'))
+            ->orWhere('ts_structures.display_end_date', '=', '0000-00-00 00:00:00')
+
             ->where('ts_sections.display_start_date', '<', DB::raw('now()'))
-            ->where('ts_sections.display_end_date', '>', DB::raw('now()'))
             ->orWhere('ts_sections.display_start_date', '=', '0000-00-00 00:00:00')
+            ->where('ts_sections.display_end_date', '>', DB::raw('now()'))
             ->orWhere('ts_sections.display_end_date', '=', '0000-00-00 00:00:00');
         return $this;
     }
