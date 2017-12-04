@@ -150,20 +150,36 @@ class Import extends Command
         foreach ($sections as $sectionRow) {
             $this->info($sectionRow->id . ' : ' . $sectionRow->code);
             if (!empty($sectionRow->code)) {
-                $res = $tws->detail($sectionRow->code)->get()['entry'];
-                $updateValues = [
-                    'title' => $res['productName'],
-                    'image_url' => $res['image']['large'],
-                    'url_code' => $res['urlCd'],
-                    'sale_start_date' => $res['saleDate'],
-                ];
-                if (array_key_exists('artistInfo', $res)) {
-                    $updateValues['supplement'] = $sectionRepository->getOneArtist($res['artistInfo'])['artistName'];
-                } else if (array_key_exists('modelName', $res)) {
-                    $updateValues['supplement'] = $res['modelName'];
 
+                try {
+                    $res = $tws->detail($sectionRow->code)->get()['entry'];
+                    $updateValues = [
+                        'title' => $res['productName'],
+                        'image_url' => $res['image']['large'],
+                        'url_code' => $res['urlCd'],
+                        'updated_at' => date('Y-m-d H:i:s')
+                    ];
+
+                    if ($res['isRental'] == 1) {
+                        if (array_key_exists('rentalStartDate', $res)) {
+                            $updateValues['rental_start_date'] = $res['rentalStartDate'];
+                        }
+                    }
+                    if ($res['isSell'] == 1) {
+                        if (array_key_exists('saleDate', $res)) {
+                            $updateValues['sale_start_date'] = $res['saleDate'];
+                        }
+                    }
+
+                    if (array_key_exists('artistInfo', $res)) {
+                        $updateValues['supplement'] = $sectionRepository->getOneArtist($res['artistInfo'])['artistName'];
+                    } else if (array_key_exists('modelName', $res)) {
+                        $updateValues['supplement'] = $res['modelName'];
+
+                    }
+                    $section->update($sectionRow->id, $updateValues);
+                } catch (NoContentsException $e) {
                 }
-                $section->update($sectionRow->id, $updateValues);
             }
         }
     }
@@ -296,7 +312,8 @@ class Import extends Command
                         'code' => $row['jan'],
                         'display_start_date' => $row['displayStartDate'],
                         'display_end_date' => $row['displayEndDate'],
-                        'ts_structure_id' => $tsStructureId
+                        'ts_structure_id' => $tsStructureId,
+                        'created_at' => date('Y-m-d H:i:s')
                     ];
                 }
                 $sectionArray[] = $sectionData;
@@ -351,7 +368,7 @@ class Import extends Command
         $files = $this->createFileList($folderPath);
 
         foreach ($files as $file) {
-            $banner = json_decode($this->fileGetContentsUtf8($folderPath.DIRECTORY_SEPARATOR.$file), true);
+            $banner = json_decode($this->fileGetContentsUtf8($folderPath . DIRECTORY_SEPARATOR . $file), true);
             $fileBaseName = $this->getBaseName($file);
             $structureArray = [
                 'goods_type' => 0,
@@ -360,6 +377,8 @@ class Import extends Command
                 'section_type' => 99,
                 'title' => $banner['bannerTitle'],
                 'section_file_name' => $fileBaseName,
+                'display_start_date' => $banner['displayStartDate'],
+                'display_end_date' => $banner['displayEndDate'],
                 'banner_width' => $banner['bannerWidth'],
                 'banner_height' => $banner['bannerHeight']
             ];
