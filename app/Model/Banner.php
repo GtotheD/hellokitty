@@ -51,10 +51,16 @@ class Banner extends Model
                     ->where(function ($query) {
                         $query->where('login_type', self::LOGIN_TYPE_ALL)
                             ->orWhere('login_type', $this->loginType);
-                    })
-                    ->where('ts_structures.display_start_date', '<', DB::raw('now()'))
-                    ->where('ts_structures.display_end_date', '>', DB::raw('now()'));
-            });
+                    });
+            })
+            ->where('ts_structures.display_start_date', '<', DB::raw('now()'))
+            ->orWhere('ts_structures.display_start_date', '=', '0000-00-00 00:00:00')
+            ->where('ts_structures.display_end_date', '>', DB::raw('now()'))
+            ->orWhere('ts_structures.display_end_date', '=', '0000-00-00 00:00:00')
+            ->where('ts_banners.display_start_date', '<', DB::raw('now()'))
+            ->orWhere('ts_banners.display_start_date', '=', '0000-00-00 00:00:00')
+            ->where('ts_banners.display_end_date', '>', DB::raw('now()'))
+            ->orWhere('ts_banners.display_end_date', '=', '0000-00-00 00:00:00');
         return $this;
     }
 
@@ -71,10 +77,16 @@ class Banner extends Model
                     ->where(function ($query) {
                         $query->where('login_type', self::LOGIN_TYPE_ALL)
                             ->orWhere('login_type', $this->loginType);
-                    })
-                    ->where('ts_structures.display_start_date', '<', DB::raw('now()'))
-                    ->where('ts_structures.display_end_date', '>', DB::raw('now()'));
-            });
+                    });
+            })
+            ->where('ts_structures.display_start_date', '<', DB::raw('now()'))
+            ->orWhere('ts_structures.display_start_date', '=', '0000-00-00 00:00:00')
+            ->where('ts_structures.display_end_date', '>', DB::raw('now()'))
+            ->orWhere('ts_structures.display_end_date', '=', '0000-00-00 00:00:00')
+            ->where('ts_banners.display_start_date', '<', DB::raw('now()'))
+            ->orWhere('ts_banners.display_start_date', '=', '0000-00-00 00:00:00')
+            ->where('ts_banners.display_end_date', '>', DB::raw('now()'))
+            ->orWhere('ts_banners.display_end_date', '=', '0000-00-00 00:00:00');
         return $this;
     }
 }
