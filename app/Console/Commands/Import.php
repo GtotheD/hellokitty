@@ -349,6 +349,9 @@ class Import extends Command
                                 'is_tap_on' => $row['isTapOn'],
                                 'image_url' => $row['imageUrl'],
                                 'login_type' => $row['loginType'],
+                                'display_start_date' => $row['displayStartDate'],
+                                'display_end_date' => $row['displayEndDate'],
+                                'created_at' => date('Y-m-d H:i:s'),
                                 'ts_structure_id' => $tsStructureId
                             ];
                         }
@@ -370,6 +373,7 @@ class Import extends Command
         foreach ($files as $file) {
             $banner = json_decode($this->fileGetContentsUtf8($folderPath . DIRECTORY_SEPARATOR . $file), true);
             $fileBaseName = $this->getBaseName($file);
+
             $structureArray = [
                 'goods_type' => 0,
                 'sale_type' => 0,
@@ -377,10 +381,11 @@ class Import extends Command
                 'section_type' => 99,
                 'title' => $banner['bannerTitle'],
                 'section_file_name' => $fileBaseName,
-                'display_start_date' => $banner['displayStartDate'],
-                'display_end_date' => $banner['displayEndDate'],
+//                'display_start_date' => $banner['displayStartDate'],
+//                'display_end_date' => $banner['displayEndDate'],
                 'banner_width' => $banner['bannerWidth'],
-                'banner_height' => $banner['bannerHeight']
+                'banner_height' => $banner['bannerHeight'],
+                'created_at' => date('Y-m-d H:i:s')
             ];
             $this->structureTable->insert($structureArray);
 
@@ -398,6 +403,9 @@ class Import extends Command
                     'is_tap_on' => $row['isTapOn'],
                     'image_url' => $row['imageUrl'],
                     'login_type' => $row['loginType'],
+                    'display_start_date' => $row['displayStartDate'],
+                    'display_end_date' => $row['displayEndDate'],
+                    'created_at' => date('Y-m-d H:i:s'),
                     'ts_structure_id' => $tsStructureId
                 ];
             }
