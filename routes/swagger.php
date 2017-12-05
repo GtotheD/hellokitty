@@ -532,6 +532,12 @@
  *       description="集計期間：実行月からn月前の月頭から月終わりまで",
  *       type="string"
  *     ),
+ *     @SWG\Parameter(
+ *       name="supplementVisible",
+ *       in="query",
+ *       description="出演者・アーティスト・著者・機種等を表示/非表示を切り替える為のフラグ。trueにすると非表示になる。",
+ *       type="boolean"
+ *     ),
  *     @SWG\Response(response=200, description="Success"),
  *     @SWG\Response(response=204, description="Contents not found"),
  *     @SWG\Response(response=401, description="Auth error"),
@@ -560,6 +566,12 @@
  *       description="リリース開始起算日（例：20171022）",
  *       type="string"
  *     ),
+ *     @SWG\Parameter(
+ *       name="supplementVisible",
+ *       in="query",
+ *       description="出演者・アーティスト・著者・機種等を表示/非表示を切り替える為のフラグ。trueにすると非表示になる。",
+ *       type="boolean"
+ *     ),
  *     @SWG\Response(response=200, description="Success"),
  *     @SWG\Response(response=204, description="Contents not found"),
  *     @SWG\Response(response=401, description="Auth error"),
@@ -587,6 +599,12 @@
  *       description="店舗取扱いアイテムコード（221）",
  *       required=true,
  *       type="string"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="supplementVisible",
+ *       in="query",
+ *       description="出演者・アーティスト・著者・機種等を表示/非表示を切り替える為のフラグ。trueにすると非表示になる。",
+ *       type="boolean"
  *     ),
  *     @SWG\Response(response=200, description="Success"),
  *     @SWG\Response(response=204, description="Contents not found"),

@@ -35,6 +35,7 @@ $router->group([
         $structureRepository = new StructureRepository;
         $structureRepository->setLimit($request->input('limit', 10));
         $structureRepository->setOffset($request->input('offset', 0));
+        $structureRepository->setOffset($request->input('offset', 0));
         $structures = $structureRepository->get($goodsType, $saleType);
         if ($structures->getTotalCount() == 0) {
             throw new NoContentsException;
@@ -70,6 +71,10 @@ $router->group([
         $sectionRepository = new SectionRepository;
         $sectionRepository->setLimit($request->input('limit', 10));
         $sectionRepository->setOffset($request->input('offset', 0));
+        if ($goodsType === 'dvd') {
+            $sectionRepository->setSupplementVisible(true);
+        }
+
         $section = $sectionRepository->normal($goodsType, $saleType, $sectionName);
         if ($section->getTotalCount() == 0) {
             throw new NoContentsException;
@@ -101,26 +106,30 @@ $router->group([
     });
 
     // レコメンドセクション取得API
-    $router->get('section/ranking/{codeType:himo|agg}/{code}[/{period}]', function ($codeType, $code, $period = null) {
+    $router->get('section/ranking/{codeType:himo|agg}/{code}[/{period}]', function (Request $request, $codeType, $code, $period = null) {
         $sectionRepository = new SectionRepository;
         $sectionRepository->setLimit(20);
+        $sectionRepository = new SectionRepository;
+        $sectionRepository->setSupplementVisible($request->input('supplementVisible', false));
         $sectionData = $sectionRepository->ranking($codeType, $code, $period);
         return $sectionData;
     });
 
     // レコメンドセクション取得API
-    $router->get('section/release/manual/{tapCategoryId}[/{releaseDateTo}]', function ($tapCategoryId, $releaseDateTo = null) {
+    $router->get('section/release/manual/{tapCategoryId}[/{releaseDateTo}]', function (Request $request, $tapCategoryId, $releaseDateTo = null) {
         if (empty($releaseDateTo)) {
             $releaseDateTo = date('Ymd',strtotime('next sunday'));
         }
         $sectionRepository = new SectionRepository;
+        $sectionRepository->setSupplementVisible($request->input('supplementVisible', false));
         $sectionData = $sectionRepository->releaseManual($tapCategoryId, $releaseDateTo);
         return $sectionData;
     });
 
     // レコメンドセクション取得API
-    $router->get('section/release/auto/{genreId}/{storeProductItemCd}', function ($genreId, $storeProductItemCd) {
+    $router->get('section/release/auto/{genreId}/{storeProductItemCd}', function (Request $request, $genreId, $storeProductItemCd) {
         $sectionRepository = new SectionRepository;
+        $sectionRepository->setSupplementVisible($request->input('supplementVisible', false));
         $sectionData = $sectionRepository->releaseAuto($genreId, $storeProductItemCd);
         return $sectionData;
     });

@@ -129,7 +129,7 @@ class BannerRepository
     {
         $rows = null;
         $this->banner = new Banner;
-        $loginType = $this->loginType === 'true' ? 0 : 1;
+        $loginType = $this->loginType === 'true' ? 1 : 0;
         $this->banner->setLoginType($loginType);
         if ($isFixBanner) {
             $this->banner->conditionSectionFixedBanner($bannerName);
