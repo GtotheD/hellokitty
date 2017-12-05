@@ -27,7 +27,7 @@ class SectionRepository
     protected $totalCount;
     protected $page;
     protected $rows;
-
+    protected $supplementVisible;
 
     public function __construct()
     {
@@ -98,6 +98,22 @@ class SectionRepository
         $this->offset = $offset;
     }
 
+    /**
+     * @param mixed $supplementVisible
+     */
+    public function setSupplementVisible($supplementVisible)
+    {
+        if (!is_bool($supplementVisible)) {
+            if ($supplementVisible === 'true') {
+                $this->supplementVisible = true;
+            } else if ($supplementVisible === 'false') {
+                $this->supplementVisible = false;
+            }
+        } else {
+            $this->supplementVisible = $supplementVisible;
+        }
+    }
+
     public function normal($goodsType, $saleType, $sectionName)
     {
         $rows = null;
@@ -118,11 +134,10 @@ class SectionRepository
                     'saleStartDate' => $this->dateFormat($section->sale_start_date),
                     'imageUrl' => $section->image_url,
                     'title' => $section->title,
-                    'supplement' => $section->supplement, // アーティスト名、著者、機種等
+                    'supplement' => $this->supplementVisible ? '' : $section->supplement, // アーティスト名、著者、機種等
                     'code' => $section->code,
                     'urlCode' => $section->url_code
                 ];
-
         }
         $this->rows = $rows;
         return $this;
@@ -140,7 +155,7 @@ class SectionRepository
             } else {
                 throw new NoContentsException();
             }
-            $title = $genreMap[$genreCode]['HimoBigGenreName'].':'.$genreMap[$genreCode]['HimoMiddleGenreName'];
+            $title = $genreMap[$genreCode]['HimoBigGenreName'] . ':' . $genreMap[$genreCode]['HimoMiddleGenreName'];
         } else {
             $rankingConcentrationCd = $genreCode;
         }
@@ -216,7 +231,7 @@ class SectionRepository
                     'saleStartDate' => $this->dateFormat($row['releaseDate']),
                     'imageUrl' => $row['imageUrl'],
                     'title' => $row['productName'],
-                    'supplement' => $row['cast'], // アーティスト名、著者、機種等
+                    'supplement' => $this->supplementVisible ? '' : $row['cast'], // アーティスト名、著者、機種等
                     'code' => $row['productId'],
                     'urlCode' => $row['urlCd']
                 ];
@@ -235,18 +250,21 @@ class SectionRepository
                 return null;
             }
             $formattedRow = [
-                    'saleStartDate' => $this->dateFormat($row['saleDate']),
-                    'imageUrl' => $row['image']['large'],
-                    'title' => $row['productName'],
-                    'code' => $row['janCd'],
-                    'urlCode' => $row['urlCd']
-                ];
-            if (array_key_exists('artistList', $row) ) {
-                $formattedRow['supplement'] = $row['artistList'][0]['artistName'];
+                'saleStartDate' => $this->dateFormat($row['saleDate']),
+                'imageUrl' => $row['image']['large'],
+                'title' => $row['productName'],
+                'code' => $row['janCd'],
+                'urlCode' => $row['urlCd']
+            ];
+            if (!$this->supplementVisible) {
+                if (array_key_exists('artistList', $row)) {
+                    $formattedRow['supplement'] = $row['artistList'][0]['artistName'];
+                } else {
+                    $formattedRow['supplement'] = null;
+                }
             } else {
                 $formattedRow['supplement'] = null;
             }
-
             $formattedRows[] = $formattedRow;
         }
         return $formattedRows;
@@ -268,12 +286,15 @@ class SectionRepository
                 'code' => $row['productKey'],
                 'urlCode' => $row['urlCd']
             ];
-
             // modelNameがあったゲームなので、ゲーム名を取得するようにする。
-            if (array_key_exists('modelName', $row) ) {
-                $rowUnit['supplement'] = $row['modelName'];
-            } else if (array_key_exists('artistInfoList', $row) ) {
-                $rowUnit['supplement'] = $this->getOneArtist($row['artistInfoList']['artistInfo'])['artistName'];
+            if (!$this->supplementVisible) {
+                if (array_key_exists('modelName', $row)) {
+                    $rowUnit['supplement'] = $row['modelName'];
+                } else if (array_key_exists('artistInfoList', $row)) {
+                    $rowUnit['supplement'] = $this->getOneArtist($row['artistInfoList']['artistInfo'])['artistName'];
+                } else {
+                    $rowUnit['supplement'] = null;
+                }
             } else {
                 $rowUnit['supplement'] = null;
             }
@@ -300,7 +321,7 @@ class SectionRepository
 
     private function dateFormat($date)
     {
-        if (!empty($date) &&$date != '0000-00-00 00:00:00') {
+        if (!empty($date) && $date != '0000-00-00 00:00:00') {
             return date('Y-m-d', strtotime($date));
         } else {
             return null;

@@ -5,7 +5,6 @@ use League\Csv\Reader;
 
 class FixtureRepository
 {
-
     public function getGenreMap()
     {
         $reader = Reader::createFromPath($this->getConfigPath().'/maps.csv', 'r')
