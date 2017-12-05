@@ -35,7 +35,6 @@ $router->group([
         $structureRepository = new StructureRepository;
         $structureRepository->setLimit($request->input('limit', 10));
         $structureRepository->setOffset($request->input('offset', 0));
-        $structureRepository->setOffset($request->input('offset', 0));
         $structures = $structureRepository->get($goodsType, $saleType);
         if ($structures->getTotalCount() == 0) {
             throw new NoContentsException;
