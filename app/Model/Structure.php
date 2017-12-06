@@ -31,6 +31,7 @@ class Structure extends Model
         if ($fileName) {
             $this->dbObject->where('section_file_name', $fileName);
         }
+        $this->dbObject->orderBy('sort', 'asc');
         return $this;
     }
 
