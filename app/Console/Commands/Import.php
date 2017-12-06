@@ -112,7 +112,7 @@ class Import extends Command
         $this->importFixedBanner(env('STRUCTURE_DATA_FOLDER_PATH') . DIRECTORY_SEPARATOR . 'banner');
 
         $this->info('Update Srctions Table Data.');
-        $this->updateSerctionsData();
+        $this->updateSectionsData();
         $this->info('Finish!');
 
     }
@@ -141,7 +141,7 @@ class Import extends Command
         }
     }
 
-    private function updateSerctionsData()
+    private function updateSectionsData()
     {
         $sectionRepository = new SectionRepository;
         $section = new Section;
