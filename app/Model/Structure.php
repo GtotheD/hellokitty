@@ -21,6 +21,8 @@ class Structure extends Model
 
     public function set($goodsType, $saleType, $fileName = null)
     {
+        dd(DB::table($this->table)->select(DB::raw('now()'))->first());
+
         $this->dbObject = DB::table($this->table)
             ->where([
                 'goods_type' => $goodsType,
@@ -31,7 +33,6 @@ class Structure extends Model
         if ($fileName) {
             $this->dbObject->where('section_file_name', $fileName);
         }
-        $this->dbObject->orderBy('sort', 'asc');
         return $this;
     }
 

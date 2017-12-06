@@ -85,7 +85,7 @@ class Import extends Command
     private $root;
 
     private $baseDir;
-    private $storageDir;
+    private $importControlFIle;
 
     /**
      * Create a new command instance.
@@ -99,7 +99,7 @@ class Import extends Command
         $this->bannerTable = app('db')->table(self::BANNER_TABLE);
         $this->root = env('STRUCTURE_DATA_FOLDER_PATH') . DIRECTORY_SEPARATOR . self::CATEGORY_DIR;
         $this->baseDir = env('STRUCTURE_DATA_FOLDER_PATH') . DIRECTORY_SEPARATOR;
-        $this->storageDir = storage_path('app/') . DIRECTORY_SEPARATOR . self::CONTROL_FILE;
+        $this->importControlFIle = storage_path('app/') . DIRECTORY_SEPARATOR . self::CONTROL_FILE;
     }
 
     /**
@@ -112,6 +112,12 @@ class Import extends Command
         $this->info('------------------------------');
         $this->info('Start Json Data Import Command.');
         $this->info('------------------------------');
+
+        $this->info('Check import control file.');
+        if (!file_exists($this->importControlFIle)) {
+            $this->info('Create import control file.');
+            File::put($this->importControlFIle, null);
+        }
 
         // 一覧の作成
         $this->info('Search Target Directory....');
@@ -148,7 +154,11 @@ class Import extends Command
             $explodeFilePath = explode('/', $filePath['relative']);
             if (count($explodeFilePath) === 4) {
                 $this->info('  => ' . $filePath['absolute']);
-                $this->importBaseJson($filePath['goodTypeCode'], $filePath['saleTypeCode'], $filePath['absolute']);
+                $result = $this->importBaseJson($filePath['goodTypeCode'], $filePath['saleTypeCode'], $filePath['absolute']);
+                if (!$result) {
+                    $this->info('     No import');
+
+                }
             }
         }
         // section, bannerをインポートする
@@ -175,9 +185,43 @@ class Import extends Command
             $this->importFixedBanner($filePath['absolute']);
         }
         $this->info('Update Structure Table Data.');
-        $this->updateSectionsData();
+//        $this->updateSectionsData();
         $this->info('Finish!');
 
+    }
+
+    private function checkImportDate($json)
+    {
+        // 日付指定があるか確認
+        if (array_key_exists('importDateTime', $json)) {
+            if ( $json['importDateTime'] < date('Y/m/d H:i:s')) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        // 指定がない場合は取り込む
+        return true;
+    }
+
+    private function createControlFile()
+    {
+
+    }
+//    private function checkTimestamp($goodType, $saleType, $fileName)
+    private function checkTimestamp()
+    {
+        $reader = Reader::createFromPath($this->importControlFIle, 'r');
+        if (count($reader) === 0) {
+            return true;
+        }
+        // 日付指定があるか確認
+//        if (array_key_exists($jsonString, 'importDateTime')) {
+//            if ( $jsonString['importDateTime'] < date('Y-m-d H:i:s')) {
+//
+//            }
+//
+//        }
     }
 
     private function updateSectionsData()
@@ -241,11 +285,12 @@ class Import extends Command
         }
         //base file
         $dataBase = json_decode($this->fileGetContentsUtf8($filePath), true);
+        if(!$this->checkImportDate($dataBase)) {
+            return false;
+        }
         $structureData = [];
         foreach ($dataBase['rows'] as $row) {
-
             if ($row['disp'] == 0) continue;
-
             $structureArray = [
                 'goods_type' => $goodType,
                 'sale_type' => $saleType,
@@ -275,6 +320,7 @@ class Import extends Command
 
             $this->structureTable->insert($structureArray);
         }
+        return true;
     }
 
     private function importSection($goodType, $saleType, $filePath)
@@ -415,4 +461,5 @@ class Import extends Command
     {
         return pathinfo($file)['filename'];
     }
+
 }

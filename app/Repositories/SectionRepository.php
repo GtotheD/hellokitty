@@ -131,7 +131,8 @@ class SectionRepository
         foreach ($sections as $section) {
             $rows[] =
                 [
-                    'saleStartDate' => $this->dateFormat($section->sale_start_date),
+//                    'saleStartDate' => $this->dateFormat($section->sale_start_date),
+                    'saleStartDate' => '', // リリース情報のみの出力するように変更。
                     'imageUrl' => $section->image_url,
                     'title' => $section->title,
                     'supplement' => $this->supplementVisible ? '' : $section->supplement, // アーティスト名、著者、機種等
