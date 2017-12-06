@@ -109,7 +109,7 @@ class Import extends Command
         $this->importBannerFolder($bannerFolder);
 
         $this->info('Import Fixed Banner');
-        $this->importFiexedBanner(env('STRUCTURE_DATA_FOLDER_PATH') . DIRECTORY_SEPARATOR . 'banner');
+        $this->importFixedBanner(env('STRUCTURE_DATA_FOLDER_PATH') . DIRECTORY_SEPARATOR . 'banner');
 
         $this->info('Update Srctions Table Data.');
         $this->updateSerctionsData();
@@ -378,7 +378,7 @@ class Import extends Command
         }
     }
 
-    private function importFiexedBanner($folderPath)
+    private function importFixedBanner($folderPath)
     {
         if (!is_dir($folderPath)) {
             return false;
