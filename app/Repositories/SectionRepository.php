@@ -226,15 +226,29 @@ class SectionRepository
             if (empty($row)) {
                 return null;
             }
-            $formattedRows[] =
+            $formattedRow =
                 [
-                    'saleStartDate' => $this->dateFormat($row['releaseDate']),
                     'imageUrl' => $row['imageUrl'],
                     'title' => $row['productName'],
-                    'supplement' => $this->supplementVisible ? '' : $row['cast'], // アーティスト名、著者、機種等
                     'code' => $row['productId'],
                     'urlCode' => $row['urlCd']
                 ];
+            if (array_key_exists('releaseDate', $row)) {
+                $formattedRow['saleStartDate'] = $this->dateFormat($row['releaseDate']);
+            } else {
+                $formattedRow['saleStartDate'] = null;
+            }
+            if (!$this->supplementVisible) {
+                if (array_key_exists('cast', $row)) {
+                    $formattedRow['supplement'] = $row['cast'];
+                } else if (array_key_exists('model', $row)) {
+                    $formattedRow['supplement'] = $row['model'];
+                }
+            } else {
+                $formattedRow['supplement'] = null;
+            }
+            $formattedRows[] = $formattedRow;
+
         }
         return $formattedRows;
     }

@@ -16,7 +16,7 @@
  *   type="apiKey",
  *   in="header",
  *   name="Authorization",
- *   description="アクセス用Key (Vta6sbfDXqgs)",
+ *   description="アクセス用Key (k8AJR0NxM114Ogdl)",
  * )
  *
  * API全体で共通なクエリパラメータ
