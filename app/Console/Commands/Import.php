@@ -15,6 +15,9 @@ use App\Repositories\TWSRepository;
 use App\Model\Section;
 use App\Model\Structure;
 use App\Exceptions\NoContentsException;
+use Illuminate\Support\Facades\File;
+use League\Csv\Reader;
+use League\Csv\Writer;
 
 class Import extends Command
 {
@@ -45,7 +48,7 @@ class Import extends Command
     /*
      * banner type name
      */
-    const BANNER_TYPE = 'banner';
+    const BANNER_DIR = 'banner';
 
     /*
      * category
@@ -67,6 +70,8 @@ class Import extends Command
      */
     const BANNER_TABLE = 'ts_banners';
 
+    const CONTROL_FILE = 'import_control';
+
     /**
      *  structureRepository
      * @var StructureRepository
@@ -79,6 +84,9 @@ class Import extends Command
 
     private $root;
 
+    private $baseDir;
+    private $storageDir;
+
     /**
      * Create a new command instance.
      **/
@@ -90,6 +98,8 @@ class Import extends Command
         $this->sectionTable = app('db')->table(self::SECTION_TABLE);
         $this->bannerTable = app('db')->table(self::BANNER_TABLE);
         $this->root = env('STRUCTURE_DATA_FOLDER_PATH') . DIRECTORY_SEPARATOR . self::CATEGORY_DIR;
+        $this->baseDir = env('STRUCTURE_DATA_FOLDER_PATH') . DIRECTORY_SEPARATOR;
+        $this->storageDir = storage_path('app/') . DIRECTORY_SEPARATOR . self::CONTROL_FILE;
     }
 
     /**
@@ -99,58 +109,86 @@ class Import extends Command
      */
     public function handle()
     {
-        $this->info('Start Import Command.');
-        $this->info('Execute Import Structure Data from Json Files.');
+        $this->info('------------------------------');
+        $this->info('Start Json Data Import Command.');
+        $this->info('------------------------------');
+
+        // 一覧の作成
+        $this->info('Search Target Directory....');
+        $files = File::allFiles($this->baseDir);
+        foreach ($files as $file) {
+            $timestamp = File::lastModified($file->getPathname());
+            if ($timestamp === false) {
+                $this->info('Can not get timestamp.');
+            }
+            $explodeFilePath = explode('/', $file->getRelativePathname());
+            if ($explodeFilePath[0] === self::BANNER_DIR) {
+                $fileList['banner'][] = [
+                    'relative' => $file->getRelativePathname(),
+                    'absolute' => $file->getPathname(),
+                    'timestamp' => $timestamp
+                ];
+            } else if ($explodeFilePath[0] === self::CATEGORY_DIR) {
+                $fileList['category'][] = [
+                    'relative' => $file->getRelativePathname(),
+                    'absolute' => $file->getPathname(),
+                    'goodTypeCode' => $this->structureRepository->convertGoodsTypeToId($explodeFilePath[1]),
+                    'saleTypeCode' => $this->structureRepository->convertSaleTypeToId($explodeFilePath[2]),
+                    'timestamp' => $timestamp
+                ];
+            }
+        }
         $this->structureTable->truncate();
         $this->sectionTable->truncate();
         $this->bannerTable->truncate();
-        $this->importStructureData();
-        $bannerFolder = $this->root . DIRECTORY_SEPARATOR . self::BANNER_TYPE;
-        $this->importBannerFolder($bannerFolder);
+
+        // 先にbase.jsonのインポートを行う
+        $this->info('Import All Sections base.json');
+        foreach ($fileList['category'] as $filePath) {
+            $explodeFilePath = explode('/', $filePath['relative']);
+            if (count($explodeFilePath) === 4) {
+                $this->info('  => ' . $filePath['absolute']);
+                $this->importBaseJson($filePath['goodTypeCode'], $filePath['saleTypeCode'], $filePath['absolute']);
+            }
+        }
+        // section, bannerをインポートする
+        $this->info('Import Category Directory');
+        foreach ($fileList['category'] as $filePath) {
+            $explodeFilePath = explode('/', $filePath['relative']);
+            // baseの処理
+            if (count($explodeFilePath) === 5) {
+                $this->info('  => ' . $filePath['absolute']);
+                $return = $this->importSection($filePath['goodTypeCode'], $filePath['saleTypeCode'], $filePath['absolute']);
+                if ($return) {
+                    $this->info('Can not Imported This Section.');
+                }
+            } else if ($explodeFilePath[1] == self::BANNER_DIR) {
+                $this->info('  => ' . $filePath['absolute']);
+                $this->importBanner($filePath['absolute']);
+            }
+        }
 
         $this->info('Import Fixed Banner');
-        $this->importFiexedBanner(env('STRUCTURE_DATA_FOLDER_PATH') . DIRECTORY_SEPARATOR . 'banner');
-
-        $this->info('Update Srctions Table Data.');
-        $this->updateSerctionsData();
+        // baseインポート後にsection, bannerをインポートする
+        foreach ($fileList['banner'] as $filePath) {
+            $this->info('  => ' . $filePath['absolute']);
+            $this->importFixedBanner($filePath['absolute']);
+        }
+        $this->info('Update Structure Table Data.');
+        $this->updateSectionsData();
         $this->info('Finish!');
 
     }
 
-    private function importStructureData()
-    {
-
-        //section folder
-        $rootFolder = scandir($this->root);
-
-        if (count($rootFolder) < 1) {
-            return false;
-        }
-        foreach ($rootFolder as $goodType) {
-            if (preg_match('/^\./', $goodType, $matches) > 0) {
-                continue;
-            }
-            $goodType = strtolower($goodType);
-            //scan folder
-            $subDirectory = glob($this->root . DIRECTORY_SEPARATOR . $goodType . DIRECTORY_SEPARATOR . '*', GLOB_ONLYDIR);
-            if (count($subDirectory) > 0) {
-                //check has sub directory rental or sale
-                //case good type
-                $this->importByGoodType($goodType, $this->root);
-            }
-        }
-    }
-
-    private function updateSerctionsData()
+    private function updateSectionsData()
     {
         $sectionRepository = new SectionRepository;
         $section = new Section;
         $sections = $section->conditionNoUrlCode()->get(10000);
         $tws = new TWSRepository;
         foreach ($sections as $sectionRow) {
-            $this->info($sectionRow->id . ' : ' . $sectionRow->code);
+            $this->info('  => ' . $sectionRow->id . ' : ' . $sectionRow->code);
             if (!empty($sectionRow->code)) {
-
                 try {
                     $res = $tws->detail($sectionRow->code)->get()['entry'];
                     $updateValues = [
@@ -183,51 +221,9 @@ class Import extends Command
                     }
                     $section->update($sectionRow->id, $updateValues);
                 } catch (NoContentsException $e) {
+                    $this->info('Skip up date: No Contents');
                 }
             }
-        }
-    }
-
-
-    /**
-     * read data from file in folder By Good Type name
-     * @param $goodType
-     * @param $directory
-     * @return bool
-     */
-    private function importByGoodType($goodType, $directory)
-    {
-        if (!$this->structureRepository->convertGoodsTypeToId($goodType)) {
-            return false;
-        }
-
-        $goodTypePath = $directory . DIRECTORY_SEPARATOR . $goodType;
-        $goodTypeFolder = $this->createFileList($goodTypePath);
-        foreach ($goodTypeFolder as $saleType) {
-            $baseFile = null;
-            $sectionFolder = null;
-            $saleType = strtolower($saleType);
-            if (
-                !$this->structureRepository->convertSaleTypeToId($saleType)
-                || !is_dir($goodTypePath . DIRECTORY_SEPARATOR . $saleType)
-            ) {
-                continue;
-            }
-
-            $baseFile = $goodTypePath . DIRECTORY_SEPARATOR . $saleType . DIRECTORY_SEPARATOR . self::BASE_FILE_NAME;
-            $sectionFolder = $goodTypePath . DIRECTORY_SEPARATOR . $saleType . DIRECTORY_SEPARATOR . self::SECTION_FOLDER_NAME;
-
-            $goodTypeCode = $this->structureRepository->convertGoodsTypeToId($goodType);
-            $saleTypeCode = $this->structureRepository->convertSaleTypeToId($saleType);
-            if (empty($goodType) || empty($saleType)) {
-                $this->info('unmatch Good Type or Sale Type;');
-                $this->info(' Goods type:' . $goodType);
-                $this->info(' Sale type:' . $saleType);
-                $this->info(' Base File Name:' . $baseFile);
-                return false;
-            }
-            $this->importBaseJSON($goodTypeCode, $saleTypeCode, $baseFile);
-            $this->importSectionFolder($goodTypeCode, $saleTypeCode, $sectionFolder);
         }
     }
 
@@ -238,7 +234,7 @@ class Import extends Command
      * @param $filePath
      * @return bool
      */
-    private function importBaseJSON($goodType, $saleType, $filePath)
+    private function importBaseJson($goodType, $saleType, $filePath)
     {
         if (!is_file($filePath)) {
             return false;
@@ -281,158 +277,128 @@ class Import extends Command
         }
     }
 
-    /**
-     * import all file data in section folder to table section
-     * @param $folderPath
-     * @return bool
-     */
-    private function importSectionFolder($goodType, $saleType, $folderPath)
+    private function importSection($goodType, $saleType, $filePath)
     {
-        if (!is_dir($folderPath)) {
+        if (!file_exists($filePath)) {
             return false;
         }
-        //section folder
-        $sectionFiles = $this->createFileList($folderPath);
-        if (count($sectionFiles) < 1) {
-            return false;
-        }
-        foreach ($sectionFiles as $sectionFile) {
-            $sectionFileBaseName = pathinfo($sectionFile)['filename'];
-            $sectionFileRealPath = $folderPath . DIRECTORY_SEPARATOR . $sectionFile;
-            if (!is_file($sectionFileRealPath)) {
-                return false;
-            }
-            $dataSection = json_decode($this->fileGetContentsUtf8($sectionFileRealPath), true);
-            $sectionArray = [];
-            foreach ($dataSection['rows'] as $row) {
-                $sectionData = array();
-                foreach ($row as $field => $value) {
-                    $structure = new Structure;
-                    $structureObj = $structure->condtionFindFilename($goodType, $saleType, $sectionFileBaseName)->getOne();
-                    if (!is_object($structureObj)) {
-                        return false;
-                    }
-                    if (property_exists($structureObj, 'id')) {
-                        $tsStructureId = $structureObj->id;
-                    } else {
-                        return false;
-                    }
-                    $sectionData = [
-                        'code' => $row['jan'],
-                        'image_url' => (array_key_exists('imageUrl', $row) ? $row['imageUrl'] : ""),
-                        'display_start_date' => $row['displayStartDate'],
-                        'display_end_date' => $row['displayEndDate'],
-                        'ts_structure_id' => $tsStructureId,
-                        'created_at' => date('Y-m-d H:i:s'),
-                        'updated_at' => date('Y-m-d H:i:s')
-                    ];
+        $dataSection = json_decode($this->fileGetContentsUtf8($filePath), true);
+        $fileBaseName = $this->getBaseName($filePath);
+        $sectionArray = [];
+        foreach ($dataSection['rows'] as $row) {
+            $sectionData = [];
+            foreach ($row as $field => $value) {
+                $structure = new Structure;
+
+                $structureObj = $structure->condtionFindFilename($goodType, $saleType, $fileBaseName)->getOne();
+                if (!is_object($structureObj)) {
+                    return false;
                 }
-                $sectionArray[] = $sectionData;
-            }
-            $this->sectionTable->insert($sectionArray);
-        }
-    }
-
-    private function importBannerFolder($folderPath)
-    {
-        if (is_dir($folderPath)) {
-
-            //section folder
-            $bannerFiles = $this->createFileList($folderPath);
-
-            if (count($bannerFiles) > 0) {
-                foreach ($bannerFiles as $bannerFile) {
-                    $bannerFileBaseName = pathinfo($bannerFile)['filename'];
-                    $bannerFileRealpath = $folderPath . DIRECTORY_SEPARATOR . $bannerFile;
-                    if (is_file($bannerFileRealpath)) {
-                        $dataBanner = json_decode($this->fileGetContentsUtf8($bannerFileRealpath), true);
-                        $bannerArray = [];
-                        $structure = new Structure;
-                        $structureObj = $structure->conditionFindBannerWithSectionFileName($bannerFileBaseName)->getOne();
-                        if (is_object($structureObj)) {
-                            if (property_exists($structureObj, 'id')) {
-                                $tsStructureId = $structureObj->id;
-                            } else {
-                                continue; // idが存在しない場合紐付けができないのでスキップ
-                            }
-                        } else {
-                            continue; // idが存在しない場合紐付けができないのでスキップ
-                        }
-                        foreach ($dataBanner['rows'] as $row) {
-                            $bannerArray[] = [
-                                'link_url' => $row['linkUrl'],
-                                'is_tap_on' => $row['isTapOn'],
-                                'image_url' => $row['imageUrl'],
-                                'login_type' => $row['loginType'],
-                                'display_start_date' => $row['displayStartDate'],
-                                'display_end_date' => $row['displayEndDate'],
-                                'created_at' => date('Y-m-d H:i:s'),
-                                'updated_at' => date('Y-m-d H:i:s'),
-                                'ts_structure_id' => $tsStructureId
-                            ];
-                        }
-                        app('db')->table(self::BANNER_TABLE)->insert($bannerArray);
-                    }
-                }
-            }
-        }
-    }
-
-    private function importFiexedBanner($folderPath)
-    {
-        if (!is_dir($folderPath)) {
-            return false;
-        }
-        //section folder
-        $files = $this->createFileList($folderPath);
-
-        foreach ($files as $file) {
-            $banner = json_decode($this->fileGetContentsUtf8($folderPath . DIRECTORY_SEPARATOR . $file), true);
-            $fileBaseName = $this->getBaseName($file);
-            $structureArray = [
-                'goods_type' => 0,
-                'sale_type' => 0,
-                'sort' => 0,
-                'section_type' => 99,
-                'title' => $banner['bannerTitle'],
-                'section_file_name' => $fileBaseName,
-                'display_start_date' => $banner['displayStartDate'],
-                'display_end_date' => $banner['displayEndDate'],
-                'banner_width' => $banner['bannerWidth'],
-                'banner_height' => $banner['bannerHeight'],
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s')
-            ];
-            $this->structureTable->insert($structureArray);
-
-            $bannerArray = [];
-            $structure = new Structure;
-            $structureObj = $structure->conditionFindBannerWithSectionFileName($fileBaseName)->getOne();
-            if (is_object($structureObj)) {
                 if (property_exists($structureObj, 'id')) {
                     $tsStructureId = $structureObj->id;
                 } else {
-                    continue; // idが存在しない場合紐付けができないのでスキップ
+                    return false;
                 }
-            } else {
-                continue; // idが存在しない場合紐付けができないのでスキップ
-            }
-            foreach ($banner['rows'] as $row) {
-                $bannerArray[] = [
-                    'link_url' => $row['linkUrl'],
-                    'is_tap_on' => $row['isTapOn'],
-                    'image_url' => $row['imageUrl'],
-                    'login_type' => $row['loginType'],
+                $sectionData = [
+                    'code' => $row['jan'],
+                    'image_url' => (array_key_exists('imageUrl', $row) ? $row['imageUrl'] : ""),
                     'display_start_date' => $row['displayStartDate'],
                     'display_end_date' => $row['displayEndDate'],
+                    'ts_structure_id' => $tsStructureId,
                     'created_at' => date('Y-m-d H:i:s'),
-                    'updated_at' => date('Y-m-d H:i:s'),
-                    'ts_structure_id' => $tsStructureId
+                    'updated_at' => date('Y-m-d H:i:s')
                 ];
             }
-            app('db')->table(self::BANNER_TABLE)->insert($bannerArray);
-
+            $sectionArray[] = $sectionData;
         }
+        $this->sectionTable->insert($sectionArray);
+    }
+
+    private function importBanner($filePath)
+    {
+        if (!file_exists($filePath)) {
+            return false;
+        }
+        $fileBaseName = $this->getBaseName($filePath);
+        $dataBanner = json_decode($this->fileGetContentsUtf8($filePath), true);
+        $bannerArray = [];
+        $structure = new Structure;
+        $structureObj = $structure->conditionFindBannerWithSectionFileName($fileBaseName)->getOne();
+        if (is_object($structureObj)) {
+            if (property_exists($structureObj, 'id')) {
+                $tsStructureId = $structureObj->id;
+            } else {
+                return false; // idが存在しない場合紐付けができないのでスキップ
+            }
+        } else {
+            return false; // idが存在しない場合紐付けができないのでスキップ
+        }
+        foreach ($dataBanner['rows'] as $row) {
+            $bannerArray[] = [
+                'link_url' => $row['linkUrl'],
+                'is_tap_on' => $row['isTapOn'],
+                'image_url' => $row['imageUrl'],
+                'login_type' => $row['loginType'],
+                'display_start_date' => $row['displayStartDate'],
+                'display_end_date' => $row['displayEndDate'],
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+                'ts_structure_id' => $tsStructureId
+            ];
+        }
+        app('db')->table(self::BANNER_TABLE)->insert($bannerArray);
+    }
+
+    private function importFixedBanner($filePath)
+    {
+        if (!file_exists($filePath)) {
+            return false;
+        }
+        $banner = json_decode($this->fileGetContentsUtf8($filePath), true);
+        $fileBaseName = $this->getBaseName($filePath);
+        $structureArray = [
+            'goods_type' => 0,
+            'sale_type' => 0,
+            'sort' => 0,
+            'section_type' => 99,
+            'title' => $banner['bannerTitle'],
+            'section_file_name' => $fileBaseName,
+            'display_start_date' => $banner['displayStartDate'],
+            'display_end_date' => $banner['displayEndDate'],
+            'banner_width' => $banner['bannerWidth'],
+            'banner_height' => $banner['bannerHeight'],
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
+        ];
+        $this->structureTable->insert($structureArray);
+
+        $bannerArray = [];
+        $structure = new Structure;
+        $structureObj = $structure->conditionFindBannerWithSectionFileName($fileBaseName)->getOne();
+        if (is_object($structureObj)) {
+            if (property_exists($structureObj, 'id')) {
+                $tsStructureId = $structureObj->id;
+            } else {
+                return false; // idが存在しない場合紐付けができないのでスキップ
+            }
+        } else {
+            return false; // idが存在しない場合紐付けができないのでスキップ
+        }
+        foreach ($banner['rows'] as $row) {
+            $bannerArray[] = [
+                'link_url' => $row['linkUrl'],
+                'is_tap_on' => $row['isTapOn'],
+                'image_url' => $row['imageUrl'],
+                'login_type' => $row['loginType'],
+                'display_start_date' => $row['displayStartDate'],
+                'display_end_date' => $row['displayEndDate'],
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+                'ts_structure_id' => $tsStructureId
+            ];
+        }
+        app('db')->table(self::BANNER_TABLE)->insert($bannerArray);
+
     }
 
     /*
@@ -445,25 +411,8 @@ class Import extends Command
             mb_detect_encoding($content, 'UTF-8, SJIS', true));
     }
 
-    /*
-     * 隠しファイル以外を取得する
-     */
-    private function createFileList($folderPath)
-    {
-        $response = null;
-        $files = scandir($folderPath);
-        foreach ($files as $file) {
-            if (preg_match('/^\./', $file, $matches) > 0) {
-                continue;
-            }
-            $response[] = $file;
-        }
-        return $response;
-    }
-
     private function getBaseName($file)
     {
         return pathinfo($file)['filename'];
-
     }
 }
