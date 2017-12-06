@@ -185,7 +185,7 @@ class Import extends Command
             $this->importFixedBanner($filePath['absolute']);
         }
         $this->info('Update Structure Table Data.');
-//        $this->updateSectionsData();
+        $this->updateSectionsData();
         $this->info('Finish!');
 
     }
