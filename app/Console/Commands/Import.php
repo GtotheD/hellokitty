@@ -260,7 +260,9 @@ class Import extends Command
                 'title' => $row['title'],
                 'link_url' => $row['linkUrl'],
                 'is_tap_on' => $row['isTapOn'],
-                'api_url' => $row['apiUrl']
+                'api_url' => $row['apiUrl'],
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
             ];
             if (array_key_exists('isRanking', $row)) {
                 $structureArray['is_ranking'] = $row['isRanking'];
@@ -321,7 +323,8 @@ class Import extends Command
                         'display_start_date' => $row['displayStartDate'],
                         'display_end_date' => $row['displayEndDate'],
                         'ts_structure_id' => $tsStructureId,
-                        'created_at' => date('Y-m-d H:i:s')
+                        'created_at' => date('Y-m-d H:i:s'),
+                        'updated_at' => date('Y-m-d H:i:s')
                     ];
                 }
                 $sectionArray[] = $sectionData;
@@ -364,6 +367,7 @@ class Import extends Command
                                 'display_start_date' => $row['displayStartDate'],
                                 'display_end_date' => $row['displayEndDate'],
                                 'created_at' => date('Y-m-d H:i:s'),
+                                'updated_at' => date('Y-m-d H:i:s'),
                                 'ts_structure_id' => $tsStructureId
                             ];
                         }
@@ -396,7 +400,8 @@ class Import extends Command
                 'display_end_date' => $banner['displayEndDate'],
                 'banner_width' => $banner['bannerWidth'],
                 'banner_height' => $banner['bannerHeight'],
-                'created_at' => date('Y-m-d H:i:s')
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
             ];
             $this->structureTable->insert($structureArray);
 
@@ -421,6 +426,7 @@ class Import extends Command
                     'display_start_date' => $row['displayStartDate'],
                     'display_end_date' => $row['displayEndDate'],
                     'created_at' => date('Y-m-d H:i:s'),
+                    'updated_at' => date('Y-m-d H:i:s'),
                     'ts_structure_id' => $tsStructureId
                 ];
             }
