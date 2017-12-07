@@ -58,16 +58,4 @@ class Structure extends Model
             });
         return $this;
     }
-
-    public function count()
-    {
-        return $this->dbObject->count();
-    }
-
-    public function get($limit = 100, $offset = 0)
-    {
-        return $this->dbObject
-            ->skip($offset)->take($limit)
-            ->get();
-    }
 }

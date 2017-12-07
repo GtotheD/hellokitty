@@ -1,1 +1,167 @@
-{"goodsType": "3","saleType": "1","specialTitle": "レンタルBOOK特集","rows": [{"sort":1,"no":1,"productTitle":"鬼灯の冷徹 4 ","jan":"102719087","displayStartDate":"2017/12/01 00:00:00","displayEndDate":"2020/12/31 23:59:59"},{"sort":2,"no":2,"productTitle":"好きって言わせる方法 6","jan":"102719199","displayStartDate":"2017/12/01 00:00:00","displayEndDate":"2020/12/31 23:59:59"},{"sort":3,"no":3,"productTitle":"ＬＩＡＲ　ＧＡＭＥ 14","jan":"102719515","displayStartDate":"2017/12/01 00:00:00","displayEndDate":"2020/12/31 23:59:59"},{"sort":4,"no":4,"productTitle":"虎と狼 6","jan":"102726298","displayStartDate":"2017/12/01 00:00:00","displayEndDate":"2020/12/31 23:59:59"},{"sort":5,"no":5,"productTitle":"今日、恋をはじめます 14","jan":"102721877","displayStartDate":"2017/12/01 00:00:00","displayEndDate":"2020/12/31 23:59:59"},{"sort":6,"no":6,"productTitle":"黒子のバスケ 16","jan":"102727626","displayStartDate":"2017/12/01 00:00:00","displayEndDate":"2020/12/31 23:59:59"},{"sort":7,"no":7,"productTitle":"めだかボックス 14","jan":"102727648","displayStartDate":"2017/12/01 00:00:00","displayEndDate":"2020/12/31 23:59:59"},{"sort":8,"no":8,"productTitle":"バクマン。 17","jan":"102727671","displayStartDate":"2017/12/01 00:00:00","displayEndDate":"2020/12/31 23:59:59"},{"sort":9,"no":9,"productTitle":"ＢＬＥＡＣＨ－ブリーチ－ 54","jan":"102727660","displayStartDate":"2017/12/01 00:00:00","displayEndDate":"2020/12/31 23:59:59"},{"sort":10,"no":10,"productTitle":"幽麗塔 2","jan":"102722081","displayStartDate":"2017/12/01 00:00:00","displayEndDate":"2020/12/31 23:59:59"},{"sort":11,"no":11,"productTitle":"うさぎドロップ　番外編 10","jan":"102731834","displayStartDate":"2017/12/01 00:00:00","displayEndDate":"2020/12/31 23:59:59"},{"sort":12,"no":12,"productTitle":"狼陛下の花嫁 6","jan":"102728234","displayStartDate":"2017/12/01 00:00:00","displayEndDate":"2020/12/31 23:59:59"},{"sort":13,"no":13,"productTitle":"学園ベビーシッターズ 5","jan":"102728245","displayStartDate":"2017/12/01 00:00:00","displayEndDate":"2020/12/31 23:59:59"},{"sort":14,"no":14,"productTitle":"新宿スワン 31","jan":"102727031","displayStartDate":"2017/12/01 00:00:00","displayEndDate":"2020/12/31 23:59:59"},{"sort":15,"no":15,"productTitle":"賭博堕天録カイジ　 8","jan":"102727075","displayStartDate":"2017/12/01 00:00:00","displayEndDate":"2020/12/31 23:59:59"},{"sort":16,"no":16,"productTitle":"ＨＵＮＴＥＲ×ＨＵＮＴＥＲ 30","jan":"102737133","displayStartDate":"2017/12/01 00:00:00","displayEndDate":"2020/12/31 23:59:59"},{"sort":17,"no":17,"productTitle":"進撃の巨人 7","jan":"102736480","displayStartDate":"2017/12/01 00:00:00","displayEndDate":"2020/12/31 23:59:59"},{"sort":18,"no":18,"productTitle":"黒子のバスケ 17","jan":"102737021","displayStartDate":"2017/12/01 00:00:00","displayEndDate":"2020/12/31 23:59:59"},{"sort":19,"no":19,"productTitle":"青の祓魔師－エクソシスト－ 8","jan":"102737054","displayStartDate":"2017/12/01 00:00:00","displayEndDate":"2020/12/31 23:59:59"},{"sort":20,"no":20,"productTitle":"めだかボックス 15","jan":"102737098","displayStartDate":"2017/12/01 00:00:00","displayEndDate":"2020/12/31 23:59:59"}]}
+{
+  "goodsType": "3",
+  "saleType": "1",
+  "specialTitle": "レンタルBOOK特集",
+  "rows": [
+    {
+      "sort": 1,
+      "no": 1,
+      "productTitle": "鬼灯の冷徹 4 ",
+      "jan": "102719087",
+      "displayStartDate": "2017/12/01 00:00:00",
+      "displayEndDate": "2020/12/31 23:59:59"
+    },
+    {
+      "sort": 2,
+      "no": 2,
+      "productTitle": "好きって言わせる方法 6",
+      "jan": "102719199",
+      "displayStartDate": "2017/12/01 00:00:00",
+      "displayEndDate": "2020/12/31 23:59:59"
+    },
+    {
+      "sort": 3,
+      "no": 3,
+      "productTitle": "ＬＩＡＲ　ＧＡＭＥ 14",
+      "jan": "102719515",
+      "displayStartDate": "2017/12/01 00:00:00",
+      "displayEndDate": "2020/12/31 23:59:59"
+    },
+    {
+      "sort": 4,
+      "no": 4,
+      "productTitle": "虎と狼 6",
+      "jan": "102726298",
+      "displayStartDate": "2017/12/01 00:00:00",
+      "displayEndDate": "2020/12/31 23:59:59"
+    },
+    {
+      "sort": 5,
+      "no": 5,
+      "productTitle": "今日、恋をはじめます 14",
+      "jan": "102721877",
+      "displayStartDate": "2017/12/01 00:00:00",
+      "displayEndDate": "2020/12/31 23:59:59"
+    },
+    {
+      "sort": 6,
+      "no": 6,
+      "productTitle": "黒子のバスケ 16",
+      "jan": "102727626",
+      "displayStartDate": "2017/12/01 00:00:00",
+      "displayEndDate": "2020/12/31 23:59:59"
+    },
+    {
+      "sort": 7,
+      "no": 7,
+      "productTitle": "めだかボックス 14",
+      "jan": "102727648",
+      "displayStartDate": "2017/12/01 00:00:00",
+      "displayEndDate": "2020/12/31 23:59:59"
+    },
+    {
+      "sort": 8,
+      "no": 8,
+      "productTitle": "バクマン。 17",
+      "jan": "102727671",
+      "displayStartDate": "2017/12/01 00:00:00",
+      "displayEndDate": "2020/12/31 23:59:59"
+    },
+    {
+      "sort": 9,
+      "no": 9,
+      "productTitle": "ＢＬＥＡＣＨ－ブリーチ－ 54",
+      "jan": "102727660",
+      "displayStartDate": "2017/12/01 00:00:00",
+      "displayEndDate": "2020/12/31 23:59:59"
+    },
+    {
+      "sort": 10,
+      "no": 10,
+      "productTitle": "幽麗塔 2",
+      "jan": "102722081",
+      "displayStartDate": "2017/12/01 00:00:00",
+      "displayEndDate": "2020/12/31 23:59:59"
+    },
+    {
+      "sort": 11,
+      "no": 11,
+      "productTitle": "うさぎドロップ　番外編 10",
+      "jan": "102731834",
+      "displayStartDate": "2017/12/01 00:00:00",
+      "displayEndDate": "2020/12/31 23:59:59"
+    },
+    {
+      "sort": 12,
+      "no": 12,
+      "productTitle": "狼陛下の花嫁 6",
+      "jan": "102728234",
+      "displayStartDate": "2017/12/01 00:00:00",
+      "displayEndDate": "2020/12/31 23:59:59"
+    },
+    {
+      "sort": 13,
+      "no": 13,
+      "productTitle": "学園ベビーシッターズ 5",
+      "jan": "102728245",
+      "displayStartDate": "2017/12/01 00:00:00",
+      "displayEndDate": "2020/12/31 23:59:59"
+    },
+    {
+      "sort": 14,
+      "no": 14,
+      "productTitle": "新宿スワン 31",
+      "jan": "102727031",
+      "displayStartDate": "2017/12/01 00:00:00",
+      "displayEndDate": "2020/12/31 23:59:59"
+    },
+    {
+      "sort": 15,
+      "no": 15,
+      "productTitle": "賭博堕天録カイジ　 8",
+      "jan": "102727075",
+      "displayStartDate": "2017/12/01 00:00:00",
+      "displayEndDate": "2020/12/31 23:59:59"
+    },
+    {
+      "sort": 16,
+      "no": 16,
+      "productTitle": "ＨＵＮＴＥＲ×ＨＵＮＴＥＲ 30",
+      "jan": "102737133",
+      "displayStartDate": "2017/12/01 00:00:00",
+      "displayEndDate": "2020/12/31 23:59:59"
+    },
+    {
+      "sort": 17,
+      "no": 17,
+      "productTitle": "進撃の巨人 7",
+      "jan": "102736480",
+      "displayStartDate": "2017/12/01 00:00:00",
+      "displayEndDate": "2020/12/31 23:59:59"
+    },
+    {
+      "sort": 18,
+      "no": 18,
+      "productTitle": "黒子のバスケ 17",
+      "jan": "102737021",
+      "displayStartDate": "2017/12/01 00:00:00",
+      "displayEndDate": "2020/12/31 23:59:59"
+    },
+    {
+      "sort": 19,
+      "no": 19,
+      "productTitle": "青の祓魔師－エクソシスト－ 8",
+      "jan": "102737054",
+      "displayStartDate": "2017/12/01 00:00:00",
+      "displayEndDate": "2020/12/31 23:59:59"
+    },
+    {
+      "sort": 20,
+      "no": 20,
+      "productTitle": "めだかボックス 15",
+      "jan": "102737098",
+      "displayStartDate": "2017/12/01 00:00:00",
+      "displayEndDate": "2020/12/31 23:59:59"
+    }
+  ]
+}

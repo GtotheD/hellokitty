@@ -114,13 +114,15 @@ class SectionRepository
         }
     }
 
-    public function normal($goodsType, $saleType, $sectionName)
+    public function normal($goodsType, $saleType, $sectionFileName)
     {
         $rows = null;
         $structureRepository = new StructureRepository();
+        $structure = new Structure();
         $goodsType = $structureRepository->convertGoodsTypeToId($goodsType);
         $saleType = $structureRepository->convertSaleTypeToId($saleType);
-        $this->section->conditionSectionFromStructure($goodsType, $saleType, $sectionName);
+        $structureList = $structure->condtionFindFilename($goodsType, $saleType, $sectionFileName)->getOne();
+        $this->section->setConditionByTsStructureId($structureList->id);
         $this->totalCount = $this->section->count();
         $sections = $this->section->get();
         if (count($sections) + $this->offset < $this->totalCount) {
