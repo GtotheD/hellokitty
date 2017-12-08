@@ -49,11 +49,11 @@ class Handler extends ExceptionHandler
         if ($e instanceof HttpException) {
             // 403
             if ($e->getStatusCode() == 403) {
-                return response()->json(['status' => '403']);
+                return response()->json(['status' => '403'], 403);
             }
             // 404
             if ($e->getStatusCode() == 404) {
-                return response()->json(['status' => '404']);
+                return response()->json(['status' => '404'], 404);
             }
 
         } else if ($e instanceof NoContentsException) {

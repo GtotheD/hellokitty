@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateImportControlTable extends Migration
+class AddIsReleaseDateFlagToStructuresTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateImportControlTable extends Migration
      */
     public function up()
     {
-        Schema::create('ts_import_control', function (Blueprint $table) {
-            $table->increments('id');
-            $table->text('file_name');
-            $table->unsignedInteger('unix_timestamp');
-            $table->timestamps();
+        Schema::table('ts_structures', function (Blueprint $table) {
+            $table->unsignedTinyInteger('is_release_date')->after('is_ranking');
         });
     }
 
@@ -28,6 +25,8 @@ class CreateImportControlTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ts_import_control');
+        Schema::table('ts_banners', function (Blueprint $table) {
+            $table->dropColumn([ 'is_release_date']);
+        });
     }
 }

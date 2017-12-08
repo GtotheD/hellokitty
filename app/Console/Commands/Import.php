@@ -17,7 +17,6 @@ use App\Model\Structure;
 use App\Model\ImportControl;
 use App\Exceptions\NoContentsException;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\DB;
 
 class Import extends Command
 {
@@ -141,9 +140,6 @@ class Import extends Command
                     continue;
                 }
             }
-
-        $fileList = $this->createList();
-
             $this->info('------------------------------');
             $this->info('Import sections');
             $this->info('------------------------------');
@@ -154,6 +150,7 @@ class Import extends Command
                 }
                 $tsStructureIds = $this->searchTsStructureId($file['goodTypeCode'], $file['saleTypeCode'],$file['filename']);
                 if (!$tsStructureIds) {
+                    $this->info('     > No import');
                     continue;
                 }
                 // 一度関連のIDのものを全て削除
@@ -161,7 +158,7 @@ class Import extends Command
                 foreach ($tsStructureIds as $tsStructureId) {
                     $result = $this->importSection($file['absolute'], $tsStructureId);
                     if (!$result) {
-                        $this->info('     No import');
+                        $this->info('     > No import');
                         continue;
                     }
                 }
@@ -170,12 +167,12 @@ class Import extends Command
             $this->info('Import Fixed Banner');
             $this->info('------------------------------');
             // baseインポート後にsection, bannerをインポートする
-            foreach ($fileList['banner'] as $filePath) {
-                $this->info('  => ' . $filePath['absolute']);
+            foreach ($fileList['banner'] as $file) {
+                $this->info('  => ' . $file['absolute']);
                 if(!$this->importCheck($file)) {
                     continue;
                 }
-                $this->importFixedBanner($filePath['absolute']);
+                $this->importFixedBanner($file['absolute']);
             }
 
         $this->info('------------------------------');
@@ -263,24 +260,13 @@ class Import extends Command
     {
         // 実行有無の確認
         if (!$this->checkImportDate($file['absolute'])) {
-            $this->info('     > Skip : It is not the execution time.');
             return false;
         }
-        if (!$this->checkTimestamp(
-            $file['goodTypeCode'],
-            $file['saleTypeCode'],
-            $file['filename'],
-            $file['timestamp'])) {
-            $this->info('     > Skip this file.');
+        if (!$this->checkTimestamp($file['relative'], $file['timestamp'])) {
             return false;
         }
         //　実行後はDBのタイムスタンプを更新
-        $this->importControl->upInsertByCondition($file['goodTypeCode'], $file['saleTypeCode'], $file['filename'], $file['timestamp']);
-//        $this->info($goodType);
-//        $this->info($saleType);
-//        $this->info($fileName);
-//        $this->info($timeStamp);
-//        $this->info($result->unix_timestamp);
+        $this->importControl->upInsertByCondition($file['relative'], $file['timestamp']);
 
         $this->info('     > check ok.');
         return true;
@@ -293,8 +279,6 @@ class Import extends Command
 
         // 日付指定があるか確認
         if (array_key_exists('importDateTime', $json)) {
-//            dd(date('Y/m/d H:i:s', strtotime($json['importDateTime'])));
-//            dd(date('Y/m/d H:i:s', strtotime(null)));
             if (date('Y/m/d H:i:s', strtotime($json['importDateTime'])) < date('Y/m/d H:i:s')) {
                 return true;
             } else {
@@ -305,13 +289,30 @@ class Import extends Command
         return true;
     }
 
+    private function checkTimestamp($fileName, $timeStamp)
+    {
+        $this->importControl->setCondtionFindFilename($fileName);
+        $result = $this->importControl->getOne();
+//        $this->info("     > File Name:\t\t".$fileName);
+//        $this->info("     > File Timestamp:\t\t".$timeStamp);
+        if ($this->importControl->count() == 0) {
+            $this->info('     > First execution. Add to Import control table.');
+            return true;
+        }
+//        $this->info("     > Database filename:\t".$result->file_name);
+//        $this->info("     > Database Timestamp:\t".$result->unix_timestamp);
+        if ($timeStamp == $result->unix_timestamp) {
+            $this->info('     > Not changed.');
+            return false;
+        }
+        return true;
+    }
+
     // ファイルをカテゴリ、サブカテゴリ毎から探す。
     // 見つかればファイルパスを返却。
     private function searchSectionFile($goodType, $saleType, $fileName)
     {
-        $path = $this->baseDir .
-            DIRECTORY_SEPARATOR .
-            self::CATEGORY_DIR .
+        $relativePath = self::CATEGORY_DIR .
             DIRECTORY_SEPARATOR .
             $goodType .
             DIRECTORY_SEPARATOR .
@@ -320,44 +321,37 @@ class Import extends Command
             self::SECTION_DIR_NAME.
             DIRECTORY_SEPARATOR .
             $fileName . '.json';
-        if (!is_file($path)) {
+        $absolutePath = $this->baseDir . DIRECTORY_SEPARATOR .$relativePath;
+
+        if (!is_file($absolutePath)) {
             return false;
         }
-        return $path;
+        $timestamp = File::lastModified($absolutePath);
+
+        return [
+            'relative' => $relativePath,
+            'absolute' => $absolutePath,
+            'timestamp' => $timestamp
+        ];
     }
     private function searchBannerFile($fileName)
     {
-        $path = $this->baseDir .
-            DIRECTORY_SEPARATOR .
-            self::CATEGORY_DIR .
+        $relativePath = self::CATEGORY_DIR .
             DIRECTORY_SEPARATOR .
             self::BANNER_DIR .
             DIRECTORY_SEPARATOR .
             $fileName . '.json';
-        if (!is_file($path)) {
+        $absolutePath = $this->baseDir . DIRECTORY_SEPARATOR . $relativePath;
+        if (!is_file($absolutePath)) {
             return false;
         }
-        return $path;
-    }
+        $timestamp = File::lastModified($absolutePath);
 
-    private function checkTimestamp($goodType, $saleType, $fileName, $timeStamp)
-    {
-        $this->importControl->setCondtionFindFilename($goodType, $saleType, $fileName);
-        $result = $this->importControl->getOne();
-        if ($this->importControl->count() == 0) {
-            $this->info('     > First execution.');
-            return true;
-        }
-        if ($timeStamp == $result->unix_timestamp) {
-//            $this->info($goodType);
-//            $this->info($saleType);
-//            $this->info($fileName);
-//            $this->info($timeStamp);
-//            $this->info($result->unix_timestamp);
-            $this->info('     > Not changed at the time of last execution.');
-            return false;
-        }
-        return true;
+        return [
+            'relative' => $relativePath,
+            'absolute' => $absolutePath,
+            'timestamp' => $timestamp
+        ];
     }
 
     private function updateSectionsData()
@@ -477,13 +471,21 @@ class Import extends Command
             if ($row['sectionType'] == 2 && !empty($row['sectionFileName'])) {
                 $this->info('     > Import section: '.$row['sectionFileName']);
                 $filePath = $this->searchSectionFile($file['goodType'], $file['saleType'], $row['sectionFileName']);
-                $this->importSection($filePath, $insertId);
-                $this->importControl->upInsertByCondition($file['goodTypeCode'], $file['saleTypeCode'], $this->getBaseName($filePath).'.json', $file['timestamp']);
+                $checkResult = $this->importCheck($filePath, $filePath['timestamp']);
+                if (!$checkResult) {
+                    continue;
+                }
+                $this->importSection($filePath['absolute'], $insertId);
+//                $this->importControl->upInsertByCondition($filePath['relative'], $file['timestamp']);
             } else if ($row['sectionType'] == 1 && !empty($row['sectionFileName'])) {
                 $this->info('     > Import banner: '.$row['sectionFileName']);
                 $filePath = $this->searchBannerFile($row['sectionFileName']);
-                $this->importBanner($filePath, $insertId);
-                $this->importControl->upInsertByCondition($file['goodTypeCode'], $file['saleTypeCode'], $this->getBaseName($filePath).'.json', $file['timestamp']);
+                $checkResult = $this->importCheck($filePath, $filePath['timestamp']);
+                if (!$checkResult) {
+                    continue;
+                }
+                $this->importBanner($filePath['absolute'], $insertId);
+//                $this->importControl->upInsertByCondition($filePath['relative'], $file['timestamp']);
             }
         }
         return true;
