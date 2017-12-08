@@ -154,13 +154,25 @@ class Import extends Command
                     $this->info('     > No import');
                     continue;
                 }
-                // 一度関連のIDのものを全て削除
-                $this->sectionTable->whereIn('ts_structure_id', $tsStructureIds)->delete();
-                foreach ($tsStructureIds as $tsStructureId) {
-                    $result = $this->importSection($file['absolute'], $tsStructureId);
-                    if (!$result) {
-                        $this->info('     > No import');
-                        continue;
+                if ($file['goodType'] == self::BANNER_DIR) {
+                    // 一度関連のIDのものを全て削除
+                    $this->bannerTable->whereIn('ts_structure_id', $tsStructureIds)->delete();
+                    foreach ($tsStructureIds as $tsStructureId) {
+                        $result = $this->importBanner($file['absolute'], $tsStructureId);
+                        if (!$result) {
+                            $this->info('     > No import');
+                            continue;
+                        }
+                    }
+                } else {
+                    // 一度関連のIDのものを全て削除
+                    $this->sectionTable->whereIn('ts_structure_id', $tsStructureIds)->delete();
+                    foreach ($tsStructureIds as $tsStructureId) {
+                        $result = $this->importSection($file['absolute'], $tsStructureId);
+                        if (!$result) {
+                            $this->info('     > No import');
+                            continue;
+                        }
                     }
                 }
             }
@@ -180,7 +192,7 @@ class Import extends Command
             $this->info('Update Structure Table Data.');
             $this->info('------------------------------');
 
-            $this->updateSectionsData();
+//            $this->updateSectionsData();
         });
 
         $this->commitImportControlInfo();
@@ -240,20 +252,34 @@ class Import extends Command
 
     private function searchTsStructureId($goodType, $saleType, $fileBaseName)
     {
-
         $fileBaseName = str_replace('.json', '', $fileBaseName);
         $structure = new Structure;
-        $structureObj = $structure->condtionFindFilename($goodType, $saleType, $fileBaseName)->get();
-        if (count($structureObj) == 0) {
-            $this->info('     > Not found structure id.');
-            return false;
-        }
-        foreach ($structureObj as $structure) {
-            if (property_exists($structure, 'id')) {
-                $tsStructureId[] = $structure->id;
-            } else {
+        if ($goodType === false) {
+            $structureObj = $structure->conditionFindBannerWithSectionFileName($fileBaseName)->getOne();
+            if (count($structureObj) == 0) {
                 $this->info('     > Not found structure id.');
+                $this->info('     > GoodType: ' . $goodType);
+                $this->info('     > SaleType: ' . $saleType);
+                $this->info('     > FileName: ' . $fileBaseName);
                 return false;
+            }
+            return [$structureObj->id];
+        } else {
+            $structureObj = $structure->condtionFindFilename($goodType, $saleType, $fileBaseName)->get();
+            if (count($structureObj) == 0) {
+                $this->info('     > Not found structure id.');
+                $this->info('     > GoodType: ' . $goodType);
+                $this->info('     > SaleType: ' . $saleType);
+                $this->info('     > FileName: ' . $fileBaseName);
+                return false;
+            }
+            foreach ($structureObj as $structure) {
+                if (property_exists($structure, 'id')) {
+                    $tsStructureId[] = $structure->id;
+                } else {
+                    $this->info('     > Not found structure id.');
+                    return false;
+                }
             }
         }
         return $tsStructureId;
@@ -451,11 +477,10 @@ class Import extends Command
             foreach ($structureList as $structure) {
                 $deleteIds[] = $structure->id;
                 if (($structure->section_type == 2 ||
-                    $structure->section_type == 1) &&
-                    !empty($structure->section_file_name))
-                {
-                    if(array_key_exists($structure->section_file_name, $oldId)) {
-                       continue;
+                        $structure->section_type == 1) &&
+                    !empty($structure->section_file_name)) {
+                    if (array_key_exists($structure->section_file_name, $oldId)) {
+                        continue;
                     }
                     $oldId[$structure->section_file_name] = $structure->id;
                 }
@@ -504,7 +529,7 @@ class Import extends Command
                 $filePath = $this->searchSectionFile($file['goodType'], $file['saleType'], $row['sectionFileName']);
                 $checkResult = $this->importCheck($filePath, $filePath['timestamp']);
                 if (!$checkResult) {
-                    if(count($oldId) != 0) {
+                    if (count($oldId) != 0) {
                         $this->info('     > Update section id from : ' . $oldId[$row['sectionFileName']]);
                         $this->info('     > Update section id to   : ' . $insertId);
                         $updateCount = $this->sectionTable->where('ts_structure_id', $oldId[$row['sectionFileName']])
@@ -519,6 +544,14 @@ class Import extends Command
                 $filePath = $this->searchBannerFile($row['sectionFileName']);
                 $checkResult = $this->importCheck($filePath, $filePath['timestamp']);
                 if (!$checkResult) {
+                    if (count($oldId) != 0) {
+                        $this->info('     > Update section id from : ' . $oldId[$row['sectionFileName']]);
+                        $this->info('     > Update section id to   : ' . $insertId);
+                        $updateCount = $this->bannerTable->where('ts_structure_id', $oldId[$row['sectionFileName']])
+                            ->update(['ts_structure_id' => $insertId]);
+                        $this->info('     > Update count : ' . $updateCount);
+                    }
+                    continue;
                     continue;
                 }
                 $this->importBanner($filePath['absolute'], $insertId);

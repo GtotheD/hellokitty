@@ -78,5 +78,4 @@ class Section extends Model
             ->where('title', '=', '');
         return $this;
     }
-
 }
