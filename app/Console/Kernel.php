@@ -24,6 +24,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        //
+        // インポート処理
+        $schedule->command('import')->withoutOverlapping();
     }
 }

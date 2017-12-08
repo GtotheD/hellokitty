@@ -17,7 +17,6 @@ class AddColumnTsBannerTableDispDate extends Migration
             $table->dateTime('display_start_date')->after('image_url');
             $table->dateTime('display_end_date')->after('display_start_date');
         });
-
     }
 
     /**

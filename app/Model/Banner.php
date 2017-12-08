@@ -60,7 +60,8 @@ class Banner extends Model
             ->where('ts_banners.display_start_date', '<', DB::raw('now()'))
             ->orWhere('ts_banners.display_start_date', '=', '0000-00-00 00:00:00')
             ->where('ts_banners.display_end_date', '>', DB::raw('now()'))
-            ->orWhere('ts_banners.display_end_date', '=', '0000-00-00 00:00:00');
+            ->orWhere('ts_banners.display_end_date', '=', '0000-00-00 00:00:00')
+        ;
         return $this;
     }
 

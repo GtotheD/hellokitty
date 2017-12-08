@@ -114,13 +114,15 @@ class SectionRepository
         }
     }
 
-    public function normal($goodsType, $saleType, $sectionName)
+    public function normal($goodsType, $saleType, $sectionFileName)
     {
         $rows = null;
         $structureRepository = new StructureRepository();
+        $structure = new Structure();
         $goodsType = $structureRepository->convertGoodsTypeToId($goodsType);
         $saleType = $structureRepository->convertSaleTypeToId($saleType);
-        $this->section->conditionSectionFromStructure($goodsType, $saleType, $sectionName);
+        $structureList = $structure->condtionFindFilename($goodsType, $saleType, $sectionFileName)->getOne();
+        $this->section->setConditionByTsStructureId($structureList->id);
         $this->totalCount = $this->section->count();
         $sections = $this->section->get();
         if (count($sections) + $this->offset < $this->totalCount) {
@@ -131,8 +133,8 @@ class SectionRepository
         foreach ($sections as $section) {
             $rows[] =
                 [
-//                    'saleStartDate' => $this->dateFormat($section->sale_start_date),
-                    'saleStartDate' => null, // リリース情報のみの出力するように変更。
+                    // 'saleStartDate' => $this->dateFormat($section->sale_start_date),
+                    'saleStartDate' => $structureList->is_release_date==1 ? $this->dateFormat($section->sale_start_date) : null,
                     'imageUrl' => $section->image_url,
                     'title' => $section->title,
                     'supplement' => $this->supplementVisible ? '' : $section->supplement, // アーティスト名、著者、機種等
