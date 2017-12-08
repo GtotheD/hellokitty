@@ -179,7 +179,7 @@ class Import extends Command
         $this->info('Update Structure Table Data.');
         $this->info('------------------------------');
 
-//            $this->updateSectionsData();
+            $this->updateSectionsData();
 //        });
 
         $this->info('Finish!');
@@ -473,10 +473,10 @@ class Import extends Command
                 $filePath = $this->searchSectionFile($file['goodType'], $file['saleType'], $row['sectionFileName']);
                 $checkResult = $this->importCheck($filePath, $filePath['timestamp']);
                 if (!$checkResult) {
+                    // 取り込みしない場合は、idをアップデートする処理をここに追加
                     continue;
                 }
                 $this->importSection($filePath['absolute'], $insertId);
-//                $this->importControl->upInsertByCondition($filePath['relative'], $file['timestamp']);
             } else if ($row['sectionType'] == 1 && !empty($row['sectionFileName'])) {
                 $this->info('     > Import banner: '.$row['sectionFileName']);
                 $filePath = $this->searchBannerFile($row['sectionFileName']);
@@ -485,7 +485,6 @@ class Import extends Command
                     continue;
                 }
                 $this->importBanner($filePath['absolute'], $insertId);
-//                $this->importControl->upInsertByCondition($filePath['relative'], $file['timestamp']);
             }
         }
         return true;
@@ -498,6 +497,11 @@ class Import extends Command
         }
         $dataSection = json_decode($this->fileGetContentsUtf8($filePath), true);
         $sectionArray = [];
+        // 日付表示フラグを更新する。
+        if (array_key_exists('isReleaseDate', $dataSection)) {
+            $structure = new Structure();
+            $structure->update($tsStructureId, ['is_release_date' => $dataSection['isReleaseDate']]);
+        }
         foreach ($dataSection['rows'] as $row) {
             $sectionArray[] = [
                 'code' => $row['jan'],
