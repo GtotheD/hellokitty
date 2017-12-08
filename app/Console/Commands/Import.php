@@ -192,7 +192,7 @@ class Import extends Command
             $this->info('Update Structure Table Data.');
             $this->info('------------------------------');
 
-//            $this->updateSectionsData();
+            $this->updateSectionsData();
         });
 
         $this->commitImportControlInfo();
