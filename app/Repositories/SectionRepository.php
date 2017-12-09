@@ -131,16 +131,21 @@ class SectionRepository
             $this->hasNext = false;
         }
         foreach ($sections as $section) {
-            $rows[] =
-                [
-                    // 'saleStartDate' => $this->dateFormat($section->sale_start_date),
-                    'saleStartDate' => $structureList->is_release_date==1 ? $this->dateFormat($section->sale_start_date) : null,
-                    'imageUrl' => $section->image_url,
-                    'title' => $section->title,
-                    'supplement' => $this->supplementVisible ? '' : $section->supplement, // アーティスト名、著者、機種等
-                    'code' => $section->code,
-                    'urlCode' => $section->url_code
-                ];
+            $row = [
+                // 'saleStartDate' => $this->dateFormat($section->sale_start_date),
+                'imageUrl' => $section->image_url,
+                'title' => $section->title,
+                'supplement' => $this->supplementVisible ? '' : $section->supplement, // アーティスト名、著者、機種等
+                'code' => $section->code,
+                'urlCode' => $section->url_code
+            ];
+            if ($saleType == $structureRepository::RENTAL) {
+                $row['saleStartDate'] = $structureList->is_release_date == 1 ? $this->dateFormat($section->rental_start_date) : null;
+            } else {
+                $row['saleStartDate'] = $structureList->is_release_date == 1 ? $this->dateFormat($section->sale_start_date) : null;
+            }
+
+            $rows[] = $row;
         }
         $this->rows = $rows;
         return $this;
