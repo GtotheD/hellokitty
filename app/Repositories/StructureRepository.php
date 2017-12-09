@@ -12,13 +12,13 @@ use App\Model\Structure;
  */
 class StructureRepository
 {
-    const DVD = '1';
-    const CD = '2';
-    const BOOK = '3';
-    const GAME = '4';
+    const DVD = 1;
+    const CD = 2;
+    const BOOK = 3;
+    const GAME = 4;
 
-    const RENTAL = '1';
-    const SELL = '2';
+    const RENTAL = 1;
+    const SELL = 2;
 
     protected $structure;
     protected $limit;
