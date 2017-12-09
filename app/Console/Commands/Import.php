@@ -467,6 +467,7 @@ class Import extends Command
         //base file
         $dataBase = json_decode($this->fileGetContentsUtf8($filePath), true);
 
+        $relativeFilename = str_replace($this->baseDir, '', $filePath);
         // 関連するセクションの検索
         $structureList = $this->structureTable->where([
             'goods_type' => $file['goodTypeCode'],
@@ -529,12 +530,14 @@ class Import extends Command
                 $filePath = $this->searchSectionFile($file['goodType'], $file['saleType'], $row['sectionFileName']);
                 $checkResult = $this->importCheck($filePath, $filePath['timestamp']);
                 if (!$checkResult) {
-                    if (count($oldId) != 0) {
+                    if (count($oldId) != 0 && array_key_exists($row['sectionFileName'], $oldId)) {
                         $this->info('     > Update section id from : ' . $oldId[$row['sectionFileName']]);
                         $this->info('     > Update section id to   : ' . $insertId);
                         $updateCount = $this->sectionTable->where('ts_structure_id', $oldId[$row['sectionFileName']])
                             ->update(['ts_structure_id' => $insertId]);
                         $this->info('     > Update count : ' . $updateCount);
+                    } else {
+                        $this->importSection($filePath['absolute'], $insertId);
                     }
                     continue;
                 }
@@ -544,14 +547,15 @@ class Import extends Command
                 $filePath = $this->searchBannerFile($row['sectionFileName']);
                 $checkResult = $this->importCheck($filePath, $filePath['timestamp']);
                 if (!$checkResult) {
-                    if (count($oldId) != 0) {
+                    if (count($oldId) != 0 && array_key_exists($row['sectionFileName'], $oldId)) {
                         $this->info('     > Update section id from : ' . $oldId[$row['sectionFileName']]);
                         $this->info('     > Update section id to   : ' . $insertId);
                         $updateCount = $this->bannerTable->where('ts_structure_id', $oldId[$row['sectionFileName']])
                             ->update(['ts_structure_id' => $insertId]);
                         $this->info('     > Update count : ' . $updateCount);
+                    } else {
+                        $this->importBanner($filePath['absolute'], $insertId);
                     }
-                    continue;
                     continue;
                 }
                 $this->importBanner($filePath['absolute'], $insertId);
