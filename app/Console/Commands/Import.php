@@ -112,9 +112,7 @@ class Import extends Command
     {
         $this->getImportControlInfo();
 
-        $this->info('------------------------------');
-        $this->info('Start Json Data Import Command.');
-        $this->info('------------------------------');
+        $this->infoH1('Start Json Data Import Command.');
 
         $this->info('Check import control file.');
         if (!file_exists($this->importControlFIle)) {
@@ -125,75 +123,67 @@ class Import extends Command
         $this->info('Search Target Directory....');
         $fileList = $this->createList();
 
-        DB::transaction(function () use ($fileList) {
-            // 先にbase.jsonのインポートを行う
-            $this->info('------------------------------');
-            $this->info('Import base.json');
-            $this->info('------------------------------');
-            foreach ($fileList['category']['base'] as $file) {
-                $this->info('  => ' . $file['relative']);
-                if (!$this->importCheck($file)) {
-                    continue;
-                }
-                $result = $this->importBaseJson($file);
-                if (!$result) {
-                    $this->info('     No import');
-                    continue;
-                }
+//        DB::transaction(function () use ($fileList) {
+        // 先にbase.jsonのインポートを行う
+        $this->infoH1('Import base.json');
+        foreach ($fileList['category']['base'] as $file) {
+            $this->infoH2($file['relative']);
+            if (!$this->importCheck($file)) {
+                continue;
             }
-            $this->info('------------------------------');
-            $this->info('Import sections');
-            $this->info('------------------------------');
-            foreach ($fileList['category']['section'] as $file) {
-                $this->info('  => ' . $file['relative']);
-                if (!$this->importCheck($file)) {
-                    continue;
-                }
-                $tsStructureIds = $this->searchTsStructureId($file['goodTypeCode'], $file['saleTypeCode'], $file['filename']);
-                if (!$tsStructureIds) {
-                    $this->info('     > No import');
-                    continue;
-                }
-                if ($file['goodType'] == self::BANNER_DIR) {
-                    // 一度関連のIDのものを全て削除
-                    $this->bannerTable->whereIn('ts_structure_id', $tsStructureIds)->delete();
-                    foreach ($tsStructureIds as $tsStructureId) {
-                        $result = $this->importBanner($file['absolute'], $tsStructureId);
-                        if (!$result) {
-                            $this->info('     > No import');
-                            continue;
-                        }
+            $result = $this->importBaseJson($file);
+            if (!$result) {
+                $this->infoMessage('No import');
+                continue;
+            }
+        }
+        $this->infoH1('Import sections');
+        foreach ($fileList['category']['section'] as $file) {
+            $this->infoH2($file['relative']);
+            if (!$this->importCheck($file)) {
+                continue;
+            }
+            $tsStructureIds = $this->searchTsStructureId($file['goodTypeCode'], $file['saleTypeCode'], $file['filename']);
+            if (!$tsStructureIds) {
+                $this->infoMessage('No import');
+                continue;
+            }
+            if ($file['goodType'] == self::BANNER_DIR) {
+                // 一度関連のIDのものを全て削除
+                $this->bannerTable->whereIn('ts_structure_id', $tsStructureIds)->delete();
+                foreach ($tsStructureIds as $tsStructureId) {
+                    $result = $this->importBanner($file['absolute'], $tsStructureId);
+                    if (!$result) {
+                        $this->infoMessage('No import');
+                        continue;
                     }
-                } else {
-                    // 一度関連のIDのものを全て削除
-                    $this->sectionTable->whereIn('ts_structure_id', $tsStructureIds)->delete();
-                    foreach ($tsStructureIds as $tsStructureId) {
-                        $result = $this->importSection($file['absolute'], $tsStructureId);
-                        if (!$result) {
-                            $this->info('     > No import');
-                            continue;
-                        }
+                }
+            } else {
+                // 一度関連のIDのものを全て削除
+                $this->sectionTable->whereIn('ts_structure_id', $tsStructureIds)->delete();
+                foreach ($tsStructureIds as $tsStructureId) {
+                    $result = $this->importSection($file['absolute'], $tsStructureId);
+                    if (!$result) {
+                        $this->infoMessage('No import');
+                        continue;
                     }
                 }
             }
-            $this->info('------------------------------');
-            $this->info('Import Fixed Banner');
-            $this->info('------------------------------');
-            // baseインポート後にsection, bannerをインポートする
-            foreach ($fileList['banner'] as $file) {
-                $this->info('  => ' . $file['absolute']);
-                if (!$this->importCheck($file)) {
-                    continue;
-                }
-                $this->importFixedBanner($file['absolute']);
+        }
+        $this->infoH1('Import Fixed Banner');
+        // baseインポート後にsection, bannerをインポートする
+        foreach ($fileList['banner'] as $file) {
+            $this->infoH2($file['absolute']);
+            if (!$this->importCheck($file)) {
+                continue;
             }
+            $this->importFixedBanner($file['absolute']);
+        }
 
-            $this->info('------------------------------');
-            $this->info('Update Structure Table Data.');
-            $this->info('------------------------------');
+        $this->infoH1('Update Structure Table Data.');
 
-            $this->updateSectionsData();
-        });
+//            $this->updateSectionsData();
+//        });
 
         $this->commitImportControlInfo();
 
@@ -209,7 +199,7 @@ class Import extends Command
             $timestamp = null;
             $timestamp = File::lastModified($file->getPathname());
             if ($timestamp === false) {
-                $this->info('Can not get timestamp.');
+                $this->infoMessage('Can not get timestamp.');
             }
             $explodeFilePath = explode('/', $file->getRelativePathname());
             if ($explodeFilePath[0] === self::BANNER_DIR) {
@@ -257,27 +247,27 @@ class Import extends Command
         if ($goodType === false) {
             $structureObj = $structure->conditionFindBannerWithSectionFileName($fileBaseName)->getOne();
             if (count($structureObj) == 0) {
-                $this->info('     > Not found structure id.');
-                $this->info('     > GoodType: ' . $goodType);
-                $this->info('     > SaleType: ' . $saleType);
-                $this->info('     > FileName: ' . $fileBaseName);
+                $this->infoMessage('Not found structure id.');
+                $this->infoMessage('GoodType: ' . $goodType);
+                $this->infoMessage('SaleType: ' . $saleType);
+                $this->infoMessage('FileName: ' . $fileBaseName);
                 return false;
             }
             return [$structureObj->id];
         } else {
             $structureObj = $structure->condtionFindFilename($goodType, $saleType, $fileBaseName)->get();
             if (count($structureObj) == 0) {
-                $this->info('     > Not found structure id.');
-                $this->info('     > GoodType: ' . $goodType);
-                $this->info('     > SaleType: ' . $saleType);
-                $this->info('     > FileName: ' . $fileBaseName);
+                $this->infoMessage('Not found structure id.');
+                $this->infoMessage('GoodType: ' . $goodType);
+                $this->infoMessage('SaleType: ' . $saleType);
+                $this->infoMessage('FileName: ' . $fileBaseName);
                 return false;
             }
             foreach ($structureObj as $structure) {
                 if (property_exists($structure, 'id')) {
                     $tsStructureId[] = $structure->id;
                 } else {
-                    $this->info('     > Not found structure id.');
+                    $this->infoMessage('Not found structure id.');
                     return false;
                 }
             }
@@ -299,7 +289,7 @@ class Import extends Command
         $this->importControl[$file['relative']] = $file['timestamp'];
 
 
-        $this->info('     > check ok.');
+        $this->infoMessage('check ok.');
         return true;
     }
 
@@ -307,7 +297,6 @@ class Import extends Command
     {
         //base file
         $json = json_decode($this->fileGetContentsUtf8($filePath), true);
-
         // 日付指定があるか確認
         if (array_key_exists('importDateTime', $json)) {
             if (date('Y/m/d H:i:s', strtotime($json['importDateTime'])) < date('Y/m/d H:i:s')) {
@@ -322,16 +311,14 @@ class Import extends Command
 
     private function checkTimestamp($fileName, $timeStamp)
     {
-//        $this->info("     > File Name:\t\t".$fileName);
-//        $this->info("     > File Timestamp:\t\t".$timeStamp);
+        $this->infoMessage("File Name:\t\t" . $fileName . "  [Timestamp:" . $timeStamp.']');
         if (count($this->importControl) == 0 || !array_key_exists($fileName, $this->importControl)) {
-            $this->info('     > First execution. Add to Import control table.');
+            $this->infoMessage('First execution. Add to Import control table.');
             return true;
         }
-//        $this->info("     > Database filename:\t".$result->file_name);
-//        $this->info("     > Database Timestamp:\t".$result->unix_timestamp);
-        if ($timeStamp == $this->importControl[$fileName]) {
-            $this->info('     > Not changed.');
+        $this->infoMessage("Database filename:\t" . $fileName . "  [Timestamp:" . $this->importControl[$fileName].']');
+        if ($timeStamp <= $this->importControl[$fileName]) {
+            $this->infoMessage('File not changed.');
             return false;
         }
         return true;
@@ -411,7 +398,7 @@ class Import extends Command
         $sections = $section->conditionNoUrlCode()->get(10000);
         $tws = new TWSRepository;
         foreach ($sections as $sectionRow) {
-            $this->info('  => ' . $sectionRow->id . ' : ' . $sectionRow->code);
+            $this->infoH2($sectionRow->id . ' : ' . $sectionRow->code);
             if (!empty($sectionRow->code)) {
                 try {
                     $res = $tws->detail($sectionRow->code)->get()['entry'];
@@ -445,7 +432,7 @@ class Import extends Command
                     }
                     $section->update($sectionRow->id, $updateValues);
                 } catch (NoContentsException $e) {
-                    $this->info('Skip up date: No Contents');
+                    $this->infoMessage('Skip up date: No Contents');
                 }
             }
         }
@@ -460,10 +447,13 @@ class Import extends Command
      */
     private function importBaseJson($file)
     {
+        $this->structureTable = app('db')->table(self::STRUCTURE_TALBE);
+
         $filePath = $file['absolute'];
         if (!is_file($filePath)) {
             return false;
         }
+        $dataBase = null;
         //base file
         $dataBase = json_decode($this->fileGetContentsUtf8($filePath), true);
 
@@ -473,6 +463,7 @@ class Import extends Command
             'goods_type' => $file['goodTypeCode'],
             'sale_type' => $file['saleTypeCode']
         ])->get();
+
         $oldId = [];
         if (count($structureList) > 0) {
             foreach ($structureList as $structure) {
@@ -486,13 +477,14 @@ class Import extends Command
                     $oldId[$structure->section_file_name] = $structure->id;
                 }
             }
-            // 削除の実行
-            $this->structureTable->where([
-                'goods_type' => $file['goodTypeCode'],
-                'sale_type' => $file['saleTypeCode']
-            ])->delete();
-//            $this->sectionTable->whereIn('ts_structure_id', $deleteIds)->delete();
         }
+        $this->infoMessage('Delete structure table data > goods_type:' . $file['goodTypeCode'] . ' sale_type:' . $file['saleTypeCode']);
+        // 削除の実行
+        $this->structureTable->where([
+            'goods_type' => $file['goodTypeCode'],
+            'sale_type' => $file['saleTypeCode']
+        ])->delete();
+
         foreach ($dataBase['rows'] as $row) {
             if ($row['disp'] == 0) continue;
             $structureArray = [
@@ -521,21 +513,24 @@ class Import extends Command
             if (array_key_exists('bannerHeight', $row)) {
                 $structureArray['banner_height'] = $row['bannerHeight'];
             }
-
+            $this->infoMessage('Insert structure table data > goods_type:' . $file['goodTypeCode'] .
+                ' sale_type:' . $file['saleTypeCode'] .
+                ' title:' . $row['title']
+            );
             $insertId = $this->structureTable->insertGetId($structureArray);
 
             // 特集セクションの取り込み
             if ($row['sectionType'] == 2 && !empty($row['sectionFileName'])) {
-                $this->info('     > Import section: ' . $row['sectionFileName']);
+                $this->infoMessage('Import section: ' . $row['sectionFileName']);
                 $filePath = $this->searchSectionFile($file['goodType'], $file['saleType'], $row['sectionFileName']);
                 $checkResult = $this->importCheck($filePath, $filePath['timestamp']);
                 if (!$checkResult) {
                     if (count($oldId) != 0 && array_key_exists($row['sectionFileName'], $oldId)) {
-                        $this->info('     > Update section id from : ' . $oldId[$row['sectionFileName']]);
-                        $this->info('     > Update section id to   : ' . $insertId);
+                        $this->infoMessage('Update section id from : ' . $oldId[$row['sectionFileName']]);
+                        $this->infoMessage('Update section id to   : ' . $insertId);
                         $updateCount = $this->sectionTable->where('ts_structure_id', $oldId[$row['sectionFileName']])
                             ->update(['ts_structure_id' => $insertId]);
-                        $this->info('     > Update count : ' . $updateCount);
+                        $this->infoMessage('Update count : ' . $updateCount);
                     } else {
                         $this->importSection($filePath['absolute'], $insertId);
                     }
@@ -543,16 +538,16 @@ class Import extends Command
                 }
                 $this->importSection($filePath['absolute'], $insertId);
             } else if ($row['sectionType'] == 1 && !empty($row['sectionFileName'])) {
-                $this->info('     > Import banner: ' . $row['sectionFileName']);
+                $this->infoMessage('Import banner: ' . $row['sectionFileName']);
                 $filePath = $this->searchBannerFile($row['sectionFileName']);
                 $checkResult = $this->importCheck($filePath, $filePath['timestamp']);
                 if (!$checkResult) {
                     if (count($oldId) != 0 && array_key_exists($row['sectionFileName'], $oldId)) {
-                        $this->info('     > Update section id from : ' . $oldId[$row['sectionFileName']]);
-                        $this->info('     > Update section id to   : ' . $insertId);
+                        $this->ininfoMessagefo('Update section id from : ' . $oldId[$row['sectionFileName']]);
+                        $this->infoMessage('Update section id to   : ' . $insertId);
                         $updateCount = $this->bannerTable->where('ts_structure_id', $oldId[$row['sectionFileName']])
                             ->update(['ts_structure_id' => $insertId]);
-                        $this->info('     > Update count : ' . $updateCount);
+                        $this->infoMessage('Update count : ' . $updateCount);
                     } else {
                         $this->importBanner($filePath['absolute'], $insertId);
                     }
@@ -587,7 +582,7 @@ class Import extends Command
                 'updated_at' => date('Y-m-d H:i:s')
             ];
         }
-        $this->info('     > Import section. tsStructureId: ' . $tsStructureId);
+        $this->infoMessage(' Import section. tsStructureId: ' . $tsStructureId);
         return $this->sectionTable->insert($sectionArray);
     }
 
@@ -610,7 +605,7 @@ class Import extends Command
                 'ts_structure_id' => $tsStructureId
             ];
         }
-        $this->info('     > Import banner. tsStructureId: ' . $tsStructureId);
+        $this->infoMessage('Import banner. tsStructureId: ' . $tsStructureId);
         return $this->bannerTable->insert($bannerArray);
     }
 
@@ -693,4 +688,22 @@ class Import extends Command
         return pathinfo($file)['filename'];
     }
 
+    private function infoH1($string)
+    {
+        $this->info('------------------------------');
+        $this->info($string);
+        $this->info('------------------------------');
+    }
+
+    private function infoH2($string)
+    {
+        $indent = '==> ';
+        $this->info($indent . $string);
+    }
+
+    private function infoMessage($string)
+    {
+        $indent = '     > ';
+        $this->info($indent . $string);
+    }
 }
