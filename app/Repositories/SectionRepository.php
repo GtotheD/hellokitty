@@ -234,6 +234,7 @@ class SectionRepository
             if (empty($row)) {
                 return null;
             }
+            dd($row);
             $formattedRow =
                 [
                     'imageUrl' => $row['imageUrl'],
