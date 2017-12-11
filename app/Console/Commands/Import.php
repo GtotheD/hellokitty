@@ -123,8 +123,8 @@ class Import extends Command
         $this->info('Search Target Directory....');
         $fileList = $this->createList();
 
-//        DB::transaction(function () use ($fileList) {
-        // 先にbase.jsonのインポートを行う
+        DB::transaction(function () use ($fileList) {
+//         先にbase.jsonのインポートを行う
         $this->infoH1('Import base.json');
         foreach ($fileList['category']['base'] as $file) {
             $this->infoH2($file['relative']);
@@ -182,8 +182,8 @@ class Import extends Command
 
         $this->infoH1('Update Structure Table Data.');
 
-//            $this->updateSectionsData();
-//        });
+            $this->updateSectionsData();
+        });
 
         $this->commitImportControlInfo();
 
