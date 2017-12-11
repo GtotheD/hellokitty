@@ -38,29 +38,21 @@ class Banner extends Model
         $this->loginType = $loginType;
     }
 
-    public function conditionSectionBanner($bannerName)
+    public function conditionSectionBanner($tsStructureId)
     {
         $this->dbObject = DB::table(self::TABLE)
-            ->select(['ts_banners.*','banner_width','banner_height'])
-            ->join('ts_structures', function ($join) use ($bannerName) {
-                $join->on('ts_structure_id', '=', 'ts_structures.id')
-                    ->where([
-                        'section_type' => self::NORMAL_BANNER,
-                        'section_file_name' => $bannerName,
-                    ])
-                    ->where(function ($query) {
-                        $query->where('login_type', self::LOGIN_TYPE_ALL)
-                            ->orWhere('login_type', $this->loginType);
-                    });
+            ->select(['ts_banners.*'])
+            ->where('ts_structure_id', $tsStructureId)
+            ->where(function ($query) {
+                $query->where('login_type', self::LOGIN_TYPE_ALL)
+                    ->orWhere('login_type', $this->loginType);
             })
-            ->where('ts_structures.display_start_date', '<', DB::raw('now()'))
-            ->orWhere('ts_structures.display_start_date', '=', '0000-00-00 00:00:00')
-            ->where('ts_structures.display_end_date', '>', DB::raw('now()'))
-            ->orWhere('ts_structures.display_end_date', '=', '0000-00-00 00:00:00')
-            ->where('ts_banners.display_start_date', '<', DB::raw('now()'))
-            ->orWhere('ts_banners.display_start_date', '=', '0000-00-00 00:00:00')
-            ->where('ts_banners.display_end_date', '>', DB::raw('now()'))
-            ->orWhere('ts_banners.display_end_date', '=', '0000-00-00 00:00:00')
+            ->where(function ($query) {
+                $query->where('ts_banners.display_start_date', '<', DB::raw('now()'))
+                    ->orWhere('ts_banners.display_start_date', '=', '0000-00-00 00:00:00')
+                    ->where('ts_banners.display_end_date', '>', DB::raw('now()'))
+                    ->orWhere('ts_banners.display_end_date', '=', '0000-00-00 00:00:00');
+            })
         ;
         return $this;
     }

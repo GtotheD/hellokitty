@@ -35,6 +35,7 @@ class BannerRepository
     public function __construct()
     {
         $this->banner = New Banner;
+        $this->totalCount = 0;
     }
 
     /**
@@ -134,7 +135,12 @@ class BannerRepository
         if ($isFixBanner) {
             $this->banner->conditionSectionFixedBanner($bannerName);
         } else {
-            $this->banner->conditionSectionBanner($bannerName);
+            $structure = new structure();
+            $structures = $structure->setConditionFindBySectionfilenameWithDispTime($bannerName)->getOne();
+            if (count($structures) == 0) {
+                return $this;
+            }
+            $this->banner->conditionSectionBanner($structures->id);
         }
         $this->totalCount = $this->banner->count();
         $banners = $this->banner->get();
@@ -150,9 +156,9 @@ class BannerRepository
                     'isTapOn' => $banner->is_tap_on ? true : false,
                     'linkUrl' => $banner->link_url
                 ];
-            $this->width = $banner->banner_width;
-            $this->height = $banner->banner_height;
         }
+        $this->width = $structures->banner_width;
+        $this->height = $structures->banner_height;
         $this->rows = $rows;
         return $this;
     }
