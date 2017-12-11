@@ -58,4 +58,19 @@ class Structure extends Model
             });
         return $this;
     }
+
+    public function setConditionFindBySectionfilenameWithDispTime($sectionFileName)
+    {
+        $this->dbObject = DB::table($this->table)
+            ->select(['id','banner_width','banner_height'])
+            ->where(['section_file_name' => $sectionFileName])
+            // add inoue
+            ->where('ts_structures.display_start_date', '<', DB::raw('now()'))
+            ->orWhere('ts_structures.display_start_date', '=', '0000-00-00 00:00:00')
+            ->where('ts_structures.display_end_date', '>', DB::raw('now()'))
+            ->orWhere('ts_structures.display_end_date', '=', '0000-00-00 00:00:00')
+            ->groupBy(['id']);
+
+        return $this;
+    }
 }
