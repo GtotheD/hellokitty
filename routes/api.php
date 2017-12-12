@@ -88,7 +88,6 @@ $router->group([
 
     // バナーセクション取得API
     $router->get('section/banner/{sectionName}', function (Request $request, $sectionName) {
-//dd(date('Y-m-d H:i:m:s'));
         $bannerRepository = new BannerRepository;
         $bannerRepository->setLoginType($request->input('isLoggedIn', false));
         $banner = $bannerRepository->banner($sectionName);
