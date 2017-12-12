@@ -276,7 +276,7 @@ class SectionRepository
                 'saleStartDate' => null, // リリース情報のみの出力するように変更。
                 'imageUrl' => $row['image']['large'],
                 'title' => $row['productName'],
-                'code' => $row['janCd'],
+                'code' => $row['productKey'],
                 'urlCode' => $row['urlCd']
             ];
             if (!$this->supplementVisible) {
