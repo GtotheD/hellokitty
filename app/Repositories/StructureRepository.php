@@ -104,7 +104,7 @@ class StructureRepository
     {
         $goodsType = $this->convertGoodsTypeToId($goodsType);
         $saleType = $this->convertSaleTypeToId($saleType);
-        $this->structure->set($goodsType, $saleType);
+        $this->structure->setConditionTypes($goodsType, $saleType);
         $this->totalCount = $this->structure->count();
         $structures = $this->structure->get($this->limit, $this->offset);
         if (count($structures) + $this->offset < $this->totalCount) {

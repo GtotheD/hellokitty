@@ -266,7 +266,7 @@ class Import extends Command
             }
             return [$structureObj->id];
         } else {
-            $structureObj = $structure->condtionFindFilename($goodType, $saleType, $fileBaseName)->get();
+            $structureObj = $structure->conditionFindFilename($goodType, $saleType, $fileBaseName)->get();
             if (count($structureObj) == 0) {
                 $this->infoMessage('Not found structure id.');
                 $this->infoMessage('GoodType: ' . $goodType);
@@ -645,8 +645,8 @@ class Import extends Command
             'goods_type' => 0,
             'sale_type' => 0,
             'section_type' => 99,
-        ])->count();
-        if ($fixedBannerStructureCount == 0) {
+        ])->delete();
+        if ($fixedBannerStructureCount > 0) {
             $structureArray = [
                 'goods_type' => 0,
                 'sale_type' => 0,

@@ -117,14 +117,19 @@ class SectionRepository
     public function normal($goodsType, $saleType, $sectionFileName)
     {
         $rows = null;
+        $sections = [];
         $structureRepository = new StructureRepository();
         $structure = new Structure();
         $goodsType = $structureRepository->convertGoodsTypeToId($goodsType);
         $saleType = $structureRepository->convertSaleTypeToId($saleType);
-        $structureList = $structure->condtionFindFilename($goodsType, $saleType, $sectionFileName)->getOne();
-        $this->section->setConditionByTsStructureId($structureList->id);
-        $this->totalCount = $this->section->count();
-        $sections = $this->section->get();
+        $structureList = $structure->conditionFindFilenameWithDispTime($goodsType, $saleType, $sectionFileName)->getOne();
+        if(count($structureList) == 0) {
+            $this->totalCount = 0;
+        } else {
+            $this->section->setConditionByTsStructureId($structureList->id);
+            $this->totalCount = $this->section->count();
+            $sections = $this->section->get();
+        }
         if (count($sections) + $this->offset < $this->totalCount) {
             $this->hasNext = true;
         } else {
@@ -276,7 +281,8 @@ class SectionRepository
                 'saleStartDate' => null, // リリース情報のみの出力するように変更。
                 'imageUrl' => $row['image']['large'],
                 'title' => $row['productName'],
-                'code' => $row['janCd'],
+//                'code' => $row['janCd'],
+                'code' => $row['productKey'],
                 'urlCode' => $row['urlCd']
             ];
             if (!$this->supplementVisible) {
