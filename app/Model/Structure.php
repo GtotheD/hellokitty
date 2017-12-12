@@ -19,15 +19,17 @@ class Structure extends Model
         parent::__construct(self::TABLE);
     }
 
-    public function set($goodsType, $saleType, $fileName = null)
+    public function setConditionTypes($goodsType, $saleType, $fileName = null)
     {
         $this->dbObject = DB::table($this->table)
             ->where([
                 'goods_type' => $goodsType,
                 'sale_type' => $saleType
             ])
-            ->where('display_start_date', '<', DB::raw('now()'))
-            ->where('display_end_date', '>', DB::raw('now()'));
+            ->whereRaw("(ts_structures.display_start_date <= ". DB::raw('now()') .
+                " or ts_structures.display_start_date = '0000-00-00 00:00:00')" )
+            ->whereRaw("(ts_structures.display_end_date > ". DB::raw('now()') .
+                " or ts_structures.display_end_date = '0000-00-00 00:00:00')" );
         if ($fileName) {
             $this->dbObject->where('section_file_name', $fileName);
         }
@@ -35,13 +37,30 @@ class Structure extends Model
         return $this;
     }
 
-    public function condtionFindFilename($goodsType, $saleType, $fileName)
+    public function conditionFindFilename($goodsType, $saleType, $fileName)
     {
         $this->dbObject = DB::table($this->table)
             ->where([
                 'goods_type' => $goodsType,
                 'sale_type' => $saleType
             ]);
+        if ($fileName) {
+            $this->dbObject->where('section_file_name', $fileName);
+        }
+        return $this;
+    }
+
+    public function conditionFindFilenameWithDispTime($goodsType, $saleType, $fileName)
+    {
+        $this->dbObject = DB::table($this->table)
+            ->where([
+                'goods_type' => $goodsType,
+                'sale_type' => $saleType
+            ])
+            ->whereRaw("(ts_structures.display_start_date <= ". DB::raw('now()') .
+                " or ts_structures.display_start_date = '0000-00-00 00:00:00')" )
+            ->whereRaw("(ts_structures.display_end_date > ". DB::raw('now()') .
+                " or ts_structures.display_end_date = '0000-00-00 00:00:00')" );
         if ($fileName) {
             $this->dbObject->where('section_file_name', $fileName);
         }
@@ -65,11 +84,11 @@ class Structure extends Model
             ->select(['id','banner_width','banner_height'])
             ->where(['section_file_name' => $sectionFileName])
             // add inoue
-            ->where('ts_structures.display_start_date', '<', DB::raw('now()'))
-            ->orWhere('ts_structures.display_start_date', '=', '0000-00-00 00:00:00')
-            ->where('ts_structures.display_end_date', '>', DB::raw('now()'))
-            ->orWhere('ts_structures.display_end_date', '=', '0000-00-00 00:00:00')
-            ->groupBy(['id']);
+            ->whereRaw("(ts_structures.display_start_date <= ". DB::raw('now()') .
+                " or ts_structures.display_start_date = '0000-00-00 00:00:00')" )
+            ->whereRaw("(ts_structures.display_end_date > ". DB::raw('now()') .
+                " or ts_structures.display_end_date = '0000-00-00 00:00:00')" )
+            ->groupBy(['id','banner_width','banner_height']);
 
         return $this;
     }

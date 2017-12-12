@@ -19,7 +19,7 @@ class ImportControl extends Model
         parent::__construct(self::TABLE);
     }
 
-    public function setCondtionFindFilename($fileName)
+    public function setConditionFindFilename($fileName)
     {
         $this->dbObject = DB::table($this->table)
             ->where([
@@ -29,7 +29,7 @@ class ImportControl extends Model
     }
     public function upInsertByCondition($fileName, $timestamp)
     {
-        $this->setCondtionFindFilename($fileName);
+        $this->setConditionFindFilename($fileName);
         if ($this->count() === 0) {
             return DB::table($this->table)
                 ->insert([

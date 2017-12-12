@@ -48,14 +48,14 @@ class Section extends Model
                     ]);
             })
             // add inoue
-            ->where('ts_structures.display_start_date', '<', DB::raw('now()'))
-            ->orWhere('ts_structures.display_start_date', '=', '0000-00-00 00:00:00')
-            ->where('ts_structures.display_end_date', '>', DB::raw('now()'))
-            ->orWhere('ts_structures.display_end_date', '=', '0000-00-00 00:00:00')
-            ->where('ts_sections.display_start_date', '<', DB::raw('now()'))
-            ->orWhere('ts_sections.display_start_date', '=', '0000-00-00 00:00:00')
-            ->where('ts_sections.display_end_date', '>', DB::raw('now()'))
-            ->orWhere('ts_sections.display_end_date', '=', '0000-00-00 00:00:00');
+            ->whereRaw("(ts_structures.display_start_date <= ". DB::raw('now()') .
+                " or ts_structures.display_start_date = '0000-00-00 00:00:00')" )
+            ->whereRaw("(ts_structures.display_end_date > ". DB::raw('now()') .
+                " or ts_structures.display_end_date = '0000-00-00 00:00:00')" )
+            ->whereRaw("(ts_sections.display_start_date <= ". DB::raw('now()') .
+                " or ts_sections.display_start_date = '0000-00-00 00:00:00')" )
+            ->whereRaw("(ts_sections.display_end_date > ". DB::raw('now()') .
+                " or ts_sections.display_end_date = '0000-00-00 00:00:00')" );
         return $this;
     }
 
@@ -65,10 +65,10 @@ class Section extends Model
             ->select(['*'])
             ->where('ts_structure_id', '=' , $tsStructureId)
             // add inoue
-            ->where('ts_sections.display_start_date', '<', DB::raw('now()'))
-            ->orWhere('ts_sections.display_start_date', '=', '0000-00-00 00:00:00')
-            ->where('ts_sections.display_end_date', '>', DB::raw('now()'))
-            ->orWhere('ts_sections.display_end_date', '=', '0000-00-00 00:00:00');
+            ->whereRaw("(display_start_date <= ". DB::raw('now()') .
+                " or display_start_date = '0000-00-00 00:00:00')" )
+            ->whereRaw("(display_end_date > ". DB::raw('now()') .
+                " or display_end_date = '0000-00-00 00:00:00')" );
         return $this;
     }
     public function conditionNoUrlCode()

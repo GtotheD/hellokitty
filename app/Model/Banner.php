@@ -48,7 +48,7 @@ class Banner extends Model
                     ->orWhere('login_type', $this->loginType);
             })
             ->where(function ($query) {
-                $query->whereRaw("(ts_banners.display_start_date < ". DB::raw('now()') .
+                $query->whereRaw("(ts_banners.display_start_date <= ". DB::raw('now()') .
                         " or ts_banners.display_start_date = '0000-00-00 00:00:00')" )
                     ->whereRaw("(ts_banners.display_end_date > ". DB::raw('now()') .
                         " or ts_banners.display_end_date = '0000-00-00 00:00:00')" );
@@ -70,11 +70,11 @@ class Banner extends Model
                         $query->whereRaw("(login_type = ". self::LOGIN_TYPE_ALL . " or login_type = ". $this->loginType . ")");
                     });
             })
-            ->whereRaw("(ts_structures.display_start_date < ". DB::raw('now()') .
+            ->whereRaw("(ts_structures.display_start_date <= ". DB::raw('now()') .
                 " or ts_structures.display_start_date = '0000-00-00 00:00:00')" )
             ->whereRaw("(ts_structures.display_end_date > ". DB::raw('now()') .
                 " or ts_structures.display_end_date = '0000-00-00 00:00:00')" )
-            ->whereRaw("(ts_banners.display_start_date < ". DB::raw('now()') .
+            ->whereRaw("(ts_banners.display_start_date <= ". DB::raw('now()') .
                 " or ts_banners.display_start_date = '0000-00-00 00:00:00')" )
             ->whereRaw("(ts_banners.display_end_date > ". DB::raw('now()') .
                 " or ts_banners.display_end_date = '0000-00-00 00:00:00')" );
