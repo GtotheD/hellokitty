@@ -245,7 +245,6 @@ class Import extends Command
                         array_key_exists(2, $explodeFilePath) &&
                         array_search($explodeFilePath[2], self::SUB_CATEGORY_LIST) === false
                     ) {
-                        $this->info($explodeFilePath[2]);
                         continue;
                     }
                 }
