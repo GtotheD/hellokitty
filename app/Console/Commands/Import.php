@@ -563,7 +563,7 @@ class Import extends Command
                 $checkResult = $this->importCheck($filePath, $filePath['timestamp']);
                 if (!$checkResult) {
                     if (count($oldId) != 0 && array_key_exists($row['sectionFileName'], $oldId)) {
-                        $this->ininfoMessagefo('Update section id from : ' . $oldId[$row['sectionFileName']]);
+                        $this->infoMessage('Update section id from : ' . $oldId[$row['sectionFileName']]);
                         $this->infoMessage('Update section id to   : ' . $insertId);
                         $updateCount = $this->bannerTable->where('ts_structure_id', $oldId[$row['sectionFileName']])
                             ->update(['ts_structure_id' => $insertId]);
