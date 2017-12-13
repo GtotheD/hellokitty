@@ -77,6 +77,8 @@ class Import extends Command
     const BANNER_TABLE = 'ts_banners';
 
     const CONTROL_FILE = 'import_control';
+    const BIG_CATEGORY_LIST = ['dvd', 'book', 'cd', 'game', 'banner'];
+    const SUB_CATEGORY_LIST = ['rental', 'sell'];
 
     /**
      *  structureRepository
@@ -125,10 +127,8 @@ class Import extends Command
             $this->info('Create import control file.');
             File::put($this->importControlFIle, null);
         }
-
         $this->info('Search Target Directory....');
         $fileList = $this->createList();
-
         DB::transaction(function () use ($fileList) {
 //         先にbase.jsonのインポートを行う
             $this->infoH1('Import base.json');
@@ -147,6 +147,7 @@ class Import extends Command
             foreach ($fileList['category']['section'] as $file) {
                 $this->infoH2($file['relative']);
                 if (!$this->importCheck($file)) {
+                    $this->infoMessage('No import');
                     continue;
                 }
                 $tsStructureIds = $this->searchTsStructureId($file['goodTypeCode'], $file['saleTypeCode'], $file['filename']);
@@ -185,16 +186,11 @@ class Import extends Command
                 }
                 $this->importFixedBanner($file['absolute']);
             }
-
             $this->infoH1('Update Structure Table Data.');
-
             $this->updateSectionsData();
         });
-
         $this->commitImportControlInfo();
-
         $this->info('Finish!');
-
     }
 
     private
@@ -232,19 +228,44 @@ class Import extends Command
                     'saleTypeCode' => $saleTypeCode,
                     'timestamp' => $timestamp
                 ];
-            } else if ($explodeFilePath[0] === self::CATEGORY_DIR && $explodeFilePath[2] !== self::SECTION_DIR_NAME) {
-                $goodTypeCode = $this->structureRepository->convertGoodsTypeToId($explodeFilePath[1]);
-                $saleTypeCode = $this->structureRepository->convertSaleTypeToId($explodeFilePath[2]);
-                $fileList['category']['section'][] = [
-                    'relative' => $file->getRelativePathname(),
-                    'absolute' => $file->getPathname(),
-                    'filename' => $file->getFilename(),
-                    'goodType' => $explodeFilePath[1],
-                    'saleType' => $explodeFilePath[2],
-                    'goodTypeCode' => $goodTypeCode,
-                    'saleTypeCode' => $saleTypeCode,
-                    'timestamp' => $timestamp
-                ];
+            } else if ($explodeFilePath[0] === self::CATEGORY_DIR) {
+                if (
+                    array_key_exists(1, $explodeFilePath) &&
+                    array_search($explodeFilePath[1], self::BIG_CATEGORY_LIST) === false
+                ) {
+                    continue;
+                }
+                if (
+                    $explodeFilePath[1] === self::BANNER_DIR &&
+                    preg_match('/.*\.json/', $explodeFilePath[2], $match) === 1
+                ) {
+                    // 特になにもしない
+                } else {
+                    if (
+                        array_key_exists(2, $explodeFilePath) &&
+                        array_search($explodeFilePath[2], self::SUB_CATEGORY_LIST) === false
+                    ) {
+                        $this->info($explodeFilePath[2]);
+                        continue;
+                    }
+                }
+                if (array_key_exists(3, $explodeFilePath) &&
+                    $explodeFilePath[3] === self::SECTION_DIR_NAME
+                    && preg_match('/.*\.json/', $explodeFilePath[4], $match) === 1
+                ) {
+                    $goodTypeCode = $this->structureRepository->convertGoodsTypeToId($explodeFilePath[1]);
+                    $saleTypeCode = $this->structureRepository->convertSaleTypeToId($explodeFilePath[2]);
+                    $fileList['category']['section'][] = [
+                        'relative' => $file->getRelativePathname(),
+                        'absolute' => $file->getPathname(),
+                        'filename' => $file->getFilename(),
+                        'goodType' => $explodeFilePath[1],
+                        'saleType' => $explodeFilePath[2],
+                        'goodTypeCode' => $goodTypeCode,
+                        'saleTypeCode' => $saleTypeCode,
+                        'timestamp' => $timestamp
+                    ];
+                }
             }
         }
         return $fileList;
@@ -291,16 +312,13 @@ class Import extends Command
     {
         // 実行有無の確認
         if (!$this->checkImportDate($file['absolute'])) {
+            $this->infoMessage('not the execution time.');
             return false;
         }
         if (!$this->checkTimestamp($file['relative'], $file['timestamp'])) {
             return false;
         }
-        //　実行後はDBのタイムスタンプを更新
-//        $this->importControl->upInsertByCondition($file['relative'], $file['timestamp']);
         $this->importControl[$file['relative']] = $file['timestamp'];
-
-
         $this->infoMessage('check ok.');
         return true;
     }
