@@ -215,7 +215,10 @@ class Import extends Command
                         'timestamp' => $timestamp
                     ];
                 }
-            } else if ($explodeFilePath[0] === self::CATEGORY_DIR && $file->getFilename() === self::BASE_FILE_NAME) {
+            } else if ($explodeFilePath[0] === self::CATEGORY_DIR &&
+                (array_key_exists(3, $explodeFilePath) &&
+                $explodeFilePath[3] === self::BASE_FILE_NAME)
+            ) {
                 $goodTypeCode = $this->structureRepository->convertGoodsTypeToId($explodeFilePath[1]);
                 $saleTypeCode = $this->structureRepository->convertSaleTypeToId($explodeFilePath[2]);
                 $fileList['category']['base'][] = [
