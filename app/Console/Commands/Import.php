@@ -527,6 +527,7 @@ class Import extends Command
 
         foreach ($dataBase['rows'] as $row) {
             if ($row['disp'] == 0) continue;
+
             $structureArray = [
                 'goods_type' => $file['goodTypeCode'],
                 'sale_type' => $file['saleTypeCode'],
@@ -566,11 +567,15 @@ class Import extends Command
                 $checkResult = $this->importCheck($filePath, $filePath['timestamp']);
                 if (!$checkResult) {
                     if (count($oldId) != 0 && array_key_exists($row['sectionFileName'], $oldId)) {
-                        $this->infoMessage('Update section id from : ' . $oldId[$row['sectionFileName']]);
-                        $this->infoMessage('Update section id to   : ' . $insertId);
-                        $updateCount = $this->sectionTable->where('ts_structure_id', $oldId[$row['sectionFileName']])
+                        $this->infoMessage('Update #section.ts_structure_id from : ' . $oldId[$row['sectionFileName']].' to: ' . $insertId);
+                        $sectionTable = app('db')->table(self::SECTION_TABLE);
+                        $updateCount = $sectionTable->where('ts_structure_id', $oldId[$row['sectionFileName']])
                             ->update(['ts_structure_id' => $insertId]);
                         $this->infoMessage('Update count : ' . $updateCount);
+                        if ($updateCount < 1) {
+                            $this->infoMessage('Error!! Can not update.');
+                            $this->importSection($filePath['absolute'], $insertId);
+                        }
                     } else {
                         $this->importSection($filePath['absolute'], $insertId);
                     }
@@ -583,11 +588,15 @@ class Import extends Command
                 $checkResult = $this->importCheck($filePath, $filePath['timestamp']);
                 if (!$checkResult) {
                     if (count($oldId) != 0 && array_key_exists($row['sectionFileName'], $oldId)) {
-                        $this->infoMessage('Update section id from : ' . $oldId[$row['sectionFileName']]);
-                        $this->infoMessage('Update section id to   : ' . $insertId);
-                        $updateCount = $this->bannerTable->where('ts_structure_id', $oldId[$row['sectionFileName']])
+                        $this->infoMessage('Update #banner.ts_structure_id from : ' . $oldId[$row['sectionFileName']].' to: ' . $insertId);
+                        $bannerTable = app('db')->table(self::BANNER_TABLE);
+                        $updateCount = $bannerTable->where('ts_structure_id', $oldId[$row['sectionFileName']])
                             ->update(['ts_structure_id' => $insertId]);
                         $this->infoMessage('Update count : ' . $updateCount);
+                        if ($updateCount < 1) {
+                            $this->infoMessage('Error!! Can not update.');
+                            $this->importBanner($filePath['absolute'], $insertId);
+                        }
                     } else {
                         $this->importBanner($filePath['absolute'], $insertId);
                     }
