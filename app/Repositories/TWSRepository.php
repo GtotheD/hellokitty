@@ -91,9 +91,9 @@ class TWSRepository extends ApiRequesterRepository
             'lg' => $genreId, // 大ジャンルコード
             'ic' => $this->itemCodeMapping($storeProductItemCd), // アイテム集約コード
             'storeProductItemCd' => $storeProductItemCd, // 店舗取扱いアイテムコード
-            'dfy' => date('Y',strtotime('last Tuesday')),
-            'dfm' => date('m',strtotime('last Tuesday')),
-            'dfd' => date('d',strtotime('last Tuesday')),
+            'dfy' => date('Y',strtotime('-1 month')),
+            'dfm' => date('m',strtotime('-1 month')),
+            'dfd' => date('d',strtotime('-1 month')),
             'dty' => date('Y',strtotime('next sunday')),
             'dtm' => date('m',strtotime('next sunday')),
             'dtd' => date('d',strtotime('next sunday')),
