@@ -103,9 +103,6 @@ class Import extends Command
     {
         parent::__construct();
         $this->structureRepository = new StructureRepository;
-        $this->structureTable = app('db')->table(self::STRUCTURE_TALBE);
-        $this->sectionTable = app('db')->table(self::SECTION_TABLE);
-        $this->bannerTable = app('db')->table(self::BANNER_TABLE);
         $this->root = env('STRUCTURE_DATA_FOLDER_PATH') . DIRECTORY_SEPARATOR . self::CATEGORY_DIR;
         $this->baseDir = env('STRUCTURE_DATA_FOLDER_PATH') . DIRECTORY_SEPARATOR;
         $this->importControlFIle = storage_path('app/') . DIRECTORY_SEPARATOR . self::CONTROL_FILE;
@@ -157,7 +154,8 @@ class Import extends Command
                 }
                 if ($file['goodType'] == self::BANNER_DIR) {
                     // 一度関連のIDのものを全て削除
-                    $this->bannerTable->whereIn('ts_structure_id', $tsStructureIds)->delete();
+                    $bannerTable = DB::table(self::BANNER_TABLE);
+                    $bannerTable->whereIn('ts_structure_id', $tsStructureIds)->delete();
                     foreach ($tsStructureIds as $tsStructureId) {
                         $result = $this->importBanner($file['absolute'], $tsStructureId);
                         if (!$result) {
@@ -167,7 +165,8 @@ class Import extends Command
                     }
                 } else {
                     // 一度関連のIDのものを全て削除
-                    $this->sectionTable->whereIn('ts_structure_id', $tsStructureIds)->delete();
+                    $sectionTable = DB::table(self::SECTION_TABLE);
+                    $sectionTable->whereIn('ts_structure_id', $tsStructureIds)->delete();
                     foreach ($tsStructureIds as $tsStructureId) {
                         $result = $this->importSection($file['absolute'], $tsStructureId);
                         if (!$result) {
@@ -487,7 +486,7 @@ class Import extends Command
     private
     function importBaseJson($file)
     {
-        $this->structureTable = app('db')->table(self::STRUCTURE_TALBE);
+        $structureTable = DB::table(self::STRUCTURE_TALBE);
 
         $filePath = $file['absolute'];
         if (!is_file($filePath)) {
@@ -499,7 +498,7 @@ class Import extends Command
 
         $relativeFilename = str_replace($this->baseDir, '', $filePath);
         // 関連するセクションの検索
-        $structureList = $this->structureTable->where([
+        $structureList = $structureTable->where([
             'goods_type' => $file['goodTypeCode'],
             'sale_type' => $file['saleTypeCode']
         ])->get();
@@ -520,7 +519,7 @@ class Import extends Command
         }
         $this->infoMessage('Delete structure table data > goods_type:' . $file['goodTypeCode'] . ' sale_type:' . $file['saleTypeCode']);
         // 削除の実行
-        $this->structureTable->where([
+        $structureTable->where([
             'goods_type' => $file['goodTypeCode'],
             'sale_type' => $file['saleTypeCode']
         ])->delete();
@@ -558,7 +557,7 @@ class Import extends Command
                 ' sale_type:' . $file['saleTypeCode'] .
                 ' title:' . $row['title']
             );
-            $insertId = $this->structureTable->insertGetId($structureArray);
+            $insertId = $structureTable->insertGetId($structureArray);
 
             // 特集セクションの取り込み
             if ($row['sectionType'] == 2 && !empty($row['sectionFileName'])) {
@@ -568,7 +567,7 @@ class Import extends Command
                 if (!$checkResult) {
                     if (count($oldId) != 0 && array_key_exists($row['sectionFileName'], $oldId)) {
                         $this->infoMessage('Update #section.ts_structure_id from : ' . $oldId[$row['sectionFileName']].' to: ' . $insertId);
-                        $sectionTable = app('db')->table(self::SECTION_TABLE);
+                        $sectionTable = DB::table(self::SECTION_TABLE);
                         $updateCount = $sectionTable->where('ts_structure_id', $oldId[$row['sectionFileName']])
                             ->update(['ts_structure_id' => $insertId]);
                         $this->infoMessage('Update count : ' . $updateCount);
@@ -589,7 +588,7 @@ class Import extends Command
                 if (!$checkResult) {
                     if (count($oldId) != 0 && array_key_exists($row['sectionFileName'], $oldId)) {
                         $this->infoMessage('Update #banner.ts_structure_id from : ' . $oldId[$row['sectionFileName']].' to: ' . $insertId);
-                        $bannerTable = app('db')->table(self::BANNER_TABLE);
+                        $bannerTable = DB::table(self::BANNER_TABLE);
                         $updateCount = $bannerTable->where('ts_structure_id', $oldId[$row['sectionFileName']])
                             ->update(['ts_structure_id' => $insertId]);
                         $this->infoMessage('Update count : ' . $updateCount);
@@ -611,6 +610,7 @@ class Import extends Command
     private
     function importSection($filePath, $tsStructureId)
     {
+        $sectionTable = DB::table(self::SECTION_TABLE);
         if (!file_exists($filePath)) {
             return false;
         }
@@ -633,12 +633,13 @@ class Import extends Command
             ];
         }
         $this->infoMessage(' Import section. tsStructureId: ' . $tsStructureId);
-        return $this->sectionTable->insert($sectionArray);
+        return $sectionTable->insert($sectionArray);
     }
 
     private
     function importBanner($filePath, $tsStructureId)
     {
+        $bannerTable = DB::table(self::BANNER_TABLE);
         if (!file_exists($filePath)) {
             return false;
         }
@@ -657,12 +658,15 @@ class Import extends Command
             ];
         }
         $this->infoMessage('Import banner. tsStructureId: ' . $tsStructureId);
-        return $this->bannerTable->insert($bannerArray);
+        return $bannerTable->insert($bannerArray);
     }
 
     private
     function importFixedBanner($filePath)
     {
+        $structureTable = DB::table(self::SECTION_TABLE);
+        $bannerTable = DB::table(self::BANNER_TABLE);
+
         if (!file_exists($filePath)) {
             return false;
         }
@@ -670,7 +674,7 @@ class Import extends Command
         $fileBaseName = $this->getBaseName($filePath);
 
         // 初回だけ作るため存在した場合は再作成しない。IDは変更されない。
-        $fixedBannerStructureCount = $this->structureTable->where([
+        $fixedBannerStructureCount = $structureTable->where([
             'goods_type' => 0,
             'sale_type' => 0,
             'section_type' => 99,
@@ -690,7 +694,7 @@ class Import extends Command
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ];
-            $this->structureTable->insert($structureArray);
+            $structureTable->insert($structureArray);
         }
 
         $bannerArray = [];
@@ -706,7 +710,7 @@ class Import extends Command
             return false; // idが存在しない場合紐付けができないのでスキップ
         }
         // 削除の実行
-        $this->bannerTable->where(['ts_structure_id' => $tsStructureId])->delete();
+        $bannerTable->where(['ts_structure_id' => $tsStructureId])->delete();
 
         foreach ($banner['rows'] as $row) {
             $bannerArray[] = [
@@ -721,7 +725,7 @@ class Import extends Command
                 'ts_structure_id' => $tsStructureId
             ];
         }
-        app('db')->table(self::BANNER_TABLE)->insert($bannerArray);
+        $bannerTable->insert($bannerArray);
 
     }
 
