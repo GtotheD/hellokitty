@@ -187,8 +187,8 @@ class Import extends Command
             }
             $this->infoH1('Update Structure Table Data.');
             $this->updateSectionsData();
+            $this->commitImportControlInfo();
         });
-        $this->commitImportControlInfo();
         $this->info('Finish!');
     }
 
@@ -239,7 +239,7 @@ class Import extends Command
                 }
                 if (
                     $explodeFilePath[1] === self::BANNER_DIR &&
-                    preg_match('/.*\.json/', $explodeFilePath[2], $match) === 1
+                    preg_match('/.*\.json$/', $explodeFilePath[2], $match) === 1
                 ) {
                     // 特になにもしない
                 } else {
@@ -252,7 +252,7 @@ class Import extends Command
                 }
                 if (array_key_exists(3, $explodeFilePath) &&
                     $explodeFilePath[3] === self::SECTION_DIR_NAME
-                    && preg_match('/.*\.json/', $explodeFilePath[4], $match) === 1
+                    && preg_match('/.*\.json$/', $explodeFilePath[4], $match) === 1
                 ) {
                     $goodTypeCode = $this->structureRepository->convertGoodsTypeToId($explodeFilePath[1]);
                     $saleTypeCode = $this->structureRepository->convertSaleTypeToId($explodeFilePath[2]);
@@ -561,7 +561,7 @@ class Import extends Command
 
             // 特集セクションの取り込み
             if ($row['sectionType'] == 2 && !empty($row['sectionFileName'])) {
-                $this->infoMessage('Import section: ' . $row['sectionFileName']);
+                $this->infoMessage('Begin Import section by base.json [file Name]: ' . $row['sectionFileName']);
                 $filePath = $this->searchSectionFile($file['goodType'], $file['saleType'], $row['sectionFileName']);
                 $checkResult = $this->importCheck($filePath, $filePath['timestamp']);
                 if (!$checkResult) {
@@ -574,6 +574,9 @@ class Import extends Command
                         if ($updateCount < 1) {
                             $this->infoMessage('Error!! Can not update.');
                             $this->importSection($filePath['absolute'], $insertId);
+                        } else {
+                            // リリース日表示フラグだけの更新を行う
+                            $this->importSection($filePath['absolute'], $insertId, true);
                         }
                     } else {
                         $this->importSection($filePath['absolute'], $insertId);
@@ -608,7 +611,7 @@ class Import extends Command
     }
 
     private
-    function importSection($filePath, $tsStructureId)
+    function importSection($filePath, $tsStructureId, $onlyUpdateIsReleaseDate = false)
     {
         $sectionTable = DB::table(self::SECTION_TABLE);
         if (!file_exists($filePath)) {
@@ -621,6 +624,10 @@ class Import extends Command
             $structure = new Structure();
             $structure->update($tsStructureId, ['is_release_date' => $dataSection['isReleaseDate']]);
         }
+        if ($onlyUpdateIsReleaseDate === true) {
+            $this->infoMessage(' Only Update IsReleaseDate Flag. tsStructureId: ' . $tsStructureId);
+            return true;
+        }
         foreach ($dataSection['rows'] as $row) {
             $sectionArray[] = [
                 'code' => $row['jan'],
@@ -632,7 +639,7 @@ class Import extends Command
                 'updated_at' => date('Y-m-d H:i:s')
             ];
         }
-        $this->infoMessage(' Import section. tsStructureId: ' . $tsStructureId);
+        $this->infoMessage('Execute Import section. tsStructureId: ' . $tsStructureId);
         return $sectionTable->insert($sectionArray);
     }
 
@@ -678,8 +685,8 @@ class Import extends Command
             'goods_type' => 0,
             'sale_type' => 0,
             'section_type' => 99,
-        ])->delete();
-        if ($fixedBannerStructureCount > 0) {
+        ])->count();
+        if ($fixedBannerStructureCount == 0) {
             $structureArray = [
                 'goods_type' => 0,
                 'sale_type' => 0,
@@ -694,6 +701,7 @@ class Import extends Command
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ];
+            $this->infoMessage('Insert Fiexd banner.');
             $structureTable->insert($structureArray);
         }
 
