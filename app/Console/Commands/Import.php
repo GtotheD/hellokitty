@@ -239,7 +239,7 @@ class Import extends Command
                 }
                 if (
                     $explodeFilePath[1] === self::BANNER_DIR &&
-                    preg_match('/.*\.json/', $explodeFilePath[2], $match) === 1
+                    preg_match('/.*\.json$/', $explodeFilePath[2], $match) === 1
                 ) {
                     // 特になにもしない
                 } else {
@@ -252,7 +252,7 @@ class Import extends Command
                 }
                 if (array_key_exists(3, $explodeFilePath) &&
                     $explodeFilePath[3] === self::SECTION_DIR_NAME
-                    && preg_match('/.*\.json/', $explodeFilePath[4], $match) === 1
+                    && preg_match('/.*\.json$/', $explodeFilePath[4], $match) === 1
                 ) {
                     $goodTypeCode = $this->structureRepository->convertGoodsTypeToId($explodeFilePath[1]);
                     $saleTypeCode = $this->structureRepository->convertSaleTypeToId($explodeFilePath[2]);
@@ -574,6 +574,9 @@ class Import extends Command
                         if ($updateCount < 1) {
                             $this->infoMessage('Error!! Can not update.');
                             $this->importSection($filePath['absolute'], $insertId);
+                        } else {
+                            // リリース日表示フラグだけの更新を行う
+                            $this->importSection($filePath['absolute'], $insertId, true);
                         }
                     } else {
                         $this->importSection($filePath['absolute'], $insertId);
@@ -608,7 +611,7 @@ class Import extends Command
     }
 
     private
-    function importSection($filePath, $tsStructureId)
+    function importSection($filePath, $tsStructureId, $onlyUpdateIsReleaseDate = false)
     {
         $sectionTable = DB::table(self::SECTION_TABLE);
         if (!file_exists($filePath)) {
@@ -620,6 +623,9 @@ class Import extends Command
         if (array_key_exists('isReleaseDate', $dataSection)) {
             $structure = new Structure();
             $structure->update($tsStructureId, ['is_release_date' => $dataSection['isReleaseDate']]);
+        }
+        if ($onlyUpdateIsReleaseDate === true) {
+            return true;
         }
         foreach ($dataSection['rows'] as $row) {
             $sectionArray[] = [
