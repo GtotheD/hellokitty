@@ -664,7 +664,7 @@ class Import extends Command
     private
     function importFixedBanner($filePath)
     {
-        $structureTable = DB::table(self::SECTION_TABLE);
+        $structureTable = DB::table(self::STRUCTURE_TALBE);
         $bannerTable = DB::table(self::BANNER_TABLE);
 
         if (!file_exists($filePath)) {
