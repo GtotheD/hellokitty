@@ -126,6 +126,7 @@ class Import extends Command
         }
         $this->info('Search Target Directory....');
         $fileList = $this->createList();
+        dd($fileList['banner']);
         DB::transaction(function () use ($fileList) {
 //         先にbase.jsonのインポートを行う
             $this->infoH1('Import base.json');
@@ -206,7 +207,7 @@ class Import extends Command
             }
             $explodeFilePath = explode('/', $file->getRelativePathname());
             if ($explodeFilePath[0] === self::BANNER_DIR) {
-                if ($file->getFilename() == self::FIXED_BANNER_FILE_NAME) {
+                if ($explodeFilePath[1] == self::FIXED_BANNER_FILE_NAME) {
                     $fileList['banner'][] = [
                         'relative' => $file->getRelativePathname(),
                         'absolute' => $file->getPathname(),
