@@ -126,7 +126,7 @@ class Import extends Command
         }
         $this->info('Search Target Directory....');
         $fileList = $this->createList();
-        dd($fileList['banner']);
+//        dd($fileList['category']['section']);
         DB::transaction(function () use ($fileList) {
 //         先にbase.jsonのインポートを行う
             $this->infoH1('Import base.json');
@@ -154,6 +154,7 @@ class Import extends Command
                     continue;
                 }
                 if ($file['goodType'] == self::BANNER_DIR) {
+                    $this->infoMessage('Import Banner....');
                     // 一度関連のIDのものを全て削除
                     $bannerTable = DB::table(self::BANNER_TABLE);
                     $bannerTable->whereIn('ts_structure_id', $tsStructureIds)->delete();
@@ -243,6 +244,16 @@ class Import extends Command
                     preg_match('/.*\.json$/', $explodeFilePath[2], $match) === 1
                 ) {
                     // 特になにもしない
+                    $fileList['category']['section'][] = [
+                        'relative' => $file->getRelativePathname(),
+                        'absolute' => $file->getPathname(),
+                        'filename' => $file->getFilename(),
+                        'goodType' => $explodeFilePath[1],
+                        'saleType' => $explodeFilePath[2],
+                        'goodTypeCode' => 'banner',
+                        'saleTypeCode' => null,
+                        'timestamp' => $timestamp
+                    ];
                 } else {
                     if (
                         array_key_exists(2, $explodeFilePath) &&
@@ -278,7 +289,7 @@ class Import extends Command
     {
         $fileBaseName = str_replace('.json', '', $fileBaseName);
         $structure = new Structure;
-        if ($goodType === false) {
+        if ($goodType === false || $goodType === self::BANNER_DIR) {
             $structureObj = $structure->conditionFindBannerWithSectionFileName($fileBaseName)->getOne();
             if (count($structureObj) == 0) {
                 $this->infoMessage('Not found structure id.');
