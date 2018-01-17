@@ -26,7 +26,7 @@ class Import extends Command
      *
      * @var string
      */
-    protected $signature = 'import';
+    protected $signature = 'import {--test} {--dir=}';
 
     /**
      * The console command description.
@@ -115,6 +115,13 @@ class Import extends Command
      */
     public function handle()
     {
+        $isTest = $this->option('test');
+        $dir = $this->option('dir');
+        if(isset($dir)) {
+            $this->root = $dir . DIRECTORY_SEPARATOR . self::CATEGORY_DIR;
+            $this->baseDir = $dir . DIRECTORY_SEPARATOR;
+        }
+
         $this->getImportControlInfo();
 
         $this->infoH1('Start Json Data Import Command.');
@@ -127,7 +134,7 @@ class Import extends Command
         $this->info('Search Target Directory....');
         $fileList = $this->createList();
 //        dd($fileList['category']['section']);
-        DB::transaction(function () use ($fileList) {
+        DB::transaction(function () use ($fileList, $isTest) {
 //         先にbase.jsonのインポートを行う
             $this->infoH1('Import base.json');
             foreach ($fileList['category']['base'] as $file) {
@@ -188,10 +195,13 @@ class Import extends Command
                 $this->importFixedBanner($file['absolute']);
             }
             $this->infoH1('Update Structure Table Data.');
-            $this->updateSectionsData();
+            if ($isTest === false) {
+                $this->updateSectionsData();
+            }
             $this->commitImportControlInfo();
         });
         $this->info('Finish!');
+        return true;
     }
 
     private

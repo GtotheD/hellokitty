@@ -25,7 +25,7 @@ class AddIsReleaseDateFlagToStructuresTable extends Migration
      */
     public function down()
     {
-        Schema::table('ts_banners', function (Blueprint $table) {
+        Schema::table('ts_structures', function (Blueprint $table) {
             $table->dropColumn([ 'is_release_date']);
         });
     }
