@@ -11,7 +11,7 @@ class TestData
 
     public function __construct()
     {
-        $this->testDir = storage_path('app/test/');
+        $this->testDir = base_path('tests/fixture/');
     }
 
     public function getTestDir()
@@ -73,7 +73,7 @@ class TestData
     {
         Artisan::call('import', [
             '--test' => 'default',
-            '--dir' => 'storage/app/test'
+            '--dir' => $this->testDir
         ]);
         return true;
     }
