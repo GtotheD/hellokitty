@@ -133,7 +133,6 @@ class Import extends Command
         }
         $this->info('Search Target Directory....');
         $fileList = $this->createList();
-//        dd($fileList['category']['section']);
         DB::transaction(function () use ($fileList, $isTest) {
 //         先にbase.jsonのインポートを行う
             $this->infoH1('Import base.json');
@@ -253,7 +252,6 @@ class Import extends Command
                     $explodeFilePath[1] === self::BANNER_DIR &&
                     preg_match('/.*\.json$/', $explodeFilePath[2], $match) === 1
                 ) {
-                    // 特になにもしない
                     $fileList['category']['section'][] = [
                         'relative' => $file->getRelativePathname(),
                         'absolute' => $file->getPathname(),
