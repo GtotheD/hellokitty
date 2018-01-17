@@ -124,7 +124,7 @@ class Import extends Command
 
         $this->getImportControlInfo();
 
-        $this->infoH1('Start Json Data Import Command.');
+        $this->infoH1('Start Json Data Import Command. ['.date('Y/m/d H:i:s').']');
 
         $this->info('Check import control file.');
         if (!file_exists($this->importControlFIle)) {
