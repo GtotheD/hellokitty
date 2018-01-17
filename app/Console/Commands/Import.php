@@ -26,7 +26,7 @@ class Import extends Command
      *
      * @var string
      */
-    protected $signature = 'import';
+    protected $signature = 'import {--test} {--dir=}';
 
     /**
      * The console command description.
@@ -115,9 +115,16 @@ class Import extends Command
      */
     public function handle()
     {
+        $isTest = $this->option('test');
+        $dir = $this->option('dir');
+        if(isset($dir)) {
+            $this->root = $dir . DIRECTORY_SEPARATOR . self::CATEGORY_DIR;
+            $this->baseDir = $dir . DIRECTORY_SEPARATOR;
+        }
+
         $this->getImportControlInfo();
 
-        $this->infoH1('Start Json Data Import Command.');
+        $this->infoH1('Start Json Data Import Command. ['.date('Y/m/d H:i:s').']');
 
         $this->info('Check import control file.');
         if (!file_exists($this->importControlFIle)) {
@@ -126,7 +133,7 @@ class Import extends Command
         }
         $this->info('Search Target Directory....');
         $fileList = $this->createList();
-        DB::transaction(function () use ($fileList) {
+        DB::transaction(function () use ($fileList, $isTest) {
 //         先にbase.jsonのインポートを行う
             $this->infoH1('Import base.json');
             foreach ($fileList['category']['base'] as $file) {
@@ -153,6 +160,7 @@ class Import extends Command
                     continue;
                 }
                 if ($file['goodType'] == self::BANNER_DIR) {
+                    $this->infoMessage('Import Banner....');
                     // 一度関連のIDのものを全て削除
                     $bannerTable = DB::table(self::BANNER_TABLE);
                     $bannerTable->whereIn('ts_structure_id', $tsStructureIds)->delete();
@@ -186,10 +194,13 @@ class Import extends Command
                 $this->importFixedBanner($file['absolute']);
             }
             $this->infoH1('Update Structure Table Data.');
-            $this->updateSectionsData();
+            if ($isTest === false) {
+                $this->updateSectionsData();
+            }
             $this->commitImportControlInfo();
         });
         $this->info('Finish!');
+        return true;
     }
 
     private
@@ -206,7 +217,7 @@ class Import extends Command
             }
             $explodeFilePath = explode('/', $file->getRelativePathname());
             if ($explodeFilePath[0] === self::BANNER_DIR) {
-                if ($file->getFilename() == self::FIXED_BANNER_FILE_NAME) {
+                if ($explodeFilePath[1] == self::FIXED_BANNER_FILE_NAME) {
                     $fileList['banner'][] = [
                         'relative' => $file->getRelativePathname(),
                         'absolute' => $file->getPathname(),
@@ -241,7 +252,16 @@ class Import extends Command
                     $explodeFilePath[1] === self::BANNER_DIR &&
                     preg_match('/.*\.json$/', $explodeFilePath[2], $match) === 1
                 ) {
-                    // 特になにもしない
+                    $fileList['category']['section'][] = [
+                        'relative' => $file->getRelativePathname(),
+                        'absolute' => $file->getPathname(),
+                        'filename' => $file->getFilename(),
+                        'goodType' => $explodeFilePath[1],
+                        'saleType' => $explodeFilePath[2],
+                        'goodTypeCode' => 'banner',
+                        'saleTypeCode' => null,
+                        'timestamp' => $timestamp
+                    ];
                 } else {
                     if (
                         array_key_exists(2, $explodeFilePath) &&
@@ -277,7 +297,7 @@ class Import extends Command
     {
         $fileBaseName = str_replace('.json', '', $fileBaseName);
         $structure = new Structure;
-        if ($goodType === false) {
+        if ($goodType === false || $goodType === self::BANNER_DIR) {
             $structureObj = $structure->conditionFindBannerWithSectionFileName($fileBaseName)->getOne();
             if (count($structureObj) == 0) {
                 $this->infoMessage('Not found structure id.');
