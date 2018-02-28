@@ -132,6 +132,79 @@ $router->group([
         return $sectionData;
     });
 
+    // 作品基本情報
+    $router->get('work/{workId}', function (Request $request, $workId) {
+        return $json;
+    });
+    // 作品シリーズ情報
+    $router->get('work/{workId}/series', function (Request $request, $workId) {
+        return $json;
+    });
+    // レビュー情報 filmarks
+    $router->get('work/{workId}/review/filmarks', function (Request $request, $workId) {
+        return $json;
+    });
+    // レビュー情報 discas
+    $router->get('work/{workId}/review/discas', function (Request $request, $workId) {
+        return $json;
+    });
+    // レビュー情報 tol
+    $router->get('work/{workId}/review/tol', function (Request $request, $workId) {
+        return $json;
+    });
+    // 関連作品
+    $router->get('work/{workId}/relation/works', function (Request $request, $workId) {
+        return $json;
+    });
+    // 関連動画
+    $router->get('work/{workId}/relation/movie', function (Request $request, $workId) {
+        return $json;
+    });
+    // 関連画像
+    $router->get('work/{workId}/relation/pics', function (Request $request, $workId) {
+        return $json;
+    });
+    // 関連アーティスト
+    $router->get('work/{workId}/relation/artist', function (Request $request, $workId) {
+        return $json;
+    });
+    // キャスト情報
+    $router->get('cast/{castId}', function (Request $request, $workId) {
+        return $json;
+    });
+    // 作品レコメンド（この作品を見た人はこんな作品もみています）
+    $router->get('work/{workId}/recommend/other', function (Request $request, $workId) {
+        return $json;
+    });
+    // 作者レコメンド
+    $router->get('work/{workId}/recommend/auther', function (Request $request, $workId) {
+        return $json;
+    });
+    // 作品レコメンド
+    $router->get('work/{workId}/recommend/artist', function (Request $request, $workId) {
+        return $json;
+    });
+    // 変換
+    $router->get('convert/from/{id}/to/work_id', function (Request $request, $workId) {
+        return $json;
+    });
+    // 変換
+    $router->get('product/{cccFamilyCd}', function (Request $request, $workId) {
+        return $json;
+    });
+    // 在庫
+    $router->get('product/stock/{storeCd}/{cccFamilyCd}', function (Request $request, $workId) {
+        return $json;
+    });
+    // キーワード検索
+    $router->get('search/{keyword}', function (Request $request, $workId) {
+        return $json;
+    });
+    // キーワード検索サジェスト
+    $router->get('product/stock/{storeCd}/{cccFamilyCd}', function (Request $request, $workId) {
+        return $json;
+    });
+
 });
 $router->group(['prefix' => env('URL_PATH_PREFIX') . env('API_VERSION')], function () use ($router) {
     // APIドキュメント
