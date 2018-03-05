@@ -237,6 +237,7 @@ class TestData
                     'no' => 1,
                     'productTitle' => '',
                     'jan' => $goodsType . $saleType . '0000001' . $updateSuffix,
+                    'workId' => $goodsType . $saleType . '122340001' . $updateSuffix,
                     'imageUrl' => '',
                     'displayStartDate' => '2017/12/01 00:00:00',
                     'displayEndDate' => '2025/12/31 23:59:59'

@@ -42,81 +42,23 @@ class HimoRepository extends ApiRequesterRepository
      */
     public function detail($janCode)
     {
-        $this->apiPath = $this->apiHost . '/store/v0/products/detail.json';
-        $this->queryParams = [
-            'api_key' => $this->apiKey,
-            'productKey' => $janCode,
-            'tolPlatformCode' => '00',
-            '_secure' => '1',
-            '_pretty' => '1'
-        ];
-        return $this;
-    }
-
-    /*
-     * ランキング情報を取得するAPIをセットする
-     */
-    public function ranking($rankingConcentrationCd, $period)
-    {
-        $this->apiPath = $this->apiHost . '/media/v0/works/tsutayarankingresult.json';
-        $this->queryParams = [
-            'api_key' => $this->apiKey,
-            'rankingConcentrationCd' => $rankingConcentrationCd,
-            'tolPlatformCode' => '00',
-            'rankinglimit' => $this->limit,
-            'dispNums' => '20',
-            '_secure' => '1',
-            '_pretty' => '1'
-        ];
-        if (!empty($period)) {
-            $this->queryParams['totalingPeriodFrom'] = $period;
+        foreach ($ids as $id) {
+            $queryId[] = $idType . ':' . $id;
         }
+        $this->params = [
+            '_system' => 'TsutayaPassport',
+            'id_value' => implode(' || ', $queryId),
+            'service_id' => 'tol',
+            'msdb_item' => 'video',
+            'adult_flg' => '2',
+            'response_level' => '9',
+            'offset' => $this->offset,
+            'limit' => $this->limit,
+            'sort_by' => 'auto:asc',
+        ];
+
         return $this;
     }
 
-    /*
-     * 日付ベースの検索結果を取得するAPIをセットする
-     */
-    public function release($genreId, $storeProductItemCd)
-    {
-        $this->apiPath = $this->apiHost . '/store/v0/products/searchDetail.json';
-        $this->queryParams = [
-            'api_key' => $this->apiKey,
-            '_secure' => '1',
-            'page' => '1',
-            'dispNums' => '20',
-            'adultAuthOK' => '0',
-            'adultFlag' => '1',
-            'sortingOrder' => '2',
-            'lg' => $genreId, // 大ジャンルコード
-            'ic' => $this->itemCodeMapping($storeProductItemCd), // アイテム集約コード
-            'storeProductItemCd' => $storeProductItemCd, // 店舗取扱いアイテムコード
-            'dfy' => date('Y',strtotime('-1 month')),
-            'dfm' => date('m',strtotime('-1 month')),
-            'dfd' => date('d',strtotime('-1 month')),
-            'dty' => date('Y',strtotime('next sunday')),
-            'dtm' => date('m',strtotime('next sunday')),
-            'dtd' => date('d',strtotime('next sunday')),
-            '_pretty' => '1'
-        ];
-        return $this;
-    }
 
-    private function itemCodeMapping($storeProductItemCd)
-    {
-        $maps = [
-            '011' => '002',
-            '012' => '002',
-            '013' => '002',
-            '020' => '001',
-            '030' => '010',
-            '111' => '002',
-            '112' => '002',
-            '113' => '002',
-            '120' => '001',
-            '130' => '010',
-            '140' => '003'
-        ];
-        return $maps[$storeProductItemCd];
-    }
 }

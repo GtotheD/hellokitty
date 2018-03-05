@@ -1085,7 +1085,17 @@
  *       description="",
  *       type="boolean"
  *     ),
- *     @SWG\Response(response=200, description="Success"),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="stock_status",
+ *                  type="integer",
+ *                  description="在庫ステータス",
+ *              ),
+ *          )
+ *     ),
  *     @SWG\Response(response=204, description="Contents not found"),
  *     @SWG\Response(response=401, description="Auth error"),
  *     @SWG\Response(response=404, description="Page not found"),
@@ -1138,7 +1148,21 @@
  *       description="",
  *       type="boolean"
  *     ),
- *     @SWG\Response(response=200, description="Success"),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          ref="$/responses/ListJson",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="rows",
+ *                  type="array",
+ *                  @SWG\Items(
+ *                       @SWG\Property(property="word",type="string"),
+ *                  ),
+ *                  description="作品情報",
+ *              ),
+ *          )
+ *      ),
  *     @SWG\Response(response=204, description="Contents not found"),
  *     @SWG\Response(response=401, description="Auth error"),
  *     @SWG\Response(response=404, description="Page not found"),
