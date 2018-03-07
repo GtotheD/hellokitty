@@ -2,61 +2,78 @@
 /**
  *  @SWG\Definition(
  *          definition="Work",
- *          required={
- *              "work_id", "work_title"
- *          },
  *          @SWG\Property(
- *              property="work_id",
+ *              property="workId",
+ *              type="string",
+ *              description="作品ID"
+ *          ),
+ *          @SWG\Property(
+ *              property="workTitle",
  *              type="string",
  *              description="作品タイトル"
  *          ),
  *          @SWG\Property(
- *              property="work_title",
- *              type="string",
- *              description="作品タイトル"
- *          ),
- *          @SWG\Property(
- *              property="work_title_orig",
+ *              property="workTitleOrig",
  *              type="string",
  *              description="タイトル原題"
  *          ),
  *          @SWG\Property(
- *              property="jacket_l",
+ *              property="saleType",
+ *              type="string",
+ *              description="販売区分"
+ *          ),
+ *          @SWG\Property(
+ *              property="workTypeId",
+ *              type="string",
+ *              description="アイテム種別"
+ *          ),
+ *          @SWG\Property(
+ *              property="jacketL",
  *              type="string",
  *              description="ジャケ写"
  *          ),
  *          @SWG\Property(
- *              property="sale_start_date",
+ *              property="saleStartDate",
  *              type="string",
  *              description="レンタル開始日"
  *          ),
  *          @SWG\Property(
- *              property="big_genre_name",
+ *              property="bigGenreId",
+ *              type="string",
+ *              description="大ジャンルID"
+ *          ),
+ *          @SWG\Property(
+ *              property="bigGenreName",
  *              type="string",
  *              description="大ジャンル"
  *          ),
  *          @SWG\Property(
- *              property="medium_genre_name",
+ *              property="mediumGenreId",
+ *              type="string",
+ *              description="中ジャンルID"
+ *          ),
+ *          @SWG\Property(
+ *              property="mediumGenreName",
  *              type="string",
  *              description="中ジャンル"
  *          ),
  *          @SWG\Property(
- *              property="rating_name",
+ *              property="ratingName",
  *              type="string",
  *              description="年齢制限表示"
  *          ),
  *          @SWG\Property(
- *              property="doc_text",
+ *              property="docText",
  *              type="string",
  *              description="説明"
  *          ),
  *          @SWG\Property(
- *              property="created_year",
+ *              property="createdYear",
  *              type="string",
  *              description="作成年"
  *          ),
  *          @SWG\Property(
- *              property="created_countries",
+ *              property="createdCountries",
  *              type="string",
  *              description="作成国"
  *          )
@@ -76,7 +93,7 @@
  *              description="投稿者"
  *          ),
  *          @SWG\Property(
- *              property="contribute_date",
+ *              property="contributeDate",
  *              type="string",
  *              description="投稿日時"
  *          ),
@@ -91,17 +108,17 @@
  *  @SWG\Definition(
  *          definition="Product",
  *          @SWG\Property(
- *              property="work_title",
+ *              property="workTitle",
  *              type="string",
  *              description="作品名"
  *          ),
  *          @SWG\Property(
- *              property="product_name",
+ *              property="productName",
  *              type="string",
  *              description="商品名"
  *          ),
  *          @SWG\Property(
- *              property="product_code",
+ *              property="productCode",
  *              type="string",
  *              description="商品番号"
  *          ),
@@ -111,22 +128,22 @@
  *              description="JANコード"
  *          ),*
  *          @SWG\Property(
- *              property="item_cd",
+ *              property="itemCd",
  *              type="string",
  *              description="アイテムコード"
  *          ),
  *          @SWG\Property(
- *              property="jacket_l",
+ *              property="jacketL",
  *              type="string",
  *              description="ジャケ写"
  *          ),
  *          @SWG\Property(
- *              property="sale_start_date",
+ *              property="saleStartDate",
  *              type="string",
  *              description="発売日"
  *          ),
  *          @SWG\Property(
- *              property="disc_info",
+ *              property="discInfo",
  *              type="string",
  *              description="組数"
  *          ),
@@ -136,22 +153,22 @@
  *              description="字幕"
  *          ),
  *          @SWG\Property(
- *              property="sound_spec",
+ *              property="soundSpec",
  *              type="string",
  *              description="音声"
  *          ),
  *          @SWG\Property(
- *              property="region_info",
+ *              property="regionInfo",
  *              type="string",
  *              description="リージョンコード"
  *          ),
  *          @SWG\Property(
- *              property="price_tax_out",
+ *              property="priceTaxOut",
  *              type="string",
  *              description="定価（税抜）"
  *          ),
  *          @SWG\Property(
- *              property="play_time",
+ *              property="playTime",
  *              type="string",
  *              description="収録時間"
  *          ),
@@ -166,12 +183,12 @@
  *              description="特典内容"
  *          ),
  *          @SWG\Property(
- *              property="best_album_flg",
+ *              property="bestAlbumFlg",
  *              type="string",
  *              description="特典内容"
  *          ),
  *          @SWG\Property(
- *              property="maker_name",
+ *              property="makerName",
  *              type="string",
  *              description="メーカー"
  *          ),
@@ -181,17 +198,17 @@
  *  @SWG\Definition(
  *          definition="Cast",
  *          @SWG\Property(
- *              property="work_id",
+ *              property="workId",
  *              type="string",
  *              description="作品ID"
  *          ),
  *          @SWG\Property(
- *              property="work_title",
+ *              property="workTitle",
  *              type="string",
  *              description="作品タイトル"
  *          ),
  *          @SWG\Property(
- *              property="jacket_l",
+ *              property="jacketL",
  *              type="string",
  *              description="ジャケ写"
  *          ),

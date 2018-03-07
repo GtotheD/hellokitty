@@ -664,12 +664,8 @@
  *     description="作品基本情報を取得する",
  *     tags={"Work"},
  *     produces={"application/json"},
- *     @SWG\Parameter(
- *       name="workId",
- *       in="path",
- *       description="作品ID",
- *       type="string"
- *     ),
+ *     @SWG\Parameter(ref="#/parameters/workId"),
+ *     @SWG\Parameter(ref="#/parameters/saleType"),
  *     @SWG\Response(
  *          response=200,
  *          description="success",
@@ -729,6 +725,7 @@
  *     @SWG\Response(
  *          response=200,
  *          description="success",
+ *          ref="$/responses/ReviewFormat",
  *          @SWG\Schema(
  *              @SWG\Property(
  *                  property="rows",
@@ -755,6 +752,7 @@
  *     @SWG\Response(
  *          response=200,
  *          description="success",
+ *          ref="$/responses/ReviewFormat",
  *          @SWG\Schema(
  *              @SWG\Property(
  *                  property="rows",
@@ -781,6 +779,7 @@
  *     @SWG\Response(
  *          response=200,
  *          description="success",
+ *          ref="$/responses/ReviewFormat",
  *          @SWG\Schema(
  *              @SWG\Property(
  *                  property="rows",
@@ -805,7 +804,6 @@
  *     @SWG\Parameter(ref="#/parameters/workId"),
  *     @SWG\Parameter(ref="#/parameters/limit"),
  *     @SWG\Parameter(ref="#/parameters/offset"),
- *     @SWG\Parameter(ref="#/parameters/saleType"),
  *     @SWG\Response(
  *          response=200,
  *          description="success",
@@ -864,7 +862,7 @@
  *     @SWG\Parameter(ref="#/parameters/workId"),
  *     @SWG\Parameter(ref="#/parameters/limit"),
  *     @SWG\Parameter(ref="#/parameters/offset"),
- *     @SWG\Parameter(ref="#/parameters/saleType"),
+ *     @SWG\Parameter(ref="#/parameters/sort"),
  *     @SWG\Response(
  *          response=200,
  *          description="success",
@@ -894,6 +892,7 @@
  *     @SWG\Parameter(ref="#/parameters/limit"),
  *     @SWG\Parameter(ref="#/parameters/offset"),
  *     @SWG\Parameter(ref="#/parameters/saleType"),
+ *     @SWG\Parameter(ref="#/parameters/sort"),
  *     @SWG\Response(
  *          response=200,
  *          description="success",
@@ -903,7 +902,7 @@
  *                  property="rows",
  *                  type="array",
  *                  @SWG\Items(ref="#/definitions/Cast"),
- *                  description="作品情報",
+ *                  description="キャスト情報",
  *              ),
  *          )
  *      ),
@@ -944,14 +943,14 @@
  */
 /**
  * @SWG\Get(
- *     path="/work/{workId}/recommend/auther",
+ *     path="/work/{workId}/recommend/author",
  *     description="お薦め著者作品取得",
  *     tags={"Work"},
  *     produces={"application/json"},
  *     @SWG\Parameter(ref="#/parameters/workId"),
  *     @SWG\Parameter(ref="#/parameters/limit"),
  *     @SWG\Parameter(ref="#/parameters/offset"),
- *     @SWG\Parameter(ref="#/parameters/saleType"),
+ *     @SWG\Parameter(ref="#/parameters/sort"),
  *     @SWG\Response(
  *          response=200,
  *          description="success",
@@ -980,7 +979,6 @@
  *     @SWG\Parameter(ref="#/parameters/workId"),
  *     @SWG\Parameter(ref="#/parameters/limit"),
  *     @SWG\Parameter(ref="#/parameters/offset"),
- *     @SWG\Parameter(ref="#/parameters/saleType"),
  *     @SWG\Response(
  *          response=200,
  *          description="success",
@@ -990,9 +988,10 @@
  *                  property="rows",
  *                  type="array",
  *                  @SWG\Items(
+ *                       @SWG\Property(property="artist_id",type="integer"),
  *                       @SWG\Property(property="artist_name",type="string"),
  *                  ),
- *                  description="作品情報",
+ *                  description="アーティスト情報",
  *              ),
  *          )
  *      ),
@@ -1077,13 +1076,13 @@
  *       name="storeCd",
  *       in="path",
  *       description="",
- *       type="boolean"
+ *       type="string"
  *     ),
  *     @SWG\Parameter(
  *       name="cccFamilyCd",
  *       in="path",
  *       description="",
- *       type="boolean"
+ *       type="string"
  *     ),
  *     @SWG\Response(
  *          response=200,
@@ -1146,8 +1145,9 @@
  *       name="keyword",
  *       in="path",
  *       description="",
- *       type="boolean"
+ *       type="string"
  *     ),
+ *     @SWG\Parameter(ref="#/parameters/limit"),
  *     @SWG\Response(
  *          response=200,
  *          description="success",

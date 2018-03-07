@@ -43,7 +43,7 @@
  * @SWG\Parameter(
  *      name="castId",
  *      in="path",
- *      description="作品ID",
+ *      description="キャストID",
  *      required=false,
  *      type="string"
  * )
@@ -64,8 +64,15 @@
  *      format="int32"
  * )
  * @SWG\Parameter(
+ *      name="sort",
+ *      description="並び順（デフォルトは昇順：asc）",
+ *      in="query",
+ *      required=false,
+ *      type="string",
+ * )
+ * @SWG\Parameter(
  *      name="saleType",
- *      description="販売タイプ（レンタルかセルのどちからの取得）",
+ *      description="販売タイプ（セルかレンタルのどちからの取得） デフォルトはセル",
  *      in="query",
  *      required=false,
  *      type="string",
@@ -112,6 +119,25 @@
  *              type="integer",
  *              property="totalCount"
  *          ),
+ *      )
+ * )
+ */
+/**
+ * @SWG\Response(
+ *      response="ReviewFormat",
+ *      description="リストレスポンス",
+ *      @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="totalCount",
+ *                  type="integer",
+ *                  description="総件数",
+ *              ),
+ *              @SWG\Property(
+ *                  property="averageRating",
+ *                  type="number",
+ *                  format="float",
+ *                  description="平均スコア",
+ *              ),
  *      )
  * )
  */
