@@ -134,55 +134,305 @@ $router->group([
 
     // 作品基本情報
     $router->get('work/{workId}', function (Request $request, $workId) {
-        return $json;
+        $responseString = <<<EOT
+        {
+          "data": {
+            "workId": "string",
+            "workTitle": "string",
+            "workTitleOrig": "string",
+            "saleType": "string",
+            "workTypeId": "string",
+            "jacketL": "string",
+            "saleStartDate": "string",
+            "bigGenreId": "string",
+            "bigGenreName": "string",
+            "mediumGenreId": "string",
+            "mediumGenreName": "string",
+            "ratingName": "string",
+            "docText": "string",
+            "createdYear": "string",
+            "createdCountries": "string"
+          }
+        }
+EOT;
+        $json = (array) json_decode($responseString);
+        return response()->json($json);
     });
     // 作品シリーズ情報
     $router->get('work/{workId}/series', function (Request $request, $workId) {
-        return $json;
+      $responseString = <<<EOT
+
+      {
+        "hasNext": true,
+        "totalCount": 0,
+        "rows": [
+          {
+            "workId": "string",
+            "workTitle": "string",
+            "workTitleOrig": "string",
+            "saleType": "string",
+            "workTypeId": "string",
+            "jacketL": "string",
+            "saleStartDate": "string",
+            "bigGenreId": "string",
+            "bigGenreName": "string",
+            "mediumGenreId": "string",
+            "mediumGenreName": "string",
+            "ratingName": "string",
+            "docText": "string",
+            "createdYear": "string",
+            "createdCountries": "string"
+          }
+        ]
+      }
+
+EOT;
+      $json = (array) json_decode($responseString);
+      return response()->json($json);
     });
     // レビュー情報 filmarks
     $router->get('work/{workId}/review/filmarks', function (Request $request, $workId) {
-        return $json;
+      $responseString = <<<EOT
+
+      {
+        "totalCount": 0,
+        "averageRating": 0,
+        "rows": [
+          {
+            "rating": "string",
+            "contributor": "string",
+            "contributeDate": "string",
+            "contents": "string"
+          }
+        ]
+      }
+
+EOT;
+      $json = (array) json_decode($responseString);
+      return response()->json($json);
     });
     // レビュー情報 discas
     $router->get('work/{workId}/review/discas', function (Request $request, $workId) {
-        return $json;
+      $responseString = <<<EOT
+
+      {
+        "totalCount": 0,
+        "averageRating": 0,
+        "rows": [
+          {
+            "rating": "string",
+            "contributor": "string",
+            "contributeDate": "string",
+            "contents": "string"
+          }
+        ]
+      }
+
+EOT;
+      $json = (array) json_decode($responseString);
+      return response()->json($json);
     });
     // レビュー情報 tol
     $router->get('work/{workId}/review/tol', function (Request $request, $workId) {
-        return $json;
+      $responseString = <<<EOT
+
+      {
+        "totalCount": 0,
+        "averageRating": 0,
+        "rows": [
+          {
+            "rating": "string",
+            "contributor": "string",
+            "contributeDate": "string",
+            "contents": "string"
+          }
+        ]
+      }
+
+EOT;
+      $json = (array) json_decode($responseString);
+      return response()->json($json);
     });
     // 関連作品
     $router->get('work/{workId}/relation/works', function (Request $request, $workId) {
-        return $json;
+      $responseString = <<<EOT
+
+      {
+        "hasNext": true,
+        "totalCount": 0,
+        "rows": [
+          {
+            "workId": "string",
+            "workTitle": "string",
+            "workTitleOrig": "string",
+            "saleType": "string",
+            "workTypeId": "string",
+            "jacketL": "string",
+            "saleStartDate": "string",
+            "bigGenreId": "string",
+            "bigGenreName": "string",
+            "mediumGenreId": "string",
+            "mediumGenreName": "string",
+            "ratingName": "string",
+            "docText": "string",
+            "createdYear": "string",
+            "createdCountries": "string"
+          }
+        ]
+      }
+
+EOT;
+      $json = (array) json_decode($responseString);
+      return response()->json($json);
     });
     // 関連動画
     $router->get('work/{workId}/relation/movie', function (Request $request, $workId) {
-        return $json;
+      $responseString = <<<EOT
+
+      JSON HERE
+
+EOT;
+      $json = (array) json_decode($responseString);
+      return response()->json($json);
     });
     // 関連画像
     $router->get('work/{workId}/relation/pics', function (Request $request, $workId) {
-        return $json;
+      $responseString = <<<EOT
+
+      {
+        "hasNext": true,
+        "totalCount": 0,
+        "rows": [
+          {
+            "url": "string"
+          }
+        ]
+      }
+
+EOT;
+      $json = (array) json_decode($responseString);
+      return response()->json($json);
     });
     // 関連アーティスト
     $router->get('work/{workId}/relation/artist', function (Request $request, $workId) {
-        return $json;
+      $responseString = <<<EOT
+
+      {
+        "hasNext": true,
+        "totalCount": 0,
+        "rows": [
+          {
+            "workId": "string",
+            "workTitle": "string",
+            "workTitleOrig": "string",
+            "saleType": "string",
+            "workTypeId": "string",
+            "jacketL": "string",
+            "saleStartDate": "string",
+            "bigGenreId": "string",
+            "bigGenreName": "string",
+            "mediumGenreId": "string",
+            "mediumGenreName": "string",
+            "ratingName": "string",
+            "docText": "string",
+            "createdYear": "string",
+            "createdCountries": "string"
+          }
+        ]
+      }
+
+EOT;
+      $json = (array) json_decode($responseString);
+      return response()->json($json);
     });
+
+
     // キャスト情報
     $router->get('cast/{castId}', function (Request $request, $workId) {
         return $json;
     });
     // 作品レコメンド（この作品を見た人はこんな作品もみています）
     $router->get('work/{workId}/recommend/other', function (Request $request, $workId) {
-        return $json;
+      $responseString = <<<EOT
+
+      {
+        "hasNext": true,
+        "totalCount": 0,
+        "rows": [
+          {
+            "workId": "string",
+            "workTitle": "string",
+            "workTitleOrig": "string",
+            "saleType": "string",
+            "workTypeId": "string",
+            "jacketL": "string",
+            "saleStartDate": "string",
+            "bigGenreId": "string",
+            "bigGenreName": "string",
+            "mediumGenreId": "string",
+            "mediumGenreName": "string",
+            "ratingName": "string",
+            "docText": "string",
+            "createdYear": "string",
+            "createdCountries": "string"
+          }
+        ]
+      }
+
+EOT;
+      $json = (array) json_decode($responseString);
+      return response()->json($json);
     });
     // 作者レコメンド
-    $router->get('work/{workId}/recommend/auther', function (Request $request, $workId) {
-        return $json;
+    $router->get('work/{workId}/recommend/author', function (Request $request, $workId) {
+      $responseString = <<<EOT
+
+      {
+        "hasNext": true,
+        "totalCount": 0,
+        "rows": [
+          {
+            "workId": "string",
+            "workTitle": "string",
+            "workTitleOrig": "string",
+            "saleType": "string",
+            "workTypeId": "string",
+            "jacketL": "string",
+            "saleStartDate": "string",
+            "bigGenreId": "string",
+            "bigGenreName": "string",
+            "mediumGenreId": "string",
+            "mediumGenreName": "string",
+            "ratingName": "string",
+            "docText": "string",
+            "createdYear": "string",
+            "createdCountries": "string"
+          }
+        ]
+      }
+
+EOT;
+      $json = (array) json_decode($responseString);
+      return response()->json($json);
     });
     // 作品レコメンド
     $router->get('work/{workId}/recommend/artist', function (Request $request, $workId) {
-        return $json;
+      $responseString = <<<EOT
+
+      {
+        "hasNext": true,
+        "totalCount": 0,
+        "rows": [
+          {
+            "artist_id": 0,
+            "artist_name": "string"
+          }
+        ]
+      }
+
+EOT;
+      $json = (array) json_decode($responseString);
+      return response()->json($json);
     });
     // 変換
     $router->get('convert/from/{id}/to/work_id', function (Request $request, $workId) {
