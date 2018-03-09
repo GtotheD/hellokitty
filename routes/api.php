@@ -137,21 +137,21 @@ $router->group([
         $responseString = <<<EOT
         {
           "data": {
-            "workId": "string",
-            "workTitle": "string",
-            "workTitleOrig": "string",
-            "saleType": "string",
-            "workTypeId": "string",
-            "jacketL": "string",
-            "saleStartDate": "string",
-            "bigGenreId": "string",
-            "bigGenreName": "string",
-            "mediumGenreId": "string",
-            "mediumGenreName": "string",
-            "ratingName": "string",
-            "docText": "string",
-            "createdYear": "string",
-            "createdCountries": "string"
+            "workId": "PTA00007XDJP",
+            "workTitle": "ピノキオ",
+            "workTitleOrig": "PINOCCHIO",
+            "saleType": "2",
+            "workTypeId": "2",
+            "jacketL": "//store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg <img src='//store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg'>",
+            "saleStartDate": "1995-03-17",
+            "bigGenreId": "EXT0000000WP",
+            "bigGenreName": "キッズ",
+            "mediumGenreId": "EXT000003SXI",
+            "mediumGenreName": "ディズニー",
+            "ratingName": "",
+            "docText": "木のあやつり人形・ピノキオが命を与えられ、冒険を通して善悪を学び、本物の少年となっていくまでを描く。１９４０年初公開のディズニー名作アニメをデジタル・リマスターで蘇らせ、ボーナス・コンテンツを加えた３枚組にパッケージ。",
+            "createdYear": "1940",
+            "createdCountries": "アメリカ"
           }
         }
 EOT;
@@ -164,24 +164,24 @@ EOT;
 
       {
         "hasNext": true,
-        "totalCount": 0,
+        "totalCount": 1,
         "rows": [
           {
-            "workId": "string",
-            "workTitle": "string",
-            "workTitleOrig": "string",
-            "saleType": "string",
-            "workTypeId": "string",
-            "jacketL": "string",
-            "saleStartDate": "string",
-            "bigGenreId": "string",
-            "bigGenreName": "string",
-            "mediumGenreId": "string",
-            "mediumGenreName": "string",
-            "ratingName": "string",
-            "docText": "string",
-            "createdYear": "string",
-            "createdCountries": "string"
+            "workId": "PTA00007XDJP",
+            "workTitle": "ピノキオ",
+            "workTitleOrig": "PINOCCHIO",
+            "saleType": "2",
+            "workTypeId": "2",
+            "jacketL": "//store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg <img src='//store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg'>",
+            "saleStartDate": "1995-03-17",
+            "bigGenreId": "EXT0000000WP",
+            "bigGenreName": "キッズ",
+            "mediumGenreId": "EXT000003SXI",
+            "mediumGenreName": "ディズニー",
+            "ratingName": "",
+            "docText": "木のあやつり人形・ピノキオが命を与えられ、冒険を通して善悪を学び、本物の少年となっていくまでを描く。１９４０年初公開のディズニー名作アニメをデジタル・リマスターで蘇らせ、ボーナス・コンテンツを加えた３枚組にパッケージ。",
+            "createdYear": "1940",
+            "createdCountries": "アメリカ"
           }
         ]
       }
@@ -195,14 +195,14 @@ EOT;
       $responseString = <<<EOT
 
       {
-        "totalCount": 0,
+        "totalCount": 1,
         "averageRating": 0,
         "rows": [
           {
-            "rating": "string",
-            "contributor": "string",
-            "contributeDate": "string",
-            "contents": "string"
+            "rating": "4",
+            "contributor": "ホゲホゲ",
+            "contributeDate": "2018-03-01",
+            "contents": "ふがふが　ほげほげ　ふがふが　ほげほげ"
           }
         ]
       }
@@ -216,14 +216,14 @@ EOT;
       $responseString = <<<EOT
 
       {
-        "totalCount": 0,
+        "totalCount": 1,
         "averageRating": 0,
         "rows": [
           {
-            "rating": "string",
-            "contributor": "string",
-            "contributeDate": "string",
-            "contents": "string"
+            "rating": "4",
+            "contributor": "ホゲホゲ",
+            "contributeDate": "2018-03-01",
+            "contents": "ふがふが　ほげほげ　ふがふが　ほげほげ"
           }
         ]
       }
@@ -237,14 +237,14 @@ EOT;
       $responseString = <<<EOT
 
       {
-        "totalCount": 0,
+        "totalCount": 1,
         "averageRating": 0,
         "rows": [
           {
-            "rating": "string",
-            "contributor": "string",
-            "contributeDate": "string",
-            "contents": "string"
+            "rating": "4",
+            "contributor": "ホゲホゲ",
+            "contributeDate": "2018-03-01",
+            "contents": "ふがふが　ほげほげ　ふがふが　ほげほげ"
           }
         ]
       }
@@ -259,24 +259,24 @@ EOT;
 
       {
         "hasNext": true,
-        "totalCount": 0,
+        "totalCount": 1,
         "rows": [
           {
-            "workId": "string",
-            "workTitle": "string",
-            "workTitleOrig": "string",
-            "saleType": "string",
-            "workTypeId": "string",
-            "jacketL": "string",
-            "saleStartDate": "string",
-            "bigGenreId": "string",
-            "bigGenreName": "string",
-            "mediumGenreId": "string",
-            "mediumGenreName": "string",
-            "ratingName": "string",
-            "docText": "string",
-            "createdYear": "string",
-            "createdCountries": "string"
+            "workId": "PTA00007XDJP",
+            "workTitle": "ピノキオ",
+            "workTitleOrig": "PINOCCHIO",
+            "saleType": "2",
+            "workTypeId": "2",
+            "jacketL": "//store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg <img src='//store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg'>",
+            "saleStartDate": "1995-03-17",
+            "bigGenreId": "EXT0000000WP",
+            "bigGenreName": "キッズ",
+            "mediumGenreId": "EXT000003SXI",
+            "mediumGenreName": "ディズニー",
+            "ratingName": "",
+            "docText": "木のあやつり人形・ピノキオが命を与えられ、冒険を通して善悪を学び、本物の少年となっていくまでを描く。１９４０年初公開のディズニー名作アニメをデジタル・リマスターで蘇らせ、ボーナス・コンテンツを加えた３枚組にパッケージ。",
+            "createdYear": "1940",
+            "createdCountries": "アメリカ"
           }
         ]
       }
@@ -301,10 +301,10 @@ EOT;
 
       {
         "hasNext": true,
-        "totalCount": 0,
+        "totalCount": 1,
         "rows": [
           {
-            "url": "string"
+            "url": "//store-tsutaya.tsite.jp/images/bamen/00205/4959241958082_B001S.jpg"
           }
         ]
       }
@@ -319,24 +319,24 @@ EOT;
 
       {
         "hasNext": true,
-        "totalCount": 0,
+        "totalCount": 1,
         "rows": [
           {
-            "workId": "string",
-            "workTitle": "string",
-            "workTitleOrig": "string",
-            "saleType": "string",
-            "workTypeId": "string",
-            "jacketL": "string",
-            "saleStartDate": "string",
-            "bigGenreId": "string",
-            "bigGenreName": "string",
-            "mediumGenreId": "string",
-            "mediumGenreName": "string",
-            "ratingName": "string",
-            "docText": "string",
-            "createdYear": "string",
-            "createdCountries": "string"
+            "workId": "PTA00007XDJP",
+            "workTitle": "ピノキオ",
+            "workTitleOrig": "PINOCCHIO",
+            "saleType": "2",
+            "workTypeId": "2",
+            "jacketL": "//store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg <img src='//store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg'>",
+            "saleStartDate": "1995-03-17",
+            "bigGenreId": "EXT0000000WP",
+            "bigGenreName": "キッズ",
+            "mediumGenreId": "EXT000003SXI",
+            "mediumGenreName": "ディズニー",
+            "ratingName": "",
+            "docText": "木のあやつり人形・ピノキオが命を与えられ、冒険を通して善悪を学び、本物の少年となっていくまでを描く。１９４０年初公開のディズニー名作アニメをデジタル・リマスターで蘇らせ、ボーナス・コンテンツを加えた３枚組にパッケージ。",
+            "createdYear": "1940",
+            "createdCountries": "アメリカ"
           }
         ]
       }
@@ -357,24 +357,24 @@ EOT;
 
       {
         "hasNext": true,
-        "totalCount": 0,
+        "totalCount": 1,
         "rows": [
           {
-            "workId": "string",
-            "workTitle": "string",
-            "workTitleOrig": "string",
-            "saleType": "string",
-            "workTypeId": "string",
-            "jacketL": "string",
-            "saleStartDate": "string",
-            "bigGenreId": "string",
-            "bigGenreName": "string",
-            "mediumGenreId": "string",
-            "mediumGenreName": "string",
-            "ratingName": "string",
-            "docText": "string",
-            "createdYear": "string",
-            "createdCountries": "string"
+            "workId": "PTA00007XDJP",
+            "workTitle": "ピノキオ",
+            "workTitleOrig": "PINOCCHIO",
+            "saleType": "2",
+            "workTypeId": "2",
+            "jacketL": "//store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg <img src='//store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg'>",
+            "saleStartDate": "1995-03-17",
+            "bigGenreId": "EXT0000000WP",
+            "bigGenreName": "キッズ",
+            "mediumGenreId": "EXT000003SXI",
+            "mediumGenreName": "ディズニー",
+            "ratingName": "",
+            "docText": "木のあやつり人形・ピノキオが命を与えられ、冒険を通して善悪を学び、本物の少年となっていくまでを描く。１９４０年初公開のディズニー名作アニメをデジタル・リマスターで蘇らせ、ボーナス・コンテンツを加えた３枚組にパッケージ。",
+            "createdYear": "1940",
+            "createdCountries": "アメリカ"
           }
         ]
       }
@@ -389,24 +389,24 @@ EOT;
 
       {
         "hasNext": true,
-        "totalCount": 0,
+        "totalCount": 1,
         "rows": [
           {
-            "workId": "string",
-            "workTitle": "string",
-            "workTitleOrig": "string",
-            "saleType": "string",
-            "workTypeId": "string",
-            "jacketL": "string",
-            "saleStartDate": "string",
-            "bigGenreId": "string",
-            "bigGenreName": "string",
-            "mediumGenreId": "string",
-            "mediumGenreName": "string",
-            "ratingName": "string",
-            "docText": "string",
-            "createdYear": "string",
-            "createdCountries": "string"
+            "workId": "PTA00007XDJP",
+            "workTitle": "ピノキオ",
+            "workTitleOrig": "PINOCCHIO",
+            "saleType": "2",
+            "workTypeId": "2",
+            "jacketL": "//store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg <img src='//store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg'>",
+            "saleStartDate": "1995-03-17",
+            "bigGenreId": "EXT0000000WP",
+            "bigGenreName": "キッズ",
+            "mediumGenreId": "EXT000003SXI",
+            "mediumGenreName": "ディズニー",
+            "ratingName": "",
+            "docText": "木のあやつり人形・ピノキオが命を与えられ、冒険を通して善悪を学び、本物の少年となっていくまでを描く。１９４０年初公開のディズニー名作アニメをデジタル・リマスターで蘇らせ、ボーナス・コンテンツを加えた３枚組にパッケージ。",
+            "createdYear": "1940",
+            "createdCountries": "アメリカ"
           }
         ]
       }
@@ -421,11 +421,11 @@ EOT;
 
       {
         "hasNext": true,
-        "totalCount": 0,
+        "totalCount": 1,
         "rows": [
           {
-            "artist_id": 0,
-            "artist_name": "string"
+            "artist_id": 1,
+            "artist_name": "ほげほげ"
           }
         ]
       }
