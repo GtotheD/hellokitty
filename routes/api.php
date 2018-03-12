@@ -155,13 +155,12 @@ $router->group([
           }
         }
 EOT;
-        $json = (array) json_decode($responseString);
+        $json = json_decode($responseString);
         return response()->json($json);
     });
     // 作品シリーズ情報
     $router->get('work/{workId}/series', function (Request $request, $workId) {
       $responseString = <<<EOT
-
       {
         "hasNext": true,
         "totalCount": 1,
@@ -185,15 +184,13 @@ EOT;
           }
         ]
       }
-
 EOT;
-      $json = (array) json_decode($responseString);
+      $json = json_decode($responseString);
       return response()->json($json);
     });
     // レビュー情報 filmarks
     $router->get('work/{workId}/review/filmarks', function (Request $request, $workId) {
       $responseString = <<<EOT
-
       {
         "totalCount": 1,
         "averageRating": 0,
@@ -206,15 +203,13 @@ EOT;
           }
         ]
       }
-
 EOT;
-      $json = (array) json_decode($responseString);
+      $json = json_decode($responseString);
       return response()->json($json);
     });
     // レビュー情報 discas
     $router->get('work/{workId}/review/discas', function (Request $request, $workId) {
       $responseString = <<<EOT
-
       {
         "totalCount": 1,
         "averageRating": 0,
@@ -227,15 +222,13 @@ EOT;
           }
         ]
       }
-
 EOT;
-      $json = (array) json_decode($responseString);
+      $json = json_decode($responseString);
       return response()->json($json);
     });
     // レビュー情報 tol
     $router->get('work/{workId}/review/tol', function (Request $request, $workId) {
       $responseString = <<<EOT
-
       {
         "totalCount": 1,
         "averageRating": 0,
@@ -248,15 +241,13 @@ EOT;
           }
         ]
       }
-
 EOT;
-      $json = (array) json_decode($responseString);
+      $json = json_decode($responseString);
       return response()->json($json);
     });
     // 関連作品
     $router->get('work/{workId}/relation/works', function (Request $request, $workId) {
       $responseString = <<<EOT
-
       {
         "hasNext": true,
         "totalCount": 1,
@@ -280,9 +271,8 @@ EOT;
           }
         ]
       }
-
 EOT;
-      $json = (array) json_decode($responseString);
+      $json = json_decode($responseString);
       return response()->json($json);
     });
     // 関連動画
@@ -292,13 +282,12 @@ EOT;
       JSON HERE
 
 EOT;
-      $json = (array) json_decode($responseString);
+      $json = json_decode($responseString);
       return response()->json($json);
     });
     // 関連画像
     $router->get('work/{workId}/relation/pics', function (Request $request, $workId) {
       $responseString = <<<EOT
-
       {
         "hasNext": true,
         "totalCount": 1,
@@ -308,15 +297,13 @@ EOT;
           }
         ]
       }
-
 EOT;
-      $json = (array) json_decode($responseString);
+      $json = json_decode($responseString);
       return response()->json($json);
     });
     // 関連アーティスト
     $router->get('work/{workId}/relation/artist', function (Request $request, $workId) {
       $responseString = <<<EOT
-
       {
         "hasNext": true,
         "totalCount": 1,
@@ -340,9 +327,8 @@ EOT;
           }
         ]
       }
-
 EOT;
-      $json = (array) json_decode($responseString);
+      $json = json_decode($responseString);
       return response()->json($json);
     });
 
@@ -354,7 +340,6 @@ EOT;
     // 作品レコメンド（この作品を見た人はこんな作品もみています）
     $router->get('work/{workId}/recommend/other', function (Request $request, $workId) {
       $responseString = <<<EOT
-
       {
         "hasNext": true,
         "totalCount": 1,
@@ -378,15 +363,13 @@ EOT;
           }
         ]
       }
-
 EOT;
-      $json = (array) json_decode($responseString);
+      $json = json_decode($responseString);
       return response()->json($json);
     });
     // 作者レコメンド
     $router->get('work/{workId}/recommend/author', function (Request $request, $workId) {
       $responseString = <<<EOT
-
       {
         "hasNext": true,
         "totalCount": 1,
@@ -410,15 +393,13 @@ EOT;
           }
         ]
       }
-
 EOT;
-      $json = (array) json_decode($responseString);
+      $json = json_decode($responseString);
       return response()->json($json);
     });
     // 作品レコメンド
     $router->get('work/{workId}/recommend/artist', function (Request $request, $workId) {
       $responseString = <<<EOT
-
       {
         "hasNext": true,
         "totalCount": 1,
@@ -429,9 +410,8 @@ EOT;
           }
         ]
       }
-
 EOT;
-      $json = (array) json_decode($responseString);
+      $json = json_decode($responseString);
       return response()->json($json);
     });
     // 変換
