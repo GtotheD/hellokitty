@@ -48,6 +48,19 @@
  *      type="string"
  * )
  * @SWG\Parameter(
+ *      name="genreId",
+ *      in="path",
+ *      description="ジャンルID",
+ *      required=false,
+ *      type="string"
+ * ) * @SWG\Parameter(
+ *      name="cccFamilyCode",
+ *      in="path",
+ *      description="CCCファミリーコード",
+ *      required=false,
+ *      type="string"
+ * )
+ * @SWG\Parameter(
  *      name="limit",
  *      description="取得件数",
  *      in="query",
@@ -65,7 +78,7 @@
  * )
  * @SWG\Parameter(
  *      name="sort",
- *      description="並び順（デフォルトは昇順：asc）",
+ *      description="並び順（お薦め(デフォルト)、新しい順、古い順）",
  *      in="query",
  *      required=false,
  *      type="string",
