@@ -118,6 +118,11 @@
  *              description="商品名"
  *          ),
  *          @SWG\Property(
+ *              property="saleType",
+ *              type="string",
+ *              description="販売タイプ（1=sell, 2=rental）"
+ *          ),
+ *          @SWG\Property(
  *              property="productCode",
  *              type="string",
  *              description="商品番号"

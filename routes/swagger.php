@@ -684,7 +684,97 @@
  *     @SWG\Response(response=500, description="Server error")
  * )
  */
-
+/**
+ * @SWG\Get(
+ *     path="/work/{workId}/products",
+ *     description="商品一覧情報取得",
+ *     tags={"Work"},
+ *     produces={"application/json"},
+ *     @SWG\Parameter(ref="#/parameters/workId"),
+ *     @SWG\Parameter(ref="#/parameters/limit"),
+ *     @SWG\Parameter(ref="#/parameters/offset"),
+ *     @SWG\Parameter(ref="#/parameters/saleType"),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          ref="$/responses/ListJson",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="rows",
+ *                  type="array",
+ *                  @SWG\Items(ref="#/definitions/Product"),
+ *                  description="作品情報",
+ *              ),
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+/**
+ * @SWG\Get(
+ *     path="/work/{workId}/products/has",
+ *     description="Himo作品ID作品検索",
+ *     tags={"Work"},
+ *     produces={"application/json"},
+ *     @SWG\Parameter(ref="#/parameters/workId"),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="sell",
+ *                  type="boolean",
+ *                  description="セル有無",
+ *              ),
+ *              @SWG\Property(
+ *                  property="rental",
+ *                  type="boolean",
+ *                  description="レンタル有無",
+ *              ),
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+/**
+ * @SWG\Get(
+ *     path="/work/{workId}/people",
+ *     description="キャストスタッフ一覧取得",
+ *     tags={"Work"},
+ *     produces={"application/json"},
+ *     @SWG\Parameter(ref="#/parameters/workId"),
+ *     @SWG\Parameter(ref="#/parameters/limit"),
+ *     @SWG\Parameter(ref="#/parameters/offset"),
+ *     @SWG\Parameter(ref="#/parameters/saleType"),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          ref="$/responses/ListJson",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="rows",
+ *                  type="array",
+ *                  @SWG\Items(
+ *                       @SWG\Property(property="personId",type="string"),
+ *                       @SWG\Property(property="personName",type="string"),
+ *                       @SWG\Property(property="roleId",type="string"),
+ *                       @SWG\Property(property="roleName",type="string"),
+ *                  ),
+ *              ),
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
 /**
  * @SWG\Get(
  *     path="/work/{workId}/series",
@@ -856,7 +946,7 @@
 /**
  * @SWG\Get(
  *     path="/work/{workId}/relation/artist",
- *     description="関連アーティスト商品情報取得",
+ *     description="アーティスト作品一覧取得",
  *     tags={"Work"},
  *     produces={"application/json"},
  *     @SWG\Parameter(ref="#/parameters/workId"),
@@ -902,7 +992,42 @@
  *                  property="rows",
  *                  type="array",
  *                  @SWG\Items(ref="#/definitions/Cast"),
- *                  description="キャスト情報",
+ *                  description="作品簡易情報",
+ *              ),
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+/**
+ * @SWG\Get(
+ *     path="/genre/{genreId}",
+ *     description="ジャンルからの作品一覧取得",
+ *     tags={"Genre"},
+ *     produces={"application/json"},
+ *     @SWG\Parameter(ref="#/parameters/genreId"),
+ *     @SWG\Parameter(ref="#/parameters/limit"),
+ *     @SWG\Parameter(ref="#/parameters/offset"),
+ *     @SWG\Parameter(ref="#/parameters/saleType"),
+ *     @SWG\Parameter(ref="#/parameters/sort"),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          ref="$/responses/ListJson",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="genreName",
+ *                  type="string",
+ *                  description="ジャンル名",
+ *              ),
+ *              @SWG\Property(
+ *                  property="rows",
+ *                  type="array",
+ *                  @SWG\Items(ref="#/definitions/Cast"),
+ *                  description="作品簡易情報",
  *              ),
  *          )
  *      ),
@@ -915,7 +1040,7 @@
 /**
  * @SWG\Get(
  *     path="/work/{workId}/recommend/other",
- *     description="お薦め作品取得",
+ *     description="お薦め作品一覧取得",
  *     tags={"Work"},
  *     produces={"application/json"},
  *     @SWG\Parameter(ref="#/parameters/workId"),
@@ -944,7 +1069,7 @@
 /**
  * @SWG\Get(
  *     path="/work/{workId}/recommend/author",
- *     description="お薦め著者作品取得",
+ *     description="著者作品一覧取得",
  *     tags={"Work"},
  *     produces={"application/json"},
  *     @SWG\Parameter(ref="#/parameters/workId"),
@@ -973,7 +1098,7 @@
 /**
  * @SWG\Get(
  *     path="/work/{workId}/recommend/artist",
- *     description="お薦めアーティスト",
+ *     description="関連アーティスト一覧取得",
  *     tags={"Work"},
  *     produces={"application/json"},
  *     @SWG\Parameter(ref="#/parameters/workId"),
@@ -1004,7 +1129,7 @@
 /**
  * @SWG\Get(
  *     path="/convert/work_id/{codeType}/{id}",
- *     description="CCC商品IDと商品IDから作品ID取得を取得する",
+ *     description="HimoID取得 (CCC商品IDと商品IDから作品ID取得を取得する)",
  *     tags={"Work"},
  *     produces={"application/json"},
  *     @SWG\Parameter(
@@ -1025,9 +1150,14 @@
  *          description="success",
  *          @SWG\Schema(
  *              @SWG\Property(
- *                  property="work_id",
+ *                  property="workId",
  *                  type="string",
  *                  description="作品ID",
+ *              ),
+ *              @SWG\Property(
+ *                  property="saleType",
+ *                  type="string",
+ *                  description="販売タイプ",
  *              ),
  *          )
  *      ),
@@ -1040,23 +1170,22 @@
 /**
  * @SWG\Get(
  *     path="/product/{cccFamilyCd}",
- *     description="商品情報",
+ *     description="商品詳細情報取得",
  *     tags={"Product"},
  *     produces={"application/json"},
- *     @SWG\Parameter(ref="#/parameters/workId"),
+ *     @SWG\Parameter(ref="#/parameters/cccFamilyCode"),
  *     @SWG\Parameter(ref="#/parameters/limit"),
  *     @SWG\Parameter(ref="#/parameters/offset"),
  *     @SWG\Parameter(ref="#/parameters/saleType"),
  *     @SWG\Response(
  *          response=200,
  *          description="success",
- *          ref="$/responses/ListJson",
  *          @SWG\Schema(
  *              @SWG\Property(
- *                  property="rows",
- *                  type="array",
- *                  @SWG\Items(ref="#/definitions/Product"),
- *                  description="作品情報",
+ *                  property="data",
+ *                  type="object",
+ *                  ref="#/definitions/Product",
+ *                  description="商品詳細情報",
  *              ),
  *          )
  *     ),
@@ -1068,7 +1197,7 @@
  */
 /**
  * @SWG\Get(
- *     path="/product/stock/{storeCd}/{cccFamilyCd}",
+ *     path="/product/stock/{storeCd}/{cccFamilyCd}/{discType}",
  *     description="在庫確認",
  *     tags={"Product"},
  *     produces={"application/json"},
@@ -1082,6 +1211,12 @@
  *       name="cccFamilyCd",
  *       in="path",
  *       description="",
+ *       type="string"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="discType",
+ *       in="path",
+ *       description="bluray or dvd",
  *       type="string"
  *     ),
  *     @SWG\Response(
