@@ -134,55 +134,285 @@ $router->group([
 
     // 作品基本情報
     $router->get('work/{workId}', function (Request $request, $workId) {
-        return $json;
+        $responseString = <<<EOT
+        {
+          "data": {
+            "workId": "PTA00007XDJP",
+            "workTitle": "ピノキオ",
+            "workTitleOrig": "PINOCCHIO",
+            "saleType": "2",
+            "workTypeId": "2",
+            "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
+            "saleStartDate": "1995-03-17",
+            "bigGenreId": "EXT0000000WP",
+            "bigGenreName": "キッズ",
+            "mediumGenreId": "EXT000003SXI",
+            "mediumGenreName": "ディズニー",
+            "ratingName": "",
+            "docText": "木のあやつり人形・ピノキオが命を与えられ、冒険を通して善悪を学び、本物の少年となっていくまでを描く。１９４０年初公開のディズニー名作アニメをデジタル・リマスターで蘇らせ、ボーナス・コンテンツを加えた３枚組にパッケージ。",
+            "createdYear": "1940",
+            "createdCountries": "アメリカ"
+          }
+        }
+EOT;
+        $json = json_decode($responseString);
+        return response()->json($json);
     });
     // 作品シリーズ情報
     $router->get('work/{workId}/series', function (Request $request, $workId) {
-        return $json;
+      $responseString = <<<EOT
+      {
+        "hasNext": true,
+        "totalCount": 1,
+        "rows": [
+          {
+            "workId": "PTA00007XDJP",
+            "workTitle": "ピノキオ",
+            "workTitleOrig": "PINOCCHIO",
+            "saleType": "2",
+            "workTypeId": "2",
+            "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
+            "saleStartDate": "1995-03-17",
+            "bigGenreId": "EXT0000000WP",
+            "bigGenreName": "キッズ",
+            "mediumGenreId": "EXT000003SXI",
+            "mediumGenreName": "ディズニー",
+            "ratingName": "",
+            "docText": "木のあやつり人形・ピノキオが命を与えられ、冒険を通して善悪を学び、本物の少年となっていくまでを描く。１９４０年初公開のディズニー名作アニメをデジタル・リマスターで蘇らせ、ボーナス・コンテンツを加えた３枚組にパッケージ。",
+            "createdYear": "1940",
+            "createdCountries": "アメリカ"
+          }
+        ]
+      }
+EOT;
+      $json = json_decode($responseString);
+      return response()->json($json);
     });
     // レビュー情報 filmarks
     $router->get('work/{workId}/review/filmarks', function (Request $request, $workId) {
-        return $json;
+      $responseString = <<<EOT
+      {
+        "totalCount": 1,
+        "averageRating": 0,
+        "rows": [
+          {
+            "rating": "4",
+            "contributor": "ホゲホゲ",
+            "contributeDate": "2018-03-01",
+            "contents": "ふがふが　ほげほげ　ふがふが　ほげほげ"
+          }
+        ]
+      }
+EOT;
+      $json = json_decode($responseString);
+      return response()->json($json);
     });
     // レビュー情報 discas
     $router->get('work/{workId}/review/discas', function (Request $request, $workId) {
-        return $json;
+      $responseString = <<<EOT
+      {
+        "totalCount": 1,
+        "averageRating": 0,
+        "rows": [
+          {
+            "rating": "4",
+            "contributor": "ホゲホゲ",
+            "contributeDate": "2018-03-01",
+            "contents": "ふがふが　ほげほげ　ふがふが　ほげほげ"
+          }
+        ]
+      }
+EOT;
+      $json = json_decode($responseString);
+      return response()->json($json);
     });
     // レビュー情報 tol
     $router->get('work/{workId}/review/tol', function (Request $request, $workId) {
-        return $json;
+      $responseString = <<<EOT
+      {
+        "totalCount": 1,
+        "averageRating": 0,
+        "rows": [
+          {
+            "rating": "4",
+            "contributor": "ホゲホゲ",
+            "contributeDate": "2018-03-01",
+            "contents": "ふがふが　ほげほげ　ふがふが　ほげほげ"
+          }
+        ]
+      }
+EOT;
+      $json = json_decode($responseString);
+      return response()->json($json);
     });
     // 関連作品
     $router->get('work/{workId}/relation/works', function (Request $request, $workId) {
-        return $json;
+      $responseString = <<<EOT
+      {
+        "hasNext": true,
+        "totalCount": 1,
+        "rows": [
+          {
+            "workId": "PTA00007XDJP",
+            "workTitle": "ピノキオ",
+            "workTitleOrig": "PINOCCHIO",
+            "saleType": "2",
+            "workTypeId": "2",
+            "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
+            "saleStartDate": "1995-03-17",
+            "bigGenreId": "EXT0000000WP",
+            "bigGenreName": "キッズ",
+            "mediumGenreId": "EXT000003SXI",
+            "mediumGenreName": "ディズニー",
+            "ratingName": "",
+            "docText": "木のあやつり人形・ピノキオが命を与えられ、冒険を通して善悪を学び、本物の少年となっていくまでを描く。１９４０年初公開のディズニー名作アニメをデジタル・リマスターで蘇らせ、ボーナス・コンテンツを加えた３枚組にパッケージ。",
+            "createdYear": "1940",
+            "createdCountries": "アメリカ"
+          }
+        ]
+      }
+EOT;
+      $json = json_decode($responseString);
+      return response()->json($json);
     });
     // 関連動画
     $router->get('work/{workId}/relation/movie', function (Request $request, $workId) {
-        return $json;
+      $responseString = <<<EOT
+
+      JSON HERE
+
+EOT;
+      $json = json_decode($responseString);
+      return response()->json($json);
     });
     // 関連画像
     $router->get('work/{workId}/relation/pics', function (Request $request, $workId) {
-        return $json;
+      $responseString = <<<EOT
+      {
+        "hasNext": true,
+        "totalCount": 1,
+        "rows": [
+          {
+            "url": "//store-tsutaya.tsite.jp/images/bamen/00205/4959241958082_B001S.jpg"
+          }
+        ]
+      }
+EOT;
+      $json = json_decode($responseString);
+      return response()->json($json);
     });
     // 関連アーティスト
     $router->get('work/{workId}/relation/artist', function (Request $request, $workId) {
-        return $json;
+      $responseString = <<<EOT
+      {
+        "hasNext": true,
+        "totalCount": 1,
+        "rows": [
+          {
+            "workId": "PTA00007XDJP",
+            "workTitle": "ピノキオ",
+            "workTitleOrig": "PINOCCHIO",
+            "saleType": "2",
+            "workTypeId": "2",
+            "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
+            "saleStartDate": "1995-03-17",
+            "bigGenreId": "EXT0000000WP",
+            "bigGenreName": "キッズ",
+            "mediumGenreId": "EXT000003SXI",
+            "mediumGenreName": "ディズニー",
+            "ratingName": "",
+            "docText": "木のあやつり人形・ピノキオが命を与えられ、冒険を通して善悪を学び、本物の少年となっていくまでを描く。１９４０年初公開のディズニー名作アニメをデジタル・リマスターで蘇らせ、ボーナス・コンテンツを加えた３枚組にパッケージ。",
+            "createdYear": "1940",
+            "createdCountries": "アメリカ"
+          }
+        ]
+      }
+EOT;
+      $json = json_decode($responseString);
+      return response()->json($json);
     });
+
+
     // キャスト情報
     $router->get('cast/{castId}', function (Request $request, $workId) {
         return $json;
     });
     // 作品レコメンド（この作品を見た人はこんな作品もみています）
     $router->get('work/{workId}/recommend/other', function (Request $request, $workId) {
-        return $json;
+      $responseString = <<<EOT
+      {
+        "hasNext": true,
+        "totalCount": 1,
+        "rows": [
+          {
+            "workId": "PTA00007XDJP",
+            "workTitle": "ピノキオ",
+            "workTitleOrig": "PINOCCHIO",
+            "saleType": "2",
+            "workTypeId": "2",
+            "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
+            "saleStartDate": "1995-03-17",
+            "bigGenreId": "EXT0000000WP",
+            "bigGenreName": "キッズ",
+            "mediumGenreId": "EXT000003SXI",
+            "mediumGenreName": "ディズニー",
+            "ratingName": "",
+            "docText": "木のあやつり人形・ピノキオが命を与えられ、冒険を通して善悪を学び、本物の少年となっていくまでを描く。１９４０年初公開のディズニー名作アニメをデジタル・リマスターで蘇らせ、ボーナス・コンテンツを加えた３枚組にパッケージ。",
+            "createdYear": "1940",
+            "createdCountries": "アメリカ"
+          }
+        ]
+      }
+EOT;
+      $json = json_decode($responseString);
+      return response()->json($json);
     });
     // 作者レコメンド
-    $router->get('work/{workId}/recommend/auther', function (Request $request, $workId) {
-        return $json;
+    $router->get('work/{workId}/recommend/author', function (Request $request, $workId) {
+      $responseString = <<<EOT
+      {
+        "hasNext": true,
+        "totalCount": 1,
+        "rows": [
+          {
+            "workId": "PTA00007XDJP",
+            "workTitle": "ピノキオ",
+            "workTitleOrig": "PINOCCHIO",
+            "saleType": "2",
+            "workTypeId": "2",
+            "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
+            "saleStartDate": "1995-03-17",
+            "bigGenreId": "EXT0000000WP",
+            "bigGenreName": "キッズ",
+            "mediumGenreId": "EXT000003SXI",
+            "mediumGenreName": "ディズニー",
+            "ratingName": "",
+            "docText": "木のあやつり人形・ピノキオが命を与えられ、冒険を通して善悪を学び、本物の少年となっていくまでを描く。１９４０年初公開のディズニー名作アニメをデジタル・リマスターで蘇らせ、ボーナス・コンテンツを加えた３枚組にパッケージ。",
+            "createdYear": "1940",
+            "createdCountries": "アメリカ"
+          }
+        ]
+      }
+EOT;
+      $json = json_decode($responseString);
+      return response()->json($json);
     });
     // 作品レコメンド
     $router->get('work/{workId}/recommend/artist', function (Request $request, $workId) {
-        return $json;
+      $responseString = <<<EOT
+      {
+        "hasNext": true,
+        "totalCount": 1,
+        "rows": [
+          {
+            "artist_id": 1,
+            "artist_name": "ほげほげ"
+          }
+        ]
+      }
+EOT;
+      $json = json_decode($responseString);
+      return response()->json($json);
     });
     // 変換
     $router->get('convert/from/{id}/to/work_id', function (Request $request, $workId) {
