@@ -13,33 +13,24 @@ class CreateTsWorks extends Migration
      */
     public function up()
     {
-        Schema::create('ts_structures', function (Blueprint $table) {
-            // work_title
-            // jacket_l
-            // sale_start_date
-            // big_genre_name
-            // medium_genre_name
-            // rating_name アダルト表示
-            //　doc_text
-            // created_year
-            // created_countries
-            // work_title_orig
-            // work_type_id
-            // work_copyright
-            // sell_rental_flag
+        Schema::create('ts_works', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('sort');
-            $table->unsignedTinyInteger('goods_type');
-            $table->unsignedTinyInteger('sale_type');
-            $table->unsignedTinyInteger('section_type');
-            $table->dateTime('display_start_date');
-            $table->dateTime('display_end_date');
-            $table->text('title');
-            $table->text('link_url');
-            $table->unsignedTinyInteger('is_tap_on');
-            $table->unsignedTinyInteger('is_ranking');
-            $table->text('api_url');
-            $table->text('section_file_name');
+            $table->text('work_id');
+            $table->text('work_title');
+            $table->text('jacket_l');
+            $table->dateTime('sale_start_date');
+            $table->text('big_genre_id');
+            $table->text('big_genre_name');
+            $table->text('medium_genre_id');
+            $table->text('medium_genre_name');
+            $table->text('rating_name');
+            $table->text('doc_text');
+            $table->text('created_year');
+            $table->text('created_countries');
+            $table->text('work_title_orig');
+            $table->text('work_type_id');
+            $table->text('work_copyright');
+            $table->text('sell_rental_flag');
             $table->timestamps();
         });
     }
@@ -51,6 +42,6 @@ class CreateTsWorks extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('ts_works');
     }
 }

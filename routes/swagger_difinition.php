@@ -190,7 +190,7 @@
  *          @SWG\Property(
  *              property="bestAlbumFlg",
  *              type="string",
- *              description="特典内容"
+ *              description="ベストアルバムフラグ"
  *          ),
  *          @SWG\Property(
  *              property="makerName",
