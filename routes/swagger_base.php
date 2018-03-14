@@ -53,7 +53,8 @@
  *      description="ジャンルID",
  *      required=false,
  *      type="string"
- * ) * @SWG\Parameter(
+ * )
+ * @SWG\Parameter(
  *      name="cccFamilyCode",
  *      in="path",
  *      description="CCCファミリーコード",

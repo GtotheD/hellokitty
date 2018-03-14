@@ -20,7 +20,7 @@
  *          @SWG\Property(
  *              property="saleType",
  *              type="string",
- *              description="販売区分"
+ *              description="販売タイプ（1=sell, 2=rental）"
  *          ),
  *          @SWG\Property(
  *              property="workTypeId",
@@ -76,6 +76,11 @@
  *              property="createdCountries",
  *              type="string",
  *              description="作成国"
+ *          ),
+ *          @SWG\Property(
+ *              property="copyright",
+ *              type="string",
+ *              description="コピーライト"
  *          )
  *  )
  * */
@@ -84,7 +89,8 @@
  *          definition="Review",
  *          @SWG\Property(
  *              property="rating",
- *              type="string",
+ *              type="number",
+ *              format="float",
  *              description="レーティング"
  *          ),
  *          @SWG\Property(

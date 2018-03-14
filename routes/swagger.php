@@ -991,8 +991,8 @@
  *              @SWG\Property(
  *                  property="rows",
  *                  type="array",
- *                  @SWG\Items(ref="#/definitions/Cast"),
- *                  description="作品簡易情報",
+ *                  @SWG\Items(ref="#/definitions/Work"),
+ *                  description="作品情報",
  *              ),
  *          )
  *      ),
@@ -1019,15 +1019,10 @@
  *          ref="$/responses/ListJson",
  *          @SWG\Schema(
  *              @SWG\Property(
- *                  property="genreName",
- *                  type="string",
- *                  description="ジャンル名",
- *              ),
- *              @SWG\Property(
  *                  property="rows",
  *                  type="array",
- *                  @SWG\Items(ref="#/definitions/Cast"),
- *                  description="作品簡易情報",
+ *                  @SWG\Items(ref="#/definitions/Work"),
+ *                  description="作品情報",
  *              ),
  *          )
  *      ),
@@ -1128,7 +1123,7 @@
  */
 /**
  * @SWG\Get(
- *     path="/convert/work_id/{codeType}/{id}",
+ *     path="/convert/work_id/{idType}/{id}",
  *     description="HimoID取得 (CCC商品IDと商品IDから作品ID取得を取得する)",
  *     tags={"Work"},
  *     produces={"application/json"},
@@ -1153,6 +1148,11 @@
  *                  property="workId",
  *                  type="string",
  *                  description="作品ID",
+ *              ),
+ *              @SWG\Property(
+ *                  property="workTypeId",
+ *                  type="string",
+ *                  description="アイテム種別",
  *              ),
  *              @SWG\Property(
  *                  property="saleType",
