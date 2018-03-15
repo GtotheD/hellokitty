@@ -86,10 +86,10 @@
  * )
  * @SWG\Parameter(
  *      name="saleType",
- *      description="販売タイプ（セルかレンタルのどちからの取得） デフォルトはセル",
+ *      description="販売タイプ（1=sell, 2=rental） 指定しないと両方取得",
  *      in="query",
  *      required=false,
- *      type="string",
+ *      type="integer",
  * )
  * /
 
