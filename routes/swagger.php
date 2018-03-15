@@ -702,7 +702,36 @@
  *              @SWG\Property(
  *                  property="rows",
  *                  type="array",
- *                  @SWG\Items(ref="#/definitions/Product"),
+ *                  @SWG\Items(ref="#/definitions/ProductNarrow"),
+ *                  description="作品情報",
+ *              ),
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+/**
+ * @SWG\Get(
+ *     path="/work/{workId}/products/rental",
+ *     description="商品一覧情報取得（DVDレンタル時のグルーピング（問い合わせ時のLimit数がおかしくなる為にグルーピングが必要））",
+ *     tags={"Work"},
+ *     produces={"application/json"},
+ *     @SWG\Parameter(ref="#/parameters/workId"),
+ *     @SWG\Parameter(ref="#/parameters/limit"),
+ *     @SWG\Parameter(ref="#/parameters/offset"),
+ *     @SWG\Parameter(ref="#/parameters/saleType"),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          ref="$/responses/ListJson",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="rows",
+ *                  type="array",
+ *                  @SWG\Items(ref="#/definitions/ProductNarrow"),
  *                  description="作品情報",
  *              ),
  *          )
@@ -793,7 +822,7 @@
  *              @SWG\Property(
  *                  property="rows",
  *                  type="array",
- *                  @SWG\Items(ref="#/definitions/Work"),
+ *                  @SWG\Items(ref="#/definitions/WorkNarrow"),
  *                  description="作品情報",
  *              ),
  *          )
@@ -902,7 +931,7 @@
  *              @SWG\Property(
  *                  property="rows",
  *                  type="array",
- *                  @SWG\Items(ref="#/definitions/Work"),
+ *                  @SWG\Items(ref="#/definitions/WorkNarrow"),
  *                  description="作品情報",
  *              ),
  *          )
@@ -961,7 +990,7 @@
  *              @SWG\Property(
  *                  property="rows",
  *                  type="array",
- *                  @SWG\Items(ref="#/definitions/Work"),
+ *                  @SWG\Items(ref="#/definitions/WorkNarrow"),
  *                  description="作品情報",
  *              ),
  *          )
@@ -991,7 +1020,7 @@
  *              @SWG\Property(
  *                  property="rows",
  *                  type="array",
- *                  @SWG\Items(ref="#/definitions/Work"),
+ *                  @SWG\Items(ref="#/definitions/WorkNarrow"),
  *                  description="作品情報",
  *              ),
  *          )
@@ -1021,7 +1050,7 @@
  *              @SWG\Property(
  *                  property="rows",
  *                  type="array",
- *                  @SWG\Items(ref="#/definitions/Work"),
+ *                  @SWG\Items(ref="#/definitions/WorkNarrow"),
  *                  description="作品情報",
  *              ),
  *          )
@@ -1050,7 +1079,7 @@
  *              @SWG\Property(
  *                  property="rows",
  *                  type="array",
- *                  @SWG\Items(ref="#/definitions/Work"),
+ *                  @SWG\Items(ref="#/definitions/WorkNarrow"),
  *                  description="作品情報",
  *              ),
  *          )
@@ -1079,7 +1108,7 @@
  *              @SWG\Property(
  *                  property="rows",
  *                  type="array",
- *                  @SWG\Items(ref="#/definitions/Work"),
+ *                  @SWG\Items(ref="#/definitions/WorkNarrow"),
  *                  description="作品情報",
  *              ),
  *          )
@@ -1211,12 +1240,6 @@
  *       name="cccFamilyCd",
  *       in="path",
  *       description="",
- *       type="string"
- *     ),
- *     @SWG\Parameter(
- *       name="discType",
- *       in="path",
- *       description="bluray or dvd",
  *       type="string"
  *     ),
  *     @SWG\Response(

@@ -114,11 +114,6 @@
  *  @SWG\Definition(
  *          definition="Product",
  *          @SWG\Property(
- *              property="workTitle",
- *              type="string",
- *              description="作品名"
- *          ),
- *          @SWG\Property(
  *              property="productName",
  *              type="string",
  *              description="商品名"
@@ -212,7 +207,42 @@
  * */
 /**
  *  @SWG\Definition(
- *          definition="Cast",
+ *          definition="ProductNarrow",
+ *          @SWG\Property(
+ *              property="productName",
+ *              type="string",
+ *              description="商品名"
+ *          ),
+ *          @SWG\Property(
+ *              property="cccFamilyCd",
+ *              type="string",
+ *              description="cccファミリーコード"
+ *          ),
+ *          @SWG\Property(
+ *              property="itemCd",
+ *              type="string",
+ *              description="アイテムコード"
+ *          ),
+ *          @SWG\Property(
+ *              property="jacketL",
+ *              type="string",
+ *              description="ジャケ写"
+ *          ),
+ *          @SWG\Property(
+ *              property="saleStartDate",
+ *              type="string",
+ *              description="発売日"
+ *          ),
+ *          @SWG\Property(
+ *              property="newFlag",
+ *              type="string",
+ *              description="NEWフラグ"
+ *          ),
+ *  )
+ * */
+/**
+ *  @SWG\Definition(
+ *          definition="WorkNarrow",
  *          @SWG\Property(
  *              property="workId",
  *              type="string",
@@ -227,6 +257,21 @@
  *              property="jacketL",
  *              type="string",
  *              description="ジャケ写"
+ *          ),
+ *          @SWG\Property(
+ *              property="supplement",
+ *              type="string",
+ *              description="著者・作者"
+ *          ),
+ *          @SWG\Property(
+ *              property="cccProductCd",
+ *              type="string",
+ *              description="ccc作品コード"
+ *          ),
+ *          @SWG\Property(
+ *              property="saleType",
+ *              type="integer",
+ *              description="販売タイプ（1=sell, 2=rental） 指定しないと両方取得",
  *          ),
  *  )
  * */
