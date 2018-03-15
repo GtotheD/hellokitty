@@ -134,6 +134,11 @@
  *              description="商品番号"
  *          ),
  *          @SWG\Property(
+ *              property="ccc_family_cd",
+ *              type="string",
+ *              description="cccファミリーコード"
+ *          ),
+ *          @SWG\Property(
  *              property="jan",
  *              type="string",
  *              description="JANコード"
