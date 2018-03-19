@@ -1226,20 +1226,20 @@
  */
 /**
  * @SWG\Get(
- *     path="/product/stock/{storeCd}/{cccFamilyCd}/{discType}",
+ *     path="/product/stock/{storeCd}/{productId}",
  *     description="在庫確認",
  *     tags={"Product"},
  *     produces={"application/json"},
  *     @SWG\Parameter(
  *       name="storeCd",
  *       in="path",
- *       description="",
+ *       description="店舗コード",
  *       type="string"
  *     ),
  *     @SWG\Parameter(
- *       name="cccFamilyCd",
+ *       name="productId",
  *       in="path",
- *       description="",
+ *       description="レンタルの場合はレンタル商品コード、セルの場合はJANコード",
  *       type="string"
  *     ),
  *     @SWG\Response(
