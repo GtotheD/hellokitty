@@ -137,11 +137,16 @@
  *              property="jan",
  *              type="string",
  *              description="JANコード"
- *          ),*
+ *          ),
  *          @SWG\Property(
  *              property="itemCd",
  *              type="string",
  *              description="アイテムコード"
+ *          ),
+ *          @SWG\Property(
+ *              property="itemName",
+ *              type="string",
+ *              description="アイテム名"
  *          ),
  *          @SWG\Property(
  *              property="jacketL",
