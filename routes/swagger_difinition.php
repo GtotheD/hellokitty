@@ -8,6 +8,11 @@
  *              description="作品ID"
  *          ),
  *          @SWG\Property(
+ *              property="urlCd",
+ *              type="string",
+ *              description="URLコード"
+ *          ),
+ *          @SWG\Property(
  *              property="workTitle",
  *              type="string",
  *              description="作品タイトル"
@@ -20,12 +25,12 @@
  *          @SWG\Property(
  *              property="saleType",
  *              type="string",
- *              description="販売タイプ（1=sell, 2=rental）"
+ *              description="販売タイプ（sell, rental）"
  *          ),
  *          @SWG\Property(
- *              property="workTypeId",
+ *              property="itemType",
  *              type="string",
- *              description="アイテム種別"
+ *              description="アイテム種別　（cd, dvd, book, game）※未指定でALL"
  *          ),
  *          @SWG\Property(
  *              property="jacketL",
@@ -86,6 +91,110 @@
  * */
 /**
  *  @SWG\Definition(
+ *          definition="WorkNarrow",
+ *          @SWG\Property(
+ *              property="workId",
+ *              type="string",
+ *              description="作品ID"
+ *          ),
+ *          @SWG\Property(
+ *              property="urlCd",
+ *              type="string",
+ *              description="URLコード"
+ *          ),
+ *          @SWG\Property(
+ *              property="workTitle",
+ *              type="string",
+ *              description="作品タイトル"
+ *          ),
+ *          @SWG\Property(
+ *              property="jacketL",
+ *              type="string",
+ *              description="ジャケ写"
+ *          ),
+ *          @SWG\Property(
+ *              property="supplement",
+ *              type="string",
+ *              description="著者・作者"
+ *          ),
+ *          @SWG\Property(
+ *              property="cccProductCd",
+ *              type="string",
+ *              description="ccc作品コード"
+ *          ),
+ *          @SWG\Property(
+ *              property="saleType",
+ *              type="string",
+ *              description="販売タイプ（sell, rental）",
+ *          ),
+ *          @SWG\Property(
+ *              property="itemType",
+ *              type="string",
+ *              description="アイテム種別　（cd, dvd, book, game）"
+ *          ),
+ *  )
+ * */
+/**
+ *  @SWG\Definition(
+ *          definition="WorkNarrowSearch",
+ *          @SWG\Property(
+ *              property="workId",
+ *              type="string",
+ *              description="作品ID"
+ *          ),
+ *          @SWG\Property(
+ *              property="urlCd",
+ *              type="string",
+ *              description="URLコード"
+ *          ),
+ *          @SWG\Property(
+ *              property="workTitle",
+ *              type="string",
+ *              description="作品タイトル"
+ *          ),
+ *          @SWG\Property(
+ *              property="jacketL",
+ *              type="string",
+ *              description="ジャケ写"
+ *          ),
+ *          @SWG\Property(
+ *              property="supplement",
+ *              type="string",
+ *              description="著者・作者"
+ *          ),
+ *          @SWG\Property(
+ *              property="cccProductCd",
+ *              type="string",
+ *              description="ccc作品コード"
+ *          ),
+ *          @SWG\Property(
+ *              property="saleType",
+ *              type="string",
+ *              description="販売タイプ（sell, rental）",
+ *          ),
+ *          @SWG\Property(
+ *              property="itemType",
+ *              type="string",
+ *              description="アイテム種別　（cd, dvd, book, game）"
+ *          ),
+ *          @SWG\Property(
+ *              property="sellTypeHas",
+ *              type="object",
+ *              @SWG\Property(
+ *                  property="sell",
+ *                  type="boolean",
+ *                  description="セルの有無",
+ *              ),
+ *              @SWG\Property(
+ *                  property="rental",
+ *                  type="boolean",
+ *                  description="レンタルの有無",
+ *              ),
+ *          ),
+ *  )
+ * */
+/**
+ *  @SWG\Definition(
  *          definition="Review",
  *          @SWG\Property(
  *              property="rating",
@@ -121,7 +230,7 @@
  *          @SWG\Property(
  *              property="saleType",
  *              type="string",
- *              description="販売タイプ（1=sell, 2=rental）"
+ *              description="販売タイプ（sell, rental）"
  *          ),
  *          @SWG\Property(
  *              property="productCode",
@@ -129,9 +238,9 @@
  *              description="商品番号"
  *          ),
  *          @SWG\Property(
- *              property="ccc_family_cd",
+ *              property="productUniqueId",
  *              type="string",
- *              description="cccファミリーコード"
+ *              description="商品ID(product.id でproduct.product_idではない)"
  *          ),
  *          @SWG\Property(
  *              property="jan",
@@ -219,9 +328,14 @@
  *              description="商品名"
  *          ),
  *          @SWG\Property(
- *              property="cccFamilyCd",
+ *              property="productUniqueId",
  *              type="string",
- *              description="cccファミリーコード"
+ *              description="商品ID(product.id でproduct.product_idではない)"
+ *          ),
+ *          @SWG\Property(
+ *              property="productKey",
+ *              type="string",
+ *              description="レンタルの場合はレンタル商品コード、セルの場合はJANコード"
  *          ),
  *          @SWG\Property(
  *              property="itemCd",
@@ -247,16 +361,30 @@
  * */
 /**
  *  @SWG\Definition(
- *          definition="WorkNarrow",
+ *          definition="ProductGroup",
  *          @SWG\Property(
- *              property="workId",
+ *              property="productName",
  *              type="string",
- *              description="作品ID"
+ *              description="商品名"
  *          ),
  *          @SWG\Property(
- *              property="workTitle",
+ *              property="productUniqueId",
  *              type="string",
- *              description="作品タイトル"
+ *              description="商品ID(product.id でproduct.product_idではない)"
+ *          ),
+ *          @SWG\Property(
+ *              property="productKeys",
+ *              type="object",
+ *              @SWG\Property(
+ *                  property="dvd",
+ *                  type="string",
+ *                  description="dvdのレンタルコード（ccc_rental_cd）",
+ *              ),
+ *              @SWG\Property(
+ *                  property="bluray",
+ *                  type="string",
+ *                  description="blu-rayのレンタルコード（ccc_rental_cd）",
+ *              ),
  *          ),
  *          @SWG\Property(
  *              property="jacketL",
@@ -264,19 +392,40 @@
  *              description="ジャケ写"
  *          ),
  *          @SWG\Property(
- *              property="supplement",
+ *              property="saleStartDate",
  *              type="string",
- *              description="著者・作者"
+ *              description="発売日"
  *          ),
  *          @SWG\Property(
- *              property="cccProductCd",
+ *              property="newFlag",
  *              type="string",
- *              description="ccc作品コード"
+ *              description="NEWフラグ"
  *          ),
+ *  )
+ * */
+
+/**
+ *  @SWG\Definition(
+ *          definition="Count",
  *          @SWG\Property(
- *              property="saleType",
+ *              property="dvd",
  *              type="integer",
- *              description="販売タイプ（1=sell, 2=rental） 指定しないと両方取得",
+ *              description="DVDのカウント"
+ *          ),
+ *          @SWG\Property(
+ *              property="cd",
+ *              type="integer",
+ *              description="CDのカウント"
+ *          ),
+ *          @SWG\Property(
+ *              property="book",
+ *              type="integer",
+ *              description="BOOKのカウント"
+ *          ),
+ *          @SWG\Property(
+ *              property="game",
+ *              type="integer",
+ *              description="GAMEのカウント"
  *          ),
  *  )
  * */

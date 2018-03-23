@@ -722,7 +722,6 @@
  *     @SWG\Parameter(ref="#/parameters/workId"),
  *     @SWG\Parameter(ref="#/parameters/limit"),
  *     @SWG\Parameter(ref="#/parameters/offset"),
- *     @SWG\Parameter(ref="#/parameters/saleType"),
  *     @SWG\Response(
  *          response=200,
  *          description="success",
@@ -731,7 +730,7 @@
  *              @SWG\Property(
  *                  property="rows",
  *                  type="array",
- *                  @SWG\Items(ref="#/definitions/ProductNarrow"),
+ *                  @SWG\Items(ref="#/definitions/ProductGroup"),
  *                  description="作品情報",
  *              ),
  *          )
@@ -754,14 +753,10 @@
  *          description="success",
  *          @SWG\Schema(
  *              @SWG\Property(
- *                  property="sell",
- *                  type="boolean",
- *                  description="セル有無",
- *              ),
- *              @SWG\Property(
- *                  property="rental",
- *                  type="boolean",
- *                  description="レンタル有無",
+ *                  property="data",
+ *                  type="object",
+ *                  ref="$/definitions/WorkNarrowSearch",
+ *                  description="作品情報",
  *              ),
  *          )
  *      ),
@@ -1003,14 +998,15 @@
  */
 /**
  * @SWG\Get(
- *     path="/cast/{castId}",
- *     description="キャスト情報取得",
- *     tags={"Cast"},
+ *     path="/people/{personId}",
+ *     description="人物関連作品取得",
+ *     tags={"People"},
  *     produces={"application/json"},
- *     @SWG\Parameter(ref="#/parameters/castId"),
+ *     @SWG\Parameter(ref="#/parameters/personId"),
  *     @SWG\Parameter(ref="#/parameters/limit"),
  *     @SWG\Parameter(ref="#/parameters/offset"),
  *     @SWG\Parameter(ref="#/parameters/saleType"),
+ *     @SWG\Parameter(ref="#/parameters/itemType"),
  *     @SWG\Parameter(ref="#/parameters/sort"),
  *     @SWG\Response(
  *          response=200,
@@ -1041,7 +1037,12 @@
  *     @SWG\Parameter(ref="#/parameters/limit"),
  *     @SWG\Parameter(ref="#/parameters/offset"),
  *     @SWG\Parameter(ref="#/parameters/saleType"),
- *     @SWG\Parameter(ref="#/parameters/sort"),
+ *     @SWG\Parameter(
+ *       name="sort",
+ *       in="path",
+ *       description="並び順（お薦め(デフォルト)、新しい順 = new、 古い順 = old）",
+ *       type="string"
+ *     ),
  *     @SWG\Response(
  *          response=200,
  *          description="success",
@@ -1137,8 +1138,8 @@
  *                  property="rows",
  *                  type="array",
  *                  @SWG\Items(
- *                       @SWG\Property(property="artist_id",type="integer"),
- *                       @SWG\Property(property="artist_name",type="string"),
+ *                       @SWG\Property(property="personId",type="integer"),
+ *                       @SWG\Property(property="personName",type="string"),
  *                  ),
  *                  description="アーティスト情報",
  *              ),
@@ -1152,14 +1153,14 @@
  */
 /**
  * @SWG\Get(
- *     path="/convert/work_id/{idType}/{id}",
+ *     path="/convert/work/{idType}/{id}",
  *     description="HimoID取得 (CCC商品IDと商品IDから作品ID取得を取得する)",
  *     tags={"Work"},
  *     produces={"application/json"},
  *     @SWG\Parameter(
  *       name="idType",
  *       in="path",
- *       description="IDタイプ（CCC商品IDと商品ID）",
+ *       description="IDタイプ=jan, urlCd, cccProductId, productId",
  *       required=true,
  *       type="string"
  *     ),
@@ -1186,7 +1187,7 @@
  *              @SWG\Property(
  *                  property="saleType",
  *                  type="string",
- *                  description="販売タイプ",
+ *                  description="販売タイプ（himoの場合は）",
  *              ),
  *          )
  *      ),
@@ -1198,14 +1199,18 @@
  */
 /**
  * @SWG\Get(
- *     path="/product/{cccFamilyCd}",
+ *     path="/product/{productKey}",
  *     description="商品詳細情報取得",
  *     tags={"Product"},
  *     produces={"application/json"},
- *     @SWG\Parameter(ref="#/parameters/cccFamilyCode"),
+ *     @SWG\Parameter(
+ *       name="productKey",
+ *       in="path",
+ *       description="商品ID(product.id でproduct.product_idではない)",
+ *       type="string"
+ *     ),
  *     @SWG\Parameter(ref="#/parameters/limit"),
  *     @SWG\Parameter(ref="#/parameters/offset"),
- *     @SWG\Parameter(ref="#/parameters/saleType"),
  *     @SWG\Response(
  *          response=200,
  *          description="success",
@@ -1247,7 +1252,7 @@
  *          description="success",
  *          @SWG\Schema(
  *              @SWG\Property(
- *                  property="stock_status",
+ *                  property="stockStatus",
  *                  type="integer",
  *                  description="在庫ステータス",
  *              ),
@@ -1274,15 +1279,40 @@
  *     ),
  *     @SWG\Parameter(ref="#/parameters/limit"),
  *     @SWG\Parameter(ref="#/parameters/offset"),
+ *     @SWG\Parameter(
+ *       name="sort",
+ *       in="path",
+ *       description="並び順（お薦め(デフォルト)、新しい順 = new、 古い順 = old）",
+ *       type="string"
+ *     ),
+ *     @SWG\Parameter(ref="#/parameters/itemType"),
+ *     @SWG\Parameter(
+ *       name="periodType",
+ *       in="path",
+ *       description="期間指定（rental3, rental6, sell3, sell6）※未指定でALL",
+ *       type="string"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="periodType",
+ *       in="path",
+ *       description="期間指定（rental3, rental6, sell3, sell6）※未指定でALL",
+ *       type="string"
+ *     ),
  *     @SWG\Response(
  *          response=200,
  *          description="success",
  *          ref="$/responses/ListJson",
  *          @SWG\Schema(
  *              @SWG\Property(
+ *                  property="counts",
+ *                  type="object",
+ *                  ref="#/definitions/Count",
+ *                  description="カウント関連",
+ *              ),
+ *              @SWG\Property(
  *                  property="rows",
  *                  type="array",
- *                  @SWG\Items(ref="#/definitions/Work"),
+ *                  @SWG\Items(ref="#/definitions/WorkNarrowSearch"),
  *                  description="作品情報",
  *              ),
  *          )
