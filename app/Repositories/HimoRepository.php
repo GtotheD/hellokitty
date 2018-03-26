@@ -71,20 +71,22 @@ class HimoRepository extends ApiRequesterRepository
     // 返却した値は、DBに格納する
     public function get()
     {
-        $work = new Work();
-        $workResult = $work->setConditionByWorkId($this->id);
-        if ($workResult) {
-            $himoResult = $this->stab();
-            dd($himoResult);
-            $insertResult = $work->insert($himoResult['results']['rows']);
-
+        switch ($this->id) {
+            case 'PTA0000RV0LG':
+                return $this->stub('dvd');
+            case 'PTA0000M6ZK2':
+                return $this->stub('cd');
+            case 'PTA0000G4CSA':
+                return $this->stub('book');
+            case 'PTA0000U8W8U':
+                return $this->stub('game');
         }
-        return $himoResult;
     }
-    private function stab()
+
+    private function stub($filename)
     {
         $path = base_path('tests/fixture/himo');
-        $file = file_get_contents($path . '/dvd.txt');
-        return json_decode($file);
+        $file = file_get_contents($path . '/' .$filename);
+        return json_decode($file, TRUE);
     }
 }

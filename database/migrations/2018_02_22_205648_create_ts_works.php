@@ -15,8 +15,12 @@ class CreateTsWorks extends Migration
     {
         Schema::create('ts_works', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('work_id');
+            $table->string('work_id',255);
+            $table->text('work_type_id');
+            $table->text('work_format_id');
+            $table->text('work_format_name');
             $table->text('work_title');
+            $table->text('work_title_orig');
             $table->text('jacket_l');
             $table->dateTime('sale_start_date');
             $table->text('big_genre_id');
@@ -27,11 +31,10 @@ class CreateTsWorks extends Migration
             $table->text('doc_text');
             $table->text('created_year');
             $table->text('created_countries');
-            $table->text('work_title_orig');
-            $table->text('work_type_id');
-            $table->text('work_copyright');
-            $table->text('sell_rental_flag');
+            $table->text('book_series_name');
             $table->timestamps();
+
+            $table->unique('work_id');
         });
     }
 
