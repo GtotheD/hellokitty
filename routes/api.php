@@ -503,25 +503,27 @@ EOT;
     $router->get('product/{productKey}', function (Request $request, $workId) {
         $responseString = <<<EOT
         {
-            "productName": "グランド・イリュージョン",
-            "saleType": "1",
-            "productCode": "DABR4582",
-            "productUniqueId": "2",
-            "jan": "jan",
-            "itemCd": "2263655092",
-            "itemName": "PINOCCHIO",
-            "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
-            "saleStartDate": "2014-03-20",
-            "discInfo": "PINOCCHIO info",
-            "subtitle": "jp",
-            "soundSpec": "dts",
-            "regionInfo": "jp",
-            "priceTaxOut": "100",
-            "playTime": "1:30:00",
-            "contents": "木のあやつり人形・ピノキオが命を与えられ、冒険を通して善悪を学び、本物の少年となっていくまでを描く",
-            "privilege": "privilege",
-            "bestAlbumFlg": "0",
-            "makerName": "PINOCCHIO"
+            "data":{
+                "productName": "グランド・イリュージョン",
+                "saleType": "1",
+                "productCode": "DABR4582",
+                "productUniqueId": "2",
+                "jan": "jan",
+                "itemCd": "2263655092",
+                "itemName": "PINOCCHIO",
+                "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
+                "saleStartDate": "2014-03-20",
+                "discInfo": "PINOCCHIO info",
+                "subtitle": "jp",
+                "soundSpec": "dts",
+                "regionInfo": "jp",
+                "priceTaxOut": "100",
+                "playTime": "1:30:00",
+                "contents": "木のあやつり人形・ピノキオが命を与えられ、冒険を通して善悪を学び、本物の少年となっていくまでを描く",
+                "privilege": "privilege",
+                "bestAlbumFlg": "0",
+                "makerName": "PINOCCHIO"
+            }
         }
 EOT;
         $json = json_decode($responseString);
@@ -593,14 +595,7 @@ EOT;
           "totalCount": 1,
           "rows": [
             {
-                "workId": "PTA00007XDJP",
-                "urlCd": "https://cdn.store-tsutaya.tsite.jp/cd/pinocchio.mp4",
-                "workTitle": "ピノキオ",
-                "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
-                "supplement": "supplement",
-                "cccProductCd": "10407575",
-                "saleType": "2",
-                "itemType": "2"
+                "word": "keyword"
             }
           ]
         }
