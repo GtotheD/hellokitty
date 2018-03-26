@@ -16,6 +16,7 @@ use App\Repositories\StructureRepository;
 use App\Repositories\SectionRepository;
 use App\Exceptions\NoContentsException;
 use App\Repositories\BannerRepository;
+use App\Repositories\WorkRepository;
 
 // Api Group
 $router->group([
@@ -212,10 +213,10 @@ EOT;
       $responseString = <<<EOT
       {
         "totalCount": 1,
-        "averageRating": 0,
+        "averageRating": 4.0,
         "rows": [
           {
-            "rating": "4",
+            "rating": 4.0,
             "contributor": "ホゲホゲ",
             "contributeDate": "2018-03-01",
             "contents": "ふがふが　ほげほげ　ふがふが　ほげほげ"
@@ -231,10 +232,10 @@ EOT;
       $responseString = <<<EOT
       {
         "totalCount": 1,
-        "averageRating": 0,
+        "averageRating": 4.0,
         "rows": [
           {
-            "rating": "4",
+            "rating": 4.0,
             "contributor": "ホゲホゲ",
             "contributeDate": "2018-03-01",
             "contents": "ふがふが　ほげほげ　ふがふが　ほげほげ"
@@ -427,8 +428,12 @@ EOT;
         return $json;
     });
     // キーワード検索
-    $router->get('search/{keyword}', function (Request $request, $workId) {
-        return $json;
+    $router->get('search/{keyword}', function (Request $request, $keyword) {
+//        dd($keyword);
+        $work = new WorkRepository();
+        $result = $work->get('PTA0000RV0LG');
+        dd($result);
+        return response()->json($keyword);
     });
     // キーワード検索サジェスト
     $router->get('product/stock/{storeCd}/{cccFamilyCd}', function (Request $request, $workId) {

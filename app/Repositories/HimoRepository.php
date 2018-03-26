@@ -4,7 +4,8 @@ namespace App\Repositories;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
-
+use App\Repositories\WorkRepository;
+use App\Model\Work;
 /**
  * Created by PhpStorm.
  * User: ayumu
@@ -40,35 +41,50 @@ class HimoRepository extends ApiRequesterRepository
     /*
      * 詳細情報を取得するAPIをセットする
      */
-    public function detail($janCode)
+    public function detail($id)
     {
-        foreach ($ids as $id) {
-            $queryId[] = $idType . ':' . $id;
-        }
-        $this->params = [
-            '_system' => 'TsutayaPassport',
-            'id_value' => implode(' || ', $queryId),
-            'service_id' => 'tol',
-            'msdb_item' => 'video',
-            'adult_flg' => '2',
-            'response_level' => '9',
-            'offset' => $this->offset,
-            'limit' => $this->limit,
-            'sort_by' => 'auto:asc',
-        ];
+        $this->id = $id;
+//        foreach ($ids as $id) {
+//            $queryId[] = $idType . ':' . $id;
+//        }
+//
+//        $queryId = ['0106:101017982'];
+//        $this->params = [
+//            '_system' => 'TsutayaApp',
+//            'id_value' => implode(' || ', $queryId),
+//            'service_id' => 'tol',
+//            'msdb_item' => 'video',
+//            'adult_flg' => '2',
+//            'response_level' => '9',
+//            'offset' => $this->offset,
+//            'limit' => $this->limit,
+//            'sort_by' => 'auto:asc',
+//        ];
 
         return $this;
     }
 
     // override
+    // getが実行された際に、キャッシュへ問い合わせを行う。
+    // データ存在していれば、DBから値を取得
+    // 存在していなければ、Himoから取得して返却する
+    // 返却した値は、DBに格納する
     public function get()
     {
-        pearent::
+        $work = new Work();
+        $workResult = $work->setConditionByWorkId($this->id);
+        if ($workResult) {
+            $himoResult = $this->stab();
+            dd($himoResult);
+            $insertResult = $work->insert($himoResult['results']['rows']);
+
+        }
+        return $himoResult;
     }
-
-    private function import()
+    private function stab()
     {
-
-
+        $path = base_path('tests/fixture/himo');
+        $file = file_get_contents($path . '/dvd.txt');
+        return json_decode($file);
     }
 }
