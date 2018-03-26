@@ -43,6 +43,11 @@
  *              description="レンタル開始日"
  *          ),
  *          @SWG\Property(
+ *              property="newFlg",
+ *              type="boolean",
+ *              description="NEW表示フラグ"
+ *          ),
+ *          @SWG\Property(
  *              property="bigGenreId",
  *              type="string",
  *              description="大ジャンルID"
@@ -108,6 +113,11 @@
  *              description="作品タイトル"
  *          ),
  *          @SWG\Property(
+ *              property="newFlg",
+ *              type="boolean",
+ *              description="NEW表示フラグ"
+ *          ),
+ *          @SWG\Property(
  *              property="jacketL",
  *              type="string",
  *              description="ジャケ写"
@@ -151,6 +161,11 @@
  *              property="workTitle",
  *              type="string",
  *              description="作品タイトル"
+ *          ),
+ *          @SWG\Property(
+ *              property="newFlg",
+ *              type="boolean",
+ *              description="NEW表示フラグ"
  *          ),
  *          @SWG\Property(
  *              property="jacketL",
@@ -268,6 +283,11 @@
  *              description="発売日"
  *          ),
  *          @SWG\Property(
+ *              property="newFlg",
+ *              type="boolean",
+ *              description="NEW表示フラグ"
+ *          ),
+ *          @SWG\Property(
  *              property="discInfo",
  *              type="string",
  *              description="組数"
@@ -353,6 +373,11 @@
  *              description="発売日"
  *          ),
  *          @SWG\Property(
+ *              property="newFlg",
+ *              type="boolean",
+ *              description="NEW表示フラグ"
+ *          ),
+ *          @SWG\Property(
  *              property="newFlag",
  *              type="string",
  *              description="NEWフラグ"
@@ -395,6 +420,11 @@
  *              property="saleStartDate",
  *              type="string",
  *              description="発売日"
+ *          ),
+ *          @SWG\Property(
+ *              property="newFlg",
+ *              type="boolean",
+ *              description="NEW表示フラグ"
  *          ),
  *          @SWG\Property(
  *              property="newFlag",
