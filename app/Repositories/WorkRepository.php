@@ -51,17 +51,17 @@ class WorkRepository
                 $base['work_format_id'] = $row['work_format_id'];
                 $base['work_format_name'] = $row['work_format_name'];
                 $base['work_title'] = $row['work_title'];
-                $data['work_title_orig'] = $row['work_title_orig'];
+                $base['work_title_orig'] = $row['work_title_orig'];
                 $base['jacket_l'] = $row['jacket_l'];
                 $base['sale_start_date'] = $row['sale_start_date'];
                 $base['big_genre_id'] = $row['genres'][0]['big_genre_id'];
                 $base['big_genre_name'] = $row['genres'][0]['big_genre_name'];
                 $base['medium_genre_id'] = $row['genres'][0]['medium_genre_id'];
                 $base['medium_genre_name'] = $row['genres'][0]['medium_genre_name'];
-                $data['rating_name'] = $row['rating_name'];
-                $data['created_year'] = $row['created_year'];
-                $data['created_countries'] = $row['created_countries'];
-                $data['book_series_name'] = $row['book_series_name'];
+                $base['rating_name'] = $row['rating_name'];
+                $base['created_year'] = $row['created_year'];
+                $base['created_countries'] = $row['created_countries'];
+                $base['book_series_name'] = $row['book_series_name'];
                 // アイテム種別毎に整形フォーマットを変更できるように
                 switch ($row['work_type_id']) {
                     case '1':
