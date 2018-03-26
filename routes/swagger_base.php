@@ -41,9 +41,16 @@
  *      type="string"
  * )
  * @SWG\Parameter(
- *      name="castId",
+ *      name="personId",
  *      in="path",
- *      description="キャストID",
+ *      description="パーソンID",
+ *      required=false,
+ *      type="string"
+ * )
+ * @SWG\Parameter(
+ *      name="itemType",
+ *      in="path",
+ *      description="アイテム種別　（cd, dvd, book, game）※未指定でALL",
  *      required=false,
  *      type="string"
  * )
@@ -53,7 +60,8 @@
  *      description="ジャンルID",
  *      required=false,
  *      type="string"
- * ) * @SWG\Parameter(
+ * )
+ * @SWG\Parameter(
  *      name="cccFamilyCode",
  *      in="path",
  *      description="CCCファミリーコード",
@@ -78,14 +86,14 @@
  * )
  * @SWG\Parameter(
  *      name="sort",
- *      description="並び順（お薦め(デフォルト)、新しい順、古い順）",
+ *      description="並び順（新しい順(デフォルト) = new、 古い順 = old）",
  *      in="query",
  *      required=false,
  *      type="string",
  * )
  * @SWG\Parameter(
  *      name="saleType",
- *      description="販売タイプ（セルかレンタルのどちからの取得） デフォルトはセル",
+ *      description="販売タイプ（sell, rental） 指定しないと両方取得",
  *      in="query",
  *      required=false,
  *      type="string",
@@ -110,8 +118,8 @@
  *   description="",
  * )
  * @SWG\Tag(
- *   name="Cast",
- *   description="キャスト情報",
+ *   name="People",
+ *   description="人材情報",
  * )
  * @SWG\Tag(
  *   name="Search",
@@ -150,6 +158,25 @@
  *                  type="number",
  *                  format="float",
  *                  description="平均スコア",
+ *              ),
+ *      )
+ * )
+ */
+
+/**
+ * @SWG\Response(
+ *      response="SaleTypeHas",
+ *      description="セル・レンタルの商品を保持しているか",
+ *      @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="sell",
+ *                  type="boolean",
+ *                  description="セルの有無",
+ *              ),
+ *              @SWG\Property(
+ *                  property="rental",
+ *                  type="boolean",
+ *                  description="レンタルの有無",
  *              ),
  *      )
  * )

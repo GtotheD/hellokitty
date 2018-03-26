@@ -60,5 +60,15 @@ class HimoRepository extends ApiRequesterRepository
         return $this;
     }
 
+    // override
+    public function get()
+    {
+        pearent::
+    }
 
+    private function import()
+    {
+
+
+    }
 }
