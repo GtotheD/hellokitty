@@ -25,9 +25,26 @@ $router->group([
 
     // バージョン取得API
     $router->get('version', function () {
-        $version = config('version');
-        $version['version'] = hash('sha256', serialize($version));
-        return response()->json($version);
+        //$version = config('version');
+        //$version['version'] = hash('sha256', serialize($version));
+        $responseString = <<<EOT
+        {
+          "data": {
+            "appinfo": {
+                "latestVersion": "2.1",
+                "lowestVersion": "2.0",
+                "alert": "alert",
+                "nugde": "nudge",
+                "infomation": [
+                  null
+                ]
+              },
+              "update": "update info",
+              "version": "2.1"
+          }
+        }
+EOT;
+        return response()->json($responseString);
     });
 
     // コンテンツ構成取得API
@@ -138,10 +155,11 @@ $router->group([
         {
           "data": {
             "workId": "PTA00007XDJP",
+            "urlCd": "https://cdn.store-tsutaya.tsite.jp/cd/pinocchio.mp4",
             "workTitle": "ピノキオ",
             "workTitleOrig": "PINOCCHIO",
             "saleType": "2",
-            "workTypeId": "2",
+            "itemType": "2",
             "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
             "saleStartDate": "1995-03-17",
             "bigGenreId": "EXT0000000WP",
@@ -151,8 +169,97 @@ $router->group([
             "ratingName": "",
             "docText": "木のあやつり人形・ピノキオが命を与えられ、冒険を通して善悪を学び、本物の少年となっていくまでを描く。１９４０年初公開のディズニー名作アニメをデジタル・リマスターで蘇らせ、ボーナス・コンテンツを加えた３枚組にパッケージ。",
             "createdYear": "1940",
-            "createdCountries": "アメリカ"
+            "createdCountries": "アメリカ",
+            "copyright": "disney"
           }
+        }
+EOT;
+        $json = json_decode($responseString);
+        return response()->json($json);
+    });
+    // 商品一覧情報取得
+    $router->get('work/{workId}/products', function (Request $request, $workId) {
+        $responseString = <<<EOT
+        {
+          "hasNext": true,
+          "totalCount": 1,
+          "rows": [
+            {
+              "productName": "PINOCCHIO",
+              "productUniqueId": "PPD00000QEZQ",
+              "productKey": "DABR4582",
+              "itemCd": "2263655092",
+              "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
+              "saleStartDate": "1995-03-17",
+              "newFlag": "1"
+            }
+          ]
+        }
+EOT;
+        $json = json_decode($responseString);
+        return response()->json($json);
+    });
+    // 商品一覧情報取得（DVDレンタル時のグルーピング（問い合わせ時のLimit数がおかしくなる為にグルーピングが必要））
+    $router->get('work/{workId}/products/rental', function (Request $request, $workId) {
+        $responseString = <<<EOT
+        {
+          "hasNext": true,
+          "totalCount": 1,
+          "rows": [
+            {
+              "productName": "PINOCCHIO",
+              "productUniqueId": "PPD00000QEZQ",
+              "productKeys": {
+                "dvd": "2263655092",
+                "bluray": "2259510796"
+              },
+              "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
+              "saleStartDate": "1995-03-17",
+              "newFlag": "1"
+            }
+          ]
+        }
+EOT;
+        $json = json_decode($responseString);
+        return response()->json($json);
+    });
+    // Himo作品ID作品検索
+    $router->get('work/{workId}/products/has', function (Request $request, $workId) {
+        $responseString = <<<EOT
+        {
+          "data": {
+            "workId": "PTA00007XDJP",
+            "urlCd": "https://cdn.store-tsutaya.tsite.jp/cd/pinocchio.mp4",
+            "workTitle": "ピノキオ",
+            "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
+            "supplement": "supplement",
+            "cccProductCd": "10407575",
+            "saleType": "2",
+            "itemType": "2",
+            "sellTypeHas": {
+              "sell": true,
+              "rental": true
+            }
+          }
+        }
+EOT;
+        $json = json_decode($responseString);
+        return response()->json($json);
+    });
+    // キャストスタッフ一覧取得
+    $router->get('work/{workId}/people', function (Request $request, $workId) {
+        $responseString = <<<EOT
+        {
+           "hasNext": true,
+          "totalCount": 1,
+          "rows": [
+            {
+              "personId": "1",
+              "personName": "ほげほげ",
+              "roleId": "1",
+              "roleName": "ほげほげ"
+            }
+          ]
         }
 EOT;
         $json = json_decode($responseString);
@@ -167,20 +274,13 @@ EOT;
         "rows": [
           {
             "workId": "PTA00007XDJP",
+            "urlCd": "https://cdn.store-tsutaya.tsite.jp/cd/pinocchio.mp4",
             "workTitle": "ピノキオ",
-            "workTitleOrig": "PINOCCHIO",
-            "saleType": "2",
-            "workTypeId": "2",
             "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
-            "saleStartDate": "1995-03-17",
-            "bigGenreId": "EXT0000000WP",
-            "bigGenreName": "キッズ",
-            "mediumGenreId": "EXT000003SXI",
-            "mediumGenreName": "ディズニー",
-            "ratingName": "",
-            "docText": "木のあやつり人形・ピノキオが命を与えられ、冒険を通して善悪を学び、本物の少年となっていくまでを描く。１９４０年初公開のディズニー名作アニメをデジタル・リマスターで蘇らせ、ボーナス・コンテンツを加えた３枚組にパッケージ。",
-            "createdYear": "1940",
-            "createdCountries": "アメリカ"
+            "supplement": "supplement",
+            "cccProductCd": "10407575",
+            "saleType": "2",
+            "itemType": "2"
           }
         ]
       }
@@ -254,20 +354,13 @@ EOT;
         "rows": [
           {
             "workId": "PTA00007XDJP",
+            "urlCd": "https://cdn.store-tsutaya.tsite.jp/cd/pinocchio.mp4",
             "workTitle": "ピノキオ",
-            "workTitleOrig": "PINOCCHIO",
-            "saleType": "2",
-            "workTypeId": "2",
             "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
-            "saleStartDate": "1995-03-17",
-            "bigGenreId": "EXT0000000WP",
-            "bigGenreName": "キッズ",
-            "mediumGenreId": "EXT000003SXI",
-            "mediumGenreName": "ディズニー",
-            "ratingName": "",
-            "docText": "木のあやつり人形・ピノキオが命を与えられ、冒険を通して善悪を学び、本物の少年となっていくまでを描く。１９４０年初公開のディズニー名作アニメをデジタル・リマスターで蘇らせ、ボーナス・コンテンツを加えた３枚組にパッケージ。",
-            "createdYear": "1940",
-            "createdCountries": "アメリカ"
+            "supplement": "supplement",
+            "cccProductCd": "10407575",
+            "saleType": "2",
+            "itemType": "2"
           }
         ]
       }
@@ -310,20 +403,13 @@ EOT;
         "rows": [
           {
             "workId": "PTA00007XDJP",
+            "urlCd": "https://cdn.store-tsutaya.tsite.jp/cd/pinocchio.mp4",
             "workTitle": "ピノキオ",
-            "workTitleOrig": "PINOCCHIO",
-            "saleType": "2",
-            "workTypeId": "2",
             "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
-            "saleStartDate": "1995-03-17",
-            "bigGenreId": "EXT0000000WP",
-            "bigGenreName": "キッズ",
-            "mediumGenreId": "EXT000003SXI",
-            "mediumGenreName": "ディズニー",
-            "ratingName": "",
-            "docText": "木のあやつり人形・ピノキオが命を与えられ、冒険を通して善悪を学び、本物の少年となっていくまでを描く。１９４０年初公開のディズニー名作アニメをデジタル・リマスターで蘇らせ、ボーナス・コンテンツを加えた３枚組にパッケージ。",
-            "createdYear": "1940",
-            "createdCountries": "アメリカ"
+            "supplement": "supplement",
+            "cccProductCd": "10407575",
+            "saleType": "2",
+            "itemType": "2"
           }
         ]
       }
@@ -346,20 +432,13 @@ EOT;
         "rows": [
           {
             "workId": "PTA00007XDJP",
+            "urlCd": "https://cdn.store-tsutaya.tsite.jp/cd/pinocchio.mp4",
             "workTitle": "ピノキオ",
-            "workTitleOrig": "PINOCCHIO",
-            "saleType": "2",
-            "workTypeId": "2",
             "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
-            "saleStartDate": "1995-03-17",
-            "bigGenreId": "EXT0000000WP",
-            "bigGenreName": "キッズ",
-            "mediumGenreId": "EXT000003SXI",
-            "mediumGenreName": "ディズニー",
-            "ratingName": "",
-            "docText": "木のあやつり人形・ピノキオが命を与えられ、冒険を通して善悪を学び、本物の少年となっていくまでを描く。１９４０年初公開のディズニー名作アニメをデジタル・リマスターで蘇らせ、ボーナス・コンテンツを加えた３枚組にパッケージ。",
-            "createdYear": "1940",
-            "createdCountries": "アメリカ"
+            "supplement": "supplement",
+            "cccProductCd": "10407575",
+            "saleType": "2",
+            "itemType": "2"
           }
         ]
       }
@@ -376,20 +455,13 @@ EOT;
         "rows": [
           {
             "workId": "PTA00007XDJP",
+            "urlCd": "https://cdn.store-tsutaya.tsite.jp/cd/pinocchio.mp4",
             "workTitle": "ピノキオ",
-            "workTitleOrig": "PINOCCHIO",
-            "saleType": "2",
-            "workTypeId": "2",
             "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
-            "saleStartDate": "1995-03-17",
-            "bigGenreId": "EXT0000000WP",
-            "bigGenreName": "キッズ",
-            "mediumGenreId": "EXT000003SXI",
-            "mediumGenreName": "ディズニー",
-            "ratingName": "",
-            "docText": "木のあやつり人形・ピノキオが命を与えられ、冒険を通して善悪を学び、本物の少年となっていくまでを描く。１９４０年初公開のディズニー名作アニメをデジタル・リマスターで蘇らせ、ボーナス・コンテンツを加えた３枚組にパッケージ。",
-            "createdYear": "1940",
-            "createdCountries": "アメリカ"
+            "supplement": "supplement",
+            "cccProductCd": "10407575",
+            "saleType": "2",
+            "itemType": "2"
           }
         ]
       }
@@ -405,8 +477,8 @@ EOT;
         "totalCount": 1,
         "rows": [
           {
-            "artist_id": 1,
-            "artist_name": "ほげほげ"
+            "personId": 1,
+            "personName": "ほげほげ"
           }
         ]
       }
@@ -415,26 +487,160 @@ EOT;
       return response()->json($json);
     });
     // 変換
-    $router->get('convert/from/{id}/to/work_id', function (Request $request, $workId) {
-        return $json;
-    });
-    // 変換
-    $router->get('product/{cccFamilyCd}', function (Request $request, $workId) {
-        return $json;
-    });
-    // 在庫
-    $router->get('product/stock/{storeCd}/{cccFamilyCd}', function (Request $request, $workId) {
-        return $json;
-    });
-    // キーワード検索
-    $router->get('search/{keyword}', function (Request $request, $workId) {
-        return $json;
-    });
-    // キーワード検索サジェスト
-    $router->get('product/stock/{storeCd}/{cccFamilyCd}', function (Request $request, $workId) {
+    $router->get('convert/work/{idType}/{id}', function (Request $request, $workId) {
+        $responseString = <<<EOT
+        {
+            "workId": "PTA00007XDJP",
+            "workTypeId": "1",
+            "saleType": "1"
+        }
+EOT;
+        $json = json_decode($responseString);
         return $json;
     });
 
+    // 変換
+    $router->get('product/{productKey}', function (Request $request, $workId) {
+        $responseString = <<<EOT
+        {
+            "productName": "グランド・イリュージョン",
+            "saleType": "1",
+            "productCode": "DABR4582",
+            "productUniqueId": "2",
+            "jan": "jan",
+            "itemCd": "2263655092",
+            "itemName": "PINOCCHIO",
+            "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
+            "saleStartDate": "2014-03-20",
+            "discInfo": "PINOCCHIO info",
+            "subtitle": "jp",
+            "soundSpec": "dts",
+            "regionInfo": "jp",
+            "priceTaxOut": "100",
+            "playTime": "1:30:00",
+            "contents": "木のあやつり人形・ピノキオが命を与えられ、冒険を通して善悪を学び、本物の少年となっていくまでを描く",
+            "privilege": "privilege",
+            "bestAlbumFlg": "0",
+            "makerName": "PINOCCHIO"
+        }
+EOT;
+        $json = json_decode($responseString);
+        return $json;
+    });
+
+    //人物関連作品取得
+    $router->get('people/{personId}', function (Request $request, $workId) {
+        $responseString = <<<EOT
+        {
+              "hasNext": true,
+              "totalCount": 1,
+              "rows": [
+                {
+                    "workId": "PTA00007XDJP",
+                    "urlCd": "https://cdn.store-tsutaya.tsite.jp/cd/pinocchio.mp4",
+                    "workTitle": "ピノキオ",
+                    "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
+                    "supplement": "supplement",
+                    "cccProductCd": "10407575",
+                    "saleType": "2",
+                    "itemType": "2"
+                }
+              ]
+        }
+EOT;
+        $json = json_decode($responseString);
+        return $json;
+    });
+
+    // キーワード検索
+    $router->get('search/{keyword}', function (Request $request, $workId) {
+        $responseString = <<<EOT
+        {
+          "hasNext": true,
+          "totalCount": 1,
+          "counts": {
+            "dvd": 0,
+            "cd": 1,
+            "book": 0,
+            "game": 0
+          },
+          "rows": [
+            {
+                "workId": "PTA00007XDJP",
+                "urlCd": "https://cdn.store-tsutaya.tsite.jp/cd/pinocchio.mp4",
+                "workTitle": "ピノキオ",
+                "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
+                "supplement": "supplement",
+                "cccProductCd": "10407575",
+                "saleType": "2",
+                "itemType": "2",
+                "sellTypeHas": {
+                  "sell": true,
+                  "rental": true
+                }
+            }
+          ]
+        }
+EOT;
+        $json = json_decode($responseString);
+        return $json;
+    });
+    // キーワードサジェスト
+    $router->get('search/suggest/{keyword}', function (Request $request, $workId) {
+        $responseString = <<<EOT
+        {
+          "hasNext": true,
+          "totalCount": 1,
+          "rows": [
+            {
+                "workId": "PTA00007XDJP",
+                "urlCd": "https://cdn.store-tsutaya.tsite.jp/cd/pinocchio.mp4",
+                "workTitle": "ピノキオ",
+                "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
+                "supplement": "supplement",
+                "cccProductCd": "10407575",
+                "saleType": "2",
+                "itemType": "2"
+            }
+          ]
+        }
+EOT;
+        $json = json_decode($responseString);
+        return $json;
+    });
+    // キーワード検索サジェスト
+    $router->get('product/stock/{storeCd}/{productId}', function (Request $request, $workId) {
+        $responseString = <<<EOT
+        {
+             "stockStatus": 0
+        }
+EOT;
+        $json = json_decode($responseString);
+        return $json;
+    });
+    // ジャンルからの作品一覧取得
+    $router->get('genre/{genreId}', function (Request $request, $workId) {
+        $responseString = <<<EOT
+        {
+          "hasNext": true,
+          "totalCount": 0,
+          "rows": [
+            {
+                "workId": "PTA00007XDJP",
+                "urlCd": "https://cdn.store-tsutaya.tsite.jp/cd/pinocchio.mp4",
+                "workTitle": "ピノキオ",
+                "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
+                "supplement": "supplement",
+                "cccProductCd": "10407575",
+                "saleType": "2",
+                "itemType": "2"
+            }
+          ]
+        }
+EOT;
+        $json = json_decode($responseString);
+        return $json;
+    });
 });
 $router->group(['prefix' => env('URL_PATH_PREFIX') . env('API_VERSION')], function () use ($router) {
     // APIドキュメント
