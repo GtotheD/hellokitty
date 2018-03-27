@@ -159,7 +159,7 @@ EOT;
             "workTitle": "ピノキオ",
             "workTitleOrig": "PINOCCHIO",
             "saleType": "2",
-            "itemType": "2",
+            "itemType": "cd",
             "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
             "saleStartDate": "1995-03-17",
             "bigGenreId": "EXT0000000WP",
@@ -235,7 +235,7 @@ EOT;
             "supplement": "supplement",
             "cccProductCd": "10407575",
             "saleType": "2",
-            "itemType": "2",
+            "itemType": "cd",
             "sellTypeHas": {
               "sell": true,
               "rental": true
@@ -280,7 +280,7 @@ EOT;
             "supplement": "supplement",
             "cccProductCd": "10407575",
             "saleType": "2",
-            "itemType": "2"
+            "itemType": "cd"
           }
         ]
       }
@@ -360,7 +360,7 @@ EOT;
             "supplement": "supplement",
             "cccProductCd": "10407575",
             "saleType": "2",
-            "itemType": "2"
+            "itemType": "cd"
           }
         ]
       }
@@ -409,7 +409,7 @@ EOT;
             "supplement": "supplement",
             "cccProductCd": "10407575",
             "saleType": "2",
-            "itemType": "2"
+            "itemType": "cd"
           }
         ]
       }
@@ -438,7 +438,7 @@ EOT;
             "supplement": "supplement",
             "cccProductCd": "10407575",
             "saleType": "2",
-            "itemType": "2"
+            "itemType": "cd"
           }
         ]
       }
@@ -461,7 +461,7 @@ EOT;
             "supplement": "supplement",
             "cccProductCd": "10407575",
             "saleType": "2",
-            "itemType": "2"
+            "itemType": "cd"
           }
         ]
       }
@@ -545,7 +545,7 @@ EOT;
                     "supplement": "supplement",
                     "cccProductCd": "10407575",
                     "saleType": "2",
-                    "itemType": "2"
+                    "itemType": "cd"
                 }
               ]
         }
@@ -575,7 +575,7 @@ EOT;
                 "supplement": "supplement",
                 "cccProductCd": "10407575",
                 "saleType": "2",
-                "itemType": "2",
+                "itemType": "cd",
                 "sellTypeHas": {
                   "sell": true,
                   "rental": true
@@ -628,7 +628,7 @@ EOT;
                 "supplement": "supplement",
                 "cccProductCd": "10407575",
                 "saleType": "2",
-                "itemType": "2"
+                "itemType": "cd"
             }
           ]
         }
