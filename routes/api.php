@@ -158,7 +158,7 @@ EOT;
             "urlCd": "https://cdn.store-tsutaya.tsite.jp/cd/pinocchio.mp4",
             "workTitle": "ピノキオ",
             "workTitleOrig": "PINOCCHIO",
-            "saleType": "2",
+            "saleType": "sell",
             "itemType": "cd",
             "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
             "saleStartDate": "1995-03-17",
@@ -234,7 +234,7 @@ EOT;
             "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
             "supplement": "supplement",
             "cccProductCd": "10407575",
-            "saleType": "2",
+            "saleType": "sell",
             "itemType": "cd",
             "sellTypeHas": {
               "sell": true,
@@ -279,7 +279,7 @@ EOT;
             "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
             "supplement": "supplement",
             "cccProductCd": "10407575",
-            "saleType": "2",
+            "saleType": "sell",
             "itemType": "cd"
           }
         ]
@@ -359,7 +359,7 @@ EOT;
             "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
             "supplement": "supplement",
             "cccProductCd": "10407575",
-            "saleType": "2",
+            "saleType": "sell",
             "itemType": "cd"
           }
         ]
@@ -408,7 +408,7 @@ EOT;
             "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
             "supplement": "supplement",
             "cccProductCd": "10407575",
-            "saleType": "2",
+            "saleType": "sell",
             "itemType": "cd"
           }
         ]
@@ -437,7 +437,7 @@ EOT;
             "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
             "supplement": "supplement",
             "cccProductCd": "10407575",
-            "saleType": "2",
+            "saleType": "sell",
             "itemType": "cd"
           }
         ]
@@ -460,7 +460,7 @@ EOT;
             "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
             "supplement": "supplement",
             "cccProductCd": "10407575",
-            "saleType": "2",
+            "saleType": "sell",
             "itemType": "cd"
           }
         ]
@@ -492,7 +492,7 @@ EOT;
         {
             "workId": "PTA00007XDJP",
             "workTypeId": "1",
-            "saleType": "1"
+            "saleType": "sell"
         }
 EOT;
         $json = json_decode($responseString);
@@ -505,7 +505,7 @@ EOT;
         {
             "data":{
                 "productName": "グランド・イリュージョン",
-                "saleType": "1",
+                "saleType": "sell",
                 "productCode": "DABR4582",
                 "productUniqueId": "2",
                 "jan": "jan",
@@ -544,7 +544,7 @@ EOT;
                     "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
                     "supplement": "supplement",
                     "cccProductCd": "10407575",
-                    "saleType": "2",
+                    "saleType": "sell",
                     "itemType": "cd"
                 }
               ]
@@ -574,7 +574,7 @@ EOT;
                 "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
                 "supplement": "supplement",
                 "cccProductCd": "10407575",
-                "saleType": "2",
+                "saleType": "sell",
                 "itemType": "cd",
                 "sellTypeHas": {
                   "sell": true,
@@ -627,7 +627,7 @@ EOT;
                 "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
                 "supplement": "supplement",
                 "cccProductCd": "10407575",
-                "saleType": "2",
+                "saleType": "sell",
                 "itemType": "cd"
             }
           ]
