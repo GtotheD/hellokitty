@@ -2,8 +2,9 @@
 
 namespace App\Repositories;
 
-use App\Model\Work;
 use Illuminate\Support\Facades\Log;
+use App\Model\Work;
+use App\Model\Product;
 
 /**
  * Created by PhpStorm.
@@ -40,6 +41,7 @@ class WorkRepository
     {
         $base =[];
         $work = new Work();
+        $product = new Product();
         $work->setConditionByWorkId($workId);
         if ($work->count() == 0) {
             $himo = new HimoRepository();
@@ -78,7 +80,39 @@ class WorkRepository
                         break;
                 }
                 $base = array_merge($base, $additional);
+                // インサートの実行
                 $insertResult = $work->insert($base);
+                // インサートの実行
+                foreach ($row['products'] as $productItem) {
+                    $productBase = [];
+                    $productBase['product_unique_id'] = $productItem['id'];
+                    $productBase['product_id'] = $productItem['product_id'];
+                    $productBase['product_code'] = $productItem['product_code'];
+                    $productBase['jan'] = $productItem['jan'];
+                    $productBase['ccc_family_cd'] = $productItem['ccc_family_cd'];
+                    $productBase['ccc_product_id'] = $productItem['ccc_product_id'];
+                    $productBase['rental_product_cd'] = $productItem['rental_product_cd'];
+                    $productBase['product_type_name'] = $productItem['product_type_name'];
+                    $productBase['sale_start_date'] = $productItem['sale_start_date'];
+                    $productBase['service_id'] = $productItem['service_id'];
+                    $productBase['service_name'] = $productItem['service_name'];
+                    $productBase['msdb_item'] = $productItem['msdb_item'];
+                    $productBase['item_cd'] = $productItem['item_cd'];
+                    $productBase['item_name'] = $productItem['item_name'];
+                    $productBase['disc_info'] = $productItem['disc_info'];
+                    $productBase['subtitle'] = $productItem['subtitle'];
+                    $productBase['sound_spec'] = $productItem['sound_spec'];
+                    $productBase['region_info'] = $productItem['region_info'];
+                    $productBase['price_tax_out'] = $productItem['price_tax_out'];
+                    $productBase['play_time'] = $productItem['play_time'];
+                    $productBase['jacket_l'] = $productItem['jacket_l'];
+                    $productBase['sale_start_date'] = $productItem['sale_start_date'];
+//                    $productBase['contents'] = $productItem['contents'];
+//                    $productBase['privilege'] = $productItem['privilege'];
+                    $productBase['best_album_flg'] = $productItem['best_album_flg'];
+                    $productBase['maker_name'] = $productItem['maker_name'];
+                    $insertResult = $product->insert($row['work_id'], $productBase);
+                }
                 // インサートできなかった場合エラー
                 // インサートしたものを取得
                 $work->setConditionByWorkId($workId);

@@ -1249,12 +1249,17 @@
  *              @SWG\Property(
  *                  property="stockStatus",
  *                  type="integer",
- *                  description="在庫ステータス（0.取り扱いなし、1.在庫あり）",
+ *                  description="在庫ステータス（0=取り扱いなし、1=在庫なし、2=在庫あり）",
  *              ),
  *              @SWG\Property(
  *                  property="message",
  *                  type="string",
- *                  description="メッセージ）",
+ *                  description="メッセージ",
+ *              ),
+ *              @SWG\Property(
+ *                  property="lastUpdate",
+ *                  type="string",
+ *                  description="最終更新日時（yyyy-mm-dd hh:ii:ss）",
  *              ),
  *          )
  *     ),

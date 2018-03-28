@@ -15,8 +15,14 @@ class CreateTsProducts extends Migration
     {
         Schema::create('ts_products', function (Blueprint $table) {
             $table->increments('id');// アイテム名（products.item_cdに応じたアイテム名表示）
+            $table->text('product_unique_id');// アイテム名（products.item_cdに応じたアイテム名表示）
+            $table->text('work_id');// アイテム名（products.item_cdに応じたアイテム名表示）
             $table->text('product_id');// アイテム名（products.item_cdに応じたアイテム名表示）
-            $table->text('product_type_id');// アイテム名（products.item_cdに応じたアイテム名表示）
+            $table->text('product_code');// 商品番号（products.product_code）
+            $table->text('jan');// JANコード（products.jan）
+            $table->text('ccc_family_cd');// CCCコード（products.jan）
+            $table->text('ccc_product_id');//
+            $table->text('rental_product_cd');
             $table->text('product_type_name');// アイテム名（products.item_cdに応じたアイテム名表示）
             $table->text('service_id');// アイテム名（products.item_cdに応じたアイテム名表示）
             $table->text('service_name');// アイテム名（products.item_cdに応じたアイテム名表示）
@@ -31,8 +37,6 @@ class CreateTsProducts extends Migration
             $table->text('region_info');// リージョンコード（region_info）
             $table->text('price_tax_out');// 定価（税抜）（products.price_tax_out）
             $table->text('play_time');// 収録時間（products.play_time）
-            $table->text('product_code');// 商品番号（products.product_code）
-            $table->text('jan');// JANコード（products.jan）
             $table->text('jacket_l');// ジャケ写（products.jacket_l）
             $table->dateTime('sale_start_date');// 発売日（products.sale_start_date）
             $table->text('contents');// 収録内容（docs.doc_text[doc_type_id=“04”]）
