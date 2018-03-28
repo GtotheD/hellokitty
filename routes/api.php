@@ -25,26 +25,9 @@ $router->group([
 
     // バージョン取得API
     $router->get('version', function () {
-        //$version = config('version');
-        //$version['version'] = hash('sha256', serialize($version));
-        $responseString = <<<EOT
-        {
-          "data": {
-            "appinfo": {
-                "latestVersion": "2.1",
-                "lowestVersion": "2.0",
-                "alert": "alert",
-                "nugde": "nudge",
-                "infomation": [
-                  null
-                ]
-              },
-              "update": "update info",
-              "version": "2.1"
-          }
-        }
-EOT;
-        return response()->json($responseString);
+        $version = config('version');
+        $version['version'] = hash('sha256', serialize($version));
+        return response()->json($version);
     });
 
     // コンテンツ構成取得API
