@@ -149,7 +149,7 @@ $router->group([
         $product->setLimit($request->input('limit', 10));
         $product->setOffset($request->input('offset', 0));
         $product->setSaleType($request->input('saleType'));
-        $result = $product->get($workId);
+        $result = $product->getNarrow($workId);
 
         $response = [
             'hasNext' => '',

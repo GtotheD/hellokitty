@@ -107,6 +107,20 @@ class ProductRepository
         $result = $productModel->setConditionByWorkIdSaleType($workId, $this->saleType)->toCamel()->get();
         return $result;
     }
+    public function getNarrow($workId)
+    {
+        $productModel = new Product();
+        $column = [
+            "product_name",
+            "product_unique_id",
+//            "product_key",
+            "item_cd",
+            "jacket_l",
+            "sale_start_date",
+        ];
+        $result = $productModel->setConditionByWorkIdSaleType($workId, $this->saleType)->select($column)->get();
+        return $result;
+    }
     public function insert($workId,  $product)
     {
         $productModel = new Product();

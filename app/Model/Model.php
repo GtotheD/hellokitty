@@ -23,6 +23,11 @@ class Model
         $this->table = $table;
     }
 
+    public function select($column)
+    {
+        $this->dbObject->select($column);
+        return $this;
+    }
     public function update($id, $values)
     {
         return DB::table($this->table)
