@@ -14,22 +14,23 @@ class CreateTsProducts extends Migration
     public function up()
     {
         Schema::create('ts_products', function (Blueprint $table) {
-            $table->increments('id');// アイテム名（products.item_cdに応じたアイテム名表示）
-            $table->text('product_unique_id');// アイテム名（products.item_cdに応じたアイテム名表示）
-            $table->text('work_id');// アイテム名（products.item_cdに応じたアイテム名表示）
-            $table->text('product_id');// アイテム名（products.item_cdに応じたアイテム名表示）
+            $table->increments('id');// 
+            $table->text('product_unique_id');// 
+            $table->text('work_id');// 
+            $table->text('product_id');// 
             $table->text('product_code');// 商品番号（products.product_code）
             $table->text('jan');// JANコード（products.jan）
             $table->text('ccc_family_cd');// CCCコード（products.jan）
             $table->text('ccc_product_id');//
             $table->text('rental_product_cd');
-            $table->text('product_type_name');// アイテム名（products.item_cdに応じたアイテム名表示）
-            $table->text('service_id');// アイテム名（products.item_cdに応じたアイテム名表示）
-            $table->text('service_name');// アイテム名（products.item_cdに応じたアイテム名表示）
-            $table->text('msdb_item');// アイテム名（products.item_cdに応じたアイテム名表示）
-            $table->text('item_cd');// アイテム名（products.item_cdに応じたアイテム名表示）
-            $table->text('item_name');// アイテム名（products.item_cdに応じたアイテム名表示）
-            $table->text('product_name');// アイテム名（products.item_cdに応じたアイテム名表示）
+            $table->text('product_type_id');// 
+            $table->text('product_type_name');// 
+            $table->text('service_id');// 
+            $table->text('service_name');// 
+            $table->text('msdb_item');// 
+            $table->text('item_cd');// 
+            $table->text('item_name');// 
+            $table->text('product_name');// 
             $table->text('disc_info');// 組数（products.disc_info）
             $table->text('subtitle');// 字幕（products.subtitle）
             // 吹き替え（）

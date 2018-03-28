@@ -39,8 +39,43 @@ class ProductRepository
 
     public function get($workId)
     {
-
-        return $response;
+        $productModel = new Product();
+        $result = $productModel->setConditionByWorkId($workId)->toCamel()->get();
+        return $result;
+    }
+    public function insert($workId,  $product)
+    {
+        $productModel = new Product();
+        $productBase = [];
+        $productBase['product_unique_id'] = $product['id'];
+        $productBase['product_id'] = $product['product_id'];
+        $productBase['product_code'] = $product['product_code'];
+        $productBase['jan'] = $product['jan'];
+        $productBase['ccc_family_cd'] = $product['ccc_family_cd'];
+        $productBase['ccc_product_id'] = $product['ccc_product_id'];
+        $productBase['rental_product_cd'] = $product['rental_product_cd'];
+        $productBase['product_name'] = $product['product_name'];
+        $productBase['product_type_id'] = $product['product_type_id'];
+        $productBase['product_type_name'] = $product['product_type_name'];
+        $productBase['sale_start_date'] = $product['sale_start_date'];
+        $productBase['service_id'] = $product['service_id'];
+        $productBase['service_name'] = $product['service_name'];
+        $productBase['msdb_item'] = $product['msdb_item'];
+        $productBase['item_cd'] = $product['item_cd'];
+        $productBase['item_name'] = $product['item_name'];
+        $productBase['disc_info'] = $product['disc_info'];
+        $productBase['subtitle'] = $product['subtitle'];
+        $productBase['sound_spec'] = $product['sound_spec'];
+        $productBase['region_info'] = $product['region_info'];
+        $productBase['price_tax_out'] = $product['price_tax_out'];
+        $productBase['play_time'] = $product['play_time'];
+        $productBase['jacket_l'] = $product['jacket_l'];
+        $productBase['sale_start_date'] = $product['sale_start_date'];
+//                    $productBase['contents'] = $product['contents'];
+//                    $productBase['privilege'] = $product['privilege'];
+        $productBase['best_album_flg'] = $product['best_album_flg'];
+        $productBase['maker_name'] = $product['maker_name'];
+        return $productModel->insert($workId, $productBase);
     }
 
 }

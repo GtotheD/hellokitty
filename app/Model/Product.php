@@ -4,7 +4,6 @@ namespace App\Model;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Str;
 
 /**
  * Created by PhpStorm.
@@ -25,7 +24,7 @@ class Product extends Model
     {
         $this->dbObject = DB::table($this->table)
             ->where([
-                'product_id' => $workId,
+                'work_id' => $workId,
             ]);
         return $this;
     }
@@ -55,4 +54,5 @@ class Product extends Model
             return DB::table($this->table)->insertGetId($insertData);
         }
     }
+
 }

@@ -17,6 +17,7 @@ use App\Repositories\SectionRepository;
 use App\Exceptions\NoContentsException;
 use App\Repositories\BannerRepository;
 use App\Repositories\WorkRepository;
+use App\Repositories\ProductRepository;
 
 // Api Group
 $router->group([
@@ -144,25 +145,14 @@ $router->group([
     });
     // 商品一覧情報取得
     $router->get('work/{workId}/products', function (Request $request, $workId) {
-        $responseString = <<<EOT
-        {
-          "hasNext": true,
-          "totalCount": 1,
-          "rows": [
-            {
-              "productName": "PINOCCHIO",
-              "productUniqueId": "PPD00000QEZQ",
-              "productKey": "DABR4582",
-              "itemCd": "2263655092",
-              "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
-              "saleStartDate": "1995-03-17",
-              "newFlag": "1"
-            }
-          ]
-        }
-EOT;
-        $json = json_decode($responseString);
-        return response()->json($json);
+        $product = new ProductRepository();
+        $result = $product->get($workId);
+        $response = [
+            'hasNext' => '',
+            'totalCount' => '',
+            'rows' => $result
+        ];
+        return response()->json($response);
     });
     // 商品一覧情報取得（DVDレンタル時のグルーピング（問い合わせ時のLimit数がおかしくなる為にグルーピングが必要））
     $router->get('work/{workId}/products/rental', function (Request $request, $workId) {

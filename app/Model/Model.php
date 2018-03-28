@@ -9,6 +9,7 @@
 namespace App\Model;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 class Model
 {
@@ -46,5 +47,20 @@ class Model
     public function getOne()
     {
         return $this->dbObject->first();
+    }
+
+    public function toCamel()
+    {
+        $this->dbObject->select(DB::raw($this->camelCaseColumn()));
+        return $this;
+    }
+
+    private function camelCaseColumn()
+    {
+        $columns = Schema::getColumnListing($this->table);
+        foreach ($columns as $column) {
+            $aliasName[] = $column. ' AS '. camel_case($column);
+        }
+        return implode($aliasName, ',');
     }
 }
