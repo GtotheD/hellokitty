@@ -955,7 +955,7 @@
  *                  property="rows",
  *                  type="array",
  *                  @SWG\Items(
- *                       @SWG\Property(property="url",type="string"),
+ *                       type="string",
  *                  ),
  *                  description="作品情報",
  *              ),
@@ -1180,14 +1180,9 @@
  *                  description="作品ID",
  *              ),
  *              @SWG\Property(
- *                  property="workTypeId",
+ *                  property="itemType",
  *                  type="string",
- *                  description="アイテム種別",
- *              ),
- *              @SWG\Property(
- *                  property="saleType",
- *                  type="string",
- *                  description="販売タイプ（himoの場合は）",
+ *                  description="アイテム種別　（cd, dvd, book, game）",
  *              ),
  *          )
  *      ),
@@ -1199,12 +1194,12 @@
  */
 /**
  * @SWG\Get(
- *     path="/product/{productKey}",
+ *     path="/product/{productUniqueId}",
  *     description="商品詳細情報取得",
  *     tags={"Product"},
  *     produces={"application/json"},
  *     @SWG\Parameter(
- *       name="productKey",
+ *       name="productUniqueId",
  *       in="path",
  *       description="商品ID(product.id でproduct.product_idではない)",
  *       type="string"
@@ -1231,7 +1226,7 @@
  */
 /**
  * @SWG\Get(
- *     path="/product/stock/{storeCd}/{productId}",
+ *     path="/product/stock/{storeCd}/{productKey}",
  *     description="在庫確認",
  *     tags={"Product"},
  *     produces={"application/json"},
@@ -1242,7 +1237,7 @@
  *       type="string"
  *     ),
  *     @SWG\Parameter(
- *       name="productId",
+ *       name="productKey",
  *       in="path",
  *       description="レンタルの場合はレンタル商品コード、セルの場合はJANコード",
  *       type="string"
@@ -1254,7 +1249,12 @@
  *              @SWG\Property(
  *                  property="stockStatus",
  *                  type="integer",
- *                  description="在庫ステータス",
+ *                  description="在庫ステータス（0.取り扱いなし、1.在庫あり）",
+ *              ),
+ *              @SWG\Property(
+ *                  property="message",
+ *                  type="string",
+ *                  description="メッセージ）",
  *              ),
  *          )
  *     ),
@@ -1345,7 +1345,7 @@
  *                  property="rows",
  *                  type="array",
  *                  @SWG\Items(
- *                       @SWG\Property(property="word",type="string"),
+ *                       type="string",
  *                  ),
  *                  description="作品情報",
  *              ),
