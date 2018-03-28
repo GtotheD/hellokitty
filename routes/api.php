@@ -16,6 +16,7 @@ use App\Repositories\StructureRepository;
 use App\Repositories\SectionRepository;
 use App\Exceptions\NoContentsException;
 use App\Repositories\BannerRepository;
+use App\Repositories\WorkRepository;
 
 // Api Group
 $router->group([
@@ -295,10 +296,10 @@ EOT;
       $responseString = <<<EOT
       {
         "totalCount": 1,
-        "averageRating": 0,
+        "averageRating": 4.0,
         "rows": [
           {
-            "rating": "4",
+            "rating": 4.0,
             "contributor": "ホゲホゲ",
             "contributeDate": "2018-03-01",
             "contents": "ふがふが　ほげほげ　ふがふが　ほげほげ"
@@ -314,10 +315,10 @@ EOT;
       $responseString = <<<EOT
       {
         "totalCount": 1,
-        "averageRating": 0,
+        "averageRating": 4.0,
         "rows": [
           {
-            "rating": "4",
+            "rating": 4.0,
             "contributor": "ホゲホゲ",
             "contributeDate": "2018-03-01",
             "contents": "ふがふが　ほげほげ　ふがふが　ほげほげ"
