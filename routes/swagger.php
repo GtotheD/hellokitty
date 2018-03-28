@@ -1138,7 +1138,7 @@
  *                  property="rows",
  *                  type="array",
  *                  @SWG\Items(
- *                       @SWG\Property(property="personId",type="integer"),
+ *                       @SWG\Property(property="personId",type="string"),
  *                       @SWG\Property(property="personName",type="string"),
  *                  ),
  *                  description="アーティスト情報",
@@ -1281,22 +1281,22 @@
  *     @SWG\Parameter(ref="#/parameters/offset"),
  *     @SWG\Parameter(
  *       name="sort",
- *       in="path",
+ *       in="query",
  *       description="並び順（お薦め(デフォルト)、新しい順 = new、 古い順 = old）",
  *       type="string"
  *     ),
  *     @SWG\Parameter(ref="#/parameters/itemType"),
  *     @SWG\Parameter(
  *       name="periodType",
- *       in="path",
+ *       in="query",
  *       description="期間指定（rental3, rental6, sell3, sell6）※未指定でALL",
  *       type="string"
  *     ),
  *     @SWG\Parameter(
- *       name="periodType",
- *       in="path",
- *       description="期間指定（rental3, rental6, sell3, sell6）※未指定でALL",
- *       type="string"
+ *       name="adultFlg",
+ *       in="query",
+ *       description="アダルト取得フラグ（デフォルト=false）",
+ *       type="boolean"
  *     ),
  *     @SWG\Response(
  *          response=200,

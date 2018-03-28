@@ -13,6 +13,11 @@
  *              description="URLコード"
  *          ),
  *          @SWG\Property(
+ *              property="cccWorkCd",
+ *              type="string",
+ *              description="ccc作品コード"
+ *          ),
+ *          @SWG\Property(
  *              property="workTitle",
  *              type="string",
  *              description="作品タイトル"
@@ -21,6 +26,11 @@
  *              property="workTitleOrig",
  *              type="string",
  *              description="タイトル原題"
+ *          ),
+ *          @SWG\Property(
+ *              property="supplement",
+ *              type="string",
+ *              description="作者・著者・アーティスト・機種"
  *          ),
  *          @SWG\Property(
  *              property="saleType",
@@ -40,7 +50,7 @@
  *          @SWG\Property(
  *              property="saleStartDate",
  *              type="string",
- *              description="レンタル開始日"
+ *              description="販売・レンタル開始日"
  *          ),
  *          @SWG\Property(
  *              property="newFlg",
@@ -68,6 +78,16 @@
  *              description="中ジャンル"
  *          ),
  *          @SWG\Property(
+ *              property="smallGenreId",
+ *              type="string",
+ *              description="小ジャンルID"
+ *          ),
+ *          @SWG\Property(
+ *              property="smallGenreName",
+ *              type="string",
+ *              description="小ジャンル"
+ *          ),
+ *          @SWG\Property(
  *              property="ratingName",
  *              type="string",
  *              description="年齢制限表示"
@@ -93,11 +113,45 @@
  *              description="コピーライト"
  *          ),
  *          @SWG\Property(
+ *              property="makerName",
+ *              type="string",
+ *              description="メーカー"
+ *          ),
+ *          @SWG\Property(
+ *              property="workFormatName",
+ *              type="string",
+ *              description="種別（アルバム／マキシシングル）"
+ *          ),
+ *          @SWG\Property(
+ *              property="bookSeriesName",
+ *              type="string",
+ *              description="掲載雑誌名・文庫名"
+ *          ),
+ *          @SWG\Property(
+ *              property="bookReleaseMonth",
+ *              type="string",
+ *              description="出版年月"
+ *          ),
+ *          @SWG\Property(
  *              property="adultFlg",
  *              type="boolean",
  *              description="アダルトフラグ"
- *          )
- *  )
+ *          ),
+ *          @SWG\Property(
+ *              property="saleTypeHas",
+ *              type="object",
+ *              @SWG\Property(
+ *                  property="sell",
+ *                  type="boolean",
+ *                  description="セルの有無",
+ *              ),
+ *              @SWG\Property(
+ *                  property="rental",
+ *                  type="boolean",
+ *                  description="レンタルの有無",
+ *              ),
+ *          ),
+ * )
  * */
 /**
  *  @SWG\Definition(
@@ -111,6 +165,11 @@
  *              property="urlCd",
  *              type="string",
  *              description="URLコード"
+ *          ),
+ *          @SWG\Property(
+ *              property="cccWorkCd",
+ *              type="string",
+ *              description="ccc作品コード"
  *          ),
  *          @SWG\Property(
  *              property="workTitle",
@@ -133,11 +192,6 @@
  *              description="著者・作者"
  *          ),
  *          @SWG\Property(
- *              property="cccProductCd",
- *              type="string",
- *              description="ccc作品コード"
- *          ),
- *          @SWG\Property(
  *              property="saleType",
  *              type="string",
  *              description="販売タイプ（sell, rental）",
@@ -151,7 +205,7 @@
  *              property="adultFlg",
  *              type="boolean",
  *              description="アダルトフラグ"
- *          )
+ *          ),
  *  )
  * */
 /**
@@ -168,6 +222,11 @@
  *              description="URLコード"
  *          ),
  *          @SWG\Property(
+ *              property="cccWorkCd",
+ *              type="string",
+ *              description="ccc作品コード"
+ *          ),
+ *          @SWG\Property(
  *              property="workTitle",
  *              type="string",
  *              description="作品タイトル"
@@ -186,11 +245,6 @@
  *              property="supplement",
  *              type="string",
  *              description="著者・作者"
- *          ),
- *          @SWG\Property(
- *              property="cccProductCd",
- *              type="string",
- *              description="ccc作品コード"
  *          ),
  *          @SWG\Property(
  *              property="saleType",
@@ -220,7 +274,7 @@
  *              property="adultFlg",
  *              type="boolean",
  *              description="アダルトフラグ"
- *          )
+ *          ),
  *  )
  * */
 /**
@@ -421,6 +475,11 @@
  *              property="itemCd",
  *              type="string",
  *              description="アイテムコード"
+ *          ),
+ *          @SWG\Property(
+ *              property="itemName",
+ *              type="string",
+ *              description="アイテムコードから変換したアイテム名(dvd, bluray, cd, book, game)"
  *          ),
  *          @SWG\Property(
  *              property="jacketL",
