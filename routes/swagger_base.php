@@ -49,7 +49,7 @@
  * )
  * @SWG\Parameter(
  *      name="itemType",
- *      in="path",
+ *      in="query",
  *      description="アイテム種別　（cd, dvd, book, game）※未指定でALL",
  *      required=false,
  *      type="string"
