@@ -84,7 +84,13 @@ class WorkRepository
                 $work->setConditionByWorkId($workId);
             }
         }
-        return $work->get();
+        $response = (array)$work->getOne();
+        // productsからとってくるが、仮ダータ
+        $response['supplement'] = 'aaaa';
+        $response['makerName'] = 'aaaa';
+        $response['bookReleaseMonth'] = 'aaaa';
+        $response['newFlg'] = true;
+        return $response;
     }
 
     private function dvdFormat($row)

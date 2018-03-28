@@ -137,7 +137,10 @@ $router->group([
     $router->get('work/{workId}', function (Request $request, $workId) {
         $work = new WorkRepository();
         $result = $work->get($workId);
-        return response()->json($result);
+        $response = [
+            'data' => $result
+        ];
+        return response()->json($response);
     });
     // 作品シリーズ情報
     $router->get('work/{workId}/series', function (Request $request, $workId) {
