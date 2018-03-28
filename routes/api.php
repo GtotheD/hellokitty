@@ -135,31 +135,12 @@ $router->group([
 
     // 作品基本情報
     $router->get('work/{workId}', function (Request $request, $workId) {
-        $responseString = <<<EOT
-        {
-          "data": {
-            "workId": "PTA00007XDJP",
-            "urlCd": "https://cdn.store-tsutaya.tsite.jp/cd/pinocchio.mp4",
-            "workTitle": "ピノキオ",
-            "workTitleOrig": "PINOCCHIO",
-            "saleType": "sell",
-            "itemType": "cd",
-            "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
-            "saleStartDate": "1995-03-17",
-            "bigGenreId": "EXT0000000WP",
-            "bigGenreName": "キッズ",
-            "mediumGenreId": "EXT000003SXI",
-            "mediumGenreName": "ディズニー",
-            "ratingName": "",
-            "docText": "木のあやつり人形・ピノキオが命を与えられ、冒険を通して善悪を学び、本物の少年となっていくまでを描く。１９４０年初公開のディズニー名作アニメをデジタル・リマスターで蘇らせ、ボーナス・コンテンツを加えた３枚組にパッケージ。",
-            "createdYear": "1940",
-            "createdCountries": "アメリカ",
-            "copyright": "disney"
-          }
-        }
-EOT;
-        $json = json_decode($responseString);
-        return response()->json($json);
+        $work = new WorkRepository();
+        $result = $work->get($workId);
+        $response = [
+            'data' => $result
+        ];
+        return response()->json($response);
     });
     // 商品一覧情報取得
     $router->get('work/{workId}/products', function (Request $request, $workId) {
