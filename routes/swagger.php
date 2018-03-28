@@ -955,7 +955,7 @@
  *                  property="rows",
  *                  type="array",
  *                  @SWG\Items(
- *                       @SWG\Property(property="url",type="string"),
+ *                       type="string",
  *                  ),
  *                  description="作品情報",
  *              ),
@@ -1251,6 +1251,11 @@
  *                  type="integer",
  *                  description="在庫ステータス（0.取り扱いなし、1.在庫あり）",
  *              ),
+ *              @SWG\Property(
+ *                  property="message",
+ *                  type="string",
+ *                  description="メッセージ）",
+ *              ),
  *          )
  *     ),
  *     @SWG\Response(response=204, description="Contents not found"),
@@ -1340,7 +1345,7 @@
  *                  property="rows",
  *                  type="array",
  *                  @SWG\Items(
- *                       @SWG\Property(property="word",type="string"),
+ *                       type="string",
  *                  ),
  *                  description="作品情報",
  *              ),

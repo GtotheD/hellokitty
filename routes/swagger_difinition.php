@@ -91,6 +91,11 @@
  *              property="copyright",
  *              type="string",
  *              description="コピーライト"
+ *          ),
+ *          @SWG\Property(
+ *              property="adultFlg",
+ *              type="boolean",
+ *              description="アダルトフラグ"
  *          )
  *  )
  * */
@@ -142,6 +147,11 @@
  *              type="string",
  *              description="アイテム種別　（cd, dvd, book, game）"
  *          ),
+ *          @SWG\Property(
+ *              property="adultFlg",
+ *              type="boolean",
+ *              description="アダルトフラグ"
+ *          )
  *  )
  * */
 /**
@@ -193,7 +203,7 @@
  *              description="アイテム種別　（cd, dvd, book, game）"
  *          ),
  *          @SWG\Property(
- *              property="sellTypeHas",
+ *              property="saleTypeHas",
  *              type="object",
  *              @SWG\Property(
  *                  property="sell",
@@ -206,6 +216,11 @@
  *                  description="レンタルの有無",
  *              ),
  *          ),
+ *          @SWG\Property(
+ *              property="adultFlg",
+ *              type="boolean",
+ *              description="アダルトフラグ"
+ *          )
  *  )
  * */
 /**
@@ -278,6 +293,11 @@
  *              description="ジャケ写"
  *          ),
  *          @SWG\Property(
+ *              property="docText",
+ *              type="string",
+ *              description="商品説明"
+ *          ),
+ *          @SWG\Property(
  *              property="saleStartDate",
  *              type="string",
  *              description="発売日"
@@ -296,6 +316,11 @@
  *              property="subtitle",
  *              type="string",
  *              description="字幕"
+ *          ),
+ *          @SWG\Property(
+ *              property="subtitleFlg",
+ *              type="string",
+ *              description="字幕（１：字幕/２：吹替/３：二ヶ国語/４：アニメ/５：デフォルト）"
  *          ),
  *          @SWG\Property(
  *              property="soundSpec",
@@ -331,6 +356,41 @@
  *              property="bestAlbumFlg",
  *              type="string",
  *              description="ベストアルバムフラグ"
+ *          ),
+ *          @SWG\Property(
+ *              property="isDoubleAlbum",
+ *              type="string",
+ *              description="ディスク枚数（0=1枚組、1=2枚組以上）"
+ *          ),
+ *          @SWG\Property(
+ *              property="includedDisk",
+ *              type="string",
+ *              description="付属ディスク"
+ *          ),
+ *          @SWG\Property(
+ *              property="importedFlg",
+ *              type="string",
+ *              description="取扱区分（0：国内盤／1:インディーズ／2:輸入盤／3：インディーズ輸入盤）"
+ *          ),
+ *          @SWG\Property(
+ *              property="bookPageNumber",
+ *              type="string",
+ *              description="ページ数"
+ *          ),
+ *          @SWG\Property(
+ *              property="bookSize",
+ *              type="string",
+ *              description="大きさ"
+ *          ),
+ *          @SWG\Property(
+ *              property="isbn10",
+ *              type="string",
+ *              description="ISBN-10"
+ *          ),
+ *          @SWG\Property(
+ *              property="isbn13",
+ *              type="string",
+ *              description="ISBN-13"
  *          ),
  *          @SWG\Property(
  *              property="makerName",
@@ -376,12 +436,7 @@
  *              property="newFlg",
  *              type="boolean",
  *              description="NEW表示フラグ"
- *          ),
- *          @SWG\Property(
- *              property="newFlag",
- *              type="string",
- *              description="NEWフラグ"
- *          ),
+ *          )
  *  )
  * */
 /**
@@ -425,12 +480,7 @@
  *              property="newFlg",
  *              type="boolean",
  *              description="NEW表示フラグ"
- *          ),
- *          @SWG\Property(
- *              property="newFlag",
- *              type="string",
- *              description="NEWフラグ"
- *          ),
+ *          )
  *  )
  * */
 

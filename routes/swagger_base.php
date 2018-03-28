@@ -6,7 +6,7 @@
  * 		produces={"application/json"},
  * 		consumes={"application/json"},
  *      @SWG\Info(
- *         version="2.0",
+ *         version="2.1",
  *         title="TSUTAYAアプリ(TAP) - APIドキュメント",
  *         @SWG\License(name="TSUTAYA")
  *      ),
