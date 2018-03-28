@@ -146,7 +146,11 @@ $router->group([
     // 商品一覧情報取得
     $router->get('work/{workId}/products', function (Request $request, $workId) {
         $product = new ProductRepository();
+        $product->setLimit($request->input('limit', 10));
+        $product->setOffset($request->input('offset', 0));
+        $product->setSaleType($request->input('saleType'));
         $result = $product->get($workId);
+
         $response = [
             'hasNext' => '',
             'totalCount' => '',

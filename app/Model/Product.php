@@ -20,12 +20,15 @@ class Product extends Model
         parent::__construct(self::TABLE);
     }
 
-    public function setConditionByWorkId($workId)
+    public function setConditionByWorkIdSaleType($workId, $saleType)
     {
         $this->dbObject = DB::table($this->table)
             ->where([
                 'work_id' => $workId,
             ]);
+        if($saleType) {
+            $this->dbObject->where('product_type_id', $this->convertSaleType($saleType));
+        }
         return $this;
     }
 
@@ -55,4 +58,11 @@ class Product extends Model
         }
     }
 
+    private function convertSaleType($type)
+    {
+        switch ($type) {
+            case 'sell': return 1; break;
+            case 'rental': return 2; break;
+        }
+    }
 }

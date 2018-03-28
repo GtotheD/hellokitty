@@ -20,6 +20,7 @@ class ProductRepository
     protected $limit;
     protected $apiHost;
     protected $apiKey;
+    protected $saleType;
 
     public function __construct($sort = 'asc', $offset = 0, $limit = 10)
     {
@@ -28,19 +29,82 @@ class ProductRepository
         $this->limit = $limit;
     }
 
+
     /**
-     * @param int $limit
+     * @return mixed
+     */
+    public function getHasNext()
+    {
+        return $this->hasNext;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLimit()
+    {
+        return (int)$this->limit;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOffset()
+    {
+        return (int)$this->offset;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTotalCount()
+    {
+        return $this->totalCount;
+    }
+
+    /**
+     * @return Array
+     */
+    public function getRows()
+    {
+        return $this->rows;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPage()
+    {
+        return $this->page;
+    }
+
+    /**
+     * @param mixed $limit
      */
     public function setLimit($limit)
     {
         $this->limit = $limit;
     }
 
+    /**
+     * @param mixed $offset
+     */
+    public function setOffset($offset)
+    {
+        $this->offset = $offset;
+    }
+    /**
+     * @param mixed $offset
+     */
+    public function setSaleType($saleType)
+    {
+        $this->saleType = $saleType;
+    }
 
     public function get($workId)
     {
         $productModel = new Product();
-        $result = $productModel->setConditionByWorkId($workId)->toCamel()->get();
+        $result = $productModel->setConditionByWorkIdSaleType($workId, $this->saleType)->toCamel()->get();
         return $result;
     }
     public function insert($workId,  $product)
