@@ -1160,7 +1160,7 @@
  *     @SWG\Parameter(
  *       name="idType",
  *       in="path",
- *       description="IDタイプ=jan, urlCd, cccProductId, productId",
+ *       description="IDタイプ=Himo作品ID = workId、CCC作品ID= cccWorkCd、JAN= jan、レンタル商品コード= rentalProductId、URLCD= urlCd",
  *       required=true,
  *       type="string"
  *     ),
