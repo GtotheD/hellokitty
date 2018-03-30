@@ -372,9 +372,9 @@
  *              description="字幕"
  *          ),
  *          @SWG\Property(
- *              property="subtitleFlg",
+ *              property="dub",
  *              type="string",
- *              description="字幕（１：字幕/２：吹替/３：二ヶ国語/４：アニメ/５：デフォルト）"
+ *              description="字幕（「吹替」もしくは「二ヶ国語」の文字列返却。該当がない場合はnull）"
  *          ),
  *          @SWG\Property(
  *              property="soundSpec",
@@ -407,9 +407,9 @@
  *              description="特典内容"
  *          ),
  *          @SWG\Property(
- *              property="bestAlbumFlg",
+ *              property="bestAlbum",
  *              type="string",
- *              description="ベストアルバムフラグ"
+ *              description="ベストアルバム（ベスト盤の場合は文字列で「ベスト盤」を返却）"
  *          ),
  *          @SWG\Property(
  *              property="isDoubleAlbum",
@@ -422,9 +422,9 @@
  *              description="付属ディスク"
  *          ),
  *          @SWG\Property(
- *              property="importedFlg",
+ *              property="imported",
  *              type="string",
- *              description="取扱区分（0：国内盤／1:インディーズ／2:輸入盤／3：インディーズ輸入盤）"
+ *              description="取扱区分（国内盤／インディーズ／輸入盤／インディーズ輸入盤の文字列返却）"
  *          ),
  *          @SWG\Property(
  *              property="bookPageNumber",
