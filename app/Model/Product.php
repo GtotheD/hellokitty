@@ -11,25 +11,28 @@ use Illuminate\Support\Facades\Schema;
  * Date: 2017/10/27
  * Time: 19:47
  */
-class Work extends Model
+class Product extends Model
 {
-    const TABLE = 'ts_works';
+    const TABLE = 'ts_products';
 
     function __construct()
     {
         parent::__construct(self::TABLE);
     }
 
-    public function setConditionByWorkId($workId)
+    public function setConditionByWorkIdSaleType($workId, $saleType)
     {
         $this->dbObject = DB::table($this->table)
             ->where([
                 'work_id' => $workId,
             ]);
+        if($saleType) {
+            $this->dbObject->where('product_type_id', $this->convertSaleType($saleType));
+        }
         return $this;
     }
 
-    public function insert($data)
+    public function insert($workId, $data)
     {
         $insertData = [];
         $insertData['updated_at'] = date('Y-m-d H:i:s');
@@ -41,16 +44,25 @@ class Work extends Model
         foreach ($columns as $column) {
             if(!in_array($column, $ignoreColumn)) {
                 if (isset($data[$column])) {
+                    $insertData['work_id'] = $workId;
                     $insertData[$column] = $data[$column];
                 }
             }
         }
-        $count = $dbObject->where('work_id', $data['work_id'])->count();
+        $count = $dbObject->where('product_id' , $data['product_id'])->count();
         if($count) {
-            return $dbObject->where('work_id', $data['work_id'])->update($insertData);
+            return $dbObject->where('product_id' , $data['product_id'])->update($insertData);
         } else {
             $insertData['created_at'] = date('Y-m-d H:i:s');
             return DB::table($this->table)->insertGetId($insertData);
+        }
+    }
+
+    private function convertSaleType($type)
+    {
+        switch ($type) {
+            case 'sell': return 1; break;
+            case 'rental': return 2; break;
         }
     }
 }

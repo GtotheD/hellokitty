@@ -9,6 +9,7 @@
 namespace App\Model;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 class Model
 {
@@ -22,6 +23,11 @@ class Model
         $this->table = $table;
     }
 
+    public function select($column)
+    {
+        $this->dbObject->select($column);
+        return $this;
+    }
     public function update($id, $values)
     {
         return DB::table($this->table)
@@ -46,5 +52,20 @@ class Model
     public function getOne()
     {
         return $this->dbObject->first();
+    }
+
+    public function toCamel()
+    {
+        $this->dbObject->select(DB::raw($this->camelCaseColumn()));
+        return $this;
+    }
+
+    private function camelCaseColumn()
+    {
+        $columns = Schema::getColumnListing($this->table);
+        foreach ($columns as $column) {
+            $aliasName[] = $column. ' AS '. camel_case($column);
+        }
+        return implode($aliasName, ',');
     }
 }
