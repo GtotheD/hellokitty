@@ -20,6 +20,21 @@ class Product extends Model
         parent::__construct(self::TABLE);
     }
 
+    /*
+     * Get Newest Product
+     */
+    public function setConditionByWorkIdNewestProduct($workId)
+    {
+        $this->dbObject = DB::table($this->table)
+            ->where([
+                'work_id' => $workId,
+            ])
+            ->orderBy('ccc_family_cd', 'desc')
+            ->orderBy('sale_start_date', 'desc')
+            ->limit(1);
+        return $this;
+    }
+
     public function setConditionByWorkIdSaleType($workId, $saleType)
     {
         $this->dbObject = DB::table($this->table)

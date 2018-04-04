@@ -6,6 +6,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use App\Repositories\WorkRepository;
 use App\Model\Work;
+
 /**
  * Created by PhpStorm.
  * User: ayumu
@@ -21,13 +22,13 @@ class HimoRepository extends ApiRequesterRepository
     protected $apiHost;
     protected $apiKey;
 
+    const IINTEGRATION_API = '/search/crossworks';
+
     public function __construct($sort = 'asc', $offset = 0, $limit = 10)
     {
         $this->sort = $sort;
         $this->offset = $offset;
         $this->limit = $limit;
-        $this->apiHost = env('TWS_API_HOST');
-        $this->apiKey = env('TWS_API_KEY');
     }
 
     /**
@@ -41,14 +42,34 @@ class HimoRepository extends ApiRequesterRepository
     /*
      * 詳細情報を取得するAPIをセットする
      */
-    public function detail($id)
+//    public function detail($idType, $ids)
+    public function crosswork($ids)
     {
-        $this->id = $id;
+        $this->id = $ids;
 //        foreach ($ids as $id) {
 //            $queryId[] = $idType . ':' . $id;
 //        }
-//
-//        $queryId = ['0106:101017982'];
+//        $this->params = [
+//            '_system' => 'TsutayaApp',
+//            'id_value' => implode(' || ', $queryId),
+//            'service_id' => 'tol',
+//            'msdb_item' => 'video',
+//            'adult_flg' => '2',
+//            'response_level' => '9',
+//            'offset' => $this->offset,
+//            'limit' => $this->limit,
+//            'sort_by' => 'auto:asc',
+//        ];
+
+        return $this;
+    }
+
+    public function productDetail($ids)
+    {
+        $this->id = $ids;
+//        foreach ($ids as $id) {
+//            $queryId[] = $idType . ':' . $id;
+//        }
 //        $this->params = [
 //            '_system' => 'TsutayaApp',
 //            'id_value' => implode(' || ', $queryId),
@@ -86,7 +107,7 @@ class HimoRepository extends ApiRequesterRepository
     private function stub($filename)
     {
         $path = base_path('tests/fixture/himo');
-        $file = file_get_contents($path . '/' .$filename);
+        $file = file_get_contents($path . '/' . $filename);
         return json_decode($file, TRUE);
     }
 }

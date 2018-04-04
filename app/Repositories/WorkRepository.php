@@ -5,6 +5,7 @@ namespace App\Repositories;
 use Illuminate\Support\Facades\Log;
 use App\Model\Work;
 use App\Model\Product;
+use App\Exceptions\NoContentsException;
 
 /**
  * Created by PhpStorm.
@@ -101,7 +102,10 @@ class WorkRepository
         $work->setConditionByWorkId($workId);
         if ($work->count() == 0) {
             $himo = new HimoRepository();
-            $himoResult = $himo->detail($workId)->get();
+            $himoResult = $himo->crosswork($workId)->get();
+            if(!$himoResult['results']['rows']) {
+                throw new NoContentsException();
+            }
             foreach ($himoResult['results']['rows'] as $row) {
                 $base =[];
                 $base = $this->format($row);
@@ -110,19 +114,26 @@ class WorkRepository
                     // インサートの実行
                     $productRepository->insert($row['work_id'], $product);
                 }
-                // インサートしたものを取得
+                // インサートしたものを取得するため条件を再設定
                 $work->setConditionByWorkId($workId);
             }
         }
-        $response = (array)$work->toCamel()->getOne();
+//        $response = (array)$work->toCamel()->getOne();
+        $response = (array)$work->getOne();
         // productsからとってくるが、仮データ
+        $productModel = new Product();
+        $product = $productModel->setConditionByWorkIdNewestProduct($workId)->getOne();
+        dd($product);
         $response['supplement'] = 'aaaa';
-        $response['makerName'] = 'aaaa';
-        $response['bookReleaseMonth'] = 'aaaa';
+        $response['makerName'] = $product['maker_name'];
+        $response['bookReleaseMonth'] = $product['maker_name'];
         $response['newFlg'] = true;
 
         return $response;
     }
+
+
+
     private function format($row)
     {
         // ベースのデータの整形

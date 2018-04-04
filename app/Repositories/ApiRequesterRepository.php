@@ -5,6 +5,7 @@ namespace App\Repositories;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use App\Exceptions\NoContentsException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Created by PhpStorm.
@@ -38,7 +39,7 @@ class ApiRequesterRepository
         } catch (ClientException $e) {
             $statusCode = $e->getResponse()->getStatusCode();
             if ($statusCode == '404') {
-                throw new NoContentsException;
+                throw new NotFoundHttpException();
             }
             throw new $e;
         }

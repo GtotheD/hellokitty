@@ -8,6 +8,7 @@ use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Laravel\Lumen\Exceptions\Handler as ExceptionHandler;
 use Symfony\Component\HttpKernel\Exception\HttpException;
+use App\Exceptions\NoContentsException;
 
 class Handler extends ExceptionHandler
 {
@@ -63,6 +64,9 @@ class Handler extends ExceptionHandler
 //        } else if ($e instanceof Exception) {
 //            return response()->json(['status' => '500'], 500);
 //        }
+        if ($e instanceof NoContentsException) {
+            return response()->json(['status' => '204'], 204);
+        }
         return parent::render($request, $e);
     }
 }
