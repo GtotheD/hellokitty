@@ -666,6 +666,7 @@
  *     produces={"application/json"},
  *     @SWG\Parameter(ref="#/parameters/workId"),
  *     @SWG\Parameter(ref="#/parameters/saleType"),
+ *     @SWG\Parameter(ref="#/parameters/ageLimitCheck"),
  *     @SWG\Response(
  *          response=200,
  *          description="success",
@@ -677,6 +678,17 @@
  *                  description="作品情報",
  *              ),
  *          )
+ *      ),
+ *     @SWG\Response(
+ *          response=202,
+ *          description="Age Limit Error Response",
+ *          @SWG\Property(
+ *              property="rows",
+ *              type="object",
+ *              @SWG\Property(property="status",type="string"),
+ *              @SWG\Property(property="message",type="string"),
+ *              description="エラー情報",
+ *          ),
  *      ),
  *     @SWG\Response(response=204, description="Contents not found"),
  *     @SWG\Response(response=401, description="Auth error"),
@@ -1294,7 +1306,7 @@
  *     @SWG\Parameter(
  *       name="periodType",
  *       in="query",
- *       description="期間指定（rental3, rental6, sell3, sell6）※未指定でALL",
+ *       description="期間指定（rental3, rental12, sell3, sell12）※未指定でALL",
  *       type="string"
  *     ),
  *     @SWG\Parameter(
