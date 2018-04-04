@@ -64,9 +64,9 @@ class Product extends Model
                 }
             }
         }
-        $count = $dbObject->where('product_id' , $data['product_id'])->count();
+        $count = $dbObject->where('product_unique_id' , $data['product_unique_id'])->count();
         if($count) {
-            return $dbObject->where('product_id' , $data['product_id'])->update($insertData);
+            return $dbObject->where('product_unique_id' , $data['product_unique_id'])->update($insertData);
         } else {
             $insertData['created_at'] = date('Y-m-d H:i:s');
             return DB::table($this->table)->insertGetId($insertData);

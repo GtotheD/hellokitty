@@ -111,22 +111,25 @@ class WorkRepository
                 $base = $this->format($row);
                 $insertResult = $work->insert($base);
                 foreach ($row['products'] as $product) {
-                    // インサートの実行
-                    $productRepository->insert($row['work_id'], $product);
+
+                    // tolのみの取り込み
+                    if($product['service_id'] === 'tol') {
+                        // インサートの実行
+                        $productRepository->insert($row['work_id'], $product);
+                    }
                 }
                 // インサートしたものを取得するため条件を再設定
                 $work->setConditionByWorkId($workId);
             }
         }
-//        $response = (array)$work->toCamel()->getOne();
-        $response = (array)$work->getOne();
+        $response = (array)$work->toCamel()->getOne();
+
         // productsからとってくるが、仮データ
         $productModel = new Product();
-        $product = $productModel->setConditionByWorkIdNewestProduct($workId)->getOne();
-        dd($product);
+        $product = (array)$productModel->setConditionByWorkIdNewestProduct($workId)->getOne();
         $response['supplement'] = 'aaaa';
         $response['makerName'] = $product['maker_name'];
-        $response['bookReleaseMonth'] = $product['maker_name'];
+        $response['bookReleaseMonth'] = $product['book_release_month'];
         $response['newFlg'] = true;
 
         return $response;

@@ -64,9 +64,6 @@ class Handler extends ExceptionHandler
 //        } else if ($e instanceof Exception) {
 //            return response()->json(['status' => '500'], 500);
 //        }
-        if ($e instanceof NoContentsException) {
-            return response()->json(['status' => '204'], 204);
-        }
         return parent::render($request, $e);
     }
 }

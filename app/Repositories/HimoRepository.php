@@ -22,7 +22,7 @@ class HimoRepository extends ApiRequesterRepository
     protected $apiHost;
     protected $apiKey;
 
-    const IINTEGRATION_API = '/search/crossworks';
+    const INTEGRATION_API = '/search/crossworks';
 
     public function __construct($sort = 'asc', $offset = 0, $limit = 10)
     {
@@ -42,45 +42,76 @@ class HimoRepository extends ApiRequesterRepository
     /*
      * 詳細情報を取得するAPIをセットする
      */
-//    public function detail($idType, $ids)
     public function crosswork($ids)
     {
+        $this->api = 'crossworks';
         $this->id = $ids;
-//        foreach ($ids as $id) {
-//            $queryId[] = $idType . ':' . $id;
-//        }
-//        $this->params = [
-//            '_system' => 'TsutayaApp',
-//            'id_value' => implode(' || ', $queryId),
-//            'service_id' => 'tol',
-//            'msdb_item' => 'video',
-//            'adult_flg' => '2',
-//            'response_level' => '9',
-//            'offset' => $this->offset,
-//            'limit' => $this->limit,
-//            'sort_by' => 'auto:asc',
-//        ];
+        if(env('APP_ENV') === 'local'){
+            return $this;
+        }
+        foreach ($ids as $id) {
+            $queryId[] = $idType . ':' . $id;
+        }
+        $this->params = [
+            '_system' => 'TsutayaApp',
+            'id_value' => implode(' || ', $queryId),
+            'service_id' => 'tol',
+            'msdb_item' => 'video',
+            'adult_flg' => '2',
+            'response_level' => '9',
+            'offset' => $this->offset,
+            'limit' => $this->limit,
+            'sort_by' => 'auto:asc',
+        ];
+
+        return $this;
+    }
+    public function xmedia($ids)
+    {
+        $this->api = 'xmedia';
+        $this->id = $ids;
+        if(env('APP_ENV') === 'local'){
+            return $this;
+        }
+        foreach ($ids as $id) {
+            $queryId[] = $idType . ':' . $id;
+        }
+        $this->params = [
+            '_system' => 'TsutayaApp',
+            'id_value' => implode(' || ', $queryId),
+            'service_id' => 'tol',
+            'msdb_item' => 'video',
+            'adult_flg' => '2',
+            'response_level' => '9',
+            'offset' => $this->offset,
+            'limit' => $this->limit,
+            'sort_by' => 'auto:asc',
+        ];
 
         return $this;
     }
 
     public function productDetail($ids)
     {
+        $this->api = 'productDetail';
         $this->id = $ids;
-//        foreach ($ids as $id) {
-//            $queryId[] = $idType . ':' . $id;
-//        }
-//        $this->params = [
-//            '_system' => 'TsutayaApp',
-//            'id_value' => implode(' || ', $queryId),
-//            'service_id' => 'tol',
-//            'msdb_item' => 'video',
-//            'adult_flg' => '2',
-//            'response_level' => '9',
-//            'offset' => $this->offset,
-//            'limit' => $this->limit,
-//            'sort_by' => 'auto:asc',
-//        ];
+        if(env('APP_ENV') === 'local'){
+            return $this;
+        }
+        foreach ($ids as $id) {
+            $queryId[] = $idType . ':' . $id;
+        }
+        $this->params = [
+            '_system' => 'TsutayaApp',
+            'id_value' => implode(' || ', $queryId),
+            'service_id' => 'tol',
+            'msdb_item' => 'video',
+            'adult_flg' => '2',
+            'response_level' => '9',
+            'offset' => $this->offset,
+            'limit' => $this->limit,
+            'sort_by' => 'auto:asc',
+        ];
 
         return $this;
     }
@@ -92,21 +123,13 @@ class HimoRepository extends ApiRequesterRepository
     // 返却した値は、DBに格納する
     public function get()
     {
-        switch ($this->id) {
-            case 'PTA0000RV0LG':
-                return $this->stub('dvd');
-            case 'PTA0000M6ZK2':
-                return $this->stub('cd');
-            case 'PTA0000G4CSA':
-                return $this->stub('book');
-            case 'PTA0000U8W8U':
-                return $this->stub('game');
-        }
+        return $this->stub($this->api, $this->id);
     }
 
-    private function stub($filename)
+    private function stub($apiName, $filename)
     {
-        $path = base_path('tests/fixture/himo');
+        $path = base_path('tests/fixture/himo/');
+        $path = $path . $apiName;
         $file = file_get_contents($path . '/' . $filename);
         return json_decode($file, TRUE);
     }
