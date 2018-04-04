@@ -1,0 +1,180 @@
+{
+    "status": 200,
+    "message": null,
+    "results": {
+        "total": 1,
+        "rows": [
+            {
+                "id": "XMD0000VVQJL",
+                "xmedia_type": "small_series",
+                "ccc_small_series_cd": "S10055237",
+                "small_series_name": "キングスマン",
+                "small_series_kana": "きんぐすまん",
+                "delete_flg": 0,
+                "adult_flg": 0,
+                "create_date": "2018-04-03 18:01:52",
+                "xmedia_item_type": "1",
+                "works": [
+                    {
+                        "work_id": "PTA0000TCHXG",
+                        "work_type_id": "2",
+                        "msdb_item": "video",
+                        "work_format_id": null,
+                        "work_format_name": "",
+                        "work_title": "キングスマン:ゴールデン・サークル",
+                        "work_copyright": "",
+                        "adult_flg": 0,
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/12798/4988142358813_1S.jpg <img src='//store-tsutaya.tsite.jp/images/jacket/12798/4988142358813_1S.jpg'>",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/12798/4988142358813_1M.jpg <img src='//store-tsutaya.tsite.jp/images/jacket/12798/4988142358813_1M.jpg'>",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/12798/4988142358813_1L.jpg <img src='//store-tsutaya.tsite.jp/images/jacket/12798/4988142358813_1L.jpg'>",
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "ids": [
+                            {
+                                "id_type": "0107",
+                                "id_value": "360777"
+                            },
+                            {
+                                "id_type": "0108",
+                                "id_value": "64923"
+                            },
+                            {
+                                "id_type": "0103",
+                                "id_value": "10597803"
+                            },
+                            {
+                                "id_type": "0105",
+                                "id_value": "10590843"
+                            },
+                            {
+                                "id_type": "0106",
+                                "id_value": "101018789"
+                            }
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT00000018Q",
+                                "big_genre_name": "洋画アクション",
+                                "medium_genre_id": "EXT00000047I",
+                                "medium_genre_name": "スパイ",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "products": [
+
+                        ],
+                        "cinema_id": [
+                            "360777"
+                        ],
+                        "filmarks_id": [
+                            "64923"
+                        ],
+                        "people": [
+                            {
+                                "person_id": "PPS000002O76",
+                                "person_name": "マシュー・ヴォーン",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS000000XL7",
+                                "person_name": "コリン・ファース",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000001SG",
+                                "person_name": "ジュリアン・ムーア",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "work_id": "PTA0000OL8LZ",
+                        "work_type_id": "2",
+                        "msdb_item": "video",
+                        "work_format_id": null,
+                        "work_format_name": "",
+                        "work_title": "キングスマン",
+                        "work_copyright": "",
+                        "adult_flg": 0,
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/10878/9999204894906_1S.jpg <img src='//store-tsutaya.tsite.jp/images/jacket/10878/9999204894906_1S.jpg'>",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/10878/9999204894906_1M.jpg <img src='//store-tsutaya.tsite.jp/images/jacket/10878/9999204894906_1M.jpg'>",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/10878/9999204894906_1L.jpg <img src='//store-tsutaya.tsite.jp/images/jacket/10878/9999204894906_1L.jpg'>",
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "ids": [
+                            {
+                                "id_type": "0103",
+                                "id_value": "10492681"
+                            },
+                            {
+                                "id_type": "0105",
+                                "id_value": "10485720"
+                            },
+                            {
+                                "id_type": "0107",
+                                "id_value": "353152"
+                            },
+                            {
+                                "id_type": "0108",
+                                "id_value": "59360"
+                            },
+                            {
+                                "id_type": "0106",
+                                "id_value": "101002007"
+                            }
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT00000018Q",
+                                "big_genre_name": "洋画アクション",
+                                "medium_genre_id": "EXT00000047I",
+                                "medium_genre_name": "スパイ",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "products": [
+
+                        ],
+                        "cinema_id": [
+                            "353152"
+                        ],
+                        "filmarks_id": [
+                            "59360"
+                        ],
+                        "people": [
+                            {
+                                "person_id": "PPS000002O76",
+                                "person_name": "マシュー・ヴォーン",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS000007VIP",
+                                "person_name": "マーク・ミラー",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            },
+                            {
+                                "person_id": "PPS000000XL7",
+                                "person_name": "コリン・ファース",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            }
+                        ],
+                        "need_age_auth_flg": 1
+                    }
+                ]
+            }
+        ]
+    }
+}

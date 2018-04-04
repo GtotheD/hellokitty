@@ -128,7 +128,7 @@ class HimoRepository extends ApiRequesterRepository
 
     private function stub($apiName, $filename)
     {
-        $path = base_path('tests/fixture/himo/');
+        $path = base_path('tests/himo/');
         $path = $path . $apiName;
         $file = file_get_contents($path . '/' . $filename);
         return json_decode($file, TRUE);
