@@ -189,16 +189,18 @@ EOT;
           "data": {
             "workId": "PTA00007XDJP",
             "urlCd": "https://cdn.store-tsutaya.tsite.jp/cd/pinocchio.mp4",
+            "cccWorkCd": "10407575",
             "workTitle": "ピノキオ",
+            "newFlg": true,
             "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
             "supplement": "supplement",
-            "cccProductCd": "10407575",
             "saleType": "sell",
             "itemType": "cd",
             "sellTypeHas": {
               "sell": true,
               "rental": true
-            }
+            },
+            "adultFlg": true
           }
         }
 EOT;
@@ -234,12 +236,14 @@ EOT;
           {
             "workId": "PTA00007XDJP",
             "urlCd": "https://cdn.store-tsutaya.tsite.jp/cd/pinocchio.mp4",
+            "cccWorkCd": "10407575",
             "workTitle": "ピノキオ",
+            "newFlg": true,
             "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
             "supplement": "supplement",
-            "cccProductCd": "10407575",
             "saleType": "sell",
-            "itemType": "cd"
+            "itemType": "cd",
+            "adultFlg": true
           }
         ]
       }
@@ -314,12 +318,14 @@ EOT;
           {
             "workId": "PTA00007XDJP",
             "urlCd": "https://cdn.store-tsutaya.tsite.jp/cd/pinocchio.mp4",
+            "cccWorkCd": "10407575",
             "workTitle": "ピノキオ",
+            "newFlg": true,
             "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
             "supplement": "supplement",
-            "cccProductCd": "10407575",
             "saleType": "sell",
-            "itemType": "cd"
+            "itemType": "cd",
+            "adultFlg": true
           }
         ]
       }
@@ -363,12 +369,14 @@ EOT;
           {
             "workId": "PTA00007XDJP",
             "urlCd": "https://cdn.store-tsutaya.tsite.jp/cd/pinocchio.mp4",
+            "cccWorkCd": "10407575",
             "workTitle": "ピノキオ",
+            "newFlg": true,
             "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
             "supplement": "supplement",
-            "cccProductCd": "10407575",
             "saleType": "sell",
-            "itemType": "cd"
+            "itemType": "cd",
+            "adultFlg": true
           }
         ]
       }
@@ -392,12 +400,14 @@ EOT;
           {
             "workId": "PTA00007XDJP",
             "urlCd": "https://cdn.store-tsutaya.tsite.jp/cd/pinocchio.mp4",
+            "cccWorkCd": "10407575",
             "workTitle": "ピノキオ",
+            "newFlg": true,
             "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
             "supplement": "supplement",
-            "cccProductCd": "10407575",
             "saleType": "sell",
-            "itemType": "cd"
+            "itemType": "cd",
+            "adultFlg": true
           }
         ]
       }
@@ -415,12 +425,14 @@ EOT;
           {
             "workId": "PTA00007XDJP",
             "urlCd": "https://cdn.store-tsutaya.tsite.jp/cd/pinocchio.mp4",
+            "cccWorkCd": "10407575",
             "workTitle": "ピノキオ",
+            "newFlg": true,
             "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
             "supplement": "supplement",
-            "cccProductCd": "10407575",
             "saleType": "sell",
-            "itemType": "cd"
+            "itemType": "cd",
+            "adultFlg": true
           }
         ]
       }
@@ -450,8 +462,7 @@ EOT;
         $responseString = <<<EOT
         {
             "workId": "PTA00007XDJP",
-            "workTypeId": "1",
-            "saleType": "sell"
+            "itemType": "cd"
         }
 EOT;
         $json = json_decode($responseString);
@@ -459,7 +470,7 @@ EOT;
     });
 
     // 変換
-    $router->get('product/{productKey}', function (Request $request, $workId) {
+    $router->get('product/{productUniqueId}', function (Request $request, $workId) {
         $responseString = <<<EOT
         {
             "data":{
@@ -471,7 +482,9 @@ EOT;
                 "itemCd": "2263655092",
                 "itemName": "PINOCCHIO",
                 "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
+                "docText": "doc text",
                 "saleStartDate": "2014-03-20",
+                "newFlg": true,
                 "discInfo": "PINOCCHIO info",
                 "subtitle": "jp",
                 "soundSpec": "dts",
@@ -480,7 +493,14 @@ EOT;
                 "playTime": "1:30:00",
                 "contents": "木のあやつり人形・ピノキオが命を与えられ、冒険を通して善悪を学び、本物の少年となっていくまでを描く",
                 "privilege": "privilege",
-                "bestAlbumFlg": "0",
+                "bestAlbum": "best album",
+                "isDoubleAlbum": "is double album",
+                "includedDisk": "included disk",
+                "imported": "imported",
+                "bookPageNumber": "book page number",
+                "bookSize": "book size",
+                "isbn10": "isbn10",
+                "isbn13": "isbn13",
                 "makerName": "PINOCCHIO"
             }
         }
@@ -499,12 +519,14 @@ EOT;
                 {
                     "workId": "PTA00007XDJP",
                     "urlCd": "https://cdn.store-tsutaya.tsite.jp/cd/pinocchio.mp4",
+                    "cccWorkCd": "10407575",
                     "workTitle": "ピノキオ",
+                    "newFlg": true,
                     "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
                     "supplement": "supplement",
-                    "cccProductCd": "10407575",
                     "saleType": "sell",
-                    "itemType": "cd"
+                    "itemType": "cd",
+                    "adultFlg": true
                 }
               ]
         }
@@ -529,16 +551,18 @@ EOT;
             {
                 "workId": "PTA00007XDJP",
                 "urlCd": "https://cdn.store-tsutaya.tsite.jp/cd/pinocchio.mp4",
+                "cccWorkCd": "10407575",
                 "workTitle": "ピノキオ",
+                "newFlg": true,
                 "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
                 "supplement": "supplement",
-                "cccProductCd": "10407575",
                 "saleType": "sell",
                 "itemType": "cd",
                 "sellTypeHas": {
                   "sell": true,
                   "rental": true
-                }
+                },
+                "adultFlg": true
             }
           ]
         }
@@ -563,10 +587,12 @@ EOT;
         return $json;
     });
     // キーワード検索サジェスト
-    $router->get('product/stock/{storeCd}/{productId}', function (Request $request, $workId) {
+    $router->get('product/stock/{storeCd}/{productKey}', function (Request $request, $workId) {
         $responseString = <<<EOT
         {
-             "stockStatus": 0
+              "stockStatus": 0,
+              "message": "message",
+              "lastUpdate": "2018/04/03"
         }
 EOT;
         $json = json_decode($responseString);
@@ -582,12 +608,14 @@ EOT;
             {
                 "workId": "PTA00007XDJP",
                 "urlCd": "https://cdn.store-tsutaya.tsite.jp/cd/pinocchio.mp4",
+                "cccWorkCd": "10407575",
                 "workTitle": "ピノキオ",
+                "newFlg": true,
                 "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
                 "supplement": "supplement",
-                "cccProductCd": "10407575",
                 "saleType": "sell",
-                "itemType": "cd"
+                "itemType": "cd",
+                "adultFlg": true
             }
           ]
         }
