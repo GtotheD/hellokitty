@@ -98,6 +98,13 @@
  *      required=false,
  *      type="string",
  * )
+ * @SWG\Parameter(
+ *      name="ageLimitCheck",
+ *      description="既に年齢認証済みかどうか。認証済み=true、未認証=false",
+ *      in="query",
+ *      required=false,
+ *      type="boolean",
+ * )
  * /
 
 /**
