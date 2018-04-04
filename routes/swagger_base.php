@@ -37,7 +37,7 @@
  *      name="workId",
  *      in="path",
  *      description="作品ID",
- *      required=false,
+ *      required=true,
  *      type="string"
  * )
  * @SWG\Parameter(

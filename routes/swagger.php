@@ -665,7 +665,12 @@
  *     tags={"Work"},
  *     produces={"application/json"},
  *     @SWG\Parameter(ref="#/parameters/workId"),
- *     @SWG\Parameter(ref="#/parameters/saleType"),
+ *     @SWG\Parameter(
+ *       name="saleType",
+ *       in="query",
+ *       description="販売タイプ（sell, rental） ※デフォルトはrental",
+ *       type="string"
+ *     ),
  *     @SWG\Parameter(ref="#/parameters/ageLimitCheck"),
  *     @SWG\Response(
  *          response=200,

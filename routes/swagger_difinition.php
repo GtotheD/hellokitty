@@ -40,7 +40,7 @@
  *          @SWG\Property(
  *              property="itemType",
  *              type="string",
- *              description="アイテム種別　（cd, dvd, book, game）※未指定でALL"
+ *              description="アイテム種別　（cd, dvd, book, game)"
  *          ),
  *          @SWG\Property(
  *              property="jacketL",
