@@ -3,7 +3,7 @@ namespace App\Repositories;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
-
+use Log;
 /**
  * Created by PhpStorm.
  * User: ayumu
@@ -41,5 +41,77 @@ class TAPRepository extends ApiRequesterRepository
             'releaseDateTo' => $releaseDateTo
         ];
         return $this;
+    }
+
+    public function getReview($filmarksId)
+    {
+
+        $apiResult = $this->tapReviewApi($filmarksId);
+        $reviews = [
+            'totalCount' => 0,
+            'averageRating' => 0,
+            'rows' => []
+        ];
+
+        if (!empty($apiResult) && array_key_exists('entry', $apiResult)) {
+            foreach ($apiResult['entry']['movie']['reviews'] as $review) {
+                $reviews['rows'][] = [
+                    'rating' => number_format($review['score'], 1),
+                    'contributor' => $review['userName'],
+                    'contributeDate' => date('Y-m-d', strtotime($review['createdAt'])),
+                    'contents' => $review['review'],
+                ];
+                $reviews['totalCount']++;
+            }
+            if (!empty($reviews)) {
+                $reviews['averageRating'] = number_format($apiResult['entry']['movie']['averageScore'], 1);
+                return $reviews;
+            }
+        }
+
+        return null;
+    }
+
+
+    public function tapReviewApi($filmarksId)
+    {
+
+        $this->apiPath ='/tsutayaappapi/works/fm/review';
+        //local data
+        if (env('APP_ENV') == 'local') {
+            return $this->stub($this->apiPath, $filmarksId);
+        }
+        $this->apiPath = $this->apiHost . '/tsutayaappapi/works/fm/review';
+        $this->params = [
+            'api_key' => $this->apiKey,
+            'filmarksid' => $filmarksId,
+            'isReview' => '1',
+            'score' => '1'
+        ];
+        Log::debug("tapReviewApi() params[" . $filmarksId . "][1][1] url[" . $this->apiPath . "]");
+        $client = new Client();
+        try {
+            $result = $client->request(
+                'GET',
+                $this->apiPath,
+                ['query' => $this->params]
+            );
+        } catch (Exception $e) {
+            Log::warn("tapReviewApi() statusCode[" . $e->getResponse()->getStatusCode() . "]");
+            return null;
+        }
+
+        Log::info("tapReviewApi() statusCode[" . $result->getStatusCode() . "]");
+        return json_decode($result->getBody()->getContents(), true);
+    }
+
+    private function stub($apiName, $filename)
+    {
+
+        $path = base_path('tests/');
+        $path = $path . $apiName;
+        $path = str_replace('/', DIRECTORY_SEPARATOR, $path);
+        $file = file_get_contents($path . DIRECTORY_SEPARATOR . $filename);
+        return json_decode($file, TRUE);
     }
 }

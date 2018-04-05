@@ -18,7 +18,7 @@ use App\Exceptions\NoContentsException;
 use App\Repositories\BannerRepository;
 use App\Repositories\WorkRepository;
 use App\Repositories\ProductRepository;
-
+use App\Repositories\TAPRepository;
 // Api Group
 $router->group([
     'prefix' => env('URL_PATH_PREFIX') . env('API_VERSION'),
@@ -263,22 +263,17 @@ EOT;
     });
     // レビュー情報 filmarks
     $router->get('work/{workId}/review/filmarks', function (Request $request, $workId) {
-        $responseString = <<<EOT
-      {
-        "totalCount": 1,
-        "averageRating": 0,
-        "rows": [
-          {
-            "rating": "4",
-            "contributor": "ホゲホゲ",
-            "contributeDate": "2018-03-01",
-            "contents": "ふがふが　ほげほげ　ふがふが　ほげほげ"
-          }
-        ]
-      }
-EOT;
-        $json = json_decode($responseString);
-        return response()->json($json);
+
+        $work = new WorkRepository();
+        $tapRepository = new TAPRepository();
+        $workData = $work->get($workId);
+
+        //dummy data by pass (waiting usuda san add new field filmarks_id to table work)
+        $workData['filmarks_id'] = 64693;
+
+        $response = $tapRepository->getReview($workData['filmarks_id']);
+        return response()->json($response,200,array(),JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE );
+
     });
     // レビュー情報 discas
     $router->get('work/{workId}/review/discas', function (Request $request, $workId) {
