@@ -142,8 +142,6 @@ class WorkRepository
                         if ($product['service_id'] === 'tol') {
                             // インサートの実行
                             $productRepository->insert($row['work_id'], $product);
-                            $people = array_get($product, 'people');
-                            $peopleRepository->insert($product['id'], $people);
                             // Insert people
                             if ($people = array_get($product, 'people')) {
                                 foreach ($people as $person) {
