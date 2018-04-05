@@ -270,7 +270,7 @@ EOT;
 
         //dummy data by pass (waiting usuda san add new field filmarks_id to table work)
         $workData['filmarks_id'] = 64693;
-
+        $tapRepository->setLimit($request->input('limit', 10));
         $response = $tapRepository->getReview($workData['filmarks_id']);
         return response()->json($response,200,array(),JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE );
 

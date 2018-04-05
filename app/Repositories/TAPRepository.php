@@ -29,7 +29,21 @@ class TAPRepository extends ApiRequesterRepository
         $this->apiHost = env('TAP_API_HOST');
         $this->apiKey = env('TAP_API_KEY');
     }
+    /**
+     * @param mixed $limit
+     */
+    public function setLimit($limit)
+    {
+        $this->limit = $limit;
+    }
 
+    /**
+     * @param mixed $offset
+     */
+    public function setOffset($offset)
+    {
+        $this->offset = $offset;
+    }
     /*
      * 日付ベースの検索結果を取得するAPIをセットする
      */
@@ -86,7 +100,8 @@ class TAPRepository extends ApiRequesterRepository
             'api_key' => $this->apiKey,
             'filmarksid' => $filmarksId,
             'isReview' => '1',
-            'score' => '1'
+            'score' => '1',
+            'limit' => $this->limit
         ];
         return $this->get();
     }
