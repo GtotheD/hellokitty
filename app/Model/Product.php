@@ -23,13 +23,20 @@ class Product extends Model
     /*
      * Get Newest Product
      */
-    public function setConditionByWorkIdNewestProduct($workId)
+    public function setConditionByWorkIdNewestProduct($workId,$saleType = null)
     {
         $this->dbObject = DB::table($this->table)
             ->where([
                 'work_id' => $workId,
-            ])
-            ->orderBy('ccc_family_cd', 'desc')
+            ]);
+
+        // Add sale type filter
+        if ($saleType) {
+            $this->dbObject->where([
+                'product_type_id' => $this->convertSaleType($saleType),
+            ]);
+        }
+        $this->dbObject->orderBy('ccc_family_cd', 'desc')
             ->orderBy('sale_start_date', 'desc')
             ->limit(1);
         return $this;
