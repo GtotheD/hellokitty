@@ -13,6 +13,7 @@ class PeopleRepository
     protected $apiHost;
     protected $apiKey;
     protected $saleType;
+    protected $totalCount;
 
     public function __construct($sort = 'asc', $offset = 0, $limit = 10)
     {
@@ -91,10 +92,12 @@ class PeopleRepository
         $product = new ProductRepository();
         $ignoreColumn = [
             'id',
+            'product_unique_id',
             'created_at',
             'updated_at'
         ];
         $newestProduct = $product->getNewestProductWorkIdSaleType($workId, $saleType);
+
         if (!$newestProduct) {
             throw new NoContentsException;
         }
@@ -105,8 +108,30 @@ class PeopleRepository
             'role_id',
             'role_name',
         ];
-        $result = $peopleModel->setConditionByProduct($newestProduct->productUniqueId)->select($column)->toCamel($ignoreColumn)->get();
-        return $result;
+
+        $peopleCount = $peopleModel->setConditionByProduct($newestProduct->productUniqueId)->count();
+
+        $this->totalCount = $peopleCount ?: 0;
+
+        $people = $peopleModel->setConditionByProduct($newestProduct->productUniqueId)
+            ->select($column)
+            ->toCamel($ignoreColumn)
+            ->limit($this->limit)
+            ->offset($this->offset)
+            ->get($this->limit, $this->offset);
+        if (count($people) + $this->offset < $this->totalCount) {
+            $this->hasNext = true;
+        } else {
+            $this->hasNext = false;
+        }
+        $response = [
+            'hasNext' => $this->hasNext,
+            'totalCount' => $this->totalCount ,
+            'rows' => $people
+        ];
+
+
+        return $response;
     }
 
     public function insert($productId,  $people)

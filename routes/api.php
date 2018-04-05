@@ -224,13 +224,7 @@ EOT;
         $people->setLimit($request->input('limit', 10));
         $people->setOffset($request->input('offset', 0));
         $saleType = $request->input('saleType');
-        $result = $people->getNarrow($workId, $saleType);
-
-        $response = [
-            'hasNext' => '',
-            'totalCount' => '',
-            'rows' => $result
-        ];
+        $response = $people->getNarrow($workId, $saleType);
         return response()->json($response);
     });
 
