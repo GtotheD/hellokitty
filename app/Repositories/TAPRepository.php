@@ -81,7 +81,7 @@ class TAPRepository extends ApiRequesterRepository
         if (env('APP_ENV') == 'local') {
             return $this->stub($this->apiPath, $filmarksId);
         }
-        $this->apiPath = $this->apiHost . '/tsutayaappapi/works/fm/review';
+        $this->apiPath = $this->apiHost . $this->apiPath;
         $this->params = [
             'api_key' => $this->apiKey,
             'filmarksid' => $filmarksId,
