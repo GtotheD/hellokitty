@@ -77,13 +77,13 @@ class TAPRepository extends ApiRequesterRepository
                 ];
                 $reviews['totalCount']++;
             }
-            if (!empty($reviews)) {
+            if (!empty($reviews['rows'])) {
                 $reviews['averageRating'] = number_format($apiResult['entry']['movie']['averageScore'], 1);
                 return $reviews;
             }
         }
 
-        return null;
+        return $reviews;
     }
 
 
