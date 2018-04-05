@@ -86,14 +86,6 @@ class PeopleRepository
         $this->offset = $offset;
     }
 
-//    public function get($workId, $saleType)
-//    {
-//        $productModel = new Product();
-//        $newestProduct = $productModel->setConditionByWorkIdNewestProduct($workId, $saleType);
-//
-//        return $result;
-//    }
-
     public function getNarrow($workId, $saleType)
     {
         $product = new ProductRepository();
