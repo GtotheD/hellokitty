@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Log;
 use App\Model\Work;
 use App\Model\Product;
 use App\Exceptions\NoContentsException;
+use DB;
 
 /**
  * Created by PhpStorm.
@@ -121,6 +122,7 @@ class WorkRepository
     {
         $work = new Work();
         $productRepository = new ProductRepository();
+        $peopleRepository = new PeopleRepository();
         $work->setConditionByWorkId($workId);
         if ($work->count() == 0) {
             $himo = new HimoRepository();
@@ -128,20 +130,37 @@ class WorkRepository
             if(!$himoResult['results']['rows']) {
                 throw new NoContentsException();
             }
-            foreach ($himoResult['results']['rows'] as $row) {
-                $base =[];
-                $base = $this->format($row);
-                $insertResult = $work->insert($base);
-                foreach ($row['products'] as $product) {
 
-                    // tolのみの取り込み
-                    if($product['service_id'] === 'tol') {
-                        // インサートの実行
-                        $productRepository->insert($row['work_id'], $product);
+            // Create transaction for insert multiple tables
+            DB::beginTransaction();
+            try {
+                foreach ($himoResult['results']['rows'] as $row) {
+                    $base = [];
+                    $base = $this->format($row);
+                    $insertResult = $work->insert($base);
+                    foreach ($row['products'] as $product) {
+                        // tolのみの取り込み
+                        if ($product['service_id'] === 'tol') {
+                            // インサートの実行
+                            $productRepository->insert($row['work_id'], $product);
+                            $people = array_get($product, 'people');
+                            $peopleRepository->insert($product['id'], $people);
+                            // Insert people
+                            if ($people = array_get($product, 'people')) {
+                                foreach ($people as $person) {
+                                    $peopleRepository->insert($product['id'], $person);
+                                }
+                            }
+                        }
                     }
+                    DB::commit();
+                    // インサートしたものを取得するため条件を再設定
+                    $work->setConditionByWorkId($workId);
                 }
-                // インサートしたものを取得するため条件を再設定
-                $work->setConditionByWorkId($workId);
+            } catch (\Exception $exception) {
+                \Log::error("Error while update work #$workId. Error message: {$exception->getMessage()}");
+                DB::rollback();
+                throw new NoContentsException();
             }
         }
         $response = (array)$work->toCamel(['id'])->getOne();

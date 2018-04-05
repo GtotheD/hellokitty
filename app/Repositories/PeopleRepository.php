@@ -97,6 +97,11 @@ class PeopleRepository
     public function getNarrow($workId, $saleType)
     {
         $product = new ProductRepository();
+        $ignoreColumn = [
+            'id',
+            'created_at',
+            'updated_at'
+        ];
         $newestProduct = $product->getNewestProductWorkIdSaleType($workId, $saleType);
         if (!$newestProduct) {
             throw new NoContentsException;
@@ -108,7 +113,7 @@ class PeopleRepository
             'role_id',
             'role_name',
         ];
-        $result = $peopleModel->setConditionByProduct($newestProduct->productUniqueId)->select($column)->toCamel()->get();
+        $result = $peopleModel->setConditionByProduct($newestProduct->productUniqueId)->select($column)->toCamel($ignoreColumn)->get();
         return $result;
     }
 
