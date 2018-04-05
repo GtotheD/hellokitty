@@ -23,7 +23,7 @@ class Product extends Model
     /*
      * Get Newest Product
      */
-    public function setConditionByWorkIdNewestProduct($workId,$saleType = null)
+    public function setConditionByWorkIdNewestProduct($workId, $saleType = null)
     {
         $this->dbObject = DB::table($this->table)
             ->where([
