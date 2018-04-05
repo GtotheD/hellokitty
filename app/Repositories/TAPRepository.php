@@ -82,27 +82,13 @@ class TAPRepository extends ApiRequesterRepository
             return $this->stub($this->apiPath, $filmarksId);
         }
         $this->apiPath = $this->apiHost . $this->apiPath;
-        $this->params = [
+        $this->queryParams = [
             'api_key' => $this->apiKey,
             'filmarksid' => $filmarksId,
             'isReview' => '1',
             'score' => '1'
         ];
-        Log::debug("tapReviewApi() params[" . $filmarksId . "][1][1] url[" . $this->apiPath . "]");
-        $client = new Client();
-        try {
-            $result = $client->request(
-                'GET',
-                $this->apiPath,
-                ['query' => $this->params]
-            );
-        } catch (Exception $e) {
-            Log::warn("tapReviewApi() statusCode[" . $e->getResponse()->getStatusCode() . "]");
-            return null;
-        }
-
-        Log::info("tapReviewApi() statusCode[" . $result->getStatusCode() . "]");
-        return json_decode($result->getBody()->getContents(), true);
+        return $this->get();
     }
 
     private function stub($apiName, $filename)
