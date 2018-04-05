@@ -24,6 +24,11 @@ class WorkRepository
     protected $saleType;
     protected $ageLimitCheck;
 
+    const WORK_TYPE_CD = 1;
+    const WORK_TYPE_DVD = 2;
+    const WORK_TYPE_BOOK = 3;
+    const WORK_TYPE_GAME = 3;
+
     public function __construct($sort = 'asc', $offset = 0, $limit = 10)
     {
         $this->sort = $sort;
@@ -145,9 +150,12 @@ class WorkRepository
         $productModel = new Product();
         $product = (array)$productModel->setConditionByWorkIdNewestProduct($workId, $this->saleType)->getOne();
         // TODO: peopleができてから実装する。
-        $response['supplement'] = 'aaaa';
+        $response['supplement'] = '（仮）監督・著者・アーティスト・機種';
         $response['makerName'] = $product['maker_name'];
         $response['newFlg'] = $this->newLabel($response['saleStartDate']);
+        $response['adultFlg'] = ($response['adultFlg'] === '1')? true: false ;
+        $response['itemType'] = $this->convertWorkTypeIdToStr($response['workTypeId']);
+        $response['saleType'] = $this->saleType;
         $response['saleTypeHas'] = [
             'sell' => ($productModel->setConditionByWorkIdSaleType($workId, 'sell')->count() > 0)?: true,
             'rental' => ($productModel->setConditionByWorkIdSaleType($workId, 'rental')->count() > 0)?: true
@@ -203,22 +211,44 @@ class WorkRepository
         $base['book_series_name'] = $row['book_series_name'];
         // アイテム種別毎に整形フォーマットを変更できるように
         switch ($row['work_type_id']) {
-            case '1':
+            case self::WORK_TYPE_CD:
                 $base['doc_text'] = $this->cdFormat($row);
+                $base['itemType'] = 'cd';
                 break;
-            case '2':
+            case self::WORK_TYPE_DVD:
                 $base['doc_text'] = $this->dvdFormat($row);
+                $base['itemType'] = 'dvd';
                 break;
-            case '3':
+            case self::WORK_TYPE_BOOK:
                 $base['doc_text'] = $this->bookFormat($row);
+                $base['itemType'] = 'book';
                 break;
-            case '4':
+            case self::WORK_TYPE_GAME:
                 $base['doc_text'] = $this->gameFormat($row);
+                $base['itemType'] = 'game';
                 break;
         }
         return $base;
     }
 
+    public function convertWorkTypeIdToStr($workTypeId)
+    {
+        switch ($workTypeId) {
+            case self::WORK_TYPE_CD:
+                $itemType = 'cd';
+                break;
+            case self::WORK_TYPE_DVD:
+                $itemType = 'dvd';
+                break;
+            case self::WORK_TYPE_BOOK:
+                $itemType = 'book';
+                break;
+            case self::WORK_TYPE_GAME:
+                $itemType = 'game';
+                break;
+        }
+        return $itemType;
+    }
     public function trimImageTag($data)
     {
         $data = trim(preg_replace('/<.*>/', '', $data));
