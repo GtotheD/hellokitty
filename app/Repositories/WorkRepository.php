@@ -21,6 +21,13 @@ class WorkRepository
     protected $limit;
     protected $apiHost;
     protected $apiKey;
+    protected $saleType;
+    protected $ageLimitCheck;
+
+    const WORK_TYPE_CD = 1;
+    const WORK_TYPE_DVD = 2;
+    const WORK_TYPE_BOOK = 3;
+    const WORK_TYPE_GAME = 3;
 
     public function __construct($sort = 'asc', $offset = 0, $limit = 10)
     {
@@ -94,6 +101,21 @@ class WorkRepository
         $this->offset = $offset;
     }
 
+    /**
+     * @param mixed $saleType
+     */
+    public function setSaleType($saleType)
+    {
+        $this->saleType = $saleType;
+    }
+
+    /**
+     * @param mixed $ageLimitCheck
+     */
+    public function setAgeLimitCheck($ageLimitCheck)
+    {
+        $this->ageLimitCheck = $ageLimitCheck;
+    }
 
     public function get($workId)
     {
@@ -122,23 +144,49 @@ class WorkRepository
                 $work->setConditionByWorkId($workId);
             }
         }
-        $response = (array)$work->toCamel()->getOne();
+        $response = (array)$work->toCamel(['id'])->getOne();
 
         // productsからとってくるが、仮データ
         $productModel = new Product();
-        $product = (array)$productModel->setConditionByWorkIdNewestProduct($workId)->getOne();
-        $response['supplement'] = 'aaaa';
+        $product = (array)$productModel->setConditionByWorkIdNewestProduct($workId, $this->saleType)->getOne();
+        // TODO: peopleができてから実装する。
+        $response['supplement'] = '（仮）監督・著者・アーティスト・機種';
         $response['makerName'] = $product['maker_name'];
-        $response['bookReleaseMonth'] = $product['book_release_month'];
-        $response['newFlg'] = true;
+        $response['newFlg'] = $this->newLabel($response['saleStartDate']);
+        $response['adultFlg'] = ($response['adultFlg'] === '1')? true: false ;
+        $response['itemType'] = $this->convertWorkTypeIdToStr($response['workTypeId']);
+        $response['saleType'] = $this->saleType;
+        $response['saleTypeHas'] = [
+            'sell' => ($productModel->setConditionByWorkIdSaleType($workId, 'sell')->count() > 0)?: true,
+            'rental' => ($productModel->setConditionByWorkIdSaleType($workId, 'rental')->count() > 0)?: true
+        ];
 
         return $response;
     }
 
-
+    // 一ヶ月前まではNewフラグ
+    public function newLabel($saleStartDate)
+    {
+        $end = date('Y-m-d', strtotime('-1 month', time()));
+        if ($end < $saleStartDate) {
+            return true;
+        }
+        return false;
+    }
 
     private function format($row)
     {
+        $base = [];
+        foreach ($row['ids'] as $idItem) {
+            // HiMO作品ID
+            if($idItem['id_type'] === '0103') {
+                $base['ccc_work_cd'] = $idItem['id_value'];
+            // URLコード
+            } else if ($idItem['id_type'] === '0105') {
+                $base['url_cd'] = $idItem['id_value'];
+            }
+        }
+
         // ベースのデータの整形
         $base['work_id'] = $row['work_id'];
         $base['work_type_id'] = $row['work_type_id'];
@@ -146,52 +194,113 @@ class WorkRepository
         $base['work_format_name'] = $row['work_format_name'];
         $base['work_title'] = $row['work_title'];
         $base['work_title_orig'] = $row['work_title_orig'];
-        $base['jacket_l'] = $row['jacket_l'];
+        $base['copyright'] = $row['work_copyright'];
+        $base['jacket_l'] = $this->trimImageTag($row['jacket_l']);
         $base['sale_start_date'] = $row['sale_start_date'];
         $base['big_genre_id'] = $row['genres'][0]['big_genre_id'];
         $base['big_genre_name'] = $row['genres'][0]['big_genre_name'];
         $base['medium_genre_id'] = $row['genres'][0]['medium_genre_id'];
         $base['medium_genre_name'] = $row['genres'][0]['medium_genre_name'];
+        $base['small_genre_id'] = $row['genres'][0]['small_genre_id'];
+        $base['small_genre_name'] = $row['genres'][0]['small_genre_name'];
+        $base['rating_id'] = $row['rating_id'];
         $base['rating_name'] = $row['rating_name'];
+        $base['adult_flg'] = $row['adult_flg'];
         $base['created_year'] = $row['created_year'];
         $base['created_countries'] = $row['created_countries'];
         $base['book_series_name'] = $row['book_series_name'];
         // アイテム種別毎に整形フォーマットを変更できるように
         switch ($row['work_type_id']) {
-            case '1':
-                $additional = $this->cdFormat($row);
+            case self::WORK_TYPE_CD:
+                $base['doc_text'] = $this->cdFormat($row);
+                $base['itemType'] = 'cd';
                 break;
-            case '2':
-                $additional = $this->dvdFormat($row);
+            case self::WORK_TYPE_DVD:
+                $base['doc_text'] = $this->dvdFormat($row);
+                $base['itemType'] = 'dvd';
                 break;
-            case '3':
-                $additional = $this->bookFormat($row);
+            case self::WORK_TYPE_BOOK:
+                $base['doc_text'] = $this->bookFormat($row);
+                $base['itemType'] = 'book';
                 break;
-            case '4':
-                $additional = $this->gameFormat($row);
+            case self::WORK_TYPE_GAME:
+                $base['doc_text'] = $this->gameFormat($row);
+                $base['itemType'] = 'game';
                 break;
         }
-        return array_merge($base, $additional);
+        return $base;
+    }
+
+    public function convertWorkTypeIdToStr($workTypeId)
+    {
+        switch ($workTypeId) {
+            case self::WORK_TYPE_CD:
+                $itemType = 'cd';
+                break;
+            case self::WORK_TYPE_DVD:
+                $itemType = 'dvd';
+                break;
+            case self::WORK_TYPE_BOOK:
+                $itemType = 'book';
+                break;
+            case self::WORK_TYPE_GAME:
+                $itemType = 'game';
+                break;
+        }
+        return $itemType;
+    }
+    public function trimImageTag($data)
+    {
+        $data = trim(preg_replace('/<.*>/', '', $data));
+        $data = preg_replace('/^\/\//', 'https://cdn.', $data);
+        return $data;
     }
     private function dvdFormat($row)
     {
-        $data['doc_text'] = $row['docs'][0]['doc_text'];
-        return $data;
+        return $row['docs'][0]['doc_text'];
     }
     private function cdFormat($row)
     {
-        $data['doc_text'] = '';
-        return $data;
+        return '';
     }
     private function bookFormat($row)
     {
-        $data['doc_text'] = '';
-        return $data;
+        return '';
     }
     private function gameFormat($row)
     {
-        $data['doc_text'] = $row['docs'][0]['doc_text'];
-        return $data;
+        return $row['docs'][0]['doc_text'];
     }
 
+    public function checkAgeLimit($ratingId, $bigGenreId)
+    {
+        $map = [
+            [
+                'ageLimit' => 18,
+                'ratingId' => 'EXT0000000YB',
+                'bigGenreId' => 'EXT0000002G9',
+                'mediumGenreId' => null,
+                'smallGenreId' => null,
+            ],
+            [
+                'ageLimit' => 15,
+                'ratingId' => 'EXT0000001AV',
+                'bigGenreId' => 'EXT0000002G9',
+                'mediumGenreId' => null,
+                'smallGenreId' => null
+            ],
+            [
+                'ageLimit' => 18,
+                'ratingId' => 'EXT0000000YB',
+                'bigGenreId' => 'EXT0000000YC',
+                'mediumGenreId' => null,
+                'smallGenreId' => null
+        ]];
+        foreach($map as $item) {
+            if($item['ratingId'] === $ratingId && $item['bigGenreId'] === $bigGenreId) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

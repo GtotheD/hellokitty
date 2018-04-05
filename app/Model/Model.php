@@ -54,17 +54,19 @@ class Model
         return $this->dbObject->first();
     }
 
-    public function toCamel()
+    public function toCamel($ignoreColumn = [])
     {
-        $this->dbObject->select(DB::raw($this->camelCaseColumn()));
+        $this->dbObject->select(DB::raw($this->camelCaseColumn($ignoreColumn)));
         return $this;
     }
 
-    private function camelCaseColumn()
+    private function camelCaseColumn($ignoreColumn = [])
     {
         $columns = Schema::getColumnListing($this->table);
         foreach ($columns as $column) {
-            $aliasName[] = $column. ' AS '. camel_case($column);
+            if(!in_array($column, $ignoreColumn)) {
+                $aliasName[] = $column. ' AS '. camel_case($column);
+            }
         }
         return implode($aliasName, ',');
     }

@@ -42,7 +42,7 @@ class Product extends Model
         return $this;
     }
 
-    public function setConditionByWorkIdSaleType($workId, $saleType)
+    public function setConditionByWorkIdSaleType($workId, $saleType = null)
     {
         $this->dbObject = DB::table($this->table)
             ->where([
