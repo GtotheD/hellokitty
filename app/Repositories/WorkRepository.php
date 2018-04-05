@@ -2,7 +2,6 @@
 
 namespace App\Repositories;
 
-use Illuminate\Support\Facades\Log;
 use App\Model\Work;
 use App\Model\Product;
 use App\Exceptions\NoContentsException;
