@@ -690,8 +690,8 @@
  *          @SWG\Property(
  *              property="rows",
  *              type="object",
- *              @SWG\Property(property="status",type="string"),
- *              @SWG\Property(property="message",type="string"),
+ *              @SWG\Property(property="status",type="string",description="ステータスコード（error）"),
+ *              @SWG\Property(property="message",type="string",description="ステータスコードの内容"),
  *              description="エラー情報",
  *          ),
  *      ),
