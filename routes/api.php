@@ -18,6 +18,7 @@ use App\Exceptions\NoContentsException;
 use App\Repositories\BannerRepository;
 use App\Repositories\WorkRepository;
 use App\Repositories\ProductRepository;
+use App\Repositories\PeopleRepository;
 
 // Api Group
 $router->group([
@@ -219,23 +220,14 @@ EOT;
     });
     // キャストスタッフ一覧取得
     $router->get('work/{workId}/people', function (Request $request, $workId) {
-        $responseString = <<<EOT
-        {
-           "hasNext": true,
-          "totalCount": 1,
-          "rows": [
-            {
-              "personId": "1",
-              "personName": "ほげほげ",
-              "roleId": "1",
-              "roleName": "ほげほげ"
-            }
-          ]
-        }
-EOT;
-        $json = json_decode($responseString);
-        return response()->json($json);
+        $people = new PeopleRepository();
+        $people->setLimit($request->input('limit', 10));
+        $people->setOffset($request->input('offset', 0));
+        $saleType = $request->input('saleType');
+        $response = $people->getNarrow($workId, $saleType);
+        return response()->json($response);
     });
+
     // 作品シリーズ情報
     $router->get('work/{workId}/series', function (Request $request, $workId) {
         $responseString = <<<EOT

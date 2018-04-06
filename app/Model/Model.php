@@ -28,27 +28,42 @@ class Model
         $this->dbObject->select($column);
         return $this;
     }
+
     public function update($id, $values)
     {
         return DB::table($this->table)
             ->where('id', $id)
             ->update($values);
     }
+
+    public function limit($limit)
+    {
+        return $this->dbObject->limit($limit);
+    }
+
+    public function offset($offset)
+    {
+        return $this->dbObject->offset($offset);
+    }
+
     public function count()
     {
         return $this->dbObject->count();
     }
+
     public function get($limit = 100, $offset = 0)
     {
         return $this->dbObject
             ->skip($offset)->take($limit)
             ->get();
     }
+
     public function conditionAll()
     {
         $this->dbObject = DB::table($this->table);
         return $this;
     }
+
     public function getOne()
     {
         return $this->dbObject->first();
@@ -70,4 +85,5 @@ class Model
         }
         return implode($aliasName, ',');
     }
+
 }
