@@ -354,20 +354,6 @@ EOT;
         ];
 
         return response()->json($response,200,array(),JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES );
-
-        $responseString = <<<EOT
-      {
-        "hasNext": true,
-        "totalCount": 1,
-        "rows": [
-          {
-            "url": "//store-tsutaya.tsite.jp/images/bamen/00205/4959241958082_B001S.jpg"
-          }
-        ]
-      }
-EOT;
-        $json = json_decode($responseString);
-        return response()->json($json);
     });
     // 関連アーティスト
     $router->get('work/{workId}/relation/artist', function (Request $request, $workId) {
