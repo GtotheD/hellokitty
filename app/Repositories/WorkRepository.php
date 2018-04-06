@@ -27,7 +27,7 @@ class WorkRepository
     const WORK_TYPE_CD = 1;
     const WORK_TYPE_DVD = 2;
     const WORK_TYPE_BOOK = 3;
-    const WORK_TYPE_GAME = 3;
+    const WORK_TYPE_GAME = 4;
 
     public function __construct($sort = 'asc', $offset = 0, $limit = 10)
     {
@@ -129,7 +129,6 @@ class WorkRepository
             if(!$himoResult['results']['rows']) {
                 throw new NoContentsException();
             }
-
             // Create transaction for insert multiple tables
             DB::beginTransaction();
             try {
@@ -138,8 +137,10 @@ class WorkRepository
                     $base = $this->format($row);
                     $insertResult = $work->insert($base);
                     foreach ($row['products'] as $product) {
-                        // tolのみの取り込み
-                        if ($product['service_id'] === 'tol') {
+                    if(
+                        $product['service_id'] === 'tol'
+                        && substr($product['item_cd'],0, 2) !== '01'
+                    ) {
                             // インサートの実行
                             $productRepository->insert($row['work_id'], $product);
                             // Insert people
@@ -265,6 +266,7 @@ class WorkRepository
         }
         return $itemType;
     }
+
     public function trimImageTag($data)
     {
         $data = trim(preg_replace('/<.*>/', '', $data));
