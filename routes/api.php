@@ -290,8 +290,11 @@ EOT;
         $discasRepository->setLimit($request->input('limit', 10));
         $response = $discasRepository->getReview($workData['cccWorkCd']);
 
-        return response()->json($response,200,array(),JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE );
+        if (empty($response)) {
+            throw new NoContentsException;
+        }
 
+        return response()->json($response);
     });
     // レビュー情報 tol
     $router->get('work/{workId}/review/tol', function (Request $request, $workId) {

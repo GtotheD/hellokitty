@@ -83,7 +83,7 @@ class DiscasRepository extends ApiRequesterRepository
             }
         }
 
-        return $reviews;
+        return null;
     }
 
 
