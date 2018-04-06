@@ -299,10 +299,13 @@ EOT;
         $twsRepository = new TWSRepository();
         $twsRepository->setLimit($request->input('limit', 10));
         $twsRepository->setOffset($request->input('offset', 0));
-        
-        $response = $twsRepository->getReview($workData['urlCd']);
 
-        return response()->json($response,200,array(),JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE );
+        $response = $twsRepository->getReview($workData['urlCd']);
+        if (empty($response)) {
+            throw new NoContentsException;
+        }
+
+        return response()->json($response);
     });
     // 関連作品
     $router->get('work/{workId}/relation/works', function (Request $request, $workId) {

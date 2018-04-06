@@ -149,7 +149,7 @@ class TWSRepository extends ApiRequesterRepository
             }
         }
 
-        return $reviews;
+        return null;
     }
 
 
