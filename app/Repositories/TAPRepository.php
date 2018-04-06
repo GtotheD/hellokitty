@@ -83,7 +83,7 @@ class TAPRepository extends ApiRequesterRepository
             }
         }
 
-        return $reviews;
+        return null;
     }
 
 

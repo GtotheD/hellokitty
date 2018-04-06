@@ -263,8 +263,12 @@ EOT;
 
         $tapRepository->setLimit($request->input('limit', 10));
         $response = $tapRepository->getReview($workData['filmarks_id']);
-        return response()->json($response,200,array(),JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE );
 
+        if (empty($response)) {
+            throw new NoContentsException;
+        }
+        
+        return response()->json($response);
     });
     // レビュー情報 discas
     $router->get('work/{workId}/review/discas', function (Request $request, $workId) {
