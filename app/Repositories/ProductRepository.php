@@ -5,7 +5,7 @@ namespace App\Repositories;
 use App\Model\Product;
 use App\Model\Work;
 use Illuminate\Support\Facades\Log;
-
+use App\Repositories\WorkRepository;
 /**
  * Created by PhpStorm.
  * User: ayumu
@@ -21,6 +21,11 @@ class ProductRepository
     protected $apiHost;
     protected $apiKey;
     protected $saleType;
+    protected $totalCount;
+    protected $hasNext;
+
+    const PRODUCT_TYPE_SELL = '1';
+    const PRODUCT_TYPE_RENTAL = '2';
 
     public function __construct($sort = 'asc', $offset = 0, $limit = 10)
     {
@@ -105,21 +110,75 @@ class ProductRepository
     {
         $productModel = new Product();
         $result = $productModel->setConditionByWorkIdSaleType($workId, $this->saleType)->toCamel()->get();
-        return $result;
+        return $this->productReformat($results);
     }
+
     public function getNarrow($workId)
     {
         $productModel = new Product();
         $column = [
-            "product_name",
-            "product_unique_id",
-//            "product_key",
-            "item_cd",
-            "jacket_l",
-            "sale_start_date",
+            "product_name AS productName",
+            "product_unique_id AS productUniqueId",
+            "item_cd AS itemCd",
+            "item_name AS itemName",
+            "product_type_id AS productTypeId",
+            "jacket_l AS jacketL",
+            "sale_start_date AS saleStartDate",
         ];
-        $result = $productModel->setConditionByWorkIdSaleType($workId, $this->saleType)->select($column)->get();
-        return $result;
+        $this->totalCount = $productModel->setConditionByWorkIdSaleType($workId, $this->saleType)->count();
+        $results = $productModel->select($column)->get($this->limit, $this->offset);
+        if (count($results) + $this->offset < $this->totalCount) {
+            $this->hasNext = true;
+        } else {
+            $this->hasNext = false;
+        }
+
+        return $this->productReformat($results);
+    }
+
+    private function productReformat($products) {
+        $workRepository = new WorkRepository();
+        // reformat data
+        foreach ($products as $product) {
+            $product = (array)$product;
+            $product['itemName'] = $this->convertItemCdToStr($product['itemCd']);
+            $product['saleType'] = $this->convertProductTypeToStr($product['productTypeId']);
+            $product['jacketL'] = $workRepository->trimImageTag($product['jacketL']);
+            $product['newFlg'] = $workRepository->newLabel($product['saleStartDate']);
+            $reformatResult[] = $product;
+        }
+        return $reformatResult;
+    }
+
+    public function convertProductTypeToStr($productTypeId)
+    {
+        switch ($productTypeId) {
+            case self::PRODUCT_TYPE_SELL:
+                $productTypeStr = 'sell';
+                break;
+            case self::PRODUCT_TYPE_RENTAL:
+                $productTypeStr = 'rental';
+                break;
+        }
+        return $productTypeStr;
+    }
+
+    public function convertItemCdToStr($itemCd)
+    {
+        $item = '';
+        $itemCd = substr($itemCd, -2);
+        switch ($itemCd) {
+            case '21':
+                $item = 'dvd';
+                break;
+            case '22':
+                $item = 'bluray';
+                break;
+            case '75':
+                $item = 'book';
+                break;
+        }
+        return $item;
     }
 
     public function insert($workId,  $product)

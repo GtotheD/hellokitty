@@ -66,9 +66,46 @@ class HimoRepository extends ApiRequesterRepository
 
         return $this;
     }
-    public function xmedia($ids)
+
+    /**
+     * @param $ids
+     *
+     * @return $this
+     */
+    public function xmediaSeries($ids)
     {
-        $this->api = 'xmedia';
+        $this->api = 'xmediaSeries'; // for stub
+        $this->id = $ids;
+        if(env('APP_ENV') === 'local'){
+            return $this;
+        }
+        foreach ($ids as $id) {
+            $queryId[] = $idType . ':' . $id;
+        }
+        $this->params = [
+            '_system' => 'TsutayaApp',
+            'id_value' => implode(' || ', $queryId),
+            'service_id' => 'tol',
+            'msdb_item' => 'video',
+            'adult_flg' => '2',
+            'response_level' => '9',
+            'offset' => $this->offset,
+            'limit' => $this->limit,
+            'sort_by' => 'auto:asc',
+        ];
+
+        return $this;
+    }
+
+    /**
+     * @param $ids
+     *
+     * @return $this
+     */
+    public function xmediaRelation($ids)
+    {
+        $idType = '';
+        $this->api = 'xmediaRelation';
         $this->id = $ids;
         if(env('APP_ENV') === 'local'){
             return $this;
@@ -147,6 +184,14 @@ class HimoRepository extends ApiRequesterRepository
 
     private function stub($apiName, $filename)
     {
+        if($this->api === 'xmediaSeries') {
+            $filename .= '_1';
+            $apiName = 'xmedia';
+        } else  if ($this->api === 'xmediaRelation') {
+            $filename .= '_2';
+            $apiName = 'xmedia';
+        }
+
         $path = base_path('tests/himo/');
         $path = $path . $apiName;
         if(!realpath($path . '/' . $filename)) {
