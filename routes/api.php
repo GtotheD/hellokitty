@@ -343,6 +343,18 @@ EOT;
     });
     // 関連画像
     $router->get('work/{workId}/relation/pics', function (Request $request, $workId) {
+        $work = new WorkRepository();
+        $workData = $work->get($workId);
+
+        $relationPics = json_decode($workData['sceneL']);
+        $response = [
+            'hasNext' => false,
+            'totalCount' => count($relationPics),
+            'rows' => $relationPics
+        ];
+
+        return response()->json($response,200,array(),JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES );
+
         $responseString = <<<EOT
       {
         "hasNext": true,
