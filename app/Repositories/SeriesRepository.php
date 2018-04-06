@@ -150,7 +150,6 @@ class SeriesRepository
         }
         // Fetch workList and get response
         $rows = [];
-        dd($workList);
         foreach ($workList as $work) {
             $rows[] = [
                 'workId' => $work->work_id,
