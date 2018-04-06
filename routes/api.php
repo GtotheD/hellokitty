@@ -347,13 +347,16 @@ EOT;
         $workData = $work->get($workId);
 
         $relationPics = json_decode($workData['sceneL']);
+        if(empty($relationPics)){
+            throw new NoContentsException;
+        }
         $response = [
             'hasNext' => false,
             'totalCount' => count($relationPics),
             'rows' => $relationPics
         ];
 
-        return response()->json($response,200,array(),JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES );
+        return response()->json($response);
     });
     // 関連アーティスト
     $router->get('work/{workId}/relation/artist', function (Request $request, $workId) {
