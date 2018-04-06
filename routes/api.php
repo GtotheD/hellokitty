@@ -19,6 +19,8 @@ use App\Repositories\BannerRepository;
 use App\Repositories\WorkRepository;
 use App\Repositories\ProductRepository;
 use App\Repositories\TAPRepository;
+use App\Repositories\PeopleRepository;
+
 // Api Group
 $router->group([
     'prefix' => env('URL_PATH_PREFIX') . env('API_VERSION'),
@@ -162,8 +164,8 @@ $router->group([
         $result = $product->getNarrow($workId);
 
         $response = [
-            'hasNext' => '',
-            'totalCount' => '',
+            'hasNext' => $product->getHasNext(),
+            'totalCount' => $product->getTotalCount(),
             'rows' => $result
         ];
         return response()->json($response);
@@ -219,23 +221,14 @@ EOT;
     });
     // キャストスタッフ一覧取得
     $router->get('work/{workId}/people', function (Request $request, $workId) {
-        $responseString = <<<EOT
-        {
-           "hasNext": true,
-          "totalCount": 1,
-          "rows": [
-            {
-              "personId": "1",
-              "personName": "ほげほげ",
-              "roleId": "1",
-              "roleName": "ほげほげ"
-            }
-          ]
-        }
-EOT;
-        $json = json_decode($responseString);
-        return response()->json($json);
+        $people = new PeopleRepository();
+        $people->setLimit($request->input('limit', 10));
+        $people->setOffset($request->input('offset', 0));
+        $saleType = $request->input('saleType');
+        $response = $people->getNarrow($workId, $saleType);
+        return response()->json($response);
     });
+
     // 作品シリーズ情報
     $router->get('work/{workId}/series', function (Request $request, $workId) {
         $responseString = <<<EOT

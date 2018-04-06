@@ -142,7 +142,8 @@ class SectionRepository
                 'title' => $section->title,
                 'supplement' => $this->supplementVisible ? '' : $section->supplement, // アーティスト名、著者、機種等
                 'code' => $section->code,
-                'urlCode' => $section->url_code
+                'urlCode' => $section->url_code,
+                'himoId' => $section->himo_id
             ];
             if ($saleType == $structureRepository::RENTAL) {
                 $row['saleStartDate'] = $structureList->is_release_date == 1 ? $this->dateFormat($section->rental_start_date) : null;
