@@ -26,7 +26,7 @@ class ApiRequesterRepository
     /*
      * 取得の実行
      */
-    public function get()
+    public function get($jsonResponse = true)
     {
         $url = $this->apiPath;
         $client = new Client();
@@ -46,31 +46,14 @@ class ApiRequesterRepository
             }
             throw new $e;
         }
-        return json_decode($result->getBody()->getContents(), true);
+
+        if ($jsonResponse) {
+            return json_decode($result->getBody()->getContents(), true);
+        }
+        return $result->getBody()->getContents();
     }
 
-    public function getRaw()
-    {
-        $url = $this->apiPath;
-        $client = new Client();
-        try {
-            $result = $client->request(
-                'GET',
-                $url,
-                [
-                    'query' => $this->queryParams,
-                    'headers' => $this->headers,
-                ]
-            );
-        } catch (ClientException $e) {
-            $statusCode = $e->getResponse()->getStatusCode();
-            if ($statusCode == '404') {
-                throw new NotFoundHttpException();
-            }
-            throw new $e;
-        }
-        return $result;
-    }
+
 
     public function setHeader($key, $value)
     {

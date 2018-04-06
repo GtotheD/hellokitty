@@ -105,7 +105,7 @@ class DiscasRepository extends ApiRequesterRepository
         ]);
 
 
-        $contents = $this->getRaw()->getBody()->getContents();
+        $contents = $this->get(false);
 
         try {
             libxml_use_internal_errors(true);
