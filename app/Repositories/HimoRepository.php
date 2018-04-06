@@ -42,7 +42,7 @@ class HimoRepository extends ApiRequesterRepository
     /*
      * 詳細情報を取得するAPIをセットする
      */
-    public function crosswork($ids)
+    public function crosswork($ids, $idType = '')
     {
         $this->api = 'crossworks';
         $this->id = $ids;
@@ -123,13 +123,35 @@ class HimoRepository extends ApiRequesterRepository
     // 返却した値は、DBに格納する
     public function get()
     {
-        return $this->stub($this->api, $this->id);
+        // Check and read array workId
+        if(!is_array($this->id)) {
+            return $this->stub($this->api, $this->id);
+        }
+
+        // Get multi works in local
+        $results = [];
+        foreach ($this->id as $key => $workId) {
+            if(!$results) {
+                $results = $this->stub($this->api, $workId);
+            }
+            else {
+                $response = $this->stub($this->api, $workId);
+                if($response) {
+                    $results['results']['rows'][] = array_first($response['results']['rows']);
+                    $results['results']['total'] = $key + 1;
+                }
+            }
+        }
+        return $results;
     }
 
     private function stub($apiName, $filename)
     {
         $path = base_path('tests/himo/');
         $path = $path . $apiName;
+        if(!realpath($path . '/' . $filename)) {
+            return null;
+        }
         $file = file_get_contents($path . '/' . $filename);
         return json_decode($file, TRUE);
     }

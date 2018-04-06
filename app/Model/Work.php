@@ -53,4 +53,17 @@ class Work extends Model
             return DB::table($this->table)->insertGetId($insertData);
         }
     }
+
+    /**
+     * Get all work_id not in workdIds array
+     *
+     * @param $workIds
+     */
+
+    public function getWorkIdsIn($workIds = []) {
+        $this->dbObject = DB::table($this->table)
+            ->whereIn('work_id', $workIds);
+        return $this;
+    }
+
 }

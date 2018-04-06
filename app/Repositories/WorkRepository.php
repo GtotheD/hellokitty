@@ -120,8 +120,19 @@ class WorkRepository
     public function get($workId)
     {
         $work = new Work();
-        $productRepository = new ProductRepository();
-        $peopleRepository = new PeopleRepository();
+        // check workId is array
+        // Get data by list workIds and return
+        if(is_array($workId)) {
+            $himo = new HimoRepository();
+            $himoResult = $himo->crosswork($workId)->get();
+            if(!$himoResult['results']['rows']) {
+                throw new NoContentsException();
+            }
+            // インサートしたものを取得するため条件を再設定
+            return $this->insert($himoResult, $work);
+        }
+
+        // Get data and return response for GET: work/{workId}
         $work->setConditionByWorkId($workId);
         if ($work->count() == 0) {
             $himo = new HimoRepository();
@@ -129,39 +140,12 @@ class WorkRepository
             if(!$himoResult['results']['rows']) {
                 throw new NoContentsException();
             }
-
-            // Create transaction for insert multiple tables
-            DB::beginTransaction();
-            try {
-                foreach ($himoResult['results']['rows'] as $row) {
-                    $base = [];
-                    $base = $this->format($row);
-                    $insertResult = $work->insert($base);
-                    foreach ($row['products'] as $product) {
-                        // tolのみの取り込み
-                        if ($product['service_id'] === 'tol') {
-                            // インサートの実行
-                            $productRepository->insert($row['work_id'], $product);
-                            // Insert people
-                            if ($people = array_get($product, 'people')) {
-                                foreach ($people as $person) {
-                                    $peopleRepository->insert($product['id'], $person);
-                                }
-                            }
-                        }
-                    }
-                    DB::commit();
-                    // インサートしたものを取得するため条件を再設定
-                    $work->setConditionByWorkId($workId);
-                }
-            } catch (\Exception $exception) {
-                \Log::error("Error while update work #$workId. Error message: {$exception->getMessage()}");
-                DB::rollback();
-                throw new NoContentsException();
-            }
+            // インサートしたものを取得するため条件を再設定
+            $this->insert($himoResult, $work);
+            $work->setConditionByWorkId($workId);
         }
-        $response = (array)$work->toCamel(['id'])->getOne();
 
+        $response = (array)$work->toCamel(['id'])->getOne();
         // productsからとってくるが、仮データ
         $productModel = new Product();
         $product = (array)$productModel->setConditionByWorkIdNewestProduct($workId, $this->saleType)->getOne();
@@ -179,6 +163,45 @@ class WorkRepository
 
         return $response;
     }
+
+    public function insert($himoResult, $work) {
+
+        $productRepository = new ProductRepository();
+        $peopleRepository = new PeopleRepository();
+        // Create transaction for insert multiple tables
+        DB::beginTransaction();
+        $insertWorkId = [];
+        try {
+            foreach ($himoResult['results']['rows'] as $key => $row) {
+                $base = [];
+                $base = $this->format($row);
+                $insertWorkId[] = $row['work_id'];
+                $work->insert($base);
+                foreach ($row['products'] as $product) {
+                    // tolのみの取り込み
+                    if ($product['service_id'] === 'tol') {
+                        // インサートの実行
+                        $productRepository->insert($row['work_id'], $product);
+                        // Insert people
+                        if ($people = array_get($product, 'people')) {
+                            foreach ($people as $person) {
+                                $peopleRepository->insert($product['id'], $person);
+                            }
+                        }
+                    }
+                }
+            }
+
+            DB::commit();
+            return $insertWorkId;
+        } catch (\Exception $exception) {
+            \Log::error("Error while update work. Error message: {$exception->getMessage()} Line: {$exception->getLine()}");
+            DB::rollback();
+            throw new NoContentsException();
+        }
+
+    }
+
 
     // 一ヶ月前まではNewフラグ
     public function newLabel($saleStartDate)
