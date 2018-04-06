@@ -119,7 +119,6 @@ class SeriesRepository
         $workIdsInSeries = array_values(array_unique($workIdsInSeries));
        // $workIdsInSeries = ['PTA0000G4CSA', 'PTA0000SF309', 'PTA0000SFCIH']; // Local data
         $workIdsExisted = $work->getWorkIdsIn($workIdsInSeries)->get()->pluck('work_id')->toArray();
-
         if(!$workIdsExisted ) {
             $workIdsNew = $workIdsInSeries;
         }else {

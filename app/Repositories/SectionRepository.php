@@ -5,7 +5,6 @@ namespace App\Repositories;
 use App\Model\Structure;
 use App\Repositories\TWSRepository;
 use App\Repositories\TAPRepository;
-use App\Repositories\SectionRepository;
 use App\Repositories\FixtureRepository;
 use App\Model\Section;
 use App\Model\Banner;
