@@ -22,6 +22,7 @@ class HimoRepository extends ApiRequesterRepository
     protected $apiHost;
     protected $apiKey;
 
+    const ID_TYPE = '0102';
     const INTEGRATION_API = '/search/crossworks';
 
     public function __construct($sort = 'asc', $offset = 0, $limit = 10)
@@ -42,7 +43,7 @@ class HimoRepository extends ApiRequesterRepository
     /*
      * 詳細情報を取得するAPIをセットする
      */
-    public function crosswork($ids, $idType = '')
+    public function crosswork($ids, $idType = self::ID_TYPE)
     {
         $this->api = 'crossworks';
         $this->id = $ids;
@@ -72,7 +73,7 @@ class HimoRepository extends ApiRequesterRepository
      *
      * @return $this
      */
-    public function xmediaSeries($ids)
+    public function xmediaSeries($ids, $idType = self::ID_TYPE)
     {
         $this->api = 'xmediaSeries'; // for stub
         $this->id = $ids;
@@ -102,7 +103,7 @@ class HimoRepository extends ApiRequesterRepository
      *
      * @return $this
      */
-    public function xmediaRelation($ids)
+    public function xmediaRelation($ids, $idType = self::ID_TYPE)
     {
         $idType = '';
         $this->api = 'xmediaRelation';
@@ -128,7 +129,7 @@ class HimoRepository extends ApiRequesterRepository
         return $this;
     }
 
-    public function productDetail($ids)
+    public function productDetail($ids, $idType = self::ID_TYPE )
     {
         $this->api = 'productDetail';
         $this->id = $ids;
