@@ -220,6 +220,7 @@ class WorkRepository
         $base['medium_genre_name'] = $row['genres'][0]['medium_genre_name'];
         $base['small_genre_id'] = $row['genres'][0]['small_genre_id'];
         $base['small_genre_name'] = $row['genres'][0]['small_genre_name'];
+        $base['filmarks_id'] = $this->filmarksIdFormat($row);
         $base['rating_id'] = $row['rating_id'];
         $base['rating_name'] = $row['rating_name'];
         $base['adult_flg'] = $row['adult_flg'];
@@ -288,6 +289,14 @@ class WorkRepository
     private function gameFormat($row)
     {
         return $row['docs'][0]['doc_text'];
+    }
+
+    private function filmarksIdFormat($row)
+    {
+        if (!empty($row['filmarks_id'][0])) {
+            return $row['filmarks_id'][0];
+        }
+        return null;
     }
 
     public function checkAgeLimit($ratingId, $bigGenreId)
