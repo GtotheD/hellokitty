@@ -162,8 +162,8 @@ $router->group([
         $result = $product->getNarrow($workId);
 
         $response = [
-            'hasNext' => '',
-            'totalCount' => '',
+            'hasNext' => $product->getHasNext(),
+            'totalCount' => $product->getTotalCount(),
             'rows' => $result
         ];
         return response()->json($response);
