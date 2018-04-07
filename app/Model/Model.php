@@ -78,6 +78,17 @@ class Model
     private function camelCaseColumn($ignoreColumn = [])
     {
         $columns = Schema::getColumnListing($this->table);
+        return $this->convertCamelCase($columns, $ignoreColumn);
+    }
+
+    public function selectCamel($columns)
+    {
+        $this->dbObject->select(DB::raw($this->convertCamelCase($columns)));
+        return $this;
+    }
+
+    private function convertCamelCase($columns, $ignoreColumn = [])
+    {
         foreach ($columns as $column) {
             if(!in_array($column, $ignoreColumn)) {
                 $aliasName[] = $column. ' AS '. camel_case($column);
@@ -85,5 +96,4 @@ class Model
         }
         return implode($aliasName, ',');
     }
-
 }
