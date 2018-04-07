@@ -54,6 +54,27 @@ class Product extends Model
         return $this;
     }
 
+    public function setConditionRentalGroup($workId)
+    {
+        $groupingColumn = 'work_id, product_name, sale_start_date, ccc_family_cd';
+        $jacketQuery = 'MAX(jacket_l) AS jacket_l';
+        $dvdQuery = 'MAX(CASE item_cd WHEN \'0021\' THEN rental_product_cd ELSE NULL END) AS dvd';
+        $blurayQuery = 'MAX(CASE item_cd WHEN \'0022\' THEN rental_product_cd ELSE NULL END) AS bluray';
+        $selectQuery = $groupingColumn. ','.
+            $jacketQuery. ','.
+            $dvdQuery. ','.
+            $blurayQuery;
+        $subQuery = DB::table($this->table)->select(DB::raw($selectQuery))
+//            ->where(DB::raw('work_id = \'PTA0000G4CSA\''))
+            ->groupBy(DB::raw($groupingColumn))
+            ->havingRaw(' (dvd is not null AND bluray is not null)');
+        $this->dbObject = DB::table(DB::raw("({$subQuery->toSql()}) as sub"))
+            ->where([
+            'work_id' => $workId,
+        ]);
+        return $this;
+    }
+
     public function insert($workId, $data)
     {
         $insertData = [];

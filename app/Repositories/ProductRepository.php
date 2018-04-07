@@ -3,9 +3,8 @@
 namespace App\Repositories;
 
 use App\Model\Product;
-use App\Model\Work;
-use Illuminate\Support\Facades\Log;
 use App\Repositories\WorkRepository;
+
 /**
  * Created by PhpStorm.
  * User: ayumu
@@ -14,6 +13,7 @@ use App\Repositories\WorkRepository;
  */
 class ProductRepository
 {
+    private $product;
 
     protected $sort;
     protected $offset;
@@ -32,6 +32,8 @@ class ProductRepository
         $this->sort = $sort;
         $this->offset = $offset;
         $this->limit = $limit;
+
+        $this->product = new Product();
     }
 
 
@@ -98,6 +100,7 @@ class ProductRepository
     {
         $this->offset = $offset;
     }
+
     /**
      * @param mixed $offset
      */
@@ -108,14 +111,12 @@ class ProductRepository
 
     public function get($workId)
     {
-        $productModel = new Product();
-        $result = $productModel->setConditionByWorkIdSaleType($workId, $this->saleType)->toCamel()->get();
+        $results = $this->product->setConditionByWorkIdSaleType($workId, $this->saleType)->toCamel()->get();
         return $this->productReformat($results);
     }
 
     public function getNarrow($workId)
     {
-        $productModel = new Product();
         $column = [
             "product_name AS productName",
             "product_unique_id AS productUniqueId",
@@ -125,8 +126,8 @@ class ProductRepository
             "jacket_l AS jacketL",
             "sale_start_date AS saleStartDate",
         ];
-        $this->totalCount = $productModel->setConditionByWorkIdSaleType($workId, $this->saleType)->count();
-        $results = $productModel->select($column)->get($this->limit, $this->offset);
+        $this->totalCount = $this->product->setConditionByWorkIdSaleType($workId, $this->saleType)->count();
+        $results = $this->product->select($column)->get($this->limit, $this->offset);
         if (count($results) + $this->offset < $this->totalCount) {
             $this->hasNext = true;
         } else {
@@ -135,8 +136,49 @@ class ProductRepository
 
         return $this->productReformat($results);
     }
+    public function getRentalGroup($workId)
+    {
+        $column = [
+            "product_name AS productName",
+            "jacket_l AS jacketL",
+            "sale_start_date AS saleStartDate",
+            "ccc_family_cd AS cccFamilyCd",
+            "dvd",
+            "bluray",
+        ];
+        $this->totalCount = $this->product->setConditionRentalGroup($workId)->count();
+        $results = $this->product->select($column)->get($this->limit, $this->offset);
+        if (count($results) + $this->offset < $this->totalCount) {
+            $this->hasNext = true;
+        } else {
+            $this->hasNext = false;
+        }
 
-    private function productReformat($products) {
+        return $this->rentalGroupReformat($results);
+
+
+    }
+    private function rentalGroupReformat($products)
+    {
+        $workRepository = new WorkRepository();
+        // reformat data
+        foreach ($products as $product) {
+            $product = (array)$product;
+            $product['productKeys'] = [
+                'dvd' => $product['dvd'],
+                'bluray' => $product['bluray'],
+            ];
+            unset($product['dvd']);
+            unset($product['bluray']);
+
+            $reformatResult[] = $product;
+        }
+        return $reformatResult;
+
+    }
+
+    private function productReformat($products)
+    {
         $workRepository = new WorkRepository();
         // reformat data
         foreach ($products as $product) {
@@ -181,7 +223,7 @@ class ProductRepository
         return $item;
     }
 
-    public function insert($workId,  $product)
+    public function insert($workId, $product)
     {
         $productModel = new Product();
         $productBase = [];
@@ -190,7 +232,6 @@ class ProductRepository
         $productBase['product_code'] = $product['product_code'];
         $productBase['jan'] = $product['jan'];
         $productBase['ccc_family_cd'] = $product['ccc_family_cd'];
-        $productBase['ccc_product_id'] = $product['ccc_product_id'];
         $productBase['rental_product_cd'] = $product['rental_product_cd'];
         $productBase['product_name'] = $product['product_name'];
         $productBase['product_type_id'] = $product['product_type_id'];
@@ -224,9 +265,9 @@ class ProductRepository
      *
      * @return mixed
      */
-    public function getNewestProductWorkIdSaleType($workId, $saleType) {
-        $productModel = new Product();
-        $result = $productModel->setConditionByWorkIdNewestProduct($workId, $saleType)->toCamel()->getOne();
+    public function getNewestProductWorkIdSaleType($workId, $saleType)
+    {
+        $result = $this->product->setConditionByWorkIdNewestProduct($workId, $saleType)->toCamel()->getOne();
         return $result;
     }
 
