@@ -109,7 +109,13 @@ class ProductRepository
         $this->saleType = $saleType;
     }
 
-    public function get($workId)
+    public function get($productUniqueId)
+    {
+        return $this->product->setConditionByProductUniqueId($productUniqueId)->toCamel(['id'])->getOne();
+    }
+
+
+    public function getByWorkId($workId)
     {
         $results = $this->product->setConditionByWorkIdSaleType($workId, $this->saleType)->toCamel()->get();
         return $this->productReformat($results);
