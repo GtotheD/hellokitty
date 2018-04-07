@@ -175,27 +175,14 @@ $router->group([
     });
     // 商品一覧情報取得（DVDレンタル時のグルーピング（問い合わせ時のLimit数がおかしくなる為にグルーピングが必要））
     $router->get('work/{workId}/products/rental', function (Request $request, $workId) {
-        $responseString = <<<EOT
-        {
-          "hasNext": true,
-          "totalCount": 1,
-          "rows": [
-            {
-              "productName": "PINOCCHIO",
-              "productUniqueId": "PPD00000QEZQ",
-              "productKeys": {
-                "dvd": "2263655092",
-                "bluray": "2259510796"
-              },
-              "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
-              "saleStartDate": "1995-03-17",
-              "newFlag": "1"
-            }
-          ]
-        }
-EOT;
-        $json = json_decode($responseString);
-        return response()->json($json);
+        $product = new ProductRepository();
+        $result = $product->getRentalGroup($workId);
+        $response = [
+            'hasNext' => $product->getHasNext(),
+            'totalCount' => $product->getTotalCount(),
+            'rows' => $result
+        ];
+        return response()->json($response);
     });
     // Himo作品ID作品検索
     $router->get('work/{workId}/products/has', function (Request $request, $workId) {
