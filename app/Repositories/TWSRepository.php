@@ -37,6 +37,13 @@ class TWSRepository extends ApiRequesterRepository
         $this->limit = $limit;
     }
 
+    /**
+     * @param int $offset
+     */
+    public function setOffset($offset)
+    {
+        $this->offset = $offset;
+    }
     /*
      * 詳細情報を取得するAPIをセットする
      */
@@ -101,6 +108,50 @@ class TWSRepository extends ApiRequesterRepository
         ];
         return $this;
     }
+
+    public function review($urlCd){
+        $this->apiPath = $this->apiHost . '/media/v0/works/review.json';
+        $page = floor(($this->offset + $this->limit) / $this->limit);
+
+        $this->queryParams = [
+            'api_key' => $this->apiKey,
+            '_secure' => '1',
+            'dispPageNo' => $page,
+            'dispNums' => $this->limit,
+            'tolPlatformCode' => '00',
+            '_pretty' => '1',
+            'urlCd' => $urlCd
+        ];
+
+        return $this;
+    }
+
+    public function getReview($urlCd){
+        $apiResult = $this->review($urlCd)->get();
+        $reviews = [
+            'totalCount' => 0,
+            'averageRating' => 0,
+            'rows' => []
+        ];
+        if (!empty($apiResult) && array_key_exists('entry', $apiResult)) {
+            foreach ($apiResult['entry'] as $review) {
+                $reviews['rows'][] = [
+                    'rating' => number_format($review['evalPoint'], 1),
+                    'contributor' => $review['contributorName'],
+                    'contributeDate' => $review['contributeDate'],
+                    'contents' => $review['commentText'],
+                ];
+            }
+            if (!empty($reviews['rows'])) {
+                $reviews['averageRating'] = number_format($apiResult['averageScore'], 1);
+                $reviews['totalCount'] = $apiResult['totalResults'];
+                return $reviews;
+            }
+        }
+
+        return null;
+    }
+
 
     private function itemCodeMapping($storeProductItemCd)
     {
