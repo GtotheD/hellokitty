@@ -20,7 +20,7 @@ use App\Repositories\WorkRepository;
 use App\Repositories\ProductRepository;
 use App\Repositories\TAPRepository;
 use App\Repositories\PeopleRepository;
-
+use App\Repositories\TWSRepository;
 // Api Group
 $router->group([
     'prefix' => env('URL_PATH_PREFIX') . env('API_VERSION'),
@@ -287,22 +287,19 @@ EOT;
     });
     // レビュー情報 tol
     $router->get('work/{workId}/review/tol', function (Request $request, $workId) {
-        $responseString = <<<EOT
-      {
-        "totalCount": 1,
-        "averageRating": 4.0,
-        "rows": [
-          {
-            "rating": 4.0,
-            "contributor": "ホゲホゲ",
-            "contributeDate": "2018-03-01",
-            "contents": "ふがふが　ほげほげ　ふがふが　ほげほげ"
-          }
-        ]
-      }
-EOT;
-        $json = json_decode($responseString);
-        return response()->json($json);
+        $work = new WorkRepository();
+        $workData = $work->get($workId);
+
+        $twsRepository = new TWSRepository();
+        $twsRepository->setLimit($request->input('limit', 10));
+        $twsRepository->setOffset($request->input('offset', 0));
+
+        $response = $twsRepository->getReview($workData['urlCd']);
+        if (empty($response)) {
+            throw new NoContentsException;
+        }
+
+        return response()->json($response);
     });
     // 関連作品
     $router->get('work/{workId}/relation/works', function (Request $request, $workId) {
