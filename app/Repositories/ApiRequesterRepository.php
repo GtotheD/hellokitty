@@ -18,7 +18,7 @@ class ApiRequesterRepository
 
     protected $apiPath;
     protected $queryParams;
-
+    protected $headers = [];
     public function __construct()
     {
     }
@@ -26,7 +26,7 @@ class ApiRequesterRepository
     /*
      * 取得の実行
      */
-    public function get()
+    public function get($jsonResponse = true)
     {
         $url = $this->apiPath;
         $client = new Client();
@@ -34,7 +34,10 @@ class ApiRequesterRepository
             $result = $client->request(
                 'GET',
                 $url,
-                ['query' => $this->queryParams]
+                [
+                    'query' => $this->queryParams,
+                    'headers' => $this->headers,
+                ]
             );
         } catch (ClientException $e) {
             $statusCode = $e->getResponse()->getStatusCode();
@@ -43,6 +46,24 @@ class ApiRequesterRepository
             }
             throw new $e;
         }
-        return json_decode($result->getBody()->getContents(), true);
+
+        if ($jsonResponse) {
+            return json_decode($result->getBody()->getContents(), true);
+        }
+        return $result->getBody()->getContents();
+    }
+
+
+
+    public function setHeader($key, $value)
+    {
+        $this->headers[$key] = $value;
+    }
+
+    public function setHeaders($params)
+    {
+        foreach ($params as $key => $value) {
+            $this->headers[$key] = $value;
+        }
     }
 }

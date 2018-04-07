@@ -237,6 +237,7 @@ class WorkRepository
         $base['work_title_orig'] = $row['work_title_orig'];
         $base['copyright'] = $row['work_copyright'];
         $base['jacket_l'] = $this->trimImageTag($row['jacket_l']);
+        $base['scene_l'] = $this->sceneFormat($row['scene_l']);
         $base['sale_start_date'] = $row['sale_start_date'];
         $base['big_genre_id'] = $row['genres'][0]['big_genre_id'];
         $base['big_genre_name'] = $row['genres'][0]['big_genre_name'];
@@ -298,6 +299,9 @@ class WorkRepository
         $data = preg_replace('/^\/\//', 'https://cdn.', $data);
         return $data;
     }
+
+
+
     private function dvdFormat($row)
     {
         return $row['docs'][0]['doc_text'];
@@ -313,6 +317,15 @@ class WorkRepository
     private function gameFormat($row)
     {
         return $row['docs'][0]['doc_text'];
+    }
+
+    private function sceneFormat($data)
+    {
+        $result = [];
+        foreach ($data as $image) {
+            $result[] = $this->trimImageTag($image['url']);
+        }
+        return json_encode($result, JSON_UNESCAPED_SLASHES);
     }
 
     private function filmarksIdFormat($row)
