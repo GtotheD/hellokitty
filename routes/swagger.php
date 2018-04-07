@@ -1219,10 +1219,9 @@
  *       name="productUniqueId",
  *       in="path",
  *       description="商品ID(product.id でproduct.product_idではない)",
- *       type="string"
+ *       type="string",
+ *       required=true
  *     ),
- *     @SWG\Parameter(ref="#/parameters/limit"),
- *     @SWG\Parameter(ref="#/parameters/offset"),
  *     @SWG\Response(
  *          response=200,
  *          description="success",

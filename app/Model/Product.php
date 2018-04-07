@@ -20,6 +20,15 @@ class Product extends Model
         parent::__construct(self::TABLE);
     }
 
+    public function setConditionByProductUniqueId($productUniqueId)
+    {
+        $this->dbObject = DB::table($this->table)
+            ->where([
+                'product_unique_id' => $productUniqueId,
+            ]);
+        return $this;
+    }
+
     /*
      * Get Newest Product
      */

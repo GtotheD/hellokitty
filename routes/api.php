@@ -429,43 +429,13 @@ EOT;
     });
 
     // 変換
-    $router->get('product/{productUniqueId}', function (Request $request, $workId) {
-        $responseString = <<<EOT
-        {
-            "data":{
-                "productName": "グランド・イリュージョン",
-                "saleType": "sell",
-                "productCode": "DABR4582",
-                "productUniqueId": "2",
-                "jan": "jan",
-                "itemCd": "2263655092",
-                "itemName": "PINOCCHIO",
-                "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
-                "docText": "doc text",
-                "saleStartDate": "2014-03-20",
-                "newFlg": true,
-                "discInfo": "PINOCCHIO info",
-                "subtitle": "jp",
-                "soundSpec": "dts",
-                "regionInfo": "jp",
-                "priceTaxOut": "100",
-                "playTime": "1:30:00",
-                "contents": "木のあやつり人形・ピノキオが命を与えられ、冒険を通して善悪を学び、本物の少年となっていくまでを描く",
-                "privilege": "privilege",
-                "bestAlbum": "best album",
-                "isDoubleAlbum": "is double album",
-                "includedDisk": "included disk",
-                "imported": "imported",
-                "bookPageNumber": "book page number",
-                "bookSize": "book size",
-                "isbn10": "isbn10",
-                "isbn13": "isbn13",
-                "makerName": "PINOCCHIO"
-            }
-        }
-EOT;
-        $json = json_decode($responseString);
-        return $json;
+    $router->get('product/{productUniqueId}', function (Request $request, $productUniqueId) {
+        $productRepository = new ProductRepository();
+        $result = $productRepository->get($productUniqueId);
+        $response = [
+            'data' => $result
+        ];
+        return response()->json($response);
     });
 
     //人物関連作品取得
