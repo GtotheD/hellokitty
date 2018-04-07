@@ -337,19 +337,20 @@ EOT;
     });
     // 関連画像
     $router->get('work/{workId}/relation/pics', function (Request $request, $workId) {
-        $responseString = <<<EOT
-      {
-        "hasNext": true,
-        "totalCount": 1,
-        "rows": [
-          {
-            "url": "//store-tsutaya.tsite.jp/images/bamen/00205/4959241958082_B001S.jpg"
-          }
-        ]
-      }
-EOT;
-        $json = json_decode($responseString);
-        return response()->json($json);
+        $work = new WorkRepository();
+        $workData = $work->get($workId);
+
+        $relationPics = json_decode($workData['sceneL']);
+        if(empty($relationPics)){
+            throw new NoContentsException;
+        }
+        $response = [
+            'hasNext' => false,
+            'totalCount' => count($relationPics),
+            'rows' => $relationPics
+        ];
+
+        return response()->json($response);
     });
     // 関連アーティスト
     $router->get('work/{workId}/relation/artist', function (Request $request, $workId) {
