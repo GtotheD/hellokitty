@@ -21,6 +21,7 @@ use App\Repositories\ProductRepository;
 use App\Repositories\DiscasRepository;
 use App\Repositories\TAPRepository;
 use App\Repositories\PeopleRepository;
+use App\Repositories\SeriesRepository;
 use App\Repositories\TWSRepository;
 
 // Api Group
@@ -233,28 +234,12 @@ EOT;
 
     // 作品シリーズ情報
     $router->get('work/{workId}/series', function (Request $request, $workId) {
-        $responseString = <<<EOT
-      {
-        "hasNext": true,
-        "totalCount": 1,
-        "rows": [
-          {
-            "workId": "PTA00007XDJP",
-            "urlCd": "https://cdn.store-tsutaya.tsite.jp/cd/pinocchio.mp4",
-            "cccWorkCd": "10407575",
-            "workTitle": "ピノキオ",
-            "newFlg": true,
-            "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
-            "supplement": "supplement",
-            "saleType": "sell",
-            "itemType": "cd",
-            "adultFlg": true
-          }
-        ]
-      }
-EOT;
-        $json = json_decode($responseString);
-        return response()->json($json);
+        $series = new SeriesRepository();
+        $series->setLimit($request->input('limit', 10));
+        $series->setOffset($request->input('offset', 0));
+        $saleType = $request->input('saleType');
+        $response = $series->getNarrow($workId, $saleType);
+        return response()->json($response);
     });
     // レビュー情報 filmarks
     $router->get('work/{workId}/review/filmarks', function (Request $request, $workId) {
