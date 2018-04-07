@@ -116,8 +116,23 @@ class WorkRepository
     {
         $this->ageLimitCheck = $ageLimitCheck;
     }
+    public function getNarrowColumns($workId)
+    {
+        $columns =[
+            'work_id',
+            'work_type_id',
+            'rating_id',
+            'big_genre_id',
+            'url_cd',
+            'ccc_work_cd',
+            'jacket_l',
+            'sale_start_date',
+            'adult_flg'
+        ];
+        return $this->get($workId, $columns);
+    }
 
-    public function get($workId)
+    public function get($workId, $selectColumns = null)
     {
         $work = new Work();
         // check workId is array
@@ -144,7 +159,11 @@ class WorkRepository
             $this->insert($himoResult, $work);
             $work->setConditionByWorkId($workId);
         }
-        $response = (array)$work->toCamel(['id'])->getOne();
+        if (empty($selectColumns)) {
+            $response = (array)$work->toCamel(['id'])->getOne();
+        } else {
+            $response = (array)$work->selectCamel($selectColumns)->getOne();
+        }
 
         // productsからとってくるが、仮データ
         $productModel = new Product();
@@ -202,17 +221,6 @@ class WorkRepository
             throw new NoContentsException();
         }
 
-    }
-
-
-    // 一ヶ月前まではNewフラグ
-    public function newLabel($saleStartDate)
-    {
-        $end = date('Y-m-d', strtotime('-1 month', time()));
-        if ($end < $saleStartDate) {
-            return true;
-        }
-        return false;
     }
 
     private function format($row)

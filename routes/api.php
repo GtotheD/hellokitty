@@ -186,28 +186,22 @@ $router->group([
     });
     // Himo作品ID作品検索
     $router->get('work/{workId}/products/has', function (Request $request, $workId) {
-        $responseString = <<<EOT
-        {
-          "data": {
-            "workId": "PTA00007XDJP",
-            "urlCd": "https://cdn.store-tsutaya.tsite.jp/cd/pinocchio.mp4",
-            "cccWorkCd": "10407575",
-            "workTitle": "ピノキオ",
-            "newFlg": true,
-            "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
-            "supplement": "supplement",
-            "saleType": "sell",
-            "itemType": "cd",
-            "sellTypeHas": {
-              "sell": true,
-              "rental": true
-            },
-            "adultFlg": true
-          }
+        $work = new WorkRepository();
+        $work->setSaleType($request->input('saleType', 'rental'));
+        $ageLimitCheck = $request->input('ageLimitCheck', false);
+        $result = $work->getNarrowColumns($workId);
+        $checkAgeLimit = $work->checkAgeLimit($result['ratingId'], $result['bigGenreId']);
+        if ($ageLimitCheck === 'false' && ($checkAgeLimit === true || $result['adultFlg'] === '1')) {
+            $response = [
+                'status' => 'error',
+                'message' => 'Age limit auth error'
+            ];
+        } else {
+            $response = [
+                'data' => $result
+            ];
         }
-EOT;
-        $json = json_decode($responseString);
-        return response()->json($json);
+        return response()->json($response);
     });
     // キャストスタッフ一覧取得
     $router->get('work/{workId}/people', function (Request $request, $workId) {
