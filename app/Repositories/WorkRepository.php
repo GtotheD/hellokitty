@@ -169,7 +169,7 @@ class WorkRepository
         // TODO: peopleができてから実装する。
         $response['supplement'] = '（仮）監督・著者・アーティスト・機種';
         $response['makerName'] = $product['maker_name'];
-        $response['newFlg'] = $this->newLabel($response['saleStartDate']);
+        $response['newFlg'] = newFlg($response['saleStartDate']);
         $response['adultFlg'] = ($response['adultFlg'] === '1')? true: false ;
         $response['itemType'] = $this->convertWorkTypeIdToStr($response['workTypeId']);
         $response['saleType'] = $this->saleType;
@@ -179,16 +179,6 @@ class WorkRepository
         ];
 
         return $response;
-    }
-
-    // 一ヶ月前まではNewフラグ
-    public function newLabel($saleStartDate)
-    {
-        $end = date('Y-m-d', strtotime('-1 month', time()));
-        if ($end < $saleStartDate) {
-            return true;
-        }
-        return false;
     }
 
     private function format($row)
@@ -212,7 +202,7 @@ class WorkRepository
         $base['work_title'] = $row['work_title'];
         $base['work_title_orig'] = $row['work_title_orig'];
         $base['copyright'] = $row['work_copyright'];
-        $base['jacket_l'] = $this->trimImageTag($row['jacket_l']);
+        $base['jacket_l'] = trimImageTag($row['jacket_l']);
         $base['sale_start_date'] = $row['sale_start_date'];
         $base['big_genre_id'] = $row['genres'][0]['big_genre_id'];
         $base['big_genre_name'] = $row['genres'][0]['big_genre_name'];
@@ -267,12 +257,6 @@ class WorkRepository
         return $itemType;
     }
 
-    public function trimImageTag($data)
-    {
-        $data = trim(preg_replace('/<.*>/', '', $data));
-        $data = preg_replace('/^\/\//', 'https://cdn.', $data);
-        return $data;
-    }
     private function dvdFormat($row)
     {
         return $row['docs'][0]['doc_text'];

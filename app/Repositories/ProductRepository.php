@@ -160,14 +160,15 @@ class ProductRepository
     }
     private function rentalGroupReformat($products)
     {
-        $workRepository = new WorkRepository();
         // reformat data
         foreach ($products as $product) {
             $product = (array)$product;
+            $product['jacketL'] = trimImageTag($product['jacketL']);
             $product['productKeys'] = [
                 'dvd' => $product['dvd'],
                 'bluray' => $product['bluray'],
             ];
+            $product['newFlg'] = newFlg($product['saleStartDate']);
             unset($product['dvd']);
             unset($product['bluray']);
 
@@ -179,14 +180,13 @@ class ProductRepository
 
     private function productReformat($products)
     {
-        $workRepository = new WorkRepository();
         // reformat data
         foreach ($products as $product) {
             $product = (array)$product;
             $product['itemName'] = $this->convertItemCdToStr($product['itemCd']);
             $product['saleType'] = $this->convertProductTypeToStr($product['productTypeId']);
-            $product['jacketL'] = $workRepository->trimImageTag($product['jacketL']);
-            $product['newFlg'] = $workRepository->newLabel($product['saleStartDate']);
+            $product['jacketL'] = trimImageTag($product['jacketL']);
+            $product['newFlg'] = newFlg($product['saleStartDate']);
             $reformatResult[] = $product;
         }
         return $reformatResult;
