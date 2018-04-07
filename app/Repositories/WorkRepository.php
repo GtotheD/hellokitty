@@ -120,8 +120,19 @@ class WorkRepository
     public function get($workId)
     {
         $work = new Work();
-        $productRepository = new ProductRepository();
-        $peopleRepository = new PeopleRepository();
+        // check workId is array
+        // Get data by list workIds and return
+        if(is_array($workId)) {
+            $himo = new HimoRepository();
+            $himoResult = $himo->crosswork($workId)->get();
+            if(!$himoResult['results']['rows']) {
+                throw new NoContentsException();
+            }
+            // インサートしたものを取得するため条件を再設定
+            return $this->insert($himoResult, $work);
+        }
+
+        // Get data and return response for GET: work/{workId}
         $work->setConditionByWorkId($workId);
         if ($work->count() == 0) {
             $himo = new HimoRepository();
@@ -129,37 +140,9 @@ class WorkRepository
             if(!$himoResult['results']['rows']) {
                 throw new NoContentsException();
             }
-            // Create transaction for insert multiple tables
-            DB::beginTransaction();
-            try {
-                foreach ($himoResult['results']['rows'] as $row) {
-                    $base = [];
-                    $base = $this->format($row);
-                    $insertResult = $work->insert($base);
-                    foreach ($row['products'] as $product) {
-                    if(
-                        $product['service_id'] === 'tol'
-                        && substr($product['item_cd'],0, 2) !== '01'
-                    ) {
-                            // インサートの実行
-                            $productRepository->insert($row['work_id'], $product);
-                            // Insert people
-                            if ($people = array_get($product, 'people')) {
-                                foreach ($people as $person) {
-                                    $peopleRepository->insert($product['id'], $person);
-                                }
-                            }
-                        }
-                    }
-                    DB::commit();
-                    // インサートしたものを取得するため条件を再設定
-                    $work->setConditionByWorkId($workId);
-                }
-            } catch (\Exception $exception) {
-                \Log::error("Error while update work #$workId. Error message: {$exception->getMessage()}");
-                DB::rollback();
-                throw new NoContentsException();
-            }
+            // インサートしたものを取得するため条件を再設定
+            $this->insert($himoResult, $work);
+            $work->setConditionByWorkId($workId);
         }
         $response = (array)$work->toCamel(['id'])->getOne();
 
@@ -179,6 +162,57 @@ class WorkRepository
         ];
 
         return $response;
+    }
+
+    public function insert($himoResult, $work) {
+
+        $productRepository = new ProductRepository();
+        $peopleRepository = new PeopleRepository();
+        // Create transaction for insert multiple tables
+
+        // Create transaction for insert multiple tables
+        DB::beginTransaction();
+        try {
+            foreach ($himoResult['results']['rows'] as $row) {
+                $base = [];
+                $base = $this->format($row);
+                $insertWorkId[] = $row['work_id'];
+                $insertResult = $work->insert($base);
+                foreach ($row['products'] as $product) {
+                    if(
+                        $product['service_id'] === 'tol'
+                        && substr($product['item_cd'],0, 2) !== '01'
+                    ) {
+                        // インサートの実行
+                        $productRepository->insert($row['work_id'], $product);
+                        // Insert people
+                        if ($people = array_get($product, 'people')) {
+                            foreach ($people as $person) {
+                                $peopleRepository->insert($product['id'], $person);
+                            }
+                        }
+                    }
+                }
+                DB::commit();
+                return $insertWorkId;
+            }
+        } catch (\Exception $exception) {
+            \Log::error("Error while update work. Error message: {$exception->getMessage()} Line: {$exception->getLine()}");
+            DB::rollback();
+            throw new NoContentsException();
+        }
+
+    }
+
+
+    // 一ヶ月前まではNewフラグ
+    public function newLabel($saleStartDate)
+    {
+        $end = date('Y-m-d', strtotime('-1 month', time()));
+        if ($end < $saleStartDate) {
+            return true;
+        }
+        return false;
     }
 
     private function format($row)
@@ -203,6 +237,7 @@ class WorkRepository
         $base['work_title_orig'] = $row['work_title_orig'];
         $base['copyright'] = $row['work_copyright'];
         $base['jacket_l'] = trimImageTag($row['jacket_l']);
+        $base['scene_l'] = $this->sceneFormat($row['scene_l']);
         $base['sale_start_date'] = $row['sale_start_date'];
         $base['big_genre_id'] = $row['genres'][0]['big_genre_id'];
         $base['big_genre_name'] = $row['genres'][0]['big_genre_name'];
@@ -210,6 +245,7 @@ class WorkRepository
         $base['medium_genre_name'] = $row['genres'][0]['medium_genre_name'];
         $base['small_genre_id'] = $row['genres'][0]['small_genre_id'];
         $base['small_genre_name'] = $row['genres'][0]['small_genre_name'];
+        $base['filmarks_id'] = $this->filmarksIdFormat($row);
         $base['rating_id'] = $row['rating_id'];
         $base['rating_name'] = $row['rating_name'];
         $base['adult_flg'] = $row['adult_flg'];
@@ -272,6 +308,23 @@ class WorkRepository
     private function gameFormat($row)
     {
         return $row['docs'][0]['doc_text'];
+    }
+
+    private function sceneFormat($data)
+    {
+        $result = [];
+        foreach ($data as $image) {
+            $result[] = $this->trimImageTag($image['url']);
+        }
+        return json_encode($result, JSON_UNESCAPED_SLASHES);
+    }
+
+    private function filmarksIdFormat($row)
+    {
+        if (!empty($row['filmarks_id'][0])) {
+            return $row['filmarks_id'][0];
+        }
+        return null;
     }
 
     public function checkAgeLimit($ratingId, $bigGenreId)

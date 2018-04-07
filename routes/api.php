@@ -18,8 +18,11 @@ use App\Exceptions\NoContentsException;
 use App\Repositories\BannerRepository;
 use App\Repositories\WorkRepository;
 use App\Repositories\ProductRepository;
+use App\Repositories\DiscasRepository;
 use App\Repositories\TAPRepository;
 use App\Repositories\PeopleRepository;
+use App\Repositories\SeriesRepository;
+use App\Repositories\TWSRepository;
 
 // Api Group
 $router->group([
@@ -218,28 +221,12 @@ EOT;
 
     // 作品シリーズ情報
     $router->get('work/{workId}/series', function (Request $request, $workId) {
-        $responseString = <<<EOT
-      {
-        "hasNext": true,
-        "totalCount": 1,
-        "rows": [
-          {
-            "workId": "PTA00007XDJP",
-            "urlCd": "https://cdn.store-tsutaya.tsite.jp/cd/pinocchio.mp4",
-            "cccWorkCd": "10407575",
-            "workTitle": "ピノキオ",
-            "newFlg": true,
-            "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
-            "supplement": "supplement",
-            "saleType": "sell",
-            "itemType": "cd",
-            "adultFlg": true
-          }
-        ]
-      }
-EOT;
-        $json = json_decode($responseString);
-        return response()->json($json);
+        $series = new SeriesRepository();
+        $series->setLimit($request->input('limit', 10));
+        $series->setOffset($request->input('offset', 0));
+        $saleType = $request->input('saleType');
+        $response = $series->getNarrow($workId, $saleType);
+        return response()->json($response);
     });
     // レビュー情報 filmarks
     $router->get('work/{workId}/review/filmarks', function (Request $request, $workId) {
@@ -248,8 +235,6 @@ EOT;
         $tapRepository = new TAPRepository();
         $workData = $work->get($workId);
 
-        //dummy data by pass (waiting usuda san add new field filmarks_id to table work)
-        $workData['filmarks_id'] = 64693;
         $tapRepository->setLimit($request->input('limit', 10));
         $response = $tapRepository->getReview($workData['filmarks_id']);
         return response()->json($response,200,array(),JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE );
@@ -257,41 +242,35 @@ EOT;
     });
     // レビュー情報 discas
     $router->get('work/{workId}/review/discas', function (Request $request, $workId) {
-        $responseString = <<<EOT
-      {
-        "totalCount": 1,
-        "averageRating": 4.0,
-        "rows": [
-          {
-            "rating": 4.0,
-            "contributor": "ホゲホゲ",
-            "contributeDate": "2018-03-01",
-            "contents": "ふがふが　ほげほげ　ふがふが　ほげほげ"
-          }
-        ]
-      }
-EOT;
-        $json = json_decode($responseString);
-        return response()->json($json);
+        $work = new WorkRepository();
+        $discasRepository = new DiscasRepository();
+
+        $workData = $work->get($workId);
+
+        $discasRepository->setLimit($request->input('limit', 10));
+        $response = $discasRepository->getReview($workData['cccWorkCd']);
+
+        if (empty($response)) {
+            throw new NoContentsException;
+        }
+
+        return response()->json($response);
     });
     // レビュー情報 tol
     $router->get('work/{workId}/review/tol', function (Request $request, $workId) {
-        $responseString = <<<EOT
-      {
-        "totalCount": 1,
-        "averageRating": 4.0,
-        "rows": [
-          {
-            "rating": 4.0,
-            "contributor": "ホゲホゲ",
-            "contributeDate": "2018-03-01",
-            "contents": "ふがふが　ほげほげ　ふがふが　ほげほげ"
-          }
-        ]
-      }
-EOT;
-        $json = json_decode($responseString);
-        return response()->json($json);
+        $work = new WorkRepository();
+        $workData = $work->get($workId);
+
+        $twsRepository = new TWSRepository();
+        $twsRepository->setLimit($request->input('limit', 10));
+        $twsRepository->setOffset($request->input('offset', 0));
+
+        $response = $twsRepository->getReview($workData['urlCd']);
+        if (empty($response)) {
+            throw new NoContentsException;
+        }
+
+        return response()->json($response);
     });
     // 関連作品
     $router->get('work/{workId}/relation/works', function (Request $request, $workId) {
@@ -330,19 +309,20 @@ EOT;
     });
     // 関連画像
     $router->get('work/{workId}/relation/pics', function (Request $request, $workId) {
-        $responseString = <<<EOT
-      {
-        "hasNext": true,
-        "totalCount": 1,
-        "rows": [
-          {
-            "url": "//store-tsutaya.tsite.jp/images/bamen/00205/4959241958082_B001S.jpg"
-          }
-        ]
-      }
-EOT;
-        $json = json_decode($responseString);
-        return response()->json($json);
+        $work = new WorkRepository();
+        $workData = $work->get($workId);
+
+        $relationPics = json_decode($workData['sceneL']);
+        if(empty($relationPics)){
+            throw new NoContentsException;
+        }
+        $response = [
+            'hasNext' => false,
+            'totalCount' => count($relationPics),
+            'rows' => $relationPics
+        ];
+
+        return response()->json($response);
     });
     // 関連アーティスト
     $router->get('work/{workId}/relation/artist', function (Request $request, $workId) {
