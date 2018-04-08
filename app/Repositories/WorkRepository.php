@@ -15,6 +15,7 @@ use DB;
  */
 class WorkRepository
 {
+    private $work;
 
     protected $sort;
     protected $offset;
@@ -34,6 +35,8 @@ class WorkRepository
         $this->sort = $sort;
         $this->offset = $offset;
         $this->limit = $limit;
+
+        $this->work = new Work();
     }
 
 
@@ -134,7 +137,6 @@ class WorkRepository
 
     public function get($workId, $selectColumns = null)
     {
-        $work = new Work();
         // check workId is array
         // Get data by list workIds and return
         if(is_array($workId)) {
@@ -144,25 +146,25 @@ class WorkRepository
                 throw new NoContentsException();
             }
             // インサートしたものを取得するため条件を再設定
-            return $this->insert($himoResult, $work);
+            return $this->insert($himoResult);
         }
 
         // Get data and return response for GET: work/{workId}
-        $work->setConditionByWorkId($workId);
-        if ($work->count() == 0) {
+        $this->work->setConditionByWorkId($workId);
+        if ($this->work->count() == 0) {
             $himo = new HimoRepository();
             $himoResult = $himo->crosswork($workId)->get();
             if(!$himoResult['results']['rows']) {
                 throw new NoContentsException();
             }
             // インサートしたものを取得するため条件を再設定
-            $this->insert($himoResult, $work);
-            $work->setConditionByWorkId($workId);
+            $this->insert($himoResult);
+            $this->work->setConditionByWorkId($workId);
         }
         if (empty($selectColumns)) {
-            $response = (array)$work->toCamel(['id'])->getOne();
+            $response = (array)$this->work->toCamel(['id'])->getOne();
         } else {
-            $response = (array)$work->selectCamel($selectColumns)->getOne();
+            $response = (array)$this->work->selectCamel($selectColumns)->getOne();
         }
 
         // productsからとってくるが、仮データ
@@ -183,7 +185,7 @@ class WorkRepository
         return $response;
     }
 
-    public function insert($himoResult, $work) {
+    public function insert($himoResult) {
 
         $productRepository = new ProductRepository();
         $peopleRepository = new PeopleRepository();
@@ -196,12 +198,9 @@ class WorkRepository
                 $base = [];
                 $base = $this->format($row);
                 $insertWorkId[] = $row['work_id'];
-                $insertResult = $work->insert($base);
+                $insertResult = $this->work->insert($base);
                 foreach ($row['products'] as $product) {
-                    if(
-                        $product['service_id'] === 'tol'
-                        && substr($product['item_cd'],0, 2) !== '01'
-                    ) {
+                    if($product['service_id'] === 'tol') {
                         // インサートの実行
                         $productRepository->insert($row['work_id'], $product);
                         // Insert people
@@ -322,7 +321,7 @@ class WorkRepository
     {
         $result = [];
         foreach ($data as $image) {
-            $result[] = $this->trimImageTag($image['url']);
+            $result[] = trimImageTag($image['url']);
         }
         return json_encode($result, JSON_UNESCAPED_SLASHES);
     }

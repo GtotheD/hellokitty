@@ -159,7 +159,7 @@ class HimoRepository extends ApiRequesterRepository
     // データ存在していれば、DBから値を取得
     // 存在していなければ、Himoから取得して返却する
     // 返却した値は、DBに格納する
-    public function get()
+    public function get($jsonResponse = true)
     {
         // Check and read array workId
         if(!is_array($this->id)) {
