@@ -232,7 +232,35 @@ class ProductRepository
     public function insert($workId, $product)
     {
         $productModel = new Product();
+        $productBase = $this->format($workId, $product);
+        return $productModel->insert($productBase);
+
+    }
+
+    /**
+     * Get newest product by workId and saleType
+     *
+     * @param $workId
+     * @param $saleType
+     *
+     * @return mixed
+     */
+    public function getNewestProductWorkIdSaleType($workId, $saleType)
+    {
+        $result = $this->product->setConditionByWorkIdNewestProduct($workId, $saleType)->toCamel()->getOne();
+        return $result;
+    }
+
+    /**
+     * Format data for Product object
+     *
+     * @param $workId
+     * @param $product
+     * @return array
+     */
+    public function format ($workId, $product) {
         $productBase = [];
+        $productBase['work_id'] = $workId;
         $productBase['product_unique_id'] = $product['id'];
         $productBase['product_id'] = $product['product_id'];
         $productBase['product_code'] = $product['product_code'];
@@ -260,21 +288,7 @@ class ProductRepository
 //                    $productBase['privilege'] = $product['privilege'];
         $productBase['best_album_flg'] = $product['best_album_flg'];
         $productBase['maker_name'] = $product['maker_name'];
-        return $productModel->insert($workId, $productBase);
-    }
 
-    /**
-     * Get newest product by workId and saleType
-     *
-     * @param $workId
-     * @param $saleType
-     *
-     * @return mixed
-     */
-    public function getNewestProductWorkIdSaleType($workId, $saleType)
-    {
-        $result = $this->product->setConditionByWorkIdNewestProduct($workId, $saleType)->toCamel()->getOne();
-        return $result;
+        return $productBase;
     }
-
 }

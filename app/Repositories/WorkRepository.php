@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Model\People;
 use App\Model\Work;
 use App\Model\Product;
 use App\Exceptions\NoContentsException;
@@ -135,30 +136,20 @@ class WorkRepository
     public function get($workId, $selectColumns = null)
     {
         $work = new Work();
-        // check workId is array
-        // Get data by list workIds and return
-        if(is_array($workId)) {
-            $himo = new HimoRepository();
-            $himoResult = $himo->crosswork($workId)->get();
-            if(!$himoResult['results']['rows']) {
-                throw new NoContentsException();
-            }
-            // インサートしたものを取得するため条件を再設定
-            return $this->insert($himoResult, $work);
-        }
-
-        // Get data and return response for GET: work/{workId}
         $work->setConditionByWorkId($workId);
+
         if ($work->count() == 0) {
             $himo = new HimoRepository();
             $himoResult = $himo->crosswork($workId)->get();
             if(!$himoResult['results']['rows']) {
                 throw new NoContentsException();
             }
+
             // インサートしたものを取得するため条件を再設定
-            $this->insert($himoResult, $work);
+            $this->insertWorkRData($himoResult, $work);
             $work->setConditionByWorkId($workId);
         }
+
         if (empty($selectColumns)) {
             $response = (array)$work->toCamel(['id'])->getOne();
         } else {
@@ -183,38 +174,57 @@ class WorkRepository
         return $response;
     }
 
-    public function insert($himoResult, $work) {
+    /**
+     * Insert work data and related work data: Product, People
+     *
+     * @param $himoResult
+     * @param $work
+     * @return array
+     *
+     * @throws NoContentsException
+     */
+    public function insertWorkRData($himoResult, $work) {
 
         $productRepository = new ProductRepository();
         $peopleRepository = new PeopleRepository();
-        // Create transaction for insert multiple tables
 
         // Create transaction for insert multiple tables
         DB::beginTransaction();
         try {
+            $workData = [];
+            $productData = [];
+            $peopleData = [];
             foreach ($himoResult['results']['rows'] as $row) {
-                $base = [];
-                $base = $this->format($row);
-                $insertWorkId[] = $row['work_id'];
-                $insertResult = $work->insert($base);
+                $workData[] = $this->format($row);
+               $insertWorkId[] = $row['work_id'];
+                //$insertResult = $work->insert($base);
+
                 foreach ($row['products'] as $product) {
                     if(
                         $product['service_id'] === 'tol'
                         && substr($product['item_cd'],0, 2) !== '01'
                     ) {
                         // インサートの実行
-                        $productRepository->insert($row['work_id'], $product);
+                        $productData[] = $productRepository->format($row['work_id'], $product);
                         // Insert people
                         if ($people = array_get($product, 'people')) {
                             foreach ($people as $person) {
-                                $peopleRepository->insert($product['id'], $person);
+                                $peopleData[] = $peopleRepository->format($product['id'], $person);
                             }
                         }
                     }
                 }
-                DB::commit();
-                return $insertWorkId;
             }
+
+            $productModel = new Product();
+            $peopleModel = new People();
+
+            $work->insertBulk($workData);
+            $productModel->insertBulk($productData);
+            $peopleModel->insertBulk($peopleData);
+
+            DB::commit();
+            return $insertWorkId;
         } catch (\Exception $exception) {
             \Log::error("Error while update work. Error message: {$exception->getMessage()} Line: {$exception->getLine()}");
             DB::rollback();
@@ -322,7 +332,7 @@ class WorkRepository
     {
         $result = [];
         foreach ($data as $image) {
-            $result[] = $this->trimImageTag($image['url']);
+            $result[] = trimImageTag($image['url']);
         }
         return json_encode($result, JSON_UNESCAPED_SLASHES);
     }
@@ -366,4 +376,65 @@ class WorkRepository
         }
         return false;
     }
+
+    /**
+     *
+     *
+     * @param $workIds
+     * @return null
+     *
+     * @throws NoContentsException
+     */
+    public function getWorkList($workIds)
+    {
+        $work = new Work();
+
+        // Get data by list workIds and return
+        $himo = new HimoRepository();
+        $himoResult = $himo->crosswork($workIds)->get();
+
+        if (!$himoResult['results']['rows']) {
+            //throw new NoContentsException();
+            //Not throw no contents exception, Because the calling side of API calls will be difficult to check for
+            return null;
+        }
+        // インサートしたものを取得するため条件を再設定
+        $workIdInserted = $this->insertWorkRData($himoResult, $work);
+
+        $work->getWorkIdsIn($workIdInserted);
+        $response['total']  = $work->count();
+        if (! $response['total'] ) {
+            //throw new NoContentsException();
+            //Not throw no contents exception, Because the calling side of API calls will be difficult to check for
+            return null;
+        }
+
+        if (empty($selectColumns)) {
+            $workArray = $work->toCamel(['id'])->get();
+        } else {
+            $workArray = $work->selectCamel($selectColumns)->get();
+        }
+
+        // productsからとってくるが、仮データ
+        foreach ($workArray as $workItem) {
+            $row = (array)$workItem;
+
+            $productModel = new Product();
+            $product = (array)$productModel->setConditionByWorkIdNewestProduct($workItem->workId, $this->saleType)->getOne();
+            // TODO: peopleができてから実装する。
+            $row['supplement'] = '（仮）監督・著者・アーティスト・機種';
+            $row['makerName'] = $product['maker_name'];
+            $row['newFlg'] = newFlg($workItem->saleStartDate);
+            $row['adultFlg'] = ($workItem->adultFlg === '1') ? true : false;
+            $row['itemType'] = $this->convertWorkTypeIdToStr($workItem->workTypeId);
+            $row['saleType'] = $this->saleType;
+            $row['saleTypeHas'] = [
+                'sell' => ($productModel->setConditionByWorkIdSaleType($workItem->workId, 'sell')->count() > 0) ?: true,
+                'rental' => ($productModel->setConditionByWorkIdSaleType($workItem->workId, 'rental')->count() > 0) ?: true
+            ];
+            $response['rows'][] = $row;
+        }
+        return $response;
+    }
+
 }
