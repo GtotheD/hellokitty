@@ -2,7 +2,6 @@
 
 namespace App\Repositories;
 
-use App\Model\People;
 use App\Model\Work;
 use App\Model\Product;
 use App\Exceptions\NoContentsException;
@@ -16,6 +15,7 @@ use DB;
  */
 class WorkRepository
 {
+    private $work;
 
     protected $sort;
     protected $offset;
@@ -35,6 +35,8 @@ class WorkRepository
         $this->sort = $sort;
         $this->offset = $offset;
         $this->limit = $limit;
+
+        $this->work = new Work();
     }
 
 
@@ -151,9 +153,9 @@ class WorkRepository
         }
 
         if (empty($selectColumns)) {
-            $response = (array)$work->toCamel(['id'])->getOne();
+            $response = (array)$this->work->toCamel(['id'])->getOne();
         } else {
-            $response = (array)$work->selectCamel($selectColumns)->getOne();
+            $response = (array)$this->work->selectCamel($selectColumns)->getOne();
         }
 
         // productsからとってくるが、仮データ
@@ -200,10 +202,7 @@ class WorkRepository
                 //$insertResult = $work->insert($base);
 
                 foreach ($row['products'] as $product) {
-                    if(
-                        $product['service_id'] === 'tol'
-                        && substr($product['item_cd'],0, 2) !== '01'
-                    ) {
+                    if($product['service_id'] === 'tol') {
                         // インサートの実行
                         $productData[] = $productRepository->format($row['work_id'], $product);
                         // Insert people

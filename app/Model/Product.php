@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Schema;
 class Product extends Model
 {
     const TABLE = 'ts_products';
+    const PRODUCT_TYPE_ID_SELL = 1;
+    const PRODUCT_TYPE_ID_RENTAL = 2;
 
     function __construct()
     {
@@ -51,6 +53,35 @@ class Product extends Model
         return $this;
     }
 
+    public function setConditionByRentalProductCd($rentalProductCd)
+    {
+        $this->dbObject = DB::table($this->table . ' AS p1')
+            ->join($this->table . ' AS p2', function($join) {
+                $join->on('p1.ccc_family_cd','=','p2.ccc_family_cd')
+                    ->on('p1.product_type_id','=','p2.product_type_id')
+                    ->on(DB::raw('RIGHT(p1.item_cd, 2)'), '=', DB::raw('RIGHT(p2.item_cd, 2)'));
+            })
+            ->select(DB::raw('p1.ccc_family_cd, p2.product_type_id, p2.rental_product_cd'))
+            ->where([
+                ['p1.rental_product_cd', '=', $rentalProductCd],
+                ['p2.product_type_id', '=', self::PRODUCT_TYPE_ID_RENTAL]
+            ]);
+
+        return $this;
+    }
+
+    public function setConditionByJan($jan)
+    {
+        $this->dbObject = DB::table($this->table . ' AS p1')
+            ->join($this->table . ' AS p2', 'p1.ccc_family_cd', '=', 'p2.ccc_family_cd')
+            ->select(DB::raw('p1.ccc_family_cd, p2.rental_product_cd, p1.jan'))
+            ->where([
+                ['p1.jan', '=', $jan],
+                ['p2.rental_product_cd', '<>', '']
+            ]);
+        return $this;
+    }
+
     public function setConditionByWorkIdSaleType($workId, $saleType = null)
     {
         $this->dbObject = DB::table($this->table)
@@ -74,7 +105,6 @@ class Product extends Model
             $dvdQuery. ','.
             $blurayQuery;
         $subQuery = DB::table($this->table)->select(DB::raw($selectQuery))
-//            ->where(DB::raw('work_id = \'PTA0000G4CSA\''))
             ->groupBy(DB::raw($groupingColumn))
             ->havingRaw(' (dvd is not null AND bluray is not null)');
         $this->dbObject = DB::table(DB::raw("({$subQuery->toSql()}) as sub"))

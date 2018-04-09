@@ -83,7 +83,7 @@ class TAPRepository extends ApiRequesterRepository
             }
         }
 
-        return $reviews;
+        return null;
     }
 
 
@@ -91,10 +91,7 @@ class TAPRepository extends ApiRequesterRepository
     {
 
         $this->apiPath ='/tsutayaappapi/works/fm/review';
-        //local data
-        if (env('APP_ENV') == 'local') {
-            return $this->stub($this->apiPath, $filmarksId);
-        }
+       
         $this->apiPath = $this->apiHost . $this->apiPath;
         $this->queryParams = [
             'api_key' => $this->apiKey,

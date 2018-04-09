@@ -23,6 +23,7 @@ use App\Repositories\TAPRepository;
 use App\Repositories\PeopleRepository;
 use App\Repositories\SeriesRepository;
 use App\Repositories\TWSRepository;
+use App\Repositories\HimoKeywordRepository;
 
 // Api Group
 $router->group([
@@ -230,9 +231,13 @@ $router->group([
         $workData = $work->get($workId);
 
         $tapRepository->setLimit($request->input('limit', 10));
-        $response = $tapRepository->getReview($workData['filmarks_id']);
-        return response()->json($response,200,array(),JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE );
+        $response = $tapRepository->getReview($workData['filmarksId']);
 
+        if (empty($response)) {
+            throw new NoContentsException;
+        }
+        
+        return response()->json($response);
     });
     // レビュー情報 discas
     $router->get('work/{workId}/review/discas', function (Request $request, $workId) {
@@ -438,6 +443,13 @@ EOT;
         return response()->json($response);
     });
 
+    // 店舗在庫
+    $router->get('product/stock/{storeCd}/{productKey}', function (Request $request, $storeCd, $productKey) {
+        $productRepository = new ProductRepository();
+        $response = $productRepository->stock($storeCd, $productKey);
+        return response()->json($response);
+    });
+
     //人物関連作品取得
     $router->get('people/{personId}', function (Request $request, $workId) {
         $responseString = <<<EOT
@@ -500,33 +512,23 @@ EOT;
         return $json;
     });
     // キーワードサジェスト
-    $router->get('search/suggest/{keyword}', function (Request $request, $workId) {
-        $responseString = <<<EOT
-        {
-          "hasNext": true,
-          "totalCount": 1,
-          "rows": [
-            {
-                "word": "keyword"
-            }
-          ]
+    $router->get('search/suggest/{keyword}', function (Request $request, $keyword) {
+        $himoKeywordRepository = new HimoKeywordRepository();
+        $himoKeywordRepository->setLimit($request->input('limit', 10));
+        $himoKeywordRepository->setOffset($request->input('offset', 0));
+        $keyword = urldecode($keyword);
+        $keywords =  $himoKeywordRepository->get($keyword);
+        if(empty($keywords)){
+            throw new NoContentsException;
         }
-EOT;
-        $json = json_decode($responseString);
-        return $json;
+        $response = [
+            'hasNext' => $himoKeywordRepository->getHasNext(),
+            'totalCount' => $himoKeywordRepository->getTotalCount(),
+            'rows' => $keywords
+        ];
+        return response()->json($response);
     });
-    // キーワード検索サジェスト
-    $router->get('product/stock/{storeCd}/{productKey}', function (Request $request, $workId) {
-        $responseString = <<<EOT
-        {
-              "stockStatus": 0,
-              "message": "message",
-              "lastUpdate": "2018/04/03"
-        }
-EOT;
-        $json = json_decode($responseString);
-        return $json;
-    });
+
     // ジャンルからの作品一覧取得
     $router->get('genre/{genreId}', function (Request $request, $workId) {
         $responseString = <<<EOT

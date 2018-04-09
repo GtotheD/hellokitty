@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Model\Product;
 use App\Repositories\WorkRepository;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 /**
  * Created by PhpStorm.
@@ -291,4 +292,56 @@ class ProductRepository
 
         return $productBase;
     }
+
+    public function stock($storeId, $productKey)
+    {
+        $message = null;
+        $lastUpdate = null;
+        $res = null;
+        $statusCode = 0;
+        $length = strlen($productKey);
+        // rental_product_cd
+        if ($length === 9) {
+            $res = $this->product->setConditionByRentalProductCd($productKey)->get();
+            foreach ($res as $item)
+            {
+                $queryIdList[] = $item->rental_product_cd;
+            }
+        //jan
+        } elseif ($length === 13) {
+            $queryIdList[] = $productKey;
+        } else {
+            throw new BadRequestHttpException();
+        }
+        $twsRepository = new TWSRepository();
+        foreach ($queryIdList as $queryId) {
+            $stockInfo = (array)$twsRepository->stock($storeId, $queryId)->get();
+            if ($stockInfo !== null) {
+                $stockStatus = $stockInfo['entry']['stockInfo'][0]['stockStatus'];
+                if ($statusCode > $stockStatus['level']) {
+                    continue;
+                }
+                if ($stockStatus['level'] == 0) {
+                    $statusCode = 0;
+                } else if ($stockStatus['level'] == 1) {
+                    $statusCode = 1;
+                } else {
+                    $statusCode = 2;
+                }
+                if (array_key_exists('message', $stockStatus) ) {
+                    $message = $stockStatus['message'];
+                }
+                if (array_key_exists('lastUpDate', $stockInfo['entry']['stockInfo'][0]) ) {
+                    $lastUpdate = date('Y-m-d H:i', strtotime($stockInfo['entry']['stockInfo'][0]['lastUpDate']));
+                }
+            }
+        }
+        return [
+            'status' => $statusCode,
+            'message' => $message,
+            'takeTime' => $lastUpdate,
+        ];
+    }
+
+
 }
