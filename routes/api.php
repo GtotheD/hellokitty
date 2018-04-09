@@ -262,7 +262,7 @@ EOT;
         $workData = $work->get($workId);
 
         $tapRepository->setLimit($request->input('limit', 10));
-        $response = $tapRepository->getReview($workData['filmarks_id']);
+        $response = $tapRepository->getReview($workData['filmarksId']);
 
         if (empty($response)) {
             throw new NoContentsException;
