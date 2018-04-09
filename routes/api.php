@@ -438,6 +438,13 @@ EOT;
         return response()->json($response);
     });
 
+    // 店舗在庫
+    $router->get('product/stock/{storeCd}/{productKey}', function (Request $request, $storeCd, $productKey) {
+        $productRepository = new ProductRepository();
+        $response = $productRepository->stock($storeCd, $productKey);
+        return response()->json($response);
+    });
+
     //人物関連作品取得
     $router->get('people/{personId}', function (Request $request, $workId) {
         $responseString = <<<EOT
@@ -515,18 +522,7 @@ EOT;
         $json = json_decode($responseString);
         return $json;
     });
-    // キーワード検索サジェスト
-    $router->get('product/stock/{storeCd}/{productKey}', function (Request $request, $workId) {
-        $responseString = <<<EOT
-        {
-              "stockStatus": 0,
-              "message": "message",
-              "lastUpdate": "2018/04/03"
-        }
-EOT;
-        $json = json_decode($responseString);
-        return $json;
-    });
+
     // ジャンルからの作品一覧取得
     $router->get('genre/{genreId}', function (Request $request, $workId) {
         $responseString = <<<EOT

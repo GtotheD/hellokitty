@@ -60,6 +60,19 @@ class TWSRepository extends ApiRequesterRepository
         return $this;
     }
 
+    public function stock($storeId, $productKey)
+    {
+        $this->apiPath = $this->apiHost . '/store/v0/products/detail.json';
+
+        $this->queryParams = [
+            'api_key' => $this->apiKey,
+            'productKey' => $productKey,
+            'fieldSet' => 'stock',
+            'storeId' => $storeId,
+            'tolPlatformCode' => '00'
+        ];
+        return $this;
+    }
     /*
      * ランキング情報を取得するAPIをセットする
      */
