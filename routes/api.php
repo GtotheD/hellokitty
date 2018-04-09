@@ -502,11 +502,9 @@ EOT;
     });
     // キーワードサジェスト
     $router->get('search/suggest/{keyword}', function (Request $request, $keyword) {
-
         $himoKeywordRepository = new HimoKeywordRepository();
         $himoKeywordRepository->setLimit($request->input('limit', 10));
         $himoKeywordRepository->setOffset($request->input('offset', 0));
-
         $keyword = urldecode($keyword);
         $keywords =  $himoKeywordRepository->get($keyword);
         if(empty($keywords)){
