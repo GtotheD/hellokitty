@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Model\People;
 use App\Model\Work;
 use App\Model\Product;
 use App\Exceptions\NoContentsException;
@@ -137,10 +138,8 @@ class WorkRepository
 
     public function get($workId, $selectColumns = null)
     {
-        $work = new Work();
-        $work->setConditionByWorkId($workId);
-
-        if ($work->count() == 0) {
+        $this->work->setConditionByWorkId($workId);
+        if ( $this->work->count() == 0) {
             $himo = new HimoRepository();
             $himoResult = $himo->crosswork($workId)->get();
             if(!$himoResult['results']['rows']) {
@@ -148,8 +147,7 @@ class WorkRepository
             }
 
             // インサートしたものを取得するため条件を再設定
-            $this->insertWorkRData($himoResult, $work);
-            $work->setConditionByWorkId($workId);
+            $this->insertWorkRData($himoResult, $this->work);
         }
 
         if (empty($selectColumns)) {
@@ -157,7 +155,6 @@ class WorkRepository
         } else {
             $response = (array)$this->work->selectCamel($selectColumns)->getOne();
         }
-
         // productsからとってくるが、仮データ
         $productModel = new Product();
         $product = (array)$productModel->setConditionByWorkIdNewestProduct($workId, $this->saleType)->getOne();
