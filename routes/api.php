@@ -23,6 +23,7 @@ use App\Repositories\TAPRepository;
 use App\Repositories\PeopleRepository;
 use App\Repositories\SeriesRepository;
 use App\Repositories\TWSRepository;
+use App\Repositories\HimoKeywordRepository;
 
 // Api Group
 $router->group([
@@ -507,20 +508,21 @@ EOT;
         return $json;
     });
     // キーワードサジェスト
-    $router->get('search/suggest/{keyword}', function (Request $request, $workId) {
-        $responseString = <<<EOT
-        {
-          "hasNext": true,
-          "totalCount": 1,
-          "rows": [
-            {
-                "word": "keyword"
-            }
-          ]
+    $router->get('search/suggest/{keyword}', function (Request $request, $keyword) {
+        $himoKeywordRepository = new HimoKeywordRepository();
+        $himoKeywordRepository->setLimit($request->input('limit', 10));
+        $himoKeywordRepository->setOffset($request->input('offset', 0));
+        $keyword = urldecode($keyword);
+        $keywords =  $himoKeywordRepository->get($keyword);
+        if(empty($keywords)){
+            throw new NoContentsException;
         }
-EOT;
-        $json = json_decode($responseString);
-        return $json;
+        $response = [
+            'hasNext' => $himoKeywordRepository->getHasNext(),
+            'totalCount' => $himoKeywordRepository->getTotalCount(),
+            'rows' => $keywords
+        ];
+        return response()->json($response);
     });
 
     // ジャンルからの作品一覧取得
