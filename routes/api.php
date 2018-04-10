@@ -341,13 +341,23 @@ EOT;
         $workData = $work->get($workId);
 
         $relationPics = json_decode($workData['sceneL']);
+
+
         if(empty($relationPics)){
             throw new NoContentsException;
         }
+
+        $limit = $request->input('limit', 10);
+        $offset = $request->input('offset', 0);
+        $total = count($relationPics);
+        $rows = array_slice($relationPics, $offset, $limit);
+        if (empty($rows)) {
+            throw new NoContentsException;
+        }
         $response = [
-            'hasNext' => false,
-            'totalCount' => count($relationPics),
-            'rows' => $relationPics
+            'hasNext' => ($offset + $limit < $total),
+            'totalCount' => $total,
+            'rows' => $rows
         ];
 
         return response()->json($response);
