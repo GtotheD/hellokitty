@@ -154,6 +154,83 @@ class HimoRepository extends ApiRequesterRepository
         return $this;
     }
 
+    public function searchKeyword($keyword, $sort = null, $itemType = null, $periodType = null, $adultFlg = null)
+    {
+        $this->api = 'search';
+        $this->id = 'aaa';
+
+        if (env('APP_ENV') === 'local') {
+            return $this;
+        }
+
+        $sortBy = 'auto:asc';
+        if ($sort == 'new') {
+            $sortBy = 'sale_start_date:desc';
+        } else if ($sort == 'old') {
+            $sortBy = 'sale_start_date:asc';
+        }
+
+        $msdbItem = ['audio', 'video', 'book', 'game'];
+        switch (strtolower($itemType)) {
+            case 'cd':
+                $msdbItem = ['audio'];
+                break;
+            case 'dvd':
+                $msdbItem = ['video'];
+                break;
+            case 'book':
+                $msdbItem = ['book'];
+                break;
+            case 'game':
+                $msdbItem = ['game'];
+                break;
+        }
+
+
+
+        if ($adultFlg == 'false') {
+            $adultFlg = '2';
+        } else {
+            $adultFlg = '0';
+        }
+
+        $this->queryParams = [
+            '_system' => 'TsutayaApp',
+            'service_id' => 'tol',
+            'msdb_item' => $msdbItem,
+            'facet_keys' => 'msdb_item',
+            'query' => $keyword,
+            'adult_flg' => $adultFlg,
+            'response_level' => '9',
+            'offset' => $this->offset,
+            'limit' => $this->limit,
+            'sort_by' => $sortBy,
+        ];
+
+
+        $saleStartDateTo = date('m/d/Y');
+        $saleStartDateFrom = $productSellRentalFlg = null;
+        if ($periodType == 'rental3' || $periodType == 'sale3') {
+            $saleStartDateFrom = date('m/d/Y', strtotime('-3 months'));
+        } elseif ($periodType == 'rental12' || $periodType == 'sale12') {
+            $saleStartDateFrom = date('m/d/Y', strtotime('-12 months'));
+        }
+
+        if (strpos($periodType, 'rental') !== false) {
+            $productSellRentalFlg = 2;
+        } elseif (strpos($periodType, 'sell') !== false) {
+            $productSellRentalFlg = 1;
+        }
+
+        if (!empty($saleStartDateFrom)) {
+            $this->queryParams['sale_start_date_from'] = $saleStartDateFrom;
+            $this->queryParams['sale_start_date_to'] = $saleStartDateTo;
+            $this->queryParams['product_sell_rental_flg'] = $productSellRentalFlg;
+        }
+
+        return $this;
+    }
+
     // override
     // getが実行された際に、キャッシュへ問い合わせを行う。
     // データ存在していれば、DBから値を取得

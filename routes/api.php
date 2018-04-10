@@ -477,40 +477,22 @@ EOT;
     });
 
     // キーワード検索
-    $router->get('search/{keyword}', function (Request $request, $workId) {
-        $responseString = <<<EOT
-        {
-          "hasNext": true,
-          "totalCount": 1,
-          "counts": {
-            "dvd": 0,
-            "cd": 1,
-            "book": 0,
-            "game": 0
-          },
-          "rows": [
-            {
-                "workId": "PTA00007XDJP",
-                "urlCd": "https://cdn.store-tsutaya.tsite.jp/cd/pinocchio.mp4",
-                "cccWorkCd": "10407575",
-                "workTitle": "ピノキオ",
-                "newFlg": true,
-                "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
-                "supplement": "supplement",
-                "saleType": "sell",
-                "itemType": "cd",
-                "sellTypeHas": {
-                  "sell": true,
-                  "rental": true
-                },
-                "adultFlg": true
-            }
-          ]
+    $router->get('search/{keyword}', function (Request $request, $keyword) {
+        $work = new WorkRepository();
+        $work->setLimit($request->input('limit', 10));
+        $work->setOffset($request->input('offset', 0));
+
+        $sort = $request->input('sort', '');
+        $itemType = $request->input('itemType', 'all');
+        $periodType = $request->input('periodType', 'all');
+        $adultFlg = $request->input('adultFlg', 'false');
+        $response = $work->searchKeyword($keyword, $sort, $itemType, $periodType, $adultFlg);
+        if(empty($response)){
+            throw new NoContentsException;
         }
-EOT;
-        $json = json_decode($responseString);
-        return $json;
+        return response()->json($response);
     });
+
     // キーワードサジェスト
     $router->get('search/suggest/{keyword}', function (Request $request, $keyword) {
         $himoKeywordRepository = new HimoKeywordRepository();

@@ -222,6 +222,80 @@ class WorkRepository
 
     }
 
+    public function searchKeyword($keyword, $sort = null, $itemType = null, $periodType = null, $adultFlg = null)
+    {
+        $himoRepository = new HimoRepository('asc', $this->offset, $this->limit);
+        $data = $himoRepository->searchKeyword($keyword, $sort, $itemType, $periodType, $adultFlg)->get();
+
+        if (!empty($data['status']) && $data['status'] == '200') {
+            if (count($data['results']['rows']) + $this->offset < $data['results']['total']) {
+                $this->hasNext = true;
+            } else {
+                $this->hasNext = false;
+            }
+
+            $result = [
+                'hasNext' => $this->hasNext,
+                'totalCount' => $data['results']['total'],
+                'counts' => [
+                    'dvd' => 0,
+                    'cd' => 0,
+                    'book' => 0,
+                    'game' => 0
+                ],
+                'rows' => []
+            ];
+
+            if (!empty($data['results']['facets']['msdb_item'])) {
+                foreach ($data['results']['facets']['msdb_item'] as $value) {
+                    switch ($value['key']) {
+                        case 'video':
+                            $result['counts']['dvd'] = $value['count'];
+                            break;
+                        case 'audio':
+                            $result['counts']['cd'] = $value['count'];
+                            break;
+                        case 'book':
+                            $result['counts']['book'] = $value['count'];
+                            break;
+                        case 'game':
+                            $result['counts']['game'] = $value['count'];
+                            break;
+                    }
+
+                }
+            }
+
+            foreach ($data['results']['rows'] as $row) {
+                $this->setSaleType('rental');
+                $base = $this->get($row['work_id']);
+
+                $result['rows'][] = [
+                    'workId' => $base['workId'],
+                    'urlCd' => $base['urlCd'],
+                    'cccWorkCd' => $base['cccWorkCd'],
+                    'workTitle' => $base['workTitle'],
+                    'newFlg' => $base['newFlg'],
+                    'jacketL' => $base['jacketL'],
+                    'supplement' => $base['supplement'],
+                    'saleType' => $base['saleType'],
+                    'itemType' => $base['itemType'],
+                    'saleTypeHas' => [
+                        'sell' => $base['saleTypeHas']['sell'],
+                        'rental' => $base['saleTypeHas']['rental'],
+                    ],
+                    'adultFlg' => $base['adultFlg'],
+                ];
+            }
+
+            if(count($result['rows'])>0){
+                return $result;
+            }
+        }
+
+        return null;
+    }
+
     private function format($row)
     {
         $base = [];
