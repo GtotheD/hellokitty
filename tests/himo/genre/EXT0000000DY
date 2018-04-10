@@ -1,0 +1,160 @@
+{
+    "status": 200,
+    "message": null,
+    "results": {
+        "total": 1,
+        "rows": [
+            {
+                "work_id": "PTA0000M6ZK2",
+                "work_type_id": "1",
+                "msdb_item": "audio",
+                "work_format_id": 1,
+                "work_format_name": "アルバム",
+                "work_title": "LIVE STYLE 2014",
+                "work_title_kana": "らいぶすたいる2014",
+                "work_title_en": "",
+                "work_title_orig": "",
+                "work_title_sub": "",
+                "work_comment": "",
+                "work_outline": "",
+                "work_copyright": "",
+                "rating_id": "EXT000000008",
+                "rating_name": "",
+                "adult_flg": 0,
+                "primary_product_source_id": "PDT0000M6XZK",
+                "primary_product_service_id": "tol",
+                "primary_product_type_id": 1,
+                "disp_start_date": "2015-01-12 00:00:00",
+                "disp_start_month": "2015-01",
+                "sale_start_date": "2015-02-11",
+                "sale_start_month": "2015-02",
+                "created_year_from": "",
+                "created_year_to": "",
+                "created_year": "",
+                "created_countries": "",
+                "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/10205/4988064990214_1S.jpg ",
+                "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/10205/4988064990214_1M.jpg ",
+                "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/10205/4988064990214_1L.jpg ",
+                "jacket_l4": "",
+                "scene_s": [
+
+                ],
+                "scene_m": [
+
+                ],
+                "scene_l": [
+
+                ],
+                "trailor_pc": [
+
+                ],
+                "season_name": "",
+                "season_number": null,
+                "book_series_name": "",
+                "book_series_name_kana": "",
+                "feature_keywords": [
+
+                ],
+                "priv_keywords": [
+
+                ],
+                "work_tags": [
+
+                ],
+                "wakati_words": [
+
+                ],
+                "is_compilation": 0,
+                "series_completed": 0,
+                "disable_flg": 0,
+                "delete_flg": 0,
+                "ids": [
+                    {
+                        "id_type": "0103",
+                        "id_value": "20702154"
+                    },
+                    {
+                        "id_type": "0105",
+                        "id_value": "20551248"
+                    }
+                ],
+                "docs": [
+
+                ],
+                "awards": [
+
+                ],
+                "screens": [
+
+                ],
+                "onairs": [
+
+                ],
+                "magazines": [
+
+                ],
+                "genres": [
+                    {
+                        "big_genre_id": "EXT0000000DY",
+                        "big_genre_name": "Ｊ－ＰＯＰ",
+                        "medium_genre_id": "EXT0000000E0",
+                        "medium_genre_name": "Ｊ－ＰＯＰ",
+                        "small_genre_id": "",
+                        "small_genre_name": "",
+                        "shikiriban_id": "",
+                        "shikiriban_name": ""
+                    }
+                ],
+                "products": [
+
+                ],
+                "video_relations": [
+
+                ],
+                "discas_grade_point": null,
+                "discas_item": [
+                    "DiscasMusic"
+                ],
+                "ttv_trailer_flg": 0,
+                "ttv_free_movie_flg": 0,
+                "ttv_sell_rental_flg": [
+
+                ],
+                "ttv_low_price": null,
+                "cinema_id": [
+
+                ],
+                "filmarks_id": [
+
+                ],
+                "catch_copy": "",
+                "sale_start_date_sell": "",
+                "sale_start_date_rental": "2015-02-11",
+                "trailer_urls": [
+
+                ],
+                "scenes": [
+
+                ],
+                "filmarks_mark": null,
+                "filmarks_clip": null,
+                "filmarks_average": null,
+                "people": [
+                    {
+                        "person_id": "PPS000004O0W",
+                        "person_name": "安室奈美恵",
+                        "role_id": "EXT00000000D",
+                        "role_name": "演奏者"
+                    }
+                ],
+                "tracks": [
+
+                ],
+                "merged_from": [
+
+                ],
+                "need_age_auth_flg": 0
+            }
+        ]
+    }
+}

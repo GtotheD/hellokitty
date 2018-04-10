@@ -225,7 +225,17 @@ class WorkRepository
     public function searchKeyword($keyword, $sort = null, $itemType = null, $periodType = null, $adultFlg = null)
     {
         $himoRepository = new HimoRepository('asc', $this->offset, $this->limit);
-        $data = $himoRepository->searchKeyword($keyword, $sort, $itemType, $periodType, $adultFlg)->get();
+
+        $params = [
+            'keyword' => $keyword,
+            'itemType' => $itemType,
+            'periodType' => $periodType,
+            'adultFlg' => $adultFlg,
+            'api' => 'search',//dummy data
+            'id' => 'aaa' //dummy data
+        ];
+
+        $data = $himoRepository->searchCrossworks($params, $sort)->get();
 
         if (!empty($data['status']) && $data['status'] == '200') {
             if (count($data['results']['rows']) + $this->offset < $data['results']['total']) {
@@ -288,7 +298,60 @@ class WorkRepository
                 ];
             }
 
-            if(count($result['rows'])>0){
+            if (count($result['rows']) > 0) {
+                return $result;
+            }
+        }
+
+        return null;
+    }
+
+    public function genre($genreId, $sort = null, $saleType = null)
+    {
+        $himoRepository = new HimoRepository('asc', $this->offset, $this->limit);
+
+        $params = [
+            'genreId' => $genreId,
+            'saleType' => $saleType,
+            'api' => 'genre',//dummy data
+            'id' => $genreId //dummy data
+        ];
+
+        $data = $himoRepository->searchCrossworks($params, $sort)->get();
+
+        if (!empty($data['status']) && $data['status'] == '200') {
+            if (count($data['results']['rows']) + $this->offset < $data['results']['total']) {
+                $this->hasNext = true;
+            } else {
+                $this->hasNext = false;
+            }
+
+            $result = [
+                'hasNext' => $this->hasNext,
+                'totalCount' => $data['results']['total'],
+                'rows' => []
+            ];
+
+
+            foreach ($data['results']['rows'] as $row) {
+                $this->setSaleType('rental');
+                $base = $this->get($row['work_id']);
+
+                $result['rows'][] = [
+                    'workId' => $base['workId'],
+                    'urlCd' => $base['urlCd'],
+                    'cccWorkCd' => $base['cccWorkCd'],
+                    'workTitle' => $base['workTitle'],
+                    'newFlg' => $base['newFlg'],
+                    'jacketL' => $base['jacketL'],
+                    'supplement' => $base['supplement'],
+                    'saleType' => $base['saleType'],
+                    'itemType' => $base['itemType'],
+                    'adultFlg' => $base['adultFlg'],
+                ];
+            }
+
+            if (count($result['rows']) > 0) {
                 return $result;
             }
         }

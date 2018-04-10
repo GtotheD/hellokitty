@@ -512,29 +512,18 @@ EOT;
     });
 
     // ジャンルからの作品一覧取得
-    $router->get('genre/{genreId}', function (Request $request, $workId) {
-        $responseString = <<<EOT
-        {
-          "hasNext": true,
-          "totalCount": 0,
-          "rows": [
-            {
-                "workId": "PTA00007XDJP",
-                "urlCd": "https://cdn.store-tsutaya.tsite.jp/cd/pinocchio.mp4",
-                "cccWorkCd": "10407575",
-                "workTitle": "ピノキオ",
-                "newFlg": true,
-                "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
-                "supplement": "supplement",
-                "saleType": "sell",
-                "itemType": "cd",
-                "adultFlg": true
-            }
-          ]
+    $router->get('genre/{genreId}', function (Request $request, $genreId) {
+        $work = new WorkRepository();
+        $work->setLimit($request->input('limit', 10));
+        $work->setOffset($request->input('offset', 0));
+
+        $sort = $request->input('sort', '');
+        $saleType = $request->input('saleType', '');
+        $response = $work->genre($genreId, $sort, $saleType);
+        if (empty($response)) {
+            throw new NoContentsException;
         }
-EOT;
-        $json = json_decode($responseString);
-        return $json;
+        return response()->json($response);
     });
 });
 $router->group(['prefix' => env('URL_PATH_PREFIX') . env('API_VERSION')], function () use ($router) {

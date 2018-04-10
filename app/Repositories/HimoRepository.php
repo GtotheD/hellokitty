@@ -154,10 +154,10 @@ class HimoRepository extends ApiRequesterRepository
         return $this;
     }
 
-    public function searchKeyword($keyword, $sort = null, $itemType = null, $periodType = null, $adultFlg = null)
+    public function searchCrossworks($params = [], $sort = null)
     {
-        $this->api = 'search';
-        $this->id = 'aaa';
+        $this->api = $params['api'];
+        $this->id = $params['id'];
 
         if (env('APP_ENV') === 'local') {
             return $this;
@@ -170,62 +170,92 @@ class HimoRepository extends ApiRequesterRepository
             $sortBy = 'sale_start_date:asc';
         }
 
-        $msdbItem = ['audio', 'video', 'book', 'game'];
-        switch (strtolower($itemType)) {
-            case 'cd':
-                $msdbItem = ['audio'];
-                break;
-            case 'dvd':
-                $msdbItem = ['video'];
-                break;
-            case 'book':
-                $msdbItem = ['book'];
-                break;
-            case 'game':
-                $msdbItem = ['game'];
-                break;
-        }
-
-
-
-        if ($adultFlg == 'false') {
-            $adultFlg = '2';
-        } else {
-            $adultFlg = '0';
-        }
-
         $this->queryParams = [
             '_system' => 'TsutayaApp',
             'service_id' => 'tol',
-            'msdb_item' => $msdbItem,
-            'facet_keys' => 'msdb_item',
-            'query' => $keyword,
-            'adult_flg' => $adultFlg,
             'response_level' => '9',
             'offset' => $this->offset,
             'limit' => $this->limit,
             'sort_by' => $sortBy,
         ];
 
-
-        $saleStartDateTo = date('m/d/Y');
-        $saleStartDateFrom = $productSellRentalFlg = null;
-        if ($periodType == 'rental3' || $periodType == 'sale3') {
-            $saleStartDateFrom = date('m/d/Y', strtotime('-3 months'));
-        } elseif ($periodType == 'rental12' || $periodType == 'sale12') {
-            $saleStartDateFrom = date('m/d/Y', strtotime('-12 months'));
+        //check itemType
+        if(array_key_exists('itemType',$params)){
+            $msdbItem = ['audio', 'video', 'book', 'game'];
+            switch (strtolower($params['itemType'])) {
+                case 'cd':
+                    $msdbItem = ['audio'];
+                    break;
+                case 'dvd':
+                    $msdbItem = ['video'];
+                    break;
+                case 'book':
+                    $msdbItem = ['book'];
+                    break;
+                case 'game':
+                    $msdbItem = ['game'];
+                    break;
+            }
+            $this->queryParams['msdb_item'] = $msdbItem;
+            $this->queryParams['facet_keys'] = 'msdb_item';
         }
 
-        if (strpos($periodType, 'rental') !== false) {
-            $productSellRentalFlg = 2;
-        } elseif (strpos($periodType, 'sell') !== false) {
-            $productSellRentalFlg = 1;
+        //check adultFlg
+        $adultFlg = '2';
+        if (array_key_exists('adultFlg', $params)) {
+            if ($params['adultFlg'] == 'true') {
+                $adultFlg = '0';
+            } else {
+                $adultFlg = '2';
+            }
+        }
+        $this->queryParams['adult_flg'] = $adultFlg;
+
+        //check periodType
+        if(array_key_exists('periodType',$params)){
+            $saleStartDateTo = date('m/d/Y');
+            $saleStartDateFrom = $productSellRentalFlg = null;
+            if ($params['periodType'] == 'rental3' || $params['periodType']  == 'sale3') {
+                $saleStartDateFrom = date('m/d/Y', strtotime('-3 months'));
+            } elseif ($params['periodType']  == 'rental12' || $params['periodType']  == 'sale12') {
+                $saleStartDateFrom = date('m/d/Y', strtotime('-12 months'));
+            }
+
+            if (strpos($params['periodType'], 'rental') !== false) {
+                $productSellRentalFlg = 2;
+            } elseif (strpos($params['periodType'], 'sell') !== false) {
+                $productSellRentalFlg = 1;
+            }
+
+            if (!empty($saleStartDateFrom)) {
+                $this->queryParams['sale_start_date_from'] = $saleStartDateFrom;
+                $this->queryParams['sale_start_date_to'] = $saleStartDateTo;
+                $this->queryParams['product_sell_rental_flg'] = $productSellRentalFlg;
+            }
         }
 
-        if (!empty($saleStartDateFrom)) {
-            $this->queryParams['sale_start_date_from'] = $saleStartDateFrom;
-            $this->queryParams['sale_start_date_to'] = $saleStartDateTo;
-            $this->queryParams['product_sell_rental_flg'] = $productSellRentalFlg;
+        //checkKeyword
+        if(array_key_exists('keyword',$params)){
+            $this->queryParams['query'] = $params['keyword'];
+        }
+
+        //check saleType
+        if (array_key_exists('saleType', $params)) {
+            $productSellRentalFlg = null;
+            if ($params['saleType'] == 'rental') {
+                $productSellRentalFlg = 2;
+            } elseif ($params['saleType'] == 'sell') {
+                $productSellRentalFlg = 1;
+            }
+            if (!empty($productSellRentalFlg)) {
+                $this->queryParams['product_sell_rental_flg'] = $productSellRentalFlg;
+            }
+        }
+
+        //check genre_id
+        if(array_key_exists('genreId',$params)){
+            $this->queryParams['genre_id'] = $params['genreId'].':';
+
         }
 
         return $this;
