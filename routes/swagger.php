@@ -1379,3 +1379,65 @@
  * )
  */
 
+/**
+ * @SWG\Get(
+ *     path="/release/{month}/{genreId}",
+ *     description="リリース情報",
+ *     tags={"Release"},
+ *     produces={"application/json"},
+ *     @SWG\Parameter(
+ *       name="month",
+ *       in="path",
+ *       description="月（前月=last、今月=this、来月=next）",
+ *       type="string"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="genreId",
+ *       in="path",
+ *       description="ジャンルID（このAPI独自のID）",
+ *       type="string"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="onlyReleased",
+ *       in="query",
+ *       description="リリース済みのみ",
+ *       type="string"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="cdFormatType",
+ *       in="path",
+ *       description="CDのアルバム種別（single, album）",
+ *       type="string"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="sort",
+ *       in="query",
+ *       description="並び順（お薦め(デフォルト)、新しい順 = new、 古い順 = old）",
+ *       type="string"
+ *     ),
+ *     @SWG\Parameter(ref="#/parameters/limit"),
+ *     @SWG\Parameter(ref="#/parameters/offset"),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          ref="$/responses/ListJson",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="baseMonth",
+ *                  type="string",
+ *                  description="基準月",
+ *              ),
+ *              @SWG\Property(
+ *                  property="rows",
+ *                  type="array",
+ *                  @SWG\Items(ref="#/definitions/WorkNarrow"),
+ *                  description="作品情報",
+ *              ),
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
