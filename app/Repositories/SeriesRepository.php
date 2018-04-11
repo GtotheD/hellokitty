@@ -96,7 +96,6 @@ class SeriesRepository
     public function getNarrow($workId, $saleType)
     {
         // TODO: Waiting to confirm $saleType option
-
         $this->saleType = $saleType;
         $work = new Work();
         $himo = new HimoRepository();
@@ -104,8 +103,10 @@ class SeriesRepository
         $series = new Series();
         $workIdsInSeries = [];
 
+        // STEP 1: Get all workIds in series
         $himoResult = $himo->xmediaSeries($workId)->get();
-        if(!$himoResult['results']['rows']) {
+
+        if (!$himoResult['results']['rows']) {
             throw new NoContentsException();
         }
 
@@ -116,38 +117,45 @@ class SeriesRepository
             }
         }
 
-        $workIdsInSeries = array_values(array_unique($workIdsInSeries));
-       // $workIdsInSeries = ['PTA0000G4CSA', 'PTA0000SF309', 'PTA0000SFCIH']; // Local data
+        // STEP 2: Check $workIdsInSeries which is not existed in DB then call WorkRepository to insert them.
+
+         $workIdsInSeries = array_values(array_unique($workIdsInSeries));
+        //$workIdsInSeries = ['PTA0000G4CSA', 'PTA0000SF309', 'PTA0000SFCIH']; // Local data
         $workIdsExisted = $work->getWorkIdsIn($workIdsInSeries)->get()->pluck('work_id')->toArray();
-        if(!$workIdsExisted ) {
+
+        // STEP 2.1: Check which is not existed in DB
+        if (!$workIdsExisted) {
             $workIdsNew = $workIdsInSeries;
-        }else {
+        } else {
             $workIdsNew = array_values(array_diff($workIdsInSeries, $workIdsExisted));
         }
 
-        // Call API and update insert to DB
-        if($workIdsNew) {
-            $insertResult = $workRepository->get($workIdsNew);
+        // STEP 2.2: Call API WorkRepository to getWorkList to insert to Work table -> get new work list
+        if ($workIdsNew && $workListInserted = $workRepository->getWorkList($workIdsNew)) {
             // Insert to ts_series table
-            foreach ($insertResult as $insertedWork) {
-                $series->insert([
-                    'small_series_id' => $this->seriesId,
-                    'work_id' => $insertedWork
-                ]);
+            // Insert to ts_series table
+            foreach ($workListInserted['rows'] as $workRow) {
+                $this->insert($workRow['workId'], $this->seriesId);
             }
         }
-        // Get response from DB
+        // STEP 3 Get response from DB
         $workCount = $work->getWorkIdsIn($workIdsInSeries)->count();
         $this->totalCount = $workCount ?: 0;
+        if (!$this->totalCount) {
+            throw new NoContentsException();
+        }
+
         $workList = $work->getWorkIdsIn($workIdsInSeries)
             ->limit($this->limit)
             ->offset($this->offset)
             ->get();
+
         if (count($workList) + $this->offset < $this->totalCount) {
             $this->hasNext = true;
         } else {
             $this->hasNext = false;
         }
+
         // Fetch workList and get response
         $rows = [];
         foreach ($workList as $work) {
@@ -166,9 +174,33 @@ class SeriesRepository
 
         return [
             'hasNext' => $this->hasNext,
-            'totalCount' => $this->totalCount ,
+            'totalCount' => $this->totalCount,
             'rows' => $rows
         ];
+    }
+
+    /**
+     * @param $workId
+     * @param $seriesId
+     *
+     * @return array
+     */
+    public function format ($workId, $seriesId) {
+        $seriesBase = [];
+        $seriesBase['work_id'] = $workId;
+        $seriesBase['small_series_id'] = $seriesId;
+        return $seriesBase;
+    }
+
+    /**
+     * @param $workId
+     * @param $seriesId
+     *
+     * @return mixed
+     */
+    public function insert ($workId, $seriesId) {
+        $series = new Series();
+        return $series->insert( $this->format($workId, $seriesId));
     }
 
 }

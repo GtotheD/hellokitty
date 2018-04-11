@@ -137,15 +137,19 @@ class PeopleRepository
     public function insert($productId,  $people)
     {
         $peopleModel = new People();
-        $peopleBase = [];
+        $peopleBase = $this->format($productId,  $people);
+        return $peopleModel->insert($peopleBase);
+    }
 
+    public function format($productId, $people)
+    {
+        $peopleBase = [];
         $peopleBase['product_unique_id'] = $productId;
         $peopleBase['person_id'] = $people['person_id'];
         $peopleBase['person_name'] = $people['person_name'];
         $peopleBase['role_id'] = $people['role_id'];
         $peopleBase['role_name'] = $people['role_name'];
 
-        return $peopleModel->insert($peopleBase);
+        return $peopleBase;
     }
-
 }

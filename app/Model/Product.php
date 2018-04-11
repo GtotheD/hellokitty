@@ -114,7 +114,7 @@ class Product extends Model
         return $this;
     }
 
-    public function insert($workId, $data)
+    public function insert($data)
     {
         $insertData = [];
         $insertData['updated_at'] = date('Y-m-d H:i:s');
@@ -126,7 +126,6 @@ class Product extends Model
         foreach ($columns as $column) {
             if(!in_array($column, $ignoreColumn)) {
                 if (isset($data[$column])) {
-                    $insertData['work_id'] = $workId;
                     $insertData[$column] = $data[$column];
                 }
             }
@@ -146,5 +145,23 @@ class Product extends Model
             case 'sell': return 1; break;
             case 'rental': return 2; break;
         }
+    }
+
+    public function insertBulk ($products)
+    {
+        $insertData = [];
+        $ignoreColumn = ['id', 'created_at', 'updated_at'];
+        $columns = Schema::getColumnListing(self::TABLE);
+        foreach ($products as $key => $row) {
+            $insertData[$key]['updated_at'] = date('Y-m-d H:i:s');
+            foreach ($columns as $column) {
+                if (!in_array($column, $ignoreColumn)) {
+                    $insertData[$key][$column] = array_get($row, $column) ?: '';
+
+                }
+            }
+            $insertData[$key]['created_at'] = date('Y-m-d H:i:s');
+        }
+        return DB::table($this->table)->insert($insertData);
     }
 }

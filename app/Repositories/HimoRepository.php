@@ -275,6 +275,7 @@ class HimoRepository extends ApiRequesterRepository
 
         // Get multi works in local
         $results = [];
+
         foreach ($this->id as $key => $workId) {
             if(!$results) {
                 $results = $this->stub($this->api, $workId);
