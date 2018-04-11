@@ -47,9 +47,8 @@ class Work extends Model
         }
         $count = $dbObject->where('work_id', $data['work_id'])->count();
         if($count) {
-            return $dbObject->where('work_id', $data['work_id'])->update();
+            return $dbObject->where('work_id', $data['work_id'])->update($insertData);
         } else {
-
             $insertData['created_at'] = date('Y-m-d H:i:s');
             return DB::table($this->table)->insertGetId($insertData);
         }
@@ -59,8 +58,7 @@ class Work extends Model
      * Get all work_id not in workdIds array
      *
      * @param $workIds
-    $insertData     */
-
+    */
     public function getWorkIdsIn($workIds = []) {
         $this->dbObject = DB::table($this->table)
             ->whereIn('work_id', $workIds);
