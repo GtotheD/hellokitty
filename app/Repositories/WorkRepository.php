@@ -368,8 +368,24 @@ class WorkRepository
 
     public function convert($idType, $id)
     {
+        $idCode = null;
+        switch ($idType) {
+            case 'workId':
+                $idCode = '0102';
+                break;
+            case 'cccWorkCd':
+                $idCode = '0103';
+                break;
+            case 'urlCd':
+                $idCode = '0105';
+                break;
+            case 'rentalProductId':
+                $idCode = '0206';
+                break;
+        }
+
         $himoRepository = new HimoRepository();
-        return  $himoRepository->crosswork([$id], $idType, '1');
+        return  $himoRepository->crosswork([$id], $idCode, '1');
     }
 
     private function format($row)
