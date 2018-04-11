@@ -3,7 +3,6 @@
 namespace App\Repositories;
 
 use App\Model\Product;
-use App\Repositories\WorkRepository;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 /**
@@ -131,6 +130,8 @@ class ProductRepository
             "item_name AS itemName",
             "product_type_id AS productTypeId",
             "jacket_l AS jacketL",
+            "jan AS jan",
+            "rental_product_cd AS rentalProductCd",
             "sale_start_date AS saleStartDate",
         ];
         $this->totalCount = $this->product->setConditionByWorkIdSaleType($workId, $this->saleType)->count();
