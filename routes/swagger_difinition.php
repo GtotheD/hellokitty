@@ -279,6 +279,66 @@
  * */
 /**
  *  @SWG\Definition(
+ *          definition="WorkNarrowRelease",
+ *          @SWG\Property(
+ *              property="workId",
+ *              type="string",
+ *              description="作品ID"
+ *          ),
+ *          @SWG\Property(
+ *              property="urlCd",
+ *              type="string",
+ *              description="URLコード"
+ *          ),
+ *          @SWG\Property(
+ *              property="cccWorkCd",
+ *              type="string",
+ *              description="ccc作品コード"
+ *          ),
+ *          @SWG\Property(
+ *              property="workTitle",
+ *              type="string",
+ *              description="作品タイトル"
+ *          ),
+ *          @SWG\Property(
+ *              property="productTitle",
+ *              type="string",
+ *              description="商品タイトル"
+ *          ),
+ *          @SWG\Property(
+ *              property="newFlg",
+ *              type="boolean",
+ *              description="NEW表示フラグ"
+ *          ),
+ *          @SWG\Property(
+ *              property="jacketL",
+ *              type="string",
+ *              description="ジャケ写"
+ *          ),
+ *          @SWG\Property(
+ *              property="supplement",
+ *              type="string",
+ *              description="著者・作者"
+ *          ),
+ *          @SWG\Property(
+ *              property="saleType",
+ *              type="string",
+ *              description="販売タイプ（sell, rental）",
+ *          ),
+ *          @SWG\Property(
+ *              property="itemType",
+ *              type="string",
+ *              description="アイテム種別　（cd, dvd, book, game）"
+ *          ),
+ *          @SWG\Property(
+ *              property="adultFlg",
+ *              type="boolean",
+ *              description="アダルトフラグ"
+ *          ),
+ *  )
+ * */
+/**
+ *  @SWG\Definition(
  *          definition="Review",
  *          @SWG\Property(
  *              property="rating",

@@ -553,7 +553,7 @@
 /**
  * @SWG\Get(
  *     path="/section/ranking/{codeType}/{code}/{period}",
- *     description="DVD-セルのTOP構造を返却する",
+ *     description="DVD-セルのTOP構造を返却する（hasNextは最終レスポンスがlimit以下だった場合にfalseとする）",
  *     produces={"application/json"},
  *     tags={"Top"},
  *     security={{"api_key":{}}},
@@ -583,7 +583,24 @@
  *       description="出演者・アーティスト・著者・機種等を表示/非表示を切り替える為のフラグ。trueにすると非表示になる。",
  *       type="boolean"
  *     ),
- *     @SWG\Response(response=200, description="Success"),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          ref="$/responses/ListJson",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="aggregationPeriod",
+ *                  type="string",
+ *                  description="集計期間（デイリー：yyyy/mm/dd集計 週間：yyyy/mm/dd～yyyy/mm/dd集計 月間：yyyy/mm集計）",
+ *              ),
+ *              @SWG\Property(
+ *                  property="rows",
+ *                  type="array",
+ *                  @SWG\Items(ref="#/definitions/WorkNarrowRelease"),
+ *                  description="作品情報",
+ *              ),
+ *          )
+ *      ),
  *     @SWG\Response(response=204, description="Contents not found"),
  *     @SWG\Response(response=401, description="Auth error"),
  *     @SWG\Response(response=404, description="Page not found"),
@@ -1382,7 +1399,7 @@
 /**
  * @SWG\Get(
  *     path="/release/{month}/{genreId}",
- *     description="リリース情報",
+ *     description="リリース情報（商品名を出す為、対象の商品を特定時に、ジャンルIDからセルレンタル区分を判別し特定する）",
  *     tags={"Release"},
  *     produces={"application/json"},
  *     @SWG\Parameter(
@@ -1425,12 +1442,12 @@
  *              @SWG\Property(
  *                  property="baseMonth",
  *                  type="string",
- *                  description="基準月",
+ *                  description="基準月（yyyy-m 2018-09）",
  *              ),
  *              @SWG\Property(
  *                  property="rows",
  *                  type="array",
- *                  @SWG\Items(ref="#/definitions/WorkNarrow"),
+ *                  @SWG\Items(ref="#/definitions/WorkNarrowRelease"),
  *                  description="作品情報",
  *              ),
  *          )
