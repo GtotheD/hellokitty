@@ -359,6 +359,12 @@ class WorkRepository
         return null;
     }
 
+    public function convert($idType, $id)
+    {
+        $himoRepository = new HimoRepository();
+        return  $himoRepository->crosswork([$id], $idType, '1');
+    }
+
     private function format($row)
     {
         $base = [];
