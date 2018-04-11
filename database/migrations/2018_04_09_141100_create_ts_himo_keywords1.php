@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTsHimoKeywords extends Migration
+class CreateTsHimoKeywords1 extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateTsHimoKeywords extends Migration
      */
     public function up()
     {
-        Schema::create('ts_himo_keywords', function (Blueprint $table) {
+        Schema::create('ts_himo_keywords1', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('keyword', 20)->index();
             $table->unsignedInteger('weight');
@@ -31,6 +31,6 @@ class CreateTsHimoKeywords extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ts_himo_keywords');
+        Schema::dropIfExists('ts_himo_keywords1');
     }
 }
