@@ -432,15 +432,10 @@ EOT;
         return response()->json($json);
     });
     // 変換
-    $router->get('convert/work/{idType}/{id}', function (Request $request, $workId) {
-        $responseString = <<<EOT
-        {
-            "workId": "PTA00007XDJP",
-            "itemType": "cd"
-        }
-EOT;
-        $json = json_decode($responseString);
-        return $json;
+    $router->get('convert/work/{idType}/{id}', function (Request $request, $idType, $id) {
+        $workRepository = new WorkRepository();
+        $json = $workRepository->convert($idType, $id);
+        return response()->json($json);
     });
 
     // 変換

@@ -43,7 +43,7 @@ class HimoRepository extends ApiRequesterRepository
     /*
      * 詳細情報を取得するAPIをセットする
      */
-    public function crosswork($ids, $idType = self::ID_TYPE)
+    public function crosswork($ids, $idType = self::ID_TYPE, $responseLevel = 9)
     {
         $this->api = 'crossworks';
         $this->id = $ids;
@@ -59,7 +59,7 @@ class HimoRepository extends ApiRequesterRepository
             'service_id' => 'tol',
             'msdb_item' => 'video',
             'adult_flg' => '2',
-            'response_level' => '9',
+            'response_level' => $responseLevel,
             'offset' => $this->offset,
             'limit' => $this->limit,
             'sort_by' => 'auto:asc',
