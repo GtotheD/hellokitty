@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Exceptions\NoContentsException;
 use App\Model\People;
 
 class PeopleRepository
@@ -99,7 +100,7 @@ class PeopleRepository
         $newestProduct = $product->getNewestProductWorkIdSaleType($workId, $saleType);
 
         if (!$newestProduct) {
-            throw new NoContentsException;
+            throw new NoContentsException();
         }
         $peopleModel = new People();
         $column = [
