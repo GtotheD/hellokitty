@@ -20,7 +20,6 @@ class HimoRepository extends ApiRequesterRepository
     protected $offset;
     protected $limit;
     protected $apiHost;
-    protected $apiKey;
 
     const ID_TYPE = '0102';
     const INTEGRATION_API = '/search/crossworks';
@@ -30,6 +29,7 @@ class HimoRepository extends ApiRequesterRepository
         $this->sort = $sort;
         $this->offset = $offset;
         $this->limit = $limit;
+        $this->apiHost = env('HIMO_API_HOST');
     }
 
     /**
@@ -258,6 +258,33 @@ class HimoRepository extends ApiRequesterRepository
 
         }
 
+        return $this;
+    }
+
+
+    public function searchPeople($ids, $idType, $msdbItem = null, $responseLevel = 9)
+    {
+        $this->api = 'people';
+        $this->id = $ids;
+        if(env('APP_ENV') === 'local'){
+            return $this;
+        }
+        foreach ($ids as $id) {
+            $queryId[] = $idType . ':' . $id;
+        }
+        $this->apiPath = $this->apiHost . '/search/people';
+        $this->params = [
+            '_system' => 'TsutayaApp',
+            'service_id' => 'tol',
+            'id_value' => implode(' || ', $queryId),
+            'response_level' => $responseLevel,
+            'offset' => $this->offset,
+            'limit' => $this->limit,
+            'sort_by' => 'auto:asc',
+        ];
+        if ($msdbItem) {
+            $this->params['msdb_item'] = $msdbItem;
+        }
         return $this;
     }
 

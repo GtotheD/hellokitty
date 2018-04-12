@@ -24,6 +24,7 @@ use App\Repositories\PeopleRepository;
 use App\Repositories\SeriesRepository;
 use App\Repositories\TWSRepository;
 use App\Repositories\HimoKeywordRepository;
+use App\Repositories\PeopleRelatedWorksRepository;
 
 // Api Group
 $router->group([
@@ -330,7 +331,6 @@ EOT;
             'totalCount' => $total,
             'rows' => $rows
         ];
-
         return response()->json($response);
     });
     // 関連アーティスト
@@ -391,28 +391,17 @@ EOT;
     });
     // 作者レコメンド
     $router->get('work/{workId}/recommend/author', function (Request $request, $workId) {
-        $responseString = <<<EOT
-      {
-        "hasNext": true,
-        "totalCount": 1,
-        "rows": [
-          {
-            "workId": "PTA00007XDJP",
-            "urlCd": "https://cdn.store-tsutaya.tsite.jp/cd/pinocchio.mp4",
-            "cccWorkCd": "10407575",
-            "workTitle": "ピノキオ",
-            "newFlg": true,
-            "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
-            "supplement": "supplement",
-            "saleType": "sell",
-            "itemType": "cd",
-            "adultFlg": true
-          }
-        ]
-      }
-EOT;
-        $json = json_decode($responseString);
-        return response()->json($json);
+        $peopleRelatedWorksRepository = new PeopleRelatedWorksRepository();
+        $peopleRelatedWorksRepository->setLimit($request->input('limit', 10));
+        $peopleRelatedWorksRepository->setOffset($request->input('offset', 0));
+
+        $rows = $peopleRelatedWorksRepository->getWorks($workId);
+        $response = [
+            'hasNext' => $peopleRelatedWorksRepository->getHasNext(),
+            'totalCount' => $peopleRelatedWorksRepository->getTotalCount(),
+            'rows' => $rows
+        ];
+        return response()->json($response);
     });
     // 作品レコメンド
     $router->get('work/{workId}/recommend/artist', function (Request $request, $workId) {
