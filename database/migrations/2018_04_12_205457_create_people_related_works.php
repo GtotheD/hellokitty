@@ -15,6 +15,7 @@ class CreatePeopleRelatedWorks extends Migration
     {
         Schema::create('ts_people_related_works', function (Blueprint $table) {
             $table->increments('id');
+            $table->text('person_id');
             $table->string('work_id',255)->index();
             $table->text('url_cd');
             $table->text('ccc_work_cd');

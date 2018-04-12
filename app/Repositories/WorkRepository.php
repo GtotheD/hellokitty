@@ -388,7 +388,7 @@ class WorkRepository
         return  $himoRepository->crosswork([$id], $idCode, '1');
     }
 
-    private function format($row)
+    public function format($row, $isNarrow = false)
     {
         $base = [];
         foreach ($row['ids'] as $idItem) {
@@ -412,19 +412,21 @@ class WorkRepository
         $base['jacket_l'] = trimImageTag($row['jacket_l']);
         $base['scene_l'] = $this->sceneFormat($row['scene_l']);
         $base['sale_start_date'] = $row['sale_start_date'];
-        $base['big_genre_id'] = $row['genres'][0]['big_genre_id'];
-        $base['big_genre_name'] = $row['genres'][0]['big_genre_name'];
-        $base['medium_genre_id'] = $row['genres'][0]['medium_genre_id'];
-        $base['medium_genre_name'] = $row['genres'][0]['medium_genre_name'];
-        $base['small_genre_id'] = $row['genres'][0]['small_genre_id'];
-        $base['small_genre_name'] = $row['genres'][0]['small_genre_name'];
-        $base['filmarks_id'] = $this->filmarksIdFormat($row);
-        $base['rating_id'] = $row['rating_id'];
-        $base['rating_name'] = $row['rating_name'];
-        $base['adult_flg'] = $row['adult_flg'];
-        $base['created_year'] = $row['created_year'];
-        $base['created_countries'] = $row['created_countries'];
-        $base['book_series_name'] = $row['book_series_name'];
+        if ($isNarrow === false) {
+            $base['big_genre_id'] = $row['genres'][0]['big_genre_id'];
+            $base['big_genre_name'] = $row['genres'][0]['big_genre_name'];
+            $base['medium_genre_id'] = $row['genres'][0]['medium_genre_id'];
+            $base['medium_genre_name'] = $row['genres'][0]['medium_genre_name'];
+            $base['small_genre_id'] = $row['genres'][0]['small_genre_id'];
+            $base['small_genre_name'] = $row['genres'][0]['small_genre_name'];
+            $base['filmarks_id'] = $this->filmarksIdFormat($row);
+            $base['rating_id'] = $row['rating_id'];
+            $base['rating_name'] = $row['rating_name'];
+            $base['adult_flg'] = $row['adult_flg'];
+            $base['created_year'] = $row['created_year'];
+            $base['created_countries'] = $row['created_countries'];
+            $base['book_series_name'] = $row['book_series_name'];
+        }
         // アイテム種別毎に整形フォーマットを変更できるように
         switch ($row['work_type_id']) {
             case self::WORK_TYPE_CD:
@@ -468,7 +470,10 @@ class WorkRepository
 
     private function dvdFormat($row)
     {
-        return $row['docs'][0]['doc_text'];
+        if (array_key_exists('docs', $row)) {
+            return $row['docs'][0]['doc_text'];
+        }
+        return null;
     }
     private function cdFormat($row)
     {
@@ -480,7 +485,10 @@ class WorkRepository
     }
     private function gameFormat($row)
     {
-        return $row['docs'][0]['doc_text'];
+        if (array_key_exists('docs', $row)) {
+            return $row['docs'][0]['doc_text'];
+        }
+        return null;
     }
 
     private function sceneFormat($data)

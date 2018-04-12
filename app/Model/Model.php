@@ -23,6 +23,11 @@ class Model
         $this->table = $table;
     }
 
+    public function getDbObject()
+    {
+        return $this->dbObject;
+    }
+
     public function select($column)
     {
         $this->dbObject->select($column);
