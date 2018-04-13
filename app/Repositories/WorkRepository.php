@@ -147,7 +147,7 @@ class WorkRepository
             }
 
             // インサートしたものを取得するため条件を再設定
-            $this->insertWorkRData($himoResult, $this->work);
+            $this->insertWorkData($himoResult, $this->work);
         }
 
         if (empty($selectColumns)) {
@@ -182,7 +182,7 @@ class WorkRepository
      *
      * @throws NoContentsException
      */
-    public function insertWorkRData($himoResult, $work) {
+    public function insertWorkData($himoResult, $work) {
 
         $productRepository = new ProductRepository();
         $peopleRepository = new PeopleRepository();
@@ -195,11 +195,11 @@ class WorkRepository
             $peopleData = [];
             foreach ($himoResult['results']['rows'] as $row) {
                 $workData[] = $this->format($row);
-               $insertWorkId[] = $row['work_id'];
+                $insertWorkId[] = $row['work_id'];
                 //$insertResult = $work->insert($base);
 
                 foreach ($row['products'] as $product) {
-                    if($product['service_id'] === 'tol') {
+                    if ($product['service_id'] === 'tol') {
                         // インサートの実行
                         $productData[] = $productRepository->format($row['work_id'], $product);
                         // Insert people
@@ -215,7 +215,7 @@ class WorkRepository
             $productModel = new Product();
             $peopleModel = new People();
 
-            $work->insertBulk($workData);
+            $work->insertBulk($workData, $insertWorkId);
             $productModel->insertBulk($productData);
             $peopleModel->insertBulk($peopleData);
 
@@ -562,7 +562,7 @@ class WorkRepository
             return null;
         }
         // インサートしたものを取得するため条件を再設定
-        $workIdInserted = $this->insertWorkRData($himoResult, $work);
+        $workIdInserted = $this->insertWorkData($himoResult, $work);
 
         $work->getWorkIdsIn($workIdInserted);
         $response['total']  = $work->count();

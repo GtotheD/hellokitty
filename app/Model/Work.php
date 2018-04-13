@@ -72,14 +72,21 @@ class Work extends Model
      *
      * @return mixed
      */
-    public function insertBulk($works = []) {
+    public function insertBulk($works = [], $workIds)
+    {
         $insertData = [];
         $ignoreColumn = ['id', 'created_at', 'updated_at'];
         $columns = Schema::getColumnListing(self::TABLE);
-        foreach ($works as $key =>  $row) {
+
+        $exists = $this->getWorkIdsIn($workIds)->get()->pluck('work_id')->toArray();
+
+        foreach ($works as $key => $row) {
+            if (!empty($exists) || in_array($row['work_id'], $exists)) {
+                continue;
+            }
             $insertData[$key]['updated_at'] = date('Y-m-d H:i:s');
             foreach ($columns as $column) {
-                if(!in_array($column, $ignoreColumn)) {
+                if (!in_array($column, $ignoreColumn)) {
                     $insertData[$key][$column] = array_get($row, $column) ?: '';
                 }
             }
