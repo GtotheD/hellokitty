@@ -296,6 +296,16 @@
  *              description="ccc作品コード"
  *          ),
  *          @SWG\Property(
+ *              property="rankNo",
+ *              type="string",
+ *              description="順位"
+ *          ),
+ *          @SWG\Property(
+ *              property="comparison",
+ *              type="string",
+ *              description="前月比（up, down, keep, new）"
+ *          ),
+ *          @SWG\Property(
  *              property="workTitle",
  *              type="string",
  *              description="作品タイトル"
