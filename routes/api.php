@@ -405,20 +405,14 @@ EOT;
     });
     // 作品レコメンド
     $router->get('work/{workId}/recommend/artist', function (Request $request, $workId) {
-        $responseString = <<<EOT
-      {
-        "hasNext": true,
-        "totalCount": 1,
-        "rows": [
-          {
-            "personId": 1,
-            "personName": "ほげほげ"
-          }
-        ]
-      }
-EOT;
-        $json = json_decode($responseString);
-        return response()->json($json);
+        $recommendArtistRepository = new \App\Repositories\RecommendArtistRepository();
+
+        $recommendArtistRepository->setLimit($request->input('limit', 10));
+        $recommendArtistRepository->setOffset($request->input('offset', 0));
+
+        $response = $recommendArtistRepository->getArtist($workId);
+
+        return response()->json($response);
     });
     // 変換
     $router->get('convert/work/{idType}/{id}', function (Request $request, $idType, $id) {

@@ -1,0 +1,1454 @@
+{
+    "status": 200,
+    "message": null,
+    "results": {
+        "total": 38,
+        "rows": [
+            {
+                "person": {
+                    "person_id": "PPS00000WX74",
+                    "person_name": "山本彩",
+                    "person_kana": "やまもとさやか",
+                    "person_en": "",
+                    "person_type": 1,
+                    "person_type_name": "人",
+                    "domain": 1,
+                    "domain_name": "日本",
+                    "gender": 2,
+                    "gender_name": "女",
+                    "birthday": "1993-07-14",
+                    "deathday": "",
+                    "hometown": "大阪府",
+                    "bloodtype": "B",
+                    "sign": "かに座",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "NMB48のメンバーでチームNのキャプテン、およびAKB48のメンバー。AKB48の「Everyday,カチューシャ」の選抜メンバーに渡辺美優紀と共に抜擢された。城郭めぐりが趣味で、お気に入りの城は長野県の松本城。リーダーシップがあると、メンバーからの信頼も厚い。",
+                    "trivia": [
+                        "NMB48に入る前に、女子中学生バンド「ＭＡＤ CATZ」のG＆Voとしてデビューしている",
+                        "高校では生徒会長を務めていた"
+                    ],
+                    "point": 4957,
+                    "wikiname": "山本彩",
+                    "wikidata": "山本 彩（やまもと さやか、1993年7月14日 - ）は、日本のアイドルであり、女性アイドルグループNMB48のチームNおよびAKB48チームKのメンバー。チームNではキャプテンを務める。
+大阪府出身。
+KYORAKU吉本.ホールディングス所属。ガールズバンド「MAD CATZ」の元メンバー。",
+                    "adult_flg": 0,
+                    "photo_url": "",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776EI",
+                "relation_type_name": "所属グループ/メンバー"
+            },
+            {
+                "person": {
+                    "person_id": "PPS00007KE49",
+                    "person_name": "横山由依",
+                    "person_kana": "よこやまゆい",
+                    "person_en": "",
+                    "person_type": 1,
+                    "person_type_name": "人",
+                    "domain": 1,
+                    "domain_name": "日本",
+                    "gender": 2,
+                    "gender_name": "女",
+                    "birthday": "1992-12-08",
+                    "deathday": "",
+                    "hometown": "京都府木津川市",
+                    "bloodtype": "B",
+                    "sign": "いて座",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "AKB48のメンバー。9期生のなかでいち早く正式メンバーに昇格。ユニット「Not yet」メンバーにも抜擢され、ドラマ「マジすか学園2」でも重要な役を演じている。非常に努力家でメンバー内からも認められる存在。",
+                    "trivia": [
+                        "京都出身でキャッチフレーズは「金閣寺よりも輝きたい！」"
+                    ],
+                    "point": 0,
+                    "wikiname": "横山由依",
+                    "wikidata": "横山 由依（よこやま ゆい、1992年12月8日 - ）は、日本のアイドルであり、女性アイドルグループAKB48チームAのメンバーであり、同チームのキャプテンを務める。2012年8月24日 - 2013年4月28日までNMB48チームNを兼任していた。
+京都府木津川市出身。
+太田プロダクション所属。",
+                    "adult_flg": 0,
+                    "photo_url": "",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776EI",
+                "relation_type_name": "所属グループ/メンバー"
+            },
+            {
+                "person": {
+                    "person_id": "PPS000003CBV",
+                    "person_name": "峯岸みなみ",
+                    "person_kana": "みねぎしみなみ",
+                    "person_en": "",
+                    "person_type": 1,
+                    "person_type_name": "人",
+                    "domain": 1,
+                    "domain_name": "日本",
+                    "gender": 2,
+                    "gender_name": "女",
+                    "birthday": "1992-11-15",
+                    "deathday": "",
+                    "hometown": "東京都",
+                    "bloodtype": "B",
+                    "sign": "さそり座",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "AKB48のメンバーでチームK所属。オープニングメンバーの1人。安定感のあるトーク力が高い評価を受ける。ユニット「ノースリーブス」では\"広報担当\"。出番を長く欲しいという意味の「尺ください」が定番の口上に。",
+                    "trivia": [
+                        "AKB48のスタッフだった岩崎夏海のベストセラー「もし高校野球の女子マネージャーがドラッカーの「マネジメント」を読んだら」の主人公・川島みなみのモデル。映画化の際は、後輩マネージャーを演じた。"
+                    ],
+                    "point": 4421,
+                    "wikiname": "峯岸みなみ",
+                    "wikidata": "峯岸 みなみ（みねぎし みなみ、1992年11月15日 - ）は、日本のアイドルであり、女性アイドルグループAKB48チーム4のメンバーである。チーム4ではキャプテンを務めている。
+東京都出身。
+プロダクション尾木所属。",
+                    "adult_flg": 0,
+                    "photo_url": "",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776EI",
+                "relation_type_name": "所属グループ/メンバー"
+            },
+            {
+                "person": {
+                    "person_id": "PPS00000WV8P",
+                    "person_name": "渡辺美優紀",
+                    "person_kana": "わたなべみゆき",
+                    "person_en": "",
+                    "person_type": 1,
+                    "person_type_name": "人",
+                    "domain": 1,
+                    "domain_name": "日本",
+                    "gender": 2,
+                    "gender_name": "女",
+                    "birthday": "1993-09-19",
+                    "deathday": "",
+                    "hometown": "奈良県",
+                    "bloodtype": "B",
+                    "sign": "おとめ座",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "奈良県出身、女性アイドルグループNMB48チームBIIのメンバー。ニックネームは「みるきー」。2010年9月NMB48第1期生オーディションに合格。11年3月チームN、12年3月AKB48チームBを兼任。14年2月AKB48グループ大組閣祭りでNMB48チームBIIおよびSKE48チームS兼任した。",
+                    "trivia": [
+                        "ふわふわしていて天然と言われるが、本人はそれを否定。習字が得意で、番組で書道の企画を担当する。",
+                        "いつも笑顔でニコニコしていて、公演でのファン受けが高い。"
+                    ],
+                    "point": 4608,
+                    "wikiname": "渡辺美優紀",
+                    "wikidata": "渡辺 美優紀（わたなべ みゆき、1993年9月19日 - ）は、日本のアイドルであり、女性アイドルグループNMB48チームBIIのメンバーで、SKE48チームSの元メンバーである。
+奈良県出身。
+KYORAKU吉本.ホールディングス所属。",
+                    "adult_flg": 0,
+                    "photo_url": "images/art/00008/00589214_001_L.jpg",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776EI",
+                "relation_type_name": "所属グループ/メンバー"
+            },
+            {
+                "person": {
+                    "person_id": "PPS000004J7C",
+                    "person_name": "松井珠理奈",
+                    "person_kana": "まついじゆりな",
+                    "person_en": "",
+                    "person_type": 1,
+                    "person_type_name": "人",
+                    "domain": 1,
+                    "domain_name": "日本",
+                    "gender": 2,
+                    "gender_name": "女",
+                    "birthday": "1997-03-08",
+                    "deathday": "",
+                    "hometown": "愛知県",
+                    "bloodtype": "B",
+                    "sign": "うお座",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "SKE48のチームS、AKB48のチームKに所属。グループのエース格。小学生のときに受けたメンバーオーディションでプロデューサーの秋元康が見初め、AKB48のシングル「大声ダイヤモンド」でいきなりセンターに抜擢。",
+                    "trivia": [
+                        "同姓の松井玲奈と「JRコンビ」と呼ばれる。NMB48・渡辺美優紀と共に、グループ内の複数のチームに籍を置く初のメンバーとなる。",
+                        "大人っぽい外見で実年齢より遥か上に見られがちだが、メンバーに甘えて抱きついたりもよくしている。",
+                        "メンバー内ではキス魔で有名。"
+                    ],
+                    "point": 4975,
+                    "wikiname": "松井珠理奈",
+                    "wikidata": "松井 珠理奈（まつい じゅりな、1997年3月8日 - ）は、日本のアイドルであり、女性アイドルグループSKE48チームSのメンバーおよびAKB48チームKのメンバー（期間限定）。
+愛知県出身。
+AKS所属。",
+                    "adult_flg": 0,
+                    "photo_url": "",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776EI",
+                "relation_type_name": "所属グループ/メンバー"
+            },
+            {
+                "person": {
+                    "person_id": "PPS00000FSVZ",
+                    "person_name": "小林よしのり",
+                    "person_kana": "こばやしよしのり",
+                    "person_en": "",
+                    "person_type": 1,
+                    "person_type_name": "人",
+                    "domain": 1,
+                    "domain_name": "日本",
+                    "gender": 1,
+                    "gender_name": "男",
+                    "birthday": "1953-08-31",
+                    "deathday": "",
+                    "hometown": "福岡県福岡市",
+                    "bloodtype": "",
+                    "sign": "おとめ座",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "大学在学中の昭和５０年少年ギャグ漫画家としてデビュー。６１年より「コロコロコミック」に「おぼっちゃまくん」を連載。主人公の使う“茶魔語”が話題となる。平成元年にはＴＶアニメ化され、大ヒット。「ＳＰＡ！」に連載した「ゴーマニズム宣言」では、“ごーまんかましてよかですか？”の決めせりふで話題となる。オウム真理教との対立、薬害エイズ問題での厚生省告発、従軍慰安婦問題における発言など社会派の漫画家として活躍。映画「逆噴射家族」の脚本家としても知られる。",
+                    "trivia": [
+
+                    ],
+                    "point": 1719,
+                    "wikiname": "小林よしのり",
+                    "wikidata": "小林 よしのり（こばやし よしのり、1953年8月31日 - ）は、日本の漫画家、評論家。「よしりん企画」社長、「ゴー宣道場」主催。
+福岡県福岡市出身（出生は大野城市）。本名、小林善範（読み同じ）。
+福岡大学人文学部フランス語学科在学中、1976年に『ああ勉強一直線』を投稿しデビュー。『東大一直線』『おぼっちゃまくん』などのヒット作を持つ。
+1992年の『ゴーマニズム宣言』以降、ギャグ路線だけでなく思想的・政治思想路線などの、社会評論的な活動も行うようになる。
+2002年から季刊誌『わしズム』責任編集長なども務める。",
+                    "adult_flg": 0,
+                    "photo_url": "",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776G8",
+                "relation_type_name": "影響 を受けた。"
+            },
+            {
+                "person": {
+                    "person_id": "PPS00000M81L",
+                    "person_name": "坂口杏里",
+                    "person_kana": "さかぐちあんり",
+                    "person_en": "",
+                    "person_type": 1,
+                    "person_type_name": "人",
+                    "domain": 1,
+                    "domain_name": "日本",
+                    "gender": 2,
+                    "gender_name": "女",
+                    "birthday": "1991-03-03",
+                    "deathday": "",
+                    "hometown": "東京都",
+                    "bloodtype": "B",
+                    "sign": "うお座",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "■生年月日：１９９１年３月３日
+■出身地：東京都",
+                    "trivia": [
+
+                    ],
+                    "point": 2009,
+                    "wikiname": "坂口杏里",
+                    "wikidata": "坂口 杏里（さかぐち あんり、1991年3月3日 - ）は、日本の女性アイドル・タレント。
+アヴィラ所属。",
+                    "adult_flg": 0,
+                    "photo_url": "",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776G8",
+                "relation_type_name": "影響 を受けた。"
+            },
+            {
+                "person": {
+                    "person_id": "PPS0000056HS",
+                    "person_name": "DiVa",
+                    "person_kana": "でいーば",
+                    "person_en": "",
+                    "person_type": 2,
+                    "person_type_name": "グループ",
+                    "domain": 1,
+                    "domain_name": "日本",
+                    "gender": 2,
+                    "gender_name": "女",
+                    "birthday": "2011-04-",
+                    "deathday": "2014-11-30",
+                    "hometown": "",
+                    "bloodtype": "",
+                    "sign": "",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "１９９５年高瀬“Ｍａｋｏｒｉｎｇ”麻里子（ｖｏ）、谷川賢作（ｐ）、大坪寛彦（ｂ）によって結成された“現代詩をうたう”バンド。谷川俊太郎作品をはじめ、日本を代表する詩人たちの作品を、ジャンルにとらわれないサウンドで表現。ファースト・アルバム『なあに』をリリース後、コロムビアから２枚のアルバムとシングルを発表。２００２年１月以来、活動を休止していたが、２００７年４月のライヴで再開、２００８年２月の東京オペラシティでのコンサートに合わせてニュー・アルバム『うたっていいですか』をリリースした。",
+                    "trivia": [
+                        "「月の裏側」のカップリング曲「インフォメーション」は、AKB48関連では初めて小室哲哉が楽曲提供。"
+                    ],
+                    "point": 3990,
+                    "wikiname": "DiVA",
+                    "wikidata": "DiVA（ディーヴァ）は、日本の女性アイドルグループ、AKB48のoffice48所属メンバーから選抜された音楽ユニット。",
+                    "adult_flg": 0,
+                    "photo_url": "images/art/00006/00092903_001_L.jpg",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776EK",
+                "relation_type_name": "ファミリー又はプロジェクト"
+            },
+            {
+                "person": {
+                    "person_id": "PPS00000KQP5",
+                    "person_name": "鈴木まりや",
+                    "person_kana": "すずきまりや",
+                    "person_en": "",
+                    "person_type": 1,
+                    "person_type_name": "人",
+                    "domain": 1,
+                    "domain_name": "日本",
+                    "gender": 2,
+                    "gender_name": "女",
+                    "birthday": "1991-04-29",
+                    "deathday": "",
+                    "hometown": "埼玉県",
+                    "bloodtype": "AB",
+                    "sign": "おうし座",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "SNH48および、AKB48のメンバー。愛称は「まりやんぬ」。キャッチフレーズは「3時のおやつはまりやんぬ」という食いしん坊キャラ。",
+                    "trivia": [
+                        "AKB48のオーディションには4回連続で落ち、5回目の7期研究生オーディションで合格した。"
+                    ],
+                    "point": 2545,
+                    "wikiname": "鈴木まりや",
+                    "wikidata": "鈴木 まりや（すずき まりや、1991年4月29日 - ）は、日本出身のアイドルであり、女性アイドルグループSNH48チームSIIおよびAKB48チームKのメンバーである。
+埼玉県出身。
+フレイヴエンターテインメント所属。",
+                    "adult_flg": 0,
+                    "photo_url": "",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776EI",
+                "relation_type_name": "所属グループ/メンバー"
+            },
+            {
+                "person": {
+                    "person_id": "PPS000016W7P",
+                    "person_name": "小林香菜",
+                    "person_kana": "こばやしかな",
+                    "person_en": "",
+                    "person_type": 1,
+                    "person_type_name": "人",
+                    "domain": 1,
+                    "domain_name": "日本",
+                    "gender": 2,
+                    "gender_name": "女",
+                    "birthday": "1991-05-17",
+                    "deathday": "",
+                    "hometown": "埼玉県",
+                    "bloodtype": "B",
+                    "sign": "おうし座",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "AKB48のメンバー。2011年度の東京タワーイメージガール。映画「はい！もしもし、大塚薬局ですが」で初主演。匂いフェチで病院や薬局の匂いが好き。苦手だった料理を克服し、今ではブログで自身の料理を紹介するほど。",
+                    "trivia": [
+                        "ボケキャラで、「右折ってどっちですか？」と聞いた、非通知に折り返し電話をかけようとした…などの逸話を持つ。"
+                    ],
+                    "point": 2589,
+                    "wikiname": "小林香菜",
+                    "wikidata": "小林 香菜（こばやし かな、1991年5月17日 - ）は、日本のアイドルであり、女性アイドルグループAKB48チームKのメンバーである。
+埼玉県越谷市出身。
+フレイヴ エンターテインメント所属。",
+                    "adult_flg": 0,
+                    "photo_url": "",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776EI",
+                "relation_type_name": "所属グループ/メンバー"
+            },
+            {
+                "person": {
+                    "person_id": "PPS00001HM9M",
+                    "person_name": "永尾まりや",
+                    "person_kana": "ながおまりや",
+                    "person_en": "",
+                    "person_type": 1,
+                    "person_type_name": "人",
+                    "domain": 1,
+                    "domain_name": "日本",
+                    "gender": 2,
+                    "gender_name": "女",
+                    "birthday": "1994-03-10",
+                    "deathday": "",
+                    "hometown": "神奈川県",
+                    "bloodtype": "O",
+                    "sign": "うお座",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "神奈川県出身、女性アイドルグループAKB48チームKのメンバー。2009年9月AKB48第9期研究生オーディションに合格、11月セレクション審査に合格し研究生に。10年12月正規メンバー昇格が発表、11年6月チーム4に昇格。12年11月より大島チームKで活動開始。",
+                    "trivia": [
+                        "八重歯とアヒル口がチャームポイント。6年間習っていたという器械体操が得意で、ロンダートなどを披露。ファッションモデルも務める。"
+                    ],
+                    "point": 3340,
+                    "wikiname": "永尾まりや",
+                    "wikidata": "永尾 まりや（ながお まりや、1994年3月10日 - ）は、日本のアイドル・ファッションモデルであり、女性アイドルグループAKB48チームKのメンバーである。
+神奈川県横浜市出身。
+アービング所属。",
+                    "adult_flg": 0,
+                    "photo_url": "",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776EI",
+                "relation_type_name": "所属グループ/メンバー"
+            },
+            {
+                "person": {
+                    "person_id": "PPS00000HDS9",
+                    "person_name": "岩佐美咲",
+                    "person_kana": "いわさみさき",
+                    "person_en": "",
+                    "person_type": 1,
+                    "person_type_name": "人",
+                    "domain": 1,
+                    "domain_name": "日本",
+                    "gender": 2,
+                    "gender_name": "女",
+                    "birthday": "1995-01-30",
+                    "deathday": "",
+                    "hometown": "千葉県",
+                    "bloodtype": "O",
+                    "sign": "みずがめ座",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "千葉県出身、女性アイドルグループAKB48チームBのメンバー。2008年12月AKB48第97期研究生オーディションに合格、10年6月「渡り廊下走り隊7」に加入、7月チームAへ昇格。12年2月「無人駅」でソロデビュー、11月梅田チームBで活動開始。14年2月AKB48グループ大組閣祭りでチームKに移籍。",
+                    "trivia": [
+                        "演歌好きで、2011年4月に氷川きよし、山川豊らが所属する長良プロダクションに移籍した。"
+                    ],
+                    "point": 3820,
+                    "wikiname": "岩佐美咲",
+                    "wikidata": "岩佐 美咲（いわさ みさき、1995年1月30日 - ）は、日本の演歌歌手、アイドルであり、女性アイドルグループAKB48チームKのメンバーである。
+千葉県出身。
+長良プロダクション所属。2012年、第45回日本有線大賞で新人賞、ロングリクエスト賞を受賞。",
+                    "adult_flg": 0,
+                    "photo_url": "",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776EI",
+                "relation_type_name": "所属グループ/メンバー"
+            },
+            {
+                "person": {
+                    "person_id": "PPS000003QLL",
+                    "person_name": "ノースリーブス",
+                    "person_kana": "のーすりーぶす",
+                    "person_en": "",
+                    "person_type": 2,
+                    "person_type_name": "グループ",
+                    "domain": 1,
+                    "domain_name": "日本",
+                    "gender": 2,
+                    "gender_name": "女",
+                    "birthday": "2008-09-",
+                    "deathday": "",
+                    "hometown": "",
+                    "bloodtype": "",
+                    "sign": "",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "AKB48の派生ユニット。メンバーは小嶋陽菜、高橋みなみ、峯岸みなみの1期生3人。2008年に「Relax!」でデビュー。「AKB48の制服を脱いでノースリーブで秋葉原を飛び出す」がコンセプトだった。「no3b」とも略される。",
+                    "trivia": [
+                        "小嶋が「マイペース担当」、高橋が「まじめ担当」、峯岸が「広報担当」とされる。デビュー曲「Relax!」は、3人が男装してアイドルを演じたドラマ「メン☆ドル～イケメンアイドル～」の主題歌。2011年元日発売のアルバム「ノースリーブス」で初のオリコン1位に。"
+                    ],
+                    "point": 4718,
+                    "wikiname": "ノースリーブス",
+                    "wikidata": "ノースリーブスは、AKB48旧チームAから選抜され結成した、3人組のアイドルユニット。略称は「no3b」。",
+                    "adult_flg": 0,
+                    "photo_url": "images/art/00006/00077285_001_L.jpg",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776EK",
+                "relation_type_name": "ファミリー又はプロジェクト"
+            },
+            {
+                "person": {
+                    "person_id": "PPS000004GOP",
+                    "person_name": "山里亮太",
+                    "person_kana": "やまさとりようた",
+                    "person_en": "",
+                    "person_type": 1,
+                    "person_type_name": "人",
+                    "domain": 1,
+                    "domain_name": "日本",
+                    "gender": 1,
+                    "gender_name": "男",
+                    "birthday": "1977-04-14",
+                    "deathday": "",
+                    "hometown": "千葉県",
+                    "bloodtype": "AB",
+                    "sign": "おひつじ座",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "■生年月日:1977年4月14日
+■出身地:千葉県",
+                    "trivia": [
+                        "\"南海キャンディーズ\"以前に組んでいたコンビ\"足軽エンペラー\"でバラエティー番組\"ガチンコ!\"内の漫才コンテストで優勝している。"
+                    ],
+                    "point": 5893,
+                    "wikiname": "山里亮太",
+                    "wikidata": "山里 亮太（やまさと りょうた、1977年4月14日 - ）は、日本のお笑いタレント、ナレーター、ラジオパーソナリティ。お笑いコンビ南海キャンディーズのツッコミ担当。愛称および別名義は「山ちゃん（やまちゃん）」、過去の別名義は「山里（やまさと）」（「来歴」節も参照）。相方は、“しずちゃん”こと山崎静代。
+関西大学文学部教育学科卒業。専攻は心理学、学位（文学士）（関西大学）。
+身長176cm、体重75.5kg。血液型AB型。
+",
+                    "adult_flg": 0,
+                    "photo_url": "",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776G8",
+                "relation_type_name": "影響 を受けた。"
+            },
+            {
+                "person": {
+                    "person_id": "PPS00003WQPD",
+                    "person_name": "前田亜美",
+                    "person_kana": "まえだあみ",
+                    "person_en": "",
+                    "person_type": 1,
+                    "person_type_name": "人",
+                    "domain": 1,
+                    "domain_name": "日本",
+                    "gender": 2,
+                    "gender_name": "女",
+                    "birthday": "1995-06-01",
+                    "deathday": "",
+                    "hometown": "東京都小平市",
+                    "bloodtype": "O",
+                    "sign": "ふたご座",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "AKB48のメンバーでチームＡに所属。太い眉毛がチャームポイント。長身のモデル体型で「ラブベリー」の専属モデルも務める。",
+                    "trivia": [
+                        "「週刊プレイボーイ」誌上でのユニット「チームPB」メンバーに当時の研究生から唯一選ばれた。"
+                    ],
+                    "point": 2517,
+                    "wikiname": "前田亜美",
+                    "wikidata": "前田 亜美（まえだ あみ、1995年6月1日 - ）は、日本のアイドルであり、女性アイドルグループAKB48チームAのメンバーである。
+東京都出身。
+AKS所属。",
+                    "adult_flg": 0,
+                    "photo_url": "",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776EI",
+                "relation_type_name": "所属グループ/メンバー"
+            },
+            {
+                "person": {
+                    "person_id": "PPS0000040J9",
+                    "person_name": "高城亜樹",
+                    "person_kana": "たかじようあき",
+                    "person_en": "",
+                    "person_type": 1,
+                    "person_type_name": "人",
+                    "domain": 1,
+                    "domain_name": "日本",
+                    "gender": 2,
+                    "gender_name": "女",
+                    "birthday": "1991-10-03",
+                    "deathday": "",
+                    "hometown": "福岡県北九州市",
+                    "bloodtype": "B",
+                    "sign": "てんびん座",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "AKB48のメンバー。愛称は「あきちゃ」。グループ随一の天然キャラ。研究生として公演デビューから71日という最速記録で正式メンバーに昇格。ユニット「フレンチ・キス」でも活動。",
+                    "trivia": [
+                        "顔を真っ赤にして「呼吸の仕方が分からなくなった」と言ってたなど、天然ぶりを物語るエピソードには事欠かない。"
+                    ],
+                    "point": 3386,
+                    "wikiname": "高城亜樹",
+                    "wikidata": "高城 亜樹（たかじょう あき、1991年10月3日 - ）は、日本のアイドルであり、女性アイドルグループAKB48チームKのメンバーである。
+東京都出身。
+ワタナベエンターテインメント所属。",
+                    "adult_flg": 0,
+                    "photo_url": "",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776EI",
+                "relation_type_name": "所属グループ/メンバー"
+            },
+            {
+                "person": {
+                    "person_id": "PPS00000E8C3",
+                    "person_name": "渡り廊下走り隊",
+                    "person_kana": "わたりろうかはしりたい",
+                    "person_en": "",
+                    "person_type": 2,
+                    "person_type_name": "グループ",
+                    "domain": 1,
+                    "domain_name": "日本",
+                    "gender": 2,
+                    "gender_name": "女",
+                    "birthday": "2008-10-",
+                    "deathday": "",
+                    "hometown": "",
+                    "bloodtype": "",
+                    "sign": "",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "AKB48の旧チームBから生まれた派生ユニット。略称は「ワロタ」。プロデューサー秋元康によると、最もJC（女子中学生）、JK（女子高生）らしいメンバーを集めた。4thシングル「アッカンベー橋」がオリコン1位。",
+                    "trivia": [
+                        "秋元康がかつて手掛けたおニャン子クラブの「うしろゆびさされ組」「うしろ髪ひかれ隊」との3部作と位置づけられている。当初は渡辺麻友、仲川遥香、平嶋夏海、多田愛佳の4人組で2009年にデビュー。2010年に菊池あやかが加入。2011年にはさらに2人が加わった「渡り廊下走り隊7」として活動。"
+                    ],
+                    "point": 4391,
+                    "wikiname": "渡り廊下走り隊",
+                    "wikidata": "渡り廊下走り隊7（わたりろうかはしりたいセブン）は、AKB48のメンバーによって結成された日本のアイドルユニットである。2014年2月9日、約5年におよぶ活動に幕を閉じ解散した。
+前身ユニットである渡り廊下走り隊（わたりろうかはしりたい）と、事実上の原型となった限定ユニットであるお菓子なシスターズ（おかしなシスターズ）についても本項で扱う。",
+                    "adult_flg": 0,
+                    "photo_url": "",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776EK",
+                "relation_type_name": "ファミリー又はプロジェクト"
+            },
+            {
+                "person": {
+                    "person_id": "PPS00000ABGD",
+                    "person_name": "入山杏奈",
+                    "person_kana": "いりやまあんな",
+                    "person_en": "",
+                    "person_type": 1,
+                    "person_type_name": "人",
+                    "domain": 1,
+                    "domain_name": "日本",
+                    "gender": 2,
+                    "gender_name": "女",
+                    "birthday": "1995-12-03",
+                    "deathday": "",
+                    "hometown": "千葉県",
+                    "bloodtype": "B",
+                    "sign": "いて座",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "2010年『AKB48 第7回研究生（10期生）オーディション』に合格し、AKB48研究生に。2011年にチーム4へ昇格し、翌12年、26thシングル「真夏のSounds good !」で初めて選抜メンバー入りを果たす。",
+                    "trivia": [
+                        "2012年、『AKB48ネ申テレビ』の企画で撮影した写真が第86回国展写真部に入選し、国立新美術館に作品が展示された。"
+                    ],
+                    "point": 3804,
+                    "wikiname": "入山杏奈",
+                    "wikidata": "入山 杏奈（いりやま あんな、1995年12月3日 - ）は、日本のアイドルであり、女性アイドルグループAKB48チームAのメンバーである。
+千葉県出身。
+太田プロダクション所属。",
+                    "adult_flg": 0,
+                    "photo_url": "",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776EI",
+                "relation_type_name": "所属グループ/メンバー"
+            },
+            {
+                "person": {
+                    "person_id": "PPS00000Y24Y",
+                    "person_name": "ジョセフ・カーン",
+                    "person_kana": "じよせふかーん",
+                    "person_en": "Joseph Kahn",
+                    "person_type": 1,
+                    "person_type_name": "人",
+                    "domain": 2,
+                    "domain_name": "海外",
+                    "gender": 1,
+                    "gender_name": "男",
+                    "birthday": "1972-10-12",
+                    "deathday": "",
+                    "hometown": "アメリカ",
+                    "bloodtype": "",
+                    "sign": "てんびん座",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "",
+                    "trivia": [
+
+                    ],
+                    "point": 1435,
+                    "wikiname": "",
+                    "wikidata": "",
+                    "adult_flg": 0,
+                    "photo_url": "",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776GF",
+                "relation_type_name": "制作スタッフ として参加"
+            },
+            {
+                "person": {
+                    "person_id": "PPS0000064O4",
+                    "person_name": "酒井ミキオ",
+                    "person_kana": "さかいみきお",
+                    "person_en": "",
+                    "person_type": 1,
+                    "person_type_name": "人",
+                    "domain": 1,
+                    "domain_name": "日本",
+                    "gender": 1,
+                    "gender_name": "男",
+                    "birthday": "1970-08-24",
+                    "deathday": "",
+                    "hometown": "北海道旭川市",
+                    "bloodtype": "A",
+                    "sign": "おとめ座",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "１９８３年姉経由で聴いたカルチャークラブがきっかけで音楽を聴くことを趣味にし始める。１９８９年上京。１９９４年デモテープが認められ、２月シングル「今だけは君を離さない」でデビュー。",
+                    "trivia": [
+
+                    ],
+                    "point": 4567,
+                    "wikiname": "酒井ミキオ",
+                    "wikidata": "酒井 ミキオ（さかい ミキオ、1970年8月24日 - ）は、北海道出身の男性シンガーソングライターである。
+A型。身長180cm。体重66kg。本名は酒井幹郎。ソリッドフォース所属。
+北海道旭川市に生まれ、幼少期に千葉県や北海道内各地を転々とするが、一番長く青春時代を過ごし、実家のある札幌市を出身地とする。
+1994年、シングル「今だけは君を離さない」でデビューを果たす。近年は、J-POP系のアーティスト・ドラマ・アニメなど、各メディアに楽曲提供の傍ら、年に数回のライブ活動をしている。『スクライド』以降は谷口悟朗監督の手がけるアニメ作品の常連となっており、曲の提供だけでなく作詞・作曲・編曲も手がける。",
+                    "adult_flg": 0,
+                    "photo_url": "",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776FV",
+                "relation_type_name": "プロデューサー・作詞・作曲 をした。"
+            },
+            {
+                "person": {
+                    "person_id": "PPS00001DVHO",
+                    "person_name": "田名部生来",
+                    "person_kana": "たなべみく",
+                    "person_en": "",
+                    "person_type": 1,
+                    "person_type_name": "人",
+                    "domain": 1,
+                    "domain_name": "日本",
+                    "gender": 2,
+                    "gender_name": "女",
+                    "birthday": "1992-12-02",
+                    "deathday": "",
+                    "hometown": "滋賀県近江八幡市",
+                    "bloodtype": "O",
+                    "sign": "いて座",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "AKB48のメンバー。愛称は「たなみん」。アニメや特撮が好き。滋賀県出身で「滋賀ドル」を名乗ることも。",
+                    "trivia": [
+                        "アニメ好きのメンバー渡辺麻友、多田愛佳、仲谷明香と共にプライベートで「ヲタ4」を結成している。"
+                    ],
+                    "point": 2487,
+                    "wikiname": "田名部生来",
+                    "wikidata": "田名部 生来（たなべ みく、1992年12月2日 - ）は、日本のアイドルであり、女性アイドルグループAKB48チームBのメンバーである。
+滋賀県近江八幡市出身。
+AKS所属。元Mousa所属。",
+                    "adult_flg": 0,
+                    "photo_url": "",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776EI",
+                "relation_type_name": "所属グループ/メンバー"
+            },
+            {
+                "person": {
+                    "person_id": "PPS00001AK2A",
+                    "person_name": "フレンチ・キス",
+                    "person_kana": "ふれんちきす",
+                    "person_en": "",
+                    "person_type": 2,
+                    "person_type_name": "グループ",
+                    "domain": 1,
+                    "domain_name": "日本",
+                    "gender": 2,
+                    "gender_name": "女",
+                    "birthday": "2010-06-",
+                    "deathday": "2015-11-05",
+                    "hometown": "",
+                    "bloodtype": "",
+                    "sign": "",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "AKB48の派生ユニット。メンバーは柏木由紀、高城亜樹、倉持明日香の清純派3人で、「親に紹介したい3人組」がキャッチフレーズ。「ふんわり系お嬢様ユニット」とも呼ばれる。2010年にシングル「ずっと 前から」でデビュー。",
+                    "trivia": [
+                        "「ずっと 前から」の付属ＤＶＤにはミュージッククリップの他に、3人が主演のオリジナルドラマ（約40分）や「花の三姉妹」として挑戦したコントが盤種ごとに収録された。2011年には「春の火災予防運動」のポスターモデルにも起用されている。"
+                    ],
+                    "point": 4582,
+                    "wikiname": "フレンチ・キス_(アイドルユニット)",
+                    "wikidata": "フレンチ・キスは、日本の女性アイドルグループ、AKB48から派生したアイドルユニット。
+キャッチフレーズは「親に紹介したい3人組」。",
+                    "adult_flg": 0,
+                    "photo_url": "images/art/00006/00089054_001_L.jpg",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776EK",
+                "relation_type_name": "ファミリー又はプロジェクト"
+            },
+            {
+                "person": {
+                    "person_id": "PPS00001AMV9",
+                    "person_name": "柏木由紀",
+                    "person_kana": "かしわぎゆき",
+                    "person_en": "",
+                    "person_type": 1,
+                    "person_type_name": "人",
+                    "domain": 1,
+                    "domain_name": "日本",
+                    "gender": 2,
+                    "gender_name": "女",
+                    "birthday": "1991-07-15",
+                    "deathday": "",
+                    "hometown": "鹿児島県鹿児島市",
+                    "bloodtype": "B",
+                    "sign": "かに座",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "■生年月日:1991年7月15日
+■出身地:鹿児島県",
+                    "trivia": [
+                        "AKB48に入る以前、モーニング娘。のオーディションも受けいていて、三次選考まで進出した"
+                    ],
+                    "point": 5708,
+                    "wikiname": "柏木由紀",
+                    "wikidata": "柏木 由紀（かしわぎ ゆき、1991年7月15日 - ）は、日本のアイドルであり、女性アイドルグループAKB48チームB、元NMB48チームNのメンバー、またAKB48から派生したアイドルユニットフレンチ・キスのメンバーである。
+鹿児島県鹿児島市出身。
+ワタナベエンターテインメント所属。",
+                    "adult_flg": 0,
+                    "photo_url": "images/art/00007/00580065_001_L.jpg",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776EI",
+                "relation_type_name": "所属グループ/メンバー"
+            },
+            {
+                "person": {
+                    "person_id": "PPS00000691Z",
+                    "person_name": "渡辺麻友",
+                    "person_kana": "わたなべまゆ",
+                    "person_en": "",
+                    "person_type": 1,
+                    "person_type_name": "人",
+                    "domain": 1,
+                    "domain_name": "日本",
+                    "gender": 2,
+                    "gender_name": "女",
+                    "birthday": "1994-03-26",
+                    "deathday": "",
+                    "hometown": "埼玉県",
+                    "bloodtype": "AB",
+                    "sign": "おひつじ座",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "AKB48のチームBメンバー。愛称は「まゆゆ」。真性のアニメヲタクで、ブログなどでアニメや声優のネタがたびたび出る。歌だけでなく、ドラマ「マジすか学園」でのネズミ役などで演技力にも高い評価を受ける。ユニット「渡り廊下走り隊」でも活躍。2012年選抜総選挙では第2位、13年には3位となるも14年に念願のトップを獲得。",
+                    "trivia": [
+                        "あまりに完璧な美少女ぶりに“CG”とも言われる。",
+                        "絵を描くことが得意で、2010年9月9日発売41号の「ヤングジャンプ」にてマンガ家デビューを果たす。",
+                        "特技は「サザエさん」のアナゴさんの顔を8秒で描けること。"
+                    ],
+                    "point": 6933,
+                    "wikiname": "渡辺麻友",
+                    "wikidata": "渡辺 麻友（わたなべ まゆ、1994年3月26日 - ）は、日本のアイドルであり、女性アイドルグループAKB48チームBのメンバーである。
+埼玉県出身。
+プロダクション尾木所属。",
+                    "adult_flg": 0,
+                    "photo_url": "images/art/00007/00131528_001_L.jpg",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776EI",
+                "relation_type_name": "所属グループ/メンバー"
+            },
+            {
+                "person": {
+                    "person_id": "PPS000001ZXU",
+                    "person_name": "中野裕之",
+                    "person_kana": "なかのひろゆき",
+                    "person_en": "",
+                    "person_type": 1,
+                    "person_type_name": "人",
+                    "domain": 1,
+                    "domain_name": "日本",
+                    "gender": 1,
+                    "gender_name": "男",
+                    "birthday": "1958-01-22",
+                    "deathday": "",
+                    "hometown": "広島県福山市",
+                    "bloodtype": "",
+                    "sign": "みずがめ座",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "１９８５年、日本初の本格的なミュージック・ビデオ制作会社となったタイレル・コーポレーションを設立。ビデオアート作家として、ブラジル、フランスなどで作品を公開。１９９０年、ＭＴＶ　ＭＵＳＩＣ　ＡＷＡＲＤ６部門にノミネートされたディー・ライト『ＧＲＯＯＶＥ　ＩＳ　ＩＮ　ＴＨＥ　ＨＥＡＲＴ』以来、精力的に海外で活動。１９９３年年、ピースデリック・スタジオを設立。ミュージック・ビデオの他にイルカをはじめとする自然の映像を制作。",
+                    "trivia": [
+
+                    ],
+                    "point": 2624,
+                    "wikiname": "中野裕之",
+                    "wikidata": "中野裕之
+中野 裕之（なかの ひろゆき、1958年1月22日 - ）は、広島県福山市出身の映像作家、ミュージックビデオ（MV、PV）監督、映画監督。ピースデリック有限会社所属。
+広島県立福山誠之館高等学校、早稲田大学商学部卒業。",
+                    "adult_flg": 0,
+                    "photo_url": "",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776GF",
+                "relation_type_name": "制作スタッフ として参加"
+            },
+            {
+                "person": {
+                    "person_id": "PPS00000647Y",
+                    "person_name": "蜷川実花",
+                    "person_kana": "にながわみか",
+                    "person_en": "",
+                    "person_type": 1,
+                    "person_type_name": "人",
+                    "domain": 1,
+                    "domain_name": "日本",
+                    "gender": 2,
+                    "gender_name": "女",
+                    "birthday": "1972-10-18",
+                    "deathday": "",
+                    "hometown": "東京都",
+                    "bloodtype": "",
+                    "sign": "てんびん座",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "写真家・映画監督
+木村伊兵衛写真賞ほか数々受賞。映像作品も多く手がける。2007年、初監督映画『さくらん』公開。2008年に個展「蜷川実花展」が全国の美術館を巡回し、のべ18万人を動員。2010年、Rizzoli N．Y．から写真集「MIKA NINAGAWA」を出版、世界各国で話題となる。2012年、監督映画『ヘルタースケルター』公開、22億円の興行収入を記録。2020年東京オリンピック・パラリンピック競技大会組織委員会理事就任。ninamika．com
+",
+                    "trivia": [
+
+                    ],
+                    "point": 2289,
+                    "wikiname": "蜷川実花",
+                    "wikidata": "蜷川 実花（にながわ みか、1972年10月18日 - ）は、日本の女性写真家、映画監督。愛称は「ニナミカ」。
+小山登美夫ギャラリーに所属している。2020年東京オリンピック・パラリンピック組織委員会理事。",
+                    "adult_flg": 1,
+                    "photo_url": "",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776GF",
+                "relation_type_name": "制作スタッフ として参加"
+            },
+            {
+                "person": {
+                    "person_id": "PPS00001AR1F",
+                    "person_name": "橋本陽菜",
+                    "person_kana": "はしもとはるな",
+                    "person_en": "",
+                    "person_type": 1,
+                    "person_type_name": "人",
+                    "domain": 1,
+                    "domain_name": "日本",
+                    "gender": 2,
+                    "gender_name": "女",
+                    "birthday": "2000-05-25",
+                    "deathday": "",
+                    "hometown": "富山県",
+                    "bloodtype": "A",
+                    "sign": "ふたご座",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "富山県出身、女性アイドルグループAKB48チーム8のメンバー。2014年3月、チーム8のメンバーとしてお披露目。ニックネームは「はる」。",
+                    "trivia": [
+
+                    ],
+                    "point": 1588,
+                    "wikiname": "",
+                    "wikidata": "",
+                    "adult_flg": 0,
+                    "photo_url": "",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776EI",
+                "relation_type_name": "所属グループ/メンバー"
+            },
+            {
+                "person": {
+                    "person_id": "PPS00000FBL5",
+                    "person_name": "前山田健一",
+                    "person_kana": "まえやまだけんいち",
+                    "person_en": "Maeyamada Kenichi",
+                    "person_type": 1,
+                    "person_type_name": "人",
+                    "domain": 1,
+                    "domain_name": "日本",
+                    "gender": 1,
+                    "gender_name": "男",
+                    "birthday": "1980-07-04",
+                    "deathday": "",
+                    "hometown": "大阪府大阪市住吉区",
+                    "bloodtype": "",
+                    "sign": "かに座",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "京大出身ニコ動育ちの飛び道具作詞作曲家。元々売れないセミプロ状態の時にニコニコ動画に投稿したDQ、マリオなどのゲーム音楽に歌詞、アレンジをつけ、多重録音で「うたってみた」動画が毎回数百万再生と大きく話題に。その実績をもとに、アニソン、アイドルソング方面で2009年ごろから大ブレイク。",
+                    "trivia": [
+                        "スターダストプロモーションの麻生夏子、ももいろクローバーの作品をプロデューサーとして多く手がけたことが縁で、自身もスターダストプロモーション芸能第3部に所属することとなった。"
+                    ],
+                    "point": 5918,
+                    "wikiname": "前山田健一",
+                    "wikidata": "前山田 健一（まえやまだ けんいち、1980年7月4日 - ）は、日本のミュージシャン、音楽プロデューサー、作詞家、作曲家、編曲家。
+大阪府大阪市住吉区出身。歌手やタレントとして活動する際はヒャダイン名義を用いている。ファイブエイス所属。ヒャダイン名義ではスターダストプロモーション所属。",
+                    "adult_flg": 0,
+                    "photo_url": "",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776FV",
+                "relation_type_name": "プロデューサー・作詞・作曲 をした。"
+            },
+            {
+                "person": {
+                    "person_id": "PPS0000039WP",
+                    "person_name": "Not yet",
+                    "person_kana": "のつといえつと",
+                    "person_en": "",
+                    "person_type": 2,
+                    "person_type_name": "グループ",
+                    "domain": 1,
+                    "domain_name": "日本",
+                    "gender": 2,
+                    "gender_name": "女",
+                    "birthday": "2011-01-",
+                    "deathday": "",
+                    "hometown": "",
+                    "bloodtype": "",
+                    "sign": "",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "AKB48の派生ユニット。メンバーは大島優子、指原莉乃、北原里英、横山由依。2011年に「週末Not yet」でデビューし、派生ユニットで過去最高の初週16万枚を売り上げてオリコン1位に。",
+                    "trivia": [
+                        "ユニット名はプロデューサーの秋元康が「歌もダンスも“まだまだ”だけど、その分成長できる」と命名。3人組ユニットはすでにあったため、9期生で成長株の横山由依を抜擢して4人組にしたという。「週末Not yet」は、東日本大震災直後の3月16日にリリースされた。"
+                    ],
+                    "point": 4529,
+                    "wikiname": "Not_yet",
+                    "wikidata": "Not yet（ノット・イェット）は、日本の女性アイドルグループAKB48から派生した4人組アイドルユニット。メンバーの大島優子がAKB48を卒業したことにより、ユニットとしての活動は事実上休止状態ではあるが、公式に解散などのリリースは行っていない。",
+                    "adult_flg": 0,
+                    "photo_url": "images/art/00008/00092500_001_L.jpg",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776EK",
+                "relation_type_name": "ファミリー又はプロジェクト"
+            },
+            {
+                "person": {
+                    "person_id": "PPS00000WW4J",
+                    "person_name": "HKT48",
+                    "person_kana": "えいちけーていーふおーていーえいと",
+                    "person_en": "",
+                    "person_type": 2,
+                    "person_type_name": "グループ",
+                    "domain": 1,
+                    "domain_name": "日本",
+                    "gender": 2,
+                    "gender_name": "女",
+                    "birthday": "2011-10-23",
+                    "deathday": "",
+                    "hometown": "福岡県",
+                    "bloodtype": "",
+                    "sign": "",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "AKB48の妹分として、福岡を拠点に活動するアイドルグループ。グループ名は博多に由来。2011年に第1期生オーディションが行われ24名が合格した。",
+                    "trivia": [
+                        "秋葉原のAKB48から、名古屋（栄）のSKE48、大阪（難波）のNMB48に続くファミリーの全国展開の第4弾。専用劇場はホークスタウンモール内に開業。"
+                    ],
+                    "point": 6644,
+                    "wikiname": "HKT48",
+                    "wikidata": "HKT48（エイチケーティー フォーティエイト）は、福岡市を拠点に活動する日本の女性アイドルグループ。
+2011年10月23日に誕生した。
+AKB48と同様、秋元康が総合プロデューサーを務める。",
+                    "adult_flg": 0,
+                    "photo_url": "images/art/00008/00150845_001_L.jpg",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776EK",
+                "relation_type_name": "ファミリー又はプロジェクト"
+            },
+            {
+                "person": {
+                    "person_id": "PPS000000DLO",
+                    "person_name": "織田哲郎",
+                    "person_kana": "おだてつろう",
+                    "person_en": "",
+                    "person_type": 1,
+                    "person_type_name": "人",
+                    "domain": 1,
+                    "domain_name": "日本",
+                    "gender": 1,
+                    "gender_name": "男",
+                    "birthday": "1958-03-11",
+                    "deathday": "",
+                    "hometown": "東京都",
+                    "bloodtype": "A",
+                    "sign": "うお座",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "８３年６月アルバム「ＶＯＩＣＥ」でソロ活動開始。相川七瀬のプロデュースも手掛ける。９８年ドント・ルック・バック結成。",
+                    "trivia": [
+                        "長門大幸とともに音楽事務所ビーイングの創設に関与した。",
+                        "1993年のオリコン作曲家ランキングにて史上初の1000万枚突破を記録して1位を獲得した。"
+                    ],
+                    "point": 6795,
+                    "wikiname": "織田哲郎",
+                    "wikidata": "織田 哲郎（おだ てつろう、1958年3月11日 - ）は、日本の作曲家、音楽プロデューサー、シンガーソングライター。本名は濱田哲郎。",
+                    "adult_flg": 0,
+                    "photo_url": "",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776FV",
+                "relation_type_name": "プロデューサー・作詞・作曲 をした。"
+            },
+            {
+                "person": {
+                    "person_id": "PPS0000011L5",
+                    "person_name": "岩井俊二",
+                    "person_kana": "いわいしゆんじ",
+                    "person_en": "",
+                    "person_type": 1,
+                    "person_type_name": "人",
+                    "domain": 1,
+                    "domain_name": "日本",
+                    "gender": 1,
+                    "gender_name": "男",
+                    "birthday": "1963-01-24",
+                    "deathday": "",
+                    "hometown": "宮城県仙台市",
+                    "bloodtype": "O",
+                    "sign": "みずがめ座",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "ドラマやミュージックビデオ、ＣＦ等多方面の映像世界で活動。１９９３年、ＴＶドラマ「ｉｆもしも～打ち上げ花火、下から見るか？　横から見るか？」で日本映画監督協会新人賞を受賞。その後、映画へ進出。短篇『ｕｎｄｏ』『ＰｉＣＮｉＣ』を経て１９９５年３月に劇場用長篇第１作「Ｌｏｖｅ　Ｌｅｔｔｅｒ」を発表。３ヶ月のロングランを記録、数々の映画賞に輝く。さらに長篇第２作として、架空都市「円都」（イェンタウン）を舞台にしたサクセスストーリー「スワロウテイル」を発表。９０年代を代表とする映像と音楽との見事なコラボレーションを展開した。",
+                    "trivia": [
+
+                    ],
+                    "point": 4517,
+                    "wikiname": "岩井俊二",
+                    "wikidata": "岩井 俊二（いわい しゅんじ、1963年1月24日 - ）は、宮城県仙台市出身の映画監督・映像作家・脚本家・音楽家。
+脚本家としては、網野 酸（あみの さん）というペンネームを用いることもある。血液型はO型。",
+                    "adult_flg": 0,
+                    "photo_url": "",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776GF",
+                "relation_type_name": "制作スタッフ として参加"
+            },
+            {
+                "person": {
+                    "person_id": "PPS000003HBL",
+                    "person_name": "小嶋陽菜",
+                    "person_kana": "こじまはるな",
+                    "person_en": "",
+                    "person_type": 1,
+                    "person_type_name": "人",
+                    "domain": 1,
+                    "domain_name": "日本",
+                    "gender": 2,
+                    "gender_name": "女",
+                    "birthday": "1988-04-19",
+                    "deathday": "",
+                    "hometown": "埼玉県",
+                    "bloodtype": "O",
+                    "sign": "おひつじ座",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "AKB48のチームＡメンバー。愛称は「こじはる」。公演などの口上で使うキャッチフレーズを「埼玉から来ました」で通し、郷土愛が強い。ユニット「ノースリーブス」でも活動し、“マイペース担当”とされている。シングルの全表題曲に選抜入りを果たす(2012年現在)など人気も高い。",
+                    "trivia": [
+                        "選抜メンバーの常連。19thシングルの選抜メンバーを決めた「じゃんけん大会」でも3位となり、全シングルでメディア選抜に入っている唯一のメンバーに。"
+                    ],
+                    "point": 5974,
+                    "wikiname": "小嶋陽菜",
+                    "wikidata": "小嶋 陽菜（こじま はるな、1988年4月19日 - ）は、日本の女優、アイドルであり、女性アイドルグループAKB48チームAのメンバーである。愛称はこじはる、にゃんにゃん、ニャロなど。
+埼玉県浦和市（現・さいたま市）出身。
+プロダクション尾木所属。",
+                    "adult_flg": 0,
+                    "photo_url": "",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776EI",
+                "relation_type_name": "所属グループ/メンバー"
+            },
+            {
+                "person": {
+                    "person_id": "PPS0000008IG",
+                    "person_name": "秋元康",
+                    "person_kana": "あきもとやすし",
+                    "person_en": "",
+                    "person_type": 1,
+                    "person_type_name": "人",
+                    "domain": 1,
+                    "domain_name": "日本",
+                    "gender": 1,
+                    "gender_name": "男",
+                    "birthday": "1956-05-02",
+                    "deathday": "",
+                    "hometown": "東京都目黒区",
+                    "bloodtype": "O",
+                    "sign": "おうし座",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "中大附属高２年の時コメディ番組の台本をラジオ局に持ち込み、以後ラジオ・テレビの放送作家となる。「ザ・ベストテン」「オールナイトフジ」などを手掛ける。昭和５８年から作詞活動も始め、次々とヒットをとばす。代表作に美空ひばり「川の流れのように」など。とんねるず、おニャン子クラブなどの仕掛人として知られる。映画監督作品に「川の流れのように」、映画原作・脚本に「恋と花火と観覧車」など。８年松竹の奥山和由プロデューサーと共同でソフト製作会社ネクスト・エンターテインメントを設立。１０年セガ・エンタープライゼス社外取締役に就任、ゲーム機“ドリームキャスト”のＣＭ「湯川専務シリーズ」を手がける。",
+                    "trivia": [
+                        "美空ひばりの名曲「川の流れのように」の作詞などシリアスな歌詞のヒット曲も生み出している。"
+                    ],
+                    "point": 11882,
+                    "wikiname": "秋元康",
+                    "wikidata": "秋元 康（あきもと やすし、1958年5月2日 - ）は、日本の作詞家、放送作家、プロデューサー、映画監督、漫画原作者。
+2005年に結成された女性アイドルグループ『AKB48』とその姉妹グループ、およびそれらメンバーが所属するユニットの総合プロデューサーとしても知られている。
+2007年より京都造形芸術大学副学長を務める。血液型O型。
+日本映画監督協会会員。
+2009年4月より2012年5月まで日本放送作家協会理事長を務めた。2020年東京オリンピック・パラリンピック組織委員会理事。2013年10月現在、東京都渋谷区在住。
+自身が取締役を務め、妻の高井麻巳子（元タレント、現姓秋元）が監査役を務める株式会社秋元康事務所に所属している。",
+                    "adult_flg": 0,
+                    "photo_url": "",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776FV",
+                "relation_type_name": "プロデューサー・作詞・作曲 をした。"
+            },
+            {
+                "person": {
+                    "person_id": "PPS0000074UW",
+                    "person_name": "SKE48",
+                    "person_kana": "えすけーいー４８",
+                    "person_en": "",
+                    "person_type": 2,
+                    "person_type_name": "グループ",
+                    "domain": 1,
+                    "domain_name": "日本",
+                    "gender": 2,
+                    "gender_name": "女",
+                    "birthday": "2008-",
+                    "deathday": "",
+                    "hometown": "愛知県名古屋市中区栄",
+                    "bloodtype": "",
+                    "sign": "",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "AKB48の姉妹ユニット。秋元康の全面プロデュースにより、2008年に誕生し、東海地方を中心に活動。名称の「SKE」は、劇場の所在地である、中区・「栄」(SAKAE)に由来する。",
+                    "trivia": [
+                        "AKB48の全国展開の第1弾として名古屋市が選ばれ、サンシャインSAKAE 内の「SUNSHINE STUDIO」をベースとして公演活動を行う。",
+                        "メンバーのほとんどが中部・近畿地方の出身者である。",
+                        "メンバーは、AKB48と同様にチームS、チームKII（ケーツー）、チームEの3つのチームの内、いずれかに所属。また、正規のメンバー以外に、上記3チームに所属していない研究生と呼ばれるメンバーがいる。",
+                        "正規メンバーから研究生への降格、研究生から正規メンバーへの昇格が幾度にわたり行われる。",
+                        "SKE48のメンバーはAKB48の楽曲の選抜メンバーに選ばれることがあり、プロモーションビデオに参加することなどが可能。"
+                    ],
+                    "point": 9292,
+                    "wikiname": "SKE48",
+                    "wikidata": "SKE48（エスケーイーフォーティーエイト）は、日本の女性アイドルグループ。
+秋元康のプロデュースにより、2008年に誕生し、中京圏を中心に活動している。",
+                    "adult_flg": 0,
+                    "photo_url": "images/art/00006/00081081_001_L.jpg",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776EK",
+                "relation_type_name": "ファミリー又はプロジェクト"
+            },
+            {
+                "person": {
+                    "person_id": "PPS000003HBD",
+                    "person_name": "高橋みなみ",
+                    "person_kana": "たかはしみなみ",
+                    "person_en": "",
+                    "person_type": 1,
+                    "person_type_name": "人",
+                    "domain": 1,
+                    "domain_name": "日本",
+                    "gender": 2,
+                    "gender_name": "女",
+                    "birthday": "1991-04-08",
+                    "deathday": "",
+                    "hometown": "東京都",
+                    "bloodtype": "AB",
+                    "sign": "おひつじ座",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "AKB48の総監督でチームＡのメンバー。愛称は「たかみな」。総監督としての信望は厚く、イベント時の挨拶や打ち合わせなどもメンバーを代表して行う。ユニット「ノースリーブス」では“まじめ担当”。身長は148.5㎝とグループで最も低い方だが、全グループを代表する存在として活躍。",
+                    "trivia": [
+
+                    ],
+                    "point": 6655,
+                    "wikiname": "高橋みなみ",
+                    "wikidata": "高橋 みなみ（たかはし みなみ、1991年4月8日 - ）は、日本のアイドル、歌手である。女性アイドルグループであるAKB48のメンバーでチームAに所属しており、AKB48グループの総監督を務めている。愛称はたかみな、総監督、みなみ等。
+東京都出身、プロダクション尾木所属。身長は148cmである。",
+                    "adult_flg": 0,
+                    "photo_url": "",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776EI",
+                "relation_type_name": "所属グループ/メンバー"
+            },
+            {
+                "person": {
+                    "person_id": "PPS0000005DL",
+                    "person_name": "NMB48",
+                    "person_kana": "えぬえむびー４８",
+                    "person_en": "",
+                    "person_type": 2,
+                    "person_type_name": "グループ",
+                    "domain": 1,
+                    "domain_name": "日本",
+                    "gender": 2,
+                    "gender_name": "女",
+                    "birthday": "2010-",
+                    "deathday": "",
+                    "hometown": "大阪・難波",
+                    "bloodtype": "",
+                    "sign": "",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "AKB48の妹分として大阪・難波を拠点に活動するアイドルグループ。2010年10月にメンバーオーディションから結成され、2011年夏に「絶滅黒髪少女」でCDデビュー。オリコン初登場1位で、売上げ21.8万枚は女性アーティストのデビュー曲の初週の新記録に。",
+                    "trivia": [
+                        "デビュー曲が1位にならなければブルマ公演を行うと公約していた。メンバーの山本彩と渡辺美優紀はグループのデビュー前にAKB48の「Everyday、カチューシャ」の選抜メンバーに抜擢。山本は2011年のAKB48選抜総選挙で28位に入っている。"
+                    ],
+                    "point": 8680,
+                    "wikiname": "NMB48",
+                    "wikidata": "NMB48（エヌエムビー フォーティエイト）は、秋元康のプロデュースにより、2010年に誕生した、大阪市・難波を拠点とし近畿地方を中心に活動する日本の女性アイドルグループ。",
+                    "adult_flg": 0,
+                    "photo_url": "images/art/00007/00098703_001_L.jpg",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776EK",
+                "relation_type_name": "ファミリー又はプロジェクト"
+            },
+            {
+                "person": {
+                    "person_id": "PPS00005D9G1",
+                    "person_name": "大和田南那",
+                    "person_kana": "おおわだなな",
+                    "person_en": "",
+                    "person_type": 1,
+                    "person_type_name": "人",
+                    "domain": 1,
+                    "domain_name": "日本",
+                    "gender": 2,
+                    "gender_name": "女",
+                    "birthday": "1999-09-15",
+                    "deathday": "",
+                    "hometown": "千葉県",
+                    "bloodtype": "A",
+                    "sign": "おとめ座",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "千葉県出身、女性アイドルグループAKB48チームAのメンバー。2013年1月、AKB48第15期研究生オーディションに合格、4月チームKウェイティング公演でバックダンサーデビュー。14年2月、AKB48グループ大組閣祭りでチームBへの昇格を発表。",
+                    "trivia": [
+
+                    ],
+                    "point": 2353,
+                    "wikiname": "大和田南那",
+                    "wikidata": "大和田 南那（おおわだ なな、1999年9月15日 - ）は、日本のアイドルであり、女性アイドルグループAKB48チームAのメンバーである。
+千葉県出身。
+AKS所属。",
+                    "adult_flg": 0,
+                    "photo_url": "",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776EI",
+                "relation_type_name": "所属グループ/メンバー"
+            }
+        ]
+    }
+}
