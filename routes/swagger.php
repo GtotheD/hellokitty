@@ -607,7 +607,6 @@
  *     @SWG\Response(response=500, description="Server error")
  * )
  */
-
 /**
  * @SWG\Get(
  *     path="/section/release/manual/{tapCategoryId}/{releaseDateTo}",
@@ -1004,13 +1003,12 @@
 /**
  * @SWG\Get(
  *     path="/work/{workId}/relation/artist",
- *     description="アーティスト作品一覧取得",
+ *     description="関連アーティスト一覧取得",
  *     tags={"Work"},
  *     produces={"application/json"},
  *     @SWG\Parameter(ref="#/parameters/workId"),
  *     @SWG\Parameter(ref="#/parameters/limit"),
  *     @SWG\Parameter(ref="#/parameters/offset"),
- *     @SWG\Parameter(ref="#/parameters/sort"),
  *     @SWG\Response(
  *          response=200,
  *          description="success",
@@ -1019,8 +1017,11 @@
  *              @SWG\Property(
  *                  property="rows",
  *                  type="array",
- *                  @SWG\Items(ref="#/definitions/WorkNarrow"),
- *                  description="作品情報",
+ *                  @SWG\Items(
+ *                       @SWG\Property(property="personId",type="string"),
+ *                       @SWG\Property(property="personName",type="string"),
+ *                  ),
+ *                  description="アーティスト情報",
  *              ),
  *          )
  *      ),
@@ -1157,12 +1158,13 @@
 /**
  * @SWG\Get(
  *     path="/work/{workId}/recommend/artist",
- *     description="関連アーティスト一覧取得",
+ *     description="アーティスト作品一覧取得",
  *     tags={"Work"},
  *     produces={"application/json"},
  *     @SWG\Parameter(ref="#/parameters/workId"),
  *     @SWG\Parameter(ref="#/parameters/limit"),
  *     @SWG\Parameter(ref="#/parameters/offset"),
+ *     @SWG\Parameter(ref="#/parameters/sort"),
  *     @SWG\Response(
  *          response=200,
  *          description="success",
@@ -1171,11 +1173,8 @@
  *              @SWG\Property(
  *                  property="rows",
  *                  type="array",
- *                  @SWG\Items(
- *                       @SWG\Property(property="personId",type="string"),
- *                       @SWG\Property(property="personName",type="string"),
- *                  ),
- *                  description="アーティスト情報",
+ *                  @SWG\Items(ref="#/definitions/WorkNarrow"),
+ *                  description="作品情報",
  *              ),
  *          )
  *      ),
@@ -1443,6 +1442,63 @@
  *                  property="baseMonth",
  *                  type="string",
  *                  description="基準月（yyyy-m 2018-09）",
+ *              ),
+ *              @SWG\Property(
+ *                  property="rows",
+ *                  type="array",
+ *                  @SWG\Items(ref="#/definitions/WorkNarrowRelease"),
+ *                  description="作品情報",
+ *              ),
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+/**
+ * @SWG\Get(
+ *     path="/ranking/{codeType}/{code}/{period}",
+ *     description="DVD-セルのTOP構造を返却する（hasNextは最終レスポンスがlimit以下だった場合にfalseとする）",
+ *     produces={"application/json"},
+ *     tags={"ranking"},
+ *     security={{"api_key":{}}},
+ *     @SWG\Parameter(
+ *       name="codeType",
+ *       in="path",
+ *       description="コード種別(himo|agg)：Himoジャンルコードもしくは、ランキング集約コード",
+ *       required=true,
+ *       type="string"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="code",
+ *       in="path",
+ *       description="HimoジャンルID（例：EXT0000005F2）もしくは、ランキング集約コード（例：M086　月間コミックレンタル）",
+ *       required=true,
+ *       type="string"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="period",
+ *       in="path",
+ *       description="集計期間：実行月からn月前の月頭から月終わりまで",
+ *       type="string"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="supplementVisible",
+ *       in="query",
+ *       description="出演者・アーティスト・著者・機種等を表示/非表示を切り替える為のフラグ。trueにすると非表示になる。",
+ *       type="boolean"
+ *     ),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          ref="$/responses/ListJson",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="aggregationPeriod",
+ *                  type="string",
+ *                  description="集計期間（デイリー：yyyy/mm/dd集計 週間：yyyy/mm/dd～yyyy/mm/dd集計 月間：yyyy/mm集計）",
  *              ),
  *              @SWG\Property(
  *                  property="rows",
