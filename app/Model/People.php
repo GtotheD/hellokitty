@@ -17,6 +17,27 @@ class People extends Model
     /*
      * Get Newest Product
      */
+    public function getNewestPeople($conditions)
+    {
+        $this->dbObject = DB::table($this->table);
+        if ($productUniqueId = array_get($conditions, 'product_unique_id')) {
+            $this->dbObject->where(['product_unique_id' => $productUniqueId]);
+        }
+        if ($roleId = array_get($conditions, 'role_id')) {
+            $this->dbObject->where(['role_id' => $roleId]);
+        }
+
+        $this->dbObject->orderBy('created_at', 'desc')
+            ->orderBy('id', 'desc')
+            ->limit(1);
+        return $this;
+    }
+
+    /**
+     * @param $productUniqueId
+     *
+     * @return $this
+     */
     public function setConditionByProduct($productUniqueId)
     {
         $this->dbObject = DB::table($this->table)
