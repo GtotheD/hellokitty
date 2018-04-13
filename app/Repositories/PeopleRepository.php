@@ -99,7 +99,8 @@ class PeopleRepository
             'updated_at'
         ];
 
-        $newestProduct = $this->getNewestProductByWorkId($workId, $saleType)->getOne();
+        $productRepository = new ProductRepository();
+        $newestProduct = $productRepository->getNewestProductByWorkId($workId, $saleType)->getOne();
         if (!$newestProduct) {
             throw new NoContentsException();
         }
@@ -154,35 +155,6 @@ class PeopleRepository
         $peopleBase['role_name'] = $people['role_name'];
 
         return $peopleBase;
-    }
-
-    /**
-     * GET newest product by $workId. If work_id not exists in system. Call workRepository.
-     *
-     * @param $workId
-     * @param null $saleType
-     * @return mixed
-     *
-     * @throws NoContentsException
-     */
-    public function getNewestProductByWorkId($workId, $saleType = null){
-        $workRepository = new WorkRepository();
-        $product = new Product();
-        if($saleType) {
-            $workRepository->setSaleType($saleType);
-        }
-
-        $work = new Work();
-        $work->setConditionByWorkId($workId);
-
-        if ($work->count() == 0) {
-            $response = $workRepository->get($workId);
-            if(empty($response)) {
-                throw new NoContentsException();
-            }
-        }
-
-        return $product->setConditionByWorkIdNewestProduct($workId, $saleType);
     }
 
     /**
