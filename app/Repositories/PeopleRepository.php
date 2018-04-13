@@ -169,7 +169,8 @@ class PeopleRepository
      */
     public function getNewsPeople($workId, $saleType = null, $roleId = null) {
         $people = new People();
-        $newestProduct = $this->getNewestProductByWorkId($workId, $saleType)->get();
+        $productRepository = new ProductRepository();
+        $newestProduct = $productRepository->getNewestProductByWorkId($workId, $saleType)->get();
         if(!$newestProduct) {
             throw new NoContentsException();
         }
