@@ -334,29 +334,18 @@ EOT;
         return response()->json($response);
     });
     // 関連アーティスト
-    $router->get('work/{workId}/relation/artist', function (Request $request, $workId) {
-        $responseString = <<<EOT
-      {
-        "hasNext": true,
-        "totalCount": 1,
-        "rows": [
-          {
-            "workId": "PTA00007XDJP",
-            "urlCd": "https://cdn.store-tsutaya.tsite.jp/cd/pinocchio.mp4",
-            "cccWorkCd": "10407575",
-            "workTitle": "ピノキオ",
-            "newFlg": true,
-            "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
-            "supplement": "supplement",
-            "saleType": "sell",
-            "itemType": "cd",
-            "adultFlg": true
-          }
-        ]
-      }
-EOT;
-        $json = json_decode($responseString);
-        return response()->json($json);
+    $router->get('work/{workId}/relation/artist/works', function (Request $request, $workId) {
+        $peopleRelatedWorksRepository = new PeopleRelatedWorksRepository();
+        $peopleRelatedWorksRepository->setOffset($request->input('offset', 0));
+        $peopleRelatedWorksRepository->setLimit($request->input('limit', 10));
+        $rows = $peopleRelatedWorksRepository->getWorksByArtist($workId);
+
+        $response = [
+            'hasNext' => $peopleRelatedWorksRepository->getHasNext(),
+            'totalCount' => $peopleRelatedWorksRepository->getTotalCount(),
+            'rows' => $rows
+        ];
+        return response()->json($response);
     });
 
 
