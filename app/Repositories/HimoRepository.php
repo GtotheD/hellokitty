@@ -258,6 +258,12 @@ class HimoRepository extends ApiRequesterRepository
 
         }
 
+        // Check personId
+        if(array_key_exists('personId', $params)){
+            //$params['person_id'] = $personId;
+            $this->queryParams['id_value'] = "0301:" . $params['personId'];
+        }
+
         return $this;
     }
 
