@@ -1,0 +1,887 @@
+{
+    "status": 200,
+    "message": null,
+    "results": {
+        "total": 22,
+        "rows": [
+            {
+                "person": {
+                    "person_id": "PPS000001HAE",
+                    "person_name": "森口博子",
+                    "person_kana": "もりぐちひろこ",
+                    "person_en": "",
+                    "person_type": 1,
+                    "person_type_name": "人",
+                    "domain": 1,
+                    "domain_name": "日本",
+                    "gender": 2,
+                    "gender_name": "女",
+                    "birthday": "1968-06-13",
+                    "deathday": "",
+                    "hometown": "福岡県",
+                    "bloodtype": "A",
+                    "sign": "ふたご座",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "ＮＨＫ『勝ち抜き歌謡天国』の全国大会で準優勝を飾り、１９８５年「水の星へ愛をこめて」で歌手デビュー。以後、「パオパオチャンネル」、「笑っていいとも！」、「夢がＭＯＲＩＭＯＲＩ」などのバラエティー番組にも数多く出演し、持ち前のトークと明るさで一躍人気者に。近年でも、歌手、司会業をはじめ、多方面で活躍中！",
+                    "trivia": [
+                        "母校・高宮中学校の先輩にタモリがおり、また後輩には博多華丸と氷川きよしがいる。",
+                        "NHK紅白歌合戦には1991年・第42回から1996年・第47回まで、6年連続で通算6回出場している。"
+                    ],
+                    "point": 5739,
+                    "wikiname": "森口博子",
+                    "wikidata": "森口 博子（もりぐち ひろこ、1968年6月13日 - ）は、日本の歌手・タレント・女優。本名、花村 博美（はなむら ひろみ）。
+福岡県福岡市出身。ノーリーズン（第一プログループ）所属。
+バラエティーアイドルとして知られる。",
+                    "adult_flg": 0,
+                    "photo_url": "images/art/00010/00006265_001_L.jpg",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776EG",
+                "relation_type_name": "制作スタッフ をしてもらった。"
+            },
+            {
+                "person": {
+                    "person_id": "PPS000000EQS",
+                    "person_name": "小田和正",
+                    "person_kana": "おだかずまさ",
+                    "person_en": "",
+                    "person_type": 1,
+                    "person_type_name": "人",
+                    "domain": 1,
+                    "domain_name": "日本",
+                    "gender": 1,
+                    "gender_name": "男",
+                    "birthday": "1947-09-20",
+                    "deathday": "",
+                    "hometown": "神奈川県横浜市",
+                    "bloodtype": "A",
+                    "sign": "おとめ座",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "神奈川県横浜市出身のシンガーソングライター。１９７０年に「オフコース」のメンバーとしてシングル「群衆の中で」でデビュー。「秋の気配」、「愛を止めないで」など、着実にシングルリリースを重ねたあと、１９７９年の１７ｔｈシングル「さよなら」がオリコン２位の大ヒット。その後、グループ活動に並行してソロ活動をはじめ、１９８６年には初のソロシングル「１９８５」、ソロアルバム「Ｋ．ＯＤＡ」を発表する。１９８９年の「オフコース」解散とともにソロ活動を本格化。１９９１年の「ラブ・ストーリーは突然に」は、ドラマ「東京ラブストーリー」の主題歌として大ヒット。初のオリコン１位に加え、セールスは２７０万枚を突破し、当時の売上最高記録を樹立した。さらに、「伝えたいことがあるんだ」「キラキラ」などのシングルヒットを放つ一方、アルバムをリリースするたびに「オリコン　アルバムチャート週間１位　最年長記録」を更新。「６０代でのオリコン１位」、「３０代から６０代まで、全ての年代でオリコンアルバムチャート１位」など、数々の“史上初”を生み出す記録男ぶりは健在である。また、幅広い交友関係を生かして、鈴木雅之、ＣＨＡＧＥ　ａｎｄ　ＡＳＫＡ、佐藤竹善らのプロデュースやコラボにも積極的。１９９２年の「いつか　どこかで」、１９９７年の「緑の街」で映画監督にも挑戦している。",
+                    "trivia": [
+                        "東北大学工学部卒業。早稲田大学大学院理工学研究科修士課程修了。株式会社ファー・イースト・クラブ（FAR EAST CLUB INC.）代表取締役社長。桐朋学園大学音楽学部客員教授（2004年 - ）。",
+                        "1991年、フジテレビ月9ドラマ『東京ラブストーリー』の主題歌「ラブ・ストーリーは突然に」がオフコース時代に叶わなかった、「オリコンシングルチャート第1位」と「シングルミリオンセラー突破」を一挙に成し遂げた。",
+                        "現在、オリコン週間アルバムチャート1位の最年長記録を有している。"
+                    ],
+                    "point": 6957,
+                    "wikiname": "小田和正",
+                    "wikidata": "小田 和正（おだ かずまさ、1947年9月20日 - ）は、日本のニューミュージックシンガー、シンガーソングライター、音楽プロデューサー。元オフコースのリーダーでボーカル。株式会社ファー・イースト・クラブ (FAR EAST CLUB INC.) 代表取締役社長。
+身長172cm。
+血液型はA型。",
+                    "adult_flg": 0,
+                    "photo_url": "images/art/00001/00000599_001_L.jpg",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776EO",
+                "relation_type_name": "友人・キーパーソン"
+            },
+            {
+                "person": {
+                    "person_id": "PPS000000FIG",
+                    "person_name": "小室哲哉",
+                    "person_kana": "こむろてつや",
+                    "person_en": "",
+                    "person_type": 1,
+                    "person_type_name": "人",
+                    "domain": 1,
+                    "domain_name": "日本",
+                    "gender": 1,
+                    "gender_name": "男",
+                    "birthday": "1958-11-27",
+                    "deathday": "",
+                    "hometown": "東京都",
+                    "bloodtype": "O",
+                    "sign": "いて座",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "１９８３年宇都宮隆（Ｖｏ）と木根尚登（Ｇ）と共に、ＴＭ　ＮＥＴＷＯＲＫを結成。１９８４年「金曜日のライオン」でデビュー。１９９０年ＴＭ　ＮＥＴＷＯＲＫを「ＴＭＮ」としてリニューアルし音楽活動を拡大。１９９４年４月ＴＭＮデビュー１０周年に「Ｎｉｇｈｔ　Ｏｆ　Ｔｈｅ　Ｋｎｉｆｅ」をリリースしプロジェクト終了を宣言。その後は数々のプロジェクトを抱え本格的にプロデュース業に専念。１９９５年自らの新ユニット「ｇｌｏｂｅ」をデビューさせる。",
+                    "trivia": [
+                        "小室ブーム期には、1995年から4年連続でプロデュースした曲が日本レコード大賞を受賞し、1996年4月15日にはオリコンシングルチャートにおいてプロデュース曲がトップ5を独占した、1996年はglobeのアルバム「globe」が当時のオリコン記録を更新する売り上げ400万枚以上を記録、安室奈美恵のアルバムも300万枚超えと、この年だけでプロデュース曲の総売上枚数は1,500万枚以上を記録した。1996年から2年連続で高額納税者番付において全国4位を記録、1997年の納税額は11億7000万円で推定所得は約23億円だった。",
+                        "2006年8月6日、いわゆる5億円詐欺事件をおこし、2009年5月11日、大阪地方裁判所より懲役3年、執行猶予5年の有罪判決が言い渡され、刑が確定した。"
+                    ],
+                    "point": 9905,
+                    "wikiname": "小室哲哉",
+                    "wikidata": "小室 哲哉（こむろ てつや、1958年11月27日 - ）は、日本のミュージシャン、作詞家、作曲家、編曲家、音楽プロデューサー、キーボーディスト。
+東京都府中市出身。元尚美学園大学芸術情報学部教授。妻はglobeのボーカルのkco。愛称は「てっちゃん」「先生」「TK」など。身長167cm、体重57kg。",
+                    "adult_flg": 0,
+                    "photo_url": "images/art/00006/00023673_001_L.jpg",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776FV",
+                "relation_type_name": "プロデューサー・作詞・作曲 をした。"
+            },
+            {
+                "person": {
+                    "person_id": "PPS000000SRJ",
+                    "person_name": "KABA.ちゃん",
+                    "person_kana": "かばちやん",
+                    "person_en": "",
+                    "person_type": 1,
+                    "person_type_name": "人",
+                    "domain": 1,
+                    "domain_name": "日本",
+                    "gender": 1,
+                    "gender_name": "男",
+                    "birthday": "1969-06-19",
+                    "deathday": "",
+                    "hometown": "福岡県",
+                    "bloodtype": "A",
+                    "sign": "ふたご座",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "ダンサーを目指し渡米。帰国後、１９９６年に小室哲哉がプロデュースする３人組のダンスユニット「ｄｏｓ」のメンバーとしてデビュー。その一方でＳＭＡＰや安室奈美恵などの振り付け師としても活躍。その後、“おネエ”キャラのタレントとしてバラエティ番組に登場し、人気者となる。",
+                    "trivia": [
+                        "1996年に、小室プロデュースのユニット\"dos\"のメンバーとしてデビュー。",
+                        "振付師として、SMAPの「世界に一つだけの花」、安室奈美恵「Body Feels EXIT」ほか、華原朋美「I BELIEVE」ほか、など多数手がけている。"
+                    ],
+                    "point": 3400,
+                    "wikiname": "KABA.ちゃん",
+                    "wikidata": "KABA.ちゃん（カバちゃん、1969年（昭和44年）6月19日 - ）は、日本のタレント、振付師。本名、椛島 永次（かばしま えいじ）。
+福岡県福岡市出身。
+プラチナムプロダクション所属。以前はジールアソシエイツ、アンセムに所属していた。
+熊本県立熊本北高等学校中退。
+小室哲哉プロデュースの元dosのメンバー。
+安室奈美恵や華原朋美、SMAPの代表曲「世界に一つだけの花」の振付師としても有名である。
+身長172cm。",
+                    "adult_flg": 0,
+                    "photo_url": "",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776GF",
+                "relation_type_name": "制作スタッフ として参加"
+            },
+            {
+                "person": {
+                    "person_id": "PPS0000009WO",
+                    "person_name": "中西圭三",
+                    "person_kana": "なかにしけいぞう",
+                    "person_en": "",
+                    "person_type": 1,
+                    "person_type_name": "人",
+                    "domain": 1,
+                    "domain_name": "日本",
+                    "gender": 1,
+                    "gender_name": "男",
+                    "birthday": "1964-11-11",
+                    "deathday": "",
+                    "hometown": "岡山県",
+                    "bloodtype": "AB",
+                    "sign": "さそり座",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "９１年３月デビュー。歌手として活躍する他、多数のアーティストに楽曲を提供している。",
+                    "trivia": [
+                        "大学在学中に池田聡と出会い、コーラスで彼のツアーに参加したのがキャリアの始まり。",
+                        "ピーボ・ブライソンやクリスティーナ・アギレラとのコラボ曲をリリースしており、ビーボ・ブライソンに提供した楽曲が収録されたアルバムは、グラミー賞にノミネートされた。"
+                    ],
+                    "point": 4992,
+                    "wikiname": "中西圭三",
+                    "wikidata": "中西 圭三（なかにし けいぞう、1964年11月11日 - ）は、日本のシンガーソングライター、作曲家。
+岡山県児島郡灘崎町（現：岡山市南区）出身。
+岡山県立倉敷天城高等学校、日本大学経済学部卒業。",
+                    "adult_flg": 0,
+                    "photo_url": "",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776FV",
+                "relation_type_name": "プロデューサー・作詞・作曲 をした。"
+            },
+            {
+                "person": {
+                    "person_id": "PPS000001C62",
+                    "person_name": "清水ミチコ",
+                    "person_kana": "しみずみちこ",
+                    "person_en": "",
+                    "person_type": 1,
+                    "person_type_name": "人",
+                    "domain": 1,
+                    "domain_name": "日本",
+                    "gender": 2,
+                    "gender_name": "女",
+                    "birthday": "1960-01-27",
+                    "deathday": "",
+                    "hometown": "岐阜県",
+                    "bloodtype": "B",
+                    "sign": "みずがめ座",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "１９８３年、ラジオ番組の構成作家を始め、次第に出演もし始める。テレビＣＭの声のキャラクターも始める。１９８６年、フジテレビ系「冗談画報」にてテレビデビュー。１９８７年アルバム「幸せの骨頂」でＣＤデビュー。以降、多方面で活躍。",
+                    "trivia": [
+                        "座右の銘は「隣人は芸のこやし」。",
+                        "中学家庭科の教員免許を取得している。"
+                    ],
+                    "point": 7403,
+                    "wikiname": "清水ミチコ",
+                    "wikidata": "清水 ミチコ（しみず ミチコ、1960年1月27日 - ）は、日本のタレント、お笑いタレント、女優。
+モノマネを得意とする。
+本名、坂田 美智子。旧姓、清水。
+岐阜県高山市出身。
+ジャムハウス所属。
+高山西高等学校、文教大学女子短期大学部家政科卒業。
+血液型B型。
+愛称は、（清水の）ミッちゃん、シミチコ。座右の銘は「隣人は芸のこやし」。
+",
+                    "adult_flg": 0,
+                    "photo_url": "images/art/00007/00000477_001_L.jpg",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776FK",
+                "relation_type_name": "役柄/声優/ものまね"
+            },
+            {
+                "person": {
+                    "person_id": "PPS000001WL2",
+                    "person_name": "鈴木蘭々",
+                    "person_kana": "すずきらんらん",
+                    "person_en": "",
+                    "person_type": 1,
+                    "person_type_name": "人",
+                    "domain": 1,
+                    "domain_name": "日本",
+                    "gender": 2,
+                    "gender_name": "女",
+                    "birthday": "1975-08-04",
+                    "deathday": "",
+                    "hometown": "東京都",
+                    "bloodtype": "A",
+                    "sign": "しし座",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "■生年月日：１９７５年８月４日
+■出身地：東京都",
+                    "trivia": [
+                        "第1回「ミスチャンピオン」の準グランプリがデビューのきっかけ。「ポンキッキーズ」ではブレイク前の安室奈美恵とのコンビ「シスターラビッツ」としてウサギのコスプレ姿で出演。シングル「一寸桃金太郎」もリリースしている。渡辺満里奈とのデュエット曲「太陽とハナウタ」（「どうぶつ奇想天外」エンディングテーマ）も歌っていた。"
+                    ],
+                    "point": 3232,
+                    "wikiname": "鈴木蘭々",
+                    "wikidata": "鈴木 蘭々（すずき らんらん、1975年8月4日 - ）は、日本のタレント・女優・歌手。リエゾンポイント所属。",
+                    "adult_flg": 0,
+                    "photo_url": "",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776FC",
+                "relation_type_name": "共演"
+            },
+            {
+                "person": {
+                    "person_id": "PPS000000ZYP",
+                    "person_name": "ジャネット・ジャクソン",
+                    "person_kana": "じやねつとじやくそん",
+                    "person_en": "JANET JACKSON",
+                    "person_type": 1,
+                    "person_type_name": "人",
+                    "domain": 2,
+                    "domain_name": "海外",
+                    "gender": 2,
+                    "gender_name": "女",
+                    "birthday": "1966-05-16",
+                    "deathday": "",
+                    "hometown": "米・インディアナ",
+                    "bloodtype": "",
+                    "sign": "おうし座",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "ジャクソン・ファミリーの末っ子として誕生。７歳で初舞台。１９８２年「ヤング・ラヴ」でデビュー。１９８４年３ｒｄアルバム「コントロール」が、全米１位に。２０００年は映画『ナッティ・プロフェッサー２』に出演し話題となる。またサントラ収録曲の「ダズント・リアリー・マター」もヒット。",
+                    "trivia": [
+                        "2011年に初の著書『True You』を上梓するも自伝ではなく、マイケルのことにも触れず、終盤は栄養学的なレシピについて。"
+                    ],
+                    "point": 5254,
+                    "wikiname": "ジャネット・ジャクソン",
+                    "wikidata": "ジャネット・ジャクソン（Janet Damita Jo Jackson, 1966年5月16日 - ）は、アメリカ合衆国のアフリカン・アメリカンのシンガーソングライター、女優。兄の1人はマイケル・ジャクソン。
+1980年代以降、商業的に大成功を収めた。
+安室奈美恵やAI、Crystal Kay、DOUBLEなど、日本のR&Bアーティストにも大きな影響を与えている。",
+                    "adult_flg": 0,
+                    "photo_url": "images/art/00004/00003352_001_L.jpg",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776G4",
+                "relation_type_name": "影響 を与えた。"
+            },
+            {
+                "person": {
+                    "person_id": "PPS0000012CW",
+                    "person_name": "AI",
+                    "person_kana": "あい",
+                    "person_en": "",
+                    "person_type": 1,
+                    "person_type_name": "人",
+                    "domain": 1,
+                    "domain_name": "日本",
+                    "gender": 2,
+                    "gender_name": "女",
+                    "birthday": "1981-11-02",
+                    "deathday": "",
+                    "hometown": "米・カリフォルニア・ロサンゼルス",
+                    "bloodtype": "B",
+                    "sign": "さそり座",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "日本人の父とイタリア系アメリカ人の母の元に生まれる。幼年期をＬＡで過ごし、１２歳でゴスペル・クワイアーに参加。その後、ジャネット・ジャクソンのＰＶにダンサーとして出演、メアリー・Ｊ・ブライジのコンサートにバックコーラスとして参加。２０００年１１月「Ｃｒｙ，ｊｕｓｔ　Ｃｒｙ」でデビュー。",
+                    "trivia": [
+                        "ジャネット・ジャクソンのPV『ゴー・ディープ（Go Deep）』にダンサーとして出演経験あり。",
+                        "和田アキ子から歌唱力を認められ、「私の子分」といわれた。"
+                    ],
+                    "point": 6489,
+                    "wikiname": "AI_(歌手)",
+                    "wikidata": "AI（あい、1981年11月2日 - ）は、日本の歌手、ソングライター。本名：植村 愛 Carina（うえむら あい カリーナ）。
+アメリカ合衆国生まれ、鹿児島県育ち。所属レコード会社はユニバーサル ミュージック。",
+                    "adult_flg": 0,
+                    "photo_url": "",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776FC",
+                "relation_type_name": "共演"
+            },
+            {
+                "person": {
+                    "person_id": "PPS00000SN94",
+                    "person_name": "佐野健二",
+                    "person_kana": "さのけんじ",
+                    "person_en": "",
+                    "person_type": 1,
+                    "person_type_name": "人",
+                    "domain": 1,
+                    "domain_name": "日本",
+                    "gender": 1,
+                    "gender_name": "男",
+                    "birthday": "1955-08-06",
+                    "deathday": "",
+                    "hometown": "兵庫県神戸市",
+                    "bloodtype": "",
+                    "sign": "しし座",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "ロックバンド \"カラパナ\" のベーシスト。",
+                    "trivia": [
+                        "EXILEメンバーから \"キャプテン\" と呼ばれている。"
+                    ],
+                    "point": 1896,
+                    "wikiname": "佐野健二 (ベーシスト)",
+                    "wikidata": "佐野健二（さの けんじ　1955年8月6日 ‐ ）は、カラパナのベーシスト。",
+                    "adult_flg": 0,
+                    "photo_url": "",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776GF",
+                "relation_type_name": "制作スタッフ として参加"
+            },
+            {
+                "person": {
+                    "person_id": "PPS000006XDM",
+                    "person_name": "後藤真希",
+                    "person_kana": "ごとうまき",
+                    "person_en": "",
+                    "person_type": 1,
+                    "person_type_name": "人",
+                    "domain": 1,
+                    "domain_name": "日本",
+                    "gender": 2,
+                    "gender_name": "女",
+                    "birthday": "1985-09-23",
+                    "deathday": "",
+                    "hometown": "東京都",
+                    "bloodtype": "O",
+                    "sign": "おとめ座",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "１９９９年８月、第２回モーニング娘。追加メンバー・オーディションで約１万１０００通の応募の中から選ばれ、シングル「ＬＯＶＥマシーン」からモーニング娘。に加入。「モーニング娘。」以外にも「プッチモニ」「あか組４」等のユニットでも活躍。２００１年３月、マキシシングル「愛のバカやろう」でソロＣＤデビューを果たす。２００２年９月２３日、自身の誕生日を持って「モーニング娘。」を卒業。ソロアーティストとして活動を展開する。",
+                    "trivia": [
+                        "2011年6月22日、2012年1月から芸能活動を休止することを発表した。",
+                        "15歳6か月でのソロ・デビュー曲「愛のバカやろう」で、オリコン初登場1位最年少記録を更新。オリコンのシングル・ランキングでの5名義（モーニング娘。、プッチモニ、後藤真希、ごまっとう、DEF.DIVA）での1位獲得数は最多。"
+                    ],
+                    "point": 5089,
+                    "wikiname": "後藤真希",
+                    "wikidata": "後藤 真希（ごとう まき、1985年9月23日 - ）は、日本の歌手、タレント。
+ハロー!プロジェクトの元一員で、モーニング娘。の元メンバー。
+愛称は、ゴマキ、ごっちん、ごっつぁん、ごまちゃん（ゴマちゃん）、ごま。
+東京都江戸川区出身。
+エイベックス・マネジメント所属。
+身長は158.8cm。体重は43kg。
+元歌手のユウキは実弟。
+甥は俳優の勧修寺玲旺。
+2011年12月から無期限活動休止していたが、2014年6月から芸能活動を再開。",
+                    "adult_flg": 0,
+                    "photo_url": "images/art/00001/00007963_001_L.jpg",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776G8",
+                "relation_type_name": "影響 を受けた。"
+            },
+            {
+                "person": {
+                    "person_id": "PPS000001H4C",
+                    "person_name": "TIGER",
+                    "person_kana": "たいがー",
+                    "person_en": "",
+                    "person_type": 1,
+                    "person_type_name": "人",
+                    "domain": 1,
+                    "domain_name": "日本",
+                    "gender": 2,
+                    "gender_name": "女",
+                    "birthday": "1971-06-17",
+                    "deathday": "",
+                    "hometown": "東京都",
+                    "bloodtype": "",
+                    "sign": "ふたご座",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "２０００年９月に「ＧＯ　ＯＮ，　ＴＯＧＥＴＨＥＲ，ＦＯＲＥＶＥＲ　ＩＮ　ＴＨＥ　ＲＨＹＴＨＭ」でデビュー。女性として日本のＨＩＰ　ＨＯＰシーンになかったＳＩＮＧＥＲ／ＲＡＰＰＥＲとして注目を集め、デビューにしてすでに独自のスタイルを確立。デビュー後は都内クラブのイベントを中心に積極的なライブ活動を展開。",
+                    "trivia": [
+
+                    ],
+                    "point": 1738,
+                    "wikiname": "TIGER_(ラッパー)",
+                    "wikidata": "TIGER（タイガー）は日本の女性HIP HOPシンガー。
+MISIA, 安室奈美恵らに詞の提供、YA-KYIM に作詞・作曲もしている。",
+                    "adult_flg": 0,
+                    "photo_url": "",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776FV",
+                "relation_type_name": "プロデューサー・作詞・作曲 をした。"
+            },
+            {
+                "person": {
+                    "person_id": "PPS00000LIKH",
+                    "person_name": "VERBAL",
+                    "person_kana": "ばーばる",
+                    "person_en": "",
+                    "person_type": 1,
+                    "person_type_name": "人",
+                    "domain": 1,
+                    "domain_name": "日本",
+                    "gender": 1,
+                    "gender_name": "男",
+                    "birthday": "1975-08-21",
+                    "deathday": "",
+                    "hometown": "東京都",
+                    "bloodtype": "B",
+                    "sign": "しし座",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "ｍ－ｆｌｏのＭＣ。",
+                    "trivia": [
+
+                    ],
+                    "point": 5315,
+                    "wikiname": "VERBAL",
+                    "wikidata": "VERBAL（バーバル、本名：柳 榮起〈류영기 / リュウ・ヨンギ〉、1975年8月21日 - ）は、日本のMC、DJ、音楽プロデューサー、デザイナーである。
+東京都出身。
+血液型B型。
+在日韓国人3世で、国籍は韓国。
+m-flo、TERIYAKI BOYZ®のメンバー。
+m-floでの活動の他、独自のコネクションを活かして数多くのアーティストとコラボレーション。
+TERIYAKI BOYZ®のメンバーとしても活動しており、ファレル・ウィリアムス、カニエ・ウェスト、ウィル・アイ・アムなど、海外のアーティストとも交流が深い。近年はDJとしても活動し、そのスタイルはファッション界からの注目も熱く、ジュエリーブランド \"ANTONIO MURPHY & ASTRO®\"、そして \"AMBUSH®\"のデザインも手掛ける。 また、初の映画監督にも挑戦しており、今後もミックスな感性を武器にあらゆるフィールドでの活躍に期待が集まる。
+新たに立ち上げた 株式会社WHATIFの代表として、3Dプロジェクションマッピングや3Dモーションキャプチャースーツ等の最新技術の提供も始める。
+2012年10月、所属していたアーティマージュからそれぞれ独立。VERBAL及びm-floのマネージメントは有限会社 柳 / AMBUSH® DESIGN。☆Taku Takahashiのマネージメントは株式会社 Tachytelic®となる。",
+                    "adult_flg": 0,
+                    "photo_url": "images/art/00006/00043930_001_L.jpg",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776FC",
+                "relation_type_name": "共演"
+            },
+            {
+                "person": {
+                    "person_id": "PPS00007JLM9",
+                    "person_name": "ク・ハラ",
+                    "person_kana": "くはら",
+                    "person_en": "Koo HaRa",
+                    "person_type": 1,
+                    "person_type_name": "人",
+                    "domain": 2,
+                    "domain_name": "海外",
+                    "gender": 2,
+                    "gender_name": "女",
+                    "birthday": "1991-01-13",
+                    "deathday": "",
+                    "hometown": "韓・光州広域",
+                    "bloodtype": "B",
+                    "sign": "やぎ座",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "KARAのメンバー。2007年のデビュー時にはいなかったが、追加メンバーオーディションを経て2008年に加入して現在に至る。農村でロケを行うバラエティ番組「青春不敗」にも出演して、そのキャラクターを発揮していた。",
+                    "trivia": [
+
+                    ],
+                    "point": 0,
+                    "wikiname": "ク・ハラ",
+                    "wikidata": "ク・ハラ（구하라／具荷拉／Koo HaRa、1991年1月13日 - ）は韓国出身の女性歌手。
+KARAのメンバー。血液型はB型。",
+                    "adult_flg": 0,
+                    "photo_url": "",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776F1",
+                "relation_type_name": "似てる"
+            },
+            {
+                "person": {
+                    "person_id": "PPS000000KLB",
+                    "person_name": "山下智久",
+                    "person_kana": "やましたともひさ",
+                    "person_en": "",
+                    "person_type": 1,
+                    "person_type_name": "人",
+                    "domain": 1,
+                    "domain_name": "日本",
+                    "gender": 1,
+                    "gender_name": "男",
+                    "birthday": "1985-04-09",
+                    "deathday": "",
+                    "hometown": "千葉県",
+                    "bloodtype": "A",
+                    "sign": "おひつじ座",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "１９９６年にジャニーズ事務所に入所。ジャニーズＪｒ．を経て２００３年に結成された「ＮＥＷＳ」のリーダーに。その後、２００５年にはドラマで共演した亀梨和也との期間限定ユニット「修二と彰」を結成し、シングル『青春アミーゴ』でミリオン達成。また「池袋ウエストゲートパーク」や「カバチタレ」「ドラゴン桜」「クロサギ」など数多くのＴＶドラマにも出演し活躍している。",
+                    "trivia": [
+                        "2004年、自己推薦入試にて明治大学商学部入学。2008年卒業。",
+                        "2008年3月8日に『映画 クロサギ』で映画初主演。",
+                        "好きな本は『成りあがり』、『ドラゴンボール』など。"
+                    ],
+                    "point": 7436,
+                    "wikiname": "山下智久",
+                    "wikidata": "山下 智久（やました ともひさ、1985年4月9日 - ）は、日本の歌手、俳優、タレント。
+男性アイドルグループ・NEWSの元メンバーで、脱退後はソロとして活動。
+愛称は山P（やまぴー）。
+千葉県出身。
+ジャニーズ事務所所属。
+明治大学商学部卒業。",
+                    "adult_flg": 0,
+                    "photo_url": "",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776FC",
+                "relation_type_name": "共演"
+            },
+            {
+                "person": {
+                    "person_id": "PPS00000AURA",
+                    "person_name": "光浦靖子",
+                    "person_kana": "みつうらやすこ",
+                    "person_en": "",
+                    "person_type": 1,
+                    "person_type_name": "人",
+                    "domain": 1,
+                    "domain_name": "日本",
+                    "gender": 2,
+                    "gender_name": "女",
+                    "birthday": "1971-05-20",
+                    "deathday": "",
+                    "hometown": "愛知県田原町",
+                    "bloodtype": "A",
+                    "sign": "おうし座",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "■生年月日：１９７１年５月２０日
+■出身地：愛知県田原町",
+                    "trivia": [
+                        "ファーストキスは番組内の企画で、相手はウド鈴木である。",
+                        "有野晋哉の家に頻繁に出入りし、有野の長女を可愛がっている。",
+                        "なまはげ伝道師の資格を持っている。",
+                        "家族全員がメガネをかけている。"
+                    ],
+                    "point": 5512,
+                    "wikiname": "光浦靖子",
+                    "wikidata": "光浦 靖子（みつうら やすこ、1971年（昭和46年）5月20日 - ）は、日本のタレント、お笑い芸人。
+大久保佳代子とお笑いコンビオアシズを組んでいる。
+愛知県田原市出身。
+プロダクション人力舎所属。
+",
+                    "adult_flg": 0,
+                    "photo_url": "",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776G8",
+                "relation_type_name": "影響 を受けた。"
+            },
+            {
+                "person": {
+                    "person_id": "PPS00000JS4L",
+                    "person_name": "近藤春菜",
+                    "person_kana": "こんどうはるな",
+                    "person_en": "",
+                    "person_type": 1,
+                    "person_type_name": "人",
+                    "domain": 1,
+                    "domain_name": "日本",
+                    "gender": 2,
+                    "gender_name": "女",
+                    "birthday": "1983-02-23",
+                    "deathday": "",
+                    "hometown": "東京都葛飾区",
+                    "bloodtype": "A",
+                    "sign": "うお座",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "お笑い芸人。お笑いコンビ「ハリセンボン」のツッコミ担当。",
+                    "trivia": [
+                        "高校三年生時には既に現在の容姿になっていた。",
+                        "角野卓造本人から「そっくりさん」のお墨付きと顔写真使用の快諾を得ている。",
+                        "安室奈美恵の大ファンである。"
+                    ],
+                    "point": 4464,
+                    "wikiname": "近藤春菜",
+                    "wikidata": "近藤 春菜（こんどう はるな、1983年2月23日 - ）は、日本のお笑い芸人。お笑いコンビハリセンボンのツッコミ担当。相方は箕輪はるか。
+東京都狛江市出身。
+よしもとクリエイティブ・エージェンシー所属。",
+                    "adult_flg": 0,
+                    "photo_url": "",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776G8",
+                "relation_type_name": "影響 を受けた。"
+            },
+            {
+                "person": {
+                    "person_id": "PPS00000CDJH",
+                    "person_name": "DOUBLE",
+                    "person_kana": "だぶる",
+                    "person_en": "",
+                    "person_type": 2,
+                    "person_type_name": "グループ",
+                    "domain": 1,
+                    "domain_name": "日本",
+                    "gender": 2,
+                    "gender_name": "女",
+                    "birthday": "1975-03-14",
+                    "deathday": "",
+                    "hometown": "新潟県新潟市",
+                    "bloodtype": "",
+                    "sign": "",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "３姉妹の次女ＳＡＣＨＩＫＯ（１９７３．１１．２１～１９９９．５．２１）と、三女ＴＡＫＡＫＯ（１９７５．３．１４～）が１９９３年新潟のＣＬＵＢ等で活動開始。１９９５年レコード会社のオーディションに合格し上京。１９９７年米軍横田基地でＬＩＶＥ。１９９８年２月シングル「Ｆｏｒ　ｍｅ」でデビュー。Ｊ－Ｒ＆Ｂの注目の姉妹だったが、１９９９年５月姉ＳＡＣＨＩＫＯ急遽。同年６月プロローグアルバム「Ｃｒｙｓｔａｌ」リリース。２０００年新生ＤＯＵＢＬＥとしてＴＡＫＡＫＯソロ名義で活動開始。同年７月シングル「ｈａｎｄｌｅ」「Ｕ」リリース。",
+                    "trivia": [
+                        "メジャーデビュー前には、米軍横田基地で定期的にライヴを開催していた。"
+                    ],
+                    "point": 4531,
+                    "wikiname": "DOUBLE_(歌手)",
+                    "wikidata": "DOUBLE（ダブル）は、日本の女性歌手、ソングライター、TAKAKOによるソロ・プロジェクト。
+姉妹デュオとして1998年にデビューしたが、1999年に姉のSACHIKOが急逝したため、以降は現在の形態となった。
+2006年からはDJ Lilly a.k.a. DOUBLE（ディージェイ・リリー・エーケーエー・ダブル）名義でDJとしても活動している。所属レコード会社はフォーライフミュージックエンタテイメント、所属事務所はARUTEMATE。",
+                    "adult_flg": 0,
+                    "photo_url": "",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776FC",
+                "relation_type_name": "共演"
+            },
+            {
+                "person": {
+                    "person_id": "PPS000000CQ9",
+                    "person_name": "行定勲",
+                    "person_kana": "ゆきさだいさお",
+                    "person_en": "",
+                    "person_type": 1,
+                    "person_type_name": "人",
+                    "domain": 1,
+                    "domain_name": "日本",
+                    "gender": 1,
+                    "gender_name": "男",
+                    "birthday": "1968-08-03",
+                    "deathday": "",
+                    "hometown": "熊本県",
+                    "bloodtype": "A",
+                    "sign": "しし座",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "１９６８年生まれ。東放学園専門学校在学中より制作会社へ入社。鴨下信一、大山勝美のもとで助監督を務めた後、フリーへ。映画、ドラマ、ＣＭ、ビデオクリップ等あらゆる映像媒体で活躍。岩井俊二作品の助監督等経験を積む。２０００年「ひまわり」で劇場長編デビュー。「ＧＯ」は２００１年の各映画賞を総なめにした。現在日本映画界で最も注目されている若手監督の１人。",
+                    "trivia": [
+
+                    ],
+                    "point": 3386,
+                    "wikiname": "行定勲",
+                    "wikidata": "行定 勲（ゆきさだ いさお、1968年8月3日 - ）は、日本の映画監督。",
+                    "adult_flg": 1,
+                    "photo_url": "",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776GF",
+                "relation_type_name": "制作スタッフ として参加"
+            },
+            {
+                "person": {
+                    "person_id": "PPS00006G0MM",
+                    "person_name": "内山麿我",
+                    "person_kana": "うちやままろか",
+                    "person_en": "",
+                    "person_type": 1,
+                    "person_type_name": "人",
+                    "domain": 1,
+                    "domain_name": "日本",
+                    "gender": 1,
+                    "gender_name": "男",
+                    "birthday": "1984-02-28",
+                    "deathday": "",
+                    "hometown": "東京都",
+                    "bloodtype": "A",
+                    "sign": "うお座",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "",
+                    "trivia": [
+
+                    ],
+                    "point": 0,
+                    "wikiname": "内山麿我",
+                    "wikidata": "内山 麿我（うちやま まろか、1984年2月28日 - ）は、日本のタレント。
+俳優。
+歌手。元ダンサー。
+パワーピット所属。
+東京都出身。血液型はA型。",
+                    "adult_flg": 0,
+                    "photo_url": "",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776GF",
+                "relation_type_name": "制作スタッフ として参加"
+            },
+            {
+                "person": {
+                    "person_id": "PPS00000GC3Q",
+                    "person_name": "TAKURO",
+                    "person_kana": "たくろー",
+                    "person_en": "",
+                    "person_type": 1,
+                    "person_type_name": "人",
+                    "domain": 1,
+                    "domain_name": "日本",
+                    "gender": 1,
+                    "gender_name": "男",
+                    "birthday": "1971-05-26",
+                    "deathday": "",
+                    "hometown": "北海道函館市",
+                    "bloodtype": "O",
+                    "sign": "ふたご座",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "GLAY結成時からのリーダーであり、ギター担当。リズムギターを担っていることが多いがギターソロを演奏することもある。GLAYのほとんどの楽曲（特にシングルCDA面曲は全曲）の作詞作曲を行っている。",
+                    "trivia": [
+                        "母親はシャンソン歌手で、幼い頃から音楽に興味を持つ。3歳の頃に、交通事故で父親を亡くしている。あまり裕福な少年時代を送っておらず、後に、シングル「Yes, Summerdays」の印税で母親の借金を完済した。",
+                        "人生で腰を抜かすほど驚いたのは、BOØWYの「B・BLUE」を聴いた時と、GLAYのボーカルを探していた時に、当時ドラム担当だったTERUが、何気なく曲に入れた声を聴いた時の2回だけ。"
+                    ],
+                    "point": 5199,
+                    "wikiname": "TAKURO",
+                    "wikidata": "TAKURO（タクロウ、1971年5月26日 - ）は、北海道函館市出身のミュージシャン、ロックバンド・GLAYのギタリスト、キーボーディスト。同バンドのリーダーを務めている。
+loversoul music & associates代表取締役。
+本名は久保 琢郎（くぼ たくろう）。
+北海道函館稜北高等学校卒業。身長182cm。
+血液型はO型。妻はモデルの岩堀せり。2児の父。",
+                    "adult_flg": 0,
+                    "photo_url": "images/art/00010/00725528_001_L.jpg",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776FV",
+                "relation_type_name": "プロデューサー・作詞・作曲 をした。"
+            },
+            {
+                "person": {
+                    "person_id": "PPS000000TZ3",
+                    "person_name": "大沢伸一",
+                    "person_kana": "おおさわしんいち",
+                    "person_en": "Shinichi Osawa",
+                    "person_type": 1,
+                    "person_type_name": "人",
+                    "domain": 1,
+                    "domain_name": "日本",
+                    "gender": 1,
+                    "gender_name": "男",
+                    "birthday": "1967-02-07",
+                    "deathday": "",
+                    "hometown": "滋賀県",
+                    "bloodtype": "O",
+                    "sign": "みずがめ座",
+                    "person_aliases": [
+
+                    ],
+                    "person_intro": "bird、安室奈美恵など様々なアーティストへの楽曲提供、プロデューサー/コンポーザー/リミキサーとして名を馳せるダンス・ミュージック界の重要人物。",
+                    "trivia": [
+                        "数々のコラムの中で自身を\"音楽的多重人格者（Musical Multi Personality）\"と称している",
+                        "曲の管理等にiTunesを愛用している。",
+                        "1991年MONDO GROSSOのリーダー兼ベーシストとして音楽活動をスタート。"
+                    ],
+                    "point": 6445,
+                    "wikiname": "大沢伸一",
+                    "wikidata": "大沢 伸一（おおさわ しんいち、1967年2月7日 - ）は、滋賀県大津市出身のミュージシャン。
+音楽家・音楽プロデューサー・ベーシスト・DJ等、数々の肩書きを持つ。
+血液型はO型。",
+                    "adult_flg": 0,
+                    "photo_url": "images/art/00001/00020424_001_L.jpg",
+                    "is_compilation": 0,
+                    "disable_flg": 0,
+                    "delete_flg": 0
+                },
+                "relation_type_id": "EXT0000776FV",
+                "relation_type_name": "プロデューサー・作詞・作曲 をした。"
+            }
+        ]
+    }
+}

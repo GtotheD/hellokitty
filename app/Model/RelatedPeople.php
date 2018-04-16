@@ -35,11 +35,11 @@ class RelatedPeople extends Model
 
         $dbObject = DB::table($this->table);
 
-        $count = $dbObject->where('product_unique_id' , $insertData['product_unique_id'])
+        $count = $dbObject->where('people_id' , $insertData['people_id'])
             ->where('person_id' , $insertData['person_id'])
             ->count();
         if($count) {
-            return $dbObject->where('product_unique_id' , $insertData['product_unique_id'])
+            return $dbObject->where('people_id' , $insertData['people_id'])
                 ->where('person_id' , $insertData['person_id'])
                 ->update($insertData);
         } else {

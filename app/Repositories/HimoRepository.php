@@ -289,7 +289,7 @@ class HimoRepository extends ApiRequesterRepository
     }
 
     public function searchRelatedPeople($ids) {
-        $this->api = 'people';
+        $this->api = 'related_people';
         $this->id = $ids;
         if(env('APP_ENV') === 'local'){
             return $this;
@@ -305,8 +305,6 @@ class HimoRepository extends ApiRequesterRepository
             'sort_by' => 'auto:asc',
         ];
         return $this;
-
-
     }
 
     // override
@@ -355,6 +353,8 @@ class HimoRepository extends ApiRequesterRepository
             return null;
         }
         $file = file_get_contents($path . '/' . $filename);
-        return json_decode($file, TRUE);
+        // Remove new line character
+        return \GuzzleHttp\json_decode(str_replace(["\n","\r\n","\r", PHP_EOL], '', $file), true);
+       // return json_decode($file, TRUE);
     }
 }
