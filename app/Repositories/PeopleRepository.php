@@ -122,7 +122,6 @@ class PeopleRepository
             ->limit($this->limit)
             ->offset($this->offset)
             ->get($this->limit, $this->offset);
-
         if (count($people) + $this->offset < $this->totalCount) {
             $this->hasNext = true;
         } else {
@@ -174,7 +173,6 @@ class PeopleRepository
         if(!$newestProduct) {
             throw new NoContentsException();
         }
-
         $peopleConditions = [
             'product_unique_id'  => $newestProduct->product_unique_id
         ];
@@ -183,5 +181,7 @@ class PeopleRepository
         }
         return $people->getNewestPeople($peopleConditions);
     }
+
+
 
 }
