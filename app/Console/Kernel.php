@@ -14,6 +14,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         \App\Console\Commands\Import::class,
+        \App\Console\Commands\Touch::class,
         \App\Console\Commands\ImportHimoKeyword::class,
     ];
 
