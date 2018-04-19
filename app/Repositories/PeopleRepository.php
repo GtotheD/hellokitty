@@ -122,7 +122,6 @@ class PeopleRepository
             ->limit($this->limit)
             ->offset($this->offset)
             ->get($this->limit, $this->offset);
-
         if (count($people) + $this->offset < $this->totalCount) {
             $this->hasNext = true;
         } else {

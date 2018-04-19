@@ -292,6 +292,25 @@ class HimoRepository extends ApiRequesterRepository
         return $this;
     }
 
+    public function searchRelatedPeople($ids) {
+        $this->api = 'related_people';
+        $this->id = $ids;
+        if(env('APP_ENV') === 'local'){
+            return $this;
+        }
+
+        $this->apiPath = $this->apiHost . '/search/related_people';
+        $this->params = [
+            '_system' => 'TsutayaApp',
+            'service_id' => 'tol',
+            'person_id' => $ids,
+            'offset' => $this->offset,
+            'limit' => $this->limit,
+            'sort_by' => 'auto:asc',
+        ];
+        return $this;
+    }
+
     // override
     // getが実行された際に、キャッシュへ問い合わせを行う。
     // データ存在していれば、DBから値を取得
@@ -342,6 +361,8 @@ class HimoRepository extends ApiRequesterRepository
             return null;
         }
         $file = file_get_contents($path . '/' . $filename);
-        return json_decode($file, TRUE);
+        // Remove new line character
+        return \GuzzleHttp\json_decode(str_replace(["\n","\r\n","\r", PHP_EOL], '', $file), true);
+       // return json_decode($file, TRUE);
     }
 }
