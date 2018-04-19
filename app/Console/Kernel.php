@@ -16,6 +16,7 @@ class Kernel extends ConsoleKernel
         \App\Console\Commands\Import::class,
         \App\Console\Commands\Touch::class,
         \App\Console\Commands\ImportHimoKeyword::class,
+        \App\Console\Commands\ImportBk2Recommend::class,
     ];
 
     /**

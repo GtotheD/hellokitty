@@ -20,6 +20,7 @@ class HimoRepository extends ApiRequesterRepository
     protected $offset;
     protected $limit;
     protected $apiHost;
+    protected $apiKey;
 
     const ID_TYPE = '0102';
     const INTEGRATION_API = '/search/crossworks';
@@ -30,6 +31,7 @@ class HimoRepository extends ApiRequesterRepository
         $this->offset = $offset;
         $this->limit = $limit;
         $this->apiHost = env('HIMO_API_HOST');
+        $this->method = 'POST';
     }
 
     /**
@@ -43,28 +45,28 @@ class HimoRepository extends ApiRequesterRepository
     /*
      * 詳細情報を取得するAPIをセットする
      */
-    public function crosswork($ids, $idType = self::ID_TYPE, $responseLevel = 9)
+    public function crosswork($ids, $idType = self::ID_TYPE, $responseLevel = '9')
     {
         $this->api = 'crossworks';
         $this->id = $ids;
         if(env('APP_ENV') === 'local'){
             return $this;
         }
+        $this->apiPath = $this->apiHost . '/search/crossworks';
         foreach ($ids as $id) {
             $queryId[] = $idType . ':' . $id;
         }
-        $this->params = [
+        $this->queryParams = [
             '_system' => 'TsutayaApp',
             'id_value' => implode(' || ', $queryId),
             'service_id' => 'tol',
-            'msdb_item' => 'video',
+            //'msdb_item' => 'video',
             'adult_flg' => '2',
             'response_level' => $responseLevel,
             'offset' => $this->offset,
             'limit' => $this->limit,
             'sort_by' => 'auto:asc',
         ];
-
         return $this;
     }
 
@@ -80,14 +82,17 @@ class HimoRepository extends ApiRequesterRepository
         if(env('APP_ENV') === 'local'){
             return $this;
         }
+
+        $this->apiPath = $this->apiHost . '/search/xmedia';
         foreach ($ids as $id) {
             $queryId[] = $idType . ':' . $id;
         }
-        $this->params = [
-            '_system' => 'TsutayaApp',
+        $this->queryParams = [
+            '_system' => 'TsutayaPassport',
             'id_value' => implode(' || ', $queryId),
+            'xmedia_mode' => '1',
             'service_id' => 'tol',
-            'msdb_item' => 'video',
+            // 'msdb_item' => ['music','video','book','game'],
             'adult_flg' => '2',
             'response_level' => '9',
             'offset' => $this->offset,
