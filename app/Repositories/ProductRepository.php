@@ -189,9 +189,11 @@ class ProductRepository
 
     private function productReformat($products)
     {
+        $reformatResult = [];
         // reformat data
         foreach ($products as $product) {
             $product = (array)$product;
+            $product['productKey'] = ($product['productTypeId'] == self::PRODUCT_TYPE_SELL)? $product['jan']:$product['rentalProductCd'];
             $product['itemName'] = $this->convertItemCdToStr($product['itemCd']);
             $product['saleType'] = $this->convertProductTypeToStr($product['productTypeId']);
             $product['jacketL'] = trimImageTag($product['jacketL']);

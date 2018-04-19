@@ -300,6 +300,10 @@ class HimoRepository extends ApiRequesterRepository
     // 返却した値は、DBに格納する
     public function get($jsonResponse = true)
     {
+        if(env('APP_ENV') !== 'local'){
+            parent::get($jsonResponse);
+        }
+
         // Check and read array workId
         if(!is_array($this->id)) {
             return $this->stub($this->api, $this->id);
