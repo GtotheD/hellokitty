@@ -4,6 +4,8 @@ namespace App\Repositories;
 
 use App\Exceptions\NoContentsException;
 use App\Model\People;
+use App\Model\Product;
+use App\Model\Work;
 
 class PeopleRepository
 {
@@ -90,15 +92,15 @@ class PeopleRepository
 
     public function getNarrow($workId, $saleType)
     {
-        $product = new ProductRepository();
         $ignoreColumn = [
             'id',
             'product_unique_id',
             'created_at',
             'updated_at'
         ];
-        $newestProduct = $product->getNewestProductWorkIdSaleType($workId, $saleType);
 
+        $productRepository = new ProductRepository();
+        $newestProduct = $productRepository->getNewestProductByWorkId($workId, $saleType)->getOne();
         if (!$newestProduct) {
             throw new NoContentsException();
         }
@@ -110,11 +112,11 @@ class PeopleRepository
             'role_name',
         ];
 
-        $peopleCount = $peopleModel->setConditionByProduct($newestProduct->productUniqueId)->count();
+        $peopleCount = $peopleModel->setConditionByProduct($newestProduct->product_unique_id)->count();
 
         $this->totalCount = $peopleCount ?: 0;
 
-        $people = $peopleModel->setConditionByProduct($newestProduct->productUniqueId)
+        $people = $peopleModel->setConditionByProduct($newestProduct->product_unique_id)
             ->select($column)
             ->toCamel($ignoreColumn)
             ->limit($this->limit)
@@ -153,4 +155,33 @@ class PeopleRepository
 
         return $peopleBase;
     }
+
+    /**
+     * GET newest people by $workId. If work_id not exists in system. Call workRepository.
+     *
+     * @param $workId
+     * @param null $saleType
+     * @param null $roleId
+     * @return $this
+     *
+     * @throws NoContentsException
+     */
+    public function getNewsPeople($workId, $saleType = null, $roleId = null) {
+        $people = new People();
+        $productRepository = new ProductRepository();
+        $newestProduct = $productRepository->getNewestProductByWorkId($workId, $saleType)->getOne();
+        if(!$newestProduct) {
+            throw new NoContentsException();
+        }
+        $peopleConditions = [
+            'product_unique_id'  => $newestProduct->product_unique_id
+        ];
+        if($roleId) {
+            $peopleConditions['role_id'] = $roleId;
+        }
+        return $people->getNewestPeople($peopleConditions);
+    }
+
+
+
 }

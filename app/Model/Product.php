@@ -61,7 +61,7 @@ class Product extends Model
                     ->on('p1.product_type_id','=','p2.product_type_id')
                     ->on(DB::raw('RIGHT(p1.item_cd, 2)'), '=', DB::raw('RIGHT(p2.item_cd, 2)'));
             })
-            ->select(DB::raw('p1.ccc_family_cd, p2.product_type_id, p2.rental_product_cd'))
+            ->select(DB::raw('p1.work_id, p1.ccc_family_cd, p2.product_type_id, p2.rental_product_cd'))
             ->where([
                 ['p1.rental_product_cd', '=', $rentalProductCd],
                 ['p2.product_type_id', '=', self::PRODUCT_TYPE_ID_RENTAL]
@@ -74,7 +74,7 @@ class Product extends Model
     {
         $this->dbObject = DB::table($this->table . ' AS p1')
             ->join($this->table . ' AS p2', 'p1.ccc_family_cd', '=', 'p2.ccc_family_cd')
-            ->select(DB::raw('p1.ccc_family_cd, p2.rental_product_cd, p1.jan'))
+            ->select(DB::raw('p1.work_id, p1.ccc_family_cd, p2.rental_product_cd, p1.jan'))
             ->where([
                 ['p1.jan', '=', $jan],
                 ['p2.rental_product_cd', '<>', '']

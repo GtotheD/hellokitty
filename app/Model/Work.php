@@ -29,6 +29,13 @@ class Work extends Model
         return $this;
     }
 
+    public function setConditionByUrlCd($urlCd)
+    {
+        $this->dbObject = DB::table($this->table)
+            ->where(['url_cd' => $urlCd]);
+        return $this;
+    }
+
     public function insert($data)
     {
         $insertData = [];

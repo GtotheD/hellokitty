@@ -167,6 +167,9 @@ $router->group([
         $product->setOffset($request->input('offset', 0));
         $product->setSaleType($request->input('saleType'));
         $result = $product->getNarrow($workId);
+        if (empty($result)) {
+            throw new NoContentsException;
+        }
 
         $response = [
             'hasNext' => $product->getHasNext(),
@@ -334,29 +337,18 @@ EOT;
         return response()->json($response);
     });
     // 関連アーティスト
-    $router->get('work/{workId}/relation/artist', function (Request $request, $workId) {
-        $responseString = <<<EOT
-      {
-        "hasNext": true,
-        "totalCount": 1,
-        "rows": [
-          {
-            "workId": "PTA00007XDJP",
-            "urlCd": "https://cdn.store-tsutaya.tsite.jp/cd/pinocchio.mp4",
-            "cccWorkCd": "10407575",
-            "workTitle": "ピノキオ",
-            "newFlg": true,
-            "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
-            "supplement": "supplement",
-            "saleType": "sell",
-            "itemType": "cd",
-            "adultFlg": true
-          }
-        ]
-      }
-EOT;
-        $json = json_decode($responseString);
-        return response()->json($json);
+    $router->get('work/{workId}/relation/artist/works', function (Request $request, $workId) {
+        $peopleRelatedWorksRepository = new PeopleRelatedWorksRepository();
+        $peopleRelatedWorksRepository->setOffset($request->input('offset', 0));
+        $peopleRelatedWorksRepository->setLimit($request->input('limit', 10));
+        $rows = $peopleRelatedWorksRepository->getWorksByArtist($workId);
+
+        $response = [
+            'hasNext' => $peopleRelatedWorksRepository->getHasNext(),
+            'totalCount' => $peopleRelatedWorksRepository->getTotalCount(),
+            'rows' => $rows
+        ];
+        return response()->json($response);
     });
 
 
@@ -405,20 +397,14 @@ EOT;
     });
     // 作品レコメンド
     $router->get('work/{workId}/recommend/artist', function (Request $request, $workId) {
-        $responseString = <<<EOT
-      {
-        "hasNext": true,
-        "totalCount": 1,
-        "rows": [
-          {
-            "personId": 1,
-            "personName": "ほげほげ"
-          }
-        ]
-      }
-EOT;
-        $json = json_decode($responseString);
-        return response()->json($json);
+        $recommendArtistRepository = new \App\Repositories\RecommendArtistRepository();
+
+        $recommendArtistRepository->setLimit($request->input('limit', 10));
+        $recommendArtistRepository->setOffset($request->input('offset', 0));
+
+        $response = $recommendArtistRepository->getArtist($workId);
+
+        return response()->json($response);
     });
     // 変換
     $router->get('convert/work/{idType}/{id}', function (Request $request, $idType, $id) {
@@ -445,29 +431,17 @@ EOT;
     });
 
     //人物関連作品取得
-    $router->get('people/{personId}', function (Request $request, $workId) {
-        $responseString = <<<EOT
-        {
-              "hasNext": true,
-              "totalCount": 1,
-              "rows": [
-                {
-                    "workId": "PTA00007XDJP",
-                    "urlCd": "https://cdn.store-tsutaya.tsite.jp/cd/pinocchio.mp4",
-                    "cccWorkCd": "10407575",
-                    "workTitle": "ピノキオ",
-                    "newFlg": true,
-                    "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
-                    "supplement": "supplement",
-                    "saleType": "sell",
-                    "itemType": "cd",
-                    "adultFlg": true
-                }
-              ]
-        }
-EOT;
-        $json = json_decode($responseString);
-        return $json;
+    $router->get('people/{personId}', function (Request $request, $personId) {
+        $work = new WorkRepository();
+        $work->setLimit($request->input('limit', 10));
+        $work->setOffset($request->input('offset', 0));
+        $work->setSaleType($request->input('saleType', null));
+
+        $sort = $request->input('sort', '');
+        $itemType = $request->input('itemType', 'all');
+
+        $response = $work->person($personId, $sort, $itemType);
+        return response()->json($response);
     });
 
     // キーワード検索

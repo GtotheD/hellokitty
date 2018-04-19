@@ -104,7 +104,7 @@ class SeriesRepository
         $workIdsInSeries = [];
 
         // STEP 1: Get all workIds in series
-        $himoResult = $himo->xmediaSeries($workId)->get();
+        $himoResult = $himo->xmediaSeries([$workId])->get(true, 'POST');
 
         if (!$himoResult['results']['rows']) {
             throw new NoContentsException();

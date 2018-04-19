@@ -1,12 +1,14 @@
 <?php
 namespace App\Repositories;
 
+use App\Exceptions\NoContentsException;
 use App\Model\People;
 use Log;
 use App\Model\PeopleRelatedWork;
 use App\Model\Product;
 use App\Repositories\HimoRepository;
 use App\Repositories\WorkRepository;
+use App\Repositories\PeopleRepository;
 
 class PeopleRelatedWorksRepository extends ApiRequesterRepository
 {
@@ -70,6 +72,38 @@ class PeopleRelatedWorksRepository extends ApiRequesterRepository
         $result = $this->peopleRelatedWork->toCamel(['id', 'person_id'])->get($this->limit, $this->offset);
         if (empty(count($result))) {
             $himoResult = $himo->searchPeople([$people->person_id], '0301', ['book'])->get();
+            foreach ($himoResult['results']['rows'] as $row) {
+                foreach ($row['works'] as $work) {
+                    $insertData[] = $this->format($people->person_id, $work);
+                }
+            }
+            $this->peopleRelatedWork->insertBulk($insertData);
+            $result = $this->peopleRelatedWork->setConditionById($people->person_id)->toCamel(['id', 'person_id'])->get($this->limit, $this->offset);
+        }
+        if (count($result) + $this->offset < $this->totalCount) {
+            $this->hasNext = true;
+        } else {
+            $this->hasNext = false;
+        }
+        return $result;
+    }
+
+    public function getWorksByArtist($workId)
+    {
+        $people = new PeopleRepository();
+        $himo = new HimoRepository();
+
+        $people = $people->getNewsPeople($workId)->getOne();
+        if (!$people) {
+            throw new NoContentsException;
+        }
+        $this->totalCount = $this->peopleRelatedWork->setConditionById($people->person_id)->count();
+        $result = $this->peopleRelatedWork->toCamel(['id', 'person_id'])->get($this->limit, $this->offset);
+        if (empty(count($result))) {
+            $himoResult = $himo->searchPeople([$people->person_id], '0301', ['audio', 'video', 'book', 'game'])->get();
+            if (empty($himoResult['results']['rows'])) {
+                throw new NoContentsException;
+            }
             foreach ($himoResult['results']['rows'] as $row) {
                 foreach ($row['works'] as $work) {
                     $insertData[] = $this->format($people->person_id, $work);

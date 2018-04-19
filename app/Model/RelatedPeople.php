@@ -5,9 +5,9 @@ namespace App\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
-class People extends Model
+class RelatedPeople extends Model
 {
-    const TABLE = 'ts_people';
+    const TABLE = 'ts_related_people';
 
     function __construct()
     {
@@ -17,32 +17,11 @@ class People extends Model
     /*
      * Get Newest Product
      */
-    public function getNewestPeople($conditions)
-    {
-        $this->dbObject = DB::table($this->table);
-        if ($productUniqueId = array_get($conditions, 'product_unique_id')) {
-            $this->dbObject->where(['product_unique_id' => $productUniqueId]);
-        }
-        if ($roleId = array_get($conditions, 'role_id')) {
-            $this->dbObject->where(['role_id' => $roleId]);
-        }
-
-        $this->dbObject->orderBy('created_at', 'desc')
-            ->orderBy('id', 'desc')
-            ->limit(1);
-        return $this;
-    }
-
-    /**
-     * @param $productUniqueId
-     *
-     * @return $this
-     */
-    public function setConditionByProduct($productUniqueId)
+    public function setConditionByPeople($peopleId)
     {
         $this->dbObject = DB::table($this->table)
             ->where([
-                'product_unique_id' => $productUniqueId,
+                'people_id' => $peopleId,
             ])
 
             ->orderBy('updated_at', 'desc');
@@ -50,18 +29,17 @@ class People extends Model
         return $this;
     }
 
-
     public function insert($insertData)
     {
         $insertData['updated_at'] = date('Y-m-d H:i:s');
 
         $dbObject = DB::table($this->table);
 
-        $count = $dbObject->where('product_unique_id' , $insertData['product_unique_id'])
+        $count = $dbObject->where('people_id' , $insertData['people_id'])
             ->where('person_id' , $insertData['person_id'])
             ->count();
         if($count) {
-            return $dbObject->where('product_unique_id' , $insertData['product_unique_id'])
+            return $dbObject->where('people_id' , $insertData['people_id'])
                 ->where('person_id' , $insertData['person_id'])
                 ->update($insertData);
         } else {
@@ -70,13 +48,13 @@ class People extends Model
         }
     }
 
-    public function insertBulk($people)
+    public function insertBulk($relatedPeople)
     {
         $insertData = [];
         $ignoreColumn = ['id', 'created_at', 'updated_at'];
         $columns = Schema::getColumnListing(self::TABLE);
 
-        foreach ($people as $key =>  $row) {
+        foreach ($relatedPeople as $key =>  $row) {
             $insertData[$key]['updated_at'] = date('Y-m-d H:i:s');
             foreach ($columns as $column) {
                 if(!in_array($column, $ignoreColumn)) {

@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Model\Product;
+use App\Model\Work;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 /**
@@ -188,9 +189,11 @@ class ProductRepository
 
     private function productReformat($products)
     {
+        $reformatResult = [];
         // reformat data
         foreach ($products as $product) {
             $product = (array)$product;
+            $product['productKey'] = ($product['productTypeId'] == self::PRODUCT_TYPE_SELL)? $product['jan']:$product['rentalProductCd'];
             $product['itemName'] = $this->convertItemCdToStr($product['itemCd']);
             $product['saleType'] = $this->convertProductTypeToStr($product['productTypeId']);
             $product['jacketL'] = trimImageTag($product['jacketL']);
@@ -343,6 +346,37 @@ class ProductRepository
             'takeTime' => $lastUpdate,
         ];
     }
+
+
+    /**
+     * GET newest product by $workId. If work_id not exists in system. Call workRepository.
+     *
+     * @param $workId
+     * @param null $saleType
+     * @return mixed
+     *
+     * @throws NoContentsException
+     */
+    public function getNewestProductByWorkId($workId, $saleType = null){
+        $workRepository = new WorkRepository();
+        $product = new Product();
+        if($saleType) {
+            $workRepository->setSaleType($saleType);
+        }
+
+        $work = new Work();
+        $work->setConditionByWorkId($workId);
+
+        if ($work->count() == 0) {
+            $response = $workRepository->get($workId);
+            if(empty($response)) {
+                throw new NoContentsException();
+            }
+        }
+
+        return $product->setConditionByWorkIdNewestProduct($workId, $saleType);
+    }
+
 
 
 }
