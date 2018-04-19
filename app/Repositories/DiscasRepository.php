@@ -71,7 +71,7 @@ class DiscasRepository extends ApiRequesterRepository
         if (!empty($xmlObj)) {
             foreach ($xmlObj->reviewList as $value) {
                 $reviews['rows'][] = [
-                    'rating' => (int)$value->reviewRating === 0 ? '-' : sprintf('%.1f', (int)$value->reviewRating / 100),
+                    'rating' => (int)$value->reviewRating === 0 ? '0' : sprintf('%.1f', (int)$value->reviewRating / 100),
                     'contributor' => (string)$value->handle,
                     'contributorDate' => '',
                     'contents' => (string)$value->review,
