@@ -133,10 +133,11 @@ class SeriesRepository
         // STEP 2.2: Call API WorkRepository to getWorkList to insert to Work table -> get new work list
         if ($workIdsNew && $workListInserted = $workRepository->getWorkList($workIdsNew)) {
             // Insert to ts_series table
-            // Insert to ts_series table
+            $seriesData = [];
             foreach ($workListInserted['rows'] as $workRow) {
-                $this->insert($workRow['workId'], $this->seriesId);
+                $seriesData[] = $this->format($workRow['workId'], $this->seriesId);
             }
+            $series->insertBulk($seriesData);
         }
         // STEP 3 Get response from DB
         $workCount = $work->getWorkIdsIn($workIdsInSeries)->count();

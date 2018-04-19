@@ -166,10 +166,11 @@ class WorkRepository
             if (empty($himoResult['results']['rows'])) {
                 throw new NoContentsException();
             }
+            // インサートしたものを取得するため条件を再設定
             $workId = $himoResult['results']['rows'][0]['work_id'];
             $this->work->setConditionByWorkId($workId);
             if ($this->work->count() == 0) {
-                $this->insertWorkRData($himoResult, $this->work);
+                $this->insertWorkData($himoResult, $this->work);
             }
         }
 
@@ -209,8 +210,7 @@ class WorkRepository
      *
      * @throws NoContentsException
      */
-    public function insertWorkRData($himoResult, $work)
-    {
+    public function insertWorkData($himoResult, $work) {
 
         $productRepository = new ProductRepository();
         $peopleRepository = new PeopleRepository();
@@ -243,7 +243,7 @@ class WorkRepository
             $productModel = new Product();
             $peopleModel = new People();
 
-            $work->insertBulk($workData);
+            $work->insertBulk($workData, $insertWorkId);
             $productModel->insertBulk($productData);
             $peopleModel->insertBulk($peopleData);
 
@@ -599,7 +599,7 @@ class WorkRepository
             return null;
         }
         // インサートしたものを取得するため条件を再設定
-        $workIdInserted = $this->insertWorkRData($himoResult, $work);
+        $workIdInserted = $this->insertWorkData($himoResult, $work);
 
         $work->getWorkIdsIn($workIdInserted);
         $response['total'] = $work->count();
