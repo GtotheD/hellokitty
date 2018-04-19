@@ -22,6 +22,7 @@ class TWSRepository extends ApiRequesterRepository
 
     public function __construct($sort = 'asc', $offset = 0, $limit = 10)
     {
+        parent::__construct();
         $this->sort = $sort;
         $this->offset = $offset;
         $this->limit = $limit;

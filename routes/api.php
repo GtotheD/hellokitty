@@ -167,6 +167,9 @@ $router->group([
         $product->setOffset($request->input('offset', 0));
         $product->setSaleType($request->input('saleType'));
         $result = $product->getNarrow($workId);
+        if (empty($result)) {
+            throw new NoContentsException;
+        }
 
         $response = [
             'hasNext' => $product->getHasNext(),
