@@ -637,4 +637,63 @@ class WorkRepository
         return $response;
     }
 
+    /**
+     * API GET: /people/{personId}
+     *
+     * @param $personId
+     * @param null $sort
+     * @param null $saleType
+     *
+     * @return array|null
+     *
+     * @throws NoContentsException
+     */
+    public function person($personId, $sort = null, $itemType = null)
+    {
+        $himoRepository = new HimoRepository($sort , $this->offset, $this->limit);
+
+        $params = [
+            'personId'  => $personId,
+            'saleType'  => $this->saleType,
+            'itemType'  => $itemType,
+            'personId'  => $personId,
+            'id'        => $personId,//dummy data
+            'api'       => 'crossworks',//dummy data
+        ];
+        $data = $himoRepository->searchCrossworks($params, $sort)->get();
+
+        if (empty($data['status']) || $data['status'] != '200' || empty($data['results']['total'])) {
+            throw new NoContentsException();
+        }
+
+        if (count($data['results']['rows']) + $this->offset < $data['results']['total']) {
+            $this->hasNext = true;
+        } else {
+            $this->hasNext = false;
+        }
+
+        $result = [
+            'hasNext' => $this->hasNext,
+            'totalCount' => $data['results']['total'],
+            'rows' => []
+        ];
+
+        foreach ($data['results']['rows'] as $row) {
+            $base = $this->format($row);
+            $result['rows'][] = [
+                'workId' => $base['work_id'],
+                'urlCd' => array_get($base, 'url_cd',  null),
+                'cccWorkCd' => array_get($base, 'ccc_work_cd',  null),
+                'workTitle' => $base['work_title'],
+                'newFlg' => newFlg($row['sale_start_date']),
+                'jacketL' => $base['jacket_l'],
+                'supplement' => '（仮）監督・著者・アーティスト・機種', // default value
+                'saleType' => $this->saleType,
+                'itemType' => $base['itemType'],
+                'adultFlg' => $base['adult_flg'],
+            ];
+        }
+        return $result;
+    }
+
 }

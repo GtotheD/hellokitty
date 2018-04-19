@@ -437,29 +437,17 @@ EOT;
     });
 
     //人物関連作品取得
-    $router->get('people/{personId}', function (Request $request, $workId) {
-        $responseString = <<<EOT
-        {
-              "hasNext": true,
-              "totalCount": 1,
-              "rows": [
-                {
-                    "workId": "PTA00007XDJP",
-                    "urlCd": "https://cdn.store-tsutaya.tsite.jp/cd/pinocchio.mp4",
-                    "cccWorkCd": "10407575",
-                    "workTitle": "ピノキオ",
-                    "newFlg": true,
-                    "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
-                    "supplement": "supplement",
-                    "saleType": "sell",
-                    "itemType": "cd",
-                    "adultFlg": true
-                }
-              ]
-        }
-EOT;
-        $json = json_decode($responseString);
-        return $json;
+    $router->get('people/{personId}', function (Request $request, $personId) {
+        $work = new WorkRepository();
+        $work->setLimit($request->input('limit', 10));
+        $work->setOffset($request->input('offset', 0));
+        $work->setSaleType($request->input('saleType', null));
+
+        $sort = $request->input('sort', '');
+        $itemType = $request->input('itemType', 'all');
+
+        $response = $work->person($personId, $sort, $itemType);
+        return response()->json($response);
     });
 
     // キーワード検索
