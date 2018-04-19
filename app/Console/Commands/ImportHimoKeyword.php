@@ -20,7 +20,7 @@ class ImportHimoKeyword extends Command
      *
      * @var string
      */
-    protected $signature = 'importKeyword {--test} {--dir=}';
+    protected $signature = 'importHimo {--test} {--dir=}';
 
     /**
      * The console command description.
@@ -82,6 +82,7 @@ class ImportHimoKeyword extends Command
 
         $isTruncate = FALSE;
         $isError = FALSE;
+        $isImport = FALSE;
 
         try {
             foreach (self::HIMO_FILE_NAME as $fn) {
@@ -131,7 +132,11 @@ class ImportHimoKeyword extends Command
 
                     // LOAD 実行（6秒弱）・・・truncate(indexがdropされていない)場合はもう少し時間がかかる
                     $this->info($query);
-                    DB::connection()->getPdo()->exec($query);
+                    $count = DB::connection()->getPdo()->exec($query);
+                    $this->info("count[".$count."] ". $query);
+
+                    // 一件以上インポートされたらフラグを書き換える
+                    if ($count > 0) $isImport = TRUE;
 
                     // index（truncateの場合はINDEXは残ったまま）
                 }
@@ -140,7 +145,7 @@ class ImportHimoKeyword extends Command
             $this->warn($e->getTraceAsString());
             $isError = TRUE;
         } finally {
-            if ($isError === FALSE) {
+            if ($isError === FALSE && $isImport === TRUE) {
                 $replaceViewQuery = sprintf("CREATE OR REPLACE VIEW ts_himo_keywords AS SELECT * FROM %s",
                     self::HIMO_KEYWORDS_TBL[$nonActiveTable-1]);
                 DB::connection()->getPdo()->exec($replaceViewQuery);
