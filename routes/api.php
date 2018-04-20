@@ -251,6 +251,7 @@ $router->group([
         $workData = $work->get($workId);
 
         $discasRepository->setLimit($request->input('limit', 10));
+        $discasRepository->setOffset($request->input('offset', 0));
         $response = $discasRepository->getReview($workData['cccWorkCd']);
 
         if (empty($response)) {
