@@ -25,6 +25,7 @@ use App\Repositories\SeriesRepository;
 use App\Repositories\TWSRepository;
 use App\Repositories\HimoKeywordRepository;
 use App\Repositories\PeopleRelatedWorksRepository;
+use App\Repositories\RelateadWorkRepository;
 
 // Api Group
 $router->group([
@@ -277,39 +278,19 @@ $router->group([
     });
     // 関連作品
     $router->get('work/{workId}/relation/works', function (Request $request, $workId) {
-        $responseString = <<<EOT
-      {
-        "hasNext": true,
-        "totalCount": 1,
-        "rows": [
-          {
-            "workId": "PTA00007XDJP",
-            "urlCd": "https://cdn.store-tsutaya.tsite.jp/cd/pinocchio.mp4",
-            "cccWorkCd": "10407575",
-            "workTitle": "ピノキオ",
-            "newFlg": true,
-            "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
-            "supplement": "supplement",
-            "saleType": "sell",
-            "itemType": "cd",
-            "adultFlg": true
-          }
-        ]
-      }
-EOT;
-        $json = json_decode($responseString);
-        return response()->json($json);
+        $relateadWorkRepository = new RelateadWorkRepository;
+        $results = $relateadWorkRepository->getNarrow($workId);
+        if (empty($results)) {
+            throw new NoContentsException;
+        }
+        $response = [
+            'hasNext' => $relateadWorkRepository->getHasNext(),
+            'totalCount' => $relateadWorkRepository->getTotalCount(),
+            'rows' => $results
+        ];
+        return response()->json($response);
     });
-    // 関連動画
-    $router->get('work/{workId}/relation/movie', function (Request $request, $workId) {
-        $responseString = <<<EOT
 
-      JSON HERE
-
-EOT;
-        $json = json_decode($responseString);
-        return response()->json($json);
-    });
     // 関連画像
     $router->get('work/{workId}/relation/pics', function (Request $request, $workId) {
         $work = new WorkRepository();

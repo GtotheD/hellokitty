@@ -8,6 +8,7 @@ use App\Model\Product;
 use App\Exceptions\NoContentsException;
 use DB;
 use App\Repositories\WorkRepository;
+use App\Repositories\RelateadWorkRepository;
 
 /**
  * Created by PhpStorm.
@@ -179,9 +180,16 @@ class WorkRepository
         } else {
             $response = (array)$this->work->selectCamel($selectColumns)->getOne();
         }
+        $this->formatAddOtherData($response, $workId);
+
+        return $response;
+    }
+
+    public function formatAddOtherData ($response)
+    {
         // productsからとってくるが、仮データ
         $productModel = new Product();
-        $product = (array)$productModel->setConditionByWorkIdNewestProduct($workId, $this->saleType)->getOne();
+        $product = (array)$productModel->setConditionByWorkIdNewestProduct($response['workId'], $this->saleType)->getOne();
         // TODO: peopleができてから実装する。
         $response['supplement'] = '（仮）監督・著者・アーティスト・機種';
         if (!empty($product)) {
@@ -194,11 +202,12 @@ class WorkRepository
         $response['itemType'] = $this->convertWorkTypeIdToStr($response['workTypeId']);
         $response['saleType'] = $this->saleType;
         $response['saleTypeHas'] = [
-            'sell' => ($productModel->setConditionByWorkIdSaleType($workId, 'sell')->count() > 0) ?: true,
-            'rental' => ($productModel->setConditionByWorkIdSaleType($workId, 'rental')->count() > 0) ?: true
+            'sell' => ($productModel->setConditionByWorkIdSaleType($response['workId'], 'sell')->count() > 0) ?: true,
+            'rental' => ($productModel->setConditionByWorkIdSaleType($response['workId'], 'rental')->count() > 0) ?: true
         ];
 
         return $response;
+
     }
 
     /**
@@ -210,11 +219,10 @@ class WorkRepository
      *
      * @throws NoContentsException
      */
-    public function insertWorkData($himoResult, $work) {
+    public function insertWorkData($himoResult) {
 
         $productRepository = new ProductRepository();
         $peopleRepository = new PeopleRepository();
-
         // Create transaction for insert multiple tables
         DB::beginTransaction();
         try {
@@ -243,7 +251,7 @@ class WorkRepository
             $productModel = new Product();
             $peopleModel = new People();
 
-            $work->insertBulk($workData, $insertWorkId);
+            $this->work->insertBulk($workData, $insertWorkId);
             $productModel->insertBulk($productData);
             $peopleModel->insertBulk($peopleData);
 
@@ -252,7 +260,7 @@ class WorkRepository
         } catch (\Exception $exception) {
             \Log::error("Error while update work. Error message:{$exception->getMessage()} Line: {$exception->getLine()}");
             DB::rollback();
-            throw new NoContentsException();
+            throw new $exception;
         }
 
     }
