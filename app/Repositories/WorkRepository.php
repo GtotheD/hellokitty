@@ -162,8 +162,6 @@ class WorkRepository
         if ($this->work->count() == 0) {
             $himo = new HimoRepository();
             $himoResult = $himo->crosswork([$workId], $idType)->get(true, 'POST');
-            // recheck
-
             if (empty($himoResult['results']['rows'])) {
                 throw new NoContentsException();
             }
@@ -180,7 +178,7 @@ class WorkRepository
         } else {
             $response = (array)$this->work->selectCamel($selectColumns)->getOne();
         }
-        $this->formatAddOtherData($response, $workId);
+        $response = $this->formatAddOtherData($response, $workId);
 
         return $response;
     }
@@ -189,9 +187,25 @@ class WorkRepository
     {
         // productsからとってくるが、仮データ
         $productModel = new Product();
+        $people = new People;
+        $roleId = '';
         $product = (array)$productModel->setConditionByWorkIdNewestProduct($response['workId'], $this->saleType)->getOne();
         // TODO: peopleができてから実装する。
-        $response['supplement'] = '（仮）監督・著者・アーティスト・機種';
+        if ($product['msdb_item'] === 'game') {
+            $response['supplement'] = $product['game_model_name'];
+        } else {
+            if($product['msdb_item'] === 'video') {
+                $roleId = 'EXT0000000UH';
+            } elseif($product['msdb_item'] === 'book') {
+                $roleId = 'EXT00000BWU9';
+            } elseif($product['msdb_item'] === 'audio') {
+                $roleId = 'EXT00000000D';
+            }
+            $person = $people->setConditionByProduct($product['product_unique_id'])->setConditionByRoleId($roleId)->getOne();
+            if (!empty($person)) {
+                $response['supplement'] = $person->person_name;
+            }
+        }
         if (!empty($product)) {
             $response['makerName'] = $product['maker_name'];
         } else {

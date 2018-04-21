@@ -44,12 +44,26 @@ class People extends Model
             ->where([
                 'product_unique_id' => $productUniqueId,
             ])
-
             ->orderBy('updated_at', 'desc');
 
         return $this;
     }
 
+    /**
+     * @param $productUniqueId
+     *
+     * @return $this
+     */
+    public function setConditionByRoleId($roleId)
+    {
+        $this->dbObject = DB::table($this->table)
+            ->where([
+                'role_id' => $roleId,
+            ])
+            ->orderBy('updated_at', 'desc');
+
+        return $this;
+    }
 
     public function insert($insertData)
     {

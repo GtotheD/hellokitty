@@ -270,6 +270,8 @@ class ProductRepository
         $productBase['product_id'] = $product['product_id'];
         $productBase['product_code'] = $product['product_code'];
         $productBase['jan'] = $product['jan'];
+        $productBase['game_model_id'] = $product['game_model_id'];
+        $productBase['game_model_name'] = $product['game_model_name'];
         $productBase['ccc_family_cd'] = $product['ccc_family_cd'];
         $productBase['rental_product_cd'] = $product['rental_product_cd'];
         $productBase['product_name'] = $product['product_name'];

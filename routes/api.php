@@ -145,7 +145,7 @@ $router->group([
     // 作品基本情報
     $router->get('work/{workId}', function (Request $request, $workId) {
         $work = new WorkRepository();
-        $work->setSaleType($request->input('saleType', 'rental'));
+        $work->setSaleType($request->input('saleType'));
         $ageLimitCheck = $request->input('ageLimitCheck', false);
         $result = $work->get($workId);
         $checkAgeLimit = $work->checkAgeLimit($result['ratingId'], $result['bigGenreId']);
