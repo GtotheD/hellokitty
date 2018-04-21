@@ -86,10 +86,10 @@ class HimoRepository extends ApiRequesterRepository
             $queryId[] = $idType . ':' . $id;
         }
         $this->queryParams = [
-            '_system' => 'TsutayaPassport',
+            '_system' => 'TsutayaApp',
             'id_value' => implode(' || ', $queryId),
-            'xmedia_mode' => '1',
             'service_id' => 'tol',
+            'xmedia_mode' => '1',
             // 'msdb_item' => ['music','video','book','game'],
             'response_level' => '9',
             'offset' => $this->offset,
@@ -105,21 +105,23 @@ class HimoRepository extends ApiRequesterRepository
      *
      * @return $this
      */
-    public function xmediaRelation($ids, $idType = self::ID_TYPE)
+    public function xmediaRelatedWork($ids, $idType = self::ID_TYPE)
     {
-        $idType = '';
         $this->api = 'xmediaRelation';
         $this->id = $ids;
         if(env('APP_ENV') === 'local'){
             return $this;
         }
+        $this->apiPath = $this->apiHost . '/search/xmedia';
         foreach ($ids as $id) {
             $queryId[] = $idType . ':' . $id;
         }
-        $this->params = [
+        $this->queryParams = [
             '_system' => 'TsutayaApp',
             'id_value' => implode(' || ', $queryId),
             'service_id' => 'tol',
+            'xmedia_mode' => '5',
+            'xmedia_item_type' => ['1', '2', '3', '4'],
             'response_level' => '9',
             'offset' => $this->offset,
             'limit' => $this->limit,
@@ -329,7 +331,6 @@ class HimoRepository extends ApiRequesterRepository
 
         // Get multi works in local
         $results = [];
-
         foreach ($this->id as $key => $workId) {
             if(!$results) {
                 $results = $this->stub($this->api, $workId);
