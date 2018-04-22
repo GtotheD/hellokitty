@@ -189,27 +189,29 @@ class WorkRepository
         $productModel = new Product();
         $people = new People;
         $roleId = '';
+        $response['supplement'] = '';
         $product = (array)$productModel->setConditionByWorkIdNewestProduct($response['workId'], $this->saleType)->getOne();
-        // TODO: peopleができてから実装する。
-        if ($product['msdb_item'] === 'game') {
-            $response['supplement'] = $product['game_model_name'];
-        } else {
-            if($product['msdb_item'] === 'video') {
-                $roleId = 'EXT0000000UH';
-            } elseif($product['msdb_item'] === 'book') {
-                $roleId = 'EXT00000BWU9';
-            } elseif($product['msdb_item'] === 'audio') {
-                $roleId = 'EXT00000000D';
+        if($product) {
+            if ($product['msdb_item'] === 'game') {
+                $response['supplement'] = $product['game_model_name'];
+            } else {
+                if ($product['msdb_item'] === 'video') {
+                    $roleId = 'EXT0000000UH';
+                } elseif ($product['msdb_item'] === 'book') {
+                    $roleId = 'EXT00000BWU9';
+                } elseif ($product['msdb_item'] === 'audio') {
+                    $roleId = 'EXT00000000D';
+                }
+                $person = $people->setConditionByProduct($product['product_unique_id'])->setConditionByRoleId($roleId)->getOne();
+                if (!empty($person)) {
+                    $response['supplement'] = $person->person_name;
+                }
             }
-            $person = $people->setConditionByProduct($product['product_unique_id'])->setConditionByRoleId($roleId)->getOne();
-            if (!empty($person)) {
-                $response['supplement'] = $person->person_name;
+            if (!empty($product)) {
+                $response['makerName'] = $product['maker_name'];
+            } else {
+                $response['makerName'] = '';
             }
-        }
-        if (!empty($product)) {
-            $response['makerName'] = $product['maker_name'];
-        } else {
-            $response['makerName'] = '';
         }
         $response['newFlg'] = newFlg($response['saleStartDate']);
         $response['adultFlg'] = ($response['adultFlg'] === '1') ? true : false;
@@ -607,10 +609,9 @@ class WorkRepository
      *
      * @throws NoContentsException
      */
-    public function getWorkList($workIds)
+    public function getWorkList($workIds, $selectColumns = null)
     {
         $work = new Work();
-
         // Get data by list workIds and return
         $himo = new HimoRepository();
         $himoResult = $himo->crosswork($workIds)->get();
@@ -640,21 +641,7 @@ class WorkRepository
         // productsからとってくるが、仮データ
         foreach ($workArray as $workItem) {
             $row = (array)$workItem;
-
-            $productModel = new Product();
-            $product = (array)$productModel->setConditionByWorkIdNewestProduct($workItem->workId, $this->saleType)->getOne();
-            // TODO: peopleができてから実装する。
-            $row['supplement'] = '（仮）監督・著者・アーティスト・機種';
-            $row['makerName'] = $product['maker_name'];
-            $row['newFlg'] = newFlg($workItem->saleStartDate);
-            $row['adultFlg'] = ($workItem->adultFlg === '1') ? true : false;
-            $row['itemType'] = $this->convertWorkTypeIdToStr($workItem->workTypeId);
-            $row['saleType'] = $this->saleType;
-            $row['saleTypeHas'] = [
-                'sell' => ($productModel->setConditionByWorkIdSaleType($workItem->workId, 'sell')->count() > 0) ?: true,
-                'rental' => ($productModel->setConditionByWorkIdSaleType($workItem->workId, 'rental')->count() > 0) ?: true
-            ];
-            $response['rows'][] = $row;
+            $response['rows'][] = $this->formatAddOtherData($row);
         }
         return $response;
     }

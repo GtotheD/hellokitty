@@ -48,17 +48,17 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
-        if ($e instanceof HttpException) {
-            return response()->json(['status' => $e->getStatusCode()], $e->getStatusCode());
-        } else if ($e instanceof NoContentsException) {
-            return response()->json(['status' => '204'], 204);
-        } else if ($e instanceof BadRequestHttpException) {
-            return response()->json(['status' => '400'], 400);
-        } else if ($e instanceof AuthorizationException) {
-            return response()->json(['status' => '401'], 401);
-        } else if ($e instanceof Exception) {
-            return response()->json(['status' => '500'], 500);
-        }
+//        if ($e instanceof HttpException) {
+//            return response()->json(['status' => $e->getStatusCode()], $e->getStatusCode());
+//        } else if ($e instanceof NoContentsException) {
+//            return response()->json(['status' => '204'], 204);
+//        } else if ($e instanceof BadRequestHttpException) {
+//            return response()->json(['status' => '400'], 400);
+//        } else if ($e instanceof AuthorizationException) {
+//            return response()->json(['status' => '401'], 401);
+//        } else if ($e instanceof Exception) {
+//            return response()->json(['status' => '500'], 500);
+//        }
         return parent::render($request, $e);
     }
 }

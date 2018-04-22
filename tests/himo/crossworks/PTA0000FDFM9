@@ -1,0 +1,160 @@
+{
+    "status": 200,
+    "message": null,
+    "results": {
+        "total": 1,
+        "rows": [
+            {
+                "work_id": "PTA0000FDFM9",
+                "work_type_id": "4",
+                "msdb_item": "game",
+                "work_format_id": null,
+                "work_format_name": "",
+                "work_title": "グランディア エクストリーム",
+                "work_title_kana": "ぐらんでいあえくすとりーむ",
+                "work_title_en": "",
+                "work_title_orig": "",
+                "work_title_sub": "",
+                "work_comment": "",
+                "work_outline": "",
+                "work_copyright": "(C)1997,1999,2000 GAME ARTS (C)GAME ARTS/ENIX 2002",
+                "rating_id": "EXT000000008",
+                "rating_name": "",
+                "adult_flg": 0,
+                "primary_product_source_id": "PDT00007G8UO",
+                "primary_product_service_id": "ec",
+                "primary_product_type_id": 1,
+                "disp_start_date": "1900-01-01 00:00:00",
+                "disp_start_month": "1900-01",
+                "sale_start_date": "2002-01-31",
+                "sale_start_month": "2002-01",
+                "created_year_from": "",
+                "created_year_to": "",
+                "created_year": "2002",
+                "created_countries": "",
+                "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/00384/4988601003575_1S.jpg ",
+                "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/00384/4988601003575_1M.jpg ",
+                "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/00384/4988601003575_1L.jpg ",
+                "jacket_l4": "",
+                "scene_s": [
+
+                ],
+                "scene_m": [
+
+                ],
+                "scene_l": [
+
+                ],
+                "trailor_pc": [
+
+                ],
+                "season_name": "",
+                "season_number": null,
+                "book_series_name": "",
+                "book_series_name_kana": "",
+                "feature_keywords": [
+
+                ],
+                "priv_keywords": [
+
+                ],
+                "work_tags": [
+
+                ],
+                "wakati_words": [
+
+                ],
+                "is_compilation": 0,
+                "series_completed": 0,
+                "disable_flg": 0,
+                "delete_flg": 0,
+                "ids": [
+                    {
+                        "id_type": "0103",
+                        "id_value": "30007070"
+                    },
+                    {
+                        "id_type": "0105",
+                        "id_value": "30005376"
+                    }
+                ],
+                "docs": [
+
+                ],
+                "awards": [
+
+                ],
+                "screens": [
+
+                ],
+                "onairs": [
+
+                ],
+                "magazines": [
+
+                ],
+                "genres": [
+                    {
+                        "big_genre_id": "EXT000073WWV",
+                        "big_genre_name": "ロールプレイング",
+                        "medium_genre_id": "EXT000073YQJ",
+                        "medium_genre_name": "ロールプレイング",
+                        "small_genre_id": "",
+                        "small_genre_name": "",
+                        "shikiriban_id": "",
+                        "shikiriban_name": ""
+                    }
+                ],
+                "products": [
+
+                ],
+                "video_relations": [
+
+                ],
+                "discas_grade_point": null,
+                "discas_item": [
+
+                ],
+                "ttv_trailer_flg": 0,
+                "ttv_free_movie_flg": 0,
+                "ttv_sell_rental_flg": [
+
+                ],
+                "ttv_low_price": null,
+                "cinema_id": [
+
+                ],
+                "filmarks_id": [
+
+                ],
+                "catch_copy": "",
+                "sale_start_date_sell": "2002-01-31",
+                "sale_start_date_rental": "",
+                "trailer_urls": [
+
+                ],
+                "scenes": [
+
+                ],
+                "filmarks_mark": null,
+                "filmarks_clip": null,
+                "filmarks_average": null,
+                "people": [
+                    {
+                        "person_id": "PPS00007EDJ1",
+                        "person_name": "藤原カムイ",
+                        "role_id": "EXT00000B3US",
+                        "role_name": "キャラクターデザイン"
+                    }
+                ],
+                "tracks": [
+
+                ],
+                "merged_from": [
+
+                ],
+                "need_age_auth_flg": 0
+            }
+        ]
+    }
+}

@@ -1,0 +1,512 @@
+{
+    "status": 200,
+    "message": null,
+    "results": {
+        "total": 1,
+        "rows": [
+            {
+                "work_id": "PTA0000R0IQC",
+                "work_type_id": "4",
+                "msdb_item": "game",
+                "work_format_id": null,
+                "work_format_name": "",
+                "work_title": "マリオパーティ スターラッシュ",
+                "work_title_kana": "まりおぱーていすたーらつしゆ",
+                "work_title_en": "",
+                "work_title_orig": "",
+                "work_title_sub": "",
+                "work_comment": "",
+                "work_outline": "",
+                "work_copyright": "",
+                "rating_id": "EXT000079777",
+                "rating_name": "全年齢対象",
+                "adult_flg": 0,
+                "primary_product_source_id": "PDT0000R0GZ2",
+                "primary_product_service_id": "ec",
+                "primary_product_type_id": 1,
+                "disp_start_date": "1900-01-01 00:00:00",
+                "disp_start_month": "1900-01",
+                "sale_start_date": "2016-10-20",
+                "sale_start_month": "2016-10",
+                "created_year_from": "",
+                "created_year_to": "",
+                "created_year": "2016",
+                "created_countries": "",
+                "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/11633/4902370535013_1S.jpg ",
+                "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/11633/4902370535013_1M.jpg ",
+                "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/11633/4902370535013_1L.jpg ",
+                "jacket_l4": "",
+                "scene_s": [
+
+                ],
+                "scene_m": [
+
+                ],
+                "scene_l": [
+
+                ],
+                "trailor_pc": [
+
+                ],
+                "season_name": "",
+                "season_number": null,
+                "book_series_name": "",
+                "book_series_name_kana": "",
+                "feature_keywords": [
+                    "３Ｄ"
+                ],
+                "priv_keywords": [
+
+                ],
+                "work_tags": [
+
+                ],
+                "wakati_words": [
+
+                ],
+                "is_compilation": 0,
+                "series_completed": 0,
+                "disable_flg": 0,
+                "delete_flg": 0,
+                "ids": [
+                    {
+                        "id_type": "0103",
+                        "id_value": "30035022"
+                    },
+                    {
+                        "id_type": "0105",
+                        "id_value": "30031227"
+                    }
+                ],
+                "docs": [
+
+                ],
+                "awards": [
+
+                ],
+                "screens": [
+
+                ],
+                "onairs": [
+
+                ],
+                "magazines": [
+
+                ],
+                "genres": [
+                    {
+                        "big_genre_id": "EXT000073WXB",
+                        "big_genre_name": "テーブルゲーム",
+                        "medium_genre_id": "EXT000073YVF",
+                        "medium_genre_name": "ボードゲーム",
+                        "small_genre_id": "",
+                        "small_genre_name": "",
+                        "shikiriban_id": "",
+                        "shikiriban_name": ""
+                    }
+                ],
+                "products": [
+                    {
+                        "id": "PDT0000R0G2C",
+                        "product_id": "PPD0000R0G2C",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "tol",
+                        "service_name": "tol",
+                        "msdb_item": "game",
+                        "item_cd": "1040",
+                        "item_name": "ゲームソフト",
+                        "product_name": "マリオパーティ スターラッシュ",
+                        "product_kana": "まりおぱーていすたーらつしゆ",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2016-09-02 16:08:55",
+                        "disp_start_month": "2016-09",
+                        "disp_end_date": "2030-12-28 00:00:00",
+                        "disp_end_month": "2030-12",
+                        "sale_start_date": "2016-10-20",
+                        "sale_start_month": "2016-10",
+                        "sale_end_date": "2030-12-28",
+                        "sale_end_month": "2030-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000R0IQC"
+                        ],
+                        "tieup": "",
+                        "copyright": "",
+                        "rating_id": "EXT000079777",
+                        "rating_name": "全年齢対象",
+                        "adult_flg": 0,
+                        "created_year_from": "2016",
+                        "created_year_to": "",
+                        "created_year_str": "2016",
+                        "created_countries": "",
+                        "maker_cd": "EXT00000LJXP",
+                        "maker_name": "任天堂",
+                        "maker_name_kana": "にんてんどう",
+                        "maker_name_abbrev": "任天堂",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "30035022",
+                        "ccc_family_cd": "30035022001",
+                        "ccc_product_id": "205258681",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4902370535013",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "CTRPBAAJ",
+                        "icpn": "",
+                        "media_category_cd": "24",
+                        "media_category_name": "販売ゲーム",
+                        "media_format_id": "EXT0000797BU",
+                        "media_format_name": "カード",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "EXT000077CIL",
+                        "game_model_name": "ＮＩＮＴＥＮＤＯ　３ＤＳ",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "000000",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "",
+                        "video_info": "",
+                        "number_of_volume": "",
+                        "number_of_set": "0",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/11633/4902370535013_1S.jpg ",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/11633/4902370535013_1M.jpg ",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/11633/4902370535013_1L.jpg ",
+                        "jacket_l4": "",
+                        "scene_s": [
+
+                        ],
+                        "scene_m": [
+
+                        ],
+                        "scene_l": [
+
+                        ],
+                        "trailor_pc": [
+
+                        ],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [
+                            "３Ｄ"
+                        ],
+                        "priv_keywords": [
+
+                        ],
+                        "package_tags": [
+
+                        ],
+                        "product_tags": [
+
+                        ],
+                        "price_tax_out": 4700,
+                        "price_tax_in": 5076,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+
+                        ],
+                        "devices": [
+
+                        ],
+                        "distribution_plans": [
+
+                        ],
+                        "awards": [
+
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT000073WXB",
+                                "big_genre_name": "テーブルゲーム",
+                                "medium_genre_id": "EXT000073YVF",
+                                "medium_genre_name": "ボードゲーム",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [
+
+                        ],
+                        "onairs": [
+
+                        ],
+                        "magazines": [
+
+                        ],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [
+
+                        ],
+                        "filmarks_id": [
+
+                        ],
+                        "catch_copy": "",
+                        "people": [
+
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT0000R0GZ2",
+                        "product_id": "PPD0000R0G2C",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "ec",
+                        "service_name": "ec",
+                        "msdb_item": "game",
+                        "item_cd": "1040",
+                        "item_name": "ゲームソフト",
+                        "product_name": "マリオパーティ スターラッシュ",
+                        "product_kana": "まりおぱーていすたーらつしゆ",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "1900-01-01 00:00:00",
+                        "disp_start_month": "1900-01",
+                        "disp_end_date": "2099-12-28 23:59:59",
+                        "disp_end_month": "2099-12",
+                        "sale_start_date": "2016-10-20",
+                        "sale_start_month": "2016-10",
+                        "sale_end_date": "2066-10-20",
+                        "sale_end_month": "2066-10",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000R0IQC"
+                        ],
+                        "tieup": "",
+                        "copyright": "",
+                        "rating_id": "EXT000079777",
+                        "rating_name": "全年齢対象",
+                        "adult_flg": 0,
+                        "created_year_from": "2016",
+                        "created_year_to": "",
+                        "created_year_str": "2016",
+                        "created_countries": "",
+                        "maker_cd": "EXT00000LJXP",
+                        "maker_name": "任天堂",
+                        "maker_name_kana": "にんてんどう",
+                        "maker_name_abbrev": "任天堂",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 1,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "30035022",
+                        "ccc_family_cd": "30035022001",
+                        "ccc_product_id": "205258681",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4902370535013",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "CTRPBAAJ",
+                        "icpn": "",
+                        "media_category_cd": "24",
+                        "media_category_name": "販売ゲーム",
+                        "media_format_id": "EXT0000797BU",
+                        "media_format_name": "カード",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "EXT000077CIL",
+                        "game_model_name": "ＮＩＮＴＥＮＤＯ　３ＤＳ",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "",
+                        "video_info": "",
+                        "number_of_volume": "",
+                        "number_of_set": "0",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/11633/4902370535013_1S.jpg ",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/11633/4902370535013_1M.jpg ",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/11633/4902370535013_1L.jpg ",
+                        "jacket_l4": "",
+                        "scene_s": [
+
+                        ],
+                        "scene_m": [
+
+                        ],
+                        "scene_l": [
+
+                        ],
+                        "trailor_pc": [
+
+                        ],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [
+
+                        ],
+                        "priv_keywords": [
+
+                        ],
+                        "package_tags": [
+
+                        ],
+                        "product_tags": [
+
+                        ],
+                        "price_tax_out": 4700,
+                        "price_tax_in": 5076,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+
+                        ],
+                        "devices": [
+
+                        ],
+                        "distribution_plans": [
+
+                        ],
+                        "awards": [
+
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT000073WXB",
+                                "big_genre_name": "テーブルゲーム",
+                                "medium_genre_id": "EXT000073YVF",
+                                "medium_genre_name": "ボードゲーム",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [
+
+                        ],
+                        "onairs": [
+
+                        ],
+                        "magazines": [
+
+                        ],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [
+
+                        ],
+                        "filmarks_id": [
+
+                        ],
+                        "catch_copy": "",
+                        "people": [
+
+                        ],
+                        "need_age_auth_flg": 0
+                    }
+                ],
+                "video_relations": [
+
+                ],
+                "discas_grade_point": null,
+                "discas_item": [
+
+                ],
+                "ttv_trailer_flg": 0,
+                "ttv_free_movie_flg": 0,
+                "ttv_sell_rental_flg": [
+
+                ],
+                "ttv_low_price": null,
+                "cinema_id": [
+
+                ],
+                "filmarks_id": [
+
+                ],
+                "catch_copy": "",
+                "sale_start_date_sell": "2016-10-20",
+                "sale_start_date_rental": "",
+                "trailer_urls": [
+
+                ],
+                "scenes": [
+
+                ],
+                "filmarks_mark": null,
+                "filmarks_clip": null,
+                "filmarks_average": null,
+                "people": [
+
+                ],
+                "tracks": [
+
+                ],
+                "merged_from": [
+
+                ],
+                "need_age_auth_flg": 0
+            }
+        ]
+    }
+}
