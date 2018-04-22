@@ -26,6 +26,7 @@ use App\Repositories\TWSRepository;
 use App\Repositories\HimoKeywordRepository;
 use App\Repositories\PeopleRelatedWorksRepository;
 use App\Repositories\RelateadWorkRepository;
+use App\Repositories\RecommendOtherRepository;
 
 // Api Group
 $router->group([
@@ -339,28 +340,16 @@ $router->group([
     });
     // 作品レコメンド（この作品を見た人はこんな作品もみています）
     $router->get('work/{workId}/recommend/other', function (Request $request, $workId) {
-        $responseString = <<<EOT
-      {
-        "hasNext": true,
-        "totalCount": 1,
-        "rows": [
-          {
-            "workId": "PTA00007XDJP",
-            "urlCd": "https://cdn.store-tsutaya.tsite.jp/cd/pinocchio.mp4",
-            "cccWorkCd": "10407575",
-            "workTitle": "ピノキオ",
-            "newFlg": true,
-            "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07483/4959241310644_1L.jpg",
-            "supplement": "supplement",
-            "saleType": "sell",
-            "itemType": "cd",
-            "adultFlg": true
-          }
-        ]
-      }
-EOT;
-        $json = json_decode($responseString);
-        return response()->json($json);
+        $recommendOtherRepository = new RecommendOtherRepository;
+        $recommendOtherRepository->setLimit($request->input('limit', 10));
+        $recommendOtherRepository->setOffset($request->input('offset', 0));
+        $rows = $recommendOtherRepository->getWorks($workId, $request->input('saleType'));
+        $response = [
+            'hasNext' => $recommendOtherRepository->getHasNext(),
+            'totalCount' => $recommendOtherRepository->getTotalCount(),
+            'rows' => $rows
+        ];
+        return response()->json($response);
     });
     // 作者レコメンド
     $router->get('work/{workId}/recommend/author', function (Request $request, $workId) {

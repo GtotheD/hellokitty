@@ -119,14 +119,14 @@ class Import extends Command
     {
         $isTest = $this->option('test');
         $dir = $this->option('dir');
-        if(isset($dir)) {
+        if (isset($dir)) {
             $this->root = $dir . DIRECTORY_SEPARATOR . self::CATEGORY_DIR;
             $this->baseDir = $dir . DIRECTORY_SEPARATOR;
         }
 
         $this->getImportControlInfo();
 
-        $this->infoH1('Start Json Data Import Command. ['.date('Y/m/d H:i:s').']');
+        $this->infoH1('Start Json Data Import Command. [' . date('Y/m/d H:i:s') . ']');
 
         $this->info('Check import control file.');
         if (!file_exists($this->importControlFIle)) {
@@ -229,7 +229,7 @@ class Import extends Command
                 }
             } else if ($explodeFilePath[0] === self::CATEGORY_DIR &&
                 (array_key_exists(3, $explodeFilePath) &&
-                $explodeFilePath[3] === self::BASE_FILE_NAME)
+                    $explodeFilePath[3] === self::BASE_FILE_NAME)
             ) {
                 $goodTypeCode = $this->structureRepository->convertGoodsTypeToId($explodeFilePath[1]);
                 $saleTypeCode = $this->structureRepository->convertSaleTypeToId($explodeFilePath[2]);
@@ -511,16 +511,16 @@ class Import extends Command
             if (!empty($sectionRow->code)) {
                 try {
                     //$res = $himo->crosswork([$sectionRow->code], '0206')->get();
-		        $length = strlen($sectionRow->code);
-       			// rental_product_cd
-        		if ($length === 9) {
-				$codeType = '0206';
-       			} elseif ($length === 13) {
-				$codeType = '0205';
-        		}
-			$this->infoMessage('Id Type: '. $codeType);
+                    $length = strlen($sectionRow->code);
+                    // rental_product_cd
+                    if ($length === 9) {
+                        $codeType = '0206';
+                    } elseif ($length === 13) {
+                        $codeType = '0205';
+                    }
+                    $this->infoMessage('Id Type: ' . $codeType);
 
-		    $res = $workRepository->get($sectionRow->code, [], $codeType);
+                    $res = $workRepository->get($sectionRow->code, [], $codeType);
                     $updateValues = [
                         'work_id' => $res['workId'],
                         'title' => $res['workTitle'],
@@ -530,7 +530,7 @@ class Import extends Command
 
                     $updateValues['image_url'] = $res['jacketL'];
 
-		    $updateValues['sale_start_date'] = $res['saleStartDate'];
+                    $updateValues['sale_start_date'] = $res['saleStartDate'];
 
                     $updateValues['supplement'] = $res['supplement'];
                     // $section->update($sectionRow->id, $updateValues);
@@ -631,7 +631,7 @@ class Import extends Command
                 $checkResult = $this->importCheck($filePath, $filePath['timestamp']);
                 if (!$checkResult) {
                     if (count($oldId) != 0 && array_key_exists($row['sectionFileName'], $oldId)) {
-                        $this->infoMessage('Update #section.ts_structure_id from : ' . $oldId[$row['sectionFileName']].' to: ' . $insertId);
+                        $this->infoMessage('Update #section.ts_structure_id from : ' . $oldId[$row['sectionFileName']] . ' to: ' . $insertId);
                         $sectionTable = DB::table(self::SECTION_TABLE);
                         $updateCount = $sectionTable->where('ts_structure_id', $oldId[$row['sectionFileName']])
                             ->update(['ts_structure_id' => $insertId]);
@@ -655,7 +655,7 @@ class Import extends Command
                 $checkResult = $this->importCheck($filePath, $filePath['timestamp']);
                 if (!$checkResult) {
                     if (count($oldId) != 0 && array_key_exists($row['sectionFileName'], $oldId)) {
-                        $this->infoMessage('Update #banner.ts_structure_id from : ' . $oldId[$row['sectionFileName']].' to: ' . $insertId);
+                        $this->infoMessage('Update #banner.ts_structure_id from : ' . $oldId[$row['sectionFileName']] . ' to: ' . $insertId);
                         $bannerTable = DB::table(self::BANNER_TABLE);
                         $updateCount = $bannerTable->where('ts_structure_id', $oldId[$row['sectionFileName']])
                             ->update(['ts_structure_id' => $insertId]);

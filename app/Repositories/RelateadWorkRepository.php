@@ -124,6 +124,10 @@ class RelateadWorkRepository
         foreach ($relatedWorkList as $relatedWork) {
             $relatedWorkArray[] = $relatedWork->related_work_id;
         }
+
+        // -----------------------------------
+        // ここの部分を共通化したい
+        // -----------------------------------
         // STEP 2: 関連作品の詳細情報をworkテーブルから取得する為に、既に取得済みのIDを抽出する。
         $workIdsExisted = $work->getWorkIdsIn($relatedWorkArray)->select('work_id')->get();
         foreach ($workIdsExisted as $workIdsExistedItem) {
@@ -152,6 +156,9 @@ class RelateadWorkRepository
         if (!$this->totalCount) {
             throw new NoContentsException();
         }
+        // -----------------------------------
+        // ここまで
+        // -----------------------------------
 
         // STEP 6: 条件と指定して再度取得
         $workList = $work->toCamel(['id'])->get($this->limit, $this->offset);
