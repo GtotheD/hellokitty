@@ -76,9 +76,11 @@ class DiscasRepository extends ApiRequesterRepository
                     'contributorDate' => '',
                     'contents' => (string)$value->review,
                 ];
+                $reviews['totalCount']++;
             }
             if (!empty($reviews['rows'])) {
                 $reviews['averageRating'] = sprintf('%.1f', (int)$xmlObj->rating / 100);
+                $reviews['rows'] = array_slice($reviews['rows'], $this->offset, $this->limit);
                 return $reviews;
             }
         }
