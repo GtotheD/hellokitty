@@ -662,7 +662,6 @@ class WorkRepository
             'personId'  => $personId,
             'saleType'  => $this->saleType,
             'itemType'  => $itemType,
-            'personId'  => $personId,
             'id'        => $personId,//dummy data
             'api'       => 'crossworks',//dummy data
         ];
