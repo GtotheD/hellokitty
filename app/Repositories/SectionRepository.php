@@ -6,6 +6,7 @@ use App\Model\Structure;
 use App\Repositories\TWSRepository;
 use App\Repositories\TAPRepository;
 use App\Repositories\FixtureRepository;
+use App\Repositories\WorkRepository;
 use App\Model\Section;
 use App\Model\Banner;
 use App\Exceptions\NoContentsException;
@@ -122,7 +123,7 @@ class SectionRepository
         $goodsType = $structureRepository->convertGoodsTypeToId($goodsType);
         $saleType = $structureRepository->convertSaleTypeToId($saleType);
         $structureList = $structure->conditionFindFilenameWithDispTime($goodsType, $saleType, $sectionFileName)->getOne();
-        if(count($structureList) == 0) {
+        if (count($structureList) == 0) {
             $this->totalCount = 0;
         } else {
             $this->section->setConditionByTsStructureId($structureList->id);
@@ -142,7 +143,7 @@ class SectionRepository
                 'supplement' => $this->supplementVisible ? '' : $section->supplement, // アーティスト名、著者、機種等
                 'code' => $section->code,
                 'urlCode' => $section->url_code,
-                'himoId' => $section->himo_id
+                'workId' => $section->work_id
             ];
             if ($saleType == $structureRepository::RENTAL) {
                 $row['saleStartDate'] = $structureList->is_release_date == 1 ? $this->dateFormat($section->rental_start_date) : null;
@@ -166,6 +167,7 @@ class SectionRepository
             if (key_exists($genreCode, $genreMap)) {
                 $rankingConcentrationCd = $genreMap[$genreCode]['AggregationCode'];
             } else {
+                Log::error('Genre code is not found');
                 throw new NoContentsException();
             }
             $title = $genreMap[$genreCode]['HimoBigGenreName'] . ':' . $genreMap[$genreCode]['HimoMiddleGenreName'];
@@ -236,13 +238,17 @@ class SectionRepository
     private function convertFormatFromTAPRelease($rows)
     {
         foreach ($rows as $row) {
+            $workRepository = new WorkRepository;
             if (empty($row)) {
                 return null;
             }
+            $work = $workRepository->get($row['urlCd'], [], '0105');
             $formattedRow =
                 [
                     'imageUrl' => $row['imageUrl'],
                     'title' => $row['productName'],
+                    'workTitle' => $work['workTitle'],
+                    'workId' => $work['workId'],
                     'code' => $row['productId'],
                     'urlCode' => $row['urlCd']
                 ];
@@ -304,14 +310,18 @@ class SectionRepository
      */
     private function convertFormatFromRanking($rows)
     {
+        $workRepository = new WorkRepository;
         foreach ($rows['entry'] as $row) {
             if (empty($row)) {
                 return null;
             }
+            $work = $workRepository->get($row['productKey'], [], $this->productKeyType($row['productKey']));
             $rowUnit = [
                 'saleStartDate' => null,
                 'imageUrl' => $row['productImage']['large'],
                 'title' => $row['productTitle'],
+                'workTitle' => $work['workTitle'],
+                'workId' => $work['workId'],
                 'code' => $row['productKey'],
                 'urlCode' => $row['urlCd']
             ];
@@ -355,5 +365,18 @@ class SectionRepository
         } else {
             return null;
         }
+    }
+
+    private function productKeyType($productKey)
+    {
+        $length = strlen($productKey);
+        // rental_product_cd
+        if ($length === 9) {
+            $idCode = '0206';
+            //jan
+        } elseif ($length === 13) {
+            $idCode = '0205';
+        }
+        return $idCode;
     }
 }

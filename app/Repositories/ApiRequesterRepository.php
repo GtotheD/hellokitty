@@ -58,7 +58,6 @@ class ApiRequesterRepository
             }
             throw new $e;
         }
-
         if ($jsonResponse) {
             return json_decode($result->getBody()->getContents(), true);
         }

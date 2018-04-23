@@ -93,6 +93,6 @@ class RecommendOtherRepository
         } else {
             $this->hasNext = false;
         }
-        return $works;
+        return $mergeWorks;
     }
 }
