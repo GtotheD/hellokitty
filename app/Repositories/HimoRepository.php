@@ -90,7 +90,6 @@ class HimoRepository extends ApiRequesterRepository
             'id_value' => implode(' || ', $queryId),
             'service_id' => 'tol',
             'xmedia_mode' => '1',
-            // 'msdb_item' => ['music','video','book','game'],
             'response_level' => '9',
             'offset' => $this->offset,
             'limit' => $this->limit,
@@ -279,7 +278,7 @@ class HimoRepository extends ApiRequesterRepository
             $queryId[] = $idType . ':' . $id;
         }
         $this->apiPath = $this->apiHost . '/search/people';
-        $this->params = [
+        $this->queryParams = [
             '_system' => 'TsutayaApp',
             'service_id' => 'tol',
             'id_value' => implode(' || ', $queryId),
@@ -289,7 +288,7 @@ class HimoRepository extends ApiRequesterRepository
             'sort_by' => 'auto:asc',
         ];
         if ($msdbItem) {
-            $this->params['msdb_item'] = $msdbItem;
+            $this->queryParams['msdb_item'] = $msdbItem;
         }
         return $this;
     }
@@ -321,9 +320,8 @@ class HimoRepository extends ApiRequesterRepository
     public function get($jsonResponse = true)
     {
         if(env('APP_ENV') !== 'local'){
-            parent::get($jsonResponse);
+            return parent::get($jsonResponse);
         }
-
         // Check and read array workId
         if(!is_array($this->id)) {
             return $this->stub($this->api, $this->id);

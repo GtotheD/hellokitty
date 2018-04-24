@@ -105,8 +105,8 @@ class RelateadWorkRepository
         // STEP 1: 関連作品テーブルからリストを取得。なければHimoから新規で取得。
         $relatedWorkList = $relateadWork->setConditionByWork($workId)->select('related_work_id')->get();
         if(empty(count($relatedWorkList))) {
-            $himoResult = $himo->xmediaRelatedWork([$workId])->get(true, 'POST');
-            if (!$himoResult) {
+            $himoResult = $himo->xmediaRelatedWork([$workId])->get(true);
+            if (!$himoResult['results']['rows']) {
                 throw new NoContentsException();
             }
             // Get Only Work Ids

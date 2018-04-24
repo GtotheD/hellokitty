@@ -184,6 +184,9 @@ $router->group([
     $router->get('work/{workId}/products/rental', function (Request $request, $workId) {
         $product = new ProductRepository();
         $result = $product->getRentalGroup($workId);
+        if (empty($result)) {
+            throw new NoContentsException;
+        }
         $response = [
             'hasNext' => $product->getHasNext(),
             'totalCount' => $product->getTotalCount(),
@@ -320,17 +323,11 @@ $router->group([
         return response()->json($response);
     });
     // 関連アーティスト
-    $router->get('work/{workId}/relation/artist/works', function (Request $request, $workId) {
-        $peopleRelatedWorksRepository = new PeopleRelatedWorksRepository();
-        $peopleRelatedWorksRepository->setOffset($request->input('offset', 0));
-        $peopleRelatedWorksRepository->setLimit($request->input('limit', 10));
-        $rows = $peopleRelatedWorksRepository->getWorksByArtist($workId);
-
-        $response = [
-            'hasNext' => $peopleRelatedWorksRepository->getHasNext(),
-            'totalCount' => $peopleRelatedWorksRepository->getTotalCount(),
-            'rows' => $rows
-        ];
+    $router->get('work/{workId}/relation/artist', function (Request $request, $workId) {
+        $recommendArtistRepository = new \App\Repositories\RecommendArtistRepository();
+        $recommendArtistRepository->setLimit($request->input('limit', 10));
+        $recommendArtistRepository->setOffset($request->input('offset', 0));
+        $response = $recommendArtistRepository->getArtist($workId);
         return response()->json($response);
     });
 
@@ -357,7 +354,6 @@ $router->group([
         $peopleRelatedWorksRepository = new PeopleRelatedWorksRepository();
         $peopleRelatedWorksRepository->setLimit($request->input('limit', 10));
         $peopleRelatedWorksRepository->setOffset($request->input('offset', 0));
-
         $rows = $peopleRelatedWorksRepository->getWorks($workId);
         $response = [
             'hasNext' => $peopleRelatedWorksRepository->getHasNext(),
@@ -368,13 +364,16 @@ $router->group([
     });
     // 作品レコメンド
     $router->get('work/{workId}/recommend/artist', function (Request $request, $workId) {
-        $recommendArtistRepository = new \App\Repositories\RecommendArtistRepository();
+        $peopleRelatedWorksRepository = new PeopleRelatedWorksRepository();
+        $peopleRelatedWorksRepository->setOffset($request->input('offset', 0));
+        $peopleRelatedWorksRepository->setLimit($request->input('limit', 10));
+        $rows = $peopleRelatedWorksRepository->getWorksByArtist($workId);
 
-        $recommendArtistRepository->setLimit($request->input('limit', 10));
-        $recommendArtistRepository->setOffset($request->input('offset', 0));
-
-        $response = $recommendArtistRepository->getArtist($workId);
-
+        $response = [
+            'hasNext' => $peopleRelatedWorksRepository->getHasNext(),
+            'totalCount' => $peopleRelatedWorksRepository->getTotalCount(),
+            'rows' => $rows
+        ];
         return response()->json($response);
     });
     // 変換

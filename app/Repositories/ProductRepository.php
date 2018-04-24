@@ -169,6 +169,7 @@ class ProductRepository
     }
     private function rentalGroupReformat($products)
     {
+        $reformatResult = null;
         // reformat data
         foreach ($products as $product) {
             $product = (array)$product;
