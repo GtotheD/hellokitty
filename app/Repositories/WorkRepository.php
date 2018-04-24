@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Exceptions\AgeLimitException;
 use App\Model\People;
 use App\Model\Work;
 use App\Model\Product;
@@ -179,6 +180,10 @@ class WorkRepository
             $response = (array)$this->work->selectCamel($selectColumns)->getOne();
         }
         $response = $this->formatAddOtherData($response, $workId);
+
+        if($response['adultFlg']) {
+            throw new AgeLimitException();
+        }
 
         return $response;
     }
