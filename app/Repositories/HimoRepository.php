@@ -90,6 +90,7 @@ class HimoRepository extends ApiRequesterRepository
             'id_value' => implode(' || ', $queryId),
             'service_id' => 'tol',
             'xmedia_mode' => '1',
+            // 'msdb_item' => ['music','video','book','game'],
             'response_level' => '9',
             'offset' => $this->offset,
             'limit' => $this->limit,
@@ -162,6 +163,7 @@ class HimoRepository extends ApiRequesterRepository
             return $this;
         }
 
+        $this->apiPath = $this->apiHost . '/search/crossworks';
         $sortBy = 'auto:asc';
         if ($sort == 'new') {
             $sortBy = 'sale_start_date:desc';
@@ -293,21 +295,20 @@ class HimoRepository extends ApiRequesterRepository
         return $this;
     }
 
-    public function searchRelatedPeople($ids) {
+    public function searchRelatedPeople($id) {
         $this->api = 'related_people';
-        $this->id = $ids;
+        $this->id = $id;
         if(env('APP_ENV') === 'local'){
             return $this;
         }
-
         $this->apiPath = $this->apiHost . '/search/related_people';
-        $this->params = [
+        $this->queryParams = [
             '_system' => 'TsutayaApp',
             'service_id' => 'tol',
-            'person_id' => $ids,
+            'person_id' => $id,
             'offset' => $this->offset,
             'limit' => $this->limit,
-            'sort_by' => 'auto:asc',
+            // 'sort_by' => 'auto:asc',
         ];
         return $this;
     }

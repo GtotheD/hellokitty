@@ -161,7 +161,7 @@ class WorkRepository
         $this->work->setConditionByWorkId($workId);
         if ($this->work->count() == 0) {
             $himo = new HimoRepository();
-            $himoResult = $himo->crosswork([$workId], $idType)->get(true, 'POST');
+            $himoResult = $himo->crosswork([$workId], $idType)->get(true);
             if (empty($himoResult['results']['rows'])) {
                 throw new NoContentsException();
             }
@@ -509,6 +509,7 @@ class WorkRepository
 
     public function convertWorkTypeIdToStr($workTypeId)
     {
+        $itemType = null;
         switch ($workTypeId) {
             case self::WORK_TYPE_CD:
                 $itemType = 'cd';
@@ -528,8 +529,10 @@ class WorkRepository
 
     private function dvdFormat($row)
     {
-        if (count($row['docs']) > 0) {
-            return $row['docs'][0]['doc_text'];
+        if(array_key_exists('docs',$row)){
+            if (count($row['docs']) > 0) {
+               return $row['docs'][0]['doc_text'];
+	    }
         }
         return null;
     }
@@ -546,8 +549,10 @@ class WorkRepository
 
     private function gameFormat($row)
     {
-        if (count($row['docs']) > 0) {
-            return $row['docs'][0]['doc_text'];
+        if(array_key_exists('docs',$row)){
+          if (count($row['docs']) > 0) {
+              return $row['docs'][0]['doc_text'];
+          }
         }
         return null;
     }

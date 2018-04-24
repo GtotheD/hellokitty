@@ -101,9 +101,8 @@ class RelateadWorkRepository
         $workRepository = new  WorkRepository();
         $relateadWork = new RelateadWork();
         $workIdsIn = [];
-
         // STEP 1: 関連作品テーブルからリストを取得。なければHimoから新規で取得。
-        $relatedWorkList = $relateadWork->setConditionByWork($workId)->select('related_work_id')->get();
+        $relatedWorkList = $relateadWork->setConditionByWork($workId)->select('related_work_id')->get($this->limit, $this->offset);
         if(empty(count($relatedWorkList))) {
             $himoResult = $himo->xmediaRelatedWork([$workId])->get(true);
             if (!$himoResult['results']['rows']) {
@@ -119,7 +118,7 @@ class RelateadWorkRepository
             }
             $relateadWork->insertBulk($insertRelationWorkList);
             // retry
-            $relatedWorkList = $relateadWork->setConditionByWork($workId)->select('related_work_id')->get();
+            $relatedWorkList = $relateadWork->setConditionByWork($workId)->select('related_work_id')->get($this->limit, $this->offset);
         }
         foreach ($relatedWorkList as $relatedWork) {
             $relatedWorkArray[] = $relatedWork->related_work_id;
@@ -138,17 +137,18 @@ class RelateadWorkRepository
         if (!$workIdsExisted) {
             $workIdsNew = $relatedWorkArray;
         } else {
-            $workIdsNew = array_values(array_diff($workIdsIn, $workIdsExistedArray));
+            $workIdsNew = array_values(array_diff($relatedWorkArray, $workIdsExistedArray));
         }
-
         // STEP 4: 既存データから取ってこれなかったものをHimoから取得し格納する。
         // Get data by list workIds and return
-        $himo = new HimoRepository();
-        $himoResult = $himo->crosswork($workIdsNew)->get();
-        // Himoから取得できなかった場合はスキップする
-        if (!empty($himoResult)) {
-            $insertResult = $workRepository->insertWorkData($himoResult);
-        }
+        if ($workIdsNew) {
+            $himo = new HimoRepository();
+            $himoResult = $himo->crosswork($workIdsNew)->get();
+            // Himoから取得できなかった場合はスキップする
+            if (!empty($himoResult)) {
+              $insertResult = $workRepository->insertWorkData($himoResult);
+            }
+        } 
 
         // STEP 5: 条件をセット
         $work->getWorkIdsIn($relatedWorkArray);
