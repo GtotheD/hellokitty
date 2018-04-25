@@ -97,11 +97,13 @@ class Product extends Model
     public function setConditionRentalGroup($workId)
     {
         $groupingColumn = 'work_id, product_name, ccc_family_cd';
+        $productUniqueId = 'MAX(product_unique_id) AS product_unique_id';
         $saleStartDate = 'MAX(sale_start_date) AS sale_start_date';
         $jacketQuery = 'MAX(jacket_l) AS jacket_l';
         $dvdQuery = 'MAX(CASE WHEN (item_cd = \'0021\' OR item_cd = \'0121\') THEN rental_product_cd ELSE NULL END) AS dvd';
         $blurayQuery = 'MAX(CASE WHEN (item_cd = \'0022\' OR item_cd = \'0122\') THEN rental_product_cd ELSE NULL END) AS bluray';
         $selectQuery = $groupingColumn. ','.
+            $productUniqueId. ','.
             $saleStartDate. ','.
             $jacketQuery. ','.
             $dvdQuery. ','.
