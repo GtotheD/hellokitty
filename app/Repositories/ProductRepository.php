@@ -112,7 +112,8 @@ class ProductRepository
 
     public function get($productUniqueId)
     {
-        return $this->product->setConditionByProductUniqueId($productUniqueId)->toCamel(['id'])->getOne();
+        $product = $this->product->setConditionByProductUniqueId($productUniqueId)->toCamel(['id'])->getOne();
+        return $this->productReformat([$product])[0];
     }
 
 
@@ -343,15 +344,15 @@ class ProductRepository
                 if (array_key_exists('message', $stockStatus)) {
                     $message = $stockStatus['message'];
                 }
-                if (array_key_exists('lastUpDate', $stockInfo['entry']['stockInfo'][0])) {
-                    $lastUpdate = date('Y-m-d H:i', strtotime($stockInfo['entry']['stockInfo'][0]['lastUpDate']));
+                if (array_key_exists('lastUpDate', $stockInfo['entry']['stockInfo'][0]) ) {
+                    $lastUpdate = date('Y-m-d H:i:s', strtotime($stockInfo['entry']['stockInfo'][0]['lastUpDate']));
                 }
             }
         }
         return [
             'status' => $statusCode,
             'message' => $message,
-            'takeTime' => $lastUpdate,
+            'lastUpdate' => $lastUpdate,
         ];
     }
 
