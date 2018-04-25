@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Laravel\Lumen\Exceptions\Handler as ExceptionHandler;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
+use App\Exceptions\NoContentsException as NoContentsException;
+use App\Exceptions\AgeLimitException as AgeLimitException;
 
 class Handler extends ExceptionHandler
 {
@@ -65,5 +67,6 @@ class Handler extends ExceptionHandler
         } else if ($e instanceof Exception) {
             return response()->json(['status' => '500'], 500);
         }
+        return parent::render($request, $e);
     }
 }

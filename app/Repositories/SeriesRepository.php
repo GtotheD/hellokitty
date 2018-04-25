@@ -135,10 +135,15 @@ class SeriesRepository
             // Insert to ts_series table
             $seriesData = [];
             foreach ($workListInserted['rows'] as $workRow) {
+                if ($workRow['workId'] == $workId) continue;
                 $seriesData[] = $this->format($workRow['workId'], $this->seriesId);
             }
             $series->insertBulk($seriesData);
         }
+
+        // Remove owner in series work list
+        $workIdsInSeries  = array_values(array_diff($workIdsInSeries, [$workId]));
+
         // STEP 3 Get response from DB
         $workCount = $work->getWorkIdsIn($workIdsInSeries)->count();
         $this->totalCount = $workCount ?: 0;
@@ -147,6 +152,7 @@ class SeriesRepository
         }
 
         $workList = $work->getWorkIdsIn($workIdsInSeries)
+            ->toCamel(['id'])
             ->limit($this->limit)
             ->offset($this->offset)
             ->get();
@@ -160,16 +166,17 @@ class SeriesRepository
         // Fetch workList and get response
         $rows = [];
         foreach ($workList as $work) {
+            $base = $workRepository->formatAddOtherData((array)$work);
             $rows[] = [
-                'workId' => $work->work_id,
-                'urlCd' => $work->url_cd,
-                'cccWorkCd' => $work->ccc_work_cd,
-                'workTitle' => $work->work_title,
-                'jacketL' => $work->jacket_l,
-                'supplement' => '（仮）監督・著者・アーティスト・機種', // Template value, waiting for confirm
+                'workId' => $base['workId'],
+                'urlCd' => $base['urlCd'],
+                'cccWorkCd' =>  $base['cccWorkCd'],
+                'workTitle' => $base['workTitle'],
+                'jacketL' => $base['jacketL'],
+                'supplement' => $base['supplement'], // Template value, waiting for confirm
                 'saleType' => $this->saleType, // Template value, waiting for confirm
-                'itemType' => $workRepository->convertWorkTypeIdToStr($work->work_type_id),
-                'adultFlg' => ($work->adult_flg === '1') ? true : false,
+                'itemType' => $workRepository->convertWorkTypeIdToStr( $base['workTypeId']),
+                'adultFlg' =>$base['adultFlg'],
             ];
         }
 

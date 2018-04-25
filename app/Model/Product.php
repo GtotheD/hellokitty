@@ -96,21 +96,22 @@ class Product extends Model
 
     public function setConditionRentalGroup($workId)
     {
-        $groupingColumn = 'work_id, product_name, sale_start_date, ccc_family_cd';
+        $groupingColumn = 'work_id, product_name, ccc_family_cd';
+        $saleStartDate = 'MAX(sale_start_date) AS sale_start_date';
         $jacketQuery = 'MAX(jacket_l) AS jacket_l';
-        $dvdQuery = 'MAX(CASE item_cd WHEN \'0021\' THEN rental_product_cd ELSE NULL END) AS dvd';
-        $blurayQuery = 'MAX(CASE item_cd WHEN \'0022\' THEN rental_product_cd ELSE NULL END) AS bluray';
+        $dvdQuery = 'MAX(CASE WHEN (item_cd = \'0021\' OR item_cd = \'0121\') THEN rental_product_cd ELSE NULL END) AS dvd';
+        $blurayQuery = 'MAX(CASE WHEN (item_cd = \'0022\' OR item_cd = \'0122\') THEN rental_product_cd ELSE NULL END) AS bluray';
         $selectQuery = $groupingColumn. ','.
+            $saleStartDate. ','.
             $jacketQuery. ','.
             $dvdQuery. ','.
             $blurayQuery;
         $subQuery = DB::table($this->table)->select(DB::raw($selectQuery))
             ->groupBy(DB::raw($groupingColumn))
-            ->havingRaw(' (dvd is not null AND bluray is not null)');
+            ->havingRaw(' NOT (dvd IS NULL AND bluray IS NULL)');
         $this->dbObject = DB::table(DB::raw("({$subQuery->toSql()}) as sub"))
-            ->where([
-            'work_id' => $workId,
-        ]);
+            ->where(['work_id' => $workId])
+            ->orderBy('ccc_family_cd');
         return $this;
     }
 

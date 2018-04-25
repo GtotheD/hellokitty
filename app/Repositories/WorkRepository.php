@@ -8,9 +8,6 @@ use App\Model\Work;
 use App\Model\Product;
 use App\Exceptions\NoContentsException;
 use DB;
-use App\Repositories\WorkRepository;
-use App\Repositories\RelateadWorkRepository;
-
 /**
  * Created by PhpStorm.
  * User: ayumu
@@ -675,7 +672,6 @@ class WorkRepository
             'personId'  => $personId,
             'saleType'  => $this->saleType,
             'itemType'  => $itemType,
-            'personId'  => $personId,
             'id'        => $personId,//dummy data
             'api'       => 'crossworks',//dummy data
         ];
@@ -698,20 +694,31 @@ class WorkRepository
         ];
 
         foreach ($data['results']['rows'] as $row) {
-            $base = $this->format($row);
+            $base = [];
+            foreach ($row['ids'] as $idItem) {
+                // HiMO作品ID
+                if ($idItem['id_type'] === '0103') {
+                    $base['ccc_work_cd'] = $idItem['id_value'];
+                    // URLコード
+                } else if ($idItem['id_type'] === '0105') {
+                    $base['url_cd'] = $idItem['id_value'];
+                }
+            }
+
             $result['rows'][] = [
-                'workId' => $base['work_id'],
+                'workId' => $row['work_id'],
                 'urlCd' => array_get($base, 'url_cd',  null),
                 'cccWorkCd' => array_get($base, 'ccc_work_cd',  null),
-                'workTitle' => $base['work_title'],
+                'workTitle' => $row['work_title'],
                 'newFlg' => newFlg($row['sale_start_date']),
-                'jacketL' => $base['jacket_l'],
+                'jacketL' => trimImageTag($row['jacket_l']),
                 'supplement' => '（仮）監督・著者・アーティスト・機種', // default value
                 'saleType' => $this->saleType,
-                'itemType' => $base['itemType'],
-                'adultFlg' => $base['adult_flg'],
+                'itemType' => $this->convertWorkTypeIdToStr($row['work_type_id']),
+                'adultFlg' => $row['adult_flg'],
             ];
         }
+
         return $result;
     }
 
