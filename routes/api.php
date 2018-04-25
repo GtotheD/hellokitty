@@ -183,6 +183,8 @@ $router->group([
     // 商品一覧情報取得（DVDレンタル時のグルーピング（問い合わせ時のLimit数がおかしくなる為にグルーピングが必要））
     $router->get('work/{workId}/products/rental', function (Request $request, $workId) {
         $product = new ProductRepository();
+        $product->setLimit($request->input('limit', 10));
+        $product->setOffset($request->input('offset', 0));
         $result = $product->getRentalGroup($workId);
         if (empty($result)) {
             throw new NoContentsException;
