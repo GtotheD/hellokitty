@@ -131,7 +131,7 @@ class HimoRepository extends ApiRequesterRepository
         return $this;
     }
 
-    public function productDetail($ids, $idType = self::ID_TYPE )
+    public function productDetail($ids, $idType = self::ID_TYPE ,$produtTypeId )
     {
         $this->api = 'productDetail';
         $this->id = $ids;
@@ -141,11 +141,13 @@ class HimoRepository extends ApiRequesterRepository
         foreach ($ids as $id) {
             $queryId[] = $idType . ':' . $id;
         }
-        $this->params = [
+        $this->apiPath = $this->apiHost . '/search/product_detail';
+        $this->queryParams = [
             '_system' => 'TsutayaApp',
             'id_value' => implode(' || ', $queryId),
+            'msdb_item' => 'audio',
+            'product_type_id' => $produtTypeId,
             'service_id' => 'tol',
-            'response_level' => '9',
             'offset' => $this->offset,
             'limit' => $this->limit,
             'sort_by' => 'auto:asc',

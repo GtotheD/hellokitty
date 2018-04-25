@@ -145,10 +145,12 @@ class ProductRepository
 
         return $this->productReformat($results);
     }
+
     public function getRentalGroup($workId)
     {
         $column = [
             "product_name AS productName",
+            "product_unique_id AS productUniqueId",
             "jacket_l AS jacketL",
             "sale_start_date AS saleStartDate",
             "ccc_family_cd AS cccFamilyCd",
@@ -167,6 +169,7 @@ class ProductRepository
 
 
     }
+
     private function rentalGroupReformat($products)
     {
         $reformatResult = null;
@@ -194,7 +197,7 @@ class ProductRepository
         // reformat data
         foreach ($products as $product) {
             $product = (array)$product;
-            $product['productKey'] = ($product['productTypeId'] == self::PRODUCT_TYPE_SELL)? $product['jan']:$product['rentalProductCd'];
+            $product['productKey'] = ($product['productTypeId'] == self::PRODUCT_TYPE_SELL) ? $product['jan'] : $product['rentalProductCd'];
             $product['itemName'] = $this->convertItemCdToStr($product['itemCd']);
             $product['saleType'] = $this->convertProductTypeToStr($product['productTypeId']);
             $product['jacketL'] = trimImageTag($product['jacketL']);
@@ -264,7 +267,8 @@ class ProductRepository
      * @param $product
      * @return array
      */
-    public function format ($workId, $product) {
+    public function format($workId, $product)
+    {
         $productBase = [];
         $productBase['work_id'] = $workId;
         $productBase['product_unique_id'] = $product['id'];
@@ -292,7 +296,9 @@ class ProductRepository
         $productBase['play_time'] = $product['play_time'];
         $productBase['jacket_l'] = $product['jacket_l'];
         $productBase['sale_start_date'] = $product['sale_start_date'];
-//                    $productBase['contents'] = $product['contents'];
+        if( $product['msdb_item'] === 'audio') {
+            $productBase['contents'] = $this->getDetail($product['product_id'], $product['product_type_id']);
+        }
 //                    $productBase['privilege'] = $product['privilege'];
         $productBase['best_album_flg'] = $product['best_album_flg'];
         $productBase['maker_name'] = $product['maker_name'];
@@ -310,11 +316,10 @@ class ProductRepository
         // rental_product_cd
         if ($length === 9) {
             $res = $this->product->setConditionByRentalProductCd($productKey)->get();
-            foreach ($res as $item)
-            {
+            foreach ($res as $item) {
                 $queryIdList[] = $item->rental_product_cd;
             }
-        //jan
+            //jan
         } elseif ($length === 13) {
             $queryIdList[] = $productKey;
         } else {
@@ -335,10 +340,10 @@ class ProductRepository
                 } else {
                     $statusCode = 2;
                 }
-                if (array_key_exists('message', $stockStatus) ) {
+                if (array_key_exists('message', $stockStatus)) {
                     $message = $stockStatus['message'];
                 }
-                if (array_key_exists('lastUpDate', $stockInfo['entry']['stockInfo'][0]) ) {
+                if (array_key_exists('lastUpDate', $stockInfo['entry']['stockInfo'][0])) {
                     $lastUpdate = date('Y-m-d H:i', strtotime($stockInfo['entry']['stockInfo'][0]['lastUpDate']));
                 }
             }
@@ -360,10 +365,11 @@ class ProductRepository
      *
      * @throws NoContentsException
      */
-    public function getNewestProductByWorkId($workId, $saleType = null){
+    public function getNewestProductByWorkId($workId, $saleType = null)
+    {
         $workRepository = new WorkRepository();
         $product = new Product();
-        if($saleType) {
+        if ($saleType) {
             $workRepository->setSaleType($saleType);
         }
 
@@ -372,7 +378,7 @@ class ProductRepository
 
         if ($work->count() == 0) {
             $response = $workRepository->get($workId);
-            if(empty($response)) {
+            if (empty($response)) {
                 throw new NoContentsException();
             }
         }
@@ -380,6 +386,31 @@ class ProductRepository
         return $product->setConditionByWorkIdNewestProduct($workId, $saleType);
     }
 
-
+    public function getDetail($productId, $typeId)
+    {
+        $himo = new HimoRepository;
+        $himoResult = $himo->productDetail([$productId], '0202', $typeId)->get();
+        foreach ($himoResult['results']['rows'] as $item) {
+            foreach ($item['tracks'] as $trackItem) {
+                $trackGroups[$trackItem['disc_no']][] = [
+                    'trackNo' => $trackItem['track_no'],
+                    'trackTitle' => $trackItem['track_title'],
+                    'playtime' => $trackItem['play_time']
+                ];
+            }
+        }
+        if (empty($trackGroups)) {
+            return null;
+        }
+        $text = null;
+        foreach ($trackGroups as $key => $strackGroup) {
+            $text .= "Disc.{$key}\n";
+            foreach ($strackGroup as $track) {
+                $text .= "{$track['trackNo']}.{$track['trackTitle']}\n";
+            }
+            $text .= "\n";
+        }
+        return $text;
+    }
 
 }
