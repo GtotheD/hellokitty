@@ -286,6 +286,8 @@ $router->group([
     // 関連作品
     $router->get('work/{workId}/relation/works', function (Request $request, $workId) {
         $relateadWorkRepository = new RelateadWorkRepository;
+        $relateadWorkRepository->setLimit($request->input('limit', 10));
+        $relateadWorkRepository->setOffset($request->input('offset', 0));
         $results = $relateadWorkRepository->getNarrow($workId);
         if (empty($results)) {
             throw new NoContentsException;
@@ -343,7 +345,10 @@ $router->group([
         $recommendOtherRepository = new RecommendOtherRepository;
         $recommendOtherRepository->setLimit($request->input('limit', 10));
         $recommendOtherRepository->setOffset($request->input('offset', 0));
-        $rows = $recommendOtherRepository->getWorks($workId, $request->input('saleType'));
+        $rows = $recommendOtherRepository->getWorks($workId, $request->input('saleType', 'rental'));
+        if (empty($rows)) {
+            throw new NoContentsException;
+        }
         $response = [
             'hasNext' => $recommendOtherRepository->getHasNext(),
             'totalCount' => $recommendOtherRepository->getTotalCount(),
@@ -357,6 +362,9 @@ $router->group([
         $peopleRelatedWorksRepository->setLimit($request->input('limit', 10));
         $peopleRelatedWorksRepository->setOffset($request->input('offset', 0));
         $rows = $peopleRelatedWorksRepository->getWorks($workId);
+        if (empty($rows)) {
+            throw new NoContentsException;
+        }
         $response = [
             'hasNext' => $peopleRelatedWorksRepository->getHasNext(),
             'totalCount' => $peopleRelatedWorksRepository->getTotalCount(),

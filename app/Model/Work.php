@@ -4,6 +4,7 @@ namespace App\Model;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
+use App\Model\Product;
 
 /**
  * Created by PhpStorm.
@@ -69,6 +70,25 @@ class Work extends Model
     public function getWorkIdsIn($workIds = []) {
         $this->dbObject = DB::table($this->table)
             ->whereIn('work_id', $workIds);
+        return $this;
+    }
+
+    /**
+     * Get all work_id not in workdIds array
+     * products
+     * @param $workIds
+     */
+    public function getWorkWithProductIdsIn($workIds = [], $saleType = null) {
+        $product = new Product;
+        $this->dbObject = DB::table($this->table. ' as t1')
+            ->join('ts_products as t2', function ($join) use ($saleType, $product){
+                $join->on('t1.work_id', '=', 't2.work_id');
+                if($saleType) {
+                    $join->on('product_type_id', '=', DB::raw($product->convertSaleType($saleType)));
+                }
+            })
+            ->where('item_cd', 'not like', '01%')
+            ->whereIn('t1.work_id', $workIds);
         return $this;
     }
 

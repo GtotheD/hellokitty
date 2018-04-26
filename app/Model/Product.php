@@ -142,7 +142,7 @@ class Product extends Model
         }
     }
 
-    private function convertSaleType($type)
+    public function convertSaleType($type)
     {
         switch ($type) {
             case 'sell': return 1; break;

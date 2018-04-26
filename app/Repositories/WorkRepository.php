@@ -8,6 +8,7 @@ use App\Model\Work;
 use App\Model\Product;
 use App\Exceptions\NoContentsException;
 use DB;
+
 /**
  * Created by PhpStorm.
  * User: ayumu
@@ -126,6 +127,7 @@ class WorkRepository
         $columns = [
             'work_id',
             'work_type_id',
+            'work_title',
             'rating_id',
             'big_genre_id',
             'url_cd',
@@ -176,41 +178,45 @@ class WorkRepository
         } else {
             $response = (array)$this->work->selectCamel($selectColumns)->getOne();
         }
-        $response = $this->formatAddOtherData($response, $workId);
+        $response = $this->formatAddOtherData($response);
 
-        if($response['adultFlg']) {
+        if ($response['adultFlg']) {
             throw new AgeLimitException();
         }
 
         return $response;
     }
 
-    public function formatAddOtherData ($response)
+    public function formatAddOtherData($response, $addSaleTypeHas = true, $product = null)
     {
         // productsからとってくるが、仮データ
         $productModel = new Product();
+        $productRepository = new  ProductRepository();
+
         $people = new People;
         $roleId = '';
         $response['supplement'] = '';
-        $product = (array)$productModel->setConditionByWorkIdNewestProduct($response['workId'], $this->saleType)->getOne();
-        if($product) {
-            if ($product['msdb_item'] === 'game') {
-                $response['supplement'] = $product['game_model_name'];
+        if (empty($product)) {
+            $product = (array)$productModel->setConditionByWorkIdNewestProduct($response['workId'], $this->saleType)->toCamel()->getOne();
+        }
+        if ($product) {
+            if ($product['msdbItem'] === 'game') {
+                $response['supplement'] = $product['gameModelName'];
             } else {
-                if ($product['msdb_item'] === 'video') {
+                if ($product['msdbItem'] === 'video') {
                     $roleId = 'EXT0000000UH';
-                } elseif ($product['msdb_item'] === 'book') {
+                } elseif ($product['msdbItem'] === 'book') {
                     $roleId = 'EXT00000BWU9';
-                } elseif ($product['msdb_item'] === 'audio') {
+                } elseif ($product['msdbItem'] === 'audio') {
                     $roleId = 'EXT00000000D';
                 }
-                $person = $people->setConditionByProduct($product['product_unique_id'])->setConditionByRoleId($roleId)->getOne();
+                $person = $people->setConditionByProduct($product['productUniqueId'])->setConditionByRoleId($roleId)->getOne();
                 if (!empty($person)) {
                     $response['supplement'] = $person->person_name;
                 }
             }
             if (!empty($product)) {
-                $response['makerName'] = $product['maker_name'];
+                $response['makerName'] = $product['makerName'];
             } else {
                 $response['makerName'] = '';
             }
@@ -218,14 +224,14 @@ class WorkRepository
         $response['newFlg'] = newFlg($response['saleStartDate']);
         $response['adultFlg'] = ($response['adultFlg'] === '1') ? true : false;
         $response['itemType'] = $this->convertWorkTypeIdToStr($response['workTypeId']);
-        $response['saleType'] = $this->saleType;
-        $response['saleTypeHas'] = [
-            'sell' => ($productModel->setConditionByWorkIdSaleType($response['workId'], 'sell')->count() > 0) ?: true,
-            'rental' => ($productModel->setConditionByWorkIdSaleType($response['workId'], 'rental')->count() > 0) ?: true
-        ];
-
+        $response['saleType'] = $productRepository->convertProductTypeToStr($product['productTypeId']);
+        if ($addSaleTypeHas) {
+            $response['saleTypeHas'] = [
+                'sell' => ($productModel->setConditionByWorkIdSaleType($response['workId'], 'sell')->count() > 0) ?: true,
+                'rental' => ($productModel->setConditionByWorkIdSaleType($response['workId'], 'rental')->count() > 0) ?: true
+            ];
+        }
         return $response;
-
     }
 
     /**
@@ -237,7 +243,8 @@ class WorkRepository
      *
      * @throws NoContentsException
      */
-    public function insertWorkData($himoResult) {
+    public function insertWorkData($himoResult)
+    {
 
         $productRepository = new ProductRepository();
         $peopleRepository = new PeopleRepository();
@@ -278,7 +285,6 @@ class WorkRepository
         } catch (\Exception $exception) {
             \Log::error("Error while update work. Error message:{$exception->getMessage()} Line: {$exception->getLine()}");
             DB::rollback();
-            throw new $exception;
         }
 
     }
@@ -443,6 +449,10 @@ class WorkRepository
         $himoRepository = new HimoRepository();
         $workRepository = new WorkRepository();
         $himoResult = $himoRepository->crosswork([$id], $idCode, '1')->get();
+        if (empty($himoResult['results']['rows'])) {
+            return null;
+
+        }
         $result['workId'] = $himoResult['results']['rows'][0]['work_id'];
         $result['itemType'] = $workRepository->convertWorkTypeIdToStr($himoResult['results']['rows'][0]['work_type_id']);
         return $result;
@@ -531,10 +541,10 @@ class WorkRepository
 
     private function dvdFormat($row)
     {
-        if(array_key_exists('docs',$row)){
+        if (array_key_exists('docs', $row)) {
             if (count($row['docs']) > 0) {
-               return $row['docs'][0]['doc_text'];
-	    }
+                return $row['docs'][0]['doc_text'];
+            }
         }
         return null;
     }
@@ -551,10 +561,10 @@ class WorkRepository
 
     private function gameFormat($row)
     {
-        if(array_key_exists('docs',$row)){
-          if (count($row['docs']) > 0) {
-              return $row['docs'][0]['doc_text'];
-          }
+        if (array_key_exists('docs', $row)) {
+            if (count($row['docs']) > 0) {
+                return $row['docs'][0]['doc_text'];
+            }
         }
         return null;
     }
@@ -618,31 +628,43 @@ class WorkRepository
      */
     public function getWorkList($workIds, $selectColumns = null)
     {
-        $work = new Work();
-        // Get data by list workIds and return
         $himo = new HimoRepository();
-        $himoResult = $himo->crosswork($workIds)->get();
 
-        if (!$himoResult['results']['rows']) {
-            //throw new NoContentsException();
-            //Not throw no contents exception, Because the calling side of API calls will be difficult to check for
-            return null;
+        $workIdsExistedArray = [];
+        $workIdsExisted = $this->work->getWorkIdsIn($workIds)->select('work_id')->get();
+        foreach ($workIdsExisted as $workIdsExistedItem) {
+            $workIdsExistedArray[] = $workIdsExistedItem->work_id;
         }
-        // インサートしたものを取得するため条件を再設定
-        $workIdInserted = $this->insertWorkData($himoResult, $work);
 
-        $work->getWorkIdsIn($workIdInserted);
-        $response['total'] = $work->count();
-        if (!$response['total']) {
-            //throw new NoContentsException();
-            //Not throw no contents exception, Because the calling side of API calls will be difficult to check for
+        // STEP 3: IDが取得出来なかった場合は全てHimoから新規で詳細情報を取得するためのリストを作成。
+        if (!$workIdsExistedArray) {
+            $workIdsNew = $workIds;
+        } else {
+            $workIdsNew = array_values(array_diff($workIds, $workIdsExistedArray));
+        }
+
+        // STEP 4: 既存データから取ってこれなかったものをHimoから取得し格納する。
+        // Get data by list workIds and return
+        if ($workIdsNew) {
+            $himo = new HimoRepository();
+            $himoResult = $himo->crosswork($workIdsNew)->get();
+            // Himoから取得できなかった場合はスキップする
+            if (!empty($himoResult)) {
+                $insertResult = $this->insertWorkData($himoResult);
+            }
+        }
+
+        // STEP 5: 条件をセット
+        $this->work->getWorkIdsIn($workIds);
+        $this->totalCount = $this->work->count();
+        if (!$this->totalCount) {
             return null;
         }
 
         if (empty($selectColumns)) {
-            $workArray = $work->toCamel(['id'])->get();
+            $workArray = $this->work->toCamel(['id'])->get();
         } else {
-            $workArray = $work->selectCamel($selectColumns)->get();
+            $workArray = $this->work->selectCamel($selectColumns)->get();
         }
 
         // productsからとってくるが、仮データ
@@ -666,14 +688,14 @@ class WorkRepository
      */
     public function person($personId, $sort = null, $itemType = null)
     {
-        $himoRepository = new HimoRepository($sort , $this->offset, $this->limit);
+        $himoRepository = new HimoRepository($sort, $this->offset, $this->limit);
 
         $params = [
-            'personId'  => $personId,
-            'saleType'  => $this->saleType,
-            'itemType'  => $itemType,
-            'id'        => $personId,//dummy data
-            'api'       => 'crossworks',//dummy data
+            'personId' => $personId,
+            'saleType' => $this->saleType,
+            'itemType' => $itemType,
+            'id' => $personId,//dummy data
+            'api' => 'crossworks',//dummy data
         ];
         $data = $himoRepository->searchCrossworks($params, $sort)->get();
 
@@ -707,8 +729,8 @@ class WorkRepository
 
             $result['rows'][] = [
                 'workId' => $row['work_id'],
-                'urlCd' => array_get($base, 'url_cd',  null),
-                'cccWorkCd' => array_get($base, 'ccc_work_cd',  null),
+                'urlCd' => array_get($base, 'url_cd', null),
+                'cccWorkCd' => array_get($base, 'ccc_work_cd', null),
                 'workTitle' => $row['work_title'],
                 'newFlg' => newFlg($row['sale_start_date']),
                 'jacketL' => trimImageTag($row['jacket_l']),

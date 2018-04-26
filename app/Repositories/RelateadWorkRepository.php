@@ -99,10 +99,11 @@ class RelateadWorkRepository
         $work = new Work();
         $himo = new HimoRepository();
         $workRepository = new  WorkRepository();
+        $productRepository = new  ProductRepository();
         $relateadWork = new RelateadWork();
         $workIdsIn = [];
         // STEP 1: 関連作品テーブルからリストを取得。なければHimoから新規で取得。
-        $relatedWorkList = $relateadWork->setConditionByWork($workId)->select('related_work_id')->get($this->limit, $this->offset);
+        $relatedWorkList = $relateadWork->setConditionByWork($workId)->select('related_work_id')->get();
         if(empty(count($relatedWorkList))) {
             $himoResult = $himo->xmediaRelatedWork([$workId])->get(true);
             if (!$himoResult['results']['rows']) {
@@ -118,7 +119,7 @@ class RelateadWorkRepository
             }
             $relateadWork->insertBulk($insertRelationWorkList);
             // retry
-            $relatedWorkList = $relateadWork->setConditionByWork($workId)->select('related_work_id')->get($this->limit, $this->offset);
+            $relatedWorkList = $relateadWork->setConditionByWork($workId)->select('related_work_id')->get();
         }
         foreach ($relatedWorkList as $relatedWork) {
             $relatedWorkArray[] = $relatedWork->related_work_id;
@@ -128,13 +129,14 @@ class RelateadWorkRepository
         // ここの部分を共通化したい
         // -----------------------------------
         // STEP 2: 関連作品の詳細情報をworkテーブルから取得する為に、既に取得済みのIDを抽出する。
+        $workIdsExistedArray = [];
         $workIdsExisted = $work->getWorkIdsIn($relatedWorkArray)->select('work_id')->get();
         foreach ($workIdsExisted as $workIdsExistedItem) {
             $workIdsExistedArray[] = $workIdsExistedItem->work_id;
         }
 
         // STEP 3: IDが取得出来なかった場合は全てHimoから新規で詳細情報を取得するためのリストを作成。
-        if (!$workIdsExisted) {
+        if (!$workIdsExistedArray) {
             $workIdsNew = $relatedWorkArray;
         } else {
             $workIdsNew = array_values(array_diff($relatedWorkArray, $workIdsExistedArray));
@@ -151,7 +153,8 @@ class RelateadWorkRepository
         } 
 
         // STEP 5: 条件をセット
-        $work->getWorkIdsIn($relatedWorkArray);
+//        $work->getWorkIdsIn($relatedWorkArray);
+        $work->getWorkWithProductIdsIn($relatedWorkArray);
         $this->totalCount = $work->count();
         if (!$this->totalCount) {
             throw new NoContentsException();
@@ -161,7 +164,7 @@ class RelateadWorkRepository
         // -----------------------------------
 
         // STEP 6: 条件と指定して再度取得
-        $workList = $work->toCamel(['id'])->get($this->limit, $this->offset);
+        $workList = $work->selectCamel($this->selectColumn())->get($this->limit, $this->offset);
         if (count($workList) + $this->offset < $this->totalCount) {
             $this->hasNext = true;
         } else {
@@ -170,11 +173,11 @@ class RelateadWorkRepository
 
         // STEP 7:フォーマットを変更して返却
         $rows = [];
-        foreach ($workList as $work) {
-            $work = (array)$work;
-            $works[] = $workRepository->formatAddOtherData($work);
+        foreach ($workList as $workItem) {
+            $workItem = (array)$workItem;
+            $workItems[] = $workRepository->formatAddOtherData($workItem, false, $workItem);
         }
-        return $works;
+        return $workItems;
     }
 
     public function xmediaFormat($rows)
@@ -191,5 +194,25 @@ class RelateadWorkRepository
             }
         }
         return $works;
+    }
+
+    private function selectColumn()
+    {
+        return [
+            't1.work_id',
+            'work_type_id',
+            'work_title',
+            'rating_id',
+            'big_genre_id',
+            'url_cd',
+            'ccc_work_cd',
+            't1.jacket_l',
+            't2.sale_start_date',
+            't2.product_type_id',
+            'product_unique_id',
+            'product_name',
+            'adult_flg',
+            'msdb_item'
+        ];
     }
 }
