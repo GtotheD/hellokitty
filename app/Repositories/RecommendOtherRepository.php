@@ -62,38 +62,13 @@ class RecommendOtherRepository
 
         $work = new Work;
         $workRepository = new WorkRepository;
-        $max = 20;
-        $limitOnceMax = 10;
         $bk2Recoomend =  $this->recommend->setConditionByWorkId($workId)->getOne();
         if(empty($bk2Recoomend)) {
             return null;
         }
+        $workIdList = array_slice($workIdList, 0, 20);
         $workIdList = explode(',', $bk2Recoomend->list_work_id);
-        $loopCount = 0;
-        $limitOnce = 0;
-        $mergeWorks = [];
-        // 10件ずつ問い合わせ。アプリ上で何件だすかで制御を変更する。
-        foreach ($workIdList as $workId) {
-            $loopCount++;
-            $limitOnce++;
-            $getList[] = $workId;
-            if ($limitOnce >= $limitOnceMax ||
-                (count($workIdList) - $loopCount) === 0 ||
-                $loopCount == $max
-            ) {
-                $works =  $workRepository->getWorkList($getList);
-                if(empty($works)) {
-                    return null;
-                }
-                $mergeWorks = array_merge($mergeWorks, $works['rows']);
-                // リセットをかける
-                $limitOnce = 0;
-                $getList = [];
-                if($loopCount == $max) {
-                    break;
-                }
-            }
-        }
+        $workRepository->getWorkList($workIdList);
 
         $work->getWorkWithProductIdsIn($workIdList, $saleType);
         $this->totalCount = $work->count();
@@ -151,6 +126,7 @@ class RecommendOtherRepository
             'product_unique_id',
             'product_name',
             'maker_name',
+            'game_model_name',
             'adult_flg',
             'msdb_item'
             ];

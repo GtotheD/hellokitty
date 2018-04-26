@@ -32,6 +32,9 @@ class WorkRepository
     const WORK_TYPE_BOOK = 3;
     const WORK_TYPE_GAME = 4;
 
+    const HIMO_REQUEAST_MAX = 200;
+    const HIMO_REQUEAST_PER_ONCE = 20;
+
     public function __construct($sort = 'asc', $offset = 0, $limit = 10)
     {
         $this->sort = $sort;
@@ -187,6 +190,84 @@ class WorkRepository
         return $response;
     }
 
+    /**
+     *
+     *
+     * @param $workIds
+     * @return null
+     *
+     * @throws NoContentsException
+     */
+    public function getWorkList($workIds, $selectColumns = null)
+    {
+        $himo = new HimoRepository();
+        $workIdsExistedArray = [];
+        $workIdsExisted = $this->work->getWorkIdsIn($workIds)->select('work_id')->get();
+        foreach ($workIdsExisted as $workIdsExistedItem) {
+            $workIdsExistedArray[] = $workIdsExistedItem->work_id;
+        }
+
+        // STEP 3: IDが取得出来なかった場合は全てHimoから新規で詳細情報を取得するためのリストを作成。
+        if (!$workIdsExistedArray) {
+            $workIdsNew = $workIds;
+        } else {
+            $workIdsNew = array_values(array_diff($workIds, $workIdsExistedArray));
+        }
+
+        // STEP 4: 既存データから取ってこれなかったものをHimoから取得し格納する。
+        // Get data by list workIds and return
+        if ($workIdsNew) {
+            $max = self::HIMO_REQUEAST_MAX;
+            $limitOnceMax = self::HIMO_REQUEAST_PER_ONCE;
+            $loopCount = 0;
+            $limitOnce = 0;
+            $mergeWorks = [];
+            // 10件ずつ問い合わせ。アプリ上で何件だすかで制御を変更する。
+            foreach ($workIdsNew as $workId) {
+                $loopCount++;
+                $limitOnce++;
+                $getList[] = $workId;
+                if ($limitOnce >= $limitOnceMax ||
+                    (count($workIdsNew) - $loopCount) === 0 ||
+                    $loopCount == $max
+                ) {
+                    $himoResult = $himo->crosswork($getList)->get();
+                    // Himoから取得できなかった場合はスキップする
+                    if (!empty($himoResult)) {
+                        $insertResult = $this->insertWorkData($himoResult);
+                    }
+                    // リセットをかける
+                    $limitOnce = 0;
+                    $getList = [];
+                    if($loopCount == $max) {
+                        break;
+                    }
+                }
+            }
+
+        }
+
+        // STEP 5: 条件をセット
+        $this->work->getWorkIdsIn($workIds);
+        $this->totalCount = $this->work->count();
+        if (!$this->totalCount) {
+            return null;
+        }
+
+        if (empty($selectColumns)) {
+            $workArray = $this->work->toCamel(['id'])->get();
+        } else {
+            $workArray = $this->work->selectCamel($selectColumns)->get();
+        }
+
+        // productsからとってくるが、仮データ
+        foreach ($workArray as $workItem) {
+            $row = (array)$workItem;
+            $response['rows'][] = $this->formatAddOtherData($row);
+        }
+        return $response;
+    }
+
     public function formatAddOtherData($response, $addSaleTypeHas = true, $product = null)
     {
         // productsからとってくるが、仮データ
@@ -199,7 +280,7 @@ class WorkRepository
         if (empty($product)) {
             $product = (array)$productModel->setConditionByWorkIdNewestProduct($response['workId'], $this->saleType)->toCamel()->getOne();
         }
-        if ($product) {
+        if (!empty($product)) {
             if ($product['msdbItem'] === 'game') {
                 $response['supplement'] = $product['gameModelName'];
             } else {
@@ -210,7 +291,7 @@ class WorkRepository
                 } elseif ($product['msdbItem'] === 'audio') {
                     $roleId = 'EXT00000000D';
                 }
-                $person = $people->setConditionByProduct($product['productUniqueId'])->setConditionByRoleId($roleId)->getOne();
+                $person = $people->setConditionByRoleId($product['productUniqueId'], $roleId)->getOne();
                 if (!empty($person)) {
                     $response['supplement'] = $person->person_name;
                 }
@@ -220,11 +301,11 @@ class WorkRepository
             } else {
                 $response['makerName'] = '';
             }
+            $response['saleType'] = $productRepository->convertProductTypeToStr($product['productTypeId']);
         }
         $response['newFlg'] = newFlg($response['saleStartDate']);
         $response['adultFlg'] = ($response['adultFlg'] === '1') ? true : false;
         $response['itemType'] = $this->convertWorkTypeIdToStr($response['workTypeId']);
-        $response['saleType'] = $productRepository->convertProductTypeToStr($product['productTypeId']);
         if ($addSaleTypeHas) {
             $response['saleTypeHas'] = [
                 'sell' => ($productModel->setConditionByWorkIdSaleType($response['workId'], 'sell')->count() > 0) ?: true,
@@ -618,62 +699,6 @@ class WorkRepository
         return false;
     }
 
-    /**
-     *
-     *
-     * @param $workIds
-     * @return null
-     *
-     * @throws NoContentsException
-     */
-    public function getWorkList($workIds, $selectColumns = null)
-    {
-        $himo = new HimoRepository();
-
-        $workIdsExistedArray = [];
-        $workIdsExisted = $this->work->getWorkIdsIn($workIds)->select('work_id')->get();
-        foreach ($workIdsExisted as $workIdsExistedItem) {
-            $workIdsExistedArray[] = $workIdsExistedItem->work_id;
-        }
-
-        // STEP 3: IDが取得出来なかった場合は全てHimoから新規で詳細情報を取得するためのリストを作成。
-        if (!$workIdsExistedArray) {
-            $workIdsNew = $workIds;
-        } else {
-            $workIdsNew = array_values(array_diff($workIds, $workIdsExistedArray));
-        }
-
-        // STEP 4: 既存データから取ってこれなかったものをHimoから取得し格納する。
-        // Get data by list workIds and return
-        if ($workIdsNew) {
-            $himo = new HimoRepository();
-            $himoResult = $himo->crosswork($workIdsNew)->get();
-            // Himoから取得できなかった場合はスキップする
-            if (!empty($himoResult)) {
-                $insertResult = $this->insertWorkData($himoResult);
-            }
-        }
-
-        // STEP 5: 条件をセット
-        $this->work->getWorkIdsIn($workIds);
-        $this->totalCount = $this->work->count();
-        if (!$this->totalCount) {
-            return null;
-        }
-
-        if (empty($selectColumns)) {
-            $workArray = $this->work->toCamel(['id'])->get();
-        } else {
-            $workArray = $this->work->selectCamel($selectColumns)->get();
-        }
-
-        // productsからとってくるが、仮データ
-        foreach ($workArray as $workItem) {
-            $row = (array)$workItem;
-            $response['rows'][] = $this->formatAddOtherData($row);
-        }
-        return $response;
-    }
 
     /**
      * API GET: /people/{personId}

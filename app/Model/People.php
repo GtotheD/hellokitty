@@ -54,10 +54,11 @@ class People extends Model
      *
      * @return $this
      */
-    public function setConditionByRoleId($roleId)
+    public function setConditionByRoleId($productUniqueId, $roleId)
     {
         $this->dbObject = DB::table($this->table)
             ->where([
+                'product_unique_id' => $productUniqueId,
                 'role_id' => $roleId,
             ])
             ->orderBy('updated_at', 'desc');

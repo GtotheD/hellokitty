@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Exceptions\NoContentsException;
 use App\Model\People;
+use App\Model\Work;
 use Log;
 use App\Model\PeopleRelatedWork;
 use App\Model\Product;
@@ -93,32 +94,23 @@ class PeopleRelatedWorksRepository extends ApiRequesterRepository
             $this->peopleRelatedWork->insertBulk($insertData);
             $result = $this->peopleRelatedWork->setConditionById($people->person_id)->toCamel(['id', 'person_id'])->get($this->limit, $this->offset);
         }
-        if (count($result) + $this->offset < $this->totalCount) {
-            $this->hasNext = true;
-        } else {
-            $this->hasNext = false;
+        foreach ($result as $resultItem) {
+            $resultArray[] = $resultItem->workId;
         }
-        foreach ($result as $workItem) {
-            $row = (array)$workItem;
-            // 仮
-            $row['adultFlg'] = '';
-            $response[] = $work->formatAddOtherData($row, false);
-        }
-        return $response;
+        return $this->getWorkWithProductIdsIn($resultArray);
     }
 
     public function getWorksByArtist($workId)
     {
         $people = new PeopleRepository();
         $himo = new HimoRepository();
-        $work = new WorkRepository();
 
         $people = $people->getNewsPeople($workId)->getOne();
         if (!$people) {
             throw new NoContentsException;
         }
         $this->totalCount = $this->peopleRelatedWork->setConditionById($people->person_id)->count();
-        $result = $this->peopleRelatedWork->toCamel(['id', 'person_id'])->get($this->limit, $this->offset);
+        $result = $this->peopleRelatedWork->selectCamel(['work_id'])->get();
         if (empty(count($result))) {
             $himoResult = $himo->searchPeople([$people->person_id], '0301', ['audio', 'video', 'book', 'game'])->get();
             if (empty($himoResult['results']['rows'])) {
@@ -130,21 +122,43 @@ class PeopleRelatedWorksRepository extends ApiRequesterRepository
                 }
             }
             $this->peopleRelatedWork->insertBulk($insertData);
-            $result = $this->peopleRelatedWork->setConditionById($people->person_id)->toCamel(['id', 'person_id'])->get($this->limit, $this->offset);
+            $result = $this->peopleRelatedWork->setConditionById($people->person_id)->selectCamel(['work_id'])->get();
         }
-        if (count($result) + $this->offset < $this->totalCount) {
+        foreach ($result as $resultItem) {
+            $resultArray[] = $resultItem->workId;
+        }
+        return $this->getWorkWithProductIdsIn($resultArray);
+    }
+
+    public function getWorkWithProductIdsIn($data)
+    {
+        $workRepository = new WorkRepository();
+        $work = new Work();
+
+        $work->getWorkWithProductIdsIn($data);
+        $this->totalCount = $work->count();
+        $workList = $work->selectCamel($this->selectColumn())->get($this->limit, $this->offset);
+        if (count($workList) + $this->offset < $this->totalCount) {
             $this->hasNext = true;
         } else {
             $this->hasNext = false;
         }
-        foreach ($result as $workItem) {
-            $row = (array)$workItem;
-            // 仮
-            $row['adultFlg'] = '';
-            $response[] = $work->formatAddOtherData($row, false);
+
+        // STEP 7:フォーマットを変更して返却
+        $workItems = [];
+        foreach ($workList as $workItem) {
+            $workItem = (array)$workItem;
+            $formatedItem = $workRepository->formatAddOtherData($workItem, false, $workItem);
+            foreach ($formatedItem as $key => $value) {
+                if (in_array($key,$this->outputColumn())) {
+                    $formatedItemSelectColumn[$key] = $value;
+                }
+            }
+            $workItems[] = $formatedItemSelectColumn;
         }
-        return $response;
+        return $workItems;
     }
+
 
     public function format($personId, $row)
     {
@@ -152,5 +166,44 @@ class PeopleRelatedWorksRepository extends ApiRequesterRepository
         $base = $workRepository->format($row, true);
         $base['person_id'] = $personId;
         return $base;
+    }
+
+    private function outputColumn()
+    {
+        return [
+            'workId',
+            'urlCd',
+            'cccWorkCd',
+            'workTitle',
+            'productName',
+            'newFlg',
+            'jacketL',
+            'supplement',
+            'saleType',
+            'itemType',
+            'adultFlg'
+        ];
+    }
+
+    private function selectColumn()
+    {
+        return [
+            't1.work_id',
+            'work_type_id',
+            'work_title',
+            'rating_id',
+            'big_genre_id',
+            'url_cd',
+            'ccc_work_cd',
+            't1.jacket_l',
+            't2.sale_start_date',
+            't2.product_type_id',
+            'product_unique_id',
+            'product_name',
+            'maker_name',
+            'game_model_name',
+            'adult_flg',
+            'msdb_item'
+        ];
     }
 }
