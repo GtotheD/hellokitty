@@ -96,7 +96,8 @@ class Model
     {
         foreach ($columns as $column) {
             if(!in_array($column, $ignoreColumn)) {
-                $aliasName[] = $column. ' AS '. camel_case($column);
+                // エイリアスを削除する
+                $aliasName[] = $column. ' AS '. camel_case(preg_replace('/.*\./', '', $column));
             }
         }
         return implode($aliasName, ',');

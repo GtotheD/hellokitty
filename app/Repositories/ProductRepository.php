@@ -210,6 +210,7 @@ class ProductRepository
 
     public function convertProductTypeToStr($productTypeId)
     {
+        $productTypeStr = null;
         switch ($productTypeId) {
             case self::PRODUCT_TYPE_SELL:
                 $productTypeStr = 'sell';
@@ -297,7 +298,7 @@ class ProductRepository
         $productBase['play_time'] = $product['play_time'];
         $productBase['jacket_l'] = $product['jacket_l'];
         $productBase['sale_start_date'] = $product['sale_start_date'];
-        if( $product['msdb_item'] === 'audio') {
+        if ($product['msdb_item'] === 'audio') {
             $productBase['contents'] = $this->getDetail($product['product_id'], $product['product_type_id']);
         }
 //                    $productBase['privilege'] = $product['privilege'];
@@ -344,7 +345,7 @@ class ProductRepository
                 if (array_key_exists('message', $stockStatus)) {
                     $message = $stockStatus['message'];
                 }
-                if (array_key_exists('lastUpDate', $stockInfo['entry']['stockInfo'][0]) ) {
+                if (array_key_exists('lastUpDate', $stockInfo['entry']['stockInfo'][0])) {
                     $lastUpdate = date('Y-m-d H:i:s', strtotime($stockInfo['entry']['stockInfo'][0]['lastUpDate']));
                 }
             }
