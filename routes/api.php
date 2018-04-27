@@ -27,6 +27,7 @@ use App\Repositories\HimoKeywordRepository;
 use App\Repositories\PeopleRelatedWorksRepository;
 use App\Repositories\RelateadWorkRepository;
 use App\Repositories\RecommendOtherRepository;
+use App\Repositories\HimoRepository;
 
 // Api Group
 $router->group([
@@ -473,6 +474,16 @@ $router->group([
         }
         return response()->json($response);
     });
+
+    // 検証環境まで有効にするテスト要
+    if (env('APP_ENV') === 'local' || env('APP_ENV') === 'develop' || env('APP_ENV') === 'staging') {
+        $router->get('himo/{workId}', function (Request $request, $workId) {
+            $himo = new HimoRepository();
+            $response = $himo->crosswork([$workId])->get();
+            return response()->json($response);
+        });
+
+    }
 });
 $router->group(['prefix' => env('URL_PATH_PREFIX') . env('API_VERSION')], function () use ($router) {
     // APIドキュメント

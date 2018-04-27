@@ -66,8 +66,8 @@ class RecommendOtherRepository
         if(empty($bk2Recoomend)) {
             return null;
         }
-        $workIdList = array_slice($workIdList, 0, 20);
         $workIdList = explode(',', $bk2Recoomend->list_work_id);
+        $workIdList = array_slice($workIdList, 0, 20);
         $workRepository->getWorkList($workIdList);
 
         $work->getWorkWithProductIdsIn($workIdList, $saleType);
