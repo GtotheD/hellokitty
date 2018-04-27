@@ -404,25 +404,35 @@ class WorkRepository
                 'rows' => []
             ];
 
-            if (!empty($data['results']['facets']['msdb_item'])) {
-                foreach ($data['results']['facets']['msdb_item'] as $value) {
-                    switch ($value['key']) {
-                        case 'video':
-                            $result['counts']['dvd'] = $value['count'];
-                            break;
-                        case 'audio':
-                            $result['counts']['cd'] = $value['count'];
-                            break;
-                        case 'book':
-                            $result['counts']['book'] = $value['count'];
-                            break;
-                        case 'game':
-                            $result['counts']['game'] = $value['count'];
-                            break;
-                    }
+            //check counts of all itemType
+            $ItemTypesCheck = ['cd', 'dvd', 'book', 'game'];
 
+            if (in_array(strtolower($itemType), $ItemTypesCheck)) {
+                $this->setOffset(0);
+                $this->setLimit(1);
+                $params['itemType'] = 'all';
+
+                $dataCounts = $himoRepository->searchCrossworks($params, $sort)->get();
+                if (!empty($dataCounts['results']['facets']['msdb_item'])) {
+                    foreach ($dataCounts['results']['facets']['msdb_item'] as $value) {
+                        switch ($value['key']) {
+                            case 'video':
+                                $result['counts']['dvd'] = $value['count'];
+                                break;
+                            case 'audio':
+                                $result['counts']['cd'] = $value['count'];
+                                break;
+                            case 'book':
+                                $result['counts']['book'] = $value['count'];
+                                break;
+                            case 'game':
+                                $result['counts']['game'] = $value['count'];
+                                break;
+                        }
+                    }
                 }
             }
+
 
             foreach ($data['results']['rows'] as $row) {
                 $this->setSaleType('rental');
@@ -436,7 +446,7 @@ class WorkRepository
                     'newFlg' => $base['newFlg'],
                     'jacketL' => $base['jacketL'],
                     'supplement' => $base['supplement'],
-                    'saleType' => $base['saleType'],
+                    'saleType' => !empty($base['saleType']) ? $base['saleType'] : '',
                     'itemType' => $base['itemType'],
                     'saleTypeHas' => [
                         'sell' => $base['saleTypeHas']['sell'],
@@ -493,7 +503,7 @@ class WorkRepository
                     'newFlg' => $base['newFlg'],
                     'jacketL' => $base['jacketL'],
                     'supplement' => $base['supplement'],
-                    'saleType' => $base['saleType'],
+                    'saleType' => !empty($base['saleType']) ? $base['saleType'] : '',
                     'itemType' => $base['itemType'],
                     'adultFlg' => $base['adultFlg'],
                 ];
