@@ -447,7 +447,7 @@ class WorkRepository
                     'jacketL' => isset($base['jacketL']) ? $base['jacketL'] : '',
                     'supplement' => isset($base['supplement']) ? $base['supplement'] : '',
                     'saleType' => isset($base['saleType']) ? $base['saleType'] : '',
-                    'itemType' => isset($base['itemType']) ? $base['saleType'] : '',
+                    'itemType' => isset($base['itemType']) ? $base['itemType'] : '',
                     'saleTypeHas' => [
                         'sell' => isset($base['saleTypeHas']['sell']) ? $base['saleTypeHas']['sell'] : false,
                         'rental' => isset($base['saleTypeHas']['rental']) ? $base['saleTypeHas']['rental'] : false,
@@ -505,7 +505,7 @@ class WorkRepository
                     'jacketL' => isset($base['jacketL']) ? $base['jacketL'] : '',
                     'supplement' => isset($base['supplement']) ? $base['supplement'] : '',
                     'saleType' => isset($base['saleType']) ? $base['saleType'] : '',
-                    'itemType' => isset($base['itemType']) ? $base['saleType'] : '',
+                    'itemType' => isset($base['itemType']) ? $base['itemType'] : '',
                     'adultFlg' => isset($base['adultFlg']) ? $base['adultFlg'] : false,
                 ];
             }
