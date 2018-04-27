@@ -70,7 +70,7 @@ class TAPRepository extends ApiRequesterRepository
         if (!empty($apiResult) && array_key_exists('entry', $apiResult)) {
             foreach ($apiResult['entry']['movie']['reviews'] as $review) {
                 $reviews['rows'][] = [
-                    'rating' => number_format($review['score'], 1),
+                    'rating' => floatval(number_format($review['score'], 1)),
                     'contributor' => $review['userName'],
                     'contributeDate' => date('Y-m-d', strtotime($review['createdAt'])),
                     'contents' => $review['review'],
@@ -78,7 +78,7 @@ class TAPRepository extends ApiRequesterRepository
                 $reviews['totalCount']++;
             }
             if (!empty($reviews['rows'])) {
-                $reviews['averageRating'] = number_format($apiResult['entry']['movie']['averageScore'], 1);
+                $reviews['averageRating'] = floatval(number_format($apiResult['entry']['movie']['averageScore'], 1));
                 return $reviews;
             }
         }
