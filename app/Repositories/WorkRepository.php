@@ -413,6 +413,7 @@ class WorkRepository
                 $himoRepository->setOffset(0);
 
                 $dataCounts = $himoRepository->searchCrossworks($params, $sort)->get();
+
             }
             if (!empty($dataCounts['results']['facets']['msdb_item'])) {
                 foreach ($dataCounts['results']['facets']['msdb_item'] as $value) {
@@ -438,20 +439,20 @@ class WorkRepository
                 $base = $this->get($row['work_id']);
 
                 $result['rows'][] = [
-                    'workId' => $base['workId'],
-                    'urlCd' => $base['urlCd'],
-                    'cccWorkCd' => $base['cccWorkCd'],
-                    'workTitle' => $base['workTitle'],
-                    'newFlg' => $base['newFlg'],
-                    'jacketL' => $base['jacketL'],
-                    'supplement' => $base['supplement'],
-                    'saleType' => !empty($base['saleType']) ? $base['saleType'] : '',
-                    'itemType' => $base['itemType'],
+                    'workId' => isset($base['workId']) ? $base['workId'] : '',
+                    'urlCd' => isset($base['urlCd']) ? $base['urlCd'] : '',
+                    'cccWorkCd' => isset($base['cccWorkCd']) ? $base['cccWorkCd'] : '',
+                    'workTitle' => isset($base['workTitle']) ? $base['workTitle'] : '',
+                    'newFlg' => isset($base['newFlg']) ? $base['newFlg'] : false,
+                    'jacketL' => isset($base['jacketL']) ? $base['jacketL'] : '',
+                    'supplement' => isset($base['supplement']) ? $base['supplement'] : '',
+                    'saleType' => isset($base['saleType']) ? $base['saleType'] : '',
+                    'itemType' => isset($base['itemType']) ? $base['saleType'] : '',
                     'saleTypeHas' => [
-                        'sell' => $base['saleTypeHas']['sell'],
-                        'rental' => $base['saleTypeHas']['rental'],
+                        'sell' => isset($base['saleTypeHas']['sell']) ? $base['saleTypeHas']['sell'] : false,
+                        'rental' => isset($base['saleTypeHas']['sell']) ? $base['saleTypeHas']['sell'] : false,
                     ],
-                    'adultFlg' => $base['adultFlg'],
+                    'adultFlg' => isset($base['adultFlg']) ? $base['adultFlg'] : false,
                 ];
             }
 
@@ -494,20 +495,21 @@ class WorkRepository
                 $this->setSaleType('rental');
                 $base = $this->get($row['work_id']);
 
+
                 $result['rows'][] = [
-                    'workId' => $base['workId'],
-                    'urlCd' => $base['urlCd'],
-                    'cccWorkCd' => $base['cccWorkCd'],
-                    'workTitle' => $base['workTitle'],
-                    'newFlg' => $base['newFlg'],
-                    'jacketL' => $base['jacketL'],
-                    'supplement' => $base['supplement'],
-                    'saleType' => !empty($base['saleType']) ? $base['saleType'] : '',
-                    'itemType' => $base['itemType'],
-                    'adultFlg' => $base['adultFlg'],
+                    'workId' => isset($base['workId']) ? $base['workId'] : '',
+                    'urlCd' => isset($base['urlCd']) ? $base['urlCd'] : '',
+                    'cccWorkCd' => isset($base['cccWorkCd']) ? $base['cccWorkCd'] : '',
+                    'workTitle' => isset($base['workTitle']) ? $base['workTitle'] : '',
+                    'newFlg' => isset($base['newFlg']) ? $base['newFlg'] : false,
+                    'jacketL' => isset($base['jacketL']) ? $base['jacketL'] : '',
+                    'supplement' => isset($base['supplement']) ? $base['supplement'] : '',
+                    'saleType' => isset($base['saleType']) ? $base['saleType'] : '',
+                    'itemType' => isset($base['itemType']) ? $base['saleType'] : '',
+                    'adultFlg' => isset($base['adultFlg']) ? $base['adultFlg'] : false,
                 ];
             }
-
+            
             if (count($result['rows']) > 0) {
                 return $result;
             }
