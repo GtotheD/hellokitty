@@ -450,7 +450,7 @@ class WorkRepository
                     'itemType' => isset($base['itemType']) ? $base['saleType'] : '',
                     'saleTypeHas' => [
                         'sell' => isset($base['saleTypeHas']['sell']) ? $base['saleTypeHas']['sell'] : false,
-                        'rental' => isset($base['saleTypeHas']['sell']) ? $base['saleTypeHas']['sell'] : false,
+                        'rental' => isset($base['saleTypeHas']['rental']) ? $base['saleTypeHas']['rental'] : false,
                     ],
                     'adultFlg' => isset($base['adultFlg']) ? $base['adultFlg'] : false,
                 ];
@@ -509,7 +509,7 @@ class WorkRepository
                     'adultFlg' => isset($base['adultFlg']) ? $base['adultFlg'] : false,
                 ];
             }
-            
+
             if (count($result['rows']) > 0) {
                 return $result;
             }
