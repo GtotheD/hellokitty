@@ -351,7 +351,7 @@ class ProductRepository
             }
         }
         return [
-            'status' => $statusCode,
+            'stockStatus' => $statusCode,
             'message' => $message,
             'lastUpdate' => $lastUpdate,
         ];
