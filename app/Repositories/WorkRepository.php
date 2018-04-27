@@ -408,9 +408,9 @@ class WorkRepository
             $ItemTypesCheck = ['cd', 'dvd', 'book', 'game'];
 
             if (in_array(strtolower($itemType), $ItemTypesCheck)) {
-                $this->setOffset(0);
-                $this->setLimit(1);
                 $params['itemType'] = 'all';
+                $himoRepository->setLimit(1);
+                $himoRepository->setOffset(0);
 
                 $dataCounts = $himoRepository->searchCrossworks($params, $sort)->get();
                 if (!empty($dataCounts['results']['facets']['msdb_item'])) {

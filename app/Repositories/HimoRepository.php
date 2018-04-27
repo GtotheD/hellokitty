@@ -42,6 +42,14 @@ class HimoRepository extends ApiRequesterRepository
         $this->limit = $limit;
     }
 
+    /**
+     * @param int $offset
+     */
+    public function setOffset($offset)
+    {
+        $this->offset = $offset;
+    }
+
     /*
      * 詳細情報を取得するAPIをセットする
      */
