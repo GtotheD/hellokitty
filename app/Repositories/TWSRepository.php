@@ -150,15 +150,15 @@ class TWSRepository extends ApiRequesterRepository
         if (!empty($apiResult) && array_key_exists('entry', $apiResult)) {
             foreach ($apiResult['entry'] as $review) {
                 $reviews['rows'][] = [
-                    'rating' => number_format($review['evalPoint'], 1),
+                    'rating' => floatval(number_format($review['evalPoint'], 1)),
                     'contributor' => $review['contributorName'],
                     'contributeDate' => $review['contributeDate'],
                     'contents' => $review['commentText'],
                 ];
             }
             if (!empty($reviews['rows'])) {
-                $reviews['averageRating'] = number_format($apiResult['averageScore'], 1);
-                $reviews['totalCount'] = $apiResult['totalResults'];
+                $reviews['averageRating'] = floatval(number_format($apiResult['averageScore'], 1));
+                $reviews['totalCount'] = intval($apiResult['totalResults']);
                 return $reviews;
             }
         }
