@@ -406,33 +406,32 @@ class WorkRepository
 
             //check counts of all itemType
             $ItemTypesCheck = ['cd', 'dvd', 'book', 'game'];
-
+            $dataCounts = $data;
             if (in_array(strtolower($itemType), $ItemTypesCheck)) {
                 $params['itemType'] = 'all';
                 $himoRepository->setLimit(1);
                 $himoRepository->setOffset(0);
 
                 $dataCounts = $himoRepository->searchCrossworks($params, $sort)->get();
-                if (!empty($dataCounts['results']['facets']['msdb_item'])) {
-                    foreach ($dataCounts['results']['facets']['msdb_item'] as $value) {
-                        switch ($value['key']) {
-                            case 'video':
-                                $result['counts']['dvd'] = $value['count'];
-                                break;
-                            case 'audio':
-                                $result['counts']['cd'] = $value['count'];
-                                break;
-                            case 'book':
-                                $result['counts']['book'] = $value['count'];
-                                break;
-                            case 'game':
-                                $result['counts']['game'] = $value['count'];
-                                break;
-                        }
+            }
+            if (!empty($dataCounts['results']['facets']['msdb_item'])) {
+                foreach ($dataCounts['results']['facets']['msdb_item'] as $value) {
+                    switch ($value['key']) {
+                        case 'video':
+                            $result['counts']['dvd'] = $value['count'];
+                            break;
+                        case 'audio':
+                            $result['counts']['cd'] = $value['count'];
+                            break;
+                        case 'book':
+                            $result['counts']['book'] = $value['count'];
+                            break;
+                        case 'game':
+                            $result['counts']['game'] = $value['count'];
+                            break;
                     }
                 }
             }
-
 
             foreach ($data['results']['rows'] as $row) {
                 $this->setSaleType('rental');
