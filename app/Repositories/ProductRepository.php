@@ -392,6 +392,9 @@ class ProductRepository
     {
         $himo = new HimoRepository;
         $himoResult = $himo->productDetail([$productId], '0202', $typeId)->get();
+        if (empty($himoResult)) {
+            return null;
+        }
         foreach ($himoResult['results']['rows'] as $item) {
             foreach ($item['tracks'] as $trackItem) {
                 $trackGroups[$trackItem['disc_no']][] = [

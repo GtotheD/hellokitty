@@ -213,7 +213,6 @@ class WorkRepository
         } else {
             $workIdsNew = array_values(array_diff($workIds, $workIdsExistedArray));
         }
-
         // STEP 4: 既存データから取ってこれなかったものをHimoから取得し格納する。
         // Get data by list workIds and return
         if ($workIdsNew) {
@@ -353,7 +352,6 @@ class WorkRepository
                     }
                 }
             }
-
             $productModel = new Product();
             $peopleModel = new People();
 
@@ -729,54 +727,73 @@ class WorkRepository
             'personId' => $personId,
             'saleType' => $this->saleType,
             'itemType' => $itemType,
+            'responseLevel' => 1,
             'id' => $personId,//dummy data
             'api' => 'crossworks',//dummy data
         ];
         $data = $himoRepository->searchCrossworks($params, $sort)->get();
-
         if (empty($data['status']) || $data['status'] != '200' || empty($data['results']['total'])) {
             throw new NoContentsException();
         }
+        foreach ($data['results']['rows'] as $row) {
+            $workList[] = $row['work_id'];
+        }
 
-        if (count($data['results']['rows']) + $this->offset < $data['results']['total']) {
+        $hoge = $this->getWorkList($workList);
+        $this->work->getWorkIdsIn($workList);
+        $this->totalCount = $this->work->count();
+        $works = $this->work->selectCamel($this->selectColumn())->get($this->limit, $this->offset);
+        if (count($works) + $this->offset < $this->totalCount) {
             $this->hasNext = true;
         } else {
             $this->hasNext = false;
         }
 
-        $result = [
-            'hasNext' => $this->hasNext,
-            'totalCount' => $data['results']['total'],
-            'rows' => []
-        ];
-
-        foreach ($data['results']['rows'] as $row) {
-            $base = [];
-            foreach ($row['ids'] as $idItem) {
-                // HiMO作品ID
-                if ($idItem['id_type'] === '0103') {
-                    $base['ccc_work_cd'] = $idItem['id_value'];
-                    // URLコード
-                } else if ($idItem['id_type'] === '0105') {
-                    $base['url_cd'] = $idItem['id_value'];
+        // STEP 7:フォーマットを変更して返却
+        $workItems = [];
+        foreach ($works as $workItem) {
+            $workItem = (array)$workItem;
+            $formatedItem = $this->formatAddOtherData($workItem, false);
+            foreach ($formatedItem as $key => $value) {
+                if (in_array($key,$this->outputColumn())) {
+                    $formatedItemSelectColumn[$key] = $value;
                 }
             }
-
-            $result['rows'][] = [
-                'workId' => $row['work_id'],
-                'urlCd' => array_get($base, 'url_cd', null),
-                'cccWorkCd' => array_get($base, 'ccc_work_cd', null),
-                'workTitle' => $row['work_title'],
-                'newFlg' => newFlg($row['sale_start_date']),
-                'jacketL' => trimImageTag($row['jacket_l']),
-                'supplement' => '（仮）監督・著者・アーティスト・機種', // default value
-                'saleType' => $this->saleType,
-                'itemType' => $this->convertWorkTypeIdToStr($row['work_type_id']),
-                'adultFlg' => $row['adult_flg'],
-            ];
+            $workItems[] = $formatedItemSelectColumn;
         }
 
-        return $result;
+
+        return $workItems;
+    }
+    private function outputColumn()
+    {
+        return [
+            'workId',
+            'urlCd',
+            'cccWorkCd',
+            'workTitle',
+            'newFlg',
+            'jacketL',
+            'supplement',
+            'saleType',
+            'itemType',
+            'adultFlg'
+        ];
     }
 
+    private function selectColumn()
+    {
+        return [
+            'work_id',
+            'work_type_id',
+            'work_title',
+            'rating_id',
+            'big_genre_id',
+            'sale_start_date',
+            'adult_flg',
+            'url_cd',
+            'ccc_work_cd',
+            'jacket_l',
+        ];
+    }
 }

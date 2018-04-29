@@ -189,6 +189,10 @@ class HimoRepository extends ApiRequesterRepository
             'limit' => $this->limit,
             'sort_by' => $sortBy,
         ];
+        //check itemType
+        if(array_key_exists('responseLevel',$params)) {
+            $this->queryParams['responseLevel'] = $params['itemType'];
+        }
 
         //check itemType
         if(array_key_exists('itemType',$params)){
@@ -272,7 +276,6 @@ class HimoRepository extends ApiRequesterRepository
         if(array_key_exists('personId', $params)){
             $this->queryParams['id_value'] = "0301:" . $params['personId'];
         }
-
         return $this;
     }
 
@@ -347,7 +350,7 @@ class HimoRepository extends ApiRequesterRepository
                 if($response) {
                     $results['results']['rows'][] = array_first($response['results']['rows']);
                     $results['results']['total'] = $key + 1;
-                }
+                    }
             }
         }
         return $results;
