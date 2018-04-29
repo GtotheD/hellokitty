@@ -113,6 +113,9 @@ class ProductRepository
     public function get($productUniqueId)
     {
         $product = $this->product->setConditionByProductUniqueId($productUniqueId)->toCamel(['id'])->getOne();
+        if (empty($product)) {
+            return null;
+        }
         return $this->productReformat([$product])[0];
     }
 
@@ -199,6 +202,19 @@ class ProductRepository
         foreach ($products as $product) {
             $product = (array)$product;
             $product['productKey'] = ($product['productTypeId'] == self::PRODUCT_TYPE_SELL) ? $product['jan'] : $product['rentalProductCd'];
+            $docs = json_decode($product['docs'], true);
+            foreach ($docs as $doc) {
+                if($doc['doc_type_id'] === '02') {
+                    $product['docText'] = $doc['doc_text'];
+                }
+                if($doc['doc_type_id'] === '04') {
+                    $product['contents'] = $doc['doc_text'];
+                }
+                if($doc['doc_type_id'] === '11') {
+                    $product['privilege'] = $doc['doc_text'];
+                }
+            }
+            unset($product['docs']);
             $product['itemName'] = $this->convertItemCdToStr($product['itemCd']);
             $product['saleType'] = $this->convertProductTypeToStr($product['productTypeId']);
             $product['jacketL'] = trimImageTag($product['jacketL']);
@@ -297,6 +313,7 @@ class ProductRepository
         $productBase['price_tax_out'] = $product['price_tax_out'];
         $productBase['play_time'] = $product['play_time'];
         $productBase['jacket_l'] = $product['jacket_l'];
+        $productBase['docs'] = json_encode($product['docs']);
         $productBase['sale_start_date'] = $product['sale_start_date'];
         if ($product['msdb_item'] === 'audio') {
             $productBase['contents'] = $this->getDetail($product['product_id'], $product['product_type_id']);

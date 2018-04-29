@@ -280,6 +280,14 @@ class WorkRepository
             $product = (array)$productModel->setConditionByWorkIdNewestProduct($response['workId'], $this->saleType)->toCamel()->getOne();
         }
         if (!empty($product)) {
+            // add docs
+            // get First Docs
+            $docs = json_decode($product['docs'], true);
+            foreach ($docs as $doc) {
+                $response['docText'] = $doc['doc_text'];
+            }
+
+            // add supplement
             if ($product['msdbItem'] === 'game') {
                 $response['supplement'] = $product['gameModelName'];
             } else {
@@ -307,8 +315,8 @@ class WorkRepository
         $response['itemType'] = $this->convertWorkTypeIdToStr($response['workTypeId']);
         if ($addSaleTypeHas) {
             $response['saleTypeHas'] = [
-                'sell' => ($productModel->setConditionByWorkIdSaleType($response['workId'], 'sell')->count() > 0) ?: true,
-                'rental' => ($productModel->setConditionByWorkIdSaleType($response['workId'], 'rental')->count() > 0) ?: true
+                'sell' => ($productModel->setConditionByWorkIdSaleType($response['workId'], 'sell')->count() > 0) ? true: false,
+                'rental' => ($productModel->setConditionByWorkIdSaleType($response['workId'], 'rental')->count() > 0) ? true: false
             ];
         }
         return $response;
@@ -364,6 +372,7 @@ class WorkRepository
         } catch (\Exception $exception) {
             \Log::error("Error while update work. Error message:{$exception->getMessage()} Line: {$exception->getLine()}");
             DB::rollback();
+            throw new $exception;
         }
 
     }
@@ -589,19 +598,15 @@ class WorkRepository
         // アイテム種別毎に整形フォーマットを変更できるように
         switch ($row['work_type_id']) {
             case self::WORK_TYPE_CD:
-                $base['doc_text'] = $this->cdFormat($row);
                 $base['itemType'] = 'cd';
                 break;
             case self::WORK_TYPE_DVD:
-                $base['doc_text'] = $this->dvdFormat($row);
                 $base['itemType'] = 'dvd';
                 break;
             case self::WORK_TYPE_BOOK:
-                $base['doc_text'] = $this->bookFormat($row);
                 $base['itemType'] = 'book';
                 break;
             case self::WORK_TYPE_GAME:
-                $base['doc_text'] = $this->gameFormat($row);
                 $base['itemType'] = 'game';
                 break;
         }
@@ -626,36 +631,6 @@ class WorkRepository
                 break;
         }
         return $itemType;
-    }
-
-    private function dvdFormat($row)
-    {
-        if (array_key_exists('docs', $row)) {
-            if (count($row['docs']) > 0) {
-                return $row['docs'][0]['doc_text'];
-            }
-        }
-        return null;
-    }
-
-    private function cdFormat($row)
-    {
-        return '';
-    }
-
-    private function bookFormat($row)
-    {
-        return '';
-    }
-
-    private function gameFormat($row)
-    {
-        if (array_key_exists('docs', $row)) {
-            if (count($row['docs']) > 0) {
-                return $row['docs'][0]['doc_text'];
-            }
-        }
-        return null;
     }
 
     private function sceneFormat($data)
@@ -721,16 +696,18 @@ class WorkRepository
      */
     public function person($personId, $sort = null, $itemType = null)
     {
-        $himoRepository = new HimoRepository($sort, $this->offset, $this->limit);
+        $himoRepository = new HimoRepository();
 
         $params = [
             'personId' => $personId,
             'saleType' => $this->saleType,
             'itemType' => $itemType,
             'responseLevel' => 1,
+            'limit' => 100,
             'id' => $personId,//dummy data
             'api' => 'crossworks',//dummy data
         ];
+        $himoRepository->setLimit(100);
         $data = $himoRepository->searchCrossworks($params, $sort)->get();
         if (empty($data['status']) || $data['status'] != '200' || empty($data['results']['total'])) {
             throw new NoContentsException();
@@ -740,7 +717,7 @@ class WorkRepository
         }
 
         $hoge = $this->getWorkList($workList);
-        $this->work->getWorkIdsIn($workList);
+        $this->work->getWorkWithProductIdsIn($workList, $this->saleType);
         $this->totalCount = $this->work->count();
         $works = $this->work->selectCamel($this->selectColumn())->get($this->limit, $this->offset);
         if (count($works) + $this->offset < $this->totalCount) {
@@ -753,7 +730,7 @@ class WorkRepository
         $workItems = [];
         foreach ($works as $workItem) {
             $workItem = (array)$workItem;
-            $formatedItem = $this->formatAddOtherData($workItem, false);
+            $formatedItem = $this->formatAddOtherData($workItem, false, $workItem   );
             foreach ($formatedItem as $key => $value) {
                 if (in_array($key,$this->outputColumn())) {
                     $formatedItemSelectColumn[$key] = $value;
@@ -784,16 +761,22 @@ class WorkRepository
     private function selectColumn()
     {
         return [
-            'work_id',
+            't1.work_id',
             'work_type_id',
             'work_title',
             'rating_id',
             'big_genre_id',
-            'sale_start_date',
-            'adult_flg',
             'url_cd',
             'ccc_work_cd',
-            'jacket_l',
+            't1.jacket_l',
+            't2.sale_start_date',
+            't2.product_type_id',
+            'product_unique_id',
+            'product_name',
+            'maker_name',
+            'game_model_name',
+            'adult_flg',
+            'msdb_item'
         ];
     }
 }

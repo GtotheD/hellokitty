@@ -189,7 +189,7 @@ class HimoRepository extends ApiRequesterRepository
             'limit' => $this->limit,
             'sort_by' => $sortBy,
         ];
-        //check itemType
+
         if(array_key_exists('responseLevel',$params)) {
             $this->queryParams['responseLevel'] = $params['itemType'];
         }
