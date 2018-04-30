@@ -1,0 +1,160 @@
+{
+    "status": 200,
+    "message": null,
+    "results": {
+        "total": 1,
+        "rows": [
+            {
+                "work_id": "PTA0000OX8IM",
+                "work_type_id": "3",
+                "msdb_item": "book",
+                "work_format_id": null,
+                "work_format_name": "",
+                "work_title": "キングダム 公式ガイドブック 覇道列紀",
+                "work_title_kana": "きんぐだむこうしきがいどぶつくはどうれつき",
+                "work_title_en": "",
+                "work_title_orig": "",
+                "work_title_sub": "",
+                "work_comment": "",
+                "work_outline": "",
+                "work_copyright": "",
+                "rating_id": "EXT000000008",
+                "rating_name": "",
+                "adult_flg": 0,
+                "primary_product_source_id": "PDT0000P33BV",
+                "primary_product_service_id": "ec",
+                "primary_product_type_id": 1,
+                "disp_start_date": "1900-01-01 00:00:00",
+                "disp_start_month": "1900-01",
+                "sale_start_date": "2016-01-19",
+                "sale_start_month": "2016-01",
+                "created_year_from": "",
+                "created_year_to": "",
+                "created_year": "2016",
+                "created_countries": "",
+                "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/11030/9784088904238_1S.jpg ",
+                "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/11030/9784088904238_1M.jpg ",
+                "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/11030/9784088904238_1L.jpg ",
+                "jacket_l4": "",
+                "scene_s": [
+
+                ],
+                "scene_m": [
+
+                ],
+                "scene_l": [
+
+                ],
+                "trailor_pc": [
+
+                ],
+                "season_name": "",
+                "season_number": null,
+                "book_series_name": "ヤングジャンプコミックス",
+                "book_series_name_kana": "",
+                "feature_keywords": [
+
+                ],
+                "priv_keywords": [
+
+                ],
+                "work_tags": [
+
+                ],
+                "wakati_words": [
+
+                ],
+                "is_compilation": 0,
+                "series_completed": 0,
+                "disable_flg": 0,
+                "delete_flg": 0,
+                "ids": [
+                    {
+                        "id_type": "0103",
+                        "id_value": "42729566"
+                    },
+                    {
+                        "id_type": "0105",
+                        "id_value": "41482851"
+                    }
+                ],
+                "docs": [
+
+                ],
+                "awards": [
+
+                ],
+                "screens": [
+
+                ],
+                "onairs": [
+
+                ],
+                "magazines": [
+
+                ],
+                "genres": [
+                    {
+                        "big_genre_id": "EXT000073X10",
+                        "big_genre_name": "コミック",
+                        "medium_genre_id": "EXT000074181",
+                        "medium_genre_name": "青年コミック",
+                        "small_genre_id": "EXT00007539J",
+                        "small_genre_name": "集英社青年",
+                        "shikiriban_id": "EXT000075AKV",
+                        "shikiriban_name": "集英社ヤングジャンプＣ"
+                    }
+                ],
+                "products": [
+
+                ],
+                "video_relations": [
+
+                ],
+                "discas_grade_point": null,
+                "discas_item": [
+
+                ],
+                "ttv_trailer_flg": 0,
+                "ttv_free_movie_flg": 0,
+                "ttv_sell_rental_flg": [
+
+                ],
+                "ttv_low_price": null,
+                "cinema_id": [
+
+                ],
+                "filmarks_id": [
+
+                ],
+                "catch_copy": "",
+                "sale_start_date_sell": "2016-01-19",
+                "sale_start_date_rental": "2016-01-19",
+                "trailer_urls": [
+
+                ],
+                "scenes": [
+
+                ],
+                "filmarks_mark": null,
+                "filmarks_clip": null,
+                "filmarks_average": null,
+                "people": [
+                    {
+                        "person_id": "PPS00001LBUW",
+                        "person_name": "原泰久",
+                        "role_id": "EXT00000BWU9",
+                        "role_name": "著者"
+                    }
+                ],
+                "tracks": [
+
+                ],
+                "merged_from": [
+
+                ],
+                "need_age_auth_flg": 0
+            }
+        ]
+    }
+}

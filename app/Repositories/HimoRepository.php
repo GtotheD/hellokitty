@@ -190,6 +190,10 @@ class HimoRepository extends ApiRequesterRepository
             'sort_by' => $sortBy,
         ];
 
+        if(array_key_exists('responseLevel',$params)) {
+            $this->queryParams['responseLevel'] = $params['itemType'];
+        }
+
         //check itemType
         if(array_key_exists('itemType',$params)){
             $msdbItem = ['audio', 'video', 'book', 'game'];
@@ -272,7 +276,6 @@ class HimoRepository extends ApiRequesterRepository
         if(array_key_exists('personId', $params)){
             $this->queryParams['id_value'] = "0301:" . $params['personId'];
         }
-
         return $this;
     }
 
@@ -328,7 +331,7 @@ class HimoRepository extends ApiRequesterRepository
     // 返却した値は、DBに格納する
     public function get($jsonResponse = true)
     {
-        if(env('APP_ENV') !== 'local'){
+        if(env('APP_ENV') !== 'local' && env('APP_ENV') !== 'testing' ){
             return parent::get($jsonResponse);
         }
         // Check and read array workId
@@ -347,7 +350,7 @@ class HimoRepository extends ApiRequesterRepository
                 if($response) {
                     $results['results']['rows'][] = array_first($response['results']['rows']);
                     $results['results']['total'] = $key + 1;
-                }
+                    }
             }
         }
         return $results;

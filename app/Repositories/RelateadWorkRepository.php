@@ -99,9 +99,8 @@ class RelateadWorkRepository
         $work = new Work();
         $himo = new HimoRepository();
         $workRepository = new  WorkRepository();
-        $productRepository = new  ProductRepository();
         $relateadWork = new RelateadWork();
-        $workIdsIn = [];
+
         // STEP 1: 関連作品テーブルからリストを取得。なければHimoから新規で取得。
         $relatedWorkList = $relateadWork->setConditionByWork($workId)->select('related_work_id')->get();
         if(empty(count($relatedWorkList))) {
@@ -124,46 +123,11 @@ class RelateadWorkRepository
         foreach ($relatedWorkList as $relatedWork) {
             $relatedWorkArray[] = $relatedWork->related_work_id;
         }
+        // 問い合わせしてDBに格納
+        $workRepository->getWorkList($relatedWorkArray);
 
-        // -----------------------------------
-        // ここの部分を共通化したい
-        // -----------------------------------
-        // STEP 2: 関連作品の詳細情報をworkテーブルから取得する為に、既に取得済みのIDを抽出する。
-        $workIdsExistedArray = [];
-        $workIdsExisted = $work->getWorkIdsIn($relatedWorkArray)->select('work_id')->get();
-        foreach ($workIdsExisted as $workIdsExistedItem) {
-            $workIdsExistedArray[] = $workIdsExistedItem->work_id;
-        }
-
-        // STEP 3: IDが取得出来なかった場合は全てHimoから新規で詳細情報を取得するためのリストを作成。
-        if (!$workIdsExistedArray) {
-            $workIdsNew = $relatedWorkArray;
-        } else {
-            $workIdsNew = array_values(array_diff($relatedWorkArray, $workIdsExistedArray));
-        }
-        // STEP 4: 既存データから取ってこれなかったものをHimoから取得し格納する。
-        // Get data by list workIds and return
-        if ($workIdsNew) {
-            $himo = new HimoRepository();
-            $himoResult = $himo->crosswork($workIdsNew)->get();
-            // Himoから取得できなかった場合はスキップする
-            if (!empty($himoResult)) {
-              $insertResult = $workRepository->insertWorkData($himoResult);
-            }
-        } 
-
-        // STEP 5: 条件をセット
-//        $work->getWorkIdsIn($relatedWorkArray);
         $work->getWorkWithProductIdsIn($relatedWorkArray);
         $this->totalCount = $work->count();
-        if (!$this->totalCount) {
-            throw new NoContentsException();
-        }
-        // -----------------------------------
-        // ここまで
-        // -----------------------------------
-
-        // STEP 6: 条件と指定して再度取得
         $workList = $work->selectCamel($this->selectColumn())->get($this->limit, $this->offset);
         if (count($workList) + $this->offset < $this->totalCount) {
             $this->hasNext = true;
@@ -172,10 +136,16 @@ class RelateadWorkRepository
         }
 
         // STEP 7:フォーマットを変更して返却
-        $rows = [];
+        $workItems = [];
         foreach ($workList as $workItem) {
             $workItem = (array)$workItem;
-            $workItems[] = $workRepository->formatAddOtherData($workItem, false, $workItem);
+            $formatedItem = $workRepository->formatAddOtherData($workItem, false, $workItem);
+            foreach ($formatedItem as $key => $value) {
+                if (in_array($key,$this->outputColumn())) {
+                    $formatedItemSelectColumn[$key] = $value;
+                }
+            }
+            $workItems[] = $formatedItemSelectColumn;
         }
         return $workItems;
     }
@@ -196,6 +166,22 @@ class RelateadWorkRepository
         return $works;
     }
 
+    private function outputColumn()
+    {
+        return [
+            'workId',
+            'urlCd',
+            'cccWorkCd',
+            'workTitle',
+            'newFlg',
+            'jacketL',
+            'supplement',
+            'saleType',
+            'itemType',
+            'adultFlg'
+        ];
+    }
+
     private function selectColumn()
     {
         return [
@@ -211,6 +197,8 @@ class RelateadWorkRepository
             't2.product_type_id',
             'product_unique_id',
             'product_name',
+            'maker_name',
+            'game_model_name',
             'adult_flg',
             'msdb_item'
         ];

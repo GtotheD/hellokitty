@@ -147,7 +147,7 @@ $router->group([
     // 作品基本情報
     $router->get('work/{workId}', function (Request $request, $workId) {
         $work = new WorkRepository();
-        $work->setSaleType($request->input('saleType'));
+        $work->setSaleType($request->input('saleType', 'rental'));
         $ageLimitCheck = $request->input('ageLimitCheck', false);
         $result = $work->get($workId);
         $checkAgeLimit = $work->checkAgeLimit($result['ratingId'], $result['bigGenreId']);
@@ -398,6 +398,9 @@ $router->group([
     $router->get('product/{productUniqueId}', function (Request $request, $productUniqueId) {
         $productRepository = new ProductRepository();
         $result = $productRepository->get($productUniqueId);
+        if(empty($result)){
+            throw new NoContentsException;
+        }
         $response = [
             'data' => $result
         ];
@@ -422,6 +425,16 @@ $router->group([
         $itemType = $request->input('itemType', 'all');
 
         $response = $work->person($personId, $sort, $itemType);
+        if(empty($response)){
+            throw new NoContentsException;
+        }
+        $response = [
+            'hasNext' => $work->getHasNext(),
+            'totalCount' => $work->getTotalCount(),
+            'rows' => $response
+        ];
+
+
         return response()->json($response);
     });
 
@@ -449,6 +462,7 @@ $router->group([
         $himoKeywordRepository->setOffset($request->input('offset', 0));
         $keyword = urldecode($keyword);
         $keywords =  $himoKeywordRepository->get($keyword);
+
         if(empty($keywords)){
             throw new NoContentsException;
         }
