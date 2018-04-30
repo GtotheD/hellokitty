@@ -502,7 +502,7 @@ $router->group([
 $router->group(['prefix' => env('URL_PATH_PREFIX') . env('API_VERSION')], function () use ($router) {
     // APIドキュメント
     $router->get('docs/swagger.json', function () {
-        $swagger = \Swagger\scan(base_fpath('routes'));
+        $swagger = \Swagger\scan(base_path('routes'));
         return response()->json($swagger);
     });
 });
