@@ -331,7 +331,7 @@ class HimoRepository extends ApiRequesterRepository
     // 返却した値は、DBに格納する
     public function get($jsonResponse = true)
     {
-        if(env('APP_ENV') !== 'local'){
+        if(env('APP_ENV') !== 'local' && env('APP_ENV') !== 'testing' ){
             return parent::get($jsonResponse);
         }
         // Check and read array workId

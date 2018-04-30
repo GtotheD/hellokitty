@@ -462,6 +462,7 @@ $router->group([
         $himoKeywordRepository->setOffset($request->input('offset', 0));
         $keyword = urldecode($keyword);
         $keywords =  $himoKeywordRepository->get($keyword);
+
         if(empty($keywords)){
             throw new NoContentsException;
         }
@@ -501,7 +502,7 @@ $router->group([
 $router->group(['prefix' => env('URL_PATH_PREFIX') . env('API_VERSION')], function () use ($router) {
     // APIドキュメント
     $router->get('docs/swagger.json', function () {
-        $swagger = \Swagger\scan(base_path('routes'));
+        $swagger = \Swagger\scan(base_fpath('routes'));
         return response()->json($swagger);
     });
 });

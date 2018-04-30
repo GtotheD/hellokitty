@@ -282,11 +282,12 @@ class WorkRepository
         if (!empty($product)) {
             // add docs
             // get First Docs
-            $docs = json_decode($product['docs'], true);
-            foreach ($docs as $doc) {
-                $response['docText'] = $doc['doc_text'];
+            if(array_key_exists('docs', $product)) {
+                $docs = json_decode($product['docs'], true);
+                foreach ($docs as $doc) {
+                    $response['docText'] = $doc['doc_text'];
+                }
             }
-
             // add supplement
             if ($product['msdbItem'] === 'game') {
                 $response['supplement'] = $product['gameModelName'];

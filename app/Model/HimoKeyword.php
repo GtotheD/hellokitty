@@ -17,7 +17,7 @@ class HimoKeyword extends Model
     public function setConditionByKeyword($keyword)
     {
         $this->dbObject = DB::table($this->table)
-            ->where('keyword', 'like', "{$keyword}%")
+            ->where('keyword', 'like', "命%")
             ->orderBy('weight')
             ->orderBy('keyword');
         return $this;

@@ -202,19 +202,23 @@ class ProductRepository
         foreach ($products as $product) {
             $product = (array)$product;
             $product['productKey'] = ($product['productTypeId'] == self::PRODUCT_TYPE_SELL) ? $product['jan'] : $product['rentalProductCd'];
-            $docs = json_decode($product['docs'], true);
-            foreach ($docs as $doc) {
-                if($doc['doc_type_id'] === '02') {
-                    $product['docText'] = $doc['doc_text'];
+            $product['contents'] = '';
+            $product['privilege'] = '';
+            if(array_key_exists('docs', $product)) {
+                $docs = json_decode($product['docs'], true);
+                foreach ($docs as $doc) {
+                    if($doc['doc_type_id'] === '02') {
+                        $product['docText'] = $doc['doc_text'];
+                    }
+                    if($doc['doc_type_id'] === '04') {
+                        $product['contents'] = $doc['doc_text'];
+                    }
+                    if($doc['doc_type_id'] === '11') {
+                        $product['privilege'] = $doc['doc_text'];
+                    }
                 }
-                if($doc['doc_type_id'] === '04') {
-                    $product['contents'] = $doc['doc_text'];
-                }
-                if($doc['doc_type_id'] === '11') {
-                    $product['privilege'] = $doc['doc_text'];
-                }
+                unset($product['docs']);
             }
-            unset($product['docs']);
             $product['itemName'] = $this->convertItemCdToStr($product['itemCd']);
             $product['saleType'] = $this->convertProductTypeToStr($product['productTypeId']);
             $product['jacketL'] = trimImageTag($product['jacketL']);

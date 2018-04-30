@@ -97,6 +97,7 @@ class PeopleRelatedWorksRepository extends ApiRequesterRepository
         foreach ($result as $resultItem) {
             $resultArray[] = $resultItem->workId;
         }
+        $work->getWorkList($resultArray);
         return $this->getWorkWithProductIdsIn($resultArray);
     }
 
