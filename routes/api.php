@@ -28,6 +28,7 @@ use App\Repositories\PeopleRelatedWorksRepository;
 use App\Repositories\RelateadWorkRepository;
 use App\Repositories\RecommendOtherRepository;
 use App\Repositories\HimoRepository;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 // Api Group
 $router->group([
@@ -169,6 +170,7 @@ $router->group([
         $product->setLimit($request->input('limit', 10));
         $product->setOffset($request->input('offset', 0));
         $product->setSaleType($request->input('saleType'));
+        $product->setSort($request->input('sort', 'new'));
         $result = $product->getNarrow($workId);
         if (empty($result)) {
             throw new NoContentsException;
@@ -464,9 +466,6 @@ $router->group([
         $keyword = urldecode($keyword);
         $keywords =  $himoKeywordRepository->get($keyword);
 
-        if(empty($keywords)){
-            throw new NoContentsException;
-        }
         $response = [
             'hasNext' => $himoKeywordRepository->getHasNext(),
             'totalCount' => $himoKeywordRepository->getTotalCount(),
@@ -483,6 +482,11 @@ $router->group([
 
         $sort = $request->input('sort', '');
         $saleType = $request->input('saleType', '');
+        $genreId = urldecode($genreId);
+
+        if(empty($saleType)) {
+            throw new BadRequestHttpException;
+        }
         $response = $work->genre($genreId, $sort, $saleType);
         if (empty($response)) {
             throw new NoContentsException;

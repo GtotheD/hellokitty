@@ -146,11 +146,11 @@ class AccessTest extends TestCase
     /**
      * @test
      */
-    public function convertWorkId()
-    {
-        $response = $this->getWithAuth('/convert/work/{idType}/{id}');
-        $response->assertResponseStatus(200);
-    }
+//    public function convertWorkId()
+//    {
+//        $response = $this->getWithAuth('/convert/work/{idType}/{id}');
+//        $response->assertResponseStatus(200);
+//    }
     /**
      * @test
      */
@@ -175,6 +175,16 @@ class AccessTest extends TestCase
         $response = $this->getWithAuth('/people/PTA0000THQMV');
         $response->assertResponseStatus(200);
     }
+    /**
+     * @test
+     */
+    public function genre()
+    {
+        $response = $this->getWithAuth('/genre/EXT0000000DY?saleType=sell');
+        $response->assertResponseStatus(200);
+    }
+
+
     /**
      * @test
      */

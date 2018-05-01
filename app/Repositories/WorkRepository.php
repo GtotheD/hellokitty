@@ -388,7 +388,19 @@ class WorkRepository
             'periodType' => $periodType,
             'adultFlg' => $adultFlg,
             'api' => 'search',//dummy data
-            'id' => 'aaa' //dummy data
+            'id' => $keyword //dummy data
+        ];
+
+        $result = [
+            'hasNext' => false,
+            'totalCount' => 0,
+            'counts' => [
+                'dvd' => 0,
+                'cd' => 0,
+                'book' => 0,
+                'game' => 0
+            ],
+            'rows' => []
         ];
 
         $data = $himoRepository->searchCrossworks($params, $sort)->get();
@@ -467,12 +479,9 @@ class WorkRepository
                 ];
             }
 
-            if (count($result['rows']) > 0) {
-                return $result;
-            }
         }
 
-        return null;
+        return $result;
     }
 
     public function parseFromArray($products, $itemType)

@@ -82,7 +82,7 @@ class Product extends Model
         return $this;
     }
 
-    public function setConditionByWorkIdSaleType($workId, $saleType = null)
+    public function setConditionByWorkIdSaleType($workId, $saleType = null, $order = null)
     {
         $this->dbObject = DB::table($this->table)
             ->where([
@@ -91,6 +91,10 @@ class Product extends Model
         if($saleType) {
             $this->dbObject->where('product_type_id', $this->convertSaleType($saleType));
         }
+        if($order) {
+            $this->dbObject->orderBy('sale_start_date', $order);
+        }
+
         return $this;
     }
 
