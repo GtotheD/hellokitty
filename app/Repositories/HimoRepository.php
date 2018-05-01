@@ -168,7 +168,6 @@ class HimoRepository extends ApiRequesterRepository
     {
         $this->api = $params['api'];
         $this->id = $params['id'];
-
         if (env('APP_ENV') === 'local') {
             return $this;
         }
