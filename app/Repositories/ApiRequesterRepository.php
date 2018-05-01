@@ -20,14 +20,15 @@ class ApiRequesterRepository
     protected $queryParams;
     protected $method;
     protected $headers = [];
+
     public function __construct()
     {
-      $this->method = 'GET';
+        $this->method = 'GET';
     }
 
     public function setMethod($method)
     {
-	$this->method = $method;
+        $this->method = $method;
     }
 
     /*
@@ -37,11 +38,11 @@ class ApiRequesterRepository
     {
         $url = $this->apiPath;
         $client = new Client();
-	if ($this->method === 'POST') {
-		$requestParamName = 'form_params';
-	} else {
-		$requestParamName = 'query';
-	}
+        if ($this->method === 'POST') {
+            $requestParamName = 'form_params';
+        } else {
+            $requestParamName = 'query';
+        }
         try {
             $result = $client->request(
                 $this->method,
@@ -63,7 +64,6 @@ class ApiRequesterRepository
         }
         return $result->getBody()->getContents();
     }
-
 
 
     public function setHeader($key, $value)

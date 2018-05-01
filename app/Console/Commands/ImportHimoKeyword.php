@@ -58,6 +58,8 @@ class ImportHimoKeyword extends Command
      */
     public function handle()
     {
+        $isTest = $this->option('test');
+
         $this->info('Start');
 
         // [事前準備]
@@ -90,30 +92,34 @@ class ImportHimoKeyword extends Command
                 // 前日分のファイルを参照
                 $file = date('Ymd', strtotime('-1 day')) . $fn;
 
-                $zipFile = $file . '.zip';
-                if (!file_exists($this->himoDir . $zipFile)) {
-                    $this->warn('file not found');
-                    continue;
-                } else {
-                    // storage配下にコピー
-                    if (!File::copy($this->himoDir . $zipFile, $this->storageDir . $zipFile)) {
-                        $this->warn('file copy error');
+                // テストモードではzipを使わない
+                if ($isTest !== true) {
+                    $zipFile = $file . '.zip';
+                    if (!file_exists($this->himoDir . $zipFile)) {
+                        $this->warn('file not found');
                         continue;
-                    }
-
-                    // zipを開く
-                    $zip = new \ZipArchive();
-                    if ($zip->open($this->storageDir . $zipFile) === TRUE) {
-                        // zipを解凍
-                        if ($zip->extractTo($this->storageDir) !== TRUE) {
-                            $this->warn('file extract error');
-                        }
                     } else {
-                        $this->warn('file open error');
-                    }
-                    $zip->close();
-                }
+                        // storage配下にコピー
+                        if (!File::copy($this->himoDir . $zipFile, $this->storageDir . $zipFile)) {
+                            $this->warn('file copy error');
+                            continue;
+                        }
 
+                        // zipを開く
+                        $zip = new \ZipArchive();
+                        if ($zip->open($this->storageDir . $zipFile) === TRUE) {
+                            // zipを解凍
+                            if ($zip->extractTo($this->storageDir) !== TRUE) {
+                                $this->warn('file extract error');
+                            }
+                        } else {
+                            $this->warn('file open error');
+                        }
+                        $zip->close();
+                    }
+                } else {
+                    $this->storageDir = $path = base_path('tests/keywords/');
+                }
                 $tsvFile = $file . '.tsv';
                 if (file_exists($this->storageDir . $tsvFile)) {
 
