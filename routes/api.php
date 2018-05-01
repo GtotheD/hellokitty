@@ -448,6 +448,7 @@ $router->group([
         $itemType = $request->input('itemType', 'all');
         $periodType = $request->input('periodType', 'all');
         $adultFlg = $request->input('adultFlg', 'false');
+        $keyword = urldecode($keyword);
         $response = $work->searchKeyword($keyword, $sort, $itemType, $periodType, $adultFlg);
         if(empty($response)){
             throw new NoContentsException;
