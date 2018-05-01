@@ -78,17 +78,23 @@ class Work extends Model
      * products
      * @param $workIds
      */
-    public function getWorkWithProductIdsIn($workIds = [], $saleType = null) {
-        $product = new Product;
+    public function getWorkWithProductIdsIn($workIds = [], $saleType = null)
+    {
+        // 全て
+        if($saleType === 'sell') {
+            $existsWahere = 'product_type_id = 1';
+        } else if ($saleType === 'rental') {
+            $existsWahere = 'product_type_id = 2';
+        } else {
+            $existsWahere = 'product_type_id = 1 OR product_type_id = 2';
+        }
         $this->dbObject = DB::table($this->table. ' as t1')
-            ->join('ts_products as t2', function ($join) use ($saleType, $product){
-                $join->on('t1.work_id', '=', 't2.work_id');
-                if($saleType) {
-                    $join->on('product_type_id', '=', DB::raw($product->convertSaleType($saleType)));
-                }
-            })
-            ->where('item_cd', 'not like', '01%')
-            ->whereIn('t1.work_id', $workIds);
+            ->whereExists(function ($query) use ($existsWahere){
+                $query->select(DB::raw(1))
+                    ->from('ts_products as t2')
+                    ->where('t1.work_id', '=', 't2.work_id')
+                    ->whereRaw($existsWahere);
+            })->whereIn('t1.work_id', $workIds);
         return $this;
     }
 
