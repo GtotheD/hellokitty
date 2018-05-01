@@ -392,7 +392,6 @@ class WorkRepository
         ];
 
         $data = $himoRepository->searchCrossworks($params, $sort)->get();
-
         if (!empty($data['status']) && $data['status'] == '200') {
             if (count($data['results']['rows']) + $this->offset < $data['results']['total']) {
                 $this->hasNext = true;
@@ -417,6 +416,7 @@ class WorkRepository
             $dataCounts = $data;
             if (in_array(strtolower($itemType), $ItemTypesCheck)) {
                 $params['itemType'] = 'all';
+                $params['responseLevel'] = '1';
                 $himoRepository->setLimit(1);
                 $himoRepository->setOffset(0);
 
@@ -443,24 +443,27 @@ class WorkRepository
             }
 
             foreach ($data['results']['rows'] as $row) {
-                $this->setSaleType('rental');
-                $base = $this->get($row['work_id']);
-
+                $base = $this->format($row);
+                $itemType = $this->convertWorkTypeIdToStr($base['work_type_id']);
+                $saleTypeHas = $this->parseFromArray($row['products'], $itemType);
                 $result['rows'][] = [
-                    'workId' => isset($base['workId']) ? $base['workId'] : '',
-                    'urlCd' => isset($base['urlCd']) ? $base['urlCd'] : '',
-                    'cccWorkCd' => isset($base['cccWorkCd']) ? $base['cccWorkCd'] : '',
-                    'workTitle' => isset($base['workTitle']) ? $base['workTitle'] : '',
-                    'newFlg' => isset($base['newFlg']) ? $base['newFlg'] : false,
-                    'jacketL' => isset($base['jacketL']) ? $base['jacketL'] : '',
-                    'supplement' => isset($base['supplement']) ? $base['supplement'] : '',
-                    'saleType' => isset($base['saleType']) ? $base['saleType'] : '',
-                    'itemType' => isset($base['itemType']) ? $base['itemType'] : '',
+                    'workId' => $base['work_id'],
+                    'urlCd' => $base['url_cd'],
+                    'cccWorkCd' => $base['ccc_work_cd'],
+                    'workTitle' => $base['work_title'],
+                    'jacketL' => $base['jacket_l'],
+                    'newFlg' => newFlg($base['sale_start_date']),
+                    'adultFlg' => ($base['adult_flg'] === '1') ? true : false,
+                    'itemType' => $itemType,
+                    'saleType' => !empty($base['saleType']) ? $base['saleType'] : '',
+                    'supplement' => $saleTypeHas['supplement'],
+                    'saleStartDate' => $row['sale_start_date'],
+                    'saleStartDateSell' => $row['sale_start_date_sell'],
+                    'saleStartDateRental' => $row['sale_start_date_sell'],
                     'saleTypeHas' => [
-                        'sell' => isset($base['saleTypeHas']['sell']) ? $base['saleTypeHas']['sell'] : false,
-                        'rental' => isset($base['saleTypeHas']['rental']) ? $base['saleTypeHas']['rental'] : false,
-                    ],
-                    'adultFlg' => isset($base['adultFlg']) ? $base['adultFlg'] : false,
+                        'sell' => $saleTypeHas['sell'],
+                        'rental' => $saleTypeHas['rental'],
+                    ]
                 ];
             }
 
@@ -470,6 +473,50 @@ class WorkRepository
         }
 
         return null;
+    }
+
+    public function parseFromArray($products, $itemType)
+    {
+        $sell = false;
+        $rental = true;
+        foreach ($products as $product) {
+
+            if($product['service_id'] === 'tol') {
+                if($product['product_type_id'] === '1') {
+                    $sell = true;
+                } else if($product['product_type_id'] === '2') {
+                    $rental = true;
+                }
+                if ($itemType === 'game') {
+                    $supplement = $product['game_model_name'];
+                } else {
+                    if ($itemType === 'dvd') {
+                        $roleId = 'EXT0000000UH';
+                    } elseif ($itemType === 'book') {
+                        $roleId = 'EXT00000BWU9';
+                    } elseif ($itemType === 'cd') {
+                        $roleId = 'EXT00000000D';
+                    }
+                    $supplement = $this->parseSupplement($product['people'], $roleId);
+                }
+
+            }
+        }
+        return [
+            'sell' => $sell,
+            'rental' => $rental,
+            'supplement' => $supplement
+        ];
+
+    }
+
+    public function parseSupplement($people, $roleId)
+    {
+        foreach ($people as $person) {
+            if($person['role_id'] === $roleId) {
+                return $person['person_name'];
+            }
+        }
     }
 
     public function genre($genreId, $sort = null, $saleType = null)
