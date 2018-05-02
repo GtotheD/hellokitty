@@ -488,6 +488,7 @@ class WorkRepository
     {
         $sell = false;
         $rental = true;
+        $supplement = '';
         foreach ($products as $product) {
 
             if($product['service_id'] === 'tol') {
@@ -616,7 +617,11 @@ class WorkRepository
 
     public function format($row, $isNarrow = false)
     {
-        $base = [];
+        // Initial key value.
+        $base = [
+            'ccc_work_cd' => '',
+            'url_cd' => '',
+        ];
         foreach ($row['ids'] as $idItem) {
             // HiMO作品ID
             if ($idItem['id_type'] === '0103') {
@@ -777,7 +782,7 @@ class WorkRepository
         $hoge = $this->getWorkList($workList);
         $this->work->getWorkWithProductIdsIn($workList, $this->saleType);
         $this->totalCount = $this->work->count();
-        $works = $this->work->selectCamel($this->selectColumn())->get($this->limit, $this->offset);
+            $works = $this->work->selectCamel($this->selectColumn())->get($this->limit, $this->offset);
         if (count($works) + $this->offset < $this->totalCount) {
             $this->hasNext = true;
         } else {
