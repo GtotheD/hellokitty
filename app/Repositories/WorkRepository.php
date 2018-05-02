@@ -782,7 +782,7 @@ class WorkRepository
         $hoge = $this->getWorkList($workList);
         $this->work->getWorkWithProductIdsIn($workList, $this->saleType);
         $this->totalCount = $this->work->count();
-            $works = $this->work->selectCamel($this->selectColumn())->get($this->limit, $this->offset);
+        $works = $this->work->selectCamel($this->selectColumn())->get($this->limit, $this->offset);
         if (count($works) + $this->offset < $this->totalCount) {
             $this->hasNext = true;
         } else {
