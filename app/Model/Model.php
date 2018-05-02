@@ -102,4 +102,5 @@ class Model
         }
         return implode($aliasName, ',');
     }
+
 }

@@ -390,7 +390,19 @@ class WorkRepository
             'periodType' => $periodType,
             'adultFlg' => $adultFlg,
             'api' => 'search',//dummy data
-            'id' => 'aaa' //dummy data
+            'id' => $keyword //dummy data
+        ];
+
+        $result = [
+            'hasNext' => false,
+            'totalCount' => 0,
+            'counts' => [
+                'dvd' => 0,
+                'cd' => 0,
+                'book' => 0,
+                'game' => 0
+            ],
+            'rows' => []
         ];
 
         $data = $himoRepository->searchCrossworks($params, $sort)->get();
@@ -469,18 +481,16 @@ class WorkRepository
                 ];
             }
 
-            if (count($result['rows']) > 0) {
-                return $result;
-            }
         }
 
-        return null;
+        return $result;
     }
 
     public function parseFromArray($products, $itemType)
     {
         $sell = false;
         $rental = true;
+        $supplement = '';
         foreach ($products as $product) {
 
             if($product['service_id'] === 'tol') {
@@ -609,7 +619,11 @@ class WorkRepository
 
     public function format($row, $isNarrow = false)
     {
-        $base = [];
+        // Initial key value.
+        $base = [
+            'ccc_work_cd' => '',
+            'url_cd' => '',
+        ];
         foreach ($row['ids'] as $idItem) {
             // HiMO作品ID
             if ($idItem['id_type'] === '0103') {

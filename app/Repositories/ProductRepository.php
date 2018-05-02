@@ -24,7 +24,6 @@ class ProductRepository
     protected $saleType;
     protected $totalCount;
     protected $hasNext;
-
     const PRODUCT_TYPE_SELL = '1';
     const PRODUCT_TYPE_RENTAL = '2';
 
@@ -110,6 +109,10 @@ class ProductRepository
         $this->saleType = $saleType;
     }
 
+    public function setSort($sort){
+        $this->sort = $sort;
+    }
+
     public function get($productUniqueId)
     {
         $product = $this->product->setConditionByProductUniqueId($productUniqueId)->toCamel(['id'])->getOne();
@@ -128,6 +131,7 @@ class ProductRepository
 
     public function getNarrow($workId)
     {
+        $order = null;
         $column = [
             "product_name AS productName",
             "product_unique_id AS productUniqueId",
@@ -139,7 +143,12 @@ class ProductRepository
             "rental_product_cd AS rentalProductCd",
             "sale_start_date AS saleStartDate",
         ];
-        $this->totalCount = $this->product->setConditionByWorkIdSaleType($workId, $this->saleType)->count();
+        if($this->sort === 'old') {
+            $order = 'asc';
+        } else {
+            $order = 'desc';
+        }
+        $this->totalCount = $this->product->setConditionByWorkIdSaleType($workId, $this->saleType, $order)->count();
         $results = $this->product->select($column)->get($this->limit, $this->offset);
         if (count($results) + $this->offset < $this->totalCount) {
             $this->hasNext = true;
