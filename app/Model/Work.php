@@ -148,4 +148,6 @@ class Work extends Model
         }
         return DB::table($this->table)->insert(array_values($insertData));
     }
+
+
 }
