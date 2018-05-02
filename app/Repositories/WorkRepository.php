@@ -488,6 +488,7 @@ class WorkRepository
     {
         $sell = false;
         $rental = true;
+        $supplement = '';
         foreach ($products as $product) {
 
             if($product['service_id'] === 'tol') {
@@ -616,7 +617,11 @@ class WorkRepository
 
     public function format($row, $isNarrow = false)
     {
-        $base = [];
+        // Initial key value.
+        $base = [
+            'ccc_work_cd' => '',
+            'url_cd' => '',
+        ];
         foreach ($row['ids'] as $idItem) {
             // HiMO作品ID
             if ($idItem['id_type'] === '0103') {
