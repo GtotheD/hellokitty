@@ -284,8 +284,10 @@ class WorkRepository
             // get First Docs
             if(array_key_exists('docs', $product)) {
                 $docs = json_decode($product['docs'], true);
-                foreach ($docs as $doc) {
-                    $response['docText'] = $doc['doc_text'];
+                if(!empty($docs)) {
+                    foreach ($docs as $doc) {
+                        $response['docText'] = $doc['doc_text'];
+                    }
                 }
             }
             // add supplement

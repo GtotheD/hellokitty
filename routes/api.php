@@ -28,6 +28,7 @@ use App\Repositories\PeopleRelatedWorksRepository;
 use App\Repositories\RelateadWorkRepository;
 use App\Repositories\RecommendOtherRepository;
 use App\Repositories\HimoRepository;
+use App\Exceptions\AgeLimitException;
 
 // Api Group
 $router->group([
@@ -152,10 +153,7 @@ $router->group([
         $result = $work->get($workId);
         $checkAgeLimit = $work->checkAgeLimit($result['ratingId'], $result['bigGenreId']);
         if ($ageLimitCheck === 'false' && ($checkAgeLimit === true || $result['adultFlg'] === '1')) {
-            $response = [
-                'status' => 'error',
-                'message' => 'Age limit auth error'
-            ];
+            throw new AgeLimitException('Age limit auth error', 202);
         } else {
             $response = [
                 'data' => $result
@@ -335,8 +333,6 @@ $router->group([
         $response = $recommendArtistRepository->getArtist($workId);
         return response()->json($response);
     });
-
-
     // キャスト情報
     $router->get('cast/{castId}', function (Request $request, $workId) {
         return $json;
@@ -411,6 +407,9 @@ $router->group([
     $router->get('product/stock/{storeCd}/{productKey}', function (Request $request, $storeCd, $productKey) {
         $productRepository = new ProductRepository();
         $response = $productRepository->stock($storeCd, $productKey);
+        if(empty($response)){
+            throw new NoContentsException;
+        }
         return response()->json($response);
     });
 

@@ -52,7 +52,7 @@ class Handler extends ExceptionHandler
     {
         if(env('APP_ENV') === 'local'){
             if ($e instanceof AgeLimitException) {
-                return response()->json(['status' => '202'], 202);
+                return response()->json(['message' => $e->getMessage(), 'status' => '202'], 202);
             } else if ($e instanceof NoContentsException) {
                 return response()->json(['status' => '204'], 204);
             }
@@ -62,7 +62,7 @@ class Handler extends ExceptionHandler
         if ($e instanceof HttpException) {
             return response()->json(['status' => $e->getStatusCode()], $e->getStatusCode());
         } else if ($e instanceof AgeLimitException) {
-            return response()->json(['status' => '202'], 202);
+            return response()->json(['message' => $e->getMessage(), 'status' => '202'], 202);
         } else if ($e instanceof NoContentsException) {
             return response()->json(['status' => '204'], 204);
         } else if ($e instanceof BadRequestHttpException) {

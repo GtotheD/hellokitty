@@ -202,19 +202,19 @@ class ProductRepository
         foreach ($products as $product) {
             $product = (array)$product;
             $product['productKey'] = ($product['productTypeId'] == self::PRODUCT_TYPE_SELL) ? $product['jan'] : $product['rentalProductCd'];
-            $product['contents'] = '';
-            $product['privilege'] = '';
             if(array_key_exists('docs', $product)) {
                 $docs = json_decode($product['docs'], true);
-                foreach ($docs as $doc) {
-                    if($doc['doc_type_id'] === '02') {
-                        $product['docText'] = $doc['doc_text'];
-                    }
-                    if($doc['doc_type_id'] === '04') {
-                        $product['contents'] = $doc['doc_text'];
-                    }
-                    if($doc['doc_type_id'] === '11') {
-                        $product['privilege'] = $doc['doc_text'];
+                if(!empty($docs)) {
+                    foreach ($docs as $doc) {
+                        if($doc['doc_type_id'] === '02') {
+                            $product['docText'] = $doc['doc_text'];
+                        }
+                        if($doc['doc_type_id'] === '04') {
+                            $product['contents'] = $doc['doc_text'];
+                        }
+                        if($doc['doc_type_id'] === '11') {
+                            $product['privilege'] = $doc['doc_text'];
+                        }
                     }
                 }
                 unset($product['docs']);
@@ -322,7 +322,6 @@ class ProductRepository
         if ($product['msdb_item'] === 'audio') {
             $productBase['contents'] = $this->getDetail($product['product_id'], $product['product_type_id']);
         }
-//                    $productBase['privilege'] = $product['privilege'];
         $productBase['best_album_flg'] = $product['best_album_flg'];
         $productBase['maker_name'] = $product['maker_name'];
 
