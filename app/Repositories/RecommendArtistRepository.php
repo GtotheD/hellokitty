@@ -17,6 +17,7 @@ class RecommendArtistRepository extends ApiRequesterRepository
     const ROLE_ID_ARTIST = 'EXT00000000D';
     const HIMO_DEFAULT_LIMIT = 50;
     const HIMO_DEFAULT_OFFSET = 0;
+    const RELATION_TYPE_ID = array('EXT0000776ES','EXT0000776ET','EXT0000776EI','EXT0000776FV','EXT0000776FY','EXT0000776EK','EXT0000776EM');
 
     public function __construct($sort = 'asc', $offset = 0, $limit = 10)
     {
@@ -92,17 +93,23 @@ class RecommendArtistRepository extends ApiRequesterRepository
             if (empty($relatedPeopleHimo['results']['total'])) {
                 throw new NoContentsException();
             }
-            $relatedPeopleInsert = [];
-            foreach ($relatedPeopleHimo['results']['rows'] as $key => $row) {
-                $relatedPeopleInsert[] = $this->format($newestPeople->person_id, $row);
+
+            // 関連人物の表示対象を絞る
+            foreach (self::RELATION_TYPE_ID as $typeId) {
+                $relatedPeopleInsert = [];
+                foreach ($relatedPeopleHimo['results']['rows'] as $key => $row) {
+                    if ($typeId === $row['relation_type_id']) {
+                        $relatedPeopleInsert[] = $this->format($newestPeople->person_id, $row);
+                    }
+                }
+                // STEP 2.2: Insert to related_people TBL
+                $relatedPeople->insertBulk($relatedPeopleInsert);
             }
-            // STEP 2.2: Insert to related_people TBL
-            $relatedPeople->insertBulk($relatedPeopleInsert);
         }
 
         // STEP 3: Get related_people from system and return response
         $this->totalCount = $relatedPeople->count();
-        $result = $relatedPeople->toCamel($skipColumns)->limit($this->limit)->offset($this->offset)->get();
+        $result = $relatedPeople->toCamel($skipColumns)->limit($this->limit)->offset($this->offset)->orderBy('id', 'asc')->get();
 
         if (count($result) + $this->offset < $this->totalCount) {
             $this->hasNext = true;
