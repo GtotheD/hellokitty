@@ -24,6 +24,7 @@ class ProductRepository
     protected $saleType;
     protected $totalCount;
     protected $hasNext;
+
     const PRODUCT_TYPE_SELL = '1';
     const PRODUCT_TYPE_RENTAL = '2';
 
@@ -228,6 +229,9 @@ class ProductRepository
                 }
                 unset($product['docs']);
             }
+            if(array_key_exists('playTime', $product)) {
+                $product['playTime'] = $this->editPlayTimeFormat($product['playTime']);
+            }
             $product['itemName'] = $this->convertItemCdToStr($product['itemCd']);
             $product['saleType'] = $this->convertProductTypeToStr($product['productTypeId']);
             $product['jacketL'] = trimImageTag($product['jacketL']);
@@ -309,6 +313,7 @@ class ProductRepository
         $productBase['game_model_id'] = $product['game_model_id'];
         $productBase['game_model_name'] = $product['game_model_name'];
         $productBase['ccc_family_cd'] = $product['ccc_family_cd'];
+        $productBase['ccc_product_id'] = $product['ccc_product_id'];
         $productBase['rental_product_cd'] = $product['rental_product_cd'];
         $productBase['product_name'] = $product['product_name'];
         $productBase['product_type_id'] = $product['product_type_id'];
@@ -447,4 +452,12 @@ class ProductRepository
         return $text;
     }
 
+    function editPlayTimeFormat($string)
+    {
+        $hour = (int)substr($string, 0,2);
+        $min = (int)substr($string, 2,2);
+        $min = $min + $hour * 60;
+        $sec = (int)substr($string, 4,2);
+        return ($hour != '00')? "{$min}分" : "{$min}分";
+    }
 }

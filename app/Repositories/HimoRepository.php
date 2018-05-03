@@ -215,24 +215,20 @@ class HimoRepository extends ApiRequesterRepository
         }
 
         //check adultFlg
-        $adultFlg = '2';
         if (array_key_exists('adultFlg', $params)) {
-            if ($params['adultFlg'] == 'true') {
-                $adultFlg = '0';
-            } else {
-                $adultFlg = '2';
+            if ($params['adultFlg'] !== 'true') {
+                $this->queryParams['adult_flg'] = '2';
             }
         }
-        $this->queryParams['adult_flg'] = $adultFlg;
 
         //check periodType
         if(array_key_exists('periodType',$params)){
-            $saleStartDateTo = date('m/d/Y');
+            $saleStartDateTo = date('Y-m-d');
             $saleStartDateFrom = $productSellRentalFlg = null;
             if ($params['periodType'] == 'rental3' || $params['periodType']  == 'sale3') {
-                $saleStartDateFrom = date('m/d/Y', strtotime('-3 months'));
+                $saleStartDateFrom = date('Y-m-d', strtotime('-3 months'));
             } elseif ($params['periodType']  == 'rental12' || $params['periodType']  == 'sale12') {
-                $saleStartDateFrom = date('m/d/Y', strtotime('-12 months'));
+                $saleStartDateFrom = date('Y-m-d', strtotime('-12 months'));
             }
 
             if (strpos($params['periodType'], 'rental') !== false) {

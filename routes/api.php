@@ -30,6 +30,7 @@ use App\Repositories\RecommendOtherRepository;
 use App\Repositories\HimoRepository;
 use App\Exceptions\AgeLimitException;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
+use App\Model\Product;
 
 // Api Group
 $router->group([
@@ -153,13 +154,14 @@ $router->group([
         $ageLimitCheck = $request->input('ageLimitCheck', false);
         $result = $work->get($workId);
         $checkAgeLimit = $work->checkAgeLimit($result['ratingId'], $result['bigGenreId']);
-        if ($ageLimitCheck === 'false' && ($checkAgeLimit === true || $result['adultFlg'] === '1')) {
-            throw new AgeLimitException('Age limit auth error', 202);
-        } else {
-            $response = [
-                'data' => $result
-            ];
+        if ($ageLimitCheck !== 'true') {
+            if( $checkAgeLimit === true || $result['adultFlg'] === true) {
+                throw new AgeLimitException('Age limit auth error', 202);
+            }
         }
+        $response = [
+            'data' => $result
+        ];
         return response()->json($response);
     });
     // 商品一覧情報取得
@@ -173,7 +175,6 @@ $router->group([
         if (empty($result)) {
             throw new NoContentsException;
         }
-
         $response = [
             'hasNext' => $product->getHasNext(),
             'totalCount' => $product->getTotalCount(),
@@ -201,19 +202,13 @@ $router->group([
     $router->get('work/{workId}/products/has', function (Request $request, $workId) {
         $work = new WorkRepository();
         $work->setSaleType($request->input('saleType', 'rental'));
-        $ageLimitCheck = $request->input('ageLimitCheck', false);
         $result = $work->getNarrowColumns($workId);
-        $checkAgeLimit = $work->checkAgeLimit($result['ratingId'], $result['bigGenreId']);
-        if ($ageLimitCheck === 'false' && ($checkAgeLimit === true || $result['adultFlg'] === '1')) {
-            $response = [
-                'status' => 'error',
-                'message' => 'Age limit auth error'
-            ];
-        } else {
-            $response = [
-                'data' => $result
-            ];
-        }
+        $response = [
+            'hasNext' => $work->getHasNext(),
+            'totalCount' => $work->getTotalCount(),
+            'rows' => $result
+        ];
+
         return response()->json($response);
     });
     // キャストスタッフ一覧取得
@@ -253,14 +248,15 @@ $router->group([
     });
     // レビュー情報 discas
     $router->get('work/{workId}/review/discas', function (Request $request, $workId) {
-        $work = new WorkRepository();
+        $product = new Product();
         $discasRepository = new DiscasRepository();
 
-        $workData = $work->get($workId);
-
+        $productData = (array)$product->setConditionByWorkIdNewestProduct($workId)
+            ->selectCamel(['ccc_product_id'])
+            ->getOne();
         $discasRepository->setLimit($request->input('limit', 10));
         $discasRepository->setOffset($request->input('offset', 0));
-        $response = $discasRepository->getReview($workData['cccWorkCd']);
+        $response = $discasRepository->getReview($productData['cccProductId']);
 
         if (empty($response)) {
             throw new NoContentsException;
@@ -389,6 +385,9 @@ $router->group([
     $router->get('convert/work/{idType}/{id}', function (Request $request, $idType, $id) {
         $workRepository = new WorkRepository();
         $json = $workRepository->convert($idType, $id);
+        if(empty($response)){
+            throw new NoContentsException;
+        }
         return response()->json($json);
     });
 
@@ -464,7 +463,9 @@ $router->group([
         $himoKeywordRepository->setOffset($request->input('offset', 0));
         $keyword = urldecode($keyword);
         $keywords =  $himoKeywordRepository->get($keyword);
-
+        if(empty($keywords)){
+            throw new NoContentsException;
+        }
         $response = [
             'hasNext' => $himoKeywordRepository->getHasNext(),
             'totalCount' => $himoKeywordRepository->getTotalCount(),
