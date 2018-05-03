@@ -187,7 +187,8 @@ $router->group([
         $product = new ProductRepository();
         $product->setLimit($request->input('limit', 10));
         $product->setOffset($request->input('offset', 0));
-        $result = $product->getRentalGroup($workId);
+        $sort = $request->input('sort', 'new');
+        $result = $product->getRentalGroup($workId, $sort);
         if (empty($result)) {
             throw new NoContentsException;
         }
