@@ -98,7 +98,7 @@ class Product extends Model
         return $this;
     }
 
-    public function setConditionRentalGroup($workId)
+    public function setConditionRentalGroup($workId, $order = null)
     {
         $groupingColumn = 'work_id, product_name, ccc_family_cd';
         $productUniqueId = 'MAX(product_unique_id) AS product_unique_id';
@@ -113,11 +113,16 @@ class Product extends Model
             $dvdQuery. ','.
             $blurayQuery;
         $subQuery = DB::table($this->table)->select(DB::raw($selectQuery))
+            ->whereRaw(DB::raw('item_cd not like \'_1__\''))
             ->groupBy(DB::raw($groupingColumn))
             ->havingRaw(' NOT (dvd IS NULL AND bluray IS NULL)');
         $this->dbObject = DB::table(DB::raw("({$subQuery->toSql()}) as sub"))
-            ->where(['work_id' => $workId])
-            ->orderBy('ccc_family_cd');
+            ->where(['work_id' => $workId]);
+        if ($order === 'old') {
+            $this->dbObject->orderBy('sale_start_date', 'asc');
+        } else {
+            $this->dbObject->orderBy('sale_start_date', 'desc');
+        }
         return $this;
     }
 

@@ -187,7 +187,8 @@ $router->group([
         $product = new ProductRepository();
         $product->setLimit($request->input('limit', 10));
         $product->setOffset($request->input('offset', 0));
-        $result = $product->getRentalGroup($workId);
+        $sort = $request->input('sort', 'new');
+        $result = $product->getRentalGroup($workId, $sort);
         if (empty($result)) {
             throw new NoContentsException;
         }
@@ -203,12 +204,12 @@ $router->group([
         $work = new WorkRepository();
         $work->setSaleType($request->input('saleType', 'rental'));
         $result = $work->getNarrowColumns($workId);
+        if (empty($result)) {
+            throw new NoContentsException;
+        }
         $response = [
-            'hasNext' => $work->getHasNext(),
-            'totalCount' => $work->getTotalCount(),
-            'rows' => $result
+            'data' => $result
         ];
-
         return response()->json($response);
     });
     // キャストスタッフ一覧取得
@@ -218,6 +219,9 @@ $router->group([
         $people->setOffset($request->input('offset', 0));
         $saleType = $request->input('saleType');
         $response = $people->getNarrow($workId, $saleType);
+        if (empty($response)) {
+            throw new NoContentsException;
+        }
         return response()->json($response);
     });
 
@@ -228,22 +232,21 @@ $router->group([
         $series->setOffset($request->input('offset', 0));
         $saleType = $request->input('saleType');
         $response = $series->getNarrow($workId, $saleType);
+        if (empty($response)) {
+            throw new NoContentsException;
+        }
         return response()->json($response);
     });
     // レビュー情報 filmarks
     $router->get('work/{workId}/review/filmarks', function (Request $request, $workId) {
-
         $work = new WorkRepository();
         $tapRepository = new TAPRepository();
         $workData = $work->get($workId);
-
         $tapRepository->setLimit($request->input('limit', 10));
         $response = $tapRepository->getReview($workData['filmarksId']);
-
         if (empty($response)) {
             throw new NoContentsException;
         }
-        
         return response()->json($response);
     });
     // レビュー情報 discas

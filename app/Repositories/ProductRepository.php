@@ -160,7 +160,7 @@ class ProductRepository
         return $this->productReformat($results);
     }
 
-    public function getRentalGroup($workId)
+    public function getRentalGroup($workId, $sort = null)
     {
         $column = [
             "product_name AS productName",
@@ -171,7 +171,7 @@ class ProductRepository
             "dvd",
             "bluray",
         ];
-        $this->totalCount = $this->product->setConditionRentalGroup($workId)->count();
+        $this->totalCount = $this->product->setConditionRentalGroup($workId, $sort)->count();
         $results = $this->product->select($column)->get($this->limit, $this->offset);
         if (count($results) + $this->offset < $this->totalCount) {
             $this->hasNext = true;
