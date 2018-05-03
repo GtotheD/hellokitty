@@ -26,6 +26,8 @@ class WorkRepository
     protected $apiKey;
     protected $saleType;
     protected $ageLimitCheck;
+    protected $hasNext;
+    protected $totalCount;
 
     const WORK_TYPE_CD = 1;
     const WORK_TYPE_DVD = 2;
@@ -182,10 +184,6 @@ class WorkRepository
             $response = (array)$this->work->selectCamel($selectColumns)->getOne();
         }
         $response = $this->formatAddOtherData($response);
-
-        if ($response['adultFlg']) {
-            throw new AgeLimitException();
-        }
 
         return $response;
     }
@@ -467,13 +465,13 @@ class WorkRepository
                     'workTitle' => $base['work_title'],
                     'jacketL' => $base['jacket_l'],
                     'newFlg' => newFlg($base['sale_start_date']),
-                    'adultFlg' => ($base['adult_flg'] === '1') ? true : false,
+                    'adultFlg' => ($base['adult_flg'] === 1) ? true : false,
                     'itemType' => $itemType,
                     'saleType' => !empty($base['saleType']) ? $base['saleType'] : '',
                     'supplement' => $saleTypeHas['supplement'],
-                    'saleStartDate' => $row['sale_start_date'],
-                    'saleStartDateSell' => $row['sale_start_date_sell'],
-                    'saleStartDateRental' => $row['sale_start_date_sell'],
+                    'saleStartDate' => ($row['sale_start_date'])? date('Y-m-d 00:00:00', strtotime($row['sale_start_date'])): '',
+                    'saleStartDateSell' => ($row['sale_start_date_sell'])? date('Y-m-d 00:00:00', strtotime($row['sale_start_date_sell'])): '',
+                    'saleStartDateRental' => ($row['sale_start_date_rental'])? date('Y-m-d 00:00:00', strtotime($row['sale_start_date_rental'])): '',
                     'saleTypeHas' => [
                         'sell' => $saleTypeHas['sell'],
                         'rental' => $saleTypeHas['rental'],
@@ -494,9 +492,9 @@ class WorkRepository
         foreach ($products as $product) {
 
             if($product['service_id'] === 'tol') {
-                if($product['product_type_id'] === '1') {
+                if($product['product_type_id'] === 1) {
                     $sell = true;
-                } else if($product['product_type_id'] === '2') {
+                } else if($product['product_type_id'] === 2) {
                     $rental = true;
                 }
                 if ($itemType === 'game') {
