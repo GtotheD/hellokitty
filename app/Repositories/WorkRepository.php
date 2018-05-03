@@ -436,6 +436,8 @@ class WorkRepository
 
                 $dataCounts = $himoRepository->searchCrossworks($params, $sort)->get();
 
+                $result['totalCount'] = $dataCounts['results']['total'];
+                
             }
             if (!empty($dataCounts['results']['facets']['msdb_item'])) {
                 foreach ($dataCounts['results']['facets']['msdb_item'] as $value) {
