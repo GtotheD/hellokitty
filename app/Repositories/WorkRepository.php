@@ -236,7 +236,7 @@ class WorkRepository
                     // リセットをかける
                     $limitOnce = 0;
                     $getList = [];
-                    if($loopCount == $max) {
+                    if ($loopCount == $max) {
                         break;
                     }
                 }
@@ -280,9 +280,9 @@ class WorkRepository
         if (!empty($product)) {
             // add docs
             // get First Docs
-            if(array_key_exists('docs', $product)) {
+            if (array_key_exists('docs', $product)) {
                 $docs = json_decode($product['docs'], true);
-                if(!empty($docs)) {
+                if (!empty($docs)) {
                     foreach ($docs as $doc) {
                         $response['docText'] = $doc['doc_text'];
                     }
@@ -310,14 +310,22 @@ class WorkRepository
                 $response['makerName'] = '';
             }
             $response['saleType'] = $productRepository->convertProductTypeToStr($product['productTypeId']);
+            if ($this->ageLimitCheck !== 'true') {
+                if ($this->checkAgeLimit(
+                        $response['ratingId'], $response['bigGenreId']) === true ||
+                    $response['adultFlg'] === 1
+                ) {
+                    $response['jacketL'] = '';
+                }
+            }
         }
         $response['newFlg'] = newFlg($response['saleStartDate']);
         $response['adultFlg'] = ($response['adultFlg'] === '1') ? true : false;
         $response['itemType'] = $this->convertWorkTypeIdToStr($response['workTypeId']);
         if ($addSaleTypeHas) {
             $response['saleTypeHas'] = [
-                'sell' => ($productModel->setConditionByWorkIdSaleType($response['workId'], 'sell')->count() > 0) ? true: false,
-                'rental' => ($productModel->setConditionByWorkIdSaleType($response['workId'], 'rental')->count() > 0) ? true: false
+                'sell' => ($productModel->setConditionByWorkIdSaleType($response['workId'], 'sell')->count() > 0) ? true : false,
+                'rental' => ($productModel->setConditionByWorkIdSaleType($response['workId'], 'rental')->count() > 0) ? true : false
             ];
         }
         return $response;
@@ -435,7 +443,7 @@ class WorkRepository
                 $dataCounts = $himoRepository->searchCrossworks($params, $sort)->get();
 
                 $result['totalCount'] = $dataCounts['results']['total'];
-                
+
             }
             if (!empty($dataCounts['results']['facets']['msdb_item'])) {
                 foreach ($dataCounts['results']['facets']['msdb_item'] as $value) {
@@ -455,25 +463,33 @@ class WorkRepository
                     }
                 }
             }
-
+            $displayImage = true;
             foreach ($data['results']['rows'] as $row) {
                 $base = $this->format($row);
                 $itemType = $this->convertWorkTypeIdToStr($base['work_type_id']);
                 $saleTypeHas = $this->parseFromArray($row['products'], $itemType);
+                if ($this->ageLimitCheck !== 'true') {
+                    if ($this->checkAgeLimit(
+                        $base['rating_id'], $base['big_genre_id']) === true ||
+                        $base['adult_flg'] === 1
+                    ) {
+                        $displayImage = false;
+                    }
+                }
                 $result['rows'][] = [
                     'workId' => $base['work_id'],
                     'urlCd' => $base['url_cd'],
                     'cccWorkCd' => $base['ccc_work_cd'],
                     'workTitle' => $base['work_title'],
-                    'jacketL' => $base['jacket_l'],
+                    'jacketL' => ($displayImage) ? $base['jacket_l'] : '',
                     'newFlg' => newFlg($base['sale_start_date']),
                     'adultFlg' => ($base['adult_flg'] === 1) ? true : false,
                     'itemType' => $itemType,
-                    'saleType' => !empty($base['saleType']) ? $base['saleType'] : '',
+                    'saleType' => '',
                     'supplement' => $saleTypeHas['supplement'],
-                    'saleStartDate' => ($row['sale_start_date'])? date('Y-m-d 00:00:00', strtotime($row['sale_start_date'])): '',
-                    'saleStartDateSell' => ($row['sale_start_date_sell'])? date('Y-m-d 00:00:00', strtotime($row['sale_start_date_sell'])): '',
-                    'saleStartDateRental' => ($row['sale_start_date_rental'])? date('Y-m-d 00:00:00', strtotime($row['sale_start_date_rental'])): '',
+                    'saleStartDate' => ($row['sale_start_date']) ? date('Y-m-d 00:00:00', strtotime($row['sale_start_date'])) : '',
+                    'saleStartDateSell' => ($row['sale_start_date_sell']) ? date('Y-m-d 00:00:00', strtotime($row['sale_start_date_sell'])) : '',
+                    'saleStartDateRental' => ($row['sale_start_date_rental']) ? date('Y-m-d 00:00:00', strtotime($row['sale_start_date_rental'])) : '',
                     'saleTypeHas' => [
                         'sell' => $saleTypeHas['sell'],
                         'rental' => $saleTypeHas['rental'],
@@ -493,10 +509,10 @@ class WorkRepository
         $supplement = '';
         foreach ($products as $product) {
 
-            if($product['service_id'] === 'tol') {
-                if($product['product_type_id'] === 1) {
+            if ($product['service_id'] === 'tol') {
+                if ($product['product_type_id'] === 1) {
                     $sell = true;
-                } else if($product['product_type_id'] === 2) {
+                } else if ($product['product_type_id'] === 2) {
                     $rental = true;
                 }
                 if ($itemType === 'game') {
@@ -525,7 +541,7 @@ class WorkRepository
     public function parseSupplement($people, $roleId)
     {
         foreach ($people as $person) {
-            if($person['role_id'] === $roleId) {
+            if ($person['role_id'] === $roleId) {
                 return $person['person_name'];
             }
         }
@@ -845,9 +861,9 @@ class WorkRepository
         $workItems = [];
         foreach ($works as $workItem) {
             $workItem = (array)$workItem;
-            $formatedItem = $this->formatAddOtherData($workItem, false, $workItem   );
+            $formatedItem = $this->formatAddOtherData($workItem, false, $workItem);
             foreach ($formatedItem as $key => $value) {
-                if (in_array($key,$this->outputColumn())) {
+                if (in_array($key, $this->outputColumn())) {
                     $formatedItemSelectColumn[$key] = $value;
                 }
             }
@@ -857,6 +873,7 @@ class WorkRepository
 
         return $workItems;
     }
+
     private function outputColumn()
     {
         return [

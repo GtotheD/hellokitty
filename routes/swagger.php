@@ -781,6 +781,7 @@
  *     description="Himo作品ID作品検索",
  *     tags={"Work"},
  *     produces={"application/json"},
+ *     @SWG\Parameter(ref="#/parameters/ageLimitCheck"),
  *     @SWG\Parameter(ref="#/parameters/workId"),
  *     @SWG\Response(
  *          response=200,
@@ -1336,6 +1337,7 @@
  *       description="アダルト取得フラグ（デフォルト=false）",
  *       type="boolean"
  *     ),
+ *     @SWG\Parameter(ref="#/parameters/ageLimitCheck"),
  *     @SWG\Response(
  *          response=200,
  *          description="success",
