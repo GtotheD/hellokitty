@@ -134,18 +134,19 @@ class ProductRepository
     {
         $order = null;
         $column = [
-            "t2.product_name AS productName",
-            "t2.product_unique_id AS productUniqueId",
-            "t2.item_cd AS itemCd",
-            "t2.item_name AS itemName",
-            "t2.product_type_id AS productTypeId",
-            "t2.jacket_l AS jacketL",
-            "t2.jan AS jan",
-            "t2.rental_product_cd AS rentalProductCd",
-            "t2.sale_start_date AS saleStartDate",
+            "t2.product_name",
+            "t2.product_unique_id",
+            "t2.item_cd",
+            "t2.item_name",
+            "t2.product_type_id",
+            "t2.jacket_l",
+            "t2.jan",
+            "t2.rental_product_cd",
+            "t2.number_of_volume",
+            "t2.sale_start_date",
         ];
         $this->totalCount = $this->product->setConditionProductGroupingByWorkIdSaleType($workId, $this->saleType, $this->sort)->count();
-        $results = $this->product->select($column)->get($this->limit, $this->offset);
+        $results = $this->product->selectCamel($column)->get($this->limit, $this->offset);
 //        $results = $this->product->get($this->limit, $this->offset);
         if (count($results) + $this->offset < $this->totalCount) {
             $this->hasNext = true;
@@ -207,6 +208,9 @@ class ProductRepository
         // reformat data
         foreach ($products as $product) {
             $product = (array)$product;
+            if (substr($product['itemCd'], -2) === '75') {
+                $product['productName'] = $product['productName'] . "（{$product['numberOfVolume']}）";
+            }
             $product['productKey'] = ($product['productTypeId'] == self::PRODUCT_TYPE_SELL) ? $product['jan'] : $product['rentalProductCd'];
             if(array_key_exists('docs', $product)) {
                 $docs = json_decode($product['docs'], true);

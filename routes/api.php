@@ -203,6 +203,7 @@ $router->group([
     $router->get('work/{workId}/products/has', function (Request $request, $workId) {
         $work = new WorkRepository();
         $work->setSaleType($request->input('saleType', 'rental'));
+        $work->setAgeLimitCheck($request->input('ageLimitCheck', false));
         $result = $work->getNarrowColumns($workId);
         if (empty($result)) {
             throw new NoContentsException;
@@ -446,13 +447,18 @@ $router->group([
         $work = new WorkRepository();
         $work->setLimit($request->input('limit', 10));
         $work->setOffset($request->input('offset', 0));
-
         $sort = $request->input('sort', '');
         $itemType = $request->input('itemType', 'all');
         $periodType = $request->input('periodType', 'all');
         $adultFlg = $request->input('adultFlg', 'false');
+        $work->setAgeLimitCheck($request->input('ageLimitCheck', false));
         $keyword = urldecode($keyword);
-        $response = $work->searchKeyword($keyword, $sort, $itemType, $periodType, $adultFlg);
+        $response = $work->searchKeyword(
+            $keyword,
+            $sort,
+            $itemType,
+            $periodType,
+            $adultFlg);
         if(empty($response)){
             throw new NoContentsException;
         }
