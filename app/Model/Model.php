@@ -121,10 +121,6 @@ class Model
                 $values[] = $pdo->quote($rowValue);
             }
             $insertValues[] = '('.implode(',', $values).')';
-            if($i > 10) {
-                break;
-            }
-            $i++;
         }
         $columnList = implode(',', $columns);
         $insertList = implode(',', $insertValues);
