@@ -21,7 +21,8 @@ class RelateadWork extends Model
     {
         $this->dbObject = DB::table($this->table)
             ->where([
-                'work_id' => $workId,
+                ['work_id' ,'=', $workId],
+                ['related_work_id' ,'<>', $workId],
             ])
             ->orderBy('updated_at', 'desc');
 
@@ -61,6 +62,6 @@ class RelateadWork extends Model
             }
             $insertData[$key]['created_at'] = date('Y-m-d H:i:s');
         }
-        return DB::table($this->table)->insert($insertData);
+        return $this->bulkInsertOnDuplicateKey($insertData);
     }
 }

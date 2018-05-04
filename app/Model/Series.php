@@ -62,6 +62,6 @@ class Series extends Model
             }
             $insertData[$key]['created_at'] = date('Y-m-d H:i:s');
         }
-        return DB::table($this->table)->insert($insertData);
+        return $this->bulkInsertOnDuplicateKey($insertData);
     }
 }

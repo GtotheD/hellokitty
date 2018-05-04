@@ -146,8 +146,6 @@ class Work extends Model
             }
             $insertData[$key]['created_at'] = date('Y-m-d H:i:s');
         }
-        return DB::table($this->table)->insert(array_values($insertData));
+        return $this->bulkInsertOnDuplicateKey($insertData);
     }
-
-
 }

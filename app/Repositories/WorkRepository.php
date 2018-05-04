@@ -489,7 +489,7 @@ class WorkRepository
     public function parseFromArray($products, $itemType)
     {
         $sell = false;
-        $rental = true;
+        $rental = false;
         $supplement = '';
         foreach ($products as $product) {
 
