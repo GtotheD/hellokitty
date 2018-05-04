@@ -128,7 +128,6 @@ class Model
         }
         $columnList = implode(',', $columns);
         $insertList = implode(',', $insertValues);
-//        $query = sprintf("INSERT INTO `%s`(%s) VALUE %s ON DUPLICATE KEY UPDATE id = id;", $this->table, $columnList, $insertList);
         $query = sprintf("INSERT INTO `%s`(%s) VALUE %s ON DUPLICATE KEY UPDATE id = id;", $this->table, $columnList, $insertList);
         return $pdo->exec($query);
     }
