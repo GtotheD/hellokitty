@@ -103,4 +103,34 @@ class Model
         return implode($aliasName, ',');
     }
 
+    public function bulkInsertOnDuplicateKey($insertData)
+    {
+        if (empty($insertData)){
+            return null;
+        }
+        $pdo = DB::connection()->getPdo();
+        // 一行目からキーを取得
+        foreach ($insertData[0] as $columnName => $value) {
+            $columns[] = $columnName;
+        }
+        $i = 1;
+        $insertValues = [];
+        foreach ($insertData as $row) {
+            $values = [];
+            foreach ($row as $rowValue) {
+                $values[] = $pdo->quote($rowValue);
+            }
+            $insertValues[] = '('.implode(',', $values).')';
+            if($i > 10) {
+                break;
+            }
+            $i++;
+        }
+        $columnList = implode(',', $columns);
+        $insertList = implode(',', $insertValues);
+//        $query = sprintf("INSERT INTO `%s`(%s) VALUE %s ON DUPLICATE KEY UPDATE id = id;", $this->table, $columnList, $insertList);
+        $query = sprintf("INSERT INTO `%s`(%s) VALUE %s ON DUPLICATE KEY UPDATE id = id;", $this->table, $columnList, $insertList);
+        return $pdo->exec($query);
+    }
+
 }
