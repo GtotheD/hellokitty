@@ -98,6 +98,47 @@ class Product extends Model
         return $this;
     }
 
+    public function setConditionProductGroupingByWorkIdSaleType($workId, $saleType = null, $order = null)
+    {
+        $select = 't2.product_name,'
+            .'t2.rental_product_cd,'
+            .'t2.jan,'
+            .'t2.product_type_id,'
+            .'t2.item_cd,'
+            .'t2.item_name,'
+            .'t2.ccc_family_cd,'
+            .'t2.sale_start_date';
+        $selectSubGrouping = 'item_cd,'
+            .'product_type_id,'
+            .'product_name,'
+            .'ccc_family_cd ';
+        $selectSub = ',MIN(product_unique_id) AS product_unique_id ';
+        $subQuery = DB::table($this->table)->select(DB::raw($selectSubGrouping.$selectSub))
+            ->whereRaw(DB::raw(' item_cd not like \'_1__\' '))
+            ->groupBy(DB::raw($selectSubGrouping));
+        $this->dbObject = DB::table(DB::raw("({$subQuery->toSql()}) as t1"))
+            ->join($this->table.' as t2', 't2.product_unique_id', '=', 't1.product_unique_id')
+            ->where('work_id','=',$workId);
+        if ($saleType === 'sell') {
+            $this->dbObject->where('t2.product_type_id', '1');
+        } elseif ($saleType === 'rental') {
+            $this->dbObject->where('t2.product_type_id', '2');
+        }
+        if ($order === 'old') {
+            $this->dbObject
+                ->orderBy('t2.sale_start_date', 'asc')
+                ->orderBy('t2.ccc_family_cd', 'asc');
+        } else {
+            $this->dbObject
+                ->orderBy('t2.sale_start_date', 'desc')
+                ->orderBy('t2.ccc_family_cd', 'desc');
+        }
+
+//        dd($this->dbObject->toSql());
+
+        return $this;
+    }
+
     public function setConditionRentalGroup($workId, $order = null)
     {
         $groupingColumn = 'work_id, product_name, ccc_family_cd';
