@@ -100,14 +100,6 @@ class Product extends Model
 
     public function setConditionProductGroupingByWorkIdSaleType($workId, $saleType = null, $order = null)
     {
-        $select = 't2.product_name,'
-            .'t2.rental_product_cd,'
-            .'t2.jan,'
-            .'t2.product_type_id,'
-            .'t2.item_cd,'
-            .'t2.item_name,'
-            .'t2.ccc_family_cd,'
-            .'t2.sale_start_date';
         $selectSubGrouping = 'item_cd,'
             .'product_type_id,'
             .'product_name,'
@@ -133,9 +125,6 @@ class Product extends Model
                 ->orderBy('t2.sale_start_date', 'desc')
                 ->orderBy('t2.ccc_family_cd', 'desc');
         }
-
-//        dd($this->dbObject->toSql());
-
         return $this;
     }
 
