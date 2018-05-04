@@ -715,9 +715,64 @@ class WorkRepository
         return null;
     }
 
+    /**
+     * 対象作品の年齢制限値を取得
+     * @param Work $workRow NT作品
+     * @param array $ageLimitList 年齢認証設定マスタリスト
+     * @return boolean|int 年齢制限値
+     */
+    public function getAgeLimitWork($workRow, $ageLimitList)
+    {
+        $result = 0;
+        foreach ($ageLimitList as $ageLimit) {
+            // 不一致の場合は次レコードを確認
+            if (!$this->isItemMatch($ageLimit['ratingId'], $workRow['ratingId'])) {
+                continue;
+            }
+            if (!$this->isItemMatch($ageLimit['bigGenreId'], $workRow['bigGenreId'])) {
+                continue;
+            }
+            if (!$this->isItemMatch($ageLimit['mediumGenreId'], $workRow['mediumGenreId'])) {
+                continue;
+            }
+            if (!$this->isItemMatch($ageLimit['smallGenreId'], $workRow['smallGenreId'])) {
+                continue;
+            }
+
+            // 全項目一致(アダルト作品判定)
+            if ($result < $ageLimit['ageLimit']) {
+                $result = $ageLimit['ageLimit'];
+            }
+        }
+
+        // リスト不一致
+        return $result > 0 ? $result : false;
+    }
+
+    private function isItemMatch($ageLimitData, $himoData)
+    {
+        // DBデータが空の場合は一致と判定
+        if ($ageLimitData !== null && $ageLimitData !== '' && $ageLimitData !== $himoData) {
+            return false;
+        }
+        return true;
+    }
+
     public function checkAgeLimit($ratingId, $bigGenreId)
     {
-        $map = [
+
+        $map = $this->ageLimitList();
+        foreach ($map as $item) {
+            if ($item['ratingId'] === $ratingId && $item['bigGenreId'] === $bigGenreId) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public function ageLimitList()
+    {
+        return [
             [
                 'ageLimit' => 18,
                 'ratingId' => 'EXT0000000YB',
@@ -738,15 +793,10 @@ class WorkRepository
                 'bigGenreId' => 'EXT0000000YC',
                 'mediumGenreId' => null,
                 'smallGenreId' => null
-            ]];
-        foreach ($map as $item) {
-            if ($item['ratingId'] === $ratingId && $item['bigGenreId'] === $bigGenreId) {
-                return true;
-            }
-        }
-        return false;
-    }
+            ]
+        ];
 
+    }
 
     /**
      * API GET: /people/{personId}
