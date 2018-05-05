@@ -20,6 +20,7 @@ class PeopleRelatedWorksRepository extends ApiRequesterRepository
     protected $limit;
     protected $hasNext;
     protected $totalCount;
+    protected $saleType;
 
     private $peopleRelatedWork;
 
@@ -64,6 +65,14 @@ class PeopleRelatedWorksRepository extends ApiRequesterRepository
         return $this->totalCount;
     }
 
+    /**
+     * @param mixed $offset
+     */
+    public function setSaleType($saleType)
+    {
+        $this->saleType = $saleType;
+    }
+
     public function getWorks($workId)
     {
         $product = new Product();
@@ -98,7 +107,7 @@ class PeopleRelatedWorksRepository extends ApiRequesterRepository
             $resultArray[] = $resultItem->workId;
         }
         $work->getWorkList($resultArray);
-        return $this->getWorkWithProductIdsIn($resultArray);
+        return $this->getWorkWithProductIdsIn($resultArray, $workId);
     }
 
     public function getWorksByArtist($workId)
@@ -128,15 +137,15 @@ class PeopleRelatedWorksRepository extends ApiRequesterRepository
         foreach ($result as $resultItem) {
             $resultArray[] = $resultItem->workId;
         }
-        return $this->getWorkWithProductIdsIn($resultArray);
+        return $this->getWorkWithProductIdsIn($resultArray, $workId);
     }
 
-    public function getWorkWithProductIdsIn($data)
+    public function getWorkWithProductIdsIn($data ,$workId)
     {
         $workRepository = new WorkRepository();
         $work = new Work();
 
-        $work->getWorkWithProductIdsIn($data);
+        $work->getWorkWithProductIdsIn($data, $this->saleType, $workId);
         $this->totalCount = $work->count();
         $workList = $work->selectCamel($this->selectColumn())->get($this->limit, $this->offset);
         if (count($workList) + $this->offset < $this->totalCount) {
@@ -196,10 +205,10 @@ class PeopleRelatedWorksRepository extends ApiRequesterRepository
             'big_genre_id',
             'url_cd',
             'ccc_work_cd',
-            't1.jacket_l',
-            't2.sale_start_date',
-            't2.product_type_id',
-            'product_unique_id',
+            'w1.jacket_l',
+            'p2.sale_start_date',
+            'p2.product_type_id',
+            'p2.product_unique_id',
             'product_name',
             'maker_name',
             'game_model_name',

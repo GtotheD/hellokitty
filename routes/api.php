@@ -344,7 +344,7 @@ $router->group([
         $recommendOtherRepository = new RecommendOtherRepository;
         $recommendOtherRepository->setLimit($request->input('limit', 10));
         $recommendOtherRepository->setOffset($request->input('offset', 0));
-        $rows = $recommendOtherRepository->getWorks($workId, $request->input('saleType', 'rental'));
+        $rows = $recommendOtherRepository->getWorks($workId, $request->input('saleType'));
         if (empty($rows)) {
             throw new NoContentsException;
         }

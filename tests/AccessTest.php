@@ -12,6 +12,14 @@ class AccessTest extends TestCase
         $this->baseUrl = env('APP_URL').'/'.env('URL_PATH_PREFIX').env('API_VERSION');
     }
 
+    public static function setUpBeforeClass()
+    {
+        parent::setUpBeforeClass();
+        $bk2Seeder = new TestDataBk2RecommendsSeeder;
+        $bk2Seeder->run();
+        $keywordSeeder = new TestDataKeywordSuggestSeeder();
+        $keywordSeeder->run();
+    }
 
     private function getWithAuth($uri, $param = [])
     {
@@ -147,7 +155,7 @@ class AccessTest extends TestCase
      */
     public function workRecommendOther()
     {
-        $response = $this->getWithAuth('/work/PTA0000SF309/recommend/other');
+        $response = $this->getWithAuth('/work/PTA0000G4CSA/recommend/other');
         $response->assertResponseStatus(200);
     }
     /**
@@ -221,7 +229,7 @@ class AccessTest extends TestCase
      */
     public function searchSuggest()
     {
-        $response = $this->getWithAuth('/search/suggest/%E5%91%BD');
+        $response = $this->getWithAuth('/search/suggest/あ');
         $response->assertResponseStatus(200);
     }
 

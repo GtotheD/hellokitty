@@ -103,21 +103,73 @@ class Work extends Model
      * products
      * @param $workIds
      */
-    public function getWorkWithProductIdsIn($workIds = [], $saleType = null) {
-        $product = new Product;
-        $this->dbObject = DB::table($this->table. ' as t1')
-            ->join('ts_products as t2', function ($join) use ($saleType, $product){
-                $join->on('t1.work_id', '=', 't2.work_id');
-                if($saleType) {
-                    $join->on('product_type_id', '=', DB::raw($product->convertSaleType($saleType)));
-                }
-            })
-            ->where('item_cd', 'not like', '01%')
-            ->whereIn('t1.work_id', $workIds);
+    public function getWorkWithProductIdsIn($workIds = [], $saleType = null, $ignoreWorkId, $order = null) {
+        $selectSubGrouping =
+            'p1.work_id,'
+            .'product_type_id';
+        $selectSub = ',MIN(product_unique_id) AS product_unique_id ';
+        $subQuery = DB::table('ts_products AS p1')->select(DB::raw($selectSubGrouping.$selectSub))
+            ->whereRaw(DB::raw(' item_cd not like \'_1__\' '))
+            ->whereIn('work_id', $workIds)
+            ->whereRaw(DB::raw("work_id <> '{$ignoreWorkId}'"))
+            ->groupBy(DB::raw($selectSubGrouping));
+        $this->dbObject = DB::table(DB::raw("({$subQuery->toSql()}) as t1"))
+            ->join('ts_products as p2', 'p2.product_unique_id', '=', 't1.product_unique_id')
+            ->join('ts_works as w1', 'w1.work_id', '=', 't1.work_id')
+            ->mergeBindings($subQuery)
+        ;
+        if ($saleType === 'sell') {
+            $this->dbObject->where('p2.product_type_id', '1');
+        } elseif ($saleType === 'rental') {
+            $this->dbObject->where('p2.product_type_id', '2');
+        }
+        if ($order === 'old') {
+            $this->dbObject
+                ->orderBy('p2.sale_start_date', 'asc')
+                ->orderBy('p2.ccc_family_cd', 'asc');
+        } else {
+            $this->dbObject
+                ->orderBy('p2.sale_start_date', 'desc')
+                ->orderBy('p2.ccc_family_cd', 'desc');
+        }
         return $this;
     }
 
-
+    /**
+     * Get all work_id not in workdIds array
+     * products
+     * @param $workIds
+     */
+    public function getWorkWithProductIdsInEx($workId, $saleType = null, $order = null) {
+        $selectSubGrouping =
+            'p1.work_id,'
+            .'product_type_id';
+        $selectSub = ',MIN(product_unique_id) AS product_unique_id ';
+        $subQuery = DB::table('ts_products AS p1')->select(DB::raw($selectSubGrouping.$selectSub))
+            ->join('ts_related_works as rw', 'rw.related_work_id', '=', 'p1.work_id')
+            ->whereRaw(DB::raw(' item_cd not like \'_1__\' '))
+            ->whereRaw(DB::raw(" rw.work_id = '{$workId}'"))
+            ->whereRaw(DB::raw(" rw.related_work_id <> '{$workId}'"))
+            ->groupBy(DB::raw($selectSubGrouping));
+        $this->dbObject = DB::table(DB::raw("({$subQuery->toSql()}) as t1"))
+            ->join('ts_products as t2', 't2.product_unique_id', '=', 't1.product_unique_id')
+            ->join('ts_works as w1', 'w1.work_id', '=', 't1.work_id');
+        if ($saleType === 'sell') {
+            $this->dbObject->where('t2.product_type_id', '1');
+        } elseif ($saleType === 'rental') {
+            $this->dbObject->where('t2.product_type_id', '2');
+        }
+        if ($order === 'old') {
+            $this->dbObject
+                ->orderBy('t2.sale_start_date', 'asc')
+                ->orderBy('t2.ccc_family_cd', 'asc');
+        } else {
+            $this->dbObject
+                ->orderBy('t2.sale_start_date', 'desc')
+                ->orderBy('t2.ccc_family_cd', 'desc');
+        }
+        return $this;
+    }
 
     /**
      * Insert bulk records

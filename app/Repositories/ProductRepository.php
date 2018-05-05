@@ -331,7 +331,7 @@ class ProductRepository
         $productBase['region_info'] = $product['region_info'];
         $productBase['price_tax_out'] = $product['price_tax_out'];
         $productBase['play_time'] = $product['play_time'];
-        $productBase['jacket_l'] = $product['jacket_l'];
+        $productBase['jacket_l'] = trimImageTag($product['jacket_l']);
         $productBase['docs'] = json_encode($product['docs']);
         $productBase['sale_start_date'] = $product['sale_start_date'];
         if ($product['msdb_item'] === 'audio') {
