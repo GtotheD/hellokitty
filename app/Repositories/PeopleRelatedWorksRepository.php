@@ -205,7 +205,7 @@ class PeopleRelatedWorksRepository extends ApiRequesterRepository
             'big_genre_id',
             'url_cd',
             'ccc_work_cd',
-            'p2.jacket_l',
+            'w1.jacket_l',
             'p2.sale_start_date',
             'p2.product_type_id',
             'p2.product_unique_id',
