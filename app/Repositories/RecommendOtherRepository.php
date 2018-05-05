@@ -69,8 +69,7 @@ class RecommendOtherRepository
         $workIdList = explode(',', $bk2Recoomend->list_work_id);
         $workIdList = array_slice($workIdList, 0, 20);
         $workRepository->getWorkList($workIdList);
-
-        $work->getWorkWithProductIdsIn($workIdList, $saleType);
+        $work->getWorkWithProductIdsIn($workIdList, $saleType, $workId);
         $this->totalCount = $work->count();
         $workList = $work->selectCamel($this->selectColumn())->get($this->limit, $this->offset);
         if (count($workList) + $this->offset < $this->totalCount) {
@@ -113,17 +112,17 @@ class RecommendOtherRepository
     private function selectColumn()
     {
         return [
-            't1.work_id',
+            'w1.work_id',
             'work_type_id',
             'work_title',
             'rating_id',
             'big_genre_id',
             'url_cd',
             'ccc_work_cd',
-            't1.jacket_l',
-            't2.sale_start_date',
-            't2.product_type_id',
-            'product_unique_id',
+            'p2.jacket_l',
+            'p2.sale_start_date',
+            'p2.product_type_id',
+            'p2.product_unique_id',
             'product_name',
             'maker_name',
             'game_model_name',

@@ -18,6 +18,9 @@ class HimoKeyword extends Model
     {
         $this->dbObject = DB::table($this->table)
             ->where('keyword', 'like', "{$keyword}%")
+            ->orWhere('roman_alphabet', 'like', "{$keyword}%")
+            ->orWhere('hiragana', 'like', "{$keyword}%")
+            ->orWhere('katakana', 'like', "{$keyword}%")
             ->orderBy('weight')
             ->orderBy('keyword');
         return $this;

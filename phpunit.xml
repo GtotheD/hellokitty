@@ -20,9 +20,9 @@
         </whitelist>
     </filter>
     <php>
-        <env name="APP_ENV" value="testing"/>
+        <env name="APP_ENV" value="local"/>
         <env name="CACHE_DRIVER" value="array"/>
         <env name="QUEUE_DRIVER" value="sync"/>
-        <env name="DB_DATABASE" value="tap_test"/>
+        <env name="DB_DATABASE" value="tap2"/>
     </php>
 </phpunit>
