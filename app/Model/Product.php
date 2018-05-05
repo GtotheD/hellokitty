@@ -66,7 +66,6 @@ class Product extends Model
                 ['p1.rental_product_cd', '=', $rentalProductCd],
                 ['p2.product_type_id', '=', self::PRODUCT_TYPE_ID_RENTAL]
             ]);
-
         return $this;
     }
 
