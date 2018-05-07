@@ -220,7 +220,7 @@ class ProductRepository
                             $product['docText'] = $doc['doc_text'];
                         }
                         if($doc['doc_type_id'] === '04') {
-                            $product['contents'] = $doc['doc_text'];
+                            $product['contents'] = contentsFormat($doc['doc_text']);
                         }
                         if($doc['doc_type_id'] === '11') {
                             $product['privilege'] = $doc['doc_text'];
