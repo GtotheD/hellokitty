@@ -625,11 +625,12 @@ class WorkRepository
         $workRepository = new WorkRepository();
         $himoResult = $himoRepository->crosswork([$id], $idCode, '1')->get();
         if (empty($himoResult['results']['rows'])) {
-            return null;
-
+            throw new NoContentsException;
         }
+
         $result['workId'] = $himoResult['results']['rows'][0]['work_id'];
         $result['itemType'] = $workRepository->convertWorkTypeIdToStr($himoResult['results']['rows'][0]['work_type_id']);
+
         return $result;
     }
 
