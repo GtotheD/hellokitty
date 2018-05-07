@@ -103,7 +103,7 @@ class Work extends Model
      * products
      * @param $workIds
      */
-    public function getWorkWithProductIdsIn($workIds = [], $saleType = null, $ignoreWorkId, $order = null) {
+    public function getWorkWithProductIdsIn($workIds = [], $saleType = null, $ignoreWorkId = null, $order = null) {
         $selectSubGrouping =
             'p1.work_id,'
             .'product_type_id';
@@ -111,8 +111,11 @@ class Work extends Model
         $subQuery = DB::table('ts_products AS p1')->select(DB::raw($selectSubGrouping.$selectSub))
             ->whereRaw(DB::raw(' item_cd not like \'_1__\' '))
             ->whereIn('work_id', $workIds)
-            ->whereRaw(DB::raw("work_id <> '{$ignoreWorkId}'"))
             ->groupBy(DB::raw($selectSubGrouping));
+
+        if($ignoreWorkId) {
+            $subQuery->whereRaw(DB::raw("work_id <> '{$ignoreWorkId}'"));
+        }
         $this->dbObject = DB::table(DB::raw("({$subQuery->toSql()}) as t1"))
             ->join('ts_products as p2', 'p2.product_unique_id', '=', 't1.product_unique_id')
             ->join('ts_works as w1', 'w1.work_id', '=', 't1.work_id')
