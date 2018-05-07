@@ -203,7 +203,7 @@ class AccessTest extends TestCase
      */
     public function people()
     {
-        $response = $this->getWithAuth('/people/PTA0000THQMV');
+        $response = $this->getWithAuth('/people/PPS00001LBUW');
         $response->assertResponseStatus(200);
     }
     /**
