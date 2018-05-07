@@ -389,7 +389,9 @@ $router->group([
     $router->get('convert/work/{idType}/{id}', function (Request $request, $idType, $id) {
         $workRepository = new WorkRepository();
         $response = $workRepository->convert($idType, $id);
-
+        if(empty($response)){
+            throw new NoContentsException;
+        }
         return response()->json($response);
     });
 
