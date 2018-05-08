@@ -31,6 +31,7 @@ use App\Repositories\HimoRepository;
 use App\Exceptions\AgeLimitException;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use App\Model\Product;
+use App\Repositories\ReleaseCalenderRepository;
 
 // Api Group
 $router->group([
@@ -500,6 +501,24 @@ $router->group([
         if (empty($response)) {
             throw new NoContentsException;
         }
+        return response()->json($response);
+    });
+
+    $router->get('release/{month}/{genreId}', function (Request $request, $month, $genreId) {
+        $response = [];
+        $onlyReleased = $request->input('onlyReleased', false);
+        $sort = $request->input('sort');
+        $releaseCalenderRepository = new ReleaseCalenderRepository();
+        $releaseCalenderRepository->setMonth($month);
+        $releaseCalenderRepository->setGenreId($genreId);
+        $releaseCalenderRepository->setSort($request->input('sort'));
+        $releaseCalenderRepository->setMediaFormat($request->input('cdFormatType'));
+        $rows = $releaseCalenderRepository->get();
+        $response = [
+            'hasNext' => $releaseCalenderRepository->getHasNext(),
+            'totalCount' => $releaseCalenderRepository->getTotalCount(),
+            'rows' => $rows
+        ];
         return response()->json($response);
     });
 
