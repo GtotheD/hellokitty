@@ -163,6 +163,46 @@ class HimoRepository extends ApiRequesterRepository
 
         return $this;
     }
+    public function searchCrossworksForRelease($params = [], $sort = null)
+    {
+        $this->api = $params['api'];
+        $this->id = $params['id'];
+        if (env('APP_ENV') === 'local') {
+            return $this;
+        }
+        $this->apiPath = $this->apiHost . '/search/crossworks';
+
+        $sortBy = 'auto:asc';
+        if ($sort == 'new') {
+            $sortBy = 'sale_start_date:desc';
+        } else if ($sort == 'old') {
+            $sortBy = 'sale_start_date:asc';
+        }
+        $this->queryParams = [
+            '_system' => 'TsutayaApp',
+            'service_id' => 'tol',
+            'response_level' => '9',
+            'adult_flg' => '2',
+            'offset' => $this->offset,
+            'limit' => $this->limit,
+            'sort_by' => $sortBy,
+            'work_products_service_id' => ['tol']
+        ];
+
+
+        $this->queryParams['genre_id'] = $genres;
+
+        $this->queryParams['msdb_item'] = $msdbItem;
+        $saleStartDateTo = date('Y-m-d');
+        if ($params['onlyReleased']) {
+            $saleStartDateFrom = date('Y-m-01');
+            $this->queryParams['sale_start_date_from'] = $saleStartDateFrom;
+            $this->queryParams['sale_start_date_to'] = $saleStartDateTo;
+        } else {
+        }
+        return $this;
+    }
+
 
     public function searchCrossworks($params = [], $sort = null)
     {
@@ -360,7 +400,6 @@ class HimoRepository extends ApiRequesterRepository
             $filename .= '_2';
             $apiName = 'xmedia';
         }
-
         $path = base_path('tests/himo/');
         $path = $path . $apiName;
         if(!realpath($path . '/' . $filename)) {

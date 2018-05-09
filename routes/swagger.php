@@ -1420,7 +1420,7 @@
  *       name="onlyReleased",
  *       in="query",
  *       description="リリース済みのみ",
- *       type="string"
+ *       type="boolean"
  *     ),
  *     @SWG\Parameter(
  *       name="cdFormatType",

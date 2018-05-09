@@ -574,22 +574,33 @@ class WorkRepository
             ];
 
 
+            $displayImage = true;
             foreach ($data['results']['rows'] as $row) {
-                $this->setSaleType('rental');
-                $base = $this->get($row['work_id']);
-
-
+                $base = $this->format($row);
+                $itemType = $this->convertWorkTypeIdToStr($base['work_type_id']);
+                $saleTypeHas = $this->parseFromArray($row['products'], $itemType);
+                if ($this->ageLimitCheck !== 'true') {
+                    if ($this->checkAgeLimit(
+                            $base['rating_id'], $base['big_genre_id']) === true ||
+                        $base['adult_flg'] === 1
+                    ) {
+                        $displayImage = false;
+                    }
+                }
                 $result['rows'][] = [
-                    'workId' => isset($base['workId']) ? $base['workId'] : '',
-                    'urlCd' => isset($base['urlCd']) ? $base['urlCd'] : '',
-                    'cccWorkCd' => isset($base['cccWorkCd']) ? $base['cccWorkCd'] : '',
-                    'workTitle' => isset($base['workTitle']) ? $base['workTitle'] : '',
-                    'newFlg' => isset($base['newFlg']) ? $base['newFlg'] : false,
-                    'jacketL' => isset($base['jacketL']) ? $base['jacketL'] : '',
-                    'supplement' => isset($base['supplement']) ? $base['supplement'] : '',
-                    'saleType' => isset($base['saleType']) ? $base['saleType'] : '',
-                    'itemType' => isset($base['itemType']) ? $base['itemType'] : '',
-                    'adultFlg' => isset($base['adultFlg']) ? $base['adultFlg'] : false,
+                    'workId' => $base['work_id'],
+                    'urlCd' => $base['url_cd'],
+                    'cccWorkCd' => $base['ccc_work_cd'],
+                    'workTitle' => $base['work_title'],
+                    'jacketL' => ($displayImage) ? $base['jacket_l'] : '',
+                    'newFlg' => newFlg($base['sale_start_date']),
+                    'adultFlg' => ($base['adult_flg'] === 1) ? true : false,
+                    'itemType' => $itemType,
+                    'saleType' => $saleType,
+                    'supplement' => $saleTypeHas['supplement'],
+                    'saleStartDate' => ($row['sale_start_date']) ? date('Y-m-d 00:00:00', strtotime($row['sale_start_date'])) : '',
+                    'saleStartDateSell' => ($row['sale_start_date_sell']) ? date('Y-m-d 00:00:00', strtotime($row['sale_start_date_sell'])) : '',
+                    'saleStartDateRental' => ($row['sale_start_date_rental']) ? date('Y-m-d 00:00:00', strtotime($row['sale_start_date_rental'])) : '',
                 ];
             }
 
