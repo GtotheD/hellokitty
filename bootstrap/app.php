@@ -108,6 +108,7 @@ $app->router->group([
 $app->configure('api_key');
 $app->configure('genre_map');
 $app->configure('version');
+$app->configure('release_genre_map');
 
 /*
 |--------------------------------------------------------------------------

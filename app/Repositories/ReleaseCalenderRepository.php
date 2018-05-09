@@ -130,7 +130,8 @@ class ReleaseCalenderRepository
 
     public function get()
     {
-
+        // 音楽の場合single albumなどを指定する為。
+        $mediaFormat = null;
         $workRepository = new WorkRepository();
         $himoReleaseOrder = new HimoReleaseOrder();
 
@@ -206,12 +207,20 @@ class ReleaseCalenderRepository
         } else if ($this->mediaFormat === 'single') {
             $mediaFormat = '2';
         }
+        $saleStartDateFrom = null;
+        $saleStartDateTo = null;
+        if ($this->onlyReleased === 'true') {
+            $saleStartDateFrom = date('Y-m-01 00:00:00');
+            $saleStartDateTo = date('Y-m-d 00:00:00');
+        }
         $this->totalCount = $himoReleaseOrder->setConditionGenreIdAndMonth(
             $this->genreId,
             $saleStartMonth,
             $mappingData['productSellRentalFlg'],
             $this->sort,
-            $mediaFormat
+            $mediaFormat,
+            $saleStartDateFrom,
+            $saleStartDateTo
         )->count();
         $this->totalCount = $himoReleaseOrder->count();
         // キャッシュしたデータから対象の作品及び商品情報を集約し取得する。
@@ -226,12 +235,13 @@ class ReleaseCalenderRepository
         } else {
             $this->hasNext = false;
         }
-
         foreach ($results as $result) {
             $formatedData[] = $workRepository->formatAddOtherData((array)$result, false, (array)$result);
-
         }
 
+        if (empty($formatedData)) {
+            return null;
+        }
         return $formatedData;
     }
 
@@ -289,7 +299,7 @@ class ReleaseCalenderRepository
 
     public function genreMapToHimoParam($genreId)
     {
-        $listArray = $this->getGenreMap();
+        $listArray = config('release_genre_map');
         $listString = implode(':: || ', $listArray[$genreId]) . '::';
         return $listString;
     }

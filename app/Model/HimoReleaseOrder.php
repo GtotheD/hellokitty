@@ -14,7 +14,15 @@ class HimoReleaseOrder extends Model
         parent::__construct(self::TABLE);
     }
 
-    public function setConditionGenreIdAndMonth($genreId, $month, $productTypeId, $order = null, $mediaFormat = null)
+    public function setConditionGenreIdAndMonth(
+        $genreId,
+        $month,
+        $productTypeId,
+        $order = null,
+        $mediaFormat = null,
+        $saleStartDateFrom = null,
+        $saleStartDateTo = null
+    )
     {
         $selectSubGrouping =
             'p1.work_id,'
@@ -36,14 +44,25 @@ class HimoReleaseOrder extends Model
             $this->dbObject
                 ->where('w1.work_format_id', $mediaFormat);
         }
-
+        if(!empty($saleStartDateFrom)) {
+            $this->dbObject
+                ->where('p2.sale_start_date', '>',$saleStartDateFrom);
+        }
+        if(!empty($saleStartDateTo)) {
+            $this->dbObject
+                ->where('p2.sale_start_date', '<',$saleStartDateTo);
+        }
 
         if ($order === 'new') {
             $this->dbObject
-                ->orderBy('p2.sale_start_date', 'desc');
+                ->orderBy('p2.sale_start_date', 'desc')
+                ->orderBy('p2.product_unique_id', 'desc')
+            ;
         } else if ($order === 'old') {
             $this->dbObject
-                ->orderBy('p2.sale_start_date', 'asc');
+                ->orderBy('p2.sale_start_date', 'asc')
+                ->orderBy('p2.product_unique_id', 'asc')
+                ;
         } else {
             $this->dbObject
                 ->orderBy('sort', 'asc');

@@ -513,7 +513,11 @@ $router->group([
         $releaseCalenderRepository->setGenreId($genreId);
         $releaseCalenderRepository->setSort($request->input('sort'));
         $releaseCalenderRepository->setMediaFormat($request->input('cdFormatType'));
+        $releaseCalenderRepository->setOnlyReleased($request->input('onlyReleased', 'false'));
         $rows = $releaseCalenderRepository->get();
+        if (empty($rows)) {
+            throw new NoContentsException;
+        }
         $response = [
             'hasNext' => $releaseCalenderRepository->getHasNext(),
             'totalCount' => $releaseCalenderRepository->getTotalCount(),
