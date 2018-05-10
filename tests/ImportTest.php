@@ -11,15 +11,6 @@ class ImportTest extends TestCase
         parent::setUp();
     }
 
-
-    private function getWithAuth($apiPath, $param = [])
-    {
-        return $this->call('GET',
-            env('URL_PATH_PREFIX') . env('API_VERSION') . $apiPath,
-            $param, [], [], ['HTTP_Authorization' => 'k8AJR0NxM114Ogdl'], []
-        );
-    }
-
     /**
      * @test
      */
@@ -31,6 +22,9 @@ class ImportTest extends TestCase
 
     }
 
+    /**
+     * @return array
+     */
     public function fixedBannerProvider()
     {
         return [
@@ -122,7 +116,7 @@ class ImportTest extends TestCase
      * @dataProvider sectionProvider
      * @group firstInsert
      */
-    public function checkApiSection($url, $expected, $himoIdExpected)
+    public function checkApiSection($url, $expected)
     {
         $response = $this->getWithAuth($url);
         $this->assertEquals(200, $response->getStatusCode());
@@ -131,9 +125,6 @@ class ImportTest extends TestCase
         $this->assertEquals($expected[0], $responseData['rows'][0]['code']);
         $this->assertEquals($expected[1], $responseData['rows'][1]['code']);
         $this->assertEquals($expected[2], $responseData['rows'][2]['code']);
-        $this->assertEquals($himoIdExpected[0], $responseData['rows'][0]['himoId']);
-        $this->assertEquals($himoIdExpected[1], $responseData['rows'][1]['himoId']);
-        $this->assertEquals($himoIdExpected[2], $responseData['rows'][2]['himoId']);
     }
 
     public function bannerProvider()
@@ -397,4 +388,5 @@ class ImportTest extends TestCase
     {
         $this->checkApiStructure($url, $expected);
     }
+
 }

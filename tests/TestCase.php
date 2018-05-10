@@ -4,6 +4,8 @@ use tests\TestData;
 
 abstract class TestCase extends Laravel\Lumen\Testing\TestCase
 {
+    private static $isSetup = false;
+
     /**
      * Creates the application.
      *
@@ -16,18 +18,36 @@ abstract class TestCase extends Laravel\Lumen\Testing\TestCase
     public static function setUpBeforeClass()
     {
         parent::setUpBeforeClass();
-        Artisan::call('migrate');
-        $testData = new TestData;
-        $testData->jsonInitialize();
     }
 
     public function setUp()
     {
         parent::setUp();
+        if(self::$isSetup === false){
+            Artisan::call('migrate');
+            $testData = new TestData;
+            $testData->jsonInitialize();
+            self::$isSetup = true;
+        }
     }
 
     public function tearDown()
     {
         parent::tearDown();
     }
+
+    public function getWithAuth($apiPath, $param = [])
+    {
+        return $this->call('GET',
+            env('URL_PATH_PREFIX') . env('API_VERSION') . $apiPath,
+            $param, [], [], ['HTTP_Authorization' => 'k8AJR0NxM114Ogdl'], []
+        );
+    }
+
+    public function getJsonWithAuth($uri, $param = [])
+    {
+        return $this->json('GET', $uri,
+            $param, ['HTTP_Authorization' => 'k8AJR0NxM114Ogdl']);
+    }
+
 }
