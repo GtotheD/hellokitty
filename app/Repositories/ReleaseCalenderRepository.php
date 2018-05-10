@@ -2,10 +2,10 @@
 
 namespace App\Repositories;
 
+use App\Exceptions\NoContentsException;
 use App\Model\RelateadWork;
 use App\Model\Work;
 use App\Model\HimoReleaseOrder;
-use App\Exceptions\NoContentsException;
 use DB;
 
 class ReleaseCalenderRepository
@@ -22,6 +22,8 @@ class ReleaseCalenderRepository
     protected $month;
     protected $onlyReleased;
     protected $mediaFormat;
+
+    const HIMO_TAP_RECOMMEND_KEYWORD = 'tapichioshi';
 
     public function __construct($sort = 'asc', $offset = 0, $limit = 10)
     {
@@ -135,18 +137,25 @@ class ReleaseCalenderRepository
         $workRepository = new WorkRepository();
         $himoReleaseOrder = new HimoReleaseOrder();
 
-        $mappingData = $this->genreMapping($this->genreId);
-
-        // パラメーターを取得する
-        // キャッシュにデータがあるか確認しキャッシュがあればキャッシュからデータを取得する。
-        // 確認はジャンルID
+        // パラメーターを取得する　未指定の場合は当月
         if ($this->month === 'last') {
             $saleStartMonth = date('Y-m-01', strtotime('-1 months'));
-        } else if ($this->month === 'this') {
-            $saleStartMonth = date('Y-m-01');
-        } else if ($$this->month === 'next') {
+        } else if ($this->month === 'next') {
             $saleStartMonth = date('Y-m-01', strtotime('+1 months'));
+        } else {
+            $saleStartMonth = date('Y-m-01');
         }
+
+        // ソートの指定
+        $sortBy = 'auto:asc';
+        if ($this->sort == 'new') {
+            $sortBy = 'sale_start_date:desc';
+        } else if ($this->sort == 'old') {
+            $sortBy = 'sale_start_date:asc';
+        }
+
+        // ジャンルIDをもとにキャッシュにデータがあるか確認しキャッシュがあればキャッシュからデータを取得する。
+        $mappingData = $this->genreMapping($this->genreId);
         $cacheData = $himoReleaseOrder->setConditionGenreIdAndMonth(
             $this->genreId,
             $saleStartMonth,
@@ -163,11 +172,16 @@ class ReleaseCalenderRepository
                 'genreId' => $this->genreId,
                 'month' => $this->month,
                 'productSellRentalFlg' => $mappingData['productSellRentalFlg'],
-                'genre' => $mappingData['genres'],
                 'adultFlg' => $mappingData['adultFlg'],
                 'msdbItem' => $mappingData['msdbItem'],
                 'onlyReleased' => $this->onlyReleased,
+                'sort' => $sortBy
             ];
+            if ($mappingData['genres'] === 'recommendation') {
+                $params['work_tags'] = self::HIMO_TAP_RECOMMEND_KEYWORD;
+            } else {
+                $params['genre'] = $mappingData['genres'];
+            }
             // 10件づつ処理
             $processLimit = 10;
             $himo->setLimit(10);
@@ -302,37 +316,6 @@ class ReleaseCalenderRepository
         $listArray = config('release_genre_map');
         $listString = implode(':: || ', $listArray[$genreId]) . '::';
         return $listString;
-    }
-
-    public function getGenreMap()
-    {
-        return [
-            1 => ['EXT0000001DO',
-                'EXT00000018Q',
-                'EXT00000022S',
-                'EXT0000002GF'
-            ],
-            18 => [
-                'EXT00000009V',
-                'EXT00000000R',
-                'EXT000000011',
-                'EXT00000000M',
-            ],
-            19 => [
-                'EXT00000009V',
-                'EXT00000000R',
-                'EXT000000011',
-                'EXT00000000M',
-            ],
-            23 => [
-                'EXT00000009V',
-                'EXT00000000R',
-                'EXT000000011',
-                'EXT00000000M',
-            ],
-            79 => ['EXT0000007QI'],
-            80 => ['EXT000000Q1W'],
-        ];
     }
 
     private function outputColumn()

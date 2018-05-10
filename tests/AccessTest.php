@@ -232,6 +232,12 @@ class AccessTest extends TestCase
         $response = $this->getWithAuth('/search/suggest/あ');
         $response->assertResponseStatus(200);
     }
-
-
+    /**
+     * @test
+     */
+    public function releaseCalender()
+    {
+        $response = $this->getWithAuth('/release/this/18?sort=old&cdFormatType=album&onlyReleased=false');
+        $response->assertResponseStatus(200);
+    }
 }

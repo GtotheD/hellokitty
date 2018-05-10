@@ -172,12 +172,6 @@ class HimoRepository extends ApiRequesterRepository
         }
         $this->apiPath = $this->apiHost . '/search/crossworks';
 
-        $sortBy = 'auto:asc';
-        if ($sort == 'new') {
-            $sortBy = 'sale_start_date:desc';
-        } else if ($sort == 'old') {
-            $sortBy = 'sale_start_date:asc';
-        }
         $this->queryParams = [
             '_system' => 'TsutayaApp',
             'service_id' => 'tol',
@@ -185,21 +179,11 @@ class HimoRepository extends ApiRequesterRepository
             'adult_flg' => '2',
             'offset' => $this->offset,
             'limit' => $this->limit,
-            'sort_by' => $sortBy,
-            'work_products_service_id' => ['tol']
+            'sort_by' => $sort,
+            'work_products_service_id' => ['tol'],
+            'genre_id' => $params['genre'],
+            'msdb_item' => $params['msdbItem']
         ];
-
-
-        $this->queryParams['genre_id'] = $genres;
-
-        $this->queryParams['msdb_item'] = $msdbItem;
-        $saleStartDateTo = date('Y-m-d');
-        if ($params['onlyReleased']) {
-            $saleStartDateFrom = date('Y-m-01');
-            $this->queryParams['sale_start_date_from'] = $saleStartDateFrom;
-            $this->queryParams['sale_start_date_to'] = $saleStartDateTo;
-        } else {
-        }
         return $this;
     }
 
