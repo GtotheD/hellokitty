@@ -696,7 +696,7 @@ class Import extends Command
         foreach ($dataSection['rows'] as $row) {
             $sectionArray[] = [
                 'code' => $row['jan'],
-                'himo_id' => $row['himoId'],
+//                'work_id' => $row['workId'],
                 'image_url' => (array_key_exists('imageUrl', $row) ? $row['imageUrl'] : ""),
                 'display_start_date' => $row['displayStartDate'],
                 'display_end_date' => $row['displayEndDate'],

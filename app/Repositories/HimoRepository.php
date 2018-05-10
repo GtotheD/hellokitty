@@ -171,7 +171,6 @@ class HimoRepository extends ApiRequesterRepository
             return $this;
         }
         $this->apiPath = $this->apiHost . '/search/crossworks';
-
         $this->queryParams = [
             '_system' => 'TsutayaApp',
             'service_id' => 'tol',
@@ -179,10 +178,11 @@ class HimoRepository extends ApiRequesterRepository
             'adult_flg' => '2',
             'offset' => $this->offset,
             'limit' => $this->limit,
-            'sort_by' => $sort,
+            'sort_by' => $params['sort'],
             'work_products_service_id' => ['tol'],
             'genre_id' => $params['genre'],
-            'msdb_item' => $params['msdbItem']
+            'msdb_item' => $params['msdbItem'],
+            'sale_start_month' => $params['saleStartMonth'],
         ];
         return $this;
     }

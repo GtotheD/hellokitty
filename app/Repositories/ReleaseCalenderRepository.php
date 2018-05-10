@@ -7,6 +7,7 @@ use App\Model\RelateadWork;
 use App\Model\Work;
 use App\Model\HimoReleaseOrder;
 use DB;
+use Illuminate\Support\Facades\Log;
 
 class ReleaseCalenderRepository
 {
@@ -139,11 +140,11 @@ class ReleaseCalenderRepository
 
         // パラメーターを取得する　未指定の場合は当月
         if ($this->month === 'last') {
-            $saleStartMonth = date('Y-m-01', strtotime('-1 months'));
+            $saleStartMonth = date('Y-m', strtotime('-1 months'));
         } else if ($this->month === 'next') {
-            $saleStartMonth = date('Y-m-01', strtotime('+1 months'));
+            $saleStartMonth = date('Y-m', strtotime('+1 months'));
         } else {
-            $saleStartMonth = date('Y-m-01');
+            $saleStartMonth = date('Y-m');
         }
 
         // ソートの指定
@@ -158,7 +159,7 @@ class ReleaseCalenderRepository
         $mappingData = $this->genreMapping($this->genreId);
         $cacheData = $himoReleaseOrder->setConditionGenreIdAndMonth(
             $this->genreId,
-            $saleStartMonth,
+            $saleStartMonth.'-01',
             $mappingData['productSellRentalFlg'],
             $this->sort
         )->count();
@@ -170,7 +171,7 @@ class ReleaseCalenderRepository
                 'api' => 'release',
                 'id' => $this->month . '_' . $this->genreId . '_0',
                 'genreId' => $this->genreId,
-                'month' => $this->month,
+                'saleStartMonth' => $saleStartMonth,
                 'productSellRentalFlg' => $mappingData['productSellRentalFlg'],
                 'adultFlg' => $mappingData['adultFlg'],
                 'msdbItem' => $mappingData['msdbItem'],
@@ -184,7 +185,7 @@ class ReleaseCalenderRepository
             }
             // 10件づつ処理
             $processLimit = 10;
-            $himo->setLimit(10);
+            $himo->setLimit($processLimit);
             // 検索
             $response = $himo->searchCrossworksForRelease($params)->get();
             // 初回だけ全体件数の取得
@@ -227,15 +228,15 @@ class ReleaseCalenderRepository
             $saleStartDateFrom = date('Y-m-01 00:00:00');
             $saleStartDateTo = date('Y-m-d 00:00:00');
         }
-        $this->totalCount = $himoReleaseOrder->setConditionGenreIdAndMonth(
+        $himoReleaseOrder->setConditionGenreIdAndMonth(
             $this->genreId,
-            $saleStartMonth,
+            $saleStartMonth . '-01',
             $mappingData['productSellRentalFlg'],
             $this->sort,
             $mediaFormat,
             $saleStartDateFrom,
             $saleStartDateTo
-        )->count();
+        );
         $this->totalCount = $himoReleaseOrder->count();
         // キャッシュしたデータから対象の作品及び商品情報を集約し取得する。
         $results = $himoReleaseOrder
@@ -262,7 +263,7 @@ class ReleaseCalenderRepository
     public function genreMapping($genreId)
     {
         $productSellRentalFlg = '';
-        $adultFlg = '';
+        $adultFlg = '2';
         if ($genreId >= 1 && $genreId <= 16) {
             $msdbItem = ['video'];
             if ($genreId >= 1 && $genreId <= 8) {
@@ -290,18 +291,11 @@ class ReleaseCalenderRepository
         } else if ($genreId >= 56 && $genreId <= 80) {
             $msdbItem = ['video'];
             $adultFlg = '1';
-            if ($genreId >= 1 && $genreId <= 8) {
                 $productSellRentalFlg = '2';
-            } else {
-                $productSellRentalFlg = '1';
-            }
-        } else if ($genreId >= 51 && $genreId <= 55) {
-            $msdbItem = ['game'];
-            $productSellRentalFlg = '1';
-        } else if ($genreId >= 56 && $genreId <= 80) {
-            $msdbItem = ['video'];
+        } else if ($genreId >= 81 && $genreId <= 81) {
+            $msdbItem = ['book'];
             $adultFlg = '1';
-            $productSellRentalFlg = '2';
+                $productSellRentalFlg = '1';
         }
         return [
             'productSellRentalFlg' => $productSellRentalFlg,

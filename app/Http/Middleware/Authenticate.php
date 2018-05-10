@@ -9,16 +9,13 @@ class Authenticate
 {
     public function handle($request, Closure $next)
     {
-        // テスト用
-        return $next($request);
-
-        // $apiKey = $request->header('Authorization');
-        // if ($apiKey) {
-        //     $apiKeys = config('api_key');
-        //     if (in_array($apiKey, $apiKeys)) {
-        //         return $next($request);
-        //     }
-        // }
-        // throw new AuthorizationException();
+         $apiKey = $request->header('Authorization');
+         if ($apiKey) {
+             $apiKeys = config('api_key');
+             if (in_array($apiKey, $apiKeys)) {
+                 return $next($request);
+             }
+         }
+         throw new AuthorizationException();
     }
 }

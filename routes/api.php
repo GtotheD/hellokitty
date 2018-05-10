@@ -506,9 +506,9 @@ $router->group([
 
     $router->get('release/{month}/{genreId}', function (Request $request, $month, $genreId) {
         $response = [];
-        $onlyReleased = $request->input('onlyReleased', false);
-        $sort = $request->input('sort');
         $releaseCalenderRepository = new ReleaseCalenderRepository();
+        $releaseCalenderRepository->setLimit($request->input('limit', 10));
+        $releaseCalenderRepository->setOffset($request->input('offset', 0));
         $releaseCalenderRepository->setMonth($month);
         $releaseCalenderRepository->setGenreId($genreId);
         $releaseCalenderRepository->setSort($request->input('sort'));
