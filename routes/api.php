@@ -153,6 +153,7 @@ $router->group([
         $work = new WorkRepository();
         $work->setSaleType($request->input('saleType', 'rental'));
         $ageLimitCheck = $request->input('ageLimitCheck', false);
+        $work->setAgeLimitCheck($ageLimitCheck);
         $result = $work->get($workId);
         $checkAgeLimit = $work->checkAgeLimit($result['ratingId'], $result['bigGenreId']);
         if ($ageLimitCheck !== 'true') {

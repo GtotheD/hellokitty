@@ -463,11 +463,12 @@ class WorkRepository
                     }
                 }
             }
-            $displayImage = true;
+
             foreach ($data['results']['rows'] as $row) {
                 $base = $this->format($row);
                 $itemType = $this->convertWorkTypeIdToStr($base['work_type_id']);
                 $saleTypeHas = $this->parseFromArray($row['products'], $itemType);
+                $displayImage = true;
                 if ($this->ageLimitCheck !== 'true') {
                     if ($this->checkAgeLimit(
                         $base['rating_id'], $base['big_genre_id']) === true ||
