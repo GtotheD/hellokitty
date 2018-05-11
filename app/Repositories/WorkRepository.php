@@ -278,16 +278,6 @@ class WorkRepository
             $product = (array)$productModel->setConditionByWorkIdNewestProduct($response['workId'], $this->saleType)->toCamel()->getOne();
         }
         if (!empty($product)) {
-            // add docs
-            // get First Docs
-//            if (array_key_exists('docs', $product)) {
-//                $docs = json_decode($product['docs'], true);
-//                if (!empty($docs)) {
-//                    foreach ($docs as $doc) {
-//                        $response['docText'] = $doc['doc_text'];
-//                    }
-//                }
-//            }
             // add supplement
             if ($product['msdbItem'] === 'game') {
                 $response['supplement'] = $product['gameModelName'];
