@@ -280,14 +280,14 @@ class WorkRepository
         if (!empty($product)) {
             // add docs
             // get First Docs
-            if (array_key_exists('docs', $product)) {
-                $docs = json_decode($product['docs'], true);
-                if (!empty($docs)) {
-                    foreach ($docs as $doc) {
-                        $response['docText'] = $doc['doc_text'];
-                    }
-                }
-            }
+//            if (array_key_exists('docs', $product)) {
+//                $docs = json_decode($product['docs'], true);
+//                if (!empty($docs)) {
+//                    foreach ($docs as $doc) {
+//                        $response['docText'] = $doc['doc_text'];
+//                    }
+//                }
+//            }
             // add supplement
             if ($product['msdbItem'] === 'game') {
                 $response['supplement'] = $product['gameModelName'];
@@ -327,6 +327,28 @@ class WorkRepository
                 'sell' => ($productModel->setConditionByWorkIdSaleType($response['workId'], 'sell')->count() > 0) ? true : false,
                 'rental' => ($productModel->setConditionByWorkIdSaleType($response['workId'], 'rental')->count() > 0) ? true : false
             ];
+        }
+        $isDocSet = false;
+        if (array_key_exists('docText', $response)) {
+            $docs = json_decode($response['docText'], true);
+            if (!empty($docs)) {
+                foreach ($docs as $doc) {
+                    // あらすじを優先してセット
+                    if($doc['doc_type_id'] === '02') {
+                        $response['docText'] = StripTags($doc['doc_text']);
+                        $isDocSet = true;
+                        break;
+                    } else if ($doc['doc_type_id'] === '01' ) {
+                        $response['docText'] = StripTags($doc['doc_text']);
+                        $isDocSet = true;
+                        break;
+                    }
+                }
+                // docがセットできなかった場合はブランクにする。
+                if($isDocSet === false) {
+                    $response['docText'] = '';
+                }
+            }
         }
         return $response;
     }
@@ -672,6 +694,10 @@ class WorkRepository
         $base['jacket_l'] = trimImageTag($row['jacket_l']);
         $base['scene_l'] = $this->sceneFormat($row['scene_l']);
         $base['sale_start_date'] = $row['sale_start_date'];
+        if(array_key_exists('docs', $row)) {
+            $base['doc_text'] = json_encode($row['docs']);
+        }
+
         if ($isNarrow === false) {
             $base['big_genre_id'] = $row['genres'][0]['big_genre_id'];
             $base['big_genre_name'] = $row['genres'][0]['big_genre_name'];

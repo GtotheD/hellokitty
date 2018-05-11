@@ -217,13 +217,13 @@ class ProductRepository
                 if(!empty($docs)) {
                     foreach ($docs as $doc) {
                         if($doc['doc_type_id'] === '02') {
-                            $product['docText'] = $doc['doc_text'];
+                            $product['docText'] = StripTags($doc['doc_text']);
                         }
                         if($doc['doc_type_id'] === '04') {
-                            $product['contents'] = contentsFormat($doc['doc_text']);
+                            $product['contents'] = StripTags(contentsFormat($doc['doc_text']));
                         }
                         if($doc['doc_type_id'] === '11') {
-                            $product['privilege'] = $doc['doc_text'];
+                            $product['privilege'] = StripTags($doc['doc_text']);
                         }
                     }
                 }

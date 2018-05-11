@@ -245,7 +245,7 @@ class AccessTest extends TestCase
      */
     public function search()
     {
-        $response = $this->getJsonWithAuth('/search/%E5%91%BD');
+        $response = $this->getJsonWithAuth('/search/aaa');
         $response->assertResponseStatus(200);
     }
     /**
