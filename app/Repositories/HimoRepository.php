@@ -141,7 +141,8 @@ class HimoRepository extends ApiRequesterRepository
 
     public function productDetail($ids, $idType = self::ID_TYPE ,$produtTypeId )
     {
-        $this->api = 'productDetail';
+
+        $this->api = 'product_detail';
         $this->id = $ids;
         if(env('APP_ENV') === 'local'){
             return $this;
@@ -384,6 +385,7 @@ class HimoRepository extends ApiRequesterRepository
             $filename .= '_2';
             $apiName = 'xmedia';
         }
+
         $path = base_path('tests/himo/');
         $path = $path . $apiName;
         if(!realpath($path . '/' . $filename)) {
