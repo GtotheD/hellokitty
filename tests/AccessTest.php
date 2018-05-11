@@ -64,6 +64,37 @@ class AccessTest extends TestCase
     }
 
     /**
+     * 巻数を付与されていることの確認
+     * @test
+     */
+    public function workProductCheckNumberOfVolumeForBook()
+    {
+        $url = '/work/PTA0000G66F0';
+        $this->getJsonWithAuth( $url);
+        $response = $this->getJsonWithAuth('/work/PTA0000G66F0/products');
+        $response->seeJson([
+            'totalCount' => 65,
+            'productName' => '進撃の巨人<限定版> DVD付き（26）',
+        ]);
+    }
+
+    /**
+     * 巻数が一巻のみの場合は巻数を付与しない場合のテスト
+     * @test
+     */
+    public function workProductCheckNotNumberOfVolumeForBook()
+    {
+        $url = '/work/PTA0000R81I8';
+        $this->getJsonWithAuth( $url);
+        $response = $this->getJsonWithAuth('/work/PTA0000R81I8/products');
+        $response->seeJson([
+                'totalCount' => 1,
+                'productName' => 'こちら葛飾区亀有公園前派出所 ∞巻<特装版>',
+            ]);
+    }
+
+
+    /**
      * @test
      */
     public function workProductRental()
@@ -214,7 +245,7 @@ class AccessTest extends TestCase
      */
     public function search()
     {
-        $response = $this->getJsonWithAuth('/search/%E5%91%BD');
+        $response = $this->getJsonWithAuth('/search/aaa');
         $response->assertResponseStatus(200);
     }
     /**

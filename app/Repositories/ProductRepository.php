@@ -208,7 +208,7 @@ class ProductRepository
         // reformat data
         foreach ($products as $product) {
             $product = (array)$product;
-            if (substr($product['itemCd'], -2) === '75') {
+            if (substr($product['itemCd'], -2) === '75' && !empty($product['numberOfVolume'])) {
                 $product['productName'] = $product['productName'] . "（{$product['numberOfVolume']}）";
             }
             $product['productKey'] = ($product['productTypeId'] == self::PRODUCT_TYPE_SELL) ? $product['jan'] : $product['rentalProductCd'];
@@ -217,13 +217,13 @@ class ProductRepository
                 if(!empty($docs)) {
                     foreach ($docs as $doc) {
                         if($doc['doc_type_id'] === '02') {
-                            $product['docText'] = $doc['doc_text'];
+                            $product['docText'] = StripTags($doc['doc_text']);
                         }
                         if($doc['doc_type_id'] === '04') {
-                            $product['contents'] = contentsFormat($doc['doc_text']);
+                            $product['contents'] = StripTags(contentsFormat($doc['doc_text']));
                         }
                         if($doc['doc_type_id'] === '11') {
-                            $product['privilege'] = $doc['doc_text'];
+                            $product['privilege'] = StripTags($doc['doc_text']);
                         }
                     }
                 }
