@@ -431,38 +431,7 @@ class WorkRepository
                 'rows' => []
             ];
 
-            //check counts of all itemType
-            $ItemTypesCheck = ['cd', 'dvd', 'book', 'game'];
-            $dataCounts = $data;
-            if (in_array(strtolower($itemType), $ItemTypesCheck)) {
-                $params['itemType'] = 'all';
-                $params['responseLevel'] = '1';
-                $himoRepository->setLimit(1);
-                $himoRepository->setOffset(0);
 
-                $dataCounts = $himoRepository->searchCrossworks($params, $sort)->get();
-
-                $result['totalCount'] = $dataCounts['results']['total'];
-
-            }
-            if (!empty($dataCounts['results']['facets']['msdb_item'])) {
-                foreach ($dataCounts['results']['facets']['msdb_item'] as $value) {
-                    switch ($value['key']) {
-                        case 'video':
-                            $result['counts']['dvd'] = $value['count'];
-                            break;
-                        case 'audio':
-                            $result['counts']['cd'] = $value['count'];
-                            break;
-                        case 'book':
-                            $result['counts']['book'] = $value['count'];
-                            break;
-                        case 'game':
-                            $result['counts']['game'] = $value['count'];
-                            break;
-                    }
-                }
-            }
             $displayImage = true;
             foreach ($data['results']['rows'] as $row) {
                 $base = $this->format($row);
@@ -497,6 +466,39 @@ class WorkRepository
                 ];
             }
 
+        }
+
+        //check counts of all itemType
+        $ItemTypesCheck = ['cd', 'dvd', 'book', 'game'];
+        $dataCounts = $data;
+        if (in_array(strtolower(array_get($params, 'itemType')), $ItemTypesCheck)) {
+            $params['itemType'] = 'all';
+            $params['responseLevel'] = '1';
+            $himoRepository->setLimit(1);
+            $himoRepository->setOffset(0);
+
+            $dataCounts = $himoRepository->searchCrossworks($params, $sort)->get();
+
+            $result['totalCount'] = $dataCounts['results']['total'];
+
+        }
+        if (!empty($dataCounts['results']['facets']['msdb_item'])) {
+            foreach ($dataCounts['results']['facets']['msdb_item'] as $value) {
+                switch ($value['key']) {
+                    case 'video':
+                        $result['counts']['dvd'] = $value['count'];
+                        break;
+                    case 'audio':
+                        $result['counts']['cd'] = $value['count'];
+                        break;
+                    case 'book':
+                        $result['counts']['book'] = $value['count'];
+                        break;
+                    case 'game':
+                        $result['counts']['game'] = $value['count'];
+                        break;
+                }
+            }
         }
 
         return $result;
