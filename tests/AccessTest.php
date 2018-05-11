@@ -214,6 +214,22 @@ class AccessTest extends TestCase
         $response = $this->getJsonWithAuth('/product/PDT0000U2COC');
         $response->assertResponseStatus(200);
     }
+
+    /**
+     * CDの場合、product_detailの情報を取得する
+     *
+     * @test
+     */
+    public function productCd()
+    {
+        $url = '/work/PTA0000V402M';
+        $response = $this->getJsonWithAuth( $url);
+
+        $response = $this->getJsonWithAuth('/product/PDT0000VH302');
+        $response->assertResponseStatus(200);
+    }
+
+
     /**
      * @test
      */

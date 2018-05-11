@@ -458,7 +458,9 @@ class ProductRepository
         $hour = (int)substr($string, 0,2);
         $min = (int)substr($string, 2,2);
         $min = $min + $hour * 60;
-        $sec = (int)substr($string, 4,2);
+        if ($min === 0 ) {
+            return '';
+        }
         return ($hour != '00')? "{$min}分" : "{$min}分";
     }
 }
