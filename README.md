@@ -25,4 +25,7 @@ TOP関連のインポートと、在庫関連各APIへの500エラーが出な�
 #### テストケース別にログを出力
 ```./vendor/bin/phpunit --testdox```
 
+#### 対象のテストクラスのみをテスト
+./vendor/bin/phpunit ./tests/AccessTest
+
 ※テストケースについては実装完了後に追加<br>

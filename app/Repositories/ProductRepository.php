@@ -208,7 +208,7 @@ class ProductRepository
         // reformat data
         foreach ($products as $product) {
             $product = (array)$product;
-            if (substr($product['itemCd'], -2) === '75') {
+            if (substr($product['itemCd'], -2) === '75' && !empty($product['numberOfVolume'])) {
                 $product['productName'] = $product['productName'] . "（{$product['numberOfVolume']}）";
             }
             $product['productKey'] = ($product['productTypeId'] == self::PRODUCT_TYPE_SELL) ? $product['jan'] : $product['rentalProductCd'];
