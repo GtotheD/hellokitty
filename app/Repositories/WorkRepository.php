@@ -144,7 +144,7 @@ class WorkRepository
         return $this->get($workId, $columns);
     }
 
-    public function get($workId, $selectColumns = null, $idType = '0102')
+    public function get($workId, $selectColumns = null, $idType = '0102', $addSaleTypeHas = true)
     {
         $product = new Product;
         $response = [];
@@ -166,9 +166,9 @@ class WorkRepository
         $this->work->setConditionByWorkId($workId);
         if ($this->work->count() == 0) {
             $himo = new HimoRepository();
-            $himoResult = $himo->crosswork([$workId], $idType)->get(true);
+            $himoResult = $himo->crosswork([$workId], $idType)->get();
             if (empty($himoResult['results']['rows'])) {
-                throw new NoContentsException();
+                return null;
             }
             // インサートしたものを取得するため条件を再設定
             $workId = $himoResult['results']['rows'][0]['work_id'];
@@ -183,7 +183,16 @@ class WorkRepository
         } else {
             $response = (array)$this->work->selectCamel($selectColumns)->getOne();
         }
-        $response = $this->formatAddOtherData($response);
+        // プロダクトベースで撮ってきた場合は、対象プロダクトの情報で付加情報をつける
+        if ($productResult) {
+            // productのレスポンスがキャメルケースではなく、formatAddOtherDataではキャメルケースの処理の為、変換
+            foreach ($productResult as $key => $item ) {
+                $productResultCamel[camel_case($key)] = $item;
+            }
+            $response = $this->formatAddOtherData($response, $addSaleTypeHas, $productResultCamel);
+        } else {
+            $response = $this->formatAddOtherData($response, $addSaleTypeHas);
+        }
 
         return $response;
     }
