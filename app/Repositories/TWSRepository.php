@@ -79,6 +79,12 @@ class TWSRepository extends ApiRequesterRepository
      */
     public function ranking($rankingConcentrationCd, $period)
     {
+        $this->api = 'ranking';
+        $this->id = $rankingConcentrationCd;
+        if(env('APP_ENV') === 'local'){
+            return $this;
+        }
+
         $this->apiPath = $this->apiHost . '/media/v0/works/tsutayarankingresult.json';
         $this->queryParams = [
             'api_key' => $this->apiKey,
@@ -184,4 +190,32 @@ class TWSRepository extends ApiRequesterRepository
         ];
         return $maps[$storeProductItemCd];
     }
+
+    // override
+    // getが実行された際に、キャッシュへ問い合わせを行う。
+    // データ存在していれば、DBから値を取得
+    // 存在していなければ、Himoから取得して返却する
+    // 返却した値は、DBに格納する
+    public function get($jsonResponse = true)
+    {
+        if(env('APP_ENV') !== 'local' && env('APP_ENV') !== 'testing' ){
+            return parent::get($jsonResponse);
+        }
+        return $this->stub($this->api, $this->id);
+    }
+
+    private function stub($apiName, $filename)
+    {
+
+        $path = base_path('tests/tws/');
+        $path = $path . $apiName;
+        if(!realpath($path . '/' . $filename)) {
+            return null;
+        }
+        $file = file_get_contents($path . '/' . $filename);
+        // Remove new line character
+        return \GuzzleHttp\json_decode(str_replace(["\n","\r\n","\r", PHP_EOL], '', $file), true);
+        // return json_decode($file, TRUE);
+    }
+
 }

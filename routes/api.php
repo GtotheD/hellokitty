@@ -526,6 +526,15 @@ $router->group([
         ];
         return response()->json($response);
     });
+    $router->get('ranking/{codeType:himo|agg}/{code}[/{period}]', function (Request $request, $codeType, $code, $period = null) {
+        $sectionRepository = new SectionRepository;
+        $sectionRepository->setLimit(20);
+        $sectionRepository->setSupplementVisible($request->input('supplementVisibleFlg', false));
+        $sectionData = $sectionRepository->ranking($codeType, $code, $period);
+        return $sectionData;
+
+        return response()->json($response);
+    });
 
     // 検証環境まで有効にするテスト要
     if (env('APP_ENV') === 'local' || env('APP_ENV') === 'develop' || env('APP_ENV') === 'staging') {

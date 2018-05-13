@@ -311,20 +311,39 @@ class SectionRepository
     private function convertFormatFromRanking($rows)
     {
         $workRepository = new WorkRepository;
+        if (empty($rows['entry'])) {
+            return null;
+        }
         foreach ($rows['entry'] as $row) {
-            if (empty($row)) {
-                return null;
+            $work = $workRepository->get($row['productKey'], [], $this->productKeyType($row['productKey']), false);
+            if(empty($work)) {
+                continue;
             }
-            $work = $workRepository->get($row['productKey'], [], $this->productKeyType($row['productKey']));
-            $rowUnit = [
-                'saleStartDate' => null,
-                'imageUrl' => $row['productImage']['large'],
-                'title' => $row['productTitle'],
-                'workTitle' => $work['workTitle'],
-                'workId' => $work['workId'],
-                'code' => $row['productKey'],
-                'urlCode' => $row['urlCd']
-            ];
+            if(empty($row['lastRankNo'])) {
+                $comparison = 'new';
+            } else if ($row['rankNo'] == $row['lastRankNo']) {
+                $comparison = 'keep';
+            } else if ($row['rankNo'] < $row['lastRankNo']) {
+                $comparison = 'up';
+            } else if ($row['rankNo'] > $row['lastRankNo']) {
+                $comparison = 'down';
+            }
+            $rowUnit['title'] = $row['productTitle'];
+            $rowUnit['workTitle'] = $work['workTitle'];
+            $rowUnit['workId'] = $work['workId'];
+            $rowUnit['code'] = $row['productKey'];
+            $rowUnit['urlCode'] = $row['urlCd'];
+            $rowUnit['rankNo'] = $row['rankNo'];
+            $rowUnit['comparison'] = $comparison;
+            $rowUnit['jacketL'] = $work['jacketL'];
+            $rowUnit['newFlg'] = $work['newFlg'];
+            $rowUnit['supplement'] = $work['supplement'];
+            $rowUnit['supplement'] = $work['supplement'];
+            $rowUnit['saleType'] = $work['saleType'];
+            $rowUnit['itemType'] = $work['itemType'];
+            $rowUnit['adultFlg'] = $work['adultFlg'];
+            $rowUnit['saleStartDate'] = null; // 旧仕様でnullで返していた為nullで返す。
+            
             // modelNameがあったゲームなので、ゲーム名を取得するようにする。
             if (!$this->supplementVisible) {
                 if (array_key_exists('modelName', $row)) {
