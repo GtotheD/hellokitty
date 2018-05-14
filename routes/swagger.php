@@ -1516,6 +1516,18 @@
  *       description="出演者・アーティスト・著者・機種等を表示/非表示を切り替える為のフラグ。trueにすると非表示になる。",
  *       type="boolean"
  *     ),
+ *     @SWG\Parameter(
+ *       name="page",
+ *       in="query",
+ *       description="ページ番号",
+ *       type="string"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="limit",
+ *       in="query",
+ *       description="１ページ毎の取得件数",
+ *       type="string"
+ *     ),
  *     @SWG\Response(
  *          response=200,
  *          description="success",
