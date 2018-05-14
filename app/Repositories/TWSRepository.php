@@ -17,7 +17,8 @@ class TWSRepository extends ApiRequesterRepository
     protected $sort;
     protected $offset;
     protected $limit;
-    protected  $apiHost;
+    protected $page;
+    protected $apiHost;
     protected $apiKey;
 
     public function __construct($sort = 'asc', $offset = 0, $limit = 10)
@@ -26,6 +27,7 @@ class TWSRepository extends ApiRequesterRepository
         $this->sort = $sort;
         $this->offset = $offset;
         $this->limit = $limit;
+        $this->page = '1';
         $this->apiHost = env('TWS_API_HOST');
         $this->apiKey = env('TWS_API_KEY');
     }
@@ -45,6 +47,23 @@ class TWSRepository extends ApiRequesterRepository
     {
         $this->offset = $offset;
     }
+
+    /**
+     * @param mixed $page
+     */
+    public function setPage($page)
+    {
+        $this->page = $page;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPage()
+    {
+        return $this->page;
+    }
+
     /*
      * 詳細情報を取得するAPIをセットする
      */
@@ -91,7 +110,8 @@ class TWSRepository extends ApiRequesterRepository
             'rankingConcentrationCd' => $rankingConcentrationCd,
             'tolPlatformCode' => '00',
             'rankinglimit' => $this->limit,
-            'dispNums' => '20',
+            'dispNums' => '100',
+            'dispPageNo' => $this->page,
             '_secure' => '1',
             '_pretty' => '1'
         ];
