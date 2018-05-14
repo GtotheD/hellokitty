@@ -99,6 +99,14 @@ class SectionRepository
     }
 
     /**
+     * @param mixed $page
+     */
+    public function setPage($page)
+    {
+        $this->page = $page;
+    }
+
+    /**
      * @param mixed $supplementVisible
      */
     public function setSupplementVisible($supplementVisible)
@@ -182,10 +190,12 @@ class SectionRepository
         }
         $tws = new TWSRepository;
         $tws->setLimit($this->limit);
+        $tws->setPage($this->limit);
         $rows = $tws->ranking($rankingConcentrationCd, $period)->get();
         $response = [
             'hasNext' => null,
             'totalCount' => $rows['totalResults'],
+            'aggregationPeriod' => $this->aggregationPeriodFormat($rows['totalingPeriod']),
             'rows' => $this->convertFormatFromRanking($rows),
         ];
         if ($title) {
@@ -197,6 +207,26 @@ class SectionRepository
         return $response;
     }
 
+    public function aggregationPeriodFormat($totalingPeriod)
+    {
+        $replacementString = mb_ereg_replace("(月$)|(日\(.\))",'', $totalingPeriod);
+        $replacementString = mb_ereg_replace("年|月",'/', $replacementString);
+        // 日があった場合は日次の変換
+        if(mb_ereg_match('.*日(.*)$', $totalingPeriod)) {
+            $replacementString = date('Y/m/d', strtotime($replacementString));
+        } else if (mb_ereg_match('.*～.*', $totalingPeriod)) {
+            $explodedArray = explode('～', $replacementString);
+            $startDate = date('Y/m/d', strtotime($explodedArray[0]));
+            $endDate = date('Y/m/d', strtotime($explodedArray[1]));
+            $replacementString = $startDate. '～'.$endDate;
+        } else {
+            $replacementString = date('Y/m', strtotime($replacementString . '/01'));
+        }
+
+        // 〜があった場合は週次の変換
+        // 上記以外は月次の変換
+        return $replacementString;
+    }
 
     // 01:レンタルDVD 02:レンタルCD 03:レンタルコミック 04:販売DVD 05:販売CD 06:販売ゲーム 07:販売本・コミック
     public function releaseManual($category, $releaseDateTo)

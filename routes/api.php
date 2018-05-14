@@ -528,7 +528,8 @@ $router->group([
     });
     $router->get('ranking/{codeType:himo|agg}/{code}[/{period}]', function (Request $request, $codeType, $code, $period = null) {
         $sectionRepository = new SectionRepository;
-        $sectionRepository->setLimit(20);
+        $sectionRepository->setLimit($request->input('limit', 20));
+        $sectionRepository->setPage($request->input('page', 1));
         $sectionRepository->setSupplementVisible($request->input('supplementVisibleFlg', false));
         $sectionData = $sectionRepository->ranking($codeType, $code, $period);
         return $sectionData;
