@@ -1552,3 +1552,80 @@
  *     @SWG\Response(response=500, description="Server error")
  * )
  */
+/**
+ * @SWG\Get(
+ *     path="/release/has/recommend/",
+ *     description="TSUTAYA一押しの有無一覧",
+ *     produces={"application/json"},
+ *     tags={"Release"},
+ *     security={{"api_key":{}}},
+ *     @SWG\Parameter(
+ *       name="genreId",
+ *       in="query",
+ *       description="独自のジャンルID（未指定で全て返却）",
+ *       type="string"
+ *     ),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="data",
+ *                  type="object",
+ *              @SWG\Property(
+ *                  property="last",
+ *                  type="array",
+ *                  @SWG\Items(
+ *                      @SWG\Property(
+ *                          property="genreId",
+ *                          type="string",
+ *                          description="独自のジャンルID"
+ *                      ),
+ *                      @SWG\Property(
+ *                          property="exist",
+ *                          type="string",
+ *                          description="データの有無"
+ *                      ),
+ *                  ),
+ *              ),
+ *              @SWG\Property(
+ *                  property="this",
+ *                  type="array",
+ *                  @SWG\Items(
+ *                      @SWG\Property(
+ *                          property="genreId",
+ *                          type="string",
+ *                          description="独自のジャンルID"
+ *                      ),
+ *                      @SWG\Property(
+ *                          property="exist",
+ *                          type="string",
+ *                          description="データの有無"
+ *                      ),
+ *                  ),
+ *              ),
+ *              @SWG\Property(
+ *                  property="next",
+ *                  type="array",
+ *                  @SWG\Items(
+ *                      @SWG\Property(
+ *                          property="genreId",
+ *                          type="string",
+ *                          description="独自のジャンルID"
+ *                      ),
+ *                      @SWG\Property(
+ *                          property="exist",
+ *                          type="string",
+ *                          description="データの有無"
+ *                      ),
+ *                  ),
+ *              ),
+ *              ),
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */

@@ -315,6 +315,12 @@ class ReleaseCalenderRepository
         return $listString;
     }
 
+    public function hasRecommend ()
+    {
+        $mappingData = $this->genreMapping($this->genreId);
+
+    }
+
     private function outputColumn()
     {
         return [
