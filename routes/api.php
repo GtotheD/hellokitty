@@ -506,7 +506,6 @@ $router->group([
     });
 
     $router->get('release/{month}/{genreId}', function (Request $request, $month, $genreId) {
-        $response = [];
         $releaseCalenderRepository = new ReleaseCalenderRepository();
         $releaseCalenderRepository->setLimit($request->input('limit', 10));
         $releaseCalenderRepository->setOffset($request->input('offset', 0));
@@ -522,6 +521,7 @@ $router->group([
         $response = [
             'hasNext' => $releaseCalenderRepository->getHasNext(),
             'totalCount' => $releaseCalenderRepository->getTotalCount(),
+            'baseMonth' => getBaseMonth($month),
             'rows' => $rows
         ];
         return response()->json($response);

@@ -251,7 +251,10 @@ class ReleaseCalenderRepository
             $this->hasNext = false;
         }
         foreach ($results as $result) {
-            $formatedData[] = $workRepository->formatAddOtherData((array)$result, false, (array)$result);
+            $tmpData = $workRepository->formatAddOtherData((array)$result, false, (array)$result);
+
+            // Change productName -> productTitle
+            $formatedData[] = arrayChangeKey($tmpData, 'productName', 'productTitle');
         }
 
         if (empty($formatedData)) {
