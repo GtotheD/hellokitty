@@ -190,6 +190,9 @@ class WorkRepository
                 $productResultCamel[camel_case($key)] = $item;
             }
             $response = $this->formatAddOtherData($response, $addSaleTypeHas, $productResultCamel);
+            // saleStartDateをproductのものでで書き換える。
+            $response['saleStartDate'] = $productResultCamel['saleStartDate'];
+
         } else {
             $response = $this->formatAddOtherData($response, $addSaleTypeHas);
         }
