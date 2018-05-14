@@ -186,7 +186,7 @@ class WorkRepository
         // プロダクトベースで撮ってきた場合は、対象プロダクトの情報で付加情報をつける
         if ($productResult) {
             // productのレスポンスがキャメルケースではなく、formatAddOtherDataではキャメルケースの処理の為、変換
-            foreach ($productResult as $key => $item ) {
+            foreach ($productResult as $key => $item) {
                 $productResultCamel[camel_case($key)] = $item;
             }
             $response = $this->formatAddOtherData($response, $addSaleTypeHas, $productResultCamel);
@@ -310,6 +310,10 @@ class WorkRepository
                 if (!empty($person)) {
                     $response['supplement'] = $person->person_name;
                 }
+                // レンタルDVDの場合はsupplementを空にする
+                if ($product['msdbItem'] === 'video' && $product['productTypeId'] == '2') {
+                    $response['supplement'] = '';
+                }
             }
             if (!empty($product)) {
                 $response['makerName'] = $product['makerName'];
@@ -341,18 +345,18 @@ class WorkRepository
             if (!empty($docs)) {
                 foreach ($docs as $doc) {
                     // あらすじを優先してセット
-                    if($doc['doc_type_id'] === '02') {
+                    if ($doc['doc_type_id'] === '02') {
                         $response['docText'] = StripTags($doc['doc_text']);
                         $isDocSet = true;
                         break;
-                    } else if ($doc['doc_type_id'] === '01' ) {
+                    } else if ($doc['doc_type_id'] === '01') {
                         $response['docText'] = StripTags($doc['doc_text']);
                         $isDocSet = true;
                         break;
                     }
                 }
                 // docがセットできなかった場合はブランクにする。
-                if($isDocSet === false) {
+                if ($isDocSet === false) {
                     $response['docText'] = '';
                 }
             }
@@ -468,7 +472,7 @@ class WorkRepository
                 $saleTypeHas = $this->parseFromArray($row['products'], $itemType);
                 if ($this->ageLimitCheck !== 'true') {
                     if ($this->checkAgeLimit(
-                        $base['rating_id'], $base['big_genre_id']) === true ||
+                            $base['rating_id'], $base['big_genre_id']) === true ||
                         $base['adult_flg'] === 1
                     ) {
                         $displayImage = false;
@@ -628,7 +632,8 @@ class WorkRepository
                     'adultFlg' => ($base['adult_flg'] === 1) ? true : false,
                     'itemType' => $itemType,
                     'saleType' => $saleType,
-                    'supplement' => $saleTypeHas['supplement'],
+                    // DVDの場合は空にする。
+                    'supplement' => ($itemType === 'dvd') ? '' : $saleTypeHas['supplement'],
                     'saleStartDate' => ($row['sale_start_date']) ? date('Y-m-d 00:00:00', strtotime($row['sale_start_date'])) : '',
                     'saleStartDateSell' => ($row['sale_start_date_sell']) ? date('Y-m-d 00:00:00', strtotime($row['sale_start_date_sell'])) : '',
                     'saleStartDateRental' => ($row['sale_start_date_rental']) ? date('Y-m-d 00:00:00', strtotime($row['sale_start_date_rental'])) : '',
@@ -703,7 +708,7 @@ class WorkRepository
         $base['jacket_l'] = trimImageTag($row['jacket_l']);
         $base['scene_l'] = $this->sceneFormat($row['scene_l']);
         $base['sale_start_date'] = $row['sale_start_date'];
-        if(array_key_exists('docs', $row)) {
+        if (array_key_exists('docs', $row)) {
             $base['doc_text'] = json_encode($row['docs']);
         }
 

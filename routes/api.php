@@ -155,6 +155,9 @@ $router->group([
         $ageLimitCheck = $request->input('ageLimitCheck', false);
         $work->setAgeLimitCheck('true');
         $result = $work->get($workId);
+        if (empty($result)) {
+            throw new NoContentsException;
+        }
         $checkAgeLimit = $work->checkAgeLimit($result['ratingId'], $result['bigGenreId']);
         if ($ageLimitCheck !== 'true') {
             if( $checkAgeLimit === true || $result['adultFlg'] === true) {
