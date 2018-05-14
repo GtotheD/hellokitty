@@ -24,3 +24,42 @@ function contentsFormat($contents)
     }
     return $contents;
 }
+
+/**
+ * Return baseMonth value format Y年m月
+ *
+ * @param $month
+ *
+ * @return false|string
+ */
+function getBaseMonth($month)
+{
+    $saleStartMonth = date('Y年m月');
+    if ($month === 'last') {
+        $saleStartMonth = date('Y年m月', strtotime('-1 months'));
+    } else if ($month === 'next') {
+        $saleStartMonth = date('Y年m月', strtotime('+1 months'));
+    }
+    return $saleStartMonth;
+}
+
+/**
+ * Change array key from $oldKey -> $newKey
+ *
+ * @param $array
+ *
+ * @param $oldKey
+ * @param $newKey
+ *
+ * @return array
+ */
+function arrayChangeKey($array, $oldKey, $newKey)
+{
+    if (!array_key_exists($oldKey, $array))
+        return $array;
+
+    $keys = array_keys($array);
+    $keys[array_search($oldKey, $keys)] = $newKey;
+
+    return array_combine($keys, $array);
+}
