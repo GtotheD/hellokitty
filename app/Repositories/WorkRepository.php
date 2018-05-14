@@ -298,6 +298,11 @@ class WorkRepository
                     $roleId = 'EXT0000000UH';
                 } elseif ($product['msdbItem'] === 'book') {
                     $roleId = 'EXT00000BWU9';
+                    // コミレンのみ最新刊のものを取得して表示する。
+                    // レンタルはコミック以外はないのでproductTypeIdで判定
+                    if ($product['productTypeId'] == '2') {
+                        $response['saleStartDate'] = $product['saleStartDate'];
+                    }
                 } elseif ($product['msdbItem'] === 'audio') {
                     $roleId = 'EXT00000000D';
                 }
