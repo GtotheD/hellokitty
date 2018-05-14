@@ -73,6 +73,14 @@ class PeopleRelatedWorksRepository extends ApiRequesterRepository
         $this->saleType = $saleType;
     }
 
+    /**
+     * @param mixed $sort
+     */
+    public function setSort($sort)
+    {
+        $this->sort = $sort;
+    }
+
     public function getWorks($workId)
     {
         $product = new Product();
@@ -145,7 +153,7 @@ class PeopleRelatedWorksRepository extends ApiRequesterRepository
         $workRepository = new WorkRepository();
         $work = new Work();
 
-        $work->getWorkWithProductIdsIn($data, $this->saleType, $workId);
+        $work->getWorkWithProductIdsIn($data, $this->saleType, $workId, $this->sort);
         $this->totalCount = $work->count();
         $workList = $work->selectCamel($this->selectColumn())->get($this->limit, $this->offset);
         if (count($workList) + $this->offset < $this->totalCount) {

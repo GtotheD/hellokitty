@@ -378,6 +378,7 @@ $router->group([
         $peopleRelatedWorksRepository = new PeopleRelatedWorksRepository();
         $peopleRelatedWorksRepository->setOffset($request->input('offset', 0));
         $peopleRelatedWorksRepository->setLimit($request->input('limit', 10));
+        $peopleRelatedWorksRepository->setSort($request->input('sort', 'new'));
         $rows = $peopleRelatedWorksRepository->getWorksByArtist($workId);
 
         $response = [
