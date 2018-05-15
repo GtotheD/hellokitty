@@ -34,11 +34,11 @@ function contentsFormat($contents)
  */
 function getBaseMonth($month)
 {
-    $saleStartMonth = date('Y年m月');
+    $saleStartMonth = date('Y年n月');
     if ($month === 'last') {
-        $saleStartMonth = date('Y年m月', strtotime('-1 months'));
+        $saleStartMonth = date('Y年n月', strtotime('-1 months'));
     } else if ($month === 'next') {
-        $saleStartMonth = date('Y年m月', strtotime('+1 months'));
+        $saleStartMonth = date('Y年n月', strtotime('+1 months'));
     }
     return $saleStartMonth;
 }
