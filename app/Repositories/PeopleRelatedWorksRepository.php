@@ -11,6 +11,7 @@ use App\Model\Product;
 use App\Repositories\HimoRepository;
 use App\Repositories\WorkRepository;
 use App\Repositories\PeopleRepository;
+use App\Repositories\ProductRepository;
 
 class PeopleRelatedWorksRepository extends ApiRequesterRepository
 {
@@ -120,10 +121,13 @@ class PeopleRelatedWorksRepository extends ApiRequesterRepository
 
     public function getWorksByArtist($workId)
     {
-        $people = new PeopleRepository();
+        $people = new People;
         $himo = new HimoRepository();
+        $workRepository = new WorkRepository;
+        $productRepository = new ProductRepository;
 
-        $people = $people->getNewsPeople($workId)->getOne();
+        $newestProduct = $productRepository->getNewestProductByWorkId($workId)->getOne();
+        $people = $workRepository->getPerson($newestProduct->msdb_item, $newestProduct->product_unique_id);
         if (!$people) {
             throw new NoContentsException;
         }
@@ -152,7 +156,7 @@ class PeopleRelatedWorksRepository extends ApiRequesterRepository
     {
         $workRepository = new WorkRepository();
         $work = new Work();
-
+        $workRepository->getWorkList($data);
         $work->getWorkWithProductIdsIn($data, $this->saleType, $workId, $this->sort);
         $this->totalCount = $work->count();
         $workList = $work->selectCamel($this->selectColumn())->get($this->limit, $this->offset);
