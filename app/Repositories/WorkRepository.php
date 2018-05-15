@@ -276,7 +276,7 @@ class WorkRepository
         return $response;
     }
 
-    public function formatAddOtherData($response, $addSaleTypeHas = true, $product = null)
+    public function formatAddOtherData($response, $addSaleTypeHas = true, $product = null, $isList = false)
     {
         // productsからとってくるが、仮データ
         $productModel = new Product();
@@ -298,7 +298,7 @@ class WorkRepository
                 }
             }
             // レンタルDVDの場合はsupplementを空にする
-            if ($product['msdbItem'] === 'video' && $product['productTypeId'] == '2') {
+            if ($product['msdbItem'] === 'video' && $isList === true) {
                 $response['supplement'] = '';
             }
             // コミレンのみ最新刊のものを取得して表示する。
@@ -721,14 +721,15 @@ class WorkRepository
         if (array_key_exists('docs', $row)) {
             $base['doc_text'] = json_encode($row['docs']);
         }
-
         if ($isNarrow === false) {
-            $base['big_genre_id'] = $row['genres'][0]['big_genre_id'];
-            $base['big_genre_name'] = $row['genres'][0]['big_genre_name'];
-            $base['medium_genre_id'] = $row['genres'][0]['medium_genre_id'];
-            $base['medium_genre_name'] = $row['genres'][0]['medium_genre_name'];
-            $base['small_genre_id'] = $row['genres'][0]['small_genre_id'];
-            $base['small_genre_name'] = $row['genres'][0]['small_genre_name'];
+            if (!empty($row['genres'])) {
+                $base['big_genre_id'] = $row['genres'][0]['big_genre_id'];
+                $base['big_genre_name'] = $row['genres'][0]['big_genre_name'];
+                $base['medium_genre_id'] = $row['genres'][0]['medium_genre_id'];
+                $base['medium_genre_name'] = $row['genres'][0]['medium_genre_name'];
+                $base['small_genre_id'] = $row['genres'][0]['small_genre_id'];
+                $base['small_genre_name'] = $row['genres'][0]['small_genre_name'];
+            }
             $base['filmarks_id'] = $this->filmarksIdFormat($row);
             $base['rating_id'] = $row['rating_id'];
             $base['rating_name'] = $row['rating_name'];
