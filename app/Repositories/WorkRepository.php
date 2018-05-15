@@ -253,7 +253,6 @@ class WorkRepository
                     }
                 }
             }
-
         }
 
         // STEP 5: 条件をセット
@@ -283,7 +282,6 @@ class WorkRepository
         $productModel = new Product();
         $productRepository = new  ProductRepository();
 
-        $people = new People;
         $roleId = '';
         $response['supplement'] = '';
         if (empty($product)) {
@@ -294,26 +292,19 @@ class WorkRepository
             if ($product['msdbItem'] === 'game') {
                 $response['supplement'] = $product['gameModelName'];
             } else {
-                if ($product['msdbItem'] === 'video') {
-                    $roleId = 'EXT0000000UH';
-                } elseif ($product['msdbItem'] === 'book') {
-                    $roleId = 'EXT00000BWU9';
-                    // コミレンのみ最新刊のものを取得して表示する。
-                    // レンタルはコミック以外はないのでproductTypeIdで判定
-                    if ($product['productTypeId'] == '2') {
-                        $response['saleStartDate'] = $product['saleStartDate'];
-                    }
-                } elseif ($product['msdbItem'] === 'audio') {
-                    $roleId = 'EXT00000000D';
-                }
-                $person = $people->setConditionByRoleId($product['productUniqueId'], $roleId)->getOne();
+                $person = $this->getPerson($product['msdbItem'], $product['productUniqueId']);
                 if (!empty($person)) {
                     $response['supplement'] = $person->person_name;
                 }
-                // レンタルDVDの場合はsupplementを空にする
-                if ($product['msdbItem'] === 'video' && $product['productTypeId'] == '2') {
-                    $response['supplement'] = '';
-                }
+            }
+            // レンタルDVDの場合はsupplementを空にする
+            if ($product['msdbItem'] === 'video' && $product['productTypeId'] == '2') {
+                $response['supplement'] = '';
+            }
+            // コミレンのみ最新刊のものを取得して表示する。
+            // レンタルはコミック以外はないのでproductTypeIdで判定
+            if ($product['msdbItem'] === 'book' && $product['productTypeId'] == '2') {
+                $response['saleStartDate'] = $product['saleStartDate'];
             }
             if (!empty($product)) {
                 $response['makerName'] = $product['makerName'];
@@ -363,6 +354,25 @@ class WorkRepository
         }
         return $response;
     }
+
+    function getPerson($msdbItem, $productUniqueId) {
+        $people = new People;
+        $roleId = null;
+        $supplement = null;
+        if ($msdbItem === 'video') {
+            $roleId = 'EXT0000000UH';
+        } elseif ($msdbItem === 'book') {
+            $roleId = 'EXT00000BWU9';
+        } elseif ($msdbItem === 'audio') {
+            $roleId = 'EXT00000000D';
+        }
+        $person = $people->setConditionByRoleId($productUniqueId, $roleId)->getOne();
+        if (!empty($person)) {
+            return $person;
+        }
+        return null;
+    }
+
 
     /**
      * Insert work data and related work data: Product, People
