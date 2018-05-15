@@ -564,7 +564,8 @@ class WorkRepository
                     $supplement = $product['game_model_name'];
                 } else {
                     if ($itemType === 'dvd') {
-                        $roleId = 'EXT0000000UH';
+                        // DVDは表示させない為ブランク
+                        $roleId = '';
                     } elseif ($itemType === 'book') {
                         $roleId = 'EXT00000BWU9';
                     } elseif ($itemType === 'cd') {
@@ -940,7 +941,7 @@ class WorkRepository
         $workItems = [];
         foreach ($works as $workItem) {
             $workItem = (array)$workItem;
-            $formatedItem = $this->formatAddOtherData($workItem, false, $workItem);
+            $formatedItem = $this->formatAddOtherData($workItem, false, $workItem, true);
             foreach ($formatedItem as $key => $value) {
                 if (in_array($key, $this->outputColumn())) {
                     $formatedItemSelectColumn[$key] = $value;
