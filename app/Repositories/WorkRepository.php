@@ -706,7 +706,7 @@ class WorkRepository
         $base['work_title_orig'] = $row['work_title_orig'];
         $base['copyright'] = $row['work_copyright'];
         $base['jacket_l'] = trimImageTag($row['jacket_l']);
-        $base['scene_l'] = $this->sceneFormat($row['scene_l']);
+        $base['scene_l'] = $this->sceneFormat($row['scenes']);
         $base['sale_start_date'] = $row['sale_start_date'];
         if (array_key_exists('docs', $row)) {
             $base['doc_text'] = json_encode($row['docs']);
@@ -769,7 +769,24 @@ class WorkRepository
     {
         $result = [];
         foreach ($data as $image) {
-            $result[] = trimImageTag($image['url']);
+            // 表示条件
+            // disable_flg（緊急非表示用フラグ）
+            //  = 0：表示可
+            // provider（連携元サービス）
+            //  =  0（YouTube） ：非表示
+            //  =  1（Jst）     ：非表示
+            //  =  2（Stinglay）：[size = 3]のもののみ表示
+            //  = 99（その他）  ：全て表示
+            if ($image['disable_flg'] != '0') {
+                continue;
+            }
+            if ($image['provider'] == '2') {
+                if ($image['size'] == '3') {
+                    $result[] = trimImageTag($image['url'], true);
+                }
+            } elseif ($image['provider'] == '99') {
+                $result[] = trimImageTag($image['url'], true);
+            }
         }
         return json_encode($result, JSON_UNESCAPED_SLASHES);
     }
