@@ -166,7 +166,7 @@ class SeriesRepository
         // Fetch workList and get response
         $rows = [];
         foreach ($workList as $work) {
-            $base = $workRepository->formatAddOtherData((array)$work);
+            $base = $workRepository->formatAddOtherData((array)$work, null, null, true);
             $rows[] = [
                 'workId' => $base['workId'],
                 'urlCd' => $base['urlCd'],
