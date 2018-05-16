@@ -530,6 +530,17 @@ $router->group([
         ];
         return response()->json($response);
     });
+
+    $router->get('release/has/recommend', function () {
+        $releaseCalenderRepository = new ReleaseCalenderRepository();
+        $response = $releaseCalenderRepository->hasRecommend();
+        $response = [
+            'data' => $response
+        ];
+        return response()->json($response);
+    });
+
+
     $router->get('ranking/{codeType:himo|agg}/{code}[/{period}]', function (Request $request, $codeType, $code, $period = null) {
         $sectionRepository = new SectionRepository;
         $sectionRepository->setLimit($request->input('limit', 20));

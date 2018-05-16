@@ -157,7 +157,7 @@ class ReleaseCalenderRepository
 
         // ジャンルIDをもとにキャッシュにデータがあるか確認しキャッシュがあればキャッシュからデータを取得する。
         $mappingData = $this->genreMapping($this->genreId);
-        $cacheData = $himoReleaseOrder->setConditionGenreIdAndMonth(
+        $cacheData = $himoReleaseOrder->setConditionGenreIdAndMonthAndProductTypeId(
             $this->genreId,
             $saleStartMonth.'-01',
             $mappingData['productSellRentalFlg'],
@@ -228,7 +228,7 @@ class ReleaseCalenderRepository
             $saleStartDateFrom = date('Y-m-01 00:00:00');
             $saleStartDateTo = date('Y-m-d 00:00:00');
         }
-        $himoReleaseOrder->setConditionGenreIdAndMonth(
+        $himoReleaseOrder->setConditionGenreIdAndMonthAndProductTypeId(
             $this->genreId,
             $saleStartMonth . '-01',
             $mappingData['productSellRentalFlg'],
@@ -317,7 +317,29 @@ class ReleaseCalenderRepository
 
     public function hasRecommend ()
     {
-        $mappingData = $this->genreMapping($this->genreId);
+        $himoReleaseOrder = new HimoReleaseOrder;
+        $month['this'] = date('Y-m-01');
+        $month['last'] = date('Y-m-01', strtotime('-1 months'));
+        $month['next'] = date('Y-m-01', strtotime('+1 months'));
+        $recommendList = [];
+        $listArray = config('release_genre_map');
+        foreach ($listArray as $key => $genre) {
+            foreach ($genre as $value) {
+                if ($value === 'recommendation') {
+                    $recommendList[] = $key;
+                }
+            }
+        }
+
+        foreach ($month as $target => $targetMonth) {
+            foreach ($recommendList as $genreId) {
+                $result[$target][] = [
+                    'genreId' => $genreId,
+                    'exist' => ($himoReleaseOrder->setConditionByGenreIdAndMonth($genreId ,$targetMonth)->count() > 0)? true : false,
+                ];
+            }
+        }
+        return $result;
 
     }
 
