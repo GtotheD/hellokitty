@@ -318,8 +318,8 @@ class ReleaseCalenderRepository
     public function hasRecommend ()
     {
         $himoReleaseOrder = new HimoReleaseOrder;
-        $month['this'] = date('Y-m-01');
         $month['last'] = date('Y-m-01', strtotime('-1 months'));
+        $month['this'] = date('Y-m-01');
         $month['next'] = date('Y-m-01', strtotime('+1 months'));
         $recommendList = [];
         $listArray = config('release_genre_map');

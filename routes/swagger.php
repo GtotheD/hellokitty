@@ -1559,12 +1559,6 @@
  *     produces={"application/json"},
  *     tags={"Release"},
  *     security={{"api_key":{}}},
- *     @SWG\Parameter(
- *       name="genreId",
- *       in="query",
- *       description="独自のジャンルID（未指定で全て返却）",
- *       type="string"
- *     ),
  *     @SWG\Response(
  *          response=200,
  *          description="success",
