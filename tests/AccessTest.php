@@ -255,6 +255,37 @@ class AccessTest extends TestCase
         $response->assertResponseStatus(200);
     }
 
+    /**
+     * @test
+     * NotFoundテスト
+     */
+    public function genreNotFound()
+    {
+        $response = $this->getJsonWithAuth('/genre/00NotFoundTest00?saleType=sell');
+        $response->assertResponseStatus(204);
+    }
+
+    /**
+     * @test
+     * URL間違いテスト
+     */
+    public function genreNotFound2()
+    {
+        $response = $this->getJsonWithAuth('/NotFoundTest/00NotFoundTest00Y?saleType=sell');
+        $response->assertResponseStatus(404);
+    }
+
+    /**
+     * @test
+     * パラメータ間違いテスト
+     */
+    public function genreNotFound3()
+    {
+        $response = $this->getJsonWithAuth('/genre/EXT0000000DY?PARAM_ERR=rental');
+    //    print_r($response);
+        $response->assertResponseStatus(400);
+    }
+
 
     /**
      * @test
@@ -264,6 +295,27 @@ class AccessTest extends TestCase
         $response = $this->getJsonWithAuth('/search/aaa');
         $response->assertResponseStatus(200);
     }
+
+    /**
+     * @test
+     */
+    public function searchCheckBody()
+    {
+        $response = $this->getJsonWithAuth('/search/bbb');
+        $response->assertEquals(empty($response->response->original['rows']),false);
+    }
+
+
+    /**
+     * @test
+     */
+    public function searchNotFoundCheckBody()
+    {
+        $response = $this->getJsonWithAuth('/search/%E5%91%BD%FF%FF');
+        $response->assertEquals(empty($response->response->original['rows']),true);
+    }
+
+
     /**
      * @test
      */
@@ -272,6 +324,27 @@ class AccessTest extends TestCase
         $response = $this->getJsonWithAuth('/search/suggest/あ');
         $response->assertResponseStatus(200);
     }
+
+    /**
+     * @test
+     */
+    public function searchSuggestCheckBody()
+    {
+        $response = $this->getJsonWithAuth('/search/suggest/あ');
+        $response->assertEquals(empty($response->response->original['rows']), false);
+    }
+
+    /**
+     * @test
+     */
+    public function searchSuggestNotFoundCheckBody()
+    {
+        $response = $this->getJsonWithAuth('/search/suggest/ccc');
+        print_r($response->response->original);
+        $response->assertEquals(empty($response->response->original['rows']), true);
+    }
+
+
     /**
      * @test
      */
