@@ -12,7 +12,7 @@ class HelperTest extends TestCase
     {
         $contents = 'aaa<p>bbb</p><div>cccc</div><span>dddd</span><br>eeee<br/>fffff';
         $contents = StripTags($contents);
-        $this->assertEquals('aaabbbccccdddd\neeee\nfffff', $contents);
+        $this->assertEquals("aaabbbccccdddd\neeee\nfffff", $contents);
     }
 
 }
