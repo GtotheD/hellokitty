@@ -14,7 +14,7 @@ class HimoReleaseOrder extends Model
         parent::__construct(self::TABLE);
     }
 
-    public function setConditionGenreIdAndMonth(
+    public function setConditionGenreIdAndMonthAndProductTypeId(
         $genreId,
         $month,
         $productTypeId,
@@ -67,6 +67,16 @@ class HimoReleaseOrder extends Model
             $this->dbObject
                 ->orderBy('sort', 'asc');
         }
+        return $this;
+    }
+
+    public function setConditionByGenreIdAndMonth($genreId, $month)
+    {
+        $this->dbObject = DB::table($this->table)
+            ->where([
+                ['tap_genre_id', $genreId],
+                ['month', $month]
+            ]);
         return $this;
     }
 
