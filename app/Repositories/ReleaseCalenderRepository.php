@@ -334,7 +334,7 @@ class ReleaseCalenderRepository
         foreach ($month as $target => $targetMonth) {
             foreach ($recommendList as $genreId) {
                 $result[$target][] = [
-                    'genreId' => $genreId,
+                    'genreId' => (string)$genreId,
                     'exist' => ($himoReleaseOrder->setConditionByGenreIdAndMonth($genreId ,$targetMonth)->count() > 0)? true : false,
                 ];
             }
