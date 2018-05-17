@@ -483,7 +483,7 @@ class WorkRepository
             foreach ($data['results']['rows'] as $row) {
                 $base = $this->format($row);
                 $itemType = $this->convertWorkTypeIdToStr($base['work_type_id']);
-                $saleTypeHas = $this->parseFromArray($row['products'], $itemType);
+                $productData = $this->parseFromArray($row['products'], $itemType);
                 if ($this->ageLimitCheck !== 'true') {
                     if ($this->checkAgeLimit(
                             $base['rating_id'], $base['big_genre_id']) === true ||
@@ -502,13 +502,13 @@ class WorkRepository
                     'adultFlg' => ($base['adult_flg'] === 1) ? true : false,
                     'itemType' => $itemType,
                     'saleType' => '',
-                    'supplement' => $saleTypeHas['supplement'],
+                    'supplement' => $productData['supplement'],
                     'saleStartDate' => ($row['sale_start_date']) ? date('Y-m-d 00:00:00', strtotime($row['sale_start_date'])) : '',
-                    'saleStartDateSell' => ($row['sale_start_date_sell']) ? date('Y-m-d 00:00:00', strtotime($row['sale_start_date_sell'])) : '',
-                    'saleStartDateRental' => ($row['sale_start_date_rental']) ? date('Y-m-d 00:00:00', strtotime($row['sale_start_date_rental'])) : '',
+                    'saleStartDateSell' => $productData['saleStartDateSell'],
+                    'saleStartDateRental' => $productData['saleStartDateRental'],
                     'saleTypeHas' => [
-                        'sell' => $saleTypeHas['sell'],
-                        'rental' => $saleTypeHas['rental'],
+                        'sell' => $productData['sell'],
+                        'rental' => $productData['rental'],
                     ]
                 ];
             }
@@ -556,14 +556,24 @@ class WorkRepository
         $sell = false;
         $rental = false;
         $supplement = '';
+        $saleStartDateSell = null;
+        $saleStartDateRental = null;
         foreach ($products as $product) {
-
             if ($product['service_id'] === 'tol') {
                 if ($product['product_type_id'] === 1) {
+                    // 最新の販売開始日を取得する。
+                    if ( $product['sale_start_date'] > $saleStartDateSell) {
+                        $saleStartDateSell = $product['sale_start_date'];
+                    }
                     $sell = true;
                 } else if ($product['product_type_id'] === 2) {
+                    // 最新の販売開始日を取得する。
+                    if ($product['sale_start_date'] > $saleStartDateRental) {
+                        $saleStartDateRental = $product['sale_start_date'];
+                    }
                     $rental = true;
                 }
+                //
                 if ($itemType === 'game') {
                     $supplement = $product['game_model_name'];
                 } else {
@@ -583,7 +593,9 @@ class WorkRepository
         return [
             'sell' => $sell,
             'rental' => $rental,
-            'supplement' => $supplement
+            'supplement' => $supplement,
+            'saleStartDateSell' => $saleStartDateSell,
+            'saleStartDateRental' => $saleStartDateRental,
         ];
 
     }
