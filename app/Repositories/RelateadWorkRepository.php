@@ -153,6 +153,12 @@ class RelateadWorkRepository
     {
         $rows = $rows['results']['rows'];
         foreach ($rows as $row) {
+
+            foreach ($row['works'] as $work) {
+                $tmpWork['workId'] = $work['work_id'];
+                $works[] = $tmpWork;
+            }
+
             foreach($row['small_serieses'] as $smallSerieses) {
                     foreach ($smallSerieses['works'] as $work) {
                         $tmpWork['workId'] = $work['work_id'];
