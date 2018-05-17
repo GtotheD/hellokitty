@@ -106,6 +106,7 @@ class Product extends Model
         $selectSub = ',MIN(product_unique_id) AS product_unique_id ';
         $subQuery = DB::table($this->table)->select(DB::raw($selectSubGrouping.$selectSub))
             ->whereRaw(DB::raw(' item_cd not like \'_1__\' '))
+            ->whereRaw(DB::raw(' item_cd not like \'__20\' '))
             ->groupBy(DB::raw($selectSubGrouping));
         $this->dbObject = DB::table(DB::raw("({$subQuery->toSql()}) as t1"))
             ->join($this->table.' as t2', 't2.product_unique_id', '=', 't1.product_unique_id')
@@ -143,6 +144,7 @@ class Product extends Model
             $blurayQuery;
         $subQuery = DB::table($this->table)->select(DB::raw($selectQuery))
             ->whereRaw(DB::raw('item_cd not like \'_1__\''))
+            ->whereRaw(DB::raw(' item_cd not like \'__20\' '))
             ->groupBy(DB::raw($groupingColumn))
             ->havingRaw(' NOT (dvd IS NULL AND bluray IS NULL)');
         $this->dbObject = DB::table(DB::raw("({$subQuery->toSql()}) as sub"))

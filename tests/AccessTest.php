@@ -106,6 +106,32 @@ class AccessTest extends TestCase
             ]);
     }
 
+    /**
+     * 巻数が一巻のみの場合は巻数を付与しない場合のテスト
+     * @test
+     */
+    public function workProductIgnoreVHS()
+    {
+        $url = '/work/PTA00008M81I';
+        $this->getJsonWithAuth( $url);
+        $response = $this->getJsonWithAuth('/work/PTA00008M81I/products?saleType=rental');
+        $response->assertResponseStatus(204);
+    }
+
+    /**
+     * 巻数が一巻のみの場合は巻数を付与しない場合のテスト
+     * @test
+     */
+    public function workProductIgnoreVHSDisplayOtherData()
+    {
+        $url = '/work/PTA00008M81I';
+        $this->getJsonWithAuth( $url);
+        $response = $this->getJsonWithAuth('/work/PTA00008M81I/products?saleType=sell');
+        $response->seeJson([
+            'totalCount' => 6,
+            'productName' => '鉄人タイガーセブン 5',
+        ]);
+    }
 
     /**
      * @test

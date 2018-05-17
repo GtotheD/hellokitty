@@ -1,0 +1,3742 @@
+{
+    "status": 200,
+    "message": null,
+    "results": {
+        "total": 1,
+        "rows": [
+            {
+                "work_id": "PTA00008M81I",
+                "work_type_id": "2",
+                "msdb_item": "video",
+                "work_format_id": null,
+                "work_format_name": "",
+                "work_title": "鉄人タイガーセブン",
+                "work_title_kana": "てつじんたいがーせぶん",
+                "work_title_en": "",
+                "work_title_orig": "",
+                "work_title_sub": "",
+                "work_comment": "",
+                "work_outline": "",
+                "work_copyright": "",
+                "rating_id": "EXT000000008",
+                "rating_name": "",
+                "adult_flg": 0,
+                "primary_product_source_id": "PDT000056XLD",
+                "primary_product_service_id": "ec",
+                "primary_product_type_id": 1,
+                "disp_start_date": "1900-01-01 00:00:00",
+                "disp_start_month": "1900-01",
+                "sale_start_date": "1983-03-26",
+                "sale_start_month": "1983-03",
+                "created_year_from": "1973",
+                "created_year_to": "1974",
+                "created_year": "1973",
+                "created_countries": "日本",
+                "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/00275/4988102880019_1S.jpg",
+                "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/00275/4988102880019_1M.jpg",
+                "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/00275/4988102880019_1L.jpg",
+                "jacket_l4": "",
+                "scene_s": [],
+                "scene_m": [],
+                "scene_l": [],
+                "trailor_pc": [],
+                "season_name": "",
+                "season_number": null,
+                "book_series_name": "",
+                "book_series_name_kana": "",
+                "feature_keywords": [],
+                "priv_keywords": [],
+                "work_tags": [],
+                "wakati_words": [],
+                "is_compilation": 0,
+                "series_completed": 0,
+                "disable_flg": 0,
+                "delete_flg": 0,
+                "ids": [
+                    {
+                        "id_type": "0103",
+                        "id_value": "10022110"
+                    },
+                    {
+                        "id_type": "0105",
+                        "id_value": "10020531"
+                    }
+                ],
+                "docs": [
+                    {
+                        "doc_type_id": "01",
+                        "doc_source_id": "01",
+                        "doc_text": "１９７３年～７４年に放映された特撮怪奇アクション・ドラマ全２６話が、遂にソフト化。太古の昔、人類に敗れたムー原人が復讐を開始！考古学者の息子・滝川剛が七つの超能力を持つ鉄人タイガーセブンに変身してムー原人たちと対決！ピー・プロが「ライオン丸」シリーズに続いて企画・制作し、そのハードさ、シリアスさが高い評価を受けた作品。"
+                    },
+                    {
+                        "doc_type_id": "04",
+                        "doc_source_id": "03",
+                        "doc_text": "【Ｄｉｓｃ－１】<BR>＜第２５話＞恐怖の大サーカス　マリオネット原人<BR>＜第２６話＞今甦るタイガースパーク！！"
+                    },
+                    {
+                        "doc_type_id": "04",
+                        "doc_source_id": "04",
+                        "doc_text": "第２５話：「恐怖の大サーカス　マリオネット原人」、第２６話：「今甦るタイガースパーク！！」"
+                    },
+                    {
+                        "doc_type_id": "06",
+                        "doc_source_id": "04",
+                        "doc_text": "＜特典内容＞<BR><BR>全篇ニュープリント・リマスタリング仕様　<BR>現存する予告篇収録　<BR>うしおそうじ特別インタビュー収録"
+                    },
+                    {
+                        "doc_type_id": "11",
+                        "doc_source_id": "03",
+                        "doc_text": "現存する予告篇／うしおそうじ特別インタビュー"
+                    }
+                ],
+                "awards": [],
+                "screens": [],
+                "onairs": [],
+                "magazines": [],
+                "genres": [
+                    {
+                        "big_genre_id": "EXT0000000ZQ",
+                        "big_genre_name": "邦画特撮ＳＦ",
+                        "medium_genre_id": "EXT0000000ZS",
+                        "medium_genre_name": "ＴＶヒーロー",
+                        "small_genre_id": "",
+                        "small_genre_name": "",
+                        "shikiriban_id": "",
+                        "shikiriban_name": ""
+                    }
+                ],
+                "products": [
+                    {
+                        "id": "PDT000056XLD",
+                        "product_id": "PPD000056XLD",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "ec",
+                        "service_name": "ec",
+                        "msdb_item": "video",
+                        "item_cd": "1021",
+                        "item_name": "ＤＶＤ",
+                        "product_name": "鉄人タイガーセブン 5",
+                        "product_kana": "てつじんたいがーせぶん 5*25-",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "1900-01-01 00:00:00",
+                        "disp_start_month": "1900-01",
+                        "disp_end_date": "2099-12-28 23:59:59",
+                        "disp_end_month": "2099-12",
+                        "sale_start_date": "2003-03-21",
+                        "sale_start_month": "2003-03",
+                        "sale_end_date": "2053-03-20",
+                        "sale_end_month": "2053-03",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA00008M81I"
+                        ],
+                        "tieup": "",
+                        "copyright": "",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "1973",
+                        "created_year_to": "1974",
+                        "created_year_str": "1973～1974",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT0000000SX",
+                        "maker_name": "NBCユニバーサル・エンターテイメントジャパン",
+                        "maker_name_kana": "えぬびーしーゆにばーさるえんたーていめんとじやぱん",
+                        "maker_name_abbrev": "NBCユニバーサル・エンターテイメント",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10022110",
+                        "ccc_family_cd": "10022110005",
+                        "ccc_product_id": "000494857",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4988102880415",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "PIBD712005",
+                        "icpn": "",
+                        "media_category_cd": "22",
+                        "media_category_name": "販売DVD",
+                        "media_format_id": "EXT000006GPK",
+                        "media_format_name": "DVD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "000000",
+                        "product_spec": "",
+                        "screen_size": "スタンダード",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "１：ドルビーデジタル／モノラル／日本語",
+                        "region_info": "２",
+                        "disc_info": "片面１層",
+                        "color_spec": "カラー",
+                        "video_info": "４：３",
+                        "number_of_volume": "5",
+                        "number_of_set": "0",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "",
+                        "jacket_m": "",
+                        "jacket_l": "",
+                        "jacket_l4": "",
+                        "scene_s": [],
+                        "scene_m": [],
+                        "scene_l": [],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": 5800,
+                        "price_tax_in": 6264,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "01",
+                                "doc_source_id": "01",
+                                "doc_text": "１９７３年～７４年に放映された特撮怪奇アクション・ドラマ全２６話が、遂にソフト化。太古の昔、人類に敗れたムー原人が復讐を開始！考古学者の息子・滝川剛が七つの超能力を持つ鉄人タイガーセブンに変身してムー原人たちと対決！ピー・プロが「ライオン丸」シリーズに続いて企画・制作し、そのハードさ、シリアスさが高い評価を受けた作品。"
+                            },
+                            {
+                                "doc_type_id": "04",
+                                "doc_source_id": "03",
+                                "doc_text": "【Ｄｉｓｃ－１】<BR>＜第２５話＞恐怖の大サーカス　マリオネット原人<BR>＜第２６話＞今甦るタイガースパーク！！"
+                            },
+                            {
+                                "doc_type_id": "04",
+                                "doc_source_id": "04",
+                                "doc_text": "第２５話：「恐怖の大サーカス　マリオネット原人」、第２６話：「今甦るタイガースパーク！！」"
+                            },
+                            {
+                                "doc_type_id": "06",
+                                "doc_source_id": "04",
+                                "doc_text": "＜特典内容＞<BR><BR>全篇ニュープリント・リマスタリング仕様　<BR>現存する予告篇収録　<BR>うしおそうじ特別インタビュー収録"
+                            },
+                            {
+                                "doc_type_id": "11",
+                                "doc_source_id": "03",
+                                "doc_text": "現存する予告篇／うしおそうじ特別インタビュー"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT0000000ZQ",
+                                "big_genre_name": "邦画特撮ＳＦ",
+                                "medium_genre_id": "EXT0000000ZS",
+                                "medium_genre_name": "ＴＶヒーロー",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS00000MUH6",
+                                "person_name": "南城竜也",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000054I4E",
+                                "person_name": "南条竜也",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000002ELH",
+                                "person_name": "中条静夫",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000054I4G",
+                                "person_name": "達純一",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000054I4J",
+                                "person_name": "佐久間宏則",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000RGD",
+                                "person_name": "吉田友紀",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000054I4K",
+                                "person_name": "久万里由香",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001PIA",
+                                "person_name": "上原正三",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS000000H6J",
+                                "person_name": "菊池俊輔",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            },
+                            {
+                                "person_id": "PPS00001BPDQ",
+                                "person_name": "内藤まこと",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS00000BTZC",
+                                "person_name": "小林恭治",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS000000Y18",
+                                "person_name": "藤川桂介",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS00001HC6U",
+                                "person_name": "高際和雄",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS000002CVD",
+                                "person_name": "北沢彪",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00001H19M",
+                                "person_name": "大塚莞爾",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS000002PWH",
+                                "person_name": "山田健",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS000001QXJ",
+                                "person_name": "鈴木俊継",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS00000JS41",
+                                "person_name": "うしおそうじ",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT000075Y2G",
+                        "product_id": "PPD000056XLD",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "tol",
+                        "service_name": "tol",
+                        "msdb_item": "video",
+                        "item_cd": "1021",
+                        "item_name": "ＤＶＤ",
+                        "product_name": "鉄人タイガーセブン 5",
+                        "product_kana": "てつじんたいがーせぶん 5*25-",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2007-09-30 01:54:20",
+                        "disp_start_month": "2007-09",
+                        "disp_end_date": "2030-12-28 00:00:00",
+                        "disp_end_month": "2030-12",
+                        "sale_start_date": "2003-03-21",
+                        "sale_start_month": "2003-03",
+                        "sale_end_date": "2030-12-28",
+                        "sale_end_month": "2030-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA00008M81I"
+                        ],
+                        "tieup": "",
+                        "copyright": "",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "1973",
+                        "created_year_to": "1974",
+                        "created_year_str": "1973～1974",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT0000000SX",
+                        "maker_name": "NBCユニバーサル・エンターテイメントジャパン",
+                        "maker_name_kana": "えぬびーしーゆにばーさるえんたーていめんとじやぱん",
+                        "maker_name_abbrev": "NBCユニバーサル・エンターテイメント",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10022110",
+                        "ccc_family_cd": "10022110005",
+                        "ccc_product_id": "000494857",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4988102880415",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "PIBD712005",
+                        "icpn": "",
+                        "media_category_cd": "22",
+                        "media_category_name": "販売DVD",
+                        "media_format_id": "EXT000006GPK",
+                        "media_format_name": "DVD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "000000",
+                        "product_spec": "",
+                        "screen_size": "スタンダード",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "１：ドルビーデジタル／モノラル／日本語",
+                        "region_info": "２",
+                        "disc_info": "片面１層",
+                        "color_spec": "カラー",
+                        "video_info": "４：３",
+                        "number_of_volume": "5",
+                        "number_of_set": "0",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "",
+                        "jacket_m": "",
+                        "jacket_l": "",
+                        "jacket_l4": "",
+                        "scene_s": [],
+                        "scene_m": [],
+                        "scene_l": [],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": 5800,
+                        "price_tax_in": 6264,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "01",
+                                "doc_source_id": "01",
+                                "doc_text": "１９７３年～７４年に放映された特撮怪奇アクション・ドラマ全２６話が、遂にソフト化。太古の昔、人類に敗れたムー原人が復讐を開始！考古学者の息子・滝川剛が七つの超能力を持つ鉄人タイガーセブンに変身してムー原人たちと対決！ピー・プロが「ライオン丸」シリーズに続いて企画・制作し、そのハードさ、シリアスさが高い評価を受けた作品。"
+                            },
+                            {
+                                "doc_type_id": "04",
+                                "doc_source_id": "03",
+                                "doc_text": "【Ｄｉｓｃ－１】<BR>＜第２５話＞恐怖の大サーカス　マリオネット原人<BR>＜第２６話＞今甦るタイガースパーク！！"
+                            },
+                            {
+                                "doc_type_id": "04",
+                                "doc_source_id": "04",
+                                "doc_text": "第２５話：「恐怖の大サーカス　マリオネット原人」、第２６話：「今甦るタイガースパーク！！」"
+                            },
+                            {
+                                "doc_type_id": "06",
+                                "doc_source_id": "04",
+                                "doc_text": "＜特典内容＞<BR><BR>全篇ニュープリント・リマスタリング仕様　<BR>現存する予告篇収録　<BR>うしおそうじ特別インタビュー収録"
+                            },
+                            {
+                                "doc_type_id": "11",
+                                "doc_source_id": "03",
+                                "doc_text": "現存する予告篇／うしおそうじ特別インタビュー"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT0000000ZQ",
+                                "big_genre_name": "邦画特撮ＳＦ",
+                                "medium_genre_id": "EXT0000000ZS",
+                                "medium_genre_name": "ＴＶヒーロー",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS00000MUH6",
+                                "person_name": "南城竜也",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000054I4E",
+                                "person_name": "南条竜也",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000002ELH",
+                                "person_name": "中条静夫",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000054I4G",
+                                "person_name": "達純一",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000054I4J",
+                                "person_name": "佐久間宏則",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000RGD",
+                                "person_name": "吉田友紀",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000054I4K",
+                                "person_name": "久万里由香",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001PIA",
+                                "person_name": "上原正三",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS000000H6J",
+                                "person_name": "菊池俊輔",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            },
+                            {
+                                "person_id": "PPS00001BPDQ",
+                                "person_name": "内藤まこと",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS00000BTZC",
+                                "person_name": "小林恭治",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS000000Y18",
+                                "person_name": "藤川桂介",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS00001HC6U",
+                                "person_name": "高際和雄",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS000002CVD",
+                                "person_name": "北沢彪",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00001H19M",
+                                "person_name": "大塚莞爾",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS000002PWH",
+                                "person_name": "山田健",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS000001QXJ",
+                                "person_name": "鈴木俊継",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS00000JS41",
+                                "person_name": "うしおそうじ",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT000056XJ4",
+                        "product_id": "PPD000056XJ4",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "ec",
+                        "service_name": "ec",
+                        "msdb_item": "video",
+                        "item_cd": "1021",
+                        "item_name": "ＤＶＤ",
+                        "product_name": "鉄人タイガーセブン 4",
+                        "product_kana": "てつじんたいがーせぶん 4*19-",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "1900-01-01 00:00:00",
+                        "disp_start_month": "1900-01",
+                        "disp_end_date": "2099-12-28 23:59:59",
+                        "disp_end_month": "2099-12",
+                        "sale_start_date": "2003-03-21",
+                        "sale_start_month": "2003-03",
+                        "sale_end_date": "2053-03-20",
+                        "sale_end_month": "2053-03",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA00008M81I"
+                        ],
+                        "tieup": "",
+                        "copyright": "",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "1973",
+                        "created_year_to": "1974",
+                        "created_year_str": "1973～1974",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT0000000SX",
+                        "maker_name": "NBCユニバーサル・エンターテイメントジャパン",
+                        "maker_name_kana": "えぬびーしーゆにばーさるえんたーていめんとじやぱん",
+                        "maker_name_abbrev": "NBCユニバーサル・エンターテイメント",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10022110",
+                        "ccc_family_cd": "10022110004",
+                        "ccc_product_id": "000494856",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4988102880316",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "PIBD712004",
+                        "icpn": "",
+                        "media_category_cd": "22",
+                        "media_category_name": "販売DVD",
+                        "media_format_id": "EXT000006GPK",
+                        "media_format_name": "DVD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "000000",
+                        "product_spec": "",
+                        "screen_size": "スタンダード",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "１：ドルビーデジタル／モノラル／日本語",
+                        "region_info": "２",
+                        "disc_info": "片面２層",
+                        "color_spec": "カラー",
+                        "video_info": "４：３",
+                        "number_of_volume": "4",
+                        "number_of_set": "0",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "",
+                        "jacket_m": "",
+                        "jacket_l": "",
+                        "jacket_l4": "",
+                        "scene_s": [],
+                        "scene_m": [],
+                        "scene_l": [],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": 5800,
+                        "price_tax_in": 6264,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "01",
+                                "doc_source_id": "01",
+                                "doc_text": "１９７３年～７４年に放映された特撮怪奇アクション・ドラマ全２６話が、遂にソフト化。太古の昔、人類に敗れたムー原人が復讐を開始！考古学者の息子・滝川剛が七つの超能力を持つ鉄人タイガーセブンに変身してムー原人たちと対決！ピー・プロが「ライオン丸」シリーズに続いて企画・制作し、そのハードさ、シリアスさが高い評価を受けた作品。"
+                            },
+                            {
+                                "doc_type_id": "04",
+                                "doc_source_id": "03",
+                                "doc_text": "【Ｄｉｓｃ－１】<BR>＜第１９話＞タイガーセブンの歌が聞こえる<BR>＜第２０話＞ガン・ファイター鼠原人の挑戦<BR>＜第２１話＞必殺！！タイガー回転スパーク<BR>＜第２２話＞逆襲！！狂った犬原人<BR>＜第２３話＞悪魔の唸りコールタール原人<BR>＜第２４話＞ムー帝国移動大作戦！！"
+                            },
+                            {
+                                "doc_type_id": "04",
+                                "doc_source_id": "04",
+                                "doc_text": "第１９話：「タイガーセブンの歌が聞こえる」、第２０話：「ガン・ファイター鼠原人の挑戦」、第２１話：「必殺！！タイガー回転スパーク」、第２２話：「逆襲！狂った犬原人」、第２３話：「悪魔の唸りコールタール原人」、第２４話：「ムー帝国移動大作戦！！」"
+                            },
+                            {
+                                "doc_type_id": "06",
+                                "doc_source_id": "04",
+                                "doc_text": "＜特典内容＞<BR><BR>全篇ニュープリント・リマスタリング仕様　<BR>現存する予告篇収録"
+                            },
+                            {
+                                "doc_type_id": "11",
+                                "doc_source_id": "03",
+                                "doc_text": "現存する予告篇"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT0000000ZQ",
+                                "big_genre_name": "邦画特撮ＳＦ",
+                                "medium_genre_id": "EXT0000000ZS",
+                                "medium_genre_name": "ＴＶヒーロー",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS00000MUH6",
+                                "person_name": "南城竜也",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000054I4E",
+                                "person_name": "南条竜也",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000002ELH",
+                                "person_name": "中条静夫",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000054I4G",
+                                "person_name": "達純一",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000054I4J",
+                                "person_name": "佐久間宏則",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000RGD",
+                                "person_name": "吉田友紀",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000054I4K",
+                                "person_name": "久万里由香",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001PIA",
+                                "person_name": "上原正三",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS000000H6J",
+                                "person_name": "菊池俊輔",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            },
+                            {
+                                "person_id": "PPS00001BPDQ",
+                                "person_name": "内藤まこと",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS00000BTZC",
+                                "person_name": "小林恭治",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS000000Y18",
+                                "person_name": "藤川桂介",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS00001HC6U",
+                                "person_name": "高際和雄",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS000002CVD",
+                                "person_name": "北沢彪",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00001H19M",
+                                "person_name": "大塚莞爾",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS000002PWH",
+                                "person_name": "山田健",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS000001QXJ",
+                                "person_name": "鈴木俊継",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS00000JS41",
+                                "person_name": "うしおそうじ",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT000075XXO",
+                        "product_id": "PPD000056XJ4",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "tol",
+                        "service_name": "tol",
+                        "msdb_item": "video",
+                        "item_cd": "1021",
+                        "item_name": "ＤＶＤ",
+                        "product_name": "鉄人タイガーセブン 4",
+                        "product_kana": "てつじんたいがーせぶん 4*19-",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2007-09-30 01:55:53",
+                        "disp_start_month": "2007-09",
+                        "disp_end_date": "2030-12-28 00:00:00",
+                        "disp_end_month": "2030-12",
+                        "sale_start_date": "2003-03-21",
+                        "sale_start_month": "2003-03",
+                        "sale_end_date": "2030-12-28",
+                        "sale_end_month": "2030-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA00008M81I"
+                        ],
+                        "tieup": "",
+                        "copyright": "",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "1973",
+                        "created_year_to": "1974",
+                        "created_year_str": "1973～1974",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT0000000SX",
+                        "maker_name": "NBCユニバーサル・エンターテイメントジャパン",
+                        "maker_name_kana": "えぬびーしーゆにばーさるえんたーていめんとじやぱん",
+                        "maker_name_abbrev": "NBCユニバーサル・エンターテイメント",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10022110",
+                        "ccc_family_cd": "10022110004",
+                        "ccc_product_id": "000494856",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4988102880316",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "PIBD712004",
+                        "icpn": "",
+                        "media_category_cd": "22",
+                        "media_category_name": "販売DVD",
+                        "media_format_id": "EXT000006GPK",
+                        "media_format_name": "DVD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "000000",
+                        "product_spec": "",
+                        "screen_size": "スタンダード",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "１：ドルビーデジタル／モノラル／日本語",
+                        "region_info": "２",
+                        "disc_info": "片面２層",
+                        "color_spec": "カラー",
+                        "video_info": "４：３",
+                        "number_of_volume": "4",
+                        "number_of_set": "0",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "",
+                        "jacket_m": "",
+                        "jacket_l": "",
+                        "jacket_l4": "",
+                        "scene_s": [],
+                        "scene_m": [],
+                        "scene_l": [],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": 5800,
+                        "price_tax_in": 6264,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "01",
+                                "doc_source_id": "01",
+                                "doc_text": "１９７３年～７４年に放映された特撮怪奇アクション・ドラマ全２６話が、遂にソフト化。太古の昔、人類に敗れたムー原人が復讐を開始！考古学者の息子・滝川剛が七つの超能力を持つ鉄人タイガーセブンに変身してムー原人たちと対決！ピー・プロが「ライオン丸」シリーズに続いて企画・制作し、そのハードさ、シリアスさが高い評価を受けた作品。"
+                            },
+                            {
+                                "doc_type_id": "04",
+                                "doc_source_id": "03",
+                                "doc_text": "【Ｄｉｓｃ－１】<BR>＜第１９話＞タイガーセブンの歌が聞こえる<BR>＜第２０話＞ガン・ファイター鼠原人の挑戦<BR>＜第２１話＞必殺！！タイガー回転スパーク<BR>＜第２２話＞逆襲！！狂った犬原人<BR>＜第２３話＞悪魔の唸りコールタール原人<BR>＜第２４話＞ムー帝国移動大作戦！！"
+                            },
+                            {
+                                "doc_type_id": "04",
+                                "doc_source_id": "04",
+                                "doc_text": "第１９話：「タイガーセブンの歌が聞こえる」、第２０話：「ガン・ファイター鼠原人の挑戦」、第２１話：「必殺！！タイガー回転スパーク」、第２２話：「逆襲！狂った犬原人」、第２３話：「悪魔の唸りコールタール原人」、第２４話：「ムー帝国移動大作戦！！」"
+                            },
+                            {
+                                "doc_type_id": "06",
+                                "doc_source_id": "04",
+                                "doc_text": "＜特典内容＞<BR><BR>全篇ニュープリント・リマスタリング仕様　<BR>現存する予告篇収録"
+                            },
+                            {
+                                "doc_type_id": "11",
+                                "doc_source_id": "03",
+                                "doc_text": "現存する予告篇"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT0000000ZQ",
+                                "big_genre_name": "邦画特撮ＳＦ",
+                                "medium_genre_id": "EXT0000000ZS",
+                                "medium_genre_name": "ＴＶヒーロー",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS00000MUH6",
+                                "person_name": "南城竜也",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000054I4E",
+                                "person_name": "南条竜也",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000002ELH",
+                                "person_name": "中条静夫",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000054I4G",
+                                "person_name": "達純一",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000054I4J",
+                                "person_name": "佐久間宏則",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000RGD",
+                                "person_name": "吉田友紀",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000054I4K",
+                                "person_name": "久万里由香",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001PIA",
+                                "person_name": "上原正三",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS000000H6J",
+                                "person_name": "菊池俊輔",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            },
+                            {
+                                "person_id": "PPS00001BPDQ",
+                                "person_name": "内藤まこと",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS00000BTZC",
+                                "person_name": "小林恭治",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS000000Y18",
+                                "person_name": "藤川桂介",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS00001HC6U",
+                                "person_name": "高際和雄",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS000002CVD",
+                                "person_name": "北沢彪",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00001H19M",
+                                "person_name": "大塚莞爾",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS000002PWH",
+                                "person_name": "山田健",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS000001QXJ",
+                                "person_name": "鈴木俊継",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS00000JS41",
+                                "person_name": "うしおそうじ",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT000056XGL",
+                        "product_id": "PPD000056XGL",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "ec",
+                        "service_name": "ec",
+                        "msdb_item": "video",
+                        "item_cd": "1021",
+                        "item_name": "ＤＶＤ",
+                        "product_name": "鉄人タイガーセブン 3",
+                        "product_kana": "てつじんたいがーせぶん 3*13-",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "1900-01-01 00:00:00",
+                        "disp_start_month": "1900-01",
+                        "disp_end_date": "2099-12-28 23:59:59",
+                        "disp_end_month": "2099-12",
+                        "sale_start_date": "2003-03-21",
+                        "sale_start_month": "2003-03",
+                        "sale_end_date": "2053-03-20",
+                        "sale_end_month": "2053-03",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA00008M81I"
+                        ],
+                        "tieup": "",
+                        "copyright": "",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "1973",
+                        "created_year_to": "1974",
+                        "created_year_str": "1973～1974",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT0000000SX",
+                        "maker_name": "NBCユニバーサル・エンターテイメントジャパン",
+                        "maker_name_kana": "えぬびーしーゆにばーさるえんたーていめんとじやぱん",
+                        "maker_name_abbrev": "NBCユニバーサル・エンターテイメント",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10022110",
+                        "ccc_family_cd": "10022110003",
+                        "ccc_product_id": "000494855",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4988102880217",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "PIBD712003",
+                        "icpn": "",
+                        "media_category_cd": "22",
+                        "media_category_name": "販売DVD",
+                        "media_format_id": "EXT000006GPK",
+                        "media_format_name": "DVD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "000000",
+                        "product_spec": "",
+                        "screen_size": "スタンダード",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "１：ドルビーデジタル／モノラル／日本語",
+                        "region_info": "２",
+                        "disc_info": "片面２層",
+                        "color_spec": "カラー",
+                        "video_info": "４：３",
+                        "number_of_volume": "3",
+                        "number_of_set": "0",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "",
+                        "jacket_m": "",
+                        "jacket_l": "",
+                        "jacket_l4": "",
+                        "scene_s": [],
+                        "scene_m": [],
+                        "scene_l": [],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": 5800,
+                        "price_tax_in": 6264,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "01",
+                                "doc_source_id": "01",
+                                "doc_text": "１９７３年～７４年に放映された特撮怪奇アクション・ドラマ全２６話が、遂にソフト化。太古の昔、人類に敗れたムー原人が復讐を開始！考古学者の息子・滝川剛が七つの超能力を持つ鉄人タイガーセブンに変身してムー原人たちと対決！ピー・プロが「ライオン丸」シリーズに続いて企画・制作し、そのハードさ、シリアスさが高い評価を受けた作品。"
+                            },
+                            {
+                                "doc_type_id": "04",
+                                "doc_source_id": "03",
+                                "doc_text": "【Ｄｉｓｃ－１】<BR>＜第１３話＞剛兄ちゃん助けてェーッ！！<BR>＜第１４話＞燃える命のろくろ地獄<BR>＜第１５話＞ムー帝国大侵略<BR>＜第１６話＞ムー帝国への挑戦<BR>＜第１７話＞日本列島沈没の危機！！<BR>＜第１８話＞伊豆半島死の攻防戦！！"
+                            },
+                            {
+                                "doc_type_id": "04",
+                                "doc_source_id": "04",
+                                "doc_text": "第１３話：「剛兄ちゃん助けてェーッ！！」、第１４話：「燃える命のろくろ地獄」、第１５話：「ムー帝国大侵略」、第１６話：「ムー帝国への挑戦」、第１７話：「日本列島沈没の危機！！」、第１８話：「伊豆半島死の攻防戦！！」"
+                            },
+                            {
+                                "doc_type_id": "06",
+                                "doc_source_id": "04",
+                                "doc_text": "＜特典内容＞<BR><BR>全篇ニュープリント・リマスタリング仕様　<BR>現存する予告篇収録"
+                            },
+                            {
+                                "doc_type_id": "11",
+                                "doc_source_id": "03",
+                                "doc_text": "現存する予告篇"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT0000000ZQ",
+                                "big_genre_name": "邦画特撮ＳＦ",
+                                "medium_genre_id": "EXT0000000ZS",
+                                "medium_genre_name": "ＴＶヒーロー",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS00000MUH6",
+                                "person_name": "南城竜也",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000054I4E",
+                                "person_name": "南条竜也",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000002ELH",
+                                "person_name": "中条静夫",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000054I4G",
+                                "person_name": "達純一",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000054I4J",
+                                "person_name": "佐久間宏則",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000RGD",
+                                "person_name": "吉田友紀",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000054I4K",
+                                "person_name": "久万里由香",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001PIA",
+                                "person_name": "上原正三",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS000000H6J",
+                                "person_name": "菊池俊輔",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            },
+                            {
+                                "person_id": "PPS00001BPDQ",
+                                "person_name": "内藤まこと",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS00000BTZC",
+                                "person_name": "小林恭治",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS000000Y18",
+                                "person_name": "藤川桂介",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS00001HC6U",
+                                "person_name": "高際和雄",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS000002CVD",
+                                "person_name": "北沢彪",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00001H19M",
+                                "person_name": "大塚莞爾",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS000002PWH",
+                                "person_name": "山田健",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS000001QXJ",
+                                "person_name": "鈴木俊継",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS00000JS41",
+                                "person_name": "うしおそうじ",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT000075XTF",
+                        "product_id": "PPD000056XGL",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "tol",
+                        "service_name": "tol",
+                        "msdb_item": "video",
+                        "item_cd": "1021",
+                        "item_name": "ＤＶＤ",
+                        "product_name": "鉄人タイガーセブン 3",
+                        "product_kana": "てつじんたいがーせぶん 3*13-",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2007-09-30 01:43:41",
+                        "disp_start_month": "2007-09",
+                        "disp_end_date": "2030-12-28 00:00:00",
+                        "disp_end_month": "2030-12",
+                        "sale_start_date": "2003-03-21",
+                        "sale_start_month": "2003-03",
+                        "sale_end_date": "2030-12-28",
+                        "sale_end_month": "2030-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA00008M81I"
+                        ],
+                        "tieup": "",
+                        "copyright": "",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "1973",
+                        "created_year_to": "1974",
+                        "created_year_str": "1973～1974",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT0000000SX",
+                        "maker_name": "NBCユニバーサル・エンターテイメントジャパン",
+                        "maker_name_kana": "えぬびーしーゆにばーさるえんたーていめんとじやぱん",
+                        "maker_name_abbrev": "NBCユニバーサル・エンターテイメント",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10022110",
+                        "ccc_family_cd": "10022110003",
+                        "ccc_product_id": "000494855",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4988102880217",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "PIBD712003",
+                        "icpn": "",
+                        "media_category_cd": "22",
+                        "media_category_name": "販売DVD",
+                        "media_format_id": "EXT000006GPK",
+                        "media_format_name": "DVD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "000000",
+                        "product_spec": "",
+                        "screen_size": "スタンダード",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "１：ドルビーデジタル／モノラル／日本語",
+                        "region_info": "２",
+                        "disc_info": "片面２層",
+                        "color_spec": "カラー",
+                        "video_info": "４：３",
+                        "number_of_volume": "3",
+                        "number_of_set": "0",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "",
+                        "jacket_m": "",
+                        "jacket_l": "",
+                        "jacket_l4": "",
+                        "scene_s": [],
+                        "scene_m": [],
+                        "scene_l": [],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": 5800,
+                        "price_tax_in": 6264,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "01",
+                                "doc_source_id": "01",
+                                "doc_text": "１９７３年～７４年に放映された特撮怪奇アクション・ドラマ全２６話が、遂にソフト化。太古の昔、人類に敗れたムー原人が復讐を開始！考古学者の息子・滝川剛が七つの超能力を持つ鉄人タイガーセブンに変身してムー原人たちと対決！ピー・プロが「ライオン丸」シリーズに続いて企画・制作し、そのハードさ、シリアスさが高い評価を受けた作品。"
+                            },
+                            {
+                                "doc_type_id": "04",
+                                "doc_source_id": "03",
+                                "doc_text": "【Ｄｉｓｃ－１】<BR>＜第１３話＞剛兄ちゃん助けてェーッ！！<BR>＜第１４話＞燃える命のろくろ地獄<BR>＜第１５話＞ムー帝国大侵略<BR>＜第１６話＞ムー帝国への挑戦<BR>＜第１７話＞日本列島沈没の危機！！<BR>＜第１８話＞伊豆半島死の攻防戦！！"
+                            },
+                            {
+                                "doc_type_id": "04",
+                                "doc_source_id": "04",
+                                "doc_text": "第１３話：「剛兄ちゃん助けてェーッ！！」、第１４話：「燃える命のろくろ地獄」、第１５話：「ムー帝国大侵略」、第１６話：「ムー帝国への挑戦」、第１７話：「日本列島沈没の危機！！」、第１８話：「伊豆半島死の攻防戦！！」"
+                            },
+                            {
+                                "doc_type_id": "06",
+                                "doc_source_id": "04",
+                                "doc_text": "＜特典内容＞<BR><BR>全篇ニュープリント・リマスタリング仕様　<BR>現存する予告篇収録"
+                            },
+                            {
+                                "doc_type_id": "11",
+                                "doc_source_id": "03",
+                                "doc_text": "現存する予告篇"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT0000000ZQ",
+                                "big_genre_name": "邦画特撮ＳＦ",
+                                "medium_genre_id": "EXT0000000ZS",
+                                "medium_genre_name": "ＴＶヒーロー",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS00000MUH6",
+                                "person_name": "南城竜也",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000054I4E",
+                                "person_name": "南条竜也",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000002ELH",
+                                "person_name": "中条静夫",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000054I4G",
+                                "person_name": "達純一",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000054I4J",
+                                "person_name": "佐久間宏則",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000RGD",
+                                "person_name": "吉田友紀",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000054I4K",
+                                "person_name": "久万里由香",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001PIA",
+                                "person_name": "上原正三",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS000000H6J",
+                                "person_name": "菊池俊輔",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            },
+                            {
+                                "person_id": "PPS00001BPDQ",
+                                "person_name": "内藤まこと",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS00000BTZC",
+                                "person_name": "小林恭治",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS000000Y18",
+                                "person_name": "藤川桂介",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS00001HC6U",
+                                "person_name": "高際和雄",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS000002CVD",
+                                "person_name": "北沢彪",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00001H19M",
+                                "person_name": "大塚莞爾",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS000002PWH",
+                                "person_name": "山田健",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS000001QXJ",
+                                "person_name": "鈴木俊継",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS00000JS41",
+                                "person_name": "うしおそうじ",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT000056XE7",
+                        "product_id": "PPD000056XE7",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "ec",
+                        "service_name": "ec",
+                        "msdb_item": "video",
+                        "item_cd": "1021",
+                        "item_name": "ＤＶＤ",
+                        "product_name": "鉄人タイガーセブン 2",
+                        "product_kana": "てつじんたいがーせぶん 2*7-1",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "1900-01-01 00:00:00",
+                        "disp_start_month": "1900-01",
+                        "disp_end_date": "2099-12-28 23:59:59",
+                        "disp_end_month": "2099-12",
+                        "sale_start_date": "2003-03-21",
+                        "sale_start_month": "2003-03",
+                        "sale_end_date": "2053-03-20",
+                        "sale_end_month": "2053-03",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA00008M81I"
+                        ],
+                        "tieup": "",
+                        "copyright": "",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "1973",
+                        "created_year_to": "1974",
+                        "created_year_str": "1973～1974",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT0000000SX",
+                        "maker_name": "NBCユニバーサル・エンターテイメントジャパン",
+                        "maker_name_kana": "えぬびーしーゆにばーさるえんたーていめんとじやぱん",
+                        "maker_name_abbrev": "NBCユニバーサル・エンターテイメント",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10022110",
+                        "ccc_family_cd": "10022110002",
+                        "ccc_product_id": "000494854",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4988102880118",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "PIBD712002",
+                        "icpn": "",
+                        "media_category_cd": "22",
+                        "media_category_name": "販売DVD",
+                        "media_format_id": "EXT000006GPK",
+                        "media_format_name": "DVD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "000000",
+                        "product_spec": "",
+                        "screen_size": "スタンダード",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "１：ドルビーデジタル／モノラル／日本語",
+                        "region_info": "２",
+                        "disc_info": "片面２層",
+                        "color_spec": "カラー",
+                        "video_info": "４：３",
+                        "number_of_volume": "2",
+                        "number_of_set": "0",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "",
+                        "jacket_m": "",
+                        "jacket_l": "",
+                        "jacket_l4": "",
+                        "scene_s": [],
+                        "scene_m": [],
+                        "scene_l": [],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": 5800,
+                        "price_tax_in": 6264,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "01",
+                                "doc_source_id": "01",
+                                "doc_text": "１９７３年～７４年に放映された特撮怪奇アクション・ドラマ全２６話が、遂にソフト化。太古の昔、人類に敗れたムー原人が復讐を開始！考古学者の息子・滝川剛が七つの超能力を持つ鉄人タイガーセブンに変身してムー原人たちと対決！ピー・プロが「ライオン丸」シリーズに続いて企画・制作し、そのハードさ、シリアスさが高い評価を受けた作品。"
+                            },
+                            {
+                                "doc_type_id": "04",
+                                "doc_source_id": "03",
+                                "doc_text": "【Ｄｉｓｃ－１】<BR>＜第７話＞疾風！オオカミライダー部隊<BR>＜第８話＞スカーフに怒りをこめて！！<BR>＜第９話＞死斗！飛竜原人対タイガーセブン<BR>＜第１０話＞大爆発！！ツチノコ原人<BR>＜第１１話＞とける顔ロウ原人<BR>＜第１２話＞三平がハエ人間になる！！"
+                            },
+                            {
+                                "doc_type_id": "04",
+                                "doc_source_id": "04",
+                                "doc_text": "第７話：「疾風！オオカミライダー部隊」、第８話：「スカーフに怒りをこめて！！」、第９話：「死斗！飛竜原人対タイガーセブン」、第１０話：「大爆発！！ツチノコ原人」、第１１話：「とける顔ロウ原人」、第１２話：「三平がハエ人間になる！！」"
+                            },
+                            {
+                                "doc_type_id": "06",
+                                "doc_source_id": "04",
+                                "doc_text": "＜特典内容＞<BR><BR>全篇ニュープリント・リマスタリング仕様　<BR>現存する予告篇収録"
+                            },
+                            {
+                                "doc_type_id": "11",
+                                "doc_source_id": "03",
+                                "doc_text": "現存する予告篇"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT0000000ZQ",
+                                "big_genre_name": "邦画特撮ＳＦ",
+                                "medium_genre_id": "EXT0000000ZS",
+                                "medium_genre_name": "ＴＶヒーロー",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS00000MUH6",
+                                "person_name": "南城竜也",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000054I4E",
+                                "person_name": "南条竜也",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000002ELH",
+                                "person_name": "中条静夫",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000054I4G",
+                                "person_name": "達純一",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000054I4J",
+                                "person_name": "佐久間宏則",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000RGD",
+                                "person_name": "吉田友紀",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000054I4K",
+                                "person_name": "久万里由香",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001PIA",
+                                "person_name": "上原正三",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS000000H6J",
+                                "person_name": "菊池俊輔",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            },
+                            {
+                                "person_id": "PPS00001BPDQ",
+                                "person_name": "内藤まこと",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS00000BTZC",
+                                "person_name": "小林恭治",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS000000Y18",
+                                "person_name": "藤川桂介",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS00001HC6U",
+                                "person_name": "高際和雄",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS000002CVD",
+                                "person_name": "北沢彪",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00001H19M",
+                                "person_name": "大塚莞爾",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS000002PWH",
+                                "person_name": "山田健",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS000001QXJ",
+                                "person_name": "鈴木俊継",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS00000JS41",
+                                "person_name": "うしおそうじ",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT000075XPG",
+                        "product_id": "PPD000056XE7",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "tol",
+                        "service_name": "tol",
+                        "msdb_item": "video",
+                        "item_cd": "1021",
+                        "item_name": "ＤＶＤ",
+                        "product_name": "鉄人タイガーセブン 2",
+                        "product_kana": "てつじんたいがーせぶん 2*7-1",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2007-09-30 01:53:49",
+                        "disp_start_month": "2007-09",
+                        "disp_end_date": "2030-12-28 00:00:00",
+                        "disp_end_month": "2030-12",
+                        "sale_start_date": "2003-03-21",
+                        "sale_start_month": "2003-03",
+                        "sale_end_date": "2030-12-28",
+                        "sale_end_month": "2030-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA00008M81I"
+                        ],
+                        "tieup": "",
+                        "copyright": "",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "1973",
+                        "created_year_to": "1974",
+                        "created_year_str": "1973～1974",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT0000000SX",
+                        "maker_name": "NBCユニバーサル・エンターテイメントジャパン",
+                        "maker_name_kana": "えぬびーしーゆにばーさるえんたーていめんとじやぱん",
+                        "maker_name_abbrev": "NBCユニバーサル・エンターテイメント",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10022110",
+                        "ccc_family_cd": "10022110002",
+                        "ccc_product_id": "000494854",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4988102880118",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "PIBD712002",
+                        "icpn": "",
+                        "media_category_cd": "22",
+                        "media_category_name": "販売DVD",
+                        "media_format_id": "EXT000006GPK",
+                        "media_format_name": "DVD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "000000",
+                        "product_spec": "",
+                        "screen_size": "スタンダード",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "１：ドルビーデジタル／モノラル／日本語",
+                        "region_info": "２",
+                        "disc_info": "片面２層",
+                        "color_spec": "カラー",
+                        "video_info": "４：３",
+                        "number_of_volume": "2",
+                        "number_of_set": "0",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "",
+                        "jacket_m": "",
+                        "jacket_l": "",
+                        "jacket_l4": "",
+                        "scene_s": [],
+                        "scene_m": [],
+                        "scene_l": [],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": 5800,
+                        "price_tax_in": 6264,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "01",
+                                "doc_source_id": "01",
+                                "doc_text": "１９７３年～７４年に放映された特撮怪奇アクション・ドラマ全２６話が、遂にソフト化。太古の昔、人類に敗れたムー原人が復讐を開始！考古学者の息子・滝川剛が七つの超能力を持つ鉄人タイガーセブンに変身してムー原人たちと対決！ピー・プロが「ライオン丸」シリーズに続いて企画・制作し、そのハードさ、シリアスさが高い評価を受けた作品。"
+                            },
+                            {
+                                "doc_type_id": "04",
+                                "doc_source_id": "03",
+                                "doc_text": "【Ｄｉｓｃ－１】<BR>＜第７話＞疾風！オオカミライダー部隊<BR>＜第８話＞スカーフに怒りをこめて！！<BR>＜第９話＞死斗！飛竜原人対タイガーセブン<BR>＜第１０話＞大爆発！！ツチノコ原人<BR>＜第１１話＞とける顔ロウ原人<BR>＜第１２話＞三平がハエ人間になる！！"
+                            },
+                            {
+                                "doc_type_id": "04",
+                                "doc_source_id": "04",
+                                "doc_text": "第７話：「疾風！オオカミライダー部隊」、第８話：「スカーフに怒りをこめて！！」、第９話：「死斗！飛竜原人対タイガーセブン」、第１０話：「大爆発！！ツチノコ原人」、第１１話：「とける顔ロウ原人」、第１２話：「三平がハエ人間になる！！」"
+                            },
+                            {
+                                "doc_type_id": "06",
+                                "doc_source_id": "04",
+                                "doc_text": "＜特典内容＞<BR><BR>全篇ニュープリント・リマスタリング仕様　<BR>現存する予告篇収録"
+                            },
+                            {
+                                "doc_type_id": "11",
+                                "doc_source_id": "03",
+                                "doc_text": "現存する予告篇"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT0000000ZQ",
+                                "big_genre_name": "邦画特撮ＳＦ",
+                                "medium_genre_id": "EXT0000000ZS",
+                                "medium_genre_name": "ＴＶヒーロー",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS00000MUH6",
+                                "person_name": "南城竜也",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000054I4E",
+                                "person_name": "南条竜也",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000002ELH",
+                                "person_name": "中条静夫",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000054I4G",
+                                "person_name": "達純一",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000054I4J",
+                                "person_name": "佐久間宏則",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000RGD",
+                                "person_name": "吉田友紀",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000054I4K",
+                                "person_name": "久万里由香",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001PIA",
+                                "person_name": "上原正三",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS000000H6J",
+                                "person_name": "菊池俊輔",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            },
+                            {
+                                "person_id": "PPS00001BPDQ",
+                                "person_name": "内藤まこと",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS00000BTZC",
+                                "person_name": "小林恭治",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS000000Y18",
+                                "person_name": "藤川桂介",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS00001HC6U",
+                                "person_name": "高際和雄",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS000002CVD",
+                                "person_name": "北沢彪",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00001H19M",
+                                "person_name": "大塚莞爾",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS000002PWH",
+                                "person_name": "山田健",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS000001QXJ",
+                                "person_name": "鈴木俊継",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS00000JS41",
+                                "person_name": "うしおそうじ",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT000056XBT",
+                        "product_id": "PPD000056XBT",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "ec",
+                        "service_name": "ec",
+                        "msdb_item": "video",
+                        "item_cd": "1021",
+                        "item_name": "ＤＶＤ",
+                        "product_name": "鉄人タイガーセブン 1",
+                        "product_kana": "てつじんたいがーせぶん 1*1-6",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "1900-01-01 00:00:00",
+                        "disp_start_month": "1900-01",
+                        "disp_end_date": "2099-12-28 23:59:59",
+                        "disp_end_month": "2099-12",
+                        "sale_start_date": "2003-03-21",
+                        "sale_start_month": "2003-03",
+                        "sale_end_date": "2053-03-20",
+                        "sale_end_month": "2053-03",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA00008M81I"
+                        ],
+                        "tieup": "",
+                        "copyright": "",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "1973",
+                        "created_year_to": "1974",
+                        "created_year_str": "1973～1974",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT0000000SX",
+                        "maker_name": "NBCユニバーサル・エンターテイメントジャパン",
+                        "maker_name_kana": "えぬびーしーゆにばーさるえんたーていめんとじやぱん",
+                        "maker_name_abbrev": "NBCユニバーサル・エンターテイメント",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10022110",
+                        "ccc_family_cd": "10022110001",
+                        "ccc_product_id": "000494853",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4988102880019",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "PIBD712001",
+                        "icpn": "",
+                        "media_category_cd": "22",
+                        "media_category_name": "販売DVD",
+                        "media_format_id": "EXT000006GPK",
+                        "media_format_name": "DVD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "000000",
+                        "product_spec": "",
+                        "screen_size": "スタンダード",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "１：ドルビーデジタル／モノラル／日本語",
+                        "region_info": "２",
+                        "disc_info": "片面２層",
+                        "color_spec": "カラー",
+                        "video_info": "４：３",
+                        "number_of_volume": "1",
+                        "number_of_set": "0",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/00275/4988102880019_1S.jpg",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/00275/4988102880019_1M.jpg",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/00275/4988102880019_1L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [],
+                        "scene_m": [],
+                        "scene_l": [],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": 5800,
+                        "price_tax_in": 6264,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "01",
+                                "doc_source_id": "01",
+                                "doc_text": "１９７３年～７４年に放映された特撮怪奇アクション・ドラマ全２６話が、遂にソフト化。太古の昔、人類に敗れたムー原人が復讐を開始！考古学者の息子・滝川剛が七つの超能力を持つ鉄人タイガーセブンに変身してムー原人たちと対決！ピー・プロが「ライオン丸」シリーズに続いて企画・制作し、そのハードさ、シリアスさが高い評価を受けた作品。"
+                            },
+                            {
+                                "doc_type_id": "01",
+                                "doc_source_id": "03",
+                                "doc_text": "放映からすでに３０年。今やカルト的人気を誇る特撮ドラマの全２６話を収録シリーズ。人類滅亡を目論む“ムー原人”たちの野望を打ち砕くべく、１人の青年が今日も伝説の超人に変身する……。"
+                            },
+                            {
+                                "doc_type_id": "04",
+                                "doc_source_id": "03",
+                                "doc_text": "【Ｄｉｓｃ－１】<BR>＜第１話＞ムー原人恐怖の大反逆<BR>＜第２話＞甦ったミイラ原人の復讐<BR>＜第３話＞逆襲！半魚原人アマゾンＸ<BR>＜第４話＞オイル原人恐怖の陰謀！！<BR>＜第５話＞戦慄！へび原人<BR>＜第６話＞忍び寄る電撃殺人！"
+                            },
+                            {
+                                "doc_type_id": "04",
+                                "doc_source_id": "04",
+                                "doc_text": "第１話：「ムー原人恐怖の大反乱」、第２話：「甦ったミイラ原人の復讐」、第３話：「逆襲！半魚原人アマゾンＸ」、第４話：「オイル原人恐怖の陰謀！！」、第５話：「戦慄！へび原人！」、第６話：「忍び寄る電撃殺人！」"
+                            },
+                            {
+                                "doc_type_id": "06",
+                                "doc_source_id": "04",
+                                "doc_text": "＜特典内容＞<BR><BR>全篇ニュープリント・リマスタリング仕様　<BR>現存する予告篇収録"
+                            },
+                            {
+                                "doc_type_id": "11",
+                                "doc_source_id": "03",
+                                "doc_text": "現存する予告篇"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT0000000ZQ",
+                                "big_genre_name": "邦画特撮ＳＦ",
+                                "medium_genre_id": "EXT0000000ZS",
+                                "medium_genre_name": "ＴＶヒーロー",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS00000MUH6",
+                                "person_name": "南城竜也",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000054I4E",
+                                "person_name": "南条竜也",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000002ELH",
+                                "person_name": "中条静夫",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000054I4G",
+                                "person_name": "達純一",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000054I4J",
+                                "person_name": "佐久間宏則",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000RGD",
+                                "person_name": "吉田友紀",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000054I4K",
+                                "person_name": "久万里由香",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001PIA",
+                                "person_name": "上原正三",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS000000H6J",
+                                "person_name": "菊池俊輔",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            },
+                            {
+                                "person_id": "PPS00001BPDQ",
+                                "person_name": "内藤まこと",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS00000BTZC",
+                                "person_name": "小林恭治",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS000000Y18",
+                                "person_name": "藤川桂介",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS00001HC6U",
+                                "person_name": "高際和雄",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS000002CVD",
+                                "person_name": "北沢彪",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00001H19M",
+                                "person_name": "大塚莞爾",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS000002PWH",
+                                "person_name": "山田健",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS000001QXJ",
+                                "person_name": "鈴木俊継",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS00000JS41",
+                                "person_name": "うしおそうじ",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT000075XLC",
+                        "product_id": "PPD000056XBT",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "tol",
+                        "service_name": "tol",
+                        "msdb_item": "video",
+                        "item_cd": "1021",
+                        "item_name": "ＤＶＤ",
+                        "product_name": "鉄人タイガーセブン 1",
+                        "product_kana": "てつじんたいがーせぶん 1*1-6",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2007-09-30 01:44:14",
+                        "disp_start_month": "2007-09",
+                        "disp_end_date": "2030-12-28 00:00:00",
+                        "disp_end_month": "2030-12",
+                        "sale_start_date": "2003-03-21",
+                        "sale_start_month": "2003-03",
+                        "sale_end_date": "2030-12-28",
+                        "sale_end_month": "2030-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA00008M81I"
+                        ],
+                        "tieup": "",
+                        "copyright": "",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "1973",
+                        "created_year_to": "1974",
+                        "created_year_str": "1973～1974",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT0000000SX",
+                        "maker_name": "NBCユニバーサル・エンターテイメントジャパン",
+                        "maker_name_kana": "えぬびーしーゆにばーさるえんたーていめんとじやぱん",
+                        "maker_name_abbrev": "NBCユニバーサル・エンターテイメント",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10022110",
+                        "ccc_family_cd": "10022110001",
+                        "ccc_product_id": "000494853",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4988102880019",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "PIBD712001",
+                        "icpn": "",
+                        "media_category_cd": "22",
+                        "media_category_name": "販売DVD",
+                        "media_format_id": "EXT000006GPK",
+                        "media_format_name": "DVD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "000000",
+                        "product_spec": "",
+                        "screen_size": "スタンダード",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "１：ドルビーデジタル／モノラル／日本語",
+                        "region_info": "２",
+                        "disc_info": "片面２層",
+                        "color_spec": "カラー",
+                        "video_info": "４：３",
+                        "number_of_volume": "1",
+                        "number_of_set": "0",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/00275/4988102880019_1S.jpg",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/00275/4988102880019_1M.jpg",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/00275/4988102880019_1L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [],
+                        "scene_m": [],
+                        "scene_l": [],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": 5800,
+                        "price_tax_in": 6264,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "01",
+                                "doc_source_id": "01",
+                                "doc_text": "１９７３年～７４年に放映された特撮怪奇アクション・ドラマ全２６話が、遂にソフト化。太古の昔、人類に敗れたムー原人が復讐を開始！考古学者の息子・滝川剛が七つの超能力を持つ鉄人タイガーセブンに変身してムー原人たちと対決！ピー・プロが「ライオン丸」シリーズに続いて企画・制作し、そのハードさ、シリアスさが高い評価を受けた作品。"
+                            },
+                            {
+                                "doc_type_id": "01",
+                                "doc_source_id": "03",
+                                "doc_text": "放映からすでに３０年。今やカルト的人気を誇る特撮ドラマの全２６話を収録シリーズ。人類滅亡を目論む“ムー原人”たちの野望を打ち砕くべく、１人の青年が今日も伝説の超人に変身する……。"
+                            },
+                            {
+                                "doc_type_id": "04",
+                                "doc_source_id": "03",
+                                "doc_text": "【Ｄｉｓｃ－１】<BR>＜第１話＞ムー原人恐怖の大反逆<BR>＜第２話＞甦ったミイラ原人の復讐<BR>＜第３話＞逆襲！半魚原人アマゾンＸ<BR>＜第４話＞オイル原人恐怖の陰謀！！<BR>＜第５話＞戦慄！へび原人<BR>＜第６話＞忍び寄る電撃殺人！"
+                            },
+                            {
+                                "doc_type_id": "04",
+                                "doc_source_id": "04",
+                                "doc_text": "第１話：「ムー原人恐怖の大反乱」、第２話：「甦ったミイラ原人の復讐」、第３話：「逆襲！半魚原人アマゾンＸ」、第４話：「オイル原人恐怖の陰謀！！」、第５話：「戦慄！へび原人！」、第６話：「忍び寄る電撃殺人！」"
+                            },
+                            {
+                                "doc_type_id": "06",
+                                "doc_source_id": "04",
+                                "doc_text": "＜特典内容＞<BR><BR>全篇ニュープリント・リマスタリング仕様　<BR>現存する予告篇収録"
+                            },
+                            {
+                                "doc_type_id": "11",
+                                "doc_source_id": "03",
+                                "doc_text": "現存する予告篇"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT0000000ZQ",
+                                "big_genre_name": "邦画特撮ＳＦ",
+                                "medium_genre_id": "EXT0000000ZS",
+                                "medium_genre_name": "ＴＶヒーロー",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS00000MUH6",
+                                "person_name": "南城竜也",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000054I4E",
+                                "person_name": "南条竜也",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000002ELH",
+                                "person_name": "中条静夫",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000054I4G",
+                                "person_name": "達純一",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000054I4J",
+                                "person_name": "佐久間宏則",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000RGD",
+                                "person_name": "吉田友紀",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000054I4K",
+                                "person_name": "久万里由香",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001PIA",
+                                "person_name": "上原正三",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS000000H6J",
+                                "person_name": "菊池俊輔",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            },
+                            {
+                                "person_id": "PPS00001BPDQ",
+                                "person_name": "内藤まこと",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS00000BTZC",
+                                "person_name": "小林恭治",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS000000Y18",
+                                "person_name": "藤川桂介",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS00001HC6U",
+                                "person_name": "高際和雄",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS000002CVD",
+                                "person_name": "北沢彪",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00001H19M",
+                                "person_name": "大塚莞爾",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS000002PWH",
+                                "person_name": "山田健",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS000001QXJ",
+                                "person_name": "鈴木俊継",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS00000JS41",
+                                "person_name": "うしおそうじ",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT000054I42",
+                        "product_id": "PPD000054I42",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "ec",
+                        "service_name": "ec",
+                        "msdb_item": "video",
+                        "item_cd": "1021",
+                        "item_name": "ＤＶＤ",
+                        "product_name": "鉄人タイガーセブン DVD-BOX",
+                        "product_kana": "てつじんたいがーせぶんBOX*げ",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "1900-01-01 00:00:00",
+                        "disp_start_month": "1900-01",
+                        "disp_end_date": "2099-12-28 23:59:59",
+                        "disp_end_month": "2099-12",
+                        "sale_start_date": "2002-02-22",
+                        "sale_start_month": "2002-02",
+                        "sale_end_date": "2052-02-22",
+                        "sale_end_month": "2052-02",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA00008M81I"
+                        ],
+                        "tieup": "",
+                        "copyright": "",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "1973",
+                        "created_year_to": "1974",
+                        "created_year_str": "1973～1974",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT0000000SX",
+                        "maker_name": "NBCユニバーサル・エンターテイメントジャパン",
+                        "maker_name_kana": "えぬびーしーゆにばーさるえんたーていめんとじやぱん",
+                        "maker_name_abbrev": "NBCユニバーサル・エンターテイメント",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 1,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10022110",
+                        "ccc_family_cd": "10022110501",
+                        "ccc_product_id": "000494852",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4988102699314",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "PIBD7120",
+                        "icpn": "",
+                        "media_category_cd": "22",
+                        "media_category_name": "販売DVD",
+                        "media_format_id": "EXT000006GPK",
+                        "media_format_name": "DVD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "000000",
+                        "product_spec": "限定盤",
+                        "screen_size": "スタンダード",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "１：ドルビーデジタル／モノラル／日本語",
+                        "region_info": "２",
+                        "disc_info": "片面１層×１＋片面２層×４",
+                        "color_spec": "カラー",
+                        "video_info": "４：３",
+                        "number_of_volume": "",
+                        "number_of_set": "0",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/00272/4988102699314_1S.jpg",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/00272/4988102699314_1M.jpg",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/00272/4988102699314_1L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [],
+                        "scene_m": [],
+                        "scene_l": [],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": 30000,
+                        "price_tax_in": 32400,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "01",
+                                "doc_source_id": "01",
+                                "doc_text": "１９７３年～７４年に放映された特撮怪奇アクション・ドラマ全２６話が、遂にソフト化。太古の昔、人類に敗れたムー原人が復讐を開始！考古学者の息子・滝川剛が七つの超能力を持つ鉄人タイガーセブンに変身してムー原人たちと対決！ピー・プロが「ライオン丸」シリーズに続いて企画・制作し、そのハードさ、シリアスさが高い評価を受けた作品。"
+                            },
+                            {
+                                "doc_type_id": "01",
+                                "doc_source_id": "03",
+                                "doc_text": "『ライオン丸』シリーズを手がけたビー・プロが企画・制作し、’７３～７４年にかけてＴＶ放映された特撮怪奇アクション・ドラマ。その初のソフト化。全２６話を収録し、特典に特製ブックレットも。"
+                            },
+                            {
+                                "doc_type_id": "04",
+                                "doc_source_id": "03",
+                                "doc_text": "【Ｄｉｓｃ－１】<BR>＜第１話＞ムー原人　恐怖の大反乱<BR>＜第２話＞甦ったミイラ原人の復讐<BR>＜第３話＞逆襲！半魚原人アマゾンＸ<BR>＜第４話＞オイル原人　恐怖の陰謀！！<BR>＜第５話＞戦慄！へび原人！<BR>＜第６話＞忍び寄る電撃殺人！！<BR><BR>【Ｄｉｓｃ－２】<BR>＜第７話＞疾風！！オオカミライダー部隊<BR>＜第８話＞スカーフに愛をこめて！！<BR>＜第９話＞死斗！！飛竜原人対タイガーセブン<BR>＜第１０話＞大爆発！！ツチノコ原人<BR>＜第１１話＞とける顔ロウ原人<BR>＜第１２話＞三平がハエ原人になる！！<BR><BR>【Ｄｉｓｃ－３】<BR>＜第１３話＞剛兄ちゃん助けてェーッ！！<BR>＜第１４話＞燃える命のろくろ地獄<BR>＜第１５話＞ムー帝国大侵略<BR>＜第１６話＞ムー帝国への挑戦<BR>＜第１７話＞日本列島沈没の危機<BR>＜第１８話＞伊豆半島死の攻防戦！！<BR><BR>【Ｄｉｓｃ－４】<BR>＜第１９話＞タイガーセブンの唄が聞こえる<BR>＜第２０話＞ガンファイター鼠原人の挑戦<BR>＜第２１話＞必殺！！タイガ－回転スパーク<BR>＜第２２話＞逆襲！！狂った犬原人<BR>＜第２３話＞悪魔の唸りコールタール原人<BR>＜第２４話＞ムー帝国移動大作戦！！<BR><BR>【Ｄｉｓｃ－５】<BR>＜第２５話＞恐怖の大サーカス　マリオネット原人<BR>＜第２６話＞今甦るタイガースパーク！！"
+                            },
+                            {
+                                "doc_type_id": "04",
+                                "doc_source_id": "04",
+                                "doc_text": "第１話：「ムー原人　恐怖の大反乱」、第２話：「甦ったミイラ原人の復讐」、第３話：「逆襲！　半魚原人アマゾンＸ」、第４話：「オイル原人恐怖の陰謀」、第５話：「戦慄！へび原人！」、第６話：「忍び寄る電撃殺人！！」、第７話：「疾風！！　オオカミライダー部隊」、第８話：「スカーフに怒りをこめて！！」、第９話：「死斗！！　飛竜原人対タイガーセブン」、第１０話：「大爆発！！　ツチノコ原人」、第１１話：「とける顔　ロウ原人」、第１２話：「三平　ハエ原人になる！！」、第１３話：「剛兄ちゃん助けてェーッ！！」、第１４話：「燃える命のろくろ地獄」、第１５話：「ムー帝国大侵略」、第１６話：「ムー帝国への挑戦」、第１７話：「日本列島沈没の危機！！」、第１８話：「伊豆半島死の攻防戦！！」、第１９話：「タイガーセブンの唄が聞こえる」、第２０話：「ガンファイター鼠原人の挑戦」、第２１話：「必殺！！　タイガー回転スパーク」、第２２話：「逆襲！！　狂った犬原人」、第２３話：「悪魔の唸りコールタール原人」、第２４話：「ムー帝国移動大作戦！！」、第２５話：「恐怖の大サーカス　マリオネット原人」、第２６話：「今甦えるタイガースパーク！！」"
+                            },
+                            {
+                                "doc_type_id": "06",
+                                "doc_source_id": "04",
+                                "doc_text": "※２００２年８月３１日までの期間限定生産<BR><BR>オリジナルネガから新たにプリントを起こしテレシネしたニューマスター仕様<BR><BR>秘蔵スチール＆設定資料等満載の特製ブックレット（１６Ｐ）封入<BR><BR>＜映像特典＞<BR><BR>現存する予告編を全て収録"
+                            },
+                            {
+                                "doc_type_id": "11",
+                                "doc_source_id": "03",
+                                "doc_text": "うしおそうじ独占インタビュー／全話予告篇"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT0000000ZQ",
+                                "big_genre_name": "邦画特撮ＳＦ",
+                                "medium_genre_id": "EXT0000000ZS",
+                                "medium_genre_name": "ＴＶヒーロー",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS00000JS41",
+                                "person_name": "うしおそうじ",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            },
+                            {
+                                "person_id": "PPS00000MUH6",
+                                "person_name": "南城竜也",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000002ELH",
+                                "person_name": "中条静夫",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000054I4G",
+                                "person_name": "達純一",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000054I4E",
+                                "person_name": "南条竜也",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000054I4J",
+                                "person_name": "佐久間宏則",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000RGD",
+                                "person_name": "吉田友紀",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000054I4K",
+                                "person_name": "久万里由香",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001PIA",
+                                "person_name": "上原正三",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS000000H6J",
+                                "person_name": "菊池俊輔",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            },
+                            {
+                                "person_id": "PPS00001BPDQ",
+                                "person_name": "内藤まこと",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS00000BTZC",
+                                "person_name": "小林恭治",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS000000Y18",
+                                "person_name": "藤川桂介",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS00001HC6U",
+                                "person_name": "高際和雄",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS000002CVD",
+                                "person_name": "北沢彪",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00001H19M",
+                                "person_name": "大塚莞爾",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS000002PWH",
+                                "person_name": "山田健",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS000001QXJ",
+                                "person_name": "鈴木俊継",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT000072TIO",
+                        "product_id": "PPD000054I42",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "tol",
+                        "service_name": "tol",
+                        "msdb_item": "video",
+                        "item_cd": "1021",
+                        "item_name": "ＤＶＤ",
+                        "product_name": "鉄人タイガーセブン DVD-BOX",
+                        "product_kana": "てつじんたいがーせぶんBOX*げ",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2007-09-30 02:07:17",
+                        "disp_start_month": "2007-09",
+                        "disp_end_date": "2030-12-28 00:00:00",
+                        "disp_end_month": "2030-12",
+                        "sale_start_date": "2002-02-22",
+                        "sale_start_month": "2002-02",
+                        "sale_end_date": "2030-12-28",
+                        "sale_end_month": "2030-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA00008M81I"
+                        ],
+                        "tieup": "",
+                        "copyright": "",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "1973",
+                        "created_year_to": "1974",
+                        "created_year_str": "1973～1974",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT0000000SX",
+                        "maker_name": "NBCユニバーサル・エンターテイメントジャパン",
+                        "maker_name_kana": "えぬびーしーゆにばーさるえんたーていめんとじやぱん",
+                        "maker_name_abbrev": "NBCユニバーサル・エンターテイメント",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 1,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10022110",
+                        "ccc_family_cd": "10022110501",
+                        "ccc_product_id": "000494852",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4988102699314",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "PIBD7120",
+                        "icpn": "",
+                        "media_category_cd": "22",
+                        "media_category_name": "販売DVD",
+                        "media_format_id": "EXT000006GPK",
+                        "media_format_name": "DVD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "000000",
+                        "product_spec": "",
+                        "screen_size": "スタンダード",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "１：ドルビーデジタル／モノラル／日本語",
+                        "region_info": "２",
+                        "disc_info": "片面１層×１＋片面２層×４",
+                        "color_spec": "カラー",
+                        "video_info": "４：３",
+                        "number_of_volume": "",
+                        "number_of_set": "0",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/00272/4988102699314_1S.jpg",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/00272/4988102699314_1M.jpg",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/00272/4988102699314_1L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [],
+                        "scene_m": [],
+                        "scene_l": [],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": 30000,
+                        "price_tax_in": 32400,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "01",
+                                "doc_source_id": "01",
+                                "doc_text": "１９７３年～７４年に放映された特撮怪奇アクション・ドラマ全２６話が、遂にソフト化。太古の昔、人類に敗れたムー原人が復讐を開始！考古学者の息子・滝川剛が七つの超能力を持つ鉄人タイガーセブンに変身してムー原人たちと対決！ピー・プロが「ライオン丸」シリーズに続いて企画・制作し、そのハードさ、シリアスさが高い評価を受けた作品。"
+                            },
+                            {
+                                "doc_type_id": "01",
+                                "doc_source_id": "03",
+                                "doc_text": "『ライオン丸』シリーズを手がけたビー・プロが企画・制作し、’７３～７４年にかけてＴＶ放映された特撮怪奇アクション・ドラマ。その初のソフト化。全２６話を収録し、特典に特製ブックレットも。"
+                            },
+                            {
+                                "doc_type_id": "04",
+                                "doc_source_id": "03",
+                                "doc_text": "【Ｄｉｓｃ－１】<BR>＜第１話＞ムー原人　恐怖の大反乱<BR>＜第２話＞甦ったミイラ原人の復讐<BR>＜第３話＞逆襲！半魚原人アマゾンＸ<BR>＜第４話＞オイル原人　恐怖の陰謀！！<BR>＜第５話＞戦慄！へび原人！<BR>＜第６話＞忍び寄る電撃殺人！！<BR><BR>【Ｄｉｓｃ－２】<BR>＜第７話＞疾風！！オオカミライダー部隊<BR>＜第８話＞スカーフに愛をこめて！！<BR>＜第９話＞死斗！！飛竜原人対タイガーセブン<BR>＜第１０話＞大爆発！！ツチノコ原人<BR>＜第１１話＞とける顔ロウ原人<BR>＜第１２話＞三平がハエ原人になる！！<BR><BR>【Ｄｉｓｃ－３】<BR>＜第１３話＞剛兄ちゃん助けてェーッ！！<BR>＜第１４話＞燃える命のろくろ地獄<BR>＜第１５話＞ムー帝国大侵略<BR>＜第１６話＞ムー帝国への挑戦<BR>＜第１７話＞日本列島沈没の危機<BR>＜第１８話＞伊豆半島死の攻防戦！！<BR><BR>【Ｄｉｓｃ－４】<BR>＜第１９話＞タイガーセブンの唄が聞こえる<BR>＜第２０話＞ガンファイター鼠原人の挑戦<BR>＜第２１話＞必殺！！タイガ－回転スパーク<BR>＜第２２話＞逆襲！！狂った犬原人<BR>＜第２３話＞悪魔の唸りコールタール原人<BR>＜第２４話＞ムー帝国移動大作戦！！<BR><BR>【Ｄｉｓｃ－５】<BR>＜第２５話＞恐怖の大サーカス　マリオネット原人<BR>＜第２６話＞今甦るタイガースパーク！！"
+                            },
+                            {
+                                "doc_type_id": "04",
+                                "doc_source_id": "04",
+                                "doc_text": "第１話：「ムー原人　恐怖の大反乱」、第２話：「甦ったミイラ原人の復讐」、第３話：「逆襲！　半魚原人アマゾンＸ」、第４話：「オイル原人恐怖の陰謀」、第５話：「戦慄！へび原人！」、第６話：「忍び寄る電撃殺人！！」、第７話：「疾風！！　オオカミライダー部隊」、第８話：「スカーフに怒りをこめて！！」、第９話：「死斗！！　飛竜原人対タイガーセブン」、第１０話：「大爆発！！　ツチノコ原人」、第１１話：「とける顔　ロウ原人」、第１２話：「三平　ハエ原人になる！！」、第１３話：「剛兄ちゃん助けてェーッ！！」、第１４話：「燃える命のろくろ地獄」、第１５話：「ムー帝国大侵略」、第１６話：「ムー帝国への挑戦」、第１７話：「日本列島沈没の危機！！」、第１８話：「伊豆半島死の攻防戦！！」、第１９話：「タイガーセブンの唄が聞こえる」、第２０話：「ガンファイター鼠原人の挑戦」、第２１話：「必殺！！　タイガー回転スパーク」、第２２話：「逆襲！！　狂った犬原人」、第２３話：「悪魔の唸りコールタール原人」、第２４話：「ムー帝国移動大作戦！！」、第２５話：「恐怖の大サーカス　マリオネット原人」、第２６話：「今甦えるタイガースパーク！！」"
+                            },
+                            {
+                                "doc_type_id": "06",
+                                "doc_source_id": "04",
+                                "doc_text": "※２００２年８月３１日までの期間限定生産<BR><BR>オリジナルネガから新たにプリントを起こしテレシネしたニューマスター仕様<BR><BR>秘蔵スチール＆設定資料等満載の特製ブックレット（１６Ｐ）封入<BR><BR>＜映像特典＞<BR><BR>現存する予告編を全て収録"
+                            },
+                            {
+                                "doc_type_id": "11",
+                                "doc_source_id": "03",
+                                "doc_text": "うしおそうじ独占インタビュー／全話予告篇"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT0000000ZQ",
+                                "big_genre_name": "邦画特撮ＳＦ",
+                                "medium_genre_id": "EXT0000000ZS",
+                                "medium_genre_name": "ＴＶヒーロー",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS00000JS41",
+                                "person_name": "うしおそうじ",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            },
+                            {
+                                "person_id": "PPS00000MUH6",
+                                "person_name": "南城竜也",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000002ELH",
+                                "person_name": "中条静夫",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000054I4G",
+                                "person_name": "達純一",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000054I4E",
+                                "person_name": "南条竜也",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000054I4J",
+                                "person_name": "佐久間宏則",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000RGD",
+                                "person_name": "吉田友紀",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000054I4K",
+                                "person_name": "久万里由香",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001PIA",
+                                "person_name": "上原正三",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS000000H6J",
+                                "person_name": "菊池俊輔",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            },
+                            {
+                                "person_id": "PPS00001BPDQ",
+                                "person_name": "内藤まこと",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS00000BTZC",
+                                "person_name": "小林恭治",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS000000Y18",
+                                "person_name": "藤川桂介",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS00001HC6U",
+                                "person_name": "高際和雄",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS000002CVD",
+                                "person_name": "北沢彪",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00001H19M",
+                                "person_name": "大塚莞爾",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS000002PWH",
+                                "person_name": "山田健",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS000001QXJ",
+                                "person_name": "鈴木俊継",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT00000YELM",
+                        "product_id": "PPD00000YELM",
+                        "product_type_id": 2,
+                        "product_type_name": "レンタル",
+                        "service_id": "tol",
+                        "service_name": "tol",
+                        "msdb_item": "video",
+                        "item_cd": "0020",
+                        "item_name": "ＶＨＳ",
+                        "product_name": "鉄人タイガーセブン",
+                        "product_kana": "てつじんたいがーせぶん",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2007-09-30 01:15:16",
+                        "disp_start_month": "2007-09",
+                        "disp_end_date": "2030-12-28 00:00:00",
+                        "disp_end_month": "2030-12",
+                        "sale_start_date": "1983-03-26",
+                        "sale_start_month": "1983-03",
+                        "sale_end_date": "2030-12-28",
+                        "sale_end_month": "2030-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA00008M81I"
+                        ],
+                        "tieup": "",
+                        "copyright": "",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "",
+                        "created_year_to": "",
+                        "created_year_str": "",
+                        "created_countries": "",
+                        "maker_cd": "EXT000001YXW",
+                        "maker_name": "東映ビデオ",
+                        "maker_name_kana": "とうえいびでお",
+                        "maker_name_abbrev": "東映ビデオ",
+                        "label_name": "",
+                        "sell_rental_flag": 2,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10022110",
+                        "ccc_family_cd": "10022110101",
+                        "ccc_product_id": "000744853",
+                        "rental_product_cd": "050140634",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "9999000744853",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "VRTM00471",
+                        "icpn": "",
+                        "media_category_cd": "12",
+                        "media_category_name": "レンタルDVD",
+                        "media_format_id": "EXT00001Q3OJ",
+                        "media_format_name": "VHS",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "005000",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "",
+                        "video_info": "",
+                        "number_of_volume": "",
+                        "number_of_set": "",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "",
+                        "jacket_m": "",
+                        "jacket_l": "",
+                        "jacket_l4": "",
+                        "scene_s": [],
+                        "scene_m": [],
+                        "scene_l": [],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": null,
+                        "price_tax_in": null,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT0000000ZQ",
+                                "big_genre_name": "邦画特撮ＳＦ",
+                                "medium_genre_id": "EXT0000000ZS",
+                                "medium_genre_name": "ＴＶヒーロー",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "catch_copy": "",
+                        "people": [],
+                        "need_age_auth_flg": 0
+                    }
+                ],
+                "video_relations": [],
+                "discas_grade_point": null,
+                "discas_item": [],
+                "ttv_trailer_flg": 0,
+                "ttv_free_movie_flg": 0,
+                "ttv_sell_rental_flg": [],
+                "ttv_low_price": null,
+                "cinema_id": [],
+                "filmarks_id": [],
+                "catch_copy": "",
+                "sale_start_date_sell": "2002-02-22",
+                "sale_start_date_rental": "1983-03-26",
+                "trailer_urls": [],
+                "scenes": [],
+                "filmarks_mark": 0,
+                "filmarks_clip": 0,
+                "filmarks_average": 0,
+                "people": [
+                    {
+                        "person_id": "PPS00000MUH6",
+                        "person_name": "南城竜也",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS000054I4E",
+                        "person_name": "南条竜也",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS000002ELH",
+                        "person_name": "中条静夫",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS000054I4G",
+                        "person_name": "達純一",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS000054I4J",
+                        "person_name": "佐久間宏則",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS000000RGD",
+                        "person_name": "吉田友紀",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS000054I4K",
+                        "person_name": "久万里由香",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS000001PIA",
+                        "person_name": "上原正三",
+                        "role_id": "EXT00000018Y",
+                        "role_name": "脚本"
+                    },
+                    {
+                        "person_id": "PPS000000H6J",
+                        "person_name": "菊池俊輔",
+                        "role_id": "EXT000000197",
+                        "role_name": "音楽"
+                    },
+                    {
+                        "person_id": "PPS00001BPDQ",
+                        "person_name": "内藤まこと",
+                        "role_id": "EXT0000000UH",
+                        "role_name": "監督"
+                    },
+                    {
+                        "person_id": "PPS00000BTZC",
+                        "person_name": "小林恭治",
+                        "role_id": "EXT000000209",
+                        "role_name": "声の出演"
+                    },
+                    {
+                        "person_id": "PPS000000Y18",
+                        "person_name": "藤川桂介",
+                        "role_id": "EXT00000018Y",
+                        "role_name": "脚本"
+                    },
+                    {
+                        "person_id": "PPS00001HC6U",
+                        "person_name": "高際和雄",
+                        "role_id": "EXT00000018Y",
+                        "role_name": "脚本"
+                    },
+                    {
+                        "person_id": "PPS000002CVD",
+                        "person_name": "北沢彪",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS00001H19M",
+                        "person_name": "大塚莞爾",
+                        "role_id": "EXT0000000UH",
+                        "role_name": "監督"
+                    },
+                    {
+                        "person_id": "PPS000002PWH",
+                        "person_name": "山田健",
+                        "role_id": "EXT0000000UH",
+                        "role_name": "監督"
+                    },
+                    {
+                        "person_id": "PPS000001QXJ",
+                        "person_name": "鈴木俊継",
+                        "role_id": "EXT0000000UH",
+                        "role_name": "監督"
+                    },
+                    {
+                        "person_id": "PPS00000JS41",
+                        "person_name": "うしおそうじ",
+                        "role_id": "EXT0000000UQ",
+                        "role_name": "原作者"
+                    }
+                ],
+                "tracks": [],
+                "merged_from": [],
+                "need_age_auth_flg": 0
+            }
+        ]
+    }
+}
