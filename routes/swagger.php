@@ -1311,6 +1311,11 @@
  *                  description="メッセージ",
  *              ),
  *              @SWG\Property(
+ *                  property="rentalPossibleDay",
+ *                  type="string",
+ *                  description="返却予定日（yyyy-mm-dd）",
+ *              ),
+ *              @SWG\Property(
  *                  property="lastUpdate",
  *                  type="string",
  *                  description="最終更新日時（yyyy-mm-dd hh:ii:ss）",
