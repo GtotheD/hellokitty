@@ -510,6 +510,15 @@ $router->group([
         return response()->json($response);
     });
 
+    $router->get('release/has/recommend', function () {
+        $releaseCalenderRepository = new ReleaseCalenderRepository();
+        $response = $releaseCalenderRepository->hasRecommend();
+        $response = [
+            'data' => $response
+        ];
+        return response()->json($response);
+    });
+
     $router->get('release/{month}/{genreId}', function (Request $request, $month, $genreId) {
         $releaseCalenderRepository = new ReleaseCalenderRepository();
         $releaseCalenderRepository->setLimit($request->input('limit', 10));
@@ -531,16 +540,6 @@ $router->group([
         ];
         return response()->json($response);
     });
-
-    $router->get('release/has/recommend', function () {
-        $releaseCalenderRepository = new ReleaseCalenderRepository();
-        $response = $releaseCalenderRepository->hasRecommend();
-        $response = [
-            'data' => $response
-        ];
-        return response()->json($response);
-    });
-
 
     $router->get('ranking/{codeType:himo|agg}/{code}[/{period}]', function (Request $request, $codeType, $code, $period = null) {
         $sectionRepository = new SectionRepository;
