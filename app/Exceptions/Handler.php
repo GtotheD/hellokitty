@@ -50,7 +50,7 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
-        if(env('APP_ENV') === 'local'){
+        if(env('APP_ENV') === 'local' || env('APP_ENV') === 'develop'){
             if ($e instanceof AgeLimitException) {
                 return response()->json(['message' => $e->getMessage(), 'status' => '202'], 202);
             } else if ($e instanceof NoContentsException) {
