@@ -365,6 +365,7 @@ $router->group([
         $peopleRelatedWorksRepository = new PeopleRelatedWorksRepository();
         $peopleRelatedWorksRepository->setLimit($request->input('limit', 10));
         $peopleRelatedWorksRepository->setOffset($request->input('offset', 0));
+        $peopleRelatedWorksRepository->setSort($request->input('sort', 'new'));
         $rows = $peopleRelatedWorksRepository->getWorks($workId);
         if (empty($rows)) {
             throw new NoContentsException;
