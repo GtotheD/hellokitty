@@ -129,12 +129,9 @@ class HimoRepository extends ApiRequesterRepository
             '_system' => 'TsutayaApp',
             'id_value' => implode(' || ', $queryId),
             'service_id' => 'tol',
-            'xmedia_mode' => '5',
-            'xmedia_item_type' => ['1', '2', '3', '4'],
-            'response_level' => '9',
+            'xmedia_mode' => '7',
             'offset' => $this->offset,
             'limit' => $this->limit,
-            'sort_by' => 'auto:asc',
         ];
 
         return $this;
