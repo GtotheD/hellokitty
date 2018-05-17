@@ -227,9 +227,6 @@ class ProductRepository
                     }
 
                     foreach ($docs as $doc) {
-//                        if($doc['doc_type_id'] === '02') {
-//                            $product['docText'] = StripTags($doc['doc_text']);
-//                        }
                         if($doc['doc_type_id'] === '04') {
                             $product['contents'] = StripTags(contentsFormat($doc['doc_text']));
                         }
@@ -357,6 +354,7 @@ class ProductRepository
     public function stock($storeId, $productKey)
     {
         $message = null;
+        $rentalPossibleDay = null;
         $lastUpdate = null;
         $res = null;
         $statusCode = 0;
@@ -388,6 +386,9 @@ class ProductRepository
                 } else {
                     $statusCode = 2;
                 }
+                if (array_key_exists('rentalPossibleDay', $stockInfo['entry']['stockInfo'][0])) {
+                    $rentalPossibleDay = date('Y-m-d', strtotime($stockInfo['entry']['stockInfo'][0]['rentalPossibleDay']));
+                }
                 if (array_key_exists('message', $stockStatus)) {
                     $message = $stockStatus['message'];
                 }
@@ -399,6 +400,7 @@ class ProductRepository
         return [
             'stockStatus' => $statusCode,
             'message' => $message,
+            'rentalPossibleDay' => $rentalPossibleDay,
             'lastUpdate' => $lastUpdate,
         ];
     }
