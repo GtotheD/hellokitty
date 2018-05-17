@@ -206,6 +206,7 @@ class HimoRepository extends ApiRequesterRepository
         $this->queryParams = [
             '_system' => 'TsutayaApp',
             'service_id' => 'tol',
+            'work_products_service_id' => 'tol',
             'response_level' => '9',
             'offset' => $this->offset,
             'limit' => $this->limit,
