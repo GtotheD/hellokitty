@@ -334,28 +334,32 @@ class WorkRepository
         if (array_key_exists('docText', $response)) {
             $docs = json_decode($response['docText'], true);
             if (!empty($docs)) {
-                foreach ($docs as $doc) {
-                    // あらすじを優先してセット
-                    if ($doc['doc_type_id'] === '02') {
-                        $response['docText'] = StripTags($doc['doc_text']);
-                        $isDocSet = true;
-                        break;
-                    } else if ($doc['doc_type_id'] === '01') {
-                        $response['docText'] = StripTags($doc['doc_text']);
-                        $isDocSet = true;
-                        break;
-                    }
-                }
-                // docがセットできなかった場合はブランクにする。
-                if ($isDocSet === false) {
-                    $response['docText'] = '';
+
+                if ($product['msdbItem'] === 'video') {
+                    $response['docText'] = getSummaryComment(DOC_TABLE_MOVIE['tol'], $docs);
+                    $isDocSet = true;
+                } else if ($product['msdbItem'] === 'book') {
+                    $response['docText'] = getSummaryComment(DOC_TABLE_BOOK['tol'], $docs);
+                    $isDocSet = true;
+                } else if ($product['msdbItem'] === 'audio') {
+                    $response['docText'] = getSummaryComment(DOC_TABLE_MUSIC['tol'], $docs);
+                    $isDocSet = true;
+                } else if ($product['msdbItem'] === 'game') {
+                    $response['docText'] = getSummaryComment(DOC_TABLE_GAME['tol'], $docs);
+                    $isDocSet = true;
                 }
             }
         }
+        // docがセットできなかった場合はブランクにする。
+        if ($isDocSet === false) {
+            $response['docText'] = '';
+        }
+
         return $response;
     }
 
-    function getPerson($msdbItem, $productUniqueId) {
+    function getPerson($msdbItem, $productUniqueId)
+    {
         $people = new People;
         $roleId = null;
         $supplement = null;

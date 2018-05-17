@@ -215,10 +215,21 @@ class ProductRepository
             if(array_key_exists('docs', $product)) {
                 $docs = json_decode($product['docs'], true);
                 if(!empty($docs)) {
+
+                    if ($product['msdbItem'] === 'video') {
+                        $product['docText'] = getSummaryComment(DOC_TABLE_MOVIE['tol'], $docs);
+                    } else if($product['msdbItem'] === 'book') {
+                        $product['docText'] = getSummaryComment(DOC_TABLE_BOOK['tol'], $docs);
+                    } else if($product['msdbItem'] === 'audio') {
+                        $product['docText'] = getSummaryComment(DOC_TABLE_MUSIC['tol'], $docs);
+                    } else if($product['msdbItem'] === 'game') {
+                        $product['docText'] = getSummaryComment(DOC_TABLE_GAME['tol'], $docs);
+                    }
+
                     foreach ($docs as $doc) {
-                        if($doc['doc_type_id'] === '02') {
-                            $product['docText'] = StripTags($doc['doc_text']);
-                        }
+//                        if($doc['doc_type_id'] === '02') {
+//                            $product['docText'] = StripTags($doc['doc_text']);
+//                        }
                         if($doc['doc_type_id'] === '04') {
                             $product['contents'] = StripTags(contentsFormat($doc['doc_text']));
                         }
