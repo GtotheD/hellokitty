@@ -371,6 +371,10 @@ class WorkRepository
             $roleId = 'EXT00000000D';
         }
         $person = $people->setConditionByRoleId($productUniqueId, $roleId)->getOne();
+        if ($msdbItem === 'audio' || !empty($person)) {
+            $roleId = 'EXT0000000UM';
+            $person = $people->setConditionByRoleId($productUniqueId, $roleId)->getOne();
+        }
         if (!empty($person)) {
             return $person;
         }
