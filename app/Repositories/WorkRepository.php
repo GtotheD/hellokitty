@@ -298,7 +298,7 @@ class WorkRepository
                 }
             }
             // レンタルDVDの場合はsupplementを空にする
-            if ($product['msdbItem'] === 'video' && $isList === true) {
+            if ($product['msdbItem'] === 'video') {
                 $response['supplement'] = '';
             }
             // コミレンのみ最新刊のものを取得して表示する。

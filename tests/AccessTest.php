@@ -38,7 +38,7 @@ class AccessTest extends TestCase
      */
     public function workAgeLimitNoAdult()
     {
-        $url = '/work/PTA0000R6VWD';
+        $url = '/work/PTA0000R6VWD?saleType=sell';
         $response = $this->getJsonWithAuth( $url);
         $response->assertResponseStatus(200);
     }
@@ -52,6 +52,19 @@ class AccessTest extends TestCase
         $url = '/work/PTA0000V6J54';
         $response = $this->getJsonWithAuth( $url);
         $response->assertResponseStatus(202);
+    }
+
+    /**
+     * @test
+     * DVDの場合はsupplementがブランクになるテスト
+     */
+    public function workDVDSupplementBlank()
+    {
+        $url = '/work/PTA0000SF309';
+        $response = $this->getJsonWithAuth( $url);
+        $response->seeJson([
+            'supplement' => '',
+        ]);
     }
 
     /**
