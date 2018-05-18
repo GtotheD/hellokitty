@@ -153,7 +153,7 @@ $router->group([
         $work = new WorkRepository();
         $work->setSaleType($request->input('saleType', 'rental'));
         $ageLimitCheck = $request->input('ageLimitCheck', false);
-        $work->setAgeLimitCheck('true');
+        $work->setAgeLimitCheck($ageLimitCheck);
         $result = $work->get($workId);
         if (empty($result)) {
             throw new NoContentsException;

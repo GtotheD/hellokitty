@@ -482,12 +482,11 @@ class WorkRepository
                 'rows' => []
             ];
 
-
-            $displayImage = true;
             foreach ($data['results']['rows'] as $row) {
                 $base = $this->format($row);
                 $itemType = $this->convertWorkTypeIdToStr($base['work_type_id']);
-                $productData = $this->parseFromArray($row['products'], $itemType);
+                $saleTypeHas = $this->parseFromArray($row['products'], $itemType);
+                $displayImage = true;
                 if ($this->ageLimitCheck !== 'true') {
                     if ($this->checkAgeLimit(
                             $base['rating_id'], $base['big_genre_id']) === true ||
