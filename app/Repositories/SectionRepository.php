@@ -369,8 +369,8 @@ class SectionRepository
             $rowUnit['rankNo'] = $row['rankNo'];
             $rowUnit['comparison'] = $comparison;
             $rowUnit['jacketL'] = $work['jacketL'];
+            $rowUnit['imageUrl'] = $work['jacketL'];
             $rowUnit['newFlg'] = $work['newFlg'];
-            $rowUnit['supplement'] = $work['supplement'];
             $rowUnit['supplement'] = $work['supplement'];
             $rowUnit['saleType'] = $work['saleType'];
             $rowUnit['itemType'] = $work['itemType'];
