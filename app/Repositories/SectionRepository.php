@@ -362,6 +362,7 @@ class SectionRepository
                 $comparison = 'down';
             }
             $rowUnit['title'] = $row['productTitle'];
+            $rowUnit['productTitle'] = $row['productTitle'];
             $rowUnit['workTitle'] = $work['workTitle'];
             $rowUnit['workId'] = $work['workId'];
             $rowUnit['code'] = $row['productKey'];
