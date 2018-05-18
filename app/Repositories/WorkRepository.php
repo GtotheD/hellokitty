@@ -37,6 +37,48 @@ class WorkRepository
     const HIMO_REQUEAST_MAX = 200;
     const HIMO_REQUEAST_PER_ONCE = 20;
 
+    const HIMO_ROLE_ID_MUSIC = array(
+        'EXT00000000D','EXT0000176TD','EXT0000177YD','EXT0000000UM',
+        'EXT00000005Y','EXT00001EX4U','EXT000017B5G','EXT00001AMVW',
+        'EXT00000001N','EXT0000757LE','EXT00000498P','EXT00000827U',
+        'EXT0000000LM','EXT0000757LN','EXT0000757LR','EXT0000757LT',
+        'EXT0000757LX','EXT00000024X','EXT000000225','EXT0000757M3',
+        'EXT000000381','EXT00000L5JI','EXT0000004YL','EXT0000001XR',
+        'EXT0000757MG','EXT00000L6SD','EXT00000GQWQ','EXT00005GDYM',
+        'EXT0000000G5','EXT000018SON','EXT000019UL0','EXT00001B3GN',
+        'EXT00001HJNQ','EXT000019M1Z','EXT0000002JZ','EXT000018SOP',
+        'EXT000002WCE','EXT00001E707','EXT0000196VA','EXT000019U64',
+        'EXT00002UZYP','EXT0000009L0','EXT00001W695','EXT00001BASK',
+        'EXT00001GWRV','EXT00001GE0F','EXT00001SWQ8','EXT00001G96T',
+        'EXT00001R6QL','EXT00001EQDQ','EXT00001RTP9','EXT00001ANKG',
+        'EXT0000197JE','EXT000021B4J','EXT000023248','EXT0000197FX',
+        'EXT0000757T4','EXT00001G92T','EXT0000249EP','EXT00001TSTM',
+        'EXT000019PJP','EXT00001SQSP','EXT0000757SL','EXT0000757SO',
+        'EXT0000757SQ','EXT0000757SX'
+    );
+
+    const HIMO_ROLE_ID_BOOK = array(
+        'EXT00000BWU9','EXT0000757Q2','EXT0000757OB','EXT0000757OE',
+        'EXT000000MM1','EXT00001RTP9','EXT0000757T9','EXT00000RCII',
+        'EXT00004OS05','EXT00000QLJ6','EXT0000757OJ','EXT00002ZE4D',
+        'EXT000014LC2','EXT0000757PQ','EXT0000757QL','EXT00001GBIY',
+        'EXT00000QJOS','EXT0000757Q4','EXT0000757QC','EXT0000757PY',
+        'EXT000070LL5','EXT0000757QS','EXT0000757QT','EXT0000757QW',
+        'EXT0000757P5','EXT0000757OY','EXT0000757P9','EXT0000757PD',
+        'EXT00001GBQX','EXT0000757P2','EXT0000757QE','EXT0000757PU',
+        'EXT000019VYB','EXT000019PJP','EXT00001AMVW','EXT0000757QG',
+        'EXT0000757PH','EXT00001G96T','EXT00000DSY2','EXT00002HEF0',
+        'EXT0000757OW','EXT0000197FX','EXT0000757RM','EXT000018SON',
+        'EXT000019UL0','EXT00001B3GN','EXT00001HJNQ','EXT000019M1Z',
+        'EXT0000757RY','EXT000018SOP','EXT0000757S3','EXT00001E707',
+        'EXT0000196VA','EXT000019U64','EXT00002UZYP','EXT0000176TD',
+        'EXT0000757SD','EXT0000757SE','EXT00001EX4U','EXT000017B5G',
+        'EXT0000177YD','EXT00001W695','EXT00001BASK','EXT00001GWRV',
+        'EXT00001GE0F','EXT00001SWQ8','EXT000023248','EXT0000757T4',
+        'EXT00001TSTM','EXT00002RY1U','EXT0000757SL','EXT0000757SO',
+        'EXT0000757SQ','EXT0000757SX'
+    );
+
     public function __construct($sort = 'asc', $offset = 0, $limit = 10)
     {
         $this->sort = $sort;
@@ -362,23 +404,20 @@ class WorkRepository
     {
         $people = new People;
         $roleId = null;
-        $supplement = null;
-        if ($msdbItem === 'video') {
-            $roleId = 'EXT0000000UH';
-        } elseif ($msdbItem === 'book') {
-            $roleId = 'EXT00000BWU9';
+        $person = null;
+
+        if ($msdbItem === 'book') {
+            foreach (self::HIMO_ROLE_ID_BOOK as $id) {
+                $person = $people->setConditionByRoleId($productUniqueId, $id)->getOne();
+                if (!empty($person)) break;
+            }
         } elseif ($msdbItem === 'audio') {
-            $roleId = 'EXT00000000D';
+            foreach (self::HIMO_ROLE_ID_MUSIC as $id) {
+                $person = $people->setConditionByRoleId($productUniqueId, $id)->getOne();
+                if (!empty($person)) break;
+            }
         }
-        $person = $people->setConditionByRoleId($productUniqueId, $roleId)->getOne();
-        if ($msdbItem === 'audio' || !empty($person)) {
-            $roleId = 'EXT0000000UM';
-            $person = $people->setConditionByRoleId($productUniqueId, $roleId)->getOne();
-        }
-        if (!empty($person)) {
-            return $person;
-        }
-        return null;
+        return $person;
     }
 
 
@@ -505,13 +544,13 @@ class WorkRepository
                     'adultFlg' => ($base['adult_flg'] === 1) ? true : false,
                     'itemType' => $itemType,
                     'saleType' => '',
-                    'supplement' => $productData['supplement'],
+                    'supplement' => $saleTypeHas['supplement'],
                     'saleStartDate' => ($row['sale_start_date']) ? date('Y-m-d 00:00:00', strtotime($row['sale_start_date'])) : '',
-                    'saleStartDateSell' => $productData['saleStartDateSell'],
-                    'saleStartDateRental' => $productData['saleStartDateRental'],
+                    'saleStartDateSell' => ($row['sale_start_date_sell']) ? date('Y-m-d 00:00:00', strtotime($row['sale_start_date_sell'])) : '',
+                    'saleStartDateRental' => ($row['sale_start_date_rental']) ? date('Y-m-d 00:00:00', strtotime($row['sale_start_date_rental'])) : '',
                     'saleTypeHas' => [
-                        'sell' => $productData['sell'],
-                        'rental' => $productData['rental'],
+                        'sell' => $saleTypeHas['sell'],
+                        'rental' => $saleTypeHas['rental'],
                     ]
                 ];
             }
@@ -559,36 +598,28 @@ class WorkRepository
         $sell = false;
         $rental = false;
         $supplement = '';
-        $saleStartDateSell = null;
-        $saleStartDateRental = null;
         foreach ($products as $product) {
+
             if ($product['service_id'] === 'tol') {
                 if ($product['product_type_id'] === 1) {
-                    // 最新の販売開始日を取得する。
-                    if ( $product['sale_start_date'] > $saleStartDateSell) {
-                        $saleStartDateSell = $product['sale_start_date'];
-                    }
                     $sell = true;
                 } else if ($product['product_type_id'] === 2) {
-                    // 最新の販売開始日を取得する。
-                    if ($product['sale_start_date'] > $saleStartDateRental) {
-                        $saleStartDateRental = $product['sale_start_date'];
-                    }
                     $rental = true;
                 }
-                //
                 if ($itemType === 'game') {
                     $supplement = $product['game_model_name'];
                 } else {
-                    if ($itemType === 'dvd') {
-                        // DVDは表示させない為ブランク
-                        $roleId = '';
-                    } elseif ($itemType === 'book') {
-                        $roleId = 'EXT00000BWU9';
+                    if ($itemType === 'book') {
+                        foreach (self::HIMO_ROLE_ID_BOOK as $id) {
+                            $supplement = $this->parseSupplement($product['people'], $id);
+                            if (!empty($supplement)) break;
+                        }
                     } elseif ($itemType === 'cd') {
-                        $roleId = 'EXT00000000D';
+                        foreach (self::HIMO_ROLE_ID_MUSIC as $id) {
+                            $supplement = $this->parseSupplement($product['people'], $id);
+                            if (!empty($supplement)) break;
                     }
-                    $supplement = $this->parseSupplement($product['people'], $roleId);
+                    }
                 }
 
             }
@@ -596,9 +627,7 @@ class WorkRepository
         return [
             'sell' => $sell,
             'rental' => $rental,
-            'supplement' => $supplement,
-            'saleStartDateSell' => $saleStartDateSell,
-            'saleStartDateRental' => $saleStartDateRental,
+            'supplement' => $supplement
         ];
 
     }
