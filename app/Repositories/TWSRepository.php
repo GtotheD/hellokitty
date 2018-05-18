@@ -109,8 +109,8 @@ class TWSRepository extends ApiRequesterRepository
             'api_key' => $this->apiKey,
             'rankingConcentrationCd' => $rankingConcentrationCd,
             'tolPlatformCode' => '00',
-            'rankinglimit' => $this->limit,
-            'dispNums' => '100',
+            'rankinglimit' => '100',
+            'dispNums' => $this->limit,
             'dispPageNo' => $this->page,
             '_secure' => '1',
             '_pretty' => '1'
