@@ -38,7 +38,7 @@ class AccessTest extends TestCase
      */
     public function workAgeLimitNoAdult()
     {
-        $url = '/work/PTA0000R6VWD';
+        $url = '/work/PTA0000R6VWD?saleType=sell';
         $response = $this->getJsonWithAuth( $url);
         $response->assertResponseStatus(200);
     }
@@ -56,11 +56,81 @@ class AccessTest extends TestCase
 
     /**
      * @test
+     * DVDの場合はsupplementがブランクになるテスト
+     */
+    public function workDVDSupplementBlank()
+    {
+        $url = '/work/PTA0000SF309';
+        $response = $this->getJsonWithAuth( $url);
+        $response->seeJson([
+            'supplement' => '',
+        ]);
+    }
+
+    /**
+     * @test
      */
     public function workProduct()
     {
         $response = $this->getJsonWithAuth('/work/PTA0000SF309/products');
         $response->assertResponseStatus(200);
+    }
+
+    /**
+     * 巻数を付与されていることの確認
+     * @test
+     */
+    public function workProductCheckNumberOfVolumeForBook()
+    {
+        $url = '/work/PTA0000G66F0';
+        $this->getJsonWithAuth( $url);
+        $response = $this->getJsonWithAuth('/work/PTA0000G66F0/products');
+        $response->seeJson([
+            'totalCount' => 65,
+            'productName' => '進撃の巨人<限定版> DVD付き（26）',
+        ]);
+    }
+
+    /**
+     * 巻数が一巻のみの場合は巻数を付与しない場合のテスト
+     * @test
+     */
+    public function workProductCheckNotNumberOfVolumeForBook()
+    {
+        $url = '/work/PTA0000R81I8';
+        $this->getJsonWithAuth( $url);
+        $response = $this->getJsonWithAuth('/work/PTA0000R81I8/products');
+        $response->seeJson([
+                'totalCount' => 1,
+                'productName' => 'こちら葛飾区亀有公園前派出所 ∞巻<特装版>',
+            ]);
+    }
+
+    /**
+     * 巻数が一巻のみの場合は巻数を付与しない場合のテスト
+     * @test
+     */
+    public function workProductIgnoreVHS()
+    {
+        $url = '/work/PTA00008M81I';
+        $this->getJsonWithAuth( $url);
+        $response = $this->getJsonWithAuth('/work/PTA00008M81I/products?saleType=rental');
+        $response->assertResponseStatus(204);
+    }
+
+    /**
+     * 巻数が一巻のみの場合は巻数を付与しない場合のテスト
+     * @test
+     */
+    public function workProductIgnoreVHSDisplayOtherData()
+    {
+        $url = '/work/PTA00008M81I';
+        $this->getJsonWithAuth( $url);
+        $response = $this->getJsonWithAuth('/work/PTA00008M81I/products?saleType=sell');
+        $response->seeJson([
+            'totalCount' => 6,
+            'productName' => '鉄人タイガーセブン 5',
+        ]);
     }
 
     /**
@@ -183,6 +253,22 @@ class AccessTest extends TestCase
         $response = $this->getJsonWithAuth('/product/PDT0000U2COC');
         $response->assertResponseStatus(200);
     }
+
+    /**
+     * CDの場合、product_detailの情報を取得する
+     *
+     * @test
+     */
+    public function productCd()
+    {
+        $url = '/work/PTA0000V402M';
+        $response = $this->getJsonWithAuth( $url);
+
+        $response = $this->getJsonWithAuth('/product/PDT0000VH302');
+        $response->assertResponseStatus(200);
+    }
+
+
     /**
      * @test
      */
@@ -208,15 +294,67 @@ class AccessTest extends TestCase
         $response->assertResponseStatus(200);
     }
 
+    /**
+     * @test
+     * NotFoundテスト
+     */
+    public function genreNotFound()
+    {
+        $response = $this->getJsonWithAuth('/genre/00NotFoundTest00?saleType=sell');
+        $response->assertResponseStatus(204);
+    }
+
+    /**
+     * @test
+     * URL間違いテスト
+     */
+    public function genreNotFound2()
+    {
+        $response = $this->getJsonWithAuth('/NotFoundTest/00NotFoundTest00Y?saleType=sell');
+        $response->assertResponseStatus(404);
+    }
+
+    /**
+     * @test
+     * パラメータ間違いテスト
+     */
+    public function genreNotFound3()
+    {
+        $response = $this->getJsonWithAuth('/genre/EXT0000000DY?PARAM_ERR=rental');
+    //    print_r($response);
+        $response->assertResponseStatus(400);
+    }
+
 
     /**
      * @test
      */
     public function search()
     {
-        $response = $this->getJsonWithAuth('/search/%E5%91%BD');
+        $response = $this->getJsonWithAuth('/search/aaa');
         $response->assertResponseStatus(200);
     }
+
+    /**
+     * @test
+     */
+    public function searchCheckBody()
+    {
+        $response = $this->getJsonWithAuth('/search/bbb');
+        $response->assertEquals(empty($response->response->original['rows']),false);
+    }
+
+
+    /**
+     * @test
+     */
+    public function searchNotFoundCheckBody()
+    {
+        $response = $this->getJsonWithAuth('/search/%E5%91%BD%FF%FF');
+        $response->assertEquals(empty($response->response->original['rows']),true);
+    }
+
+
     /**
      * @test
      */
@@ -225,6 +363,27 @@ class AccessTest extends TestCase
         $response = $this->getJsonWithAuth('/search/suggest/あ');
         $response->assertResponseStatus(200);
     }
+
+    /**
+     * @test
+     */
+    public function searchSuggestCheckBody()
+    {
+        $response = $this->getJsonWithAuth('/search/suggest/あ');
+        $response->assertEquals(empty($response->response->original['rows']), false);
+    }
+
+    /**
+     * @test
+     */
+    public function searchSuggestNotFoundCheckBody()
+    {
+        $response = $this->getJsonWithAuth('/search/suggest/ccc');
+        print_r($response->response->original);
+        $response->assertEquals(empty($response->response->original['rows']), true);
+    }
+
+
     /**
      * @test
      */

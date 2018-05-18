@@ -99,6 +99,14 @@ class SectionRepository
     }
 
     /**
+     * @param mixed $page
+     */
+    public function setPage($page)
+    {
+        $this->page = $page;
+    }
+
+    /**
      * @param mixed $supplementVisible
      */
     public function setSupplementVisible($supplementVisible)
@@ -182,10 +190,15 @@ class SectionRepository
         }
         $tws = new TWSRepository;
         $tws->setLimit($this->limit);
+        $tws->setPage($this->page);
         $rows = $tws->ranking($rankingConcentrationCd, $period)->get();
+        if (empty($rows['totalResults'])) {
+            return null;
+        }
         $response = [
-            'hasNext' => null,
+            'hasNext' => (($this->page * $this->limit) <= $rows['totalResults'])? true: false,
             'totalCount' => $rows['totalResults'],
+            'aggregationPeriod' => $this->aggregationPeriodFormat($rows['totalingPeriod']),
             'rows' => $this->convertFormatFromRanking($rows),
         ];
         if ($title) {
@@ -197,6 +210,26 @@ class SectionRepository
         return $response;
     }
 
+    public function aggregationPeriodFormat($totalingPeriod)
+    {
+        $replacementString = mb_ereg_replace("(月$)|(日\(.\))",'', $totalingPeriod);
+        $replacementString = mb_ereg_replace("年|月",'/', $replacementString);
+        // 日があった場合は日次の変換
+        if(mb_ereg_match('.*日(.*)$', $totalingPeriod)) {
+            $replacementString = date('Y/m/d', strtotime($replacementString));
+        } else if (mb_ereg_match('.*～.*', $totalingPeriod)) {
+            $explodedArray = explode('～', $replacementString);
+            $startDate = date('Y/m/d', strtotime($explodedArray[0]));
+            $endDate = date('Y/m/d', strtotime($explodedArray[1]));
+            $replacementString = $startDate. '～'.$endDate;
+        } else {
+            $replacementString = date('Y/m', strtotime($replacementString . '/01'));
+        }
+
+        // 〜があった場合は週次の変換
+        // 上記以外は月次の変換
+        return $replacementString;
+    }
 
     // 01:レンタルDVD 02:レンタルCD 03:レンタルコミック 04:販売DVD 05:販売CD 06:販売ゲーム 07:販売本・コミック
     public function releaseManual($category, $releaseDateTo)
@@ -311,20 +344,39 @@ class SectionRepository
     private function convertFormatFromRanking($rows)
     {
         $workRepository = new WorkRepository;
+        if (empty($rows['entry'])) {
+            return null;
+        }
         foreach ($rows['entry'] as $row) {
-            if (empty($row)) {
-                return null;
+            $work = $workRepository->get($row['productKey'], [], $this->productKeyType($row['productKey']), false);
+            if(empty($work)) {
+                continue;
             }
-            $work = $workRepository->get($row['productKey'], [], $this->productKeyType($row['productKey']));
-            $rowUnit = [
-                'saleStartDate' => null,
-                'imageUrl' => $row['productImage']['large'],
-                'title' => $row['productTitle'],
-                'workTitle' => $work['workTitle'],
-                'workId' => $work['workId'],
-                'code' => $row['productKey'],
-                'urlCode' => $row['urlCd']
-            ];
+            if(empty($row['lastRankNo'])) {
+                $comparison = 'new';
+            } else if ($row['rankNo'] == $row['lastRankNo']) {
+                $comparison = 'keep';
+            } else if ($row['rankNo'] < $row['lastRankNo']) {
+                $comparison = 'up';
+            } else if ($row['rankNo'] > $row['lastRankNo']) {
+                $comparison = 'down';
+            }
+            $rowUnit['title'] = $row['productTitle'];
+            $rowUnit['workTitle'] = $work['workTitle'];
+            $rowUnit['workId'] = $work['workId'];
+            $rowUnit['code'] = $row['productKey'];
+            $rowUnit['urlCode'] = $row['urlCd'];
+            $rowUnit['rankNo'] = $row['rankNo'];
+            $rowUnit['comparison'] = $comparison;
+            $rowUnit['jacketL'] = $work['jacketL'];
+            $rowUnit['newFlg'] = $work['newFlg'];
+            $rowUnit['supplement'] = $work['supplement'];
+            $rowUnit['supplement'] = $work['supplement'];
+            $rowUnit['saleType'] = $work['saleType'];
+            $rowUnit['itemType'] = $work['itemType'];
+            $rowUnit['adultFlg'] = $work['adultFlg'];
+            $rowUnit['saleStartDate'] = $work['saleStartDate'];
+
             // modelNameがあったゲームなので、ゲーム名を取得するようにする。
             if (!$this->supplementVisible) {
                 if (array_key_exists('modelName', $row)) {

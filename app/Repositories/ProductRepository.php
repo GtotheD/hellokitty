@@ -208,22 +208,30 @@ class ProductRepository
         // reformat data
         foreach ($products as $product) {
             $product = (array)$product;
-            if (substr($product['itemCd'], -2) === '75') {
+            if (substr($product['itemCd'], -2) === '75' && !empty($product['numberOfVolume'])) {
                 $product['productName'] = $product['productName'] . "（{$product['numberOfVolume']}）";
             }
             $product['productKey'] = ($product['productTypeId'] == self::PRODUCT_TYPE_SELL) ? $product['jan'] : $product['rentalProductCd'];
             if(array_key_exists('docs', $product)) {
                 $docs = json_decode($product['docs'], true);
                 if(!empty($docs)) {
+
+                    if ($product['msdbItem'] === 'video') {
+                        $product['docText'] = getSummaryComment(DOC_TABLE_MOVIE['tol'], $docs);
+                    } else if($product['msdbItem'] === 'book') {
+                        $product['docText'] = getSummaryComment(DOC_TABLE_BOOK['tol'], $docs);
+                    } else if($product['msdbItem'] === 'audio') {
+                        $product['docText'] = getSummaryComment(DOC_TABLE_MUSIC['tol'], $docs);
+                    } else if($product['msdbItem'] === 'game') {
+                        $product['docText'] = getSummaryComment(DOC_TABLE_GAME['tol'], $docs);
+                    }
+
                     foreach ($docs as $doc) {
-                        if($doc['doc_type_id'] === '02') {
-                            $product['docText'] = $doc['doc_text'];
-                        }
                         if($doc['doc_type_id'] === '04') {
-                            $product['contents'] = contentsFormat($doc['doc_text']);
+                            $product['contents'] = StripTags(contentsFormat($doc['doc_text']));
                         }
                         if($doc['doc_type_id'] === '11') {
-                            $product['privilege'] = $doc['doc_text'];
+                            $product['privilege'] = StripTags($doc['doc_text']);
                         }
                     }
                 }
@@ -346,6 +354,7 @@ class ProductRepository
     public function stock($storeId, $productKey)
     {
         $message = null;
+        $rentalPossibleDay = null;
         $lastUpdate = null;
         $res = null;
         $statusCode = 0;
@@ -377,6 +386,9 @@ class ProductRepository
                 } else {
                     $statusCode = 2;
                 }
+                if (array_key_exists('rentalPossibleDay', $stockInfo['entry']['stockInfo'][0])) {
+                    $rentalPossibleDay = date('Y-m-d', strtotime($stockInfo['entry']['stockInfo'][0]['rentalPossibleDay']));
+                }
                 if (array_key_exists('message', $stockStatus)) {
                     $message = $stockStatus['message'];
                 }
@@ -388,6 +400,7 @@ class ProductRepository
         return [
             'stockStatus' => $statusCode,
             'message' => $message,
+            'rentalPossibleDay' => $rentalPossibleDay,
             'lastUpdate' => $lastUpdate,
         ];
     }
@@ -458,7 +471,9 @@ class ProductRepository
         $hour = (int)substr($string, 0,2);
         $min = (int)substr($string, 2,2);
         $min = $min + $hour * 60;
-        $sec = (int)substr($string, 4,2);
+        if ($min === 0 ) {
+            return '';
+        }
         return ($hour != '00')? "{$min}分" : "{$min}分";
     }
 }

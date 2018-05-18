@@ -155,6 +155,9 @@ $router->group([
         $ageLimitCheck = $request->input('ageLimitCheck', false);
         $work->setAgeLimitCheck($ageLimitCheck);
         $result = $work->get($workId);
+        if (empty($result)) {
+            throw new NoContentsException;
+        }
         $checkAgeLimit = $work->checkAgeLimit($result['ratingId'], $result['bigGenreId']);
         if ($ageLimitCheck !== 'true') {
             if( $checkAgeLimit === true || $result['adultFlg'] === true) {
@@ -362,6 +365,7 @@ $router->group([
         $peopleRelatedWorksRepository = new PeopleRelatedWorksRepository();
         $peopleRelatedWorksRepository->setLimit($request->input('limit', 10));
         $peopleRelatedWorksRepository->setOffset($request->input('offset', 0));
+        $peopleRelatedWorksRepository->setSort($request->input('sort', 'new'));
         $rows = $peopleRelatedWorksRepository->getWorks($workId);
         if (empty($rows)) {
             throw new NoContentsException;
@@ -378,6 +382,7 @@ $router->group([
         $peopleRelatedWorksRepository = new PeopleRelatedWorksRepository();
         $peopleRelatedWorksRepository->setOffset($request->input('offset', 0));
         $peopleRelatedWorksRepository->setLimit($request->input('limit', 10));
+        $peopleRelatedWorksRepository->setSort($request->input('sort', 'new'));
         $rows = $peopleRelatedWorksRepository->getWorksByArtist($workId);
 
         $response = [
@@ -505,8 +510,16 @@ $router->group([
         return response()->json($response);
     });
 
+    $router->get('release/has/recommend', function () {
+        $releaseCalenderRepository = new ReleaseCalenderRepository();
+        $response = $releaseCalenderRepository->hasRecommend();
+        $response = [
+            'data' => $response
+        ];
+        return response()->json($response);
+    });
+
     $router->get('release/{month}/{genreId}', function (Request $request, $month, $genreId) {
-        $response = [];
         $releaseCalenderRepository = new ReleaseCalenderRepository();
         $releaseCalenderRepository->setLimit($request->input('limit', 10));
         $releaseCalenderRepository->setOffset($request->input('offset', 0));
@@ -522,8 +535,20 @@ $router->group([
         $response = [
             'hasNext' => $releaseCalenderRepository->getHasNext(),
             'totalCount' => $releaseCalenderRepository->getTotalCount(),
+            'baseMonth' => getBaseMonth($month),
             'rows' => $rows
         ];
+        return response()->json($response);
+    });
+
+    $router->get('ranking/{codeType:himo|agg}/{code}[/{period}]', function (Request $request, $codeType, $code, $period = null) {
+        $sectionRepository = new SectionRepository;
+        $sectionRepository->setLimit($request->input('limit', 20));
+        $sectionRepository->setPage($request->input('page', 1));
+        $sectionRepository->setSupplementVisible($request->input('supplementVisibleFlg', false));
+        $sectionData = $sectionRepository->ranking($codeType, $code, $period);
+        return $sectionData;
+
         return response()->json($response);
     });
 

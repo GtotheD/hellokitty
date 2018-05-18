@@ -2,7 +2,7 @@
 /**
  * @SWG\Swagger(
  *     basePath="/tapp/api/v2",
- *     schemes={"http", "https"},
+ *     schemes={"https", "http"},
  * 		produces={"application/json"},
  * 		consumes={"application/json"},
  *      @SWG\Info(

@@ -144,7 +144,7 @@ class WorkRepository
         return $this->get($workId, $columns);
     }
 
-    public function get($workId, $selectColumns = null, $idType = '0102')
+    public function get($workId, $selectColumns = null, $idType = '0102', $addSaleTypeHas = true)
     {
         $product = new Product;
         $response = [];
@@ -166,9 +166,9 @@ class WorkRepository
         $this->work->setConditionByWorkId($workId);
         if ($this->work->count() == 0) {
             $himo = new HimoRepository();
-            $himoResult = $himo->crosswork([$workId], $idType)->get(true);
+            $himoResult = $himo->crosswork([$workId], $idType)->get();
             if (empty($himoResult['results']['rows'])) {
-                throw new NoContentsException();
+                return null;
             }
             // インサートしたものを取得するため条件を再設定
             $workId = $himoResult['results']['rows'][0]['work_id'];
@@ -183,7 +183,19 @@ class WorkRepository
         } else {
             $response = (array)$this->work->selectCamel($selectColumns)->getOne();
         }
-        $response = $this->formatAddOtherData($response);
+        // プロダクトベースで撮ってきた場合は、対象プロダクトの情報で付加情報をつける
+        if ($productResult) {
+            // productのレスポンスがキャメルケースではなく、formatAddOtherDataではキャメルケースの処理の為、変換
+            foreach ($productResult as $key => $item) {
+                $productResultCamel[camel_case($key)] = $item;
+            }
+            $response = $this->formatAddOtherData($response, $addSaleTypeHas, $productResultCamel);
+            // saleStartDateをproductのものでで書き換える。
+            $response['saleStartDate'] = $productResultCamel['saleStartDate'];
+
+        } else {
+            $response = $this->formatAddOtherData($response, $addSaleTypeHas);
+        }
 
         return $response;
     }
@@ -241,7 +253,6 @@ class WorkRepository
                     }
                 }
             }
-
         }
 
         // STEP 5: 条件をセット
@@ -265,44 +276,35 @@ class WorkRepository
         return $response;
     }
 
-    public function formatAddOtherData($response, $addSaleTypeHas = true, $product = null)
+    public function formatAddOtherData($response, $addSaleTypeHas = true, $product = null, $isList = false)
     {
         // productsからとってくるが、仮データ
         $productModel = new Product();
         $productRepository = new  ProductRepository();
 
-        $people = new People;
         $roleId = '';
         $response['supplement'] = '';
         if (empty($product)) {
             $product = (array)$productModel->setConditionByWorkIdNewestProduct($response['workId'], $this->saleType)->toCamel()->getOne();
         }
         if (!empty($product)) {
-            // add docs
-            // get First Docs
-            if (array_key_exists('docs', $product)) {
-                $docs = json_decode($product['docs'], true);
-                if (!empty($docs)) {
-                    foreach ($docs as $doc) {
-                        $response['docText'] = $doc['doc_text'];
-                    }
-                }
-            }
             // add supplement
             if ($product['msdbItem'] === 'game') {
                 $response['supplement'] = $product['gameModelName'];
             } else {
-                if ($product['msdbItem'] === 'video') {
-                    $roleId = 'EXT0000000UH';
-                } elseif ($product['msdbItem'] === 'book') {
-                    $roleId = 'EXT00000BWU9';
-                } elseif ($product['msdbItem'] === 'audio') {
-                    $roleId = 'EXT00000000D';
-                }
-                $person = $people->setConditionByRoleId($product['productUniqueId'], $roleId)->getOne();
+                $person = $this->getPerson($product['msdbItem'], $product['productUniqueId']);
                 if (!empty($person)) {
                     $response['supplement'] = $person->person_name;
                 }
+            }
+            // レンタルDVDの場合はsupplementを空にする
+            if ($product['msdbItem'] === 'video') {
+                $response['supplement'] = '';
+            }
+            // コミレンのみ最新刊のものを取得して表示する。
+            // レンタルはコミック以外はないのでproductTypeIdで判定
+            if ($product['msdbItem'] === 'book' && $product['productTypeId'] == '2') {
+                $response['saleStartDate'] = $product['saleStartDate'];
             }
             if (!empty($product)) {
                 $response['makerName'] = $product['makerName'];
@@ -328,8 +330,57 @@ class WorkRepository
                 'rental' => ($productModel->setConditionByWorkIdSaleType($response['workId'], 'rental')->count() > 0) ? true : false
             ];
         }
+        $isDocSet = false;
+        if (array_key_exists('docText', $response)) {
+            $docs = json_decode($response['docText'], true);
+            if (!empty($docs)) {
+
+                if ($product['msdbItem'] === 'video') {
+                    $response['docText'] = getSummaryComment(DOC_TABLE_MOVIE['tol'], $docs);
+                    $isDocSet = true;
+                } else if ($product['msdbItem'] === 'book') {
+                    $response['docText'] = getSummaryComment(DOC_TABLE_BOOK['tol'], $docs);
+                    $isDocSet = true;
+                } else if ($product['msdbItem'] === 'audio') {
+                    $response['docText'] = getSummaryComment(DOC_TABLE_MUSIC['tol'], $docs);
+                    $isDocSet = true;
+                } else if ($product['msdbItem'] === 'game') {
+                    $response['docText'] = getSummaryComment(DOC_TABLE_GAME['tol'], $docs);
+                    $isDocSet = true;
+                }
+            }
+        }
+        // docがセットできなかった場合はブランクにする。
+        if ($isDocSet === false) {
+            $response['docText'] = '';
+        }
+
         return $response;
     }
+
+    function getPerson($msdbItem, $productUniqueId)
+    {
+        $people = new People;
+        $roleId = null;
+        $supplement = null;
+        if ($msdbItem === 'video') {
+            $roleId = 'EXT0000000UH';
+        } elseif ($msdbItem === 'book') {
+            $roleId = 'EXT00000BWU9';
+        } elseif ($msdbItem === 'audio') {
+            $roleId = 'EXT00000000D';
+        }
+        $person = $people->setConditionByRoleId($productUniqueId, $roleId)->getOne();
+        if ($msdbItem === 'audio' || !empty($person)) {
+            $roleId = 'EXT0000000UM';
+            $person = $people->setConditionByRoleId($productUniqueId, $roleId)->getOne();
+        }
+        if (!empty($person)) {
+            return $person;
+        }
+        return null;
+    }
+
 
     /**
      * Insert work data and related work data: Product, People
@@ -431,39 +482,6 @@ class WorkRepository
                 'rows' => []
             ];
 
-            //check counts of all itemType
-            $ItemTypesCheck = ['cd', 'dvd', 'book', 'game'];
-            $dataCounts = $data;
-            if (in_array(strtolower($itemType), $ItemTypesCheck)) {
-                $params['itemType'] = 'all';
-                $params['responseLevel'] = '1';
-                $himoRepository->setLimit(1);
-                $himoRepository->setOffset(0);
-
-                $dataCounts = $himoRepository->searchCrossworks($params, $sort)->get();
-
-                $result['totalCount'] = $dataCounts['results']['total'];
-
-            }
-            if (!empty($dataCounts['results']['facets']['msdb_item'])) {
-                foreach ($dataCounts['results']['facets']['msdb_item'] as $value) {
-                    switch ($value['key']) {
-                        case 'video':
-                            $result['counts']['dvd'] = $value['count'];
-                            break;
-                        case 'audio':
-                            $result['counts']['cd'] = $value['count'];
-                            break;
-                        case 'book':
-                            $result['counts']['book'] = $value['count'];
-                            break;
-                        case 'game':
-                            $result['counts']['game'] = $value['count'];
-                            break;
-                    }
-                }
-            }
-
             foreach ($data['results']['rows'] as $row) {
                 $base = $this->format($row);
                 $itemType = $this->convertWorkTypeIdToStr($base['work_type_id']);
@@ -471,7 +489,7 @@ class WorkRepository
                 $displayImage = true;
                 if ($this->ageLimitCheck !== 'true') {
                     if ($this->checkAgeLimit(
-                        $base['rating_id'], $base['big_genre_id']) === true ||
+                            $base['rating_id'], $base['big_genre_id']) === true ||
                         $base['adult_flg'] === 1
                     ) {
                         $displayImage = false;
@@ -487,17 +505,50 @@ class WorkRepository
                     'adultFlg' => ($base['adult_flg'] === 1) ? true : false,
                     'itemType' => $itemType,
                     'saleType' => '',
-                    'supplement' => $saleTypeHas['supplement'],
+                    'supplement' => $productData['supplement'],
                     'saleStartDate' => ($row['sale_start_date']) ? date('Y-m-d 00:00:00', strtotime($row['sale_start_date'])) : '',
-                    'saleStartDateSell' => ($row['sale_start_date_sell']) ? date('Y-m-d 00:00:00', strtotime($row['sale_start_date_sell'])) : '',
-                    'saleStartDateRental' => ($row['sale_start_date_rental']) ? date('Y-m-d 00:00:00', strtotime($row['sale_start_date_rental'])) : '',
+                    'saleStartDateSell' => $productData['saleStartDateSell'],
+                    'saleStartDateRental' => $productData['saleStartDateRental'],
                     'saleTypeHas' => [
-                        'sell' => $saleTypeHas['sell'],
-                        'rental' => $saleTypeHas['rental'],
+                        'sell' => $productData['sell'],
+                        'rental' => $productData['rental'],
                     ]
                 ];
             }
 
+        }
+
+        //check counts of all itemType
+        $ItemTypesCheck = ['cd', 'dvd', 'book', 'game'];
+        $dataCounts = $data;
+        if (in_array(strtolower(array_get($params, 'itemType')), $ItemTypesCheck)) {
+            $params['itemType'] = 'all';
+            $params['responseLevel'] = '1';
+            $himoRepository->setLimit(1);
+            $himoRepository->setOffset(0);
+
+            $dataCounts = $himoRepository->searchCrossworks($params, $sort)->get();
+
+            $result['totalCount'] = $dataCounts['results']['total'];
+
+        }
+        if (!empty($dataCounts['results']['facets']['msdb_item'])) {
+            foreach ($dataCounts['results']['facets']['msdb_item'] as $value) {
+                switch ($value['key']) {
+                    case 'video':
+                        $result['counts']['dvd'] = $value['count'];
+                        break;
+                    case 'audio':
+                        $result['counts']['cd'] = $value['count'];
+                        break;
+                    case 'book':
+                        $result['counts']['book'] = $value['count'];
+                        break;
+                    case 'game':
+                        $result['counts']['game'] = $value['count'];
+                        break;
+                }
+            }
         }
 
         return $result;
@@ -508,19 +559,30 @@ class WorkRepository
         $sell = false;
         $rental = false;
         $supplement = '';
+        $saleStartDateSell = null;
+        $saleStartDateRental = null;
         foreach ($products as $product) {
-
             if ($product['service_id'] === 'tol') {
                 if ($product['product_type_id'] === 1) {
+                    // 最新の販売開始日を取得する。
+                    if ( $product['sale_start_date'] > $saleStartDateSell) {
+                        $saleStartDateSell = $product['sale_start_date'];
+                    }
                     $sell = true;
                 } else if ($product['product_type_id'] === 2) {
+                    // 最新の販売開始日を取得する。
+                    if ($product['sale_start_date'] > $saleStartDateRental) {
+                        $saleStartDateRental = $product['sale_start_date'];
+                    }
                     $rental = true;
                 }
+                //
                 if ($itemType === 'game') {
                     $supplement = $product['game_model_name'];
                 } else {
                     if ($itemType === 'dvd') {
-                        $roleId = 'EXT0000000UH';
+                        // DVDは表示させない為ブランク
+                        $roleId = '';
                     } elseif ($itemType === 'book') {
                         $roleId = 'EXT00000BWU9';
                     } elseif ($itemType === 'cd') {
@@ -534,7 +596,9 @@ class WorkRepository
         return [
             'sell' => $sell,
             'rental' => $rental,
-            'supplement' => $supplement
+            'supplement' => $supplement,
+            'saleStartDateSell' => $saleStartDateSell,
+            'saleStartDateRental' => $saleStartDateRental,
         ];
 
     }
@@ -598,7 +662,8 @@ class WorkRepository
                     'adultFlg' => ($base['adult_flg'] === 1) ? true : false,
                     'itemType' => $itemType,
                     'saleType' => $saleType,
-                    'supplement' => $saleTypeHas['supplement'],
+                    // DVDの場合は空にする。
+                    'supplement' => ($itemType === 'dvd') ? '' : $saleTypeHas['supplement'],
                     'saleStartDate' => ($row['sale_start_date']) ? date('Y-m-d 00:00:00', strtotime($row['sale_start_date'])) : '',
                     'saleStartDateSell' => ($row['sale_start_date_sell']) ? date('Y-m-d 00:00:00', strtotime($row['sale_start_date_sell'])) : '',
                     'saleStartDateRental' => ($row['sale_start_date_rental']) ? date('Y-m-d 00:00:00', strtotime($row['sale_start_date_rental'])) : '',
@@ -671,15 +736,20 @@ class WorkRepository
         $base['work_title_orig'] = $row['work_title_orig'];
         $base['copyright'] = $row['work_copyright'];
         $base['jacket_l'] = trimImageTag($row['jacket_l']);
-        $base['scene_l'] = $this->sceneFormat($row['scene_l']);
+        $base['scene_l'] = $this->sceneFormat($row['scenes']);
         $base['sale_start_date'] = $row['sale_start_date'];
+        if (array_key_exists('docs', $row)) {
+            $base['doc_text'] = json_encode($row['docs']);
+        }
         if ($isNarrow === false) {
-            $base['big_genre_id'] = $row['genres'][0]['big_genre_id'];
-            $base['big_genre_name'] = $row['genres'][0]['big_genre_name'];
-            $base['medium_genre_id'] = $row['genres'][0]['medium_genre_id'];
-            $base['medium_genre_name'] = $row['genres'][0]['medium_genre_name'];
-            $base['small_genre_id'] = $row['genres'][0]['small_genre_id'];
-            $base['small_genre_name'] = $row['genres'][0]['small_genre_name'];
+            if (!empty($row['genres'])) {
+                $base['big_genre_id'] = $row['genres'][0]['big_genre_id'];
+                $base['big_genre_name'] = $row['genres'][0]['big_genre_name'];
+                $base['medium_genre_id'] = $row['genres'][0]['medium_genre_id'];
+                $base['medium_genre_name'] = $row['genres'][0]['medium_genre_name'];
+                $base['small_genre_id'] = $row['genres'][0]['small_genre_id'];
+                $base['small_genre_name'] = $row['genres'][0]['small_genre_name'];
+            }
             $base['filmarks_id'] = $this->filmarksIdFormat($row);
             $base['rating_id'] = $row['rating_id'];
             $base['rating_name'] = $row['rating_name'];
@@ -730,7 +800,24 @@ class WorkRepository
     {
         $result = [];
         foreach ($data as $image) {
-            $result[] = trimImageTag($image['url']);
+            // 表示条件
+            // disable_flg（緊急非表示用フラグ）
+            //  = 0：表示可
+            // provider（連携元サービス）
+            //  =  0（YouTube） ：非表示
+            //  =  1（Jst）     ：非表示
+            //  =  2（Stinglay）：[size = 3]のもののみ表示
+            //  = 99（その他）  ：全て表示
+            if ($image['disable_flg'] != '0') {
+                continue;
+            }
+            if ($image['provider'] == '2') {
+                if ($image['size'] == '3') {
+                    $result[] = trimImageTag($image['url'], true);
+                }
+            } elseif ($image['provider'] == '99') {
+                $result[] = trimImageTag($image['url'], true);
+            }
         }
         return json_encode($result, JSON_UNESCAPED_SLASHES);
     }
@@ -873,7 +960,7 @@ class WorkRepository
         $workItems = [];
         foreach ($works as $workItem) {
             $workItem = (array)$workItem;
-            $formatedItem = $this->formatAddOtherData($workItem, false, $workItem);
+            $formatedItem = $this->formatAddOtherData($workItem, false, $workItem, true);
             foreach ($formatedItem as $key => $value) {
                 if (in_array($key, $this->outputColumn())) {
                     $formatedItemSelectColumn[$key] = $value;

@@ -17,7 +17,8 @@ class TWSRepository extends ApiRequesterRepository
     protected $sort;
     protected $offset;
     protected $limit;
-    protected  $apiHost;
+    protected $page;
+    protected $apiHost;
     protected $apiKey;
 
     public function __construct($sort = 'asc', $offset = 0, $limit = 10)
@@ -26,6 +27,7 @@ class TWSRepository extends ApiRequesterRepository
         $this->sort = $sort;
         $this->offset = $offset;
         $this->limit = $limit;
+        $this->page = '1';
         $this->apiHost = env('TWS_API_HOST');
         $this->apiKey = env('TWS_API_KEY');
     }
@@ -45,6 +47,23 @@ class TWSRepository extends ApiRequesterRepository
     {
         $this->offset = $offset;
     }
+
+    /**
+     * @param mixed $page
+     */
+    public function setPage($page)
+    {
+        $this->page = $page;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPage()
+    {
+        return $this->page;
+    }
+
     /*
      * 詳細情報を取得するAPIをセットする
      */
@@ -79,13 +98,20 @@ class TWSRepository extends ApiRequesterRepository
      */
     public function ranking($rankingConcentrationCd, $period)
     {
+        $this->api = 'ranking';
+        $this->id = $rankingConcentrationCd;
+        if(env('APP_ENV') === 'local'){
+            return $this;
+        }
+
         $this->apiPath = $this->apiHost . '/media/v0/works/tsutayarankingresult.json';
         $this->queryParams = [
             'api_key' => $this->apiKey,
             'rankingConcentrationCd' => $rankingConcentrationCd,
             'tolPlatformCode' => '00',
-            'rankinglimit' => $this->limit,
-            'dispNums' => '20',
+            'rankinglimit' => '100',
+            'dispNums' => $this->limit,
+            'dispPageNo' => $this->page,
             '_secure' => '1',
             '_pretty' => '1'
         ];
@@ -184,4 +210,32 @@ class TWSRepository extends ApiRequesterRepository
         ];
         return $maps[$storeProductItemCd];
     }
+
+    // override
+    // getが実行された際に、キャッシュへ問い合わせを行う。
+    // データ存在していれば、DBから値を取得
+    // 存在していなければ、Himoから取得して返却する
+    // 返却した値は、DBに格納する
+    public function get($jsonResponse = true)
+    {
+        if(env('APP_ENV') !== 'local' && env('APP_ENV') !== 'testing' ){
+            return parent::get($jsonResponse);
+        }
+        return $this->stub($this->api, $this->id);
+    }
+
+    private function stub($apiName, $filename)
+    {
+
+        $path = base_path('tests/tws/');
+        $path = $path . $apiName;
+        if(!realpath($path . '/' . $filename)) {
+            return null;
+        }
+        $file = file_get_contents($path . '/' . $filename);
+        // Remove new line character
+        return \GuzzleHttp\json_decode(str_replace(["\n","\r\n","\r", PHP_EOL], '', $file), true);
+        // return json_decode($file, TRUE);
+    }
+
 }

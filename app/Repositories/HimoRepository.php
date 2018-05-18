@@ -68,6 +68,7 @@ class HimoRepository extends ApiRequesterRepository
             '_system' => 'TsutayaApp',
             'id_value' => implode(' || ', $queryId),
             'service_id' => 'tol',
+            'scene_limit' => '20',
             'response_level' => $responseLevel,
             'offset' => $this->offset,
             'limit' => $this->limit,
@@ -128,12 +129,9 @@ class HimoRepository extends ApiRequesterRepository
             '_system' => 'TsutayaApp',
             'id_value' => implode(' || ', $queryId),
             'service_id' => 'tol',
-            'xmedia_mode' => '5',
-            'xmedia_item_type' => ['1', '2', '3', '4'],
-            'response_level' => '9',
+            'xmedia_mode' => '7',
             'offset' => $this->offset,
             'limit' => $this->limit,
-            'sort_by' => 'auto:asc',
         ];
 
         return $this;
@@ -141,7 +139,8 @@ class HimoRepository extends ApiRequesterRepository
 
     public function productDetail($ids, $idType = self::ID_TYPE ,$produtTypeId )
     {
-        $this->api = 'productDetail';
+
+        $this->api = 'product_detail';
         $this->id = $ids;
         if(env('APP_ENV') === 'local'){
             return $this;
@@ -207,6 +206,7 @@ class HimoRepository extends ApiRequesterRepository
         $this->queryParams = [
             '_system' => 'TsutayaApp',
             'service_id' => 'tol',
+            'work_products_service_id' => 'tol',
             'response_level' => '9',
             'offset' => $this->offset,
             'limit' => $this->limit,
@@ -384,6 +384,7 @@ class HimoRepository extends ApiRequesterRepository
             $filename .= '_2';
             $apiName = 'xmedia';
         }
+
         $path = base_path('tests/himo/');
         $path = $path . $apiName;
         if(!realpath($path . '/' . $filename)) {

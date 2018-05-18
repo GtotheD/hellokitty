@@ -680,6 +680,7 @@
  *     description="作品基本情報を取得する",
  *     tags={"Work"},
  *     produces={"application/json"},
+ *     security={{"api_key":{}}},
  *     @SWG\Parameter(ref="#/parameters/workId"),
  *     @SWG\Parameter(
  *       name="saleType",
@@ -723,6 +724,7 @@
  *     description="商品一覧情報取得",
  *     tags={"Work"},
  *     produces={"application/json"},
+ *     security={{"api_key":{}}},
  *     @SWG\Parameter(ref="#/parameters/workId"),
  *     @SWG\Parameter(ref="#/parameters/limit"),
  *     @SWG\Parameter(ref="#/parameters/offset"),
@@ -752,6 +754,7 @@
  *     path="/work/{workId}/products/rental",
  *     description="商品一覧情報取得（DVDレンタル時のグルーピング（問い合わせ時のLimit数がおかしくなる為にグルーピングが必要））",
  *     tags={"Work"},
+ *     security={{"api_key":{}}},
  *     produces={"application/json"},
  *     @SWG\Parameter(ref="#/parameters/workId"),
  *     @SWG\Parameter(ref="#/parameters/limit"),
@@ -780,6 +783,7 @@
  *     path="/work/{workId}/products/has",
  *     description="Himo作品ID作品検索",
  *     tags={"Work"},
+ *     security={{"api_key":{}}},
  *     produces={"application/json"},
  *     @SWG\Parameter(ref="#/parameters/ageLimitCheck"),
  *     @SWG\Parameter(ref="#/parameters/workId"),
@@ -806,6 +810,7 @@
  *     path="/work/{workId}/people",
  *     description="キャストスタッフ一覧取得",
  *     tags={"Work"},
+ *     security={{"api_key":{}}},
  *     produces={"application/json"},
  *     @SWG\Parameter(ref="#/parameters/workId"),
  *     @SWG\Parameter(ref="#/parameters/limit"),
@@ -839,6 +844,7 @@
  *     path="/work/{workId}/series",
  *     description="シリーズ作品取得",
  *     tags={"Work"},
+ *     security={{"api_key":{}}},
  *     produces={"application/json"},
  *     @SWG\Parameter(ref="#/parameters/workId"),
  *     @SWG\Parameter(ref="#/parameters/limit"),
@@ -868,6 +874,7 @@
  *     path="/work/{workId}/review/filmarks",
  *     description="Filmarksレビュー取得",
  *     tags={"Work"},
+ *     security={{"api_key":{}}},
  *     produces={"application/json"},
  *     @SWG\Parameter(ref="#/parameters/workId"),
  *     @SWG\Parameter(ref="#/parameters/limit"),
@@ -895,6 +902,7 @@
  *     path="/work/{workId}/review/discas",
  *     description="DISCASレビュー取得",
  *     tags={"Work"},
+ *     security={{"api_key":{}}},
  *     produces={"application/json"},
  *     @SWG\Parameter(ref="#/parameters/workId"),
  *     @SWG\Parameter(ref="#/parameters/limit"),
@@ -922,6 +930,7 @@
  *     path="/work/{workId}/review/tol",
  *     description="TOLレビュー取得",
  *     tags={"Work"},
+ *     security={{"api_key":{}}},
  *     produces={"application/json"},
  *     @SWG\Parameter(ref="#/parameters/workId"),
  *     @SWG\Parameter(ref="#/parameters/limit"),
@@ -949,6 +958,7 @@
  *     path="/work/{workId}/relation/works",
  *     description="関連作品取得",
  *     tags={"Work"},
+ *     security={{"api_key":{}}},
  *     produces={"application/json"},
  *     @SWG\Parameter(ref="#/parameters/workId"),
  *     @SWG\Parameter(ref="#/parameters/limit"),
@@ -977,6 +987,7 @@
  *     path="/work/{workId}/relation/pics",
  *     description="関連画像取得",
  *     tags={"Work"},
+ *     security={{"api_key":{}}},
  *     produces={"application/json"},
  *     @SWG\Parameter(ref="#/parameters/workId"),
  *     @SWG\Parameter(ref="#/parameters/limit"),
@@ -1007,6 +1018,7 @@
  *     path="/work/{workId}/relation/artist",
  *     description="関連アーティスト一覧取得",
  *     tags={"Work"},
+ *     security={{"api_key":{}}},
  *     produces={"application/json"},
  *     @SWG\Parameter(ref="#/parameters/workId"),
  *     @SWG\Parameter(ref="#/parameters/limit"),
@@ -1038,6 +1050,7 @@
  *     path="/people/{personId}",
  *     description="人物関連作品取得",
  *     tags={"People"},
+ *     security={{"api_key":{}}},
  *     produces={"application/json"},
  *     @SWG\Parameter(ref="#/parameters/personId"),
  *     @SWG\Parameter(ref="#/parameters/limit"),
@@ -1069,6 +1082,7 @@
  *     path="/genre/{genreId}",
  *     description="ジャンルからの作品一覧取得",
  *     tags={"Genre"},
+ *     security={{"api_key":{}}},
  *     produces={"application/json"},
  *     @SWG\Parameter(ref="#/parameters/genreId"),
  *     @SWG\Parameter(ref="#/parameters/limit"),
@@ -1104,6 +1118,7 @@
  *     path="/work/{workId}/recommend/other",
  *     description="お薦め作品一覧取得",
  *     tags={"Work"},
+ *     security={{"api_key":{}}},
  *     produces={"application/json"},
  *     @SWG\Parameter(ref="#/parameters/workId"),
  *     @SWG\Parameter(ref="#/parameters/limit"),
@@ -1133,6 +1148,7 @@
  *     path="/work/{workId}/recommend/author",
  *     description="著者作品一覧取得",
  *     tags={"Work"},
+ *     security={{"api_key":{}}},
  *     produces={"application/json"},
  *     @SWG\Parameter(ref="#/parameters/workId"),
  *     @SWG\Parameter(ref="#/parameters/limit"),
@@ -1162,6 +1178,7 @@
  *     path="/work/{workId}/recommend/artist",
  *     description="アーティスト作品一覧取得",
  *     tags={"Work"},
+ *     security={{"api_key":{}}},
  *     produces={"application/json"},
  *     @SWG\Parameter(ref="#/parameters/workId"),
  *     @SWG\Parameter(ref="#/parameters/limit"),
@@ -1191,6 +1208,7 @@
  *     path="/convert/work/{idType}/{id}",
  *     description="HimoID取得 (CCC商品IDと商品IDから作品ID取得を取得する)",
  *     tags={"Work"},
+ *     security={{"api_key":{}}},
  *     produces={"application/json"},
  *     @SWG\Parameter(
  *       name="idType",
@@ -1232,6 +1250,7 @@
  *     path="/product/{productUniqueId}",
  *     description="商品詳細情報取得",
  *     tags={"Product"},
+ *     security={{"api_key":{}}},
  *     produces={"application/json"},
  *     @SWG\Parameter(
  *       name="productUniqueId",
@@ -1263,6 +1282,7 @@
  *     path="/product/stock/{storeCd}/{productKey}",
  *     description="在庫確認",
  *     tags={"Product"},
+ *     security={{"api_key":{}}},
  *     produces={"application/json"},
  *     @SWG\Parameter(
  *       name="storeCd",
@@ -1291,6 +1311,11 @@
  *                  description="メッセージ",
  *              ),
  *              @SWG\Property(
+ *                  property="rentalPossibleDay",
+ *                  type="string",
+ *                  description="返却予定日（yyyy-mm-dd）",
+ *              ),
+ *              @SWG\Property(
  *                  property="lastUpdate",
  *                  type="string",
  *                  description="最終更新日時（yyyy-mm-dd hh:ii:ss）",
@@ -1308,6 +1333,7 @@
  *     path="/search/{keyword}",
  *     description="キーワード検索",
  *     tags={"Search"},
+ *     security={{"api_key":{}}},
  *     produces={"application/json"},
  *     @SWG\Parameter(
  *       name="keyword",
@@ -1368,6 +1394,7 @@
  *     path="/search/suggest/{keyword}",
  *     description="キーワードサジェスト",
  *     tags={"Search"},
+ *     security={{"api_key":{}}},
  *     produces={"application/json"},
  *     @SWG\Parameter(
  *       name="keyword",
@@ -1403,6 +1430,7 @@
  *     path="/release/{month}/{genreId}",
  *     description="リリース情報（商品名を出す為、対象の商品を特定時に、ジャンルIDからセルレンタル区分を判別し特定する）",
  *     tags={"Release"},
+ *     security={{"api_key":{}}},
  *     produces={"application/json"},
  *     @SWG\Parameter(
  *       name="month",
@@ -1493,6 +1521,18 @@
  *       description="出演者・アーティスト・著者・機種等を表示/非表示を切り替える為のフラグ。trueにすると非表示になる。",
  *       type="boolean"
  *     ),
+ *     @SWG\Parameter(
+ *       name="page",
+ *       in="query",
+ *       description="ページ番号",
+ *       type="string"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="limit",
+ *       in="query",
+ *       description="１ページ毎の取得件数",
+ *       type="string"
+ *     ),
  *     @SWG\Response(
  *          response=200,
  *          description="success",
@@ -1508,6 +1548,77 @@
  *                  type="array",
  *                  @SWG\Items(ref="#/definitions/WorkNarrowRelease"),
  *                  description="作品情報",
+ *              ),
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+/**
+ * @SWG\Get(
+ *     path="/release/has/recommend/",
+ *     description="TSUTAYA一押しの有無一覧",
+ *     produces={"application/json"},
+ *     tags={"Release"},
+ *     security={{"api_key":{}}},
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="data",
+ *                  type="object",
+ *              @SWG\Property(
+ *                  property="last",
+ *                  type="array",
+ *                  @SWG\Items(
+ *                      @SWG\Property(
+ *                          property="genreId",
+ *                          type="string",
+ *                          description="独自のジャンルID"
+ *                      ),
+ *                      @SWG\Property(
+ *                          property="exist",
+ *                          type="string",
+ *                          description="データの有無"
+ *                      ),
+ *                  ),
+ *              ),
+ *              @SWG\Property(
+ *                  property="this",
+ *                  type="array",
+ *                  @SWG\Items(
+ *                      @SWG\Property(
+ *                          property="genreId",
+ *                          type="string",
+ *                          description="独自のジャンルID"
+ *                      ),
+ *                      @SWG\Property(
+ *                          property="exist",
+ *                          type="string",
+ *                          description="データの有無"
+ *                      ),
+ *                  ),
+ *              ),
+ *              @SWG\Property(
+ *                  property="next",
+ *                  type="array",
+ *                  @SWG\Items(
+ *                      @SWG\Property(
+ *                          property="genreId",
+ *                          type="string",
+ *                          description="独自のジャンルID"
+ *                      ),
+ *                      @SWG\Property(
+ *                          property="exist",
+ *                          type="string",
+ *                          description="データの有無"
+ *                      ),
+ *                  ),
+ *              ),
  *              ),
  *          )
  *      ),
