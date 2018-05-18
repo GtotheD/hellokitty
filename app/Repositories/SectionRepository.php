@@ -362,6 +362,7 @@ class SectionRepository
                 $comparison = 'down';
             }
             $rowUnit['title'] = $row['productTitle'];
+            $rowUnit['productTitle'] = $row['productTitle'];
             $rowUnit['workTitle'] = $work['workTitle'];
             $rowUnit['workId'] = $work['workId'];
             $rowUnit['code'] = $row['productKey'];
@@ -369,8 +370,8 @@ class SectionRepository
             $rowUnit['rankNo'] = $row['rankNo'];
             $rowUnit['comparison'] = $comparison;
             $rowUnit['jacketL'] = $work['jacketL'];
+            $rowUnit['imageUrl'] = $work['jacketL'];
             $rowUnit['newFlg'] = $work['newFlg'];
-            $rowUnit['supplement'] = $work['supplement'];
             $rowUnit['supplement'] = $work['supplement'];
             $rowUnit['saleType'] = $work['saleType'];
             $rowUnit['itemType'] = $work['itemType'];
