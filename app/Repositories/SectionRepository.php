@@ -190,10 +190,13 @@ class SectionRepository
         }
         $tws = new TWSRepository;
         $tws->setLimit($this->limit);
-        $tws->setPage($this->limit);
+        $tws->setPage($this->page);
         $rows = $tws->ranking($rankingConcentrationCd, $period)->get();
+        if (empty($rows['totalResults'])) {
+            return null;
+        }
         $response = [
-            'hasNext' => null,
+            'hasNext' => (($this->page * $this->limit) <= $rows['totalResults'])? true: false,
             'totalCount' => $rows['totalResults'],
             'aggregationPeriod' => $this->aggregationPeriodFormat($rows['totalingPeriod']),
             'rows' => $this->convertFormatFromRanking($rows),
