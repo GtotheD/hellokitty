@@ -342,6 +342,7 @@ class WorkRepository
             // レンタルDVDの場合はsupplementを空にする
             if ($product['msdbItem'] === 'video') {
                 $response['supplement'] = '';
+                $response['saleStartDate'] = $product['saleStartDate'];
             }
             // コミレンのみ最新刊のものを取得して表示する。
             // レンタルはコミック以外はないのでproductTypeIdで判定
