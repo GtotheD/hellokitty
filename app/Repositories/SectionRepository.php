@@ -196,7 +196,7 @@ class SectionRepository
             return null;
         }
         $response = [
-            'hasNext' => (($this->page * $this->limit) <= $rows['totalResults'])? true: false,
+            'hasNext' => (($this->page * $this->limit) < $rows['totalResults'])? true: false,
             'totalCount' => $rows['totalResults'],
             'aggregationPeriod' => $this->aggregationPeriodFormat($rows['totalingPeriod']),
             'rows' => $this->convertFormatFromRanking($rows),
@@ -366,7 +366,7 @@ class SectionRepository
             $rowUnit['workTitle'] = $work['workTitle'];
             $rowUnit['workId'] = $work['workId'];
             $rowUnit['code'] = $row['productKey'];
-            $rowUnit['urlCode'] = $row['urlCd'];
+            $rowUnit['urlCd'] = $row['urlCd'];
             $rowUnit['rankNo'] = $row['rankNo'];
             $rowUnit['comparison'] = $comparison;
             $rowUnit['jacketL'] = $work['jacketL'];
