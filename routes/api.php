@@ -384,7 +384,9 @@ $router->group([
         $peopleRelatedWorksRepository->setLimit($request->input('limit', 10));
         $peopleRelatedWorksRepository->setSort($request->input('sort', 'new'));
         $rows = $peopleRelatedWorksRepository->getWorksByArtist($workId);
-
+        if (empty($rows)) {
+            throw new NoContentsException;
+        }
         $response = [
             'hasNext' => $peopleRelatedWorksRepository->getHasNext(),
             'totalCount' => $peopleRelatedWorksRepository->getTotalCount(),
