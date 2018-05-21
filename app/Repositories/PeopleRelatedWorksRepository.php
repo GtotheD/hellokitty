@@ -134,15 +134,17 @@ class PeopleRelatedWorksRepository extends ApiRequesterRepository
         $this->totalCount = $this->peopleRelatedWork->setConditionById($people->person_id)->count();
         $result = $this->peopleRelatedWork->selectCamel(['work_id'])->get();
         if (empty(count($result))) {
-            $himoResult = $himo->searchPeople([$people->person_id], '0301', ['audio', 'video', 'book', 'game'])->get();
+            $himoResult = $himo->crossworksArtistRelatedWork($people->person_id)->get();
             if (empty($himoResult['results']['rows'])) {
                 throw new NoContentsException;
             }
             foreach ($himoResult['results']['rows'] as $row) {
-                foreach ($row['works'] as $work) {
-                    $insertData[] = $this->format($people->person_id, $work);
+		$insertData[] = [
+			'person_id' => $people->person_id,
+			'work_id' => $row['work_id']
+		];
                 }
-            }
+
             $this->peopleRelatedWork->insertBulk($insertData);
             $result = $this->peopleRelatedWork->setConditionById($people->person_id)->selectCamel(['work_id'])->get();
         }

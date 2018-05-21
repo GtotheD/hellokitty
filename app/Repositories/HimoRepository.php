@@ -186,6 +186,34 @@ class HimoRepository extends ApiRequesterRepository
         return $this;
     }
 
+    public function crossworksArtistRelatedWork($personId, $sort = null)
+    {
+        $this->api = '/search/crossworks';
+        $this->id = $personId;
+        if (env('APP_ENV') === 'local') {
+            return $this;
+        }
+        $this->apiPath = $this->apiHost . '/search/crossworks';
+        $this->queryParams = [
+            '_system' => 'TsutayaApp',
+            'service_id' => 'tol',
+            'response_level' => '1',
+            'id_value' => '0301:'.$personId,
+            // ※ アイテムコードの以下を除外）1051:アクセサリー, 1054:グッズ, 1056:チケット
+            'item_cd' => '-1051 && -1054 && -1056',
+            'offset' => $this->offset,
+            'limit' => $this->limit,
+            'work_products_service_id' => ['tol'],
+            'msdb_item' => ['audio']
+        ];
+        $this->queryParams['sort_by'] = 'auto:asc';
+        if ($sort == 'old') {
+            $this->queryParams['sort_by'] = 'sale_start_date:asc';
+        } else {
+            $this->queryParams['sort_by'] = 'sale_start_date:desc';
+        }
+        return $this;
+    }
 
     public function searchCrossworks($params = [], $sort = null)
     {
