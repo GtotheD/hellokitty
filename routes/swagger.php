@@ -759,6 +759,7 @@
  *     @SWG\Parameter(ref="#/parameters/workId"),
  *     @SWG\Parameter(ref="#/parameters/limit"),
  *     @SWG\Parameter(ref="#/parameters/offset"),
+ *     @SWG\Parameter(ref="#/parameters/sort"),
  *     @SWG\Response(
  *          response=200,
  *          description="success",

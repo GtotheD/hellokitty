@@ -150,9 +150,13 @@ class Product extends Model
         $this->dbObject = DB::table(DB::raw("({$subQuery->toSql()}) as sub"))
             ->where(['work_id' => $workId]);
         if ($order === 'old') {
-            $this->dbObject->orderBy('sale_start_date', 'asc');
+            $this->dbObject->orderBy('sale_start_date', 'asc')
+                ->orderBy('ccc_family_cd', 'asc')
+            ;
         } else {
-            $this->dbObject->orderBy('sale_start_date', 'desc');
+            $this->dbObject->orderBy('sale_start_date', 'desc')
+                ->orderBy('ccc_family_cd', 'desc')
+            ;
         }
         return $this;
     }
