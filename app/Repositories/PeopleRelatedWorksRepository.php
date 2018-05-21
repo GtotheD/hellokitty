@@ -90,18 +90,18 @@ class PeopleRelatedWorksRepository extends ApiRequesterRepository
         $work = new WorkRepository();
 
         $productResult = $product->setConditionByWorkIdNewestProduct($workId)->getOne();
-        if(empty($productResult)) {
+        if (empty($productResult)) {
             return null;
         }
         $people = $people->setConditionByProduct($productResult->product_unique_id)->getOne();
-        if(empty($people)) {
+        if (empty($people)) {
             return null;
         }
         $this->totalCount = $this->peopleRelatedWork->setConditionById($people->person_id)->count();
         $result = $this->peopleRelatedWork->toCamel(['id', 'person_id'])->get($this->limit, $this->offset);
         if (empty(count($result))) {
             $himoResult = $himo->searchPeople([$people->person_id], '0301', ['book'])->get();
-            if(empty($himoResult)) {
+            if (empty($himoResult)) {
                 return null;
             }
             foreach ($himoResult['results']['rows'] as $row) {
@@ -121,7 +121,6 @@ class PeopleRelatedWorksRepository extends ApiRequesterRepository
 
     public function getWorksByArtist($workId)
     {
-        $people = new People;
         $himo = new HimoRepository();
         $workRepository = new WorkRepository;
         $productRepository = new ProductRepository;
@@ -134,14 +133,15 @@ class PeopleRelatedWorksRepository extends ApiRequesterRepository
         $this->totalCount = $this->peopleRelatedWork->setConditionById($people->person_id)->count();
         $result = $this->peopleRelatedWork->selectCamel(['work_id'])->get();
         if (empty(count($result))) {
-            $himoResult = $himo->searchPeople([$people->person_id], '0301', ['audio', 'video', 'book', 'game'])->get();
+            $himoResult = $himo->crossworksArtistRelatedWork($people->person_id)->get();
             if (empty($himoResult['results']['rows'])) {
                 throw new NoContentsException;
             }
             foreach ($himoResult['results']['rows'] as $row) {
-                foreach ($row['works'] as $work) {
-                    $insertData[] = $this->format($people->person_id, $work);
-                }
+                $insertData[] = [
+                    'person_id' => $people->person_id,
+                    'work_id' => $row['work_id']
+                ];
             }
             $this->peopleRelatedWork->insertBulk($insertData);
             $result = $this->peopleRelatedWork->setConditionById($people->person_id)->selectCamel(['work_id'])->get();
@@ -152,7 +152,7 @@ class PeopleRelatedWorksRepository extends ApiRequesterRepository
         return $this->getWorkWithProductIdsIn($resultArray, $workId);
     }
 
-    public function getWorkWithProductIdsIn($data ,$workId)
+    public function getWorkWithProductIdsIn($data, $workId)
     {
         $workRepository = new WorkRepository();
         $work = new Work();
@@ -172,7 +172,7 @@ class PeopleRelatedWorksRepository extends ApiRequesterRepository
             $workItem = (array)$workItem;
             $formatedItem = $workRepository->formatAddOtherData($workItem, false, $workItem);
             foreach ($formatedItem as $key => $value) {
-                if (in_array($key,$this->outputColumn())) {
+                if (in_array($key, $this->outputColumn())) {
                     $formatedItemSelectColumn[$key] = $value;
                 }
             }
