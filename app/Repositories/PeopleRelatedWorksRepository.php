@@ -126,6 +126,9 @@ class PeopleRelatedWorksRepository extends ApiRequesterRepository
         $productRepository = new ProductRepository;
 
         $newestProduct = $productRepository->getNewestProductByWorkId($workId)->getOne();
+        if (!$newestProduct) {
+            throw new NoContentsException;
+        }
         $people = $workRepository->getPerson($newestProduct->msdb_item, $newestProduct->product_unique_id);
         if (!$people) {
             throw new NoContentsException;
