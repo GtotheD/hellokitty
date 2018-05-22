@@ -345,8 +345,17 @@ class ProductRepository
         if ($product['msdb_item'] === 'audio') {
             $productBase['contents'] = $this->getDetail($product['product_id'], $product['product_type_id']);
         }
+
+
+        $productBase['book_page_number'] = $product['book_page_number'];
+        $productBase['book_size'] = $product['book_size'];
+        $productBase['isbn10'] = $product['isbn_10'];
+        $productBase['isbn13'] = $product['isbn_13'];
+        $productBase['subtitle_flg'] = $product['subtitle_flg'];
+
         $productBase['best_album_flg'] = $product['best_album_flg'];
         $productBase['maker_name'] = $product['maker_name'];
+        $productBase['media_format_id'] = $product['media_format_id'];
 
         return $productBase;
     }
@@ -379,6 +388,12 @@ class ProductRepository
                 if ($statusCode > $stockStatus['level']) {
                     continue;
                 }
+
+$statusCode = 0;
+$message = null;
+$rentalPossibleDay = null;
+$lastUpdate = null;
+
                 if ($stockStatus['level'] == 0) {
                     $statusCode = 0;
                 } else if ($stockStatus['level'] == 1) {

@@ -79,6 +79,9 @@ class WorkRepository
         'EXT0000757SQ','EXT0000757SX'
     );
 
+    const HIMO_MEDIA_FORMAT_ID = 'EXT0000000FY';
+    const MSDB_ITEM_AUDIO_SINGLE_NAME = 'シングル';
+
     public function __construct($sort = 'asc', $offset = 0, $limit = 10)
     {
         $this->sort = $sort;
@@ -353,6 +356,11 @@ class WorkRepository
                 $response['makerName'] = $product['makerName'];
             } else {
                 $response['makerName'] = '';
+            }
+            if ($product['msdbItem'] === 'audio') {
+                if ($product['mediaFormatId'] === self::HIMO_MEDIA_FORMAT_ID) {
+                    $response['workFormatName'] = self::MSDB_ITEM_AUDIO_SINGLE_NAME;
+                }
             }
             $response['saleType'] = $productRepository->convertProductTypeToStr($product['productTypeId']);
             if ($this->ageLimitCheck !== 'true') {
