@@ -971,11 +971,11 @@ class WorkRepository
             'saleType' => $this->saleType,
             'itemType' => $itemType,
             'responseLevel' => 1,
-            'limit' => 100,
+            'limit' => 200,
             'id' => $personId,//dummy data
             'api' => 'crossworks',//dummy data
         ];
-        $himoRepository->setLimit(100);
+        $himoRepository->setLimit(200);
         $data = $himoRepository->searchCrossworks($params, $sort)->get();
         if (empty($data['status']) || $data['status'] != '200' || empty($data['results']['total'])) {
             throw new NoContentsException();
@@ -985,7 +985,7 @@ class WorkRepository
         }
 
         $this->getWorkList($workList);
-        $this->work->getWorkWithProductIdsIn($workList, $this->saleType);
+        $this->work->getWorkWithProductIdsIn($workList, $this->saleType, null, $sort);
         $this->totalCount = $this->work->count();
         $works = $this->work->selectCamel($this->selectColumn())->get($this->limit, $this->offset);
         if (count($works) + $this->offset < $this->totalCount) {
@@ -1045,7 +1045,8 @@ class WorkRepository
             'maker_name',
             'game_model_name',
             'adult_flg',
-            'msdb_item'
+            'msdb_item',
+            'media_format_id'
         ];
     }
 }
