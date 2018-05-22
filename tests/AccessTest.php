@@ -162,8 +162,33 @@ class AccessTest extends TestCase
      */
     public function workSeries()
     {
-        $response = $this->getJsonWithAuth('/work/PTA0000SF309/series');
+        $response = $this->getJsonWithAuth('/work/PTA0000G8UGB/series');
         $response->assertResponseStatus(200);
+    }
+    /**
+     * @test
+     */
+    public function workSeriesRental()
+    {
+        $response = $this->getJsonWithAuth('/work/PTA0000G8UGB/series?saleType=rental');
+        $response->assertResponseStatus(200);
+        $response->seeJson([
+            'totalCount' => 1,
+            'workId' => 'PTA0000H4C7V',
+        ]);
+    }
+    /**
+     * @test
+     */
+    public function workSeriesSell()
+    {
+        $response = $this->getJsonWithAuth('/work/PTA0000G8UGB/series?saleType=sell');
+        $response->assertResponseStatus(200);
+        $response->seeJson([
+            'totalCount' => 2,
+            'workId' => 'PTA0000H72ME',
+            'workId' => 'PTA0000H4C7V',
+        ]);
     }
     /**
      * @test

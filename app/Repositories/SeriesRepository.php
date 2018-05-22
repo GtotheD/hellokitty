@@ -103,56 +103,46 @@ class SeriesRepository
         $series = new Series();
         $workIdsInSeries = [];
 
-        // STEP 1: Get all workIds in series
-        $himoResult = $himo->xmediaSeries([$workId])->get(true, 'POST');
+        $series = $series->setConditionByWorkId($workId);
+        // DBにデータがなかった場合
+        if($series->count() === 0) {
+            // STEP 1: Get all workIds in series
+            $himoResult = $himo->xmediaSeries([$workId])->get(true, 'POST');
+            if (!$himoResult['results']['rows']) {
+                throw new NoContentsException();
+            }
+            // seriesテーブルに格納するデータを作成
+            foreach ($himoResult['results']['rows'] as $row) {
+                foreach ($row['works'] as $workRow) {
+                    $getWorkIds[] = $workRow['work_id'];
+                    $insertData[] = [
+                        'work_id' => $workId,
+                        'related_work_id' => $workRow['work_id'],
+                    ];
+                }
+            }
+            $series->insertBulk($insertData);
+            $workRepository->getWorkList($getWorkIds);
+        }
 
-        if (!$himoResult['results']['rows']) {
+        // 再抽出
+        $series = new Series();
+        $saleTypeId = null;
+        if ($saleType === 'sell') {
+            $saleTypeId = 1;
+        } else if ($saleType === 'rental') {
+            $saleTypeId = 2;
+        }
+        $seriesWorks = $series->setConditionGetWorksByWorkId($workId, $saleTypeId);
+        if (!$seriesWorks) {
             throw new NoContentsException();
         }
-
-        foreach ($himoResult['results']['rows'] as $row) {
-            $this->seriesId = array_get($row, 'id');
-            foreach ($row['works'] as $workRow) {
-                $workIdsInSeries[] = $workRow['work_id'];
-            }
-        }
-
-        // STEP 2: Check $workIdsInSeries which is not existed in DB then call WorkRepository to insert them.
-
-         $workIdsInSeries = array_values(array_unique($workIdsInSeries));
-        //$workIdsInSeries = ['PTA0000G4CSA', 'PTA0000SF309', 'PTA0000SFCIH']; // Local data
-        $workIdsExisted = $work->getWorkIdsIn($workIdsInSeries)->get()->pluck('work_id')->toArray();
-
-        // STEP 2.1: Check which is not existed in DB
-        if (!$workIdsExisted) {
-            $workIdsNew = $workIdsInSeries;
-        } else {
-            $workIdsNew = array_values(array_diff($workIdsInSeries, $workIdsExisted));
-        }
-
-        // STEP 2.2: Call API WorkRepository to getWorkList to insert to Work table -> get new work list
-        if ($workIdsNew && $workListInserted = $workRepository->getWorkList($workIdsNew)) {
-            // Insert to ts_series table
-            $seriesData = [];
-            foreach ($workListInserted['rows'] as $workRow) {
-                if ($workRow['workId'] == $workId) continue;
-                $seriesData[] = $this->format($workRow['workId'], $this->seriesId);
-            }
-            $series->insertBulk($seriesData);
-        }
-
-        // Remove owner in series work list
-        $workIdsInSeries  = array_values(array_diff($workIdsInSeries, [$workId]));
-
-        // STEP 3 Get response from DB
-        $workCount = $work->getWorkIdsIn($workIdsInSeries)->count();
-        $this->totalCount = $workCount ?: 0;
+        $this->totalCount = $seriesWorks->count() ?: 0;
         if (!$this->totalCount) {
             throw new NoContentsException();
         }
 
-        $workList = $work->getWorkIdsIn($workIdsInSeries)
-            ->toCamel(['id'])
+        $workList = $seriesWorks->selectCamel($this->selectColumn())
             ->limit($this->limit)
             ->offset($this->offset)
             ->get();
@@ -211,4 +201,35 @@ class SeriesRepository
         return $series->insert( $this->format($workId, $seriesId));
     }
 
+    private function outputColumn()
+    {
+        return [
+            'workId',
+            'urlCd',
+            'cccWorkCd',
+            'workTitle',
+            'newFlg',
+            'jacketL',
+            'supplement',
+            'saleType',
+            'itemType',
+            'adultFlg'
+        ];
+    }
+
+    private function selectColumn()
+    {
+        return [
+            'w.work_id',
+            'work_type_id',
+            'work_title',
+            'rating_id',
+            'big_genre_id',
+            'url_cd',
+            'ccc_work_cd',
+            'jacket_l',
+            'sale_start_date',
+            'adult_flg'
+        ];
+    }
 }

@@ -14,20 +14,33 @@ class Series extends Model
         parent::__construct(self::TABLE);
     }
 
-    /*
-     * Get Newest Product
-     */
-    public function setConditionByProduct($productUniqueId)
+    public function setConditionByWorkId($workId)
     {
         $this->dbObject = DB::table($this->table)
             ->where([
-                'product_unique_id' => $productUniqueId,
-            ])
+                'work_id' => $workId,
+            ]);
+        return $this;
+    }
 
-            ->orderBy('updated_at', 'desc');
+    public function setConditionGetWorksByWorkId($workId, $saleTypeId = null)
+    {
+        $this->dbObject = DB::table($this->table . ' AS s')
+            ->join('ts_works AS w', 'w.work_id', '=', 's.related_work_id')
+            ->where([
+                's.work_id' => $workId,
+            ]);
+        if ($saleTypeId) {
+            $this->dbObject->whereExists(function ($query) use ($saleTypeId) {
+                $query->select(DB::raw(1))
+                    ->from('ts_products AS p')
+                    ->whereRaw('w.work_id = p.work_id AND product_type_id ='.$saleTypeId);
+            });
+        }
 
         return $this;
     }
+
 
     public function insert($insertData)
     {
