@@ -377,6 +377,7 @@ class ReleaseCalenderRepository
             'product_name',
             'maker_name',
             'msdb_item',
+            'media_format_id'
         ];
     }
 }
