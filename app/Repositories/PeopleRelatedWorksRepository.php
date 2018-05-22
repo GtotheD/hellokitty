@@ -87,7 +87,7 @@ class PeopleRelatedWorksRepository extends ApiRequesterRepository
         $product = new Product();
         $people = new People();
         $himo = new HimoRepository();
-        $work = new WorkRepository();
+        $workModel = new WorkRepository();
 
         $productResult = $product->setConditionByWorkIdNewestProduct($workId)->getOne();
         if (empty($productResult)) {
@@ -115,7 +115,7 @@ class PeopleRelatedWorksRepository extends ApiRequesterRepository
         foreach ($result as $resultItem) {
             $resultArray[] = $resultItem->workId;
         }
-        $work->getWorkList($resultArray);
+        $workModel->getWorkList($resultArray);
         return $this->getWorkWithProductIdsIn($resultArray, $workId);
     }
 
