@@ -412,15 +412,13 @@ class HimoRepository extends ApiRequesterRepository
             $filename .= '_2';
             $apiName = 'xmedia';
         }
-
         $path = base_path('tests/himo/');
         $path = $path . $apiName;
         if(!realpath($path . '/' . $filename)) {
             return null;
         }
         $file = file_get_contents($path . '/' . $filename);
-        // Remove new line character
-        return \GuzzleHttp\json_decode(str_replace(["\n","\r\n","\r", PHP_EOL], '', $file), true);
-       // return json_decode($file, TRUE);
+        $file = str_replace(["\n","\r\n","\r", PHP_EOL], '', $file);
+        return json_decode($file, TRUE);
     }
 }
