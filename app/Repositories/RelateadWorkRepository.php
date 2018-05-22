@@ -203,7 +203,8 @@ class RelateadWorkRepository
             'maker_name',
             'game_model_name',
             'adult_flg',
-            'msdb_item'
+            'msdb_item',
+            'media_format_id'
         ];
     }
 }

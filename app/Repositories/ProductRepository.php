@@ -110,7 +110,8 @@ class ProductRepository
         $this->saleType = $saleType;
     }
 
-    public function setSort($sort){
+    public function setSort($sort)
+    {
         $this->sort = $sort;
     }
 
@@ -212,32 +213,32 @@ class ProductRepository
                 $product['productName'] = $product['productName'] . "（{$product['numberOfVolume']}）";
             }
             $product['productKey'] = ($product['productTypeId'] == self::PRODUCT_TYPE_SELL) ? $product['jan'] : $product['rentalProductCd'];
-            if(array_key_exists('docs', $product)) {
+            if (array_key_exists('docs', $product)) {
                 $docs = json_decode($product['docs'], true);
-                if(!empty($docs)) {
+                if (!empty($docs)) {
 
                     if ($product['msdbItem'] === 'video') {
                         $product['docText'] = getSummaryComment(DOC_TABLE_MOVIE['tol'], $docs);
-                    } else if($product['msdbItem'] === 'book') {
+                    } else if ($product['msdbItem'] === 'book') {
                         $product['docText'] = getSummaryComment(DOC_TABLE_BOOK['tol'], $docs);
-                    } else if($product['msdbItem'] === 'audio') {
+                    } else if ($product['msdbItem'] === 'audio') {
                         $product['docText'] = getSummaryComment(DOC_TABLE_MUSIC['tol'], $docs);
-                    } else if($product['msdbItem'] === 'game') {
+                    } else if ($product['msdbItem'] === 'game') {
                         $product['docText'] = getSummaryComment(DOC_TABLE_GAME['tol'], $docs);
                     }
 
                     foreach ($docs as $doc) {
-                        if($doc['doc_type_id'] === '04') {
+                        if ($doc['doc_type_id'] === '04') {
                             $product['contents'] = StripTags(contentsFormat($doc['doc_text']));
                         }
-                        if($doc['doc_type_id'] === '11') {
+                        if ($doc['doc_type_id'] === '11') {
                             $product['privilege'] = StripTags($doc['doc_text']);
                         }
                     }
                 }
                 unset($product['docs']);
             }
-            if(array_key_exists('playTime', $product)) {
+            if (array_key_exists('playTime', $product)) {
                 $product['playTime'] = $this->editPlayTimeFormat($product['playTime']);
             }
             $product['itemName'] = $this->convertItemCdToStr($product['itemCd']);
@@ -345,8 +346,17 @@ class ProductRepository
         if ($product['msdb_item'] === 'audio') {
             $productBase['contents'] = $this->getDetail($product['product_id'], $product['product_type_id']);
         }
+
+
+        $productBase['book_page_number'] = $product['book_page_number'];
+        $productBase['book_size'] = $product['book_size'];
+        $productBase['isbn10'] = $product['isbn_10'];
+        $productBase['isbn13'] = $product['isbn_13'];
+        $productBase['subtitle_flg'] = $product['subtitle_flg'];
+
         $productBase['best_album_flg'] = $product['best_album_flg'];
         $productBase['maker_name'] = $product['maker_name'];
+        $productBase['media_format_id'] = $product['media_format_id'];
 
         return $productBase;
     }
@@ -379,6 +389,12 @@ class ProductRepository
                 if ($statusCode > $stockStatus['level']) {
                     continue;
                 }
+
+                $statusCode = 0;
+                $message = null;
+                $rentalPossibleDay = null;
+                $lastUpdate = null;
+
                 if ($stockStatus['level'] == 0) {
                     $statusCode = 0;
                 } else if ($stockStatus['level'] == 1) {
@@ -468,12 +484,12 @@ class ProductRepository
 
     function editPlayTimeFormat($string)
     {
-        $hour = (int)substr($string, 0,2);
-        $min = (int)substr($string, 2,2);
+        $hour = (int)substr($string, 0, 2);
+        $min = (int)substr($string, 2, 2);
         $min = $min + $hour * 60;
-        if ($min === 0 ) {
+        if ($min === 0) {
             return '';
         }
-        return ($hour != '00')? "{$min}分" : "{$min}分";
+        return ($hour != '00') ? "{$min}分" : "{$min}分";
     }
 }
