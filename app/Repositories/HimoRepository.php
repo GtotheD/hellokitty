@@ -419,7 +419,6 @@ class HimoRepository extends ApiRequesterRepository
         }
         $file = file_get_contents($path . '/' . $filename);
         $file = str_replace(["\n","\r\n","\r", PHP_EOL], '', $file);
-//        return \GuzzleHttp\json_decode(, true);
         return json_decode($file, TRUE);
     }
 }
