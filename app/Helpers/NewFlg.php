@@ -5,10 +5,13 @@
  * Date: 2018/04/07
  * Time: 12:26
  */
+use Illuminate\Support\Carbon;
+
 function newFlg($saleStartDate)
 {
-    $end = date('Y-m-d', strtotime('-1 month', time()));
-    if ($end < $saleStartDate) {
+    $start = Carbon::parse('last month')->startOfDay();
+    $end = Carbon::parse('next month')->startOfDay();
+    if ($start <= $saleStartDate && $end >= $saleStartDate) {
         return true;
     }
     return false;
