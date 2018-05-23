@@ -550,10 +550,9 @@ $router->group([
         $sectionRepository->setPage($request->input('page', 1));
         $sectionRepository->setSupplementVisible($request->input('supplementVisibleFlg', false));
         $sectionData = $sectionRepository->ranking($codeType, $code, $period);
-        if (empty($rows)) {
+        if (empty($sectionData)) {
             throw new NoContentsException;
         }
-
         return response()->json($sectionData);
     });
 

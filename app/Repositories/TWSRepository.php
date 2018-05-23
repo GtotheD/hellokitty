@@ -226,7 +226,6 @@ class TWSRepository extends ApiRequesterRepository
 
     private function stub($apiName, $filename)
     {
-
         $path = base_path('tests/tws/');
         $path = $path . $apiName;
         if(!realpath($path . '/' . $filename)) {
