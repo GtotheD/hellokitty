@@ -343,6 +343,7 @@ class SectionRepository
      */
     private function convertFormatFromRanking($rows)
     {
+        $formattedRows = [];
         $workRepository = new WorkRepository;
         if (empty($rows['entry'])) {
             return null;
