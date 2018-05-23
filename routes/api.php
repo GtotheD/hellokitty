@@ -537,7 +537,8 @@ $router->group([
         $response = [
             'hasNext' => $releaseCalenderRepository->getHasNext(),
             'totalCount' => $releaseCalenderRepository->getTotalCount(),
-            'baseMonth' => getBaseMonth($month),
+            // 常に当月を出力するように変更
+            'baseMonth' => \Carbon\Carbon::now()->format('Y-m'),
             'rows' => $rows
         ];
         return response()->json($response);
@@ -549,9 +550,11 @@ $router->group([
         $sectionRepository->setPage($request->input('page', 1));
         $sectionRepository->setSupplementVisible($request->input('supplementVisibleFlg', false));
         $sectionData = $sectionRepository->ranking($codeType, $code, $period);
-        return $sectionData;
+        if (empty($rows)) {
+            throw new NoContentsException;
+        }
 
-        return response()->json($response);
+        return response()->json($sectionData);
     });
 
     // 検証環境まで有効にするテスト要

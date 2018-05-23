@@ -45,24 +45,6 @@ function contentsFormat($contents)
 }
 
 /**
- * Return baseMonth value format Y年m月
- *
- * @param $month
- *
- * @return false|string
- */
-function getBaseMonth($month)
-{
-    $saleStartMonth = date('Y-m');
-    if ($month === 'last') {
-        $saleStartMonth = date('Y-m', strtotime('-1 months'));
-    } else if ($month === 'next') {
-        $saleStartMonth = date('Y-m', strtotime('+1 months'));
-    }
-    return $saleStartMonth;
-}
-
-/**
  * Change array key from $oldKey -> $newKey
  *
  * @param $array

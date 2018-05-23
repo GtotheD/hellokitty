@@ -8,6 +8,7 @@ use App\Model\Work;
 use App\Model\HimoReleaseOrder;
 use DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Carbon;
 
 class ReleaseCalenderRepository
 {
@@ -203,6 +204,7 @@ class ReleaseCalenderRepository
                 foreach ($response['results']['rows'] as $row) {
                     $himoReleaseOrderData[] = [
                         'work_id' => $row['work_id'],
+                        // 常に当月を返すように変更
                         'month' => date('Y-m-d', strtotime($row['sale_start_month'])),
                         'tap_genre_id' => $this->genreId,
                         'page_no' => $pageNum,
