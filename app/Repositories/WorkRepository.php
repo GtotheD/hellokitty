@@ -543,6 +543,14 @@ class WorkRepository
                         $displayImage = false;
                     }
                 }
+                $workFormatName = "";
+                if ($itemType === 'cd') {
+                    if ($saleTypeHas['media_format_id'] === self::HIMO_MEDIA_FORMAT_ID) {
+                        $workFormatName = self::MSDB_ITEM_AUDIO_SINGLE_NAME;
+                    } else {
+                        $workFormatName = $base['work_format_name'];
+                    }
+                }
                 $result['rows'][] = [
                     'workId' => $base['work_id'],
                     'urlCd' => $base['url_cd'],
@@ -560,7 +568,8 @@ class WorkRepository
                     'saleTypeHas' => [
                         'sell' => $saleTypeHas['sell'],
                         'rental' => $saleTypeHas['rental'],
-                    ]
+                    ],
+                    'workFormatName' => $workFormatName
                 ];
             }
 
@@ -607,6 +616,7 @@ class WorkRepository
         $sell = false;
         $rental = false;
         $supplement = '';
+        $mediaFormatId = '';
         foreach ($products as $product) {
             // VHSを除外
             if ($product['service_id'] === 'tol') {
@@ -634,12 +644,14 @@ class WorkRepository
                         }
                     }
                 }
+                $mediaFormatId = $product['media_format_id'];
             }
         }
         return [
             'sell' => $sell,
             'rental' => $rental,
-            'supplement' => $supplement
+            'supplement' => $supplement,
+            'media_format_id' => $mediaFormatId
         ];
 
     }
@@ -978,7 +990,8 @@ class WorkRepository
             'id' => $personId,//dummy data
             'api' => 'crossworks',//dummy data
         ];
-        $himoRepository->setLimit(200);
+//        $himoRepository->setLimit(200);
+        $himoRepository->setLimit(100);
         $data = $himoRepository->searchCrossworks($params, $sort)->get();
         if (empty($data['status']) || $data['status'] != '200' || empty($data['results']['total'])) {
             throw new NoContentsException();

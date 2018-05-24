@@ -5,6 +5,9 @@
 
 const DOC_TYPE_ID_COMMENT = '01';
 const DOC_TYPE_ID_SUMMARY = '02';
+const DOC_TYPE_ID_SCENE = '03';
+const DOC_TYPE_ID_TITLE = '04';
+const DOC_TYPE_ID_BONUS = '06';
 
 const DOC_TABLE_MOVIE = [
     'tol' => ['08', '04', '03', '07', '06', '01'],
@@ -120,6 +123,25 @@ function getSummaryComment(array $docTable, array $docs)
         }
     } else {
         $outline = $commentOutline;
+    }
+
+    return $outline;
+}
+
+function getProductContents(array $docTable, string $typeId, array $docs)
+{
+    $outline = '';
+
+    for ($i = 0; $i < count($docTable); $i++) {
+        foreach ($docs as $doc) {
+            if ($doc['doc_type_id'] === $typeId &&
+                $docTable[$i] === $doc['doc_source_id'] &&
+                !empty($doc['doc_text'])
+            ) {
+                $outline = StripTags(contentsFormat($doc['doc_text']));
+                break 2;
+            }
+        }
     }
 
     return $outline;
