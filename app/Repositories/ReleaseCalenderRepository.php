@@ -8,6 +8,7 @@ use App\Model\Work;
 use App\Model\HimoReleaseOrder;
 use DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Carbon;
 
 class ReleaseCalenderRepository
 {
@@ -141,11 +142,19 @@ class ReleaseCalenderRepository
         // パラメーターを取得する　未指定の場合は当月
         if ($this->month === 'last') {
             $saleStartMonth = date('Y-m', strtotime('-1 months'));
+            $saleStartDateFrom = Carbon::parse('last month')->startOfMonth();
+            $saleStartDateTo = Carbon::parse('last month')->endOfMonth();
         } else if ($this->month === 'next') {
             $saleStartMonth = date('Y-m', strtotime('+1 months'));
+            $saleStartDateFrom = Carbon::parse('next month')->startOfMonth();
+            $saleStartDateTo = Carbon::parse('next month')->endOfMonth();
         } else {
             $saleStartMonth = date('Y-m');
+            $saleStartDateFrom = Carbon::now()->startOfMonth();
+            $saleStartDateTo = Carbon::now()->endOfMonth();
         }
+        $saleStartDateFrom = $saleStartDateFrom->format('Y-m-d');
+        $saleStartDateTo = $saleStartDateTo->format('Y-m-d');
 
         // ソートの指定
         $sortBy = 'auto:asc';
@@ -159,19 +168,21 @@ class ReleaseCalenderRepository
         $mappingData = $this->genreMapping($this->genreId);
         $cacheData = $himoReleaseOrder->setConditionGenreIdAndMonthAndProductTypeId(
             $this->genreId,
-            $saleStartMonth.'-01',
+            $saleStartMonth . '-01',
             $mappingData['productSellRentalFlg'],
             $this->sort
         )->count();
 
         if (empty($cacheData)) {
             // キャッシュがなければデータを新規で取得する
-            $himo = new HimoRepository();
+            $himoRepository = new HimoRepository();
             $params = [
                 'api' => 'release',
                 'id' => $this->month . '_' . $this->genreId . '_0',
                 'genreId' => $this->genreId,
-                'saleStartMonth' => $saleStartMonth,
+                //'saleStartMonth' => $saleStartMonth,
+                'saleStartDateFrom' => $saleStartDateFrom,
+                'saleStartDateTo' => $saleStartDateTo,
                 'productSellRentalFlg' => $mappingData['productSellRentalFlg'],
                 'adultFlg' => $mappingData['adultFlg'],
                 'msdbItem' => $mappingData['msdbItem'],
@@ -179,23 +190,23 @@ class ReleaseCalenderRepository
                 'sort' => $sortBy
             ];
             if ($mappingData['genres'] === 'recommendation') {
-                $params['work_tags'] = self::HIMO_TAP_RECOMMEND_KEYWORD;
+                $params['workTags'] = self::HIMO_TAP_RECOMMEND_KEYWORD;
             } else {
                 $params['genre'] = $mappingData['genres'];
             }
             // 10件づつ処理
             $processLimit = 10;
-            $himo->setLimit($processLimit);
+            $himoRepository->setLimit($processLimit);
             // 検索
-            $response = $himo->searchCrossworksForRelease($params)->get();
+            $response = $himoRepository->searchCrossworksForRelease($params)->get();
             // 初回だけ全体件数の取得
             $totalCount = (int)$response['results']['total'];
-
             $pageNum = 1;
             $orderNum = 1;
             for ($processCount = 0; $processCount < $totalCount; $processCount = $processCount + $processLimit) {
                 $params['id'] = $this->month . '_' . $this->genreId . '_' . $processCount; // test data
-                $response = $himo->searchCrossworksForRelease($params)->get();
+                $himoRepository->setOffset($processCount);
+                $response = $himoRepository->searchCrossworksForRelease($params)->get();
                 if (empty($response)) {
                     break;
                 }
@@ -213,16 +224,18 @@ class ReleaseCalenderRepository
                 // データを取得する際は、常にお薦めで取得し、順序をDBに登録する。
                 $himoReleaseOrder->insertBulk($himoReleaseOrderData);
                 $workRepository->insertWorkData($response);
+                if ($orderNum > $totalCount) {
+                    break;
+                }
                 $pageNum++;
-                $himo->setOffset($processCount);
             }
         }
         if ($mappingData['msdbItem'] === 'audio') {
-        if ($this->mediaFormat === 'album') {
-            $mediaFormat = '1';
-        } else if ($this->mediaFormat === 'single') {
-            $mediaFormat = '2';
-        }
+            if ($this->mediaFormat === 'album') {
+                $mediaFormat = '1';
+            } else if ($this->mediaFormat === 'single') {
+                $mediaFormat = '2';
+            }
         }
         $saleStartDateFrom = null;
         $saleStartDateTo = null;
@@ -296,11 +309,11 @@ class ReleaseCalenderRepository
         } else if ($genreId >= 56 && $genreId <= 80) {
             $msdbItem = ['video'];
             $adultFlg = '1';
-                $productSellRentalFlg = '2';
+            $productSellRentalFlg = '2';
         } else if ($genreId >= 81 && $genreId <= 81) {
             $msdbItem = ['book'];
             $adultFlg = '1';
-                $productSellRentalFlg = '1';
+            $productSellRentalFlg = '1';
         }
         return [
             'productSellRentalFlg' => $productSellRentalFlg,
@@ -313,11 +326,15 @@ class ReleaseCalenderRepository
     public function genreMapToHimoParam($genreId)
     {
         $listArray = config('release_genre_map');
-        $listString = implode(':: || ', $listArray[$genreId]) . '::';
+        if (count($listArray[$genreId]) == 1) {
+            $listString = $listArray[$genreId][0] . '::';
+        } else {
+            $listString = implode(':: || ', $listArray[$genreId]) . '::';
+        }
         return $listString;
     }
 
-    public function hasRecommend ()
+    public function hasRecommend()
     {
         $himoReleaseOrder = new HimoReleaseOrder;
         $month['last'] = date('Y-m-01', strtotime('-1 months'));
@@ -337,7 +354,7 @@ class ReleaseCalenderRepository
             foreach ($recommendList as $genreId) {
                 $result[$target][] = [
                     'genreId' => (string)$genreId,
-                    'exist' => ($himoReleaseOrder->setConditionByGenreIdAndMonth($genreId ,$targetMonth)->count() > 0)? true : false,
+                    'exist' => ($himoReleaseOrder->setConditionByGenreIdAndMonth($genreId, $targetMonth)->count() > 0) ? true : false,
                 ];
             }
         }
