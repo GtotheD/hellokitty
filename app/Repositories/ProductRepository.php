@@ -227,14 +227,24 @@ class ProductRepository
                         $product['docText'] = getSummaryComment(DOC_TABLE_GAME['tol'], $docs);
                     }
 
-                    foreach ($docs as $doc) {
-                        if ($doc['doc_type_id'] === '04') {
-                            $product['contents'] = StripTags(contentsFormat($doc['doc_text']));
+                    if ($product['msdbItem'] === 'video') {
+                        $product['contents'] = getProductContents(DOC_TABLE_MOVIE['tol'], DOC_TYPE_ID_TITLE, $docs);
+                    } else if ($product['msdbItem'] === 'book') {
+                        $product['contents'] = getProductContents(DOC_TABLE_BOOK['tol'], DOC_TYPE_ID_SCENE, $docs);
+                    } else if ($product['msdbItem'] === 'audio') {
+                    } else if ($product['msdbItem'] === 'game') {
                         }
-                        if ($doc['doc_type_id'] === '11') {
-                            $product['privilege'] = StripTags($doc['doc_text']);
+
+                    if ($product['msdbItem'] === 'video') {
+                        $product['privilege'] = getProductContents(DOC_TABLE_MOVIE['tol'], DOC_TYPE_ID_BONUS, $docs);
+                    } else if ($product['msdbItem'] === 'book') {
+                        $product['privilege'] = getProductContents(DOC_TABLE_BOOK['tol'], DOC_TYPE_ID_BONUS, $docs);
+                    } else if ($product['msdbItem'] === 'audio') {
+                        $product['privilege'] = getProductContents(DOC_TABLE_MUSIC['tol'], DOC_TYPE_ID_BONUS, $docs);
+                    } else if ($product['msdbItem'] === 'game') {
+                        $product['privilege'] = getProductContents(DOC_TABLE_GAME['tol'], DOC_TYPE_ID_BONUS, $docs);
                         }
-                    }
+
                 }
                 unset($product['docs']);
             }

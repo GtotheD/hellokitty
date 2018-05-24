@@ -24,7 +24,7 @@ class ReleaseCalenderRepository
     protected $onlyReleased;
     protected $mediaFormat;
 
-    const HIMO_TAP_RECOMMEND_KEYWORD = 'tapichioshi';
+    const HIMO_TAP_RECOMMEND_KEYWORD = 'riricaleinfo';
 
     public function __construct($sort = 'asc', $offset = 0, $limit = 10)
     {
@@ -217,10 +217,12 @@ class ReleaseCalenderRepository
                 $himo->setOffset($processCount);
             }
         }
+        if ($mappingData['msdbItem'] === 'audio') {
         if ($this->mediaFormat === 'album') {
             $mediaFormat = '1';
         } else if ($this->mediaFormat === 'single') {
             $mediaFormat = '2';
+        }
         }
         $saleStartDateFrom = null;
         $saleStartDateTo = null;

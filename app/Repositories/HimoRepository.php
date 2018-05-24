@@ -174,7 +174,7 @@ class HimoRepository extends ApiRequesterRepository
             '_system' => 'TsutayaApp',
             'service_id' => 'tol',
             'response_level' => '9',
-            'adult_flg' => '2',
+            'adult_flg' => $params['adultFlg'],
             'offset' => $this->offset,
             'limit' => $this->limit,
             'sort_by' => $params['sort'],
