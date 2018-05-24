@@ -146,6 +146,7 @@ class Product extends Model
         $subQuery = DB::table($this->table)->select(DB::raw($selectQuery))
             ->whereRaw(DB::raw('item_cd not like \'_1__\''))
             ->whereRaw(DB::raw(' item_cd not like \'__20\' '))
+            ->whereRaw(DB::raw(' product_type_id = 2 '))
             ->groupBy(DB::raw($groupingColumn))
             ->havingRaw(' NOT (dvd IS NULL AND bluray IS NULL)');
         $this->dbObject = DB::table(DB::raw("({$subQuery->toSql()}) as sub"))
