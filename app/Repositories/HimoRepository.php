@@ -57,7 +57,7 @@ class HimoRepository extends ApiRequesterRepository
     {
         $this->api = 'crossworks';
         $this->id = $ids;
-        if(env('APP_ENV') === 'local'){
+        if (env('APP_ENV') === 'local') {
             return $this;
         }
         $this->apiPath = $this->apiHost . '/search/crossworks';
@@ -70,6 +70,7 @@ class HimoRepository extends ApiRequesterRepository
             'service_id' => 'tol',
             'scene_limit' => '20',
             'response_level' => $responseLevel,
+            'work_products_service_id' => ['tol'],
             'offset' => $this->offset,
             'limit' => $this->limit,
             'sort_by' => 'auto:asc',
@@ -86,7 +87,7 @@ class HimoRepository extends ApiRequesterRepository
     {
         $this->api = 'xmediaSeries'; // for stub
         $this->id = $ids;
-        if(env('APP_ENV') === 'local'){
+        if (env('APP_ENV') === 'local') {
             return $this;
         }
 
@@ -118,7 +119,7 @@ class HimoRepository extends ApiRequesterRepository
     {
         $this->api = 'xmediaRelation';
         $this->id = $ids;
-        if(env('APP_ENV') === 'local'){
+        if (env('APP_ENV') === 'local') {
             return $this;
         }
         $this->apiPath = $this->apiHost . '/search/xmedia';
@@ -137,12 +138,12 @@ class HimoRepository extends ApiRequesterRepository
         return $this;
     }
 
-    public function productDetail($ids, $idType = self::ID_TYPE ,$produtTypeId )
+    public function productDetail($ids, $idType = self::ID_TYPE, $produtTypeId)
     {
 
         $this->api = 'product_detail';
         $this->id = $ids;
-        if(env('APP_ENV') === 'local'){
+        if (env('APP_ENV') === 'local') {
             return $this;
         }
         foreach ($ids as $id) {
@@ -162,6 +163,7 @@ class HimoRepository extends ApiRequesterRepository
 
         return $this;
     }
+
     public function searchCrossworksForRelease($params = [], $sort = null)
     {
         $this->api = $params['api'];
@@ -179,10 +181,17 @@ class HimoRepository extends ApiRequesterRepository
             'limit' => $this->limit,
             'sort_by' => $params['sort'],
             'work_products_service_id' => ['tol'],
-            'genre_id' => $params['genre'],
             'msdb_item' => $params['msdbItem'],
-            'sale_start_month' => $params['saleStartMonth'],
+            //'sale_start_month' => $params['saleStartMonth'],
+            'sale_start_date_from' => $params['saleStartDateFrom'],
+            'sale_start_date_to' => $params['saleStartDateTo'],
         ];
+        if (array_key_exists('genre', $params)) {
+            $this->queryParams['genre_id'] = $params['genre'];
+        }
+        if (array_key_exists('workags', $params)) {
+            $this->queryParams['work_tags'] = $params['workTags'];
+        }
         return $this;
     }
 
@@ -198,7 +207,7 @@ class HimoRepository extends ApiRequesterRepository
             '_system' => 'TsutayaApp',
             'service_id' => 'tol',
             'response_level' => '1',
-            'id_value' => '0301:'.$personId,
+            'id_value' => '0301:' . $personId,
             // ※ アイテムコードの以下を除外）1051:アクセサリー, 1054:グッズ, 1056:チケット
             'item_cd' => '-1051 && -1054 && -1056',
             'offset' => $this->offset,
@@ -241,12 +250,12 @@ class HimoRepository extends ApiRequesterRepository
             'sort_by' => $sortBy,
         ];
 
-        if(array_key_exists('responseLevel',$params)) {
+        if (array_key_exists('responseLevel', $params)) {
             $this->queryParams['responseLevel'] = $params['itemType'];
         }
 
         //check itemType
-        if(array_key_exists('itemType',$params)){
+        if (array_key_exists('itemType', $params)) {
             $msdbItem = ['audio', 'video', 'book', 'game'];
             switch (strtolower($params['itemType'])) {
                 case 'cd':
@@ -274,12 +283,12 @@ class HimoRepository extends ApiRequesterRepository
         }
 
         //check periodType
-        if(array_key_exists('periodType',$params)){
+        if (array_key_exists('periodType', $params)) {
             $saleStartDateTo = date('Y-m-d');
             $saleStartDateFrom = $productSellRentalFlg = null;
-            if ($params['periodType'] == 'rental3' || $params['periodType']  == 'sale3') {
+            if ($params['periodType'] == 'rental3' || $params['periodType'] == 'sale3') {
                 $saleStartDateFrom = date('Y-m-d', strtotime('-3 months'));
-            } elseif ($params['periodType']  == 'rental12' || $params['periodType']  == 'sale12') {
+            } elseif ($params['periodType'] == 'rental12' || $params['periodType'] == 'sale12') {
                 $saleStartDateFrom = date('Y-m-d', strtotime('-12 months'));
             }
 
@@ -297,7 +306,7 @@ class HimoRepository extends ApiRequesterRepository
         }
 
         //checkKeyword
-        if(array_key_exists('keyword',$params)){
+        if (array_key_exists('keyword', $params)) {
             $this->queryParams['query'] = $params['keyword'];
         }
 
@@ -315,12 +324,12 @@ class HimoRepository extends ApiRequesterRepository
         }
 
         //check genre_id
-        if(array_key_exists('genreId',$params)){
-            $this->queryParams['genre_id'] = $params['genreId'].':';
+        if (array_key_exists('genreId', $params)) {
+            $this->queryParams['genre_id'] = $params['genreId'] . ':';
         }
 
         // Check personId
-        if(array_key_exists('personId', $params)){
+        if (array_key_exists('personId', $params)) {
             $this->queryParams['id_value'] = "0301:" . $params['personId'];
         }
         return $this;
@@ -331,7 +340,7 @@ class HimoRepository extends ApiRequesterRepository
     {
         $this->api = 'people';
         $this->id = $ids;
-        if(env('APP_ENV') === 'local'){
+        if (env('APP_ENV') === 'local') {
             return $this;
         }
         foreach ($ids as $id) {
@@ -353,10 +362,11 @@ class HimoRepository extends ApiRequesterRepository
         return $this;
     }
 
-    public function searchRelatedPeople($id) {
+    public function searchRelatedPeople($id)
+    {
         $this->api = 'related_people';
         $this->id = $id;
-        if(env('APP_ENV') === 'local'){
+        if (env('APP_ENV') === 'local') {
             return $this;
         }
         $this->apiPath = $this->apiHost . '/search/related_people';
@@ -378,26 +388,25 @@ class HimoRepository extends ApiRequesterRepository
     // 返却した値は、DBに格納する
     public function get($jsonResponse = true)
     {
-        if(env('APP_ENV') !== 'local' && env('APP_ENV') !== 'testing' ){
+        if (env('APP_ENV') !== 'local' && env('APP_ENV') !== 'testing') {
             return parent::get($jsonResponse);
         }
         // Check and read array workId
-        if(!is_array($this->id)) {
+        if (!is_array($this->id)) {
             return $this->stub($this->api, $this->id);
         }
 
         // Get multi works in local
         $results = [];
         foreach ($this->id as $key => $workId) {
-            if(!$results) {
+            if (!$results) {
                 $results = $this->stub($this->api, $workId);
-            }
-            else {
+            } else {
                 $response = $this->stub($this->api, $workId);
-                if($response) {
+                if ($response) {
                     $results['results']['rows'][] = array_first($response['results']['rows']);
                     $results['results']['total'] = $key + 1;
-                    }
+                }
             }
         }
         return $results;
@@ -405,20 +414,20 @@ class HimoRepository extends ApiRequesterRepository
 
     private function stub($apiName, $filename)
     {
-        if($this->api === 'xmediaSeries') {
+        if ($this->api === 'xmediaSeries') {
             $filename .= '_1';
             $apiName = 'xmedia';
-        } else  if ($this->api === 'xmediaRelation') {
+        } else if ($this->api === 'xmediaRelation') {
             $filename .= '_2';
             $apiName = 'xmedia';
         }
         $path = base_path('tests/himo/');
         $path = $path . $apiName;
-        if(!realpath($path . '/' . $filename)) {
+        if (!realpath($path . '/' . $filename)) {
             return null;
         }
         $file = file_get_contents($path . '/' . $filename);
-        $file = str_replace(["\n","\r\n","\r", PHP_EOL], '', $file);
+        $file = str_replace(["\n", "\r\n", "\r", PHP_EOL], '', $file);
         return json_decode($file, TRUE);
     }
 }
