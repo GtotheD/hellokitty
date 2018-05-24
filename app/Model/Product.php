@@ -84,6 +84,7 @@ class Product extends Model
     public function setConditionByWorkIdSaleType($workId, $saleType = null, $order = null)
     {
         $this->dbObject = DB::table($this->table)
+            ->whereRaw(DB::raw(' item_cd not like \'__20\' '))
             ->where([
                 'work_id' => $workId,
             ]);
