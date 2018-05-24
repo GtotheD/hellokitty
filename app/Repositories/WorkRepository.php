@@ -333,6 +333,8 @@ class WorkRepository
             $product = (array)$productModel->setConditionByWorkIdNewestProduct($response['workId'], $this->saleType)->toCamel()->getOne();
         }
         if (!empty($product)) {
+            // 全ての在庫ページで表示する日付を商品の最新のものにする。
+            $response['saleStartDate'] = $product['saleStartDate'];
             // add supplement
             if ($product['msdbItem'] === 'game') {
                 $response['supplement'] = $product['gameModelName'];
@@ -345,12 +347,6 @@ class WorkRepository
             // レンタルDVDの場合はsupplementを空にする
             if ($product['msdbItem'] === 'video') {
                 $response['supplement'] = '';
-                $response['saleStartDate'] = $product['saleStartDate'];
-            }
-            // コミレンのみ最新刊のものを取得して表示する。
-            // レンタルはコミック以外はないのでproductTypeIdで判定
-            if ($product['msdbItem'] === 'book' && $product['productTypeId'] == '2') {
-                $response['saleStartDate'] = $product['saleStartDate'];
             }
             if (!empty($product)) {
                 $response['makerName'] = $product['makerName'];
