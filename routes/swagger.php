@@ -1061,6 +1061,7 @@
  *     @SWG\Parameter(ref="#/parameters/saleType"),
  *     @SWG\Parameter(ref="#/parameters/itemType"),
  *     @SWG\Parameter(ref="#/parameters/sort"),
+ *     @SWG\Parameter(ref="#/parameters/ageLimitCheck"),
  *     @SWG\Response(
  *          response=200,
  *          description="success",
@@ -1091,6 +1092,7 @@
  *     @SWG\Parameter(ref="#/parameters/limit"),
  *     @SWG\Parameter(ref="#/parameters/offset"),
  *     @SWG\Parameter(ref="#/parameters/saleType"),
+ *     @SWG\Parameter(ref="#/parameters/ageLimitCheck"),
  *     @SWG\Parameter(
  *       name="sort",
  *       in="path",
@@ -1127,6 +1129,7 @@
  *     @SWG\Parameter(ref="#/parameters/limit"),
  *     @SWG\Parameter(ref="#/parameters/offset"),
  *     @SWG\Parameter(ref="#/parameters/saleType"),
+ *     @SWG\Parameter(ref="#/parameters/ageLimitCheck"),
  *     @SWG\Response(
  *          response=200,
  *          description="success",
@@ -1157,6 +1160,7 @@
  *     @SWG\Parameter(ref="#/parameters/limit"),
  *     @SWG\Parameter(ref="#/parameters/offset"),
  *     @SWG\Parameter(ref="#/parameters/sort"),
+ *     @SWG\Parameter(ref="#/parameters/ageLimitCheck"),
  *     @SWG\Response(
  *          response=200,
  *          description="success",
@@ -1187,6 +1191,7 @@
  *     @SWG\Parameter(ref="#/parameters/limit"),
  *     @SWG\Parameter(ref="#/parameters/offset"),
  *     @SWG\Parameter(ref="#/parameters/sort"),
+ *     @SWG\Parameter(ref="#/parameters/ageLimitCheck"),
  *     @SWG\Response(
  *          response=200,
  *          description="success",
