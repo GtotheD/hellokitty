@@ -15,6 +15,7 @@ class RecommendOtherRepository
     protected $limit;
     protected $hasNext;
     protected $totalCount;
+    protected $ageLimitCheck;
 
     public function __construct($sort = 'asc', $offset = 0, $limit = 10)
     {
@@ -56,6 +57,13 @@ class RecommendOtherRepository
         return $this->totalCount;
     }
 
+    /**
+     * @param mixed $ageLimitCheck
+     */
+    public function setAgeLimitCheck($ageLimitCheck)
+    {
+        $this->ageLimitCheck = $ageLimitCheck;
+    }
 
     public function getWorks($workId, $saleType = null)
     {
@@ -80,6 +88,7 @@ class RecommendOtherRepository
 
         // STEP 7:フォーマットを変更して返却
         $workItems = [];
+        $workRepository->setAgeLimitCheck($this->ageLimitCheck);
         foreach ($workList as $workItem) {
             $workItem = (array)$workItem;
             $formatedItem = $workRepository->formatAddOtherData($workItem, false, $workItem);

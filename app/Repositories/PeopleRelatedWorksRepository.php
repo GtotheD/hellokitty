@@ -22,6 +22,7 @@ class PeopleRelatedWorksRepository extends ApiRequesterRepository
     protected $hasNext;
     protected $totalCount;
     protected $saleType;
+    protected $ageLimitCheck;
 
     private $peopleRelatedWork;
 
@@ -80,6 +81,14 @@ class PeopleRelatedWorksRepository extends ApiRequesterRepository
     public function setSort($sort)
     {
         $this->sort = $sort;
+    }
+
+    /**
+     * @param mixed $ageLimitCheck
+     */
+    public function setAgeLimitCheck($ageLimitCheck)
+    {
+        $this->ageLimitCheck = $ageLimitCheck;
     }
 
     public function getWorks($workId)
@@ -171,6 +180,7 @@ class PeopleRelatedWorksRepository extends ApiRequesterRepository
 
         // STEP 7:フォーマットを変更して返却
         $workItems = [];
+        $workRepository->setAgeLimitCheck($this->ageLimitCheck);
         foreach ($workList as $workItem) {
             $workItem = (array)$workItem;
             $formatedItem = $workRepository->formatAddOtherData($workItem, false, $workItem);

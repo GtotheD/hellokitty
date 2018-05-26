@@ -197,7 +197,7 @@ class HimoRepository extends ApiRequesterRepository
 
     public function crossworksArtistRelatedWork($personId, $sort = null)
     {
-        $this->api = '/search/crossworks';
+        $this->api = 'crossworks';
         $this->id = $personId;
         if (env('APP_ENV') === 'local') {
             return $this;

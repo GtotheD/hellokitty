@@ -243,7 +243,7 @@ class AccessTest extends TestCase
      */
     public function workRecommendOther()
     {
-        $response = $this->getJsonWithAuth('/work/PTA0000G4CSA/recommend/other');
+            $response = $this->getJsonWithAuth('/work/PTA0000G4CSA/recommend/other');
         $response->assertResponseStatus(200);
     }
     /**
@@ -259,7 +259,7 @@ class AccessTest extends TestCase
      */
     public function workRecommendArtist()
     {
-        $response = $this->getJsonWithAuth('/work/PTA0000SF309/recommend/artist');
+        $response = $this->getJsonWithAuth('/work/PTA0000U62N9/recommend/artist');
         $response->assertResponseStatus(200);
     }
     /**

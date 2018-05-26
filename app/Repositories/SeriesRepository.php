@@ -93,6 +93,14 @@ class SeriesRepository
         $this->offset = $offset;
     }
 
+    /**
+     * @param mixed $ageLimitCheck
+     */
+    public function setAgeLimitCheck($ageLimitCheck)
+    {
+        $this->ageLimitCheck = $ageLimitCheck;
+    }
+
     public function getNarrow($workId, $saleType)
     {
         // TODO: Waiting to confirm $saleType option
@@ -155,6 +163,8 @@ class SeriesRepository
 
         // Fetch workList and get response
         $rows = [];
+
+        $workRepository->setAgeLimitCheck($this->ageLimitCheck);
         foreach ($workList as $work) {
             $base = $workRepository->formatAddOtherData((array)$work, null, null, true);
             $rows[] = [
@@ -169,7 +179,6 @@ class SeriesRepository
                 'adultFlg' =>$base['adultFlg'],
             ];
         }
-
         return [
             'hasNext' => $this->hasNext,
             'totalCount' => $this->totalCount,
