@@ -158,11 +158,9 @@ $router->group([
         if (empty($result)) {
             throw new NoContentsException;
         }
-        $checkAgeLimit = $work->checkAgeLimit($result['ratingId'], $result['bigGenreId']);
-        if ($ageLimitCheck !== 'true') {
-            if( $checkAgeLimit === true || $result['adultFlg'] === true) {
-                throw new AgeLimitException('Age limit auth error', 202);
-            }
+        $checkAgeLimit = checkAgeLimit($ageLimitCheck, $result['ratingId'], $result['bigGenreId'], $result['adultFlg']);
+        if (!$checkAgeLimit) {
+            throw new AgeLimitException('Age limit auth error', 202);
         }
         $response = [
             'data' => $result
@@ -236,6 +234,7 @@ $router->group([
         $series = new SeriesRepository();
         $series->setLimit($request->input('limit', 10));
         $series->setOffset($request->input('offset', 0));
+        $series->setAgeLimitCheck($request->input('ageLimitCheck', false));
         $saleType = $request->input('saleType');
         $response = $series->getNarrow($workId, $saleType);
         if (empty($response)) {
@@ -294,6 +293,7 @@ $router->group([
         $relateadWorkRepository = new RelateadWorkRepository;
         $relateadWorkRepository->setLimit($request->input('limit', 10));
         $relateadWorkRepository->setOffset($request->input('offset', 0));
+        $relateadWorkRepository->setAgeLimitCheck($request->input('ageLimitCheck', false));
         $results = $relateadWorkRepository->getNarrow($workId);
         if (empty($results)) {
             throw new NoContentsException;
@@ -349,6 +349,7 @@ $router->group([
         $recommendOtherRepository = new RecommendOtherRepository;
         $recommendOtherRepository->setLimit($request->input('limit', 10));
         $recommendOtherRepository->setOffset($request->input('offset', 0));
+        $recommendOtherRepository->setAgeLimitCheck($request->input('ageLimitCheck', false));
         $rows = $recommendOtherRepository->getWorks($workId, $request->input('saleType'));
         if (empty($rows)) {
             throw new NoContentsException;
@@ -366,6 +367,7 @@ $router->group([
         $peopleRelatedWorksRepository->setLimit($request->input('limit', 10));
         $peopleRelatedWorksRepository->setOffset($request->input('offset', 0));
         $peopleRelatedWorksRepository->setSort($request->input('sort', 'new'));
+        $peopleRelatedWorksRepository->setAgeLimitCheck($request->input('ageLimitCheck', false));
         $rows = $peopleRelatedWorksRepository->getWorks($workId);
         if (empty($rows)) {
             throw new NoContentsException;
@@ -383,6 +385,7 @@ $router->group([
         $peopleRelatedWorksRepository->setOffset($request->input('offset', 0));
         $peopleRelatedWorksRepository->setLimit($request->input('limit', 10));
         $peopleRelatedWorksRepository->setSort($request->input('sort', 'new'));
+        $peopleRelatedWorksRepository->setAgeLimitCheck($request->input('ageLimitCheck', false));
         $rows = $peopleRelatedWorksRepository->getWorksByArtist($workId);
         if (empty($rows)) {
             throw new NoContentsException;
@@ -433,6 +436,7 @@ $router->group([
         $work->setLimit($request->input('limit', 10));
         $work->setOffset($request->input('offset', 0));
         $work->setSaleType($request->input('saleType', null));
+        $work->setAgeLimitCheck($request->input('ageLimitCheck', false));
 
         $sort = $request->input('sort', '');
         $itemType = $request->input('itemType', 'all');
@@ -497,6 +501,7 @@ $router->group([
         $work = new WorkRepository();
         $work->setLimit($request->input('limit', 10));
         $work->setOffset($request->input('offset', 0));
+        $work->setAgeLimitCheck($request->input('ageLimitCheck', false));
 
         $sort = $request->input('sort', '');
         $saleType = $request->input('saleType', '');

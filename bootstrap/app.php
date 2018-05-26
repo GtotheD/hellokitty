@@ -109,6 +109,7 @@ $app->configure('api_key');
 $app->configure('genre_map');
 $app->configure('version');
 $app->configure('release_genre_map');
+$app->configure('age_limit_map');
 
 /*
 |--------------------------------------------------------------------------

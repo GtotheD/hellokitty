@@ -359,14 +359,9 @@ class WorkRepository
                 }
             }
             $response['saleType'] = $productRepository->convertProductTypeToStr($product['productTypeId']);
-            if ($this->ageLimitCheck !== 'true') {
-                if ($this->checkAgeLimit(
-                        $response['ratingId'], $response['bigGenreId']) === true ||
-                    $response['adultFlg'] === 1
-                ) {
-                    $response['jacketL'] = '';
-                }
-            }
+            // 年齢チェック表示チェック
+            $displayImage = checkAgeLimit($this->ageLimitCheck, $response['ratingId'], $response['bigGenreId'], $response['adultFlg']);
+            $response['jacketL'] = ($displayImage) ? $response['jacketL'] : '';
         }
         $response['newFlg'] = newFlg($response['saleStartDate']);
         $response['adultFlg'] = ($response['adultFlg'] === '1') ? true : false;
@@ -531,14 +526,7 @@ class WorkRepository
                 $itemType = $this->convertWorkTypeIdToStr($base['work_type_id']);
                 $saleTypeHas = $this->parseFromArray($row['products'], $itemType);
                 $displayImage = true;
-                if ($this->ageLimitCheck !== 'true') {
-                    if ($this->checkAgeLimit(
-                            $base['rating_id'], $base['big_genre_id']) === true ||
-                        $base['adult_flg'] === 1
-                    ) {
-                        $displayImage = false;
-                    }
-                }
+                $displayImage = checkAgeLimit($this->ageLimitCheck, $base['rating_id'], $base['big_genre_id'], $base['adult_flg']);
                 $workFormatName = "";
                 if ($itemType === 'cd') {
                     if ($saleTypeHas['media_format_id'] === self::HIMO_MEDIA_FORMAT_ID) {
@@ -568,7 +556,6 @@ class WorkRepository
                     'workFormatName' => $workFormatName
                 ];
             }
-
         }
 
         //check counts of all itemType
@@ -660,6 +647,76 @@ class WorkRepository
             }
         }
     }
+    /**
+     * API GET: /people/{personId}
+     *
+     * @param $personId
+     * @param null $sort
+     * @param null $saleType
+     *
+     * @return array|null
+     *
+     * @throws NoContentsException
+     */
+    public function person($personId, $sort = null, $itemType = null)
+    {
+        $himoRepository = new HimoRepository();
+
+        $params = [
+            'personId' => $personId,
+            'saleType' => $this->saleType,
+            'itemType' => $itemType,
+            'responseLevel' => 1,
+            'id' => $personId,//dummy data
+            'api' => 'crossworks',//dummy data
+        ];
+        $himoRepository->setLimit(100);
+        $data = $himoRepository->searchCrossworks($params, $sort)->get();
+        if (empty($data['status']) || $data['status'] != '200' || empty($data['results']['total'])) {
+            throw new NoContentsException();
+        }
+        foreach ($data['results']['rows'] as $row) {
+            $workList[] = $row['work_id'];
+        }
+
+        $this->getWorkList($workList);
+        $this->work->getWorkWithProductIdsIn($workList, $this->saleType, null, $sort);
+        $this->totalCount = $this->work->count();
+        $works = $this->work->selectCamel($this->selectColumn())->get($this->limit, $this->offset);
+        if (count($works) + $this->offset < $this->totalCount) {
+            $this->hasNext = true;
+        } else {
+            $this->hasNext = false;
+        }
+
+        // STEP 7:フォーマットを変更して返却
+        $workItems = [];
+        foreach ($works as $workItem) {
+            $workItem = (array)$workItem;
+            $formatedItem = $this->formatAddOtherData($workItem, false, $workItem, true);
+            foreach ($formatedItem as $key => $value) {
+                if (in_array($key, $this->outputColumn())) {
+                    $formatedItemSelectColumn[$key] = $value;
+                }
+            }
+            $workItems[] = $formatedItemSelectColumn;
+        }
+
+
+        return $workItems;
+    }
+
+    /**
+     * API GET: /genre/{personId}
+     *
+     * @param $personId
+     * @param null $sort
+     * @param null $saleType
+     *
+     * @return array|null
+     *
+     * @throws NoContentsException
+     */
 
     public function genre($genreId, $sort = null, $saleType = null)
     {
@@ -693,14 +750,8 @@ class WorkRepository
                 $base = $this->format($row);
                 $itemType = $this->convertWorkTypeIdToStr($base['work_type_id']);
                 $saleTypeHas = $this->parseFromArray($row['products'], $itemType);
-                if ($this->ageLimitCheck !== 'true') {
-                    if ($this->checkAgeLimit(
-                            $base['rating_id'], $base['big_genre_id']) === true ||
-                        $base['adult_flg'] === 1
-                    ) {
-                        $displayImage = false;
-                    }
-                }
+                $displayImage = true;
+                $displayImage = checkAgeLimit($this->ageLimitCheck, $base['rating_id'], $base['big_genre_id'], $base['adult_flg']);
                 $result['rows'][] = [
                     'workId' => $base['work_id'],
                     'urlCd' => $base['url_cd'],
@@ -877,150 +928,6 @@ class WorkRepository
             return $row['filmarks_id'][0];
         }
         return null;
-    }
-
-    /**
-     * 対象作品の年齢制限値を取得
-     * @param Work $workRow NT作品
-     * @param array $ageLimitList 年齢認証設定マスタリスト
-     * @return boolean|int 年齢制限値
-     */
-    public function getAgeLimitWork($workRow, $ageLimitList)
-    {
-        $result = 0;
-        foreach ($ageLimitList as $ageLimit) {
-            // 不一致の場合は次レコードを確認
-            if (!$this->isItemMatch($ageLimit['ratingId'], $workRow['ratingId'])) {
-                continue;
-            }
-            if (!$this->isItemMatch($ageLimit['bigGenreId'], $workRow['bigGenreId'])) {
-                continue;
-            }
-            if (!$this->isItemMatch($ageLimit['mediumGenreId'], $workRow['mediumGenreId'])) {
-                continue;
-            }
-            if (!$this->isItemMatch($ageLimit['smallGenreId'], $workRow['smallGenreId'])) {
-                continue;
-            }
-
-            // 全項目一致(アダルト作品判定)
-            if ($result < $ageLimit['ageLimit']) {
-                $result = $ageLimit['ageLimit'];
-            }
-        }
-
-        // リスト不一致
-        return $result > 0 ? $result : false;
-    }
-
-    private function isItemMatch($ageLimitData, $himoData)
-    {
-        // DBデータが空の場合は一致と判定
-        if ($ageLimitData !== null && $ageLimitData !== '' && $ageLimitData !== $himoData) {
-            return false;
-        }
-        return true;
-    }
-
-    public function checkAgeLimit($ratingId, $bigGenreId)
-    {
-
-        $map = $this->ageLimitList();
-        foreach ($map as $item) {
-            if ($item['ratingId'] === $ratingId && $item['bigGenreId'] === $bigGenreId) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public function ageLimitList()
-    {
-        return [
-            [
-                'ageLimit' => 18,
-                'ratingId' => 'EXT0000000YB',
-                'bigGenreId' => 'EXT0000002G9',
-                'mediumGenreId' => null,
-                'smallGenreId' => null,
-            ],
-            [
-                'ageLimit' => 15,
-                'ratingId' => 'EXT0000001AV',
-                'bigGenreId' => 'EXT0000002G9',
-                'mediumGenreId' => null,
-                'smallGenreId' => null
-            ],
-            [
-                'ageLimit' => 18,
-                'ratingId' => 'EXT0000000YB',
-                'bigGenreId' => 'EXT0000000YC',
-                'mediumGenreId' => null,
-                'smallGenreId' => null
-            ]
-        ];
-
-    }
-
-    /**
-     * API GET: /people/{personId}
-     *
-     * @param $personId
-     * @param null $sort
-     * @param null $saleType
-     *
-     * @return array|null
-     *
-     * @throws NoContentsException
-     */
-    public function person($personId, $sort = null, $itemType = null)
-    {
-        $himoRepository = new HimoRepository();
-
-        $params = [
-            'personId' => $personId,
-            'saleType' => $this->saleType,
-            'itemType' => $itemType,
-            'responseLevel' => 1,
-            'limit' => 200,
-            'id' => $personId,//dummy data
-            'api' => 'crossworks',//dummy data
-        ];
-//        $himoRepository->setLimit(200);
-        $himoRepository->setLimit(100);
-        $data = $himoRepository->searchCrossworks($params, $sort)->get();
-        if (empty($data['status']) || $data['status'] != '200' || empty($data['results']['total'])) {
-            throw new NoContentsException();
-        }
-        foreach ($data['results']['rows'] as $row) {
-            $workList[] = $row['work_id'];
-        }
-
-        $this->getWorkList($workList);
-        $this->work->getWorkWithProductIdsIn($workList, $this->saleType, null, $sort);
-        $this->totalCount = $this->work->count();
-        $works = $this->work->selectCamel($this->selectColumn())->get($this->limit, $this->offset);
-        if (count($works) + $this->offset < $this->totalCount) {
-            $this->hasNext = true;
-        } else {
-            $this->hasNext = false;
-        }
-
-        // STEP 7:フォーマットを変更して返却
-        $workItems = [];
-        foreach ($works as $workItem) {
-            $workItem = (array)$workItem;
-            $formatedItem = $this->formatAddOtherData($workItem, false, $workItem, true);
-            foreach ($formatedItem as $key => $value) {
-                if (in_array($key, $this->outputColumn())) {
-                    $formatedItemSelectColumn[$key] = $value;
-                }
-            }
-            $workItems[] = $formatedItemSelectColumn;
-        }
-
-
-        return $workItems;
     }
 
     private function outputColumn()

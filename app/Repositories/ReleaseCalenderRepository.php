@@ -265,6 +265,8 @@ class ReleaseCalenderRepository
         } else {
             $this->hasNext = false;
         }
+        // アダルト表示は常に許可しておく。
+        $workRepository->setAgeLimitCheck('true');
         foreach ($results as $result) {
             $tmpData = $workRepository->formatAddOtherData((array)$result, false, (array)$result);
 

@@ -93,6 +93,14 @@ class RelateadWorkRepository
         $this->offset = $offset;
     }
 
+    /**
+     * @param mixed $ageLimitCheck
+     */
+    public function setAgeLimitCheck($ageLimitCheck)
+    {
+        $this->ageLimitCheck = $ageLimitCheck;
+    }
+
     public function getNarrow($workId)
     {
         // TODO: Waiting to confirm $saleType option
@@ -136,6 +144,7 @@ class RelateadWorkRepository
 
         // STEP 7:フォーマットを変更して返却
         $workItems = [];
+        $workRepository->setAgeLimitCheck($this->ageLimitCheck);
         foreach ($workList as $workItem) {
             $workItem = (array)$workItem;
             $formatedItem = $workRepository->formatAddOtherData($workItem, false, $workItem);
@@ -153,12 +162,10 @@ class RelateadWorkRepository
     {
         $rows = $rows['results']['rows'];
         foreach ($rows as $row) {
-
             foreach ($row['works'] as $work) {
                 $tmpWork['workId'] = $work['work_id'];
                 $works[] = $tmpWork;
             }
-
             foreach($row['small_serieses'] as $smallSerieses) {
                     foreach ($smallSerieses['works'] as $work) {
                         $tmpWork['workId'] = $work['work_id'];
