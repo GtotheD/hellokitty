@@ -28,18 +28,35 @@ class HimoReleaseOrder extends Model
             'p1.work_id,'
             .'p1.sale_start_date,'
             .'hro.sort';
-        $selectSub = ',MIN(product_unique_id) AS product_unique_id ';
-        $subQuery = DB::table('ts_himo_release_orders AS hro')->select(DB::raw($selectSubGrouping.$selectSub))
+        $selectSub = ',MAX(p1.ccc_family_cd) AS ccc_family_cd ';
+        $subQuery = DB::table('ts_himo_release_orders AS hro')
+            ->select(DB::raw($selectSubGrouping.$selectSub))
             ->join('ts_products as p1', 'hro.work_id', '=', 'p1.work_id')
-            ->whereRaw(DB::raw(' item_cd not like \'_1__\' '))
             ->where('product_type_id', $productTypeId)
             ->where('tap_genre_id', $genreId)
             ->where('month', $month)
             ->groupBy(DB::raw($selectSubGrouping));
-        $this->dbObject = DB::table(DB::raw("({$subQuery->toSql()}) as p2"))
+        $selectSubGroupingFinal =
+              'p2.sort,'
+             .'p3.work_id,'
+             .'p3.ccc_family_cd,'
+             .'p3.sale_start_date';
+        $selectSubFinal = ',MAX(p3.product_unique_id) AS product_unique_id ';
+        $subQueryFinal = DB::table(DB::raw("({$subQuery->toSql()}) as p2"))
             ->mergeBindings($subQuery)
-            ->join('ts_products as p3', 'p2.product_unique_id', '=', 'p3.product_unique_id')
-            ->join('ts_works as w1', 'w1.work_id', '=', 'p2.work_id');
+            ->select(DB::raw($selectSubGroupingFinal.$selectSubFinal))
+            ->join('ts_products as p3', function ($join) {
+                $join->on('p3.ccc_family_cd', '=', 'p2.ccc_family_cd')
+                    ->on('p3.sale_start_date', '=', 'p2.sale_start_date')
+                    ->on('p3.work_id', '=', 'p2.work_id');
+            })
+            ->whereRaw(DB::raw(' item_cd not like \'_1__\' '))
+            ->whereRaw(DB::raw(' item_cd not like \'__20\' '))
+            ->groupBy(DB::raw($selectSubGroupingFinal));
+        $this->dbObject = DB::table(DB::raw("({$subQueryFinal->toSql()}) as final"))
+            ->mergeBindings($subQueryFinal)
+            ->join('ts_products as p4', 'final.product_unique_id', '=', 'p4.product_unique_id')
+            ->join('ts_works as w1', 'final.work_id', '=', 'w1.work_id');
         if ($mediaFormat) {
             $this->dbObject
                 ->where('w1.work_format_id', $mediaFormat);
