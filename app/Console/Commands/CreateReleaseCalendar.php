@@ -33,6 +33,7 @@ class CreateReleaseCalendar extends Command
     const HIMO_RELEASE_ORDER_TABLE = 'ts_himo_release_orders';
     const HIMO_RELEASE_ORDER_TMP_TABLE = 'ts_himo_release_orders_tmp';
 
+    const PARAM_MONTH = ['this', 'last', 'next'];
     /**
      * Create a new command instance.
      **/
@@ -62,11 +63,15 @@ class CreateReleaseCalendar extends Command
 
         $this->info('一時テーブルデータ削除 ['.date('Y/m/d H:i:s').']');
         DB::table(self::HIMO_RELEASE_ORDER_TMP_TABLE)->truncate();
-        // 一時テーブルの作成
-        foreach ($releaseGenreMap AS $releaseGenreMapKey => $releaseGenreMapItem) {
-            $this->info('Create Tsutaya App Genre Id: '.$releaseGenreMapKey);
-            $releaseCalenderRepository->setGenreId($releaseGenreMapKey);
-            $releaseCalenderRepository->get();
+
+        foreach (self::PARAM_MONTH AS $month) {
+            // 一時テーブルの作成
+            foreach ($releaseGenreMap AS $releaseGenreMapKey => $releaseGenreMapItem) {
+                $this->info('Create Month: '.$month.'   Genre Id: '.$releaseGenreMapKey);
+                $releaseCalenderRepository->setMonth($month);
+                $releaseCalenderRepository->setGenreId($releaseGenreMapKey);
+                $releaseCalenderRepository->get();
+            }
         }
         $this->info('一時テーブル作成完了 ['.date('Y/m/d H:i:s').']');
 
