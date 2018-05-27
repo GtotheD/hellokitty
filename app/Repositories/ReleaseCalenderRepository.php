@@ -342,8 +342,8 @@ class ReleaseCalenderRepository
             $listString = $listArray[$genreId][0];
         } else {
             if (count($listArray[$genreId]) == 1) {
-                if ($listArray[$genreId] == self::HIMO_TAP_RECOMMEND) {
-                    $listString == self::HIMO_TAP_RECOMMEND;
+                if ($listArray[$genreId][0] === self::HIMO_TAP_RECOMMEND) {
+                    $listString = self::HIMO_TAP_RECOMMEND;
                 } else {
                     $listString = $listArray[$genreId][0] . '::';
                 }
@@ -401,17 +401,17 @@ class ReleaseCalenderRepository
     private function selectColumn()
     {
         return [
-            'p2.work_id',
+            'final.work_id',
             'work_title',
             'work_type_id',
             'rating_id',
             'big_genre_id',
             'url_cd',
             'ccc_work_cd',
-            'p3.jacket_l',
-            'p3.sale_start_date',
-            'p3.product_type_id',
-            'p3.product_unique_id',
+            'p4.jacket_l',
+            'p4.sale_start_date',
+            'p4.product_type_id',
+            'p4.product_unique_id',
             'adult_flg',
             'product_name',
             'maker_name',
