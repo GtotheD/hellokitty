@@ -365,6 +365,7 @@ class ProductRepository
         $productBase['subtitle_flg'] = $product['subtitle_flg'];
 
         $productBase['best_album_flg'] = $product['best_album_flg'];
+        $productBase['maker_cd'] = $product['maker_cd'];
         $productBase['maker_name'] = $product['maker_name'];
         $productBase['media_format_id'] = $product['media_format_id'];
 

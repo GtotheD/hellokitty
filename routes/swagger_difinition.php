@@ -133,6 +133,11 @@
  *              description="出版年月"
  *          ),
  *          @SWG\Property(
+ *              property="videoFlg",
+ *              type="boolean",
+ *              description="関連動画表示フラグ"
+ *          ),
+ *          @SWG\Property(
  *              property="adultFlg",
  *              type="boolean",
  *              description="アダルトフラグ"

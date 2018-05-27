@@ -196,7 +196,7 @@ class SectionRepository
             return null;
         }
         $response = [
-            'hasNext' => (($this->page * $this->limit) < $rows['totalResults'])? true: false,
+            'hasNext' => (($this->page * $this->limit) < $rows['totalResults']) ? true : false,
             'totalCount' => $rows['totalResults'],
             'aggregationPeriod' => $this->aggregationPeriodFormat($rows['totalingPeriod']),
             'rows' => $this->convertFormatFromRanking($rows),
@@ -212,16 +212,16 @@ class SectionRepository
 
     public function aggregationPeriodFormat($totalingPeriod)
     {
-        $replacementString = mb_ereg_replace("(月$)|(日\(.\))",'', $totalingPeriod);
-        $replacementString = mb_ereg_replace("年|月",'/', $replacementString);
+        $replacementString = mb_ereg_replace("(月$)|(日\(.\))", '', $totalingPeriod);
+        $replacementString = mb_ereg_replace("年|月", '/', $replacementString);
         // 日があった場合は日次の変換
-        if(mb_ereg_match('.*日(.*)$', $totalingPeriod)) {
-            $replacementString = date('Y/m/d', strtotime($replacementString));
-        } else if (mb_ereg_match('.*～.*', $totalingPeriod)) {
+        if (mb_ereg_match('.*～.*', $totalingPeriod)) {
             $explodedArray = explode('～', $replacementString);
             $startDate = date('Y/m/d', strtotime($explodedArray[0]));
             $endDate = date('Y/m/d', strtotime($explodedArray[1]));
-            $replacementString = $startDate. '～'.$endDate;
+            $replacementString = $startDate . '～' . $endDate;
+        } else if (mb_ereg_match('.*日(.*)$', $totalingPeriod)) {
+            $replacementString = date('Y/m/d', strtotime($replacementString));
         } else {
             $replacementString = date('Y/m', strtotime($replacementString . '/01'));
         }
@@ -350,10 +350,10 @@ class SectionRepository
         }
         foreach ($rows['entry'] as $row) {
             $work = $workRepository->get($row['productKey'], [], $this->productKeyType($row['productKey']), false);
-            if(empty($work)) {
+            if (empty($work)) {
                 continue;
             }
-            if(empty($row['lastRankNo'])) {
+            if (empty($row['lastRankNo'])) {
                 $comparison = 'new';
             } else if ($row['rankNo'] == $row['lastRankNo']) {
                 $comparison = 'keep';
@@ -367,11 +367,13 @@ class SectionRepository
             $rowUnit['workTitle'] = $work['workTitle'];
             $rowUnit['workId'] = $work['workId'];
             $rowUnit['code'] = $row['productKey'];
-            $rowUnit['urlCd'] = $row['urlCd'];
+            $rowUnit['urlCd'] = !empty($row['urlCd']) ? empty($row['urlCd']) : "";
             $rowUnit['rankNo'] = $row['rankNo'];
             $rowUnit['comparison'] = $comparison;
-            $rowUnit['jacketL'] = $work['jacketL'];
-            $rowUnit['imageUrl'] = $work['jacketL'];
+//            $rowUnit['jacketL'] = $work['jacketL'];
+            $rowUnit['jacketL'] = $row['productImage']['large'];
+//            $rowUnit['imageUrl'] = $work['jacketL'];
+            $rowUnit['imageUrl'] = $row['productImage']['large'];
             $rowUnit['newFlg'] = $work['newFlg'];
             $rowUnit['supplement'] = $work['supplement'];
             $rowUnit['saleType'] = $work['saleType'];
@@ -384,7 +386,10 @@ class SectionRepository
                 if (array_key_exists('modelName', $row)) {
                     $rowUnit['supplement'] = $row['modelName'];
                 } else if (array_key_exists('artistInfoList', $row)) {
-                    $rowUnit['supplement'] = $this->getOneArtist($row['artistInfoList']['artistInfo'])['artistName'];
+                    if ($work['itemType'] === 'dvd') {
+                    } else {
+                        $rowUnit['supplement'] = $this->getOneArtist($row['artistInfoList']['artistInfo'])['artistName'];
+                    }
                 } else {
                     $rowUnit['supplement'] = null;
                 }
