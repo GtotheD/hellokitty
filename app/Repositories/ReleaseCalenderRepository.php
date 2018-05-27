@@ -24,14 +24,18 @@ class ReleaseCalenderRepository
     protected $month;
     protected $onlyReleased;
     protected $mediaFormat;
+    protected $himoReleaseOrder;
 
     const HIMO_TAP_RECOMMEND_KEYWORD = 'riricaleinfo';
+    const HIMO_TAP_RECOMMEND = 'recommendation';
 
     public function __construct($sort = 'asc', $offset = 0, $limit = 10)
     {
         $this->sort = $sort;
         $this->offset = $offset;
         $this->limit = $limit;
+
+        $this->himoReleaseOrder = New HimoReleaseOrder();
     }
 
     /**
@@ -132,6 +136,14 @@ class ReleaseCalenderRepository
         $this->mediaFormat = $mediaFormat;
     }
 
+    /**
+     * @param HimoReleaseOrder $himoReleaseOrder
+     */
+    public function setHimoReleaseOrder(HimoReleaseOrder $himoReleaseOrder)
+    {
+        $this->himoReleaseOrder = $himoReleaseOrder;
+    }
+
     public function get()
     {
         // 音楽の場合single albumなどを指定する為。
@@ -149,6 +161,7 @@ class ReleaseCalenderRepository
             $saleStartDateFrom = Carbon::parse('next month')->startOfMonth();
             $saleStartDateTo = Carbon::parse('next month')->endOfMonth();
         } else {
+            $this->month = 'this';
             $saleStartMonth = date('Y-m');
             $saleStartDateFrom = Carbon::now()->startOfMonth();
             $saleStartDateTo = Carbon::now()->endOfMonth();
@@ -163,24 +176,19 @@ class ReleaseCalenderRepository
         } else if ($this->sort == 'old') {
             $sortBy = 'sale_start_date:asc';
         }
-
         // ジャンルIDをもとにキャッシュにデータがあるか確認しキャッシュがあればキャッシュからデータを取得する。
         $mappingData = $this->genreMapping($this->genreId);
-        $cacheData = $himoReleaseOrder->setConditionGenreIdAndMonthAndProductTypeId(
+        $cacheDataCount = $this->himoReleaseOrder->setConditionByGenreIdAndMonth(
             $this->genreId,
-            $saleStartMonth . '-01',
-            $mappingData['productSellRentalFlg'],
-            $this->sort
+            $saleStartMonth . '-01'
         )->count();
-
-        if (empty($cacheData)) {
+        if (empty($cacheDataCount)) {
             // キャッシュがなければデータを新規で取得する
             $himoRepository = new HimoRepository();
             $params = [
                 'api' => 'release',
                 'id' => $this->month . '_' . $this->genreId . '_0',
                 'genreId' => $this->genreId,
-                //'saleStartMonth' => $saleStartMonth,
                 'saleStartDateFrom' => $saleStartDateFrom,
                 'saleStartDateTo' => $saleStartDateTo,
                 'productSellRentalFlg' => $mappingData['productSellRentalFlg'],
@@ -189,7 +197,7 @@ class ReleaseCalenderRepository
                 'onlyReleased' => $this->onlyReleased,
                 'sort' => $sortBy
             ];
-            if ($mappingData['genres'] === 'recommendation') {
+            if ($mappingData['genres'] === self::HIMO_TAP_RECOMMEND) {
                 $params['workTags'] = self::HIMO_TAP_RECOMMEND_KEYWORD;
             } else {
                 $params['genre'] = $mappingData['genres'];
@@ -222,7 +230,8 @@ class ReleaseCalenderRepository
                     $orderNum++;
                 }
                 // データを取得する際は、常にお薦めで取得し、順序をDBに登録する。
-                $himoReleaseOrder->insertBulk($himoReleaseOrderData);
+                // ここのリリカレモデルは入れ替えられるようにメンバ変数で保持
+                $this->himoReleaseOrder->insertBulk($himoReleaseOrderData);
                 $workRepository->insertWorkData($response);
                 if ($orderNum > $totalCount) {
                     break;
@@ -243,7 +252,7 @@ class ReleaseCalenderRepository
             $saleStartDateFrom = date('Y-m-01 00:00:00');
             $saleStartDateTo = date('Y-m-d 00:00:00');
         }
-        $himoReleaseOrder->setConditionGenreIdAndMonthAndProductTypeId(
+        $this->himoReleaseOrder->setConditionGenreIdAndMonthAndProductTypeId(
             $this->genreId,
             $saleStartMonth . '-01',
             $mappingData['productSellRentalFlg'],
@@ -252,9 +261,9 @@ class ReleaseCalenderRepository
             $saleStartDateFrom,
             $saleStartDateTo
         );
-        $this->totalCount = $himoReleaseOrder->count();
+        $this->totalCount = $this->himoReleaseOrder->count();
         // キャッシュしたデータから対象の作品及び商品情報を集約し取得する。
-        $results = $himoReleaseOrder
+        $results = $this->himoReleaseOrder
             ->selectCamel($this->selectColumn())
             ->get(
                 $this->limit,
@@ -328,8 +337,13 @@ class ReleaseCalenderRepository
     public function genreMapToHimoParam($genreId)
     {
         $listArray = config('release_genre_map');
+        $listString = null;
         if (count($listArray[$genreId]) == 1) {
-            $listString = $listArray[$genreId][0] . '::';
+            if ($listArray[$genreId] == self::HIMO_TAP_RECOMMEND) {
+                $listString == self::HIMO_TAP_RECOMMEND;
+            } else {
+                $listString = $listArray[$genreId][0] . '::';
+            }
         } else {
             $listString = implode(':: || ', $listArray[$genreId]) . '::';
         }
