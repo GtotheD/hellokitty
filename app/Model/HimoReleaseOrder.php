@@ -9,9 +9,9 @@ class HimoReleaseOrder extends Model
 {
     const TABLE = 'ts_himo_release_orders';
 
-    function __construct()
+    function __construct($table = self::TABLE)
     {
-        parent::__construct(self::TABLE);
+        parent::__construct($table);
     }
 
     public function setConditionGenreIdAndMonthAndProductTypeId(
