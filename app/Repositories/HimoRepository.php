@@ -175,6 +175,7 @@ class HimoRepository extends ApiRequesterRepository
         $this->queryParams = [
             '_system' => 'TsutayaApp',
             'service_id' => 'tol',
+            'scene_limit' => '20',
             'response_level' => '9',
             'adult_flg' => $params['adultFlg'],
             'offset' => $this->offset,
@@ -186,8 +187,13 @@ class HimoRepository extends ApiRequesterRepository
             'sale_start_date_from' => $params['saleStartDateFrom'],
             'sale_start_date_to' => $params['saleStartDateTo'],
         ];
+
         if (array_key_exists('genre', $params)) {
-            $this->queryParams['genre_id'] = $params['genre'];
+            if ($params['msdbItem'][0] === 'game') {
+                $this->queryParams['game_model_id'] = $params['genre'];
+            } else {
+                $this->queryParams['genre_id'] = $params['genre'];
+            }
         }
         if (array_key_exists('workags', $params)) {
             $this->queryParams['work_tags'] = $params['workTags'];
@@ -206,6 +212,7 @@ class HimoRepository extends ApiRequesterRepository
         $this->queryParams = [
             '_system' => 'TsutayaApp',
             'service_id' => 'tol',
+            'scene_limit' => '20',
             'response_level' => '1',
             'id_value' => '0301:' . $personId,
             // ※ アイテムコードの以下を除外）1051:アクセサリー, 1054:グッズ, 1056:チケット
@@ -243,6 +250,7 @@ class HimoRepository extends ApiRequesterRepository
         $this->queryParams = [
             '_system' => 'TsutayaApp',
             'service_id' => 'tol',
+            'scene_limit' => '20',
             'work_products_service_id' => 'tol',
             'response_level' => '9',
             'offset' => $this->offset,

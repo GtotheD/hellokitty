@@ -338,14 +338,18 @@ class ReleaseCalenderRepository
     {
         $listArray = config('release_genre_map');
         $listString = null;
-        if (count($listArray[$genreId]) == 1) {
-            if ($listArray[$genreId] == self::HIMO_TAP_RECOMMEND) {
-                $listString == self::HIMO_TAP_RECOMMEND;
-            } else {
-                $listString = $listArray[$genreId][0] . '::';
-            }
+        if ($genreId >= 51 && $genreId <= 55) {
+            $listString = $listArray[$genreId][0];
         } else {
-            $listString = implode(':: || ', $listArray[$genreId]) . '::';
+            if (count($listArray[$genreId]) == 1) {
+                if ($listArray[$genreId] == self::HIMO_TAP_RECOMMEND) {
+                    $listString == self::HIMO_TAP_RECOMMEND;
+                } else {
+                    $listString = $listArray[$genreId][0] . '::';
+                }
+            } else {
+                $listString = implode(':: || ', $listArray[$genreId]) . '::';
+            }
         }
         return $listString;
     }
@@ -412,7 +416,9 @@ class ReleaseCalenderRepository
             'product_name',
             'maker_name',
             'msdb_item',
-            'media_format_id'
+            'media_format_id',
+            'game_model_name',
+            'maker_cd'
         ];
     }
 }

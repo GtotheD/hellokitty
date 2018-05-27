@@ -348,6 +348,23 @@ class WorkRepository
             if ($product['msdbItem'] === 'video') {
                 $response['supplement'] = '';
             }
+
+            if (env('DISP_RELATION_VIDEO') === true) {
+                $showFlg = true;
+                if ($product['msdbItem'] === 'video') {
+                    $listArray = config('hidden_video_map');
+                    foreach ($listArray as $makerCd => $makerName) {
+                        if ($makerCd === $product['makerCd']) {
+                            $showFlg = false;
+                            break;
+                        }
+                    }
+                }
+                $response['videoFlg'] = $showFlg;
+            } else {
+                $response['videoFlg'] = false;
+            }
+
             if (!empty($product)) {
                 $response['makerName'] = $product['makerName'];
             } else {
@@ -647,6 +664,7 @@ class WorkRepository
             }
         }
     }
+
     /**
      * API GET: /people/{personId}
      *
@@ -965,7 +983,8 @@ class WorkRepository
             'game_model_name',
             'adult_flg',
             'msdb_item',
-            'media_format_id'
+            'media_format_id',
+            'maker_cd'
         ];
     }
 }

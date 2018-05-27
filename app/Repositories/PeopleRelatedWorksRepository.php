@@ -239,7 +239,8 @@ class PeopleRelatedWorksRepository extends ApiRequesterRepository
             'game_model_name',
             'adult_flg',
             'msdb_item',
-            'media_format_id'
+            'media_format_id',
+            'maker_cd'
         ];
     }
 }
