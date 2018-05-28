@@ -195,7 +195,7 @@ class HimoRepository extends ApiRequesterRepository
                 $this->queryParams['genre_id'] = $params['genre'];
             }
         }
-        if (array_key_exists('workags', $params)) {
+        if (array_key_exists('workTags', $params)) {
             $this->queryParams['work_tags'] = $params['workTags'];
         }
         return $this;
