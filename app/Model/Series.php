@@ -34,6 +34,7 @@ class Series extends Model
             $this->dbObject->whereExists(function ($query) use ($saleTypeId) {
                 $query->select(DB::raw(1))
                     ->from('ts_products AS p')
+                    ->whereRaw(DB::raw(' item_cd not like \'__20\' '))
                     ->whereRaw('w.work_id = p.work_id AND product_type_id ='.$saleTypeId);
             });
         }
