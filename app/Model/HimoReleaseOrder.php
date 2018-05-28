@@ -63,22 +63,22 @@ class HimoReleaseOrder extends Model
         }
         if(!empty($saleStartDateFrom)) {
             $this->dbObject
-                ->where('p2.sale_start_date', '>',$saleStartDateFrom);
+                ->where('p4.sale_start_date', '>',$saleStartDateFrom);
         }
         if(!empty($saleStartDateTo)) {
             $this->dbObject
-                ->where('p2.sale_start_date', '<',$saleStartDateTo);
+                ->where('p4.sale_start_date', '<',$saleStartDateTo);
         }
 
         if ($order === 'new') {
             $this->dbObject
-                ->orderBy('p2.sale_start_date', 'desc')
-                ->orderBy('p2.product_unique_id', 'desc')
+                ->orderBy('p4.sale_start_date', 'desc')
+                ->orderBy('p4.product_unique_id', 'desc')
             ;
         } else if ($order === 'old') {
             $this->dbObject
-                ->orderBy('p2.sale_start_date', 'asc')
-                ->orderBy('p2.product_unique_id', 'asc')
+                ->orderBy('p4.sale_start_date', 'asc')
+                ->orderBy('p4.product_unique_id', 'asc')
                 ;
         } else {
             $this->dbObject
