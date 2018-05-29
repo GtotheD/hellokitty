@@ -367,7 +367,7 @@ class SectionRepository
             $rowUnit['workTitle'] = $work['workTitle'];
             $rowUnit['workId'] = $work['workId'];
             $rowUnit['code'] = $row['productKey'];
-            $rowUnit['urlCd'] = !empty($row['urlCd']) ? empty($row['urlCd']) : "";
+            $rowUnit['urlCd'] = !empty($row['urlCd']) ? $row['urlCd'] : "";
             $rowUnit['rankNo'] = $row['rankNo'];
             $rowUnit['comparison'] = $comparison;
 //            $rowUnit['jacketL'] = $work['jacketL'];
