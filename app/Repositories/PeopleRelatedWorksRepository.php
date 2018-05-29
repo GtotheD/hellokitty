@@ -95,7 +95,7 @@ class PeopleRelatedWorksRepository extends ApiRequesterRepository
     {
         $product = new Product();
         $people = new People();
-        $himo = new HimoRepository();
+        $himoRepository = new HimoRepository();
         $workModel = new WorkRepository();
 
         $productResult = $product->setConditionByWorkIdNewestProduct($workId)->getOne();
@@ -109,7 +109,7 @@ class PeopleRelatedWorksRepository extends ApiRequesterRepository
         $this->totalCount = $this->peopleRelatedWork->setConditionById($people->person_id)->count();
         $result = $this->peopleRelatedWork->toCamel(['id', 'person_id'])->get($this->limit, $this->offset);
         if (empty(count($result))) {
-            $himoResult = $himo->searchPeople([$people->person_id], '0301', ['book'])->get();
+            $himoResult = $himoRepository->searchPeople([$people->person_id], '0301', ['book'])->get();
             if (empty($himoResult)) {
                 return null;
             }
@@ -130,7 +130,7 @@ class PeopleRelatedWorksRepository extends ApiRequesterRepository
 
     public function getWorksByArtist($workId)
     {
-        $himo = new HimoRepository();
+        $himoRepository = new HimoRepository();
         $workRepository = new WorkRepository;
         $productRepository = new ProductRepository;
 
@@ -145,7 +145,9 @@ class PeopleRelatedWorksRepository extends ApiRequesterRepository
         $this->totalCount = $this->peopleRelatedWork->setConditionById($people->person_id)->count();
         $result = $this->peopleRelatedWork->selectCamel(['work_id'])->get();
         if (empty(count($result))) {
-            $himoResult = $himo->crossworksArtistRelatedWork($people->person_id)->get();
+            // 取得件数を100件で絞る
+            $himoRepository->setLimit(100);
+            $himoResult = $himoRepository->crossworksArtistRelatedWork($people->person_id)->get();
             if (empty($himoResult['results']['rows'])) {
                 throw new NoContentsException;
             }
