@@ -34,7 +34,7 @@ class Product extends Model
     /*
      * Get Newest Product
      */
-    public function setConditionByWorkIdNewestProduct($workId, $saleType = null)
+    public function setConditionByWorkIdNewestProduct($workId, $saleType = null, $isMovie = false)
     {
         $this->dbObject = DB::table($this->table)
             ->where([
@@ -46,6 +46,9 @@ class Product extends Model
             $this->dbObject->where([
                 'product_type_id' => $this->convertSaleType($saleType),
             ]);
+        }
+        if ($isMovie) {
+            $this->dbObject->whereRaw(DB::raw(' item_cd like \'__21\' '));
         }
         $this->dbObject->orderBy('ccc_family_cd', 'desc')
             ->orderBy('sale_start_date', 'desc')
