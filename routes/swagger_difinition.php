@@ -143,6 +143,11 @@
  *              description="アダルトフラグ"
  *          ),
  *          @SWG\Property(
+ *              property="musicDownloadUrl",
+ *              type="boolean",
+ *              description="音楽ダウンロード用のURL"
+ *          ),
+ *          @SWG\Property(
  *              property="saleTypeHas",
  *              type="object",
  *              @SWG\Property(
