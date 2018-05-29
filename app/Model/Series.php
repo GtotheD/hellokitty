@@ -38,7 +38,7 @@ class Series extends Model
                     ->whereRaw('w.work_id = p.work_id AND product_type_id ='.$saleTypeId);
             });
         }
-
+        $this->dbObject->orderBy('sale_start_date', 'desc');
         return $this;
     }
 
