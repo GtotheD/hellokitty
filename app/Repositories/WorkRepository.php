@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Exceptions\AgeLimitException;
+use App\Model\MusicoUrl;
 use App\Model\People;
 use App\Model\Work;
 use App\Model\Product;
@@ -82,6 +83,11 @@ class WorkRepository
     const HIMO_MEDIA_FORMAT_ID = 'EXT0000000FY';
     const MSDB_ITEM_AUDIO_SINGLE_NAME = 'シングル';
 
+    const PRODUCT_TYPE_ID_ALBUM = '3';
+    const PRODUCT_TYPE_ID_SINGLE = '4';
+    const MUSICO_LINK_ALBUM = '/album/view/%s?sc_ext=tsutaya_music_musbutton';
+    const MUSICO_LINK_SINGLE = '/chakuuta/detail/%s?sc_ext=tsutaya_music_musbutton';
+
     public function __construct($sort = 'asc', $offset = 0, $limit = 10)
     {
         $this->sort = $sort;
@@ -89,6 +95,7 @@ class WorkRepository
         $this->limit = $limit;
 
         $this->work = new Work();
+
     }
 
 
@@ -414,6 +421,14 @@ class WorkRepository
             $response['docText'] = '';
         }
 
+        // musicoリンク
+        $response['musicDownloadUrl'] = null;
+        $musicoUrl = new MusicoUrl;
+        $musicoUrlData = $musicoUrl->setConditionByWorkId($response['workId'])->toCamel()->getOne();
+        if (!empty($musicoUrlData)) {
+            $response['musicDownloadUrl'] = env('MUSICO_URL').$musicoUrlData->url;
+        }
+
         return $response;
     }
 
@@ -458,13 +473,22 @@ class WorkRepository
             $workData = [];
             $productData = [];
             $peopleData = [];
+            $musicoUrlInsertArray = [];
             foreach ($himoResult['results']['rows'] as $row) {
                 $workData[] = $this->format($row);
                 $insertWorkId[] = $row['work_id'];
                 //$insertResult = $work->insert($base);
-
+                $musicoUrl = null;
                 foreach ($row['products'] as $product) {
-                    if ($product['service_id'] === 'tol') {
+                    // ダウンロード用のデータ生成
+                    // 単一想定
+                    if ($product['service_id'] === 'musico') {
+                        if ($product['product_type_id'] == self::PRODUCT_TYPE_ID_ALBUM) {
+                            $musicoUrl = sprintf(self::MUSICO_LINK_ALBUM, $product['ccc_product_id']);
+                        } else if ($product['product_type_id'] == self::PRODUCT_TYPE_ID_SINGLE) {
+                            $musicoUrl = sprintf(self::MUSICO_LINK_SINGLE, $product['ccc_product_id']);
+                        }
+                    } else if ($product['service_id'] === 'tol') {
                         // インサートの実行
                         $productData[] = $productRepository->format($row['work_id'], $product);
                         // Insert people
@@ -475,13 +499,21 @@ class WorkRepository
                         }
                     }
                 }
+                if (!empty($musicoUrl)) {
+                    $musicoUrlInsertArray[] = [
+                        'work_id' => $row['work_id'],
+                        'url' => $musicoUrl
+                    ];
+                }
             }
             $productModel = new Product();
             $peopleModel = new People();
+            $musicoUrl = new MusicoUrl();
 
             $this->work->insertBulk($workData, $insertWorkId);
             $productModel->insertBulk($productData);
             $peopleModel->insertBulk($peopleData);
+            $musicoUrl->insertBulk($musicoUrlInsertArray);
 
             DB::commit();
             return $insertWorkId;

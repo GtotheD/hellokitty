@@ -31,6 +31,17 @@ class AccessTest extends TestCase
         $response = $this->getJsonWithAuth( $url);
         $response->assertResponseStatus(200);
     }
+    /**
+     * @test
+     * 作品情報取得テスト　ミュージコデータ
+     */
+    public function workMusico()
+    {
+        $url = '/work/PTA000092WMF';
+        $response = $this->getJsonWithAuth( $url);
+        $response->assertResponseStatus(200);
+    }
+
 
     /**
      * @test
