@@ -308,9 +308,9 @@ class ProductRepository
      *
      * @return mixed
      */
-    public function getNewestProductWorkIdSaleType($workId, $saleType)
+    public function getNewestProductWorkIdSaleType($workId, $saleType, $isMovie)
     {
-        $result = $this->product->setConditionByWorkIdNewestProduct($workId, $saleType)->toCamel()->getOne();
+        $result = $this->product->setConditionByWorkIdNewestProduct($workId, $saleType, $isMovie)->toCamel()->getOne();
         return $result;
     }
 
@@ -442,7 +442,7 @@ class ProductRepository
      *
      * @throws NoContentsException
      */
-    public function getNewestProductByWorkId($workId, $saleType = null)
+    public function getNewestProductByWorkId($workId, $saleType = null, $isMovie = false)
     {
         $workRepository = new WorkRepository();
         $product = new Product();
@@ -460,7 +460,7 @@ class ProductRepository
             }
         }
 
-        return $product->setConditionByWorkIdNewestProduct($workId, $saleType);
+        return $product->setConditionByWorkIdNewestProduct($workId, $saleType, $isMovie);
     }
 
     public function getDetail($productId, $typeId)

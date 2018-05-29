@@ -6,6 +6,7 @@ use App\Exceptions\NoContentsException;
 use App\Model\People;
 use App\Model\Product;
 use App\Model\Work;
+use App\Repositories\WorkRepository;
 
 class PeopleRepository
 {
@@ -100,7 +101,13 @@ class PeopleRepository
         ];
 
         $productRepository = new ProductRepository();
-        $newestProduct = $productRepository->getNewestProductByWorkId($workId, $saleType)->getOne();
+        $work = new Work();
+        $workData = $work->setConditionByWorkId($workId)->getOne();
+        $isMovie = false;
+        if($workData->work_type_id == 2) {
+            $isMovie = true;
+        }
+        $newestProduct = $productRepository->getNewestProductByWorkId($workId, $saleType, $isMovie)->getOne();
         if (!$newestProduct) {
             throw new NoContentsException();
         }

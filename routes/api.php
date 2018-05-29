@@ -218,11 +218,11 @@ $router->group([
     });
     // キャストスタッフ一覧取得
     $router->get('work/{workId}/people', function (Request $request, $workId) {
-        $people = new PeopleRepository();
-        $people->setLimit($request->input('limit', 10));
-        $people->setOffset($request->input('offset', 0));
+        $peopleRepository = new PeopleRepository();
+        $peopleRepository->setLimit($request->input('limit', 10));
+        $peopleRepository->setOffset($request->input('offset', 0));
         $saleType = $request->input('saleType');
-        $response = $people->getNarrow($workId, $saleType);
+        $response = $peopleRepository->getNarrow($workId, $saleType);
         if (empty($response)) {
             throw new NoContentsException;
         }
