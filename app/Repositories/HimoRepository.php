@@ -100,7 +100,6 @@ class HimoRepository extends ApiRequesterRepository
             'id_value' => implode(' || ', $queryId),
             'service_id' => 'tol',
             'xmedia_mode' => '1',
-            // 'msdb_item' => ['music','video','book','game'],
             'response_level' => '9',
             'offset' => $this->offset,
             'limit' => $this->limit,
