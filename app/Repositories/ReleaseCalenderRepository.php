@@ -170,7 +170,7 @@ class ReleaseCalenderRepository
         $saleStartDateTo = $saleStartDateTo->format('Y-m-d');
 
         // ソートの指定
-        $sortBy = 'auto:asc';
+        $sortBy = 'auto:desc';
         if ($this->sort == 'new') {
             $sortBy = 'sale_start_date:desc';
         } else if ($this->sort == 'old') {
@@ -295,6 +295,9 @@ class ReleaseCalenderRepository
         $adultFlg = '2';
         if ($genreId >= 1 && $genreId <= 16) {
             $msdbItem = ['video'];
+            if ($genreId == 10) {
+                $msdbItem = ['audio'];
+            }
             if ($genreId >= 1 && $genreId <= 8) {
                 $productSellRentalFlg = '2';
             } else {

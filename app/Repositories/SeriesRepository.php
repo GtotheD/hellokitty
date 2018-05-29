@@ -122,6 +122,7 @@ class SeriesRepository
             // seriesテーブルに格納するデータを作成
             foreach ($himoResult['results']['rows'] as $row) {
                 foreach ($row['works'] as $workRow) {
+                    if ($workRow['work_id'] === $workId) continue;
                     $getWorkIds[] = $workRow['work_id'];
                     $insertData[] = [
                         'work_id' => $workId,
