@@ -202,6 +202,7 @@ class WorkRepository
         $columns = [
             'work_id',
             'work_type_id',
+            'work_format_id',
             'work_title',
             'rating_id',
             'big_genre_id',
@@ -408,6 +409,7 @@ class WorkRepository
         $response['newFlg'] = newFlg($response['saleStartDate']);
         $response['adultFlg'] = ($response['adultFlg'] === '1') ? true : false;
         $response['itemType'] = $this->convertWorkTypeIdToStr($response['workTypeId']);
+//dd($response);
         if ($response['workFormatId'] == 5) {
             $response['itemType'] = 'dvd';
         }
@@ -1055,6 +1057,7 @@ class WorkRepository
             'w1.work_id',
             'work_type_id',
             'work_title',
+            'work_format_id',
             'rating_id',
             'big_genre_id',
             'url_cd',

@@ -407,6 +407,7 @@ class ReleaseCalenderRepository
             'final.work_id',
             'work_title',
             'work_type_id',
+            'work_format_id',
             'rating_id',
             'big_genre_id',
             'url_cd',
