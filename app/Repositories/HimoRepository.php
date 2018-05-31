@@ -297,9 +297,9 @@ class HimoRepository extends ApiRequesterRepository
         if (array_key_exists('periodType', $params)) {
             $saleStartDateTo = date('Y-m-d');
             $saleStartDateFrom = $productSellRentalFlg = null;
-            if ($params['periodType'] == 'rental3' || $params['periodType'] == 'sale3') {
+            if ($params['periodType'] == 'rental3' || $params['periodType'] == 'sell3') {
                 $saleStartDateFrom = date('Y-m-d', strtotime('-3 months'));
-            } elseif ($params['periodType'] == 'rental12' || $params['periodType'] == 'sale12') {
+            } elseif ($params['periodType'] == 'rental12' || $params['periodType'] == 'sell12') {
                 $saleStartDateFrom = date('Y-m-d', strtotime('-12 months'));
             }
 
