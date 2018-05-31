@@ -80,6 +80,16 @@ class WorkRepository
         'EXT0000757SQ', 'EXT0000757SX'
     );
 
+    const HIMO_SEARCH_VIDEO_GENRE_ID = array(
+        'EXT0000000U9:', 'EXT0000000WP:', 'EXT0000000YC:', 'EXT0000000ZQ:',
+        'EXT00000014Q:', 'EXT00000016A:', 'EXT00000018Q:', 'EXT0000001CL:',
+        'EXT0000001DL:', 'EXT0000001DO:', 'EXT0000001N4:', 'EXT0000001NP:',
+        'EXT0000001WZ:', 'EXT0000001YK:', 'EXT00000022S:', 'EXT0000002G9:',
+        'EXT0000002GE:', 'EXT0000002GF:', 'EXT0000003GW:', 'EXT0000003L8:',
+        'EXT0000003TL:', 'EXT0000004DW:', 'EXT0000007QI:', 'EXT000000DAT:',
+        'EXT000000ECY:', 'EXT000000EVS:', 'EXT000000Q1W:', 'EXT00001T1BJ'
+    );
+
     const HIMO_MEDIA_FORMAT_ID = 'EXT0000000FY';
     const MSDB_ITEM_AUDIO_SINGLE_NAME = 'シングル';
 
@@ -426,7 +436,7 @@ class WorkRepository
         $musicoUrl = new MusicoUrl;
         $musicoUrlData = $musicoUrl->setConditionByWorkId($response['workId'])->toCamel()->getOne();
         if (!empty($musicoUrlData)) {
-            $response['musicDownloadUrl'] = env('MUSICO_URL').$musicoUrlData->url;
+            $response['musicDownloadUrl'] = env('MUSICO_URL') . $musicoUrlData->url;
         }
 
         return $response;
@@ -550,13 +560,23 @@ class WorkRepository
             'rows' => []
         ];
 
-        $data = $himoRepository->searchCrossworks($params, $sort)->get();
+        // DVDタブを指定して検索した場合はミュージックビデオ（msdb_item=audio）を含める
+        if ($itemType === 'dvd') {
+            $params['genreId'] = implode(' || ', self::HIMO_SEARCH_VIDEO_GENRE_ID);
+        }
+
+        $dvdCount = 0;
+
+        $data = $himoRepository->searchCrossworks($params, $sort, true)->get();
         if (!empty($data['status']) && $data['status'] == '200') {
             if (count($data['results']['rows']) + $this->offset < $data['results']['total']) {
                 $this->hasNext = true;
             } else {
                 $this->hasNext = false;
             }
+
+            // DVDタブを指定して検索した場合はfacetsで取得した値のかわりにこの値を返却する
+            if ($itemType === 'dvd') $dvdCount = $data['results']['total'];
 
             $result = [
                 'hasNext' => $this->hasNext,
@@ -572,16 +592,19 @@ class WorkRepository
 
             foreach ($data['results']['rows'] as $row) {
                 $base = $this->format($row);
-                $itemType = $this->convertWorkTypeIdToStr($base['work_type_id']);
-                $saleTypeHas = $this->parseFromArray($row['products'], $itemType);
+                $itemTypeVal = $this->convertWorkTypeIdToStr($base['work_type_id']);
+                $saleTypeHas = $this->parseFromArray($row['products'], $itemTypeVal);
                 $displayImage = true;
                 $displayImage = checkAgeLimit($this->ageLimitCheck, $base['rating_id'], $base['big_genre_id'], $base['adult_flg']);
                 $workFormatName = "";
-                if ($itemType === 'cd') {
+                if ($itemTypeVal === 'cd') {
                     if ($saleTypeHas['media_format_id'] === self::HIMO_MEDIA_FORMAT_ID) {
                         $workFormatName = self::MSDB_ITEM_AUDIO_SINGLE_NAME;
                     } else {
                         $workFormatName = $base['work_format_name'];
+                    }
+                    if ($base['work_format_id'] == 5) {
+                        $itemTypeVal = 'dvd';
                     }
                 }
                 $result['rows'][] = [
@@ -592,7 +615,7 @@ class WorkRepository
                     'jacketL' => ($displayImage) ? $base['jacket_l'] : '',
                     'newFlg' => newFlg($base['sale_start_date']),
                     'adultFlg' => ($base['adult_flg'] === 1) ? true : false,
-                    'itemType' => $itemType,
+                    'itemType' => $itemTypeVal,
                     'saleType' => '',
                     'supplement' => $saleTypeHas['supplement'],
                     'saleStartDate' => ($row['sale_start_date']) ? date('Y-m-d 00:00:00', strtotime($row['sale_start_date'])) : '',
@@ -616,6 +639,10 @@ class WorkRepository
             $himoRepository->setLimit(1);
             $himoRepository->setOffset(0);
 
+            // DVDタブを指定して検索した場合はジャンルを指定しているが、
+            // facetsを取得する際は「すべて」タブ指定時との条件が変わらないようにクリアする
+            if ($itemType === 'dvd') $params['genreId'] = "";
+
             $dataCounts = $himoRepository->searchCrossworks($params, $sort)->get();
 
             $result['totalCount'] = $dataCounts['results']['total'];
@@ -625,7 +652,12 @@ class WorkRepository
             foreach ($dataCounts['results']['facets']['msdb_item'] as $value) {
                 switch ($value['key']) {
                     case 'video':
-                        $result['counts']['dvd'] = $value['count'];
+                        if ($itemType === 'dvd') {
+                            // DVDタブを指定して検索した場合は最初に取得した結果件数を設定
+                            $result['counts']['dvd'] = $dvdCount;
+                        } else {
+                            $result['counts']['dvd'] = $value['count'];
+                        }
                         break;
                     case 'audio':
                         $result['counts']['cd'] = $value['count'];
