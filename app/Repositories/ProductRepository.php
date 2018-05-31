@@ -321,7 +321,7 @@ class ProductRepository
      * @param $product
      * @return array
      */
-    public function format($workId, $product)
+    public function format($workId, $product,bool $isVideo = false)
     {
         $productBase = [];
         $productBase['work_id'] = $workId;
@@ -340,7 +340,11 @@ class ProductRepository
         $productBase['sale_start_date'] = $product['sale_start_date'];
         $productBase['service_id'] = $product['service_id'];
         $productBase['service_name'] = $product['service_name'];
-        $productBase['msdb_item'] = $product['msdb_item'];
+        if ($isVideo ) {
+            $productBase['msdb_item'] = 'video';
+        } else {
+            $productBase['msdb_item'] = $product['msdb_item'];
+        }
         $productBase['item_cd'] = $product['item_cd'];
         $productBase['item_name'] = $product['item_name'];
         $productBase['number_of_volume'] = $product['number_of_volume'];

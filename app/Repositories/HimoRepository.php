@@ -230,7 +230,7 @@ class HimoRepository extends ApiRequesterRepository
         return $this;
     }
 
-    public function searchCrossworks($params = [], $sort = null)
+    public function searchCrossworks($params = [], $sort = null, $musicVideoGenre = false)
     {
         $this->api = $params['api'];
         $this->id = $params['id'];
@@ -239,7 +239,7 @@ class HimoRepository extends ApiRequesterRepository
         }
 
         $this->apiPath = $this->apiHost . '/search/crossworks';
-        $sortBy = 'auto:asc';
+        $sortBy = 'auto:desc';
         if ($sort == 'new') {
             $sortBy = 'sale_start_date:desc';
         } else if ($sort == 'old') {
@@ -269,7 +269,11 @@ class HimoRepository extends ApiRequesterRepository
                     $msdbItem = ['audio'];
                     break;
                 case 'dvd':
-                    $msdbItem = ['video'];
+                    if ($musicVideoGenre === true) {
+                        $msdbItem = ['video', 'audio'];
+                    } else {
+                        $msdbItem = ['video'];
+                    }
                     break;
                 case 'book':
                     $msdbItem = ['book'];
