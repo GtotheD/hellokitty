@@ -90,6 +90,14 @@ class WorkRepository
         'EXT000000ECY:', 'EXT000000EVS:', 'EXT000000Q1W:', 'EXT00001T1BJ'
     );
 
+    // 1=アルバム、2=シングル、3=音楽配信（複）、4=音楽配信（単）、5=ミュージックビデオ、6=グッズ
+    const WORK_FORMAT_ID_ALBUM = '1';
+    const WORK_FORMAT_ID_SINGLE = '2';
+    const WORK_FORMAT_ID_DELIVERY_MULTI= '3';
+    const WORK_FORMAT_ID_DELIVERY_SINGLE= '4';
+    const WORK_FORMAT_ID_MUSICVIDEO= '5';
+    const WORK_FORMAT_ID_GOODS= '6';
+
     const HIMO_MEDIA_FORMAT_ID = 'EXT0000000FY';
     const MSDB_ITEM_AUDIO_SINGLE_NAME = 'シングル';
 
@@ -400,6 +408,9 @@ class WorkRepository
         $response['newFlg'] = newFlg($response['saleStartDate']);
         $response['adultFlg'] = ($response['adultFlg'] === '1') ? true : false;
         $response['itemType'] = $this->convertWorkTypeIdToStr($response['workTypeId']);
+        if ($response['workFormatId'] == 5) {
+            $response['itemType'] = 'dvd';
+        }
         if ($addSaleTypeHas) {
             $response['saleTypeHas'] = [
                 'sell' => ($productModel->setConditionByWorkIdSaleType($response['workId'], 'sell')->count() > 0) ? true : false,
@@ -489,6 +500,7 @@ class WorkRepository
                 $insertWorkId[] = $row['work_id'];
                 //$insertResult = $work->insert($base);
                 $musicoUrl = null;
+                $isMusicVideo = false;
                 foreach ($row['products'] as $product) {
                     // ダウンロード用のデータ生成
                     // 単一想定
@@ -499,8 +511,11 @@ class WorkRepository
                             $musicoUrl = sprintf(self::MUSICO_LINK_SINGLE, $product['ccc_product_id']);
                         }
                     } else if ($product['service_id'] === 'tol') {
-                        // インサートの実行
-                        $productData[] = $productRepository->format($row['work_id'], $product);
+                        // ミュジックビデオの場合はaudioからvideoに変換するために判定する。
+                        if($row['work_format_id'] == self::WORK_FORMAT_ID_MUSICVIDEO) {
+                            $isMusicVideo = true;
+                        }
+                        $productData[] = $productRepository->format($row['work_id'], $product, $isMusicVideo);
                         // Insert people
                         if ($people = array_get($product, 'people')) {
                             foreach ($people as $person) {
@@ -831,6 +846,9 @@ class WorkRepository
             foreach ($data['results']['rows'] as $row) {
                 $base = $this->format($row);
                 $itemType = $this->convertWorkTypeIdToStr($base['work_type_id']);
+                if ($base['work_format_id'] == 5) {
+                    $itemType = 'dvd';
+                }
                 $saleTypeHas = $this->parseFromArray($row['products'], $itemType);
                 $displayImage = true;
                 $displayImage = checkAgeLimit($this->ageLimitCheck, $base['rating_id'], $base['big_genre_id'], $base['adult_flg']);
@@ -889,6 +907,9 @@ class WorkRepository
         }
         $result['workId'] = $himoResult['results']['rows'][0]['work_id'];
         $result['itemType'] = $workRepository->convertWorkTypeIdToStr($himoResult['results']['rows'][0]['work_type_id']);
+        if ($himoResult['results']['rows'][0]['work_format_id'] == 5) {
+            $result['itemType'] = 'dvd';
+        }
         return $result;
     }
 
