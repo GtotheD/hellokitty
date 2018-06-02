@@ -75,9 +75,10 @@ class RecommendOtherRepository
             return null;
         }
         $workIdList = explode(',', $bk2Recoomend->list_work_id);
-        $workIdList = array_slice($workIdList, 0, 20);
         $workRepository->getWorkList($workIdList);
-        $work->getWorkWithProductIdsIn($workIdList, $saleType, $workId);
+        // 自分自身のアイテム種別を取得
+        $baseWork = $work->setConditionByWorkId($workId)->getOne();
+        $work->getWorkWithProductIdsIn($workIdList, $saleType, $workId, null, $baseWork->work_type_id);
         $this->totalCount = $work->count();
         $workList = $work->selectCamel($this->selectColumn())->get($this->limit, $this->offset);
         if (count($workList) + $this->offset < $this->totalCount) {
