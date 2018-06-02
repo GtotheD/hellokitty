@@ -103,7 +103,7 @@ class Work extends Model
      * products
      * @param $workIds
      */
-    public function getWorkWithProductIdsIn($workIds = [], $saleType = null, $ignoreWorkId = null, $order = null) {
+    public function getWorkWithProductIdsIn($workIds = [], $saleType = null, $ignoreWorkId = null, $order = null, $itemType = null) {
         $selectSubGrouping =
             'p1.work_id,'
             .'product_type_id';
@@ -121,6 +121,10 @@ class Work extends Model
             ->join('ts_works as w1', 'w1.work_id', '=', 't1.work_id')
             ->mergeBindings($subQuery)
         ;
+        if (!empty($itemType)) {
+            $this->dbObject->where('w1.work_type_id', $itemType);
+        }
+
         if ($saleType === 'sell') {
             $this->dbObject->where('p2.product_type_id', '1');
         } elseif ($saleType === 'rental') {

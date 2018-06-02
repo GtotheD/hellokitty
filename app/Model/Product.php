@@ -107,7 +107,7 @@ class Product extends Model
             .'product_type_id,'
             .'product_name,'
             .'ccc_family_cd ';
-        $selectSub = ',MIN(product_unique_id) AS product_unique_id ';
+        $selectSub = ',MAX(product_unique_id) AS product_unique_id ';
         $subQuery = DB::table($this->table)->select(DB::raw($selectSubGrouping.$selectSub))
             ->whereRaw(DB::raw(' item_cd not like \'_1__\' '))
             ->whereRaw(DB::raw(' item_cd not like \'__20\' '))

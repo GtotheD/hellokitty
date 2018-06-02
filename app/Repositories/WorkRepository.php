@@ -404,7 +404,8 @@ class WorkRepository
             $response['saleType'] = $productRepository->convertProductTypeToStr($product['productTypeId']);
             // 年齢チェック表示チェック
             $displayImage = checkAgeLimit($this->ageLimitCheck, $response['ratingId'], $response['bigGenreId'], $response['adultFlg']);
-            $response['jacketL'] = ($displayImage) ? $response['jacketL'] : '';
+//            $response['jacketL'] = ($displayImage) ? $response['jacketL'] : '';
+            $response['jacketL'] = ($displayImage) ? $product['jacketL'] : '';
         }
         $response['newFlg'] = newFlg($response['saleStartDate']);
         $response['adultFlg'] = ($response['adultFlg'] === '1') ? true : false;
@@ -1062,7 +1063,8 @@ class WorkRepository
             'big_genre_id',
             'url_cd',
             'ccc_work_cd',
-            'w1.jacket_l',
+//            'w1.jacket_l',
+            'p2.jacket_l',
             'p2.sale_start_date',
             'p2.product_type_id',
             'p2.product_unique_id',

@@ -195,11 +195,15 @@ class SectionRepository
         if (empty($rows['totalResults'])) {
             return null;
         }
+
+        // TWSからセルレンタル区分を取り出す
+        $saleType = ($rows['rentalSalesSection'] == '1') ? 'rental' : 'sell';
+
         $response = [
             'hasNext' => (($this->page * $this->limit) < $rows['totalResults']) ? true : false,
             'totalCount' => $rows['totalResults'],
             'aggregationPeriod' => $this->aggregationPeriodFormat($rows['totalingPeriod']),
-            'rows' => $this->convertFormatFromRanking($rows),
+            'rows' => $this->convertFormatFromRanking($rows, $saleType),
         ];
         if ($title) {
             $response['title'] = $title;
@@ -341,13 +345,17 @@ class SectionRepository
     /*
      * 成形用メソッド：TWSからのランキングのレスポンスを成形する
      */
-    private function convertFormatFromRanking($rows)
+    private function convertFormatFromRanking($rows, $saleType)
     {
         $formattedRows = [];
         $workRepository = new WorkRepository;
         if (empty($rows['entry'])) {
             return null;
         }
+
+        // 作品/商品情報を取得する際の販売区分を指定する
+        $workRepository->setSaleType($saleType);
+
         foreach ($rows['entry'] as $row) {
             $work = $workRepository->get($row['productKey'], [], $this->productKeyType($row['productKey']), false);
             if (empty($work)) {
