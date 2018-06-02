@@ -70,7 +70,7 @@ class CreateReleaseCalendar extends Command
                 $this->info('Create Month: '.$month.'   Genre Id: '.$releaseGenreMapKey);
                 $releaseCalenderRepository->setMonth($month);
                 $releaseCalenderRepository->setGenreId($releaseGenreMapKey);
-                $releaseCalenderRepository->get();
+                $releaseCalenderRepository->get(true);
             }
         }
         $this->info('一時テーブル作成完了 ['.date('Y/m/d H:i:s').']');

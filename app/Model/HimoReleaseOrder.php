@@ -63,11 +63,11 @@ class HimoReleaseOrder extends Model
         }
         if(!empty($saleStartDateFrom)) {
             $this->dbObject
-                ->where('p4.sale_start_date', '>',$saleStartDateFrom);
+                ->where('p4.sale_start_date', '>=',$saleStartDateFrom);
         }
         if(!empty($saleStartDateTo)) {
             $this->dbObject
-                ->where('p4.sale_start_date', '<',$saleStartDateTo);
+                ->where('p4.sale_start_date', '<=',$saleStartDateTo);
         }
 
         if ($order === 'new') {

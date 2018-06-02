@@ -144,7 +144,7 @@ class ReleaseCalenderRepository
         $this->himoReleaseOrder = $himoReleaseOrder;
     }
 
-    public function get()
+    public function get($isCreateCache = false)
     {
         // 音楽の場合single albumなどを指定する為。
         $mediaFormat = null;
@@ -169,13 +169,9 @@ class ReleaseCalenderRepository
         $saleStartDateFrom = $saleStartDateFrom->format('Y-m-d');
         $saleStartDateTo = $saleStartDateTo->format('Y-m-d');
 
-        // ソートの指定
+        // Himo取得時のソートの指定
         $sortBy = 'auto:desc';
-        if ($this->sort == 'new') {
-            $sortBy = 'sale_start_date:desc';
-        } else if ($this->sort == 'old') {
-            $sortBy = 'sale_start_date:asc';
-        }
+
         // ジャンルIDをもとにキャッシュにデータがあるか確認しキャッシュがあればキャッシュからデータを取得する。
         $mappingData = $this->genreMapping($this->genreId);
         $cacheDataCount = $this->himoReleaseOrder->setConditionByGenreIdAndMonth(
@@ -219,10 +215,12 @@ class ReleaseCalenderRepository
                     break;
                 }
                 $himoReleaseOrderData = [];
+                $insertWorkId = [];
                 foreach ($response['results']['rows'] as $row) {
+                    $insertWorkId[] = $row['work_id'];
                     $himoReleaseOrderData[] = [
                         'work_id' => $row['work_id'],
-                        'month' => date('Y-m-d', strtotime($row['sale_start_month'])),
+                        'month' => $saleStartMonth . '-01',
                         'tap_genre_id' => $this->genreId,
                         'page_no' => $pageNum,
                         'sort' => $orderNum,
@@ -232,12 +230,15 @@ class ReleaseCalenderRepository
                 // データを取得する際は、常にお薦めで取得し、順序をDBに登録する。
                 // ここのリリカレモデルは入れ替えられるようにメンバ変数で保持
                 $this->himoReleaseOrder->insertBulk($himoReleaseOrderData);
-                $workRepository->insertWorkData($response);
+                $workRepository->getWorkList($insertWorkId);
                 if ($orderNum > $totalCount) {
                     break;
                 }
                 $pageNum++;
             }
+        }
+        if ($isCreateCache) {
+            return true;
         }
         if ($mappingData['msdbItem'] === 'audio') {
             if ($this->mediaFormat === 'album') {
@@ -246,8 +247,6 @@ class ReleaseCalenderRepository
                 $mediaFormat = '2';
             }
         }
-        $saleStartDateFrom = null;
-        $saleStartDateTo = null;
         if ($this->onlyReleased === 'true') {
             $saleStartDateFrom = date('Y-m-01 00:00:00');
             $saleStartDateTo = date('Y-m-d 00:00:00');

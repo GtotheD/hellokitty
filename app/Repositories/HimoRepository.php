@@ -171,20 +171,20 @@ class HimoRepository extends ApiRequesterRepository
             return $this;
         }
         $this->apiPath = $this->apiHost . '/search/crossworks';
+        // リリカレ情報のみを取得するために制定現の情報しか取得しない
         $this->queryParams = [
             '_system' => 'TsutayaApp',
             'service_id' => 'tol',
-            'scene_limit' => '20',
-            'response_level' => '9',
+            'response_level' => '1',
             'adult_flg' => $params['adultFlg'],
             'offset' => $this->offset,
             'limit' => $this->limit,
             'sort_by' => $params['sort'],
             'work_products_service_id' => ['tol'],
             'msdb_item' => $params['msdbItem'],
-            //'sale_start_month' => $params['saleStartMonth'],
-            'sale_start_date_from' => $params['saleStartDateFrom'],
-            'sale_start_date_to' => $params['saleStartDateTo'],
+            'product_sell_rental_flg' => $params['productSellRentalFlg'],
+            'sale_start_date_newest_from' => $params['saleStartDateFrom'],
+            'sale_start_date_newest_to' => $params['saleStartDateTo'],
         ];
 
         if (array_key_exists('genre', $params)) {
@@ -310,8 +310,8 @@ class HimoRepository extends ApiRequesterRepository
             }
 
             if (!empty($saleStartDateFrom)) {
-                $this->queryParams['sale_start_date_from'] = $saleStartDateFrom;
-                $this->queryParams['sale_start_date_to'] = $saleStartDateTo;
+                $this->queryParams['sale_start_date_newest_from'] = $saleStartDateFrom;
+                $this->queryParams['sale_start_date_newest_to'] = $saleStartDateTo;
                 $this->queryParams['product_sell_rental_flg'] = $productSellRentalFlg;
             }
         }
