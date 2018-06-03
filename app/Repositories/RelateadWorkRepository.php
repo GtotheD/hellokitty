@@ -213,6 +213,8 @@ class RelateadWorkRepository
             'adult_flg',
             'msdb_item',
             'media_format_id',
+            'number_of_volume',
+            'item_cd',
             'maker_cd'
         ];
     }

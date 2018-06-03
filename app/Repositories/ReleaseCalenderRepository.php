@@ -422,6 +422,8 @@ class ReleaseCalenderRepository
             'msdb_item',
             'media_format_id',
             'game_model_name',
+            'number_of_volume',
+            'item_cd',
             'maker_cd'
         ];
     }

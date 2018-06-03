@@ -173,6 +173,9 @@ class AccessTest extends TestCase
      */
     public function workSeries()
     {
+        $url = '/work/PTA0000G8UGB';
+        $this->getJsonWithAuth( $url);
+
         $response = $this->getJsonWithAuth('/work/PTA0000G8UGB/series');
         $response->assertResponseStatus(200);
     }
@@ -181,6 +184,9 @@ class AccessTest extends TestCase
      */
     public function workSeriesRental()
     {
+        $url = '/work/PTA0000G8UGB';
+        $this->getJsonWithAuth( $url);
+
         $response = $this->getJsonWithAuth('/work/PTA0000G8UGB/series?saleType=rental');
         $response->assertResponseStatus(200);
         $response->seeJson([
@@ -230,6 +236,8 @@ class AccessTest extends TestCase
      */
     public function workRelationWorks()
     {
+        $url = '/work/PTA0000SF309';
+        $this->getJsonWithAuth( $url);
         $response = $this->getJsonWithAuth('/work/PTA0000SF309/relation/works');
         $response->assertResponseStatus(200);
     }
