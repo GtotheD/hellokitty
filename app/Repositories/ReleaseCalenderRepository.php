@@ -240,7 +240,8 @@ class ReleaseCalenderRepository
         if ($isCreateCache) {
             return true;
         }
-        if ($mappingData['msdbItem'] === 'audio') {
+        // 配列になっている為、変更
+        if (in_array('audio', $mappingData['msdbItem'])) {
             if ($this->mediaFormat === 'album') {
                 $mediaFormat = '1';
             } else if ($this->mediaFormat === 'single') {

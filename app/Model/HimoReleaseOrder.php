@@ -4,6 +4,7 @@ namespace App\Model;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
+use App\Repositories\WorkRepository;
 
 class HimoReleaseOrder extends Model
 {
@@ -24,6 +25,7 @@ class HimoReleaseOrder extends Model
         $saleStartDateTo = null
     )
     {
+        $workRepsitory = new WorkRepository;
         $selectSubGrouping =
             'p1.work_id,'
             .'p1.sale_start_date,'
@@ -57,9 +59,14 @@ class HimoReleaseOrder extends Model
             ->mergeBindings($subQueryFinal)
             ->join('ts_products as p4', 'final.product_unique_id', '=', 'p4.product_unique_id')
             ->join('ts_works as w1', 'final.work_id', '=', 'w1.work_id');
-        if ($mediaFormat) {
+        if ($mediaFormat == 1) {
             $this->dbObject
-                ->where('w1.work_format_id', $mediaFormat);
+                ->where('p4.media_format_id', '<>', $workRepsitory::HIMO_MEDIA_FORMAT_ID);
+
+        } else if ($mediaFormat == 2) {
+            $this->dbObject
+                ->where('p4.media_format_id', $workRepsitory::HIMO_MEDIA_FORMAT_ID);
+
         }
         if(!empty($saleStartDateFrom)) {
             $this->dbObject

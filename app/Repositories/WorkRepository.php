@@ -410,7 +410,7 @@ class WorkRepository
         $response['newFlg'] = newFlg($response['saleStartDate']);
         $response['adultFlg'] = ($response['adultFlg'] === '1') ? true : false;
         $response['itemType'] = $this->convertWorkTypeIdToStr($response['workTypeId']);
-//dd($response);
+
         if ($response['workFormatId'] == 5) {
             $response['itemType'] = 'dvd';
         }
