@@ -328,6 +328,9 @@ class ReleaseCalenderRepository
             $msdbItem = ['book'];
             $adultFlg = '1';
             $productSellRentalFlg = '1';
+        } else if ($genreId >= 82 && $genreId <= 83) {
+            $msdbItem = ['video'];
+            $productSellRentalFlg = '2';
         }
         return [
             'productSellRentalFlg' => $productSellRentalFlg,
