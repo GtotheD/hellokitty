@@ -144,27 +144,3 @@ function getProductContents(array $docTable, string $typeId, array $docs)
     }
     return $outline;
 }
-
-function checkAgeLimit($ageLimitCheck, $ratingId, $bigGenreId, $adultFlg)
-{
-    $isHit = false;
-    $map = config('age_limit_map');
-    // 認証済みでなかったら処理を実施
-    if ($ageLimitCheck !== 'true') {
-        // アダルトフラグがたっている場合は非表示
-        if ($adultFlg == 1) {
-            return false;
-        }
-        // リストにヒットするかどうか
-        foreach ($map as $item) {
-            if ($item['ratingId'] === $ratingId && $item['bigGenreId'] === $bigGenreId) {
-                $isHit = true;
-            }
-        }
-        // リストにヒットするかどうか
-        if ($isHit === true) {
-            return false;
-        }
-    }
-    return true;
-}

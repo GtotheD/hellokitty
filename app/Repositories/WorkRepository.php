@@ -406,8 +406,14 @@ class WorkRepository
             }
             $response['saleType'] = $productRepository->convertProductTypeToStr($product['productTypeId']);
             // 年齢チェック表示チェック
-            $displayImage = checkAgeLimit($this->ageLimitCheck, $response['ratingId'], $response['bigGenreId'], $response['adultFlg']);
-//            $response['jacketL'] = ($displayImage) ? $response['jacketL'] : '';
+            $displayImage = checkAgeLimit(
+                $this->ageLimitCheck,
+                $response['ratingId'],
+                $response['adultFlg'],
+                $response['bigGenreId'],
+                $response['middleGenreId'],
+                $response['small_GenreId'],
+                $product['makerName']);
             $response['jacketL'] = ($displayImage) ? $product['jacketL'] : '';
         }
         $response['newFlg'] = newFlg($response['saleStartDate']);
@@ -616,7 +622,14 @@ class WorkRepository
                 $itemTypeVal = $this->convertWorkTypeIdToStr($base['work_type_id']);
                 $saleTypeHas = $this->parseFromArray($row['products'], $itemTypeVal);
                 $displayImage = true;
-                $displayImage = checkAgeLimit($this->ageLimitCheck, $base['rating_id'], $base['big_genre_id'], $base['adult_flg']);
+                $displayImage = checkAgeLimit(
+                    $this->ageLimitCheck,
+                    $base['rating_id'],
+                    $base['adult_flg'],
+                    $base['big_genre_id'],
+                    $base['middle_genre_id'],
+                    $base['small_genre_id'],
+                    $saleTypeHas['maker_name']);
                 $workFormatName = "";
                 if ($itemTypeVal === 'cd') {
                     if ($saleTypeHas['media_format_id'] === self::HIMO_MEDIA_FORMAT_ID) {
@@ -730,13 +743,15 @@ class WorkRepository
                     }
                 }
                 $mediaFormatId = $product['media_format_id'];
+                $makerName = $product['maker_name'];
             }
         }
         return [
             'sell' => $sell,
             'rental' => $rental,
             'supplement' => $supplement,
-            'media_format_id' => $mediaFormatId
+            'media_format_id' => $mediaFormatId,
+            'maker_name' => $makerName,
         ];
 
     }
@@ -857,7 +872,14 @@ class WorkRepository
                 }
                 $saleTypeHas = $this->parseFromArray($row['products'], $itemType);
                 $displayImage = true;
-                $displayImage = checkAgeLimit($this->ageLimitCheck, $base['rating_id'], $base['big_genre_id'], $base['adult_flg']);
+                $displayImage = checkAgeLimit(
+                    $this->ageLimitCheck,
+                    $base['rating_id'],
+                    $base['adult_flg'],
+                    $base['big_genre_id'],
+                    $base['middle_genre_id'],
+                    $base['small_genre_id'],
+                    $saleTypeHas['maker_name']);
                 $result['rows'][] = [
                     'workId' => $base['work_id'],
                     'urlCd' => $base['url_cd'],
@@ -962,7 +984,12 @@ class WorkRepository
             $base['filmarks_id'] = $this->filmarksIdFormat($row);
             $base['rating_id'] = $row['rating_id'];
             $base['rating_name'] = $row['rating_name'];
-            $base['adult_flg'] = $row['adult_flg'];
+            // アダルトフラグ判定
+            if ($row['adult_flg'] === '1') {
+                $base['adult_flg'] = '1';
+            } else {
+                $base['adult_flg'] = (isAdult($row['rating_id'], $row['big_genre_id'], $row['medium_genre_id'], $row['small_genre_id']))? '1' : '0';
+            }
             $base['created_year'] = $row['created_year'];
             $base['created_countries'] = $row['created_countries'];
             $base['book_series_name'] = $row['book_series_name'];
