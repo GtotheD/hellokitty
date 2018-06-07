@@ -158,7 +158,15 @@ $router->group([
         if (empty($result)) {
             throw new NoContentsException;
         }
-        $checkAgeLimit = checkAgeLimit($ageLimitCheck, $result['ratingId'], $result['bigGenreId'], $result['adultFlg']);
+        $checkAgeLimit = checkAgeLimit(
+            $ageLimitCheck,
+            $result['ratingId'],
+            $result['adultFlg'],
+            $result['bigGenreId'],
+            $result['mediumGenreId'],
+            $result['smallGenreId'],
+            $result['makerCd']
+        );
         if (!$checkAgeLimit) {
             throw new AgeLimitException('Age limit auth error', 202);
         }

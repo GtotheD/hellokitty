@@ -128,6 +128,8 @@ class RecommendOtherRepository
             'work_format_id',
             'rating_id',
             'big_genre_id',
+            'medium_genre_id',
+            'small_genre_id',
             'url_cd',
             'ccc_work_cd',
             'w1.jacket_l',

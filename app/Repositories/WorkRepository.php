@@ -206,6 +206,8 @@ class WorkRepository
             'work_title',
             'rating_id',
             'big_genre_id',
+            'medium_genre_id',
+            'small_genre_id',
             'url_cd',
             'ccc_work_cd',
             'jacket_l',
@@ -263,11 +265,9 @@ class WorkRepository
             $response = $this->formatAddOtherData($response, $addSaleTypeHas, $productResultCamel);
             // saleStartDateをproductのものでで書き換える。
             $response['saleStartDate'] = $productResultCamel['saleStartDate'];
-
         } else {
             $response = $this->formatAddOtherData($response, $addSaleTypeHas);
         }
-
         return $response;
     }
 
@@ -355,6 +355,8 @@ class WorkRepository
 
         $roleId = '';
         $response['supplement'] = '';
+        $isAdult = null;
+
         if (empty($product)) {
             $product = (array)$productModel->setConditionByWorkIdNewestProduct($response['workId'], $this->saleType)->toCamel()->getOne();
         }
@@ -378,6 +380,7 @@ class WorkRepository
                 $response['supplement'] = '';
             }
 
+            $response['makerCd'] = $product['makerCd'];
             if (env('DISP_RELATION_VIDEO') === true) {
                 $showFlg = true;
                 if ($product['msdbItem'] === 'video') {
@@ -406,12 +409,32 @@ class WorkRepository
             }
             $response['saleType'] = $productRepository->convertProductTypeToStr($product['productTypeId']);
             // 年齢チェック表示チェック
-            $displayImage = checkAgeLimit($this->ageLimitCheck, $response['ratingId'], $response['bigGenreId'], $response['adultFlg']);
-//            $response['jacketL'] = ($displayImage) ? $response['jacketL'] : '';
+            $displayImage = checkAgeLimit(
+                $this->ageLimitCheck,
+                $response['ratingId'],
+                $response['adultFlg'],
+                $response['bigGenreId'],
+                $response['mediumGenreId'],
+                $response['smallGenreId'],
+                $product['makerCd']);
             $response['jacketL'] = ($displayImage) ? $product['jacketL'] : '';
+            // アダルト判定
+            $isAdult = isAdult(
+                $response['ratingId'],
+                $response['bigGenreId'],
+                $response['mediumGenreId'],
+                $response['smallGenreId'],
+                $product['makerCd']
+            );
         }
         $response['newFlg'] = newFlg($response['saleStartDate']);
-        $response['adultFlg'] = ($response['adultFlg'] === '1') ? true : false;
+
+        // アダルトフラグがない場合、アダルト判定処理でアダルトと判定された場合はtrueにする。
+        if ($isAdult !== null) {
+            $response['adultFlg'] = ($response['adultFlg'] === '1') ? true : $isAdult;
+        } else {
+            $response['adultFlg'] = ($response['adultFlg'] === '1') ? true : false;
+        }
         $response['itemType'] = $this->convertWorkTypeIdToStr($response['workTypeId']);
 
         if ($response['workFormatId'] == 5) {
@@ -616,7 +639,14 @@ class WorkRepository
                 $itemTypeVal = $this->convertWorkTypeIdToStr($base['work_type_id']);
                 $saleTypeHas = $this->parseFromArray($row['products'], $itemTypeVal);
                 $displayImage = true;
-                $displayImage = checkAgeLimit($this->ageLimitCheck, $base['rating_id'], $base['big_genre_id'], $base['adult_flg']);
+                $displayImage = checkAgeLimit(
+                    $this->ageLimitCheck,
+                    $base['rating_id'],
+                    $base['adult_flg'],
+                    $base['big_genre_id'],
+                    $base['medium_genre_id'],
+                    $base['small_genre_id'],
+                    $saleTypeHas['maker_cd']);
                 $workFormatName = "";
                 if ($itemTypeVal === 'cd') {
                     if ($saleTypeHas['media_format_id'] === self::HIMO_MEDIA_FORMAT_ID) {
@@ -628,6 +658,14 @@ class WorkRepository
                         $itemTypeVal = 'dvd';
                     }
                 }
+                // アダルト判定
+                $isAdult = isAdult(
+                    $base['rating_id'],
+                    $base['big_genre_id'],
+                    $base['medium_genre_id'],
+                    $base['small_genre_id'],
+                    $saleTypeHas['maker_cd']
+                );
                 $result['rows'][] = [
                     'workId' => $base['work_id'],
                     'urlCd' => $base['url_cd'],
@@ -730,13 +768,15 @@ class WorkRepository
                     }
                 }
                 $mediaFormatId = $product['media_format_id'];
+                $makerCd = $product['maker_cd'];
             }
         }
         return [
             'sell' => $sell,
             'rental' => $rental,
             'supplement' => $supplement,
-            'media_format_id' => $mediaFormatId
+            'media_format_id' => $mediaFormatId,
+            'maker_cd' => $makerCd,
         ];
 
     }
@@ -857,7 +897,14 @@ class WorkRepository
                 }
                 $saleTypeHas = $this->parseFromArray($row['products'], $itemType);
                 $displayImage = true;
-                $displayImage = checkAgeLimit($this->ageLimitCheck, $base['rating_id'], $base['big_genre_id'], $base['adult_flg']);
+                $displayImage = checkAgeLimit(
+                    $this->ageLimitCheck,
+                    $base['rating_id'],
+                    $base['adult_flg'],
+                    $base['big_genre_id'],
+                    $base['medium_genre_id'],
+                    $base['small_genre_id'],
+                    $saleTypeHas['maker_cd']);
                 $result['rows'][] = [
                     'workId' => $base['work_id'],
                     'urlCd' => $base['url_cd'],
@@ -962,6 +1009,7 @@ class WorkRepository
             $base['filmarks_id'] = $this->filmarksIdFormat($row);
             $base['rating_id'] = $row['rating_id'];
             $base['rating_name'] = $row['rating_name'];
+            // アダルトフラグ判定
             $base['adult_flg'] = $row['adult_flg'];
             $base['created_year'] = $row['created_year'];
             $base['created_countries'] = $row['created_countries'];
@@ -1064,6 +1112,8 @@ class WorkRepository
             'work_format_id',
             'rating_id',
             'big_genre_id',
+            'medium_genre_id',
+            'small_genre_id',
             'url_cd',
             'ccc_work_cd',
 //            'w1.jacket_l',
