@@ -189,7 +189,7 @@ class SectionRepository
             $period = null;
         }
         $tws = new TWSRepository;
-        $tws->setLimit($this->limit);
+        $tws->setLimit(30);
         $tws->setPage($this->page);
         $rows = $tws->ranking($rankingConcentrationCd, $period)->get();
         if (empty($rows['totalResults'])) {
@@ -199,8 +199,9 @@ class SectionRepository
         // TWSからセルレンタル区分を取り出す
         $saleType = ($rows['rentalSalesSection'] == '1') ? 'rental' : 'sell';
 
+        // TOL API でlimit/offset処理に問題があるため、一旦50件一括取得（hasnext=false固定）
         $response = [
-            'hasNext' => (($this->page * $this->limit) < $rows['totalResults']) ? true : false,
+            'hasNext' => false,
             'totalCount' => $rows['totalResults'],
             'aggregationPeriod' => $this->aggregationPeriodFormat($rows['totalingPeriod']),
             'rows' => $this->convertFormatFromRanking($rows, $saleType),
