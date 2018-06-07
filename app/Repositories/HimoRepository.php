@@ -366,7 +366,8 @@ class HimoRepository extends ApiRequesterRepository
             'offset' => $this->offset,
             'limit' => $this->limit,
             // 新しいもの上位100件で取得するためソートを指定
-            'sort_by' => 'auto:sale_start_date',
+            // 新しい順指定ができないので、おすすめ順に変更
+            'sort_by' => 'auto:desc',
         ];
         if ($msdbItem) {
             $this->queryParams['msdb_item'] = $msdbItem;
