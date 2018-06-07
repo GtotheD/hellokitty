@@ -8,6 +8,7 @@ const DOC_TYPE_ID_SUMMARY = '02';
 const DOC_TYPE_ID_SCENE = '03';
 const DOC_TYPE_ID_TITLE = '04';
 const DOC_TYPE_ID_BONUS = '06';
+const DOC_TYPE_ID_VIEW = '12';
 
 const DOC_TABLE_MOVIE = [
     'tol' => ['08', '04', '03', '07', '06', '01'],
@@ -42,7 +43,7 @@ function contentsFormat($contents)
 
     // If exists [Disc.1] in contents and no has any more Disc.1 or Disc.2 -> Remove Disc.1
     if (!empty($m[0]) && count($m2[0]) === 1) {
-        return trim(str_replace(['【Disc-1】', 'Disc.1'],  '', $contents));
+        return trim(str_replace(['【Disc-1】', 'Disc.1'], '', $contents));
     }
     return $contents;
 }
@@ -75,7 +76,7 @@ function arrayChangeKey($array, $oldKey, $newKey)
  * @param array $docs 文書情報
  * @return array 付加情報
  */
-function getSummaryComment(array $docTable, array $docs)
+function getSummaryComment(array $docTable, array $docs, $isMusic = false)
 {
     $outline = '';
     $summaryOutline = '';
@@ -83,15 +84,30 @@ function getSummaryComment(array $docTable, array $docs)
     $summaryIndex = -1;
     $commentIndex = -1;
 
-    for ($i = 0; $i < count($docTable); $i++) {
-        foreach ($docs as $doc) {
-            if ($doc['doc_type_id'] === DOC_TYPE_ID_SUMMARY &&
-                $docTable[$i] === $doc['doc_source_id'] &&
-                !empty($doc['doc_text'])
-            ) {
-                $summaryOutline = $doc['doc_text'];
-                $summaryIndex = $i;
-                break 2;
+    if ($isMusic === true) {
+        for ($i = 0; $i < count($docTable); $i++) {
+            foreach ($docs as $doc) {
+                if ($doc['doc_type_id'] === DOC_TYPE_ID_VIEW &&
+                    $docTable[$i] === $doc['doc_source_id'] &&
+                    !empty($doc['doc_text'])
+                ) {
+                    $summaryOutline = StripTags(contentsFormat($doc['doc_text']));
+                    $summaryIndex = $i;
+                    break 2;
+                }
+            }
+        }
+    } else {
+        for ($i = 0; $i < count($docTable); $i++) {
+            foreach ($docs as $doc) {
+                if ($doc['doc_type_id'] === DOC_TYPE_ID_SUMMARY &&
+                    $docTable[$i] === $doc['doc_source_id'] &&
+                    !empty($doc['doc_text'])
+                ) {
+                    $summaryOutline = StripTags(contentsFormat($doc['doc_text']));
+                    $summaryIndex = $i;
+                    break 2;
+                }
             }
         }
     }
@@ -102,7 +118,7 @@ function getSummaryComment(array $docTable, array $docs)
                 $docTable[$i] === $doc['doc_source_id'] &&
                 !empty($doc['doc_text'])
             ) {
-                $commentOutline = $doc['doc_text'];
+                $commentOutline = StripTags(contentsFormat($doc['doc_text']));
                 $commentIndex = $i;
                 break 2;
             }
