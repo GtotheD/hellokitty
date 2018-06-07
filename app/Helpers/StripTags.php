@@ -9,7 +9,7 @@
  */
 function StripTags($contents)
 {
-    $contents = preg_replace('/<br.?>/', "\n", $contents);
+    $contents = preg_replace('/<br.?>/i', "\n", $contents);
     $contents = strip_tags($contents);
     return $contents;
 }
