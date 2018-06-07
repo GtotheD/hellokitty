@@ -32,38 +32,22 @@
                 "created_year_to": "",
                 "created_year": "2016",
                 "created_countries": "",
-                "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/11030/9784088904238_1S.jpg ",
-                "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/11030/9784088904238_1M.jpg ",
-                "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/11030/9784088904238_1L.jpg ",
+                "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/11030/9784088904238_1S.jpg",
+                "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/11030/9784088904238_1M.jpg",
+                "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/11030/9784088904238_1L.jpg",
                 "jacket_l4": "",
-                "scene_s": [
-
-                ],
-                "scene_m": [
-
-                ],
-                "scene_l": [
-
-                ],
-                "trailor_pc": [
-
-                ],
+                "scene_s": [],
+                "scene_m": [],
+                "scene_l": [],
+                "trailor_pc": [],
                 "season_name": "",
                 "season_number": null,
                 "book_series_name": "ヤングジャンプコミックス",
                 "book_series_name_kana": "",
-                "feature_keywords": [
-
-                ],
-                "priv_keywords": [
-
-                ],
-                "work_tags": [
-
-                ],
-                "wakati_words": [
-
-                ],
+                "feature_keywords": [],
+                "priv_keywords": [],
+                "work_tags": [],
+                "wakati_words": [],
                 "is_compilation": 0,
                 "series_completed": 0,
                 "disable_flg": 0,
@@ -78,21 +62,11 @@
                         "id_value": "41482851"
                     }
                 ],
-                "docs": [
-
-                ],
-                "awards": [
-
-                ],
-                "screens": [
-
-                ],
-                "onairs": [
-
-                ],
-                "magazines": [
-
-                ],
+                "docs": [],
+                "awards": [],
+                "screens": [],
+                "onairs": [],
+                "magazines": [],
                 "genres": [
                     {
                         "big_genre_id": "EXT000073X10",
@@ -106,39 +80,174 @@
                     }
                 ],
                 "products": [
-
+                    {
+                        "id": "PDT0000OX7AX",
+                        "product_id": "PPD0000OX2DC",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "tol",
+                        "service_name": "tol",
+                        "msdb_item": "book",
+                        "item_cd": "1075",
+                        "item_name": "コミック",
+                        "product_name": "キングダム 公式ガイドブック 覇道列紀",
+                        "product_kana": "きんぐだむこうしきがいどぶつくはどうれつき",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2015-11-27 11:35:38",
+                        "disp_start_month": "2015-11",
+                        "disp_end_date": "2030-12-28 00:00:00",
+                        "disp_end_month": "2030-12",
+                        "sale_start_date": "2016-01-19",
+                        "sale_start_month": "2016-01",
+                        "sale_end_date": "2030-12-28",
+                        "sale_end_month": "2030-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000OX8IM"
+                        ],
+                        "tieup": "",
+                        "copyright": "",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "",
+                        "created_year_to": "",
+                        "created_year_str": "20160119",
+                        "created_countries": "",
+                        "maker_cd": "EXT000077CNN",
+                        "maker_name": "集英社",
+                        "maker_name_kana": "しゆうえいしや",
+                        "maker_name_abbrev": "集英社",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "42729566",
+                        "ccc_family_cd": "42729566001",
+                        "ccc_product_id": "204909717",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "9784088904238",
+                        "isbn_10": "4088904230",
+                        "isbn_13": "9784088904238",
+                        "magazine_cd": "44282",
+                        "product_code": "",
+                        "icpn": "",
+                        "media_category_cd": "23",
+                        "media_category_name": "販売書籍",
+                        "media_format_id": "EXT0000I9NMQ",
+                        "media_format_name": "コミック",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "",
+                        "video_info": "",
+                        "number_of_volume": "",
+                        "number_of_set": "0",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "163p",
+                        "book_size": "19",
+                        "book_release_month": "201601",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/11030/9784088904238_1S.jpg",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/11030/9784088904238_1M.jpg",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/11030/9784088904238_1L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [],
+                        "scene_m": [],
+                        "scene_l": [],
+                        "trailor_pc": [],
+                        "book_series_name": "ヤングジャンプコミックス",
+                        "book_series_name_kana": "やんぐじやんぷこみつくす",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": 905,
+                        "price_tax_in": 977,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT000073X10",
+                                "big_genre_name": "コミック",
+                                "medium_genre_id": "EXT000074181",
+                                "medium_genre_name": "青年コミック",
+                                "small_genre_id": "EXT00007539J",
+                                "small_genre_name": "集英社青年",
+                                "shikiriban_id": "EXT000075AKV",
+                                "shikiriban_name": "集英社ヤングジャンプＣ"
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS00001LBUW",
+                                "person_name": "原泰久",
+                                "role_id": "EXT00000BWU9",
+                                "role_name": "著者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    }
                 ],
-                "video_relations": [
-
-                ],
+                "video_relations": [],
                 "discas_grade_point": null,
-                "discas_item": [
-
-                ],
+                "discas_item": [],
                 "ttv_trailer_flg": 0,
                 "ttv_free_movie_flg": 0,
-                "ttv_sell_rental_flg": [
-
-                ],
+                "ttv_sell_rental_flg": [],
                 "ttv_low_price": null,
-                "cinema_id": [
-
-                ],
-                "filmarks_id": [
-
-                ],
+                "cinema_id": [],
+                "filmarks_id": [],
                 "catch_copy": "",
                 "sale_start_date_sell": "2016-01-19",
-                "sale_start_date_rental": "2016-01-19",
-                "trailer_urls": [
-
-                ],
-                "scenes": [
-
-                ],
-                "filmarks_mark": null,
-                "filmarks_clip": null,
-                "filmarks_average": null,
+                "sale_start_date_rental": "",
+                "trailer_urls": [],
+                "scenes": [],
+                "filmarks_mark": 0,
+                "filmarks_clip": 0,
+                "filmarks_average": 0,
                 "people": [
                     {
                         "person_id": "PPS00001LBUW",
@@ -147,12 +256,8 @@
                         "role_name": "著者"
                     }
                 ],
-                "tracks": [
-
-                ],
-                "merged_from": [
-
-                ],
+                "tracks": [],
+                "merged_from": [],
                 "need_age_auth_flg": 0
             }
         ]

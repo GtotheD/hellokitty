@@ -423,7 +423,6 @@ class AccessTest extends TestCase
     public function searchSuggestNotFoundCheckBody()
     {
         $response = $this->getJsonWithAuth('/search/suggest/ccc');
-        print_r($response->response->original);
         $response->assertEquals(empty($response->response->original['rows']), true);
     }
 
@@ -433,7 +432,7 @@ class AccessTest extends TestCase
      */
     public function releaseCalender()
     {
-        $response = $this->getJsonWithAuth('/release/this/18?sort=old&cdFormatType=album&onlyReleased=false');
+        $response = $this->getJsonWithAuth('/release/this/18?sort=old&onlyReleased=false');
         $response->assertResponseStatus(200);
     }
 }
