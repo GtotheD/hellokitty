@@ -155,16 +155,16 @@ class ReleaseCalenderRepository
         if ($this->month === 'last') {
             $saleStartMonth = date('Y-m', strtotime('-1 months'));
             $saleStartDateFrom = Carbon::parse('last month')->startOfMonth();
-            $saleStartDateTo = Carbon::parse('last month')->endOfMonth();
+            $saleStartDateTo = Carbon::parse('last month')->endOfMonth()->addMonth(6);
         } else if ($this->month === 'next') {
             $saleStartMonth = date('Y-m', strtotime('+1 months'));
             $saleStartDateFrom = Carbon::parse('next month')->startOfMonth();
-            $saleStartDateTo = Carbon::parse('next month')->endOfMonth();
+            $saleStartDateTo = Carbon::parse('next month')->endOfMonth()->addMonth(6);
         } else {
             $this->month = 'this';
             $saleStartMonth = date('Y-m');
             $saleStartDateFrom = Carbon::now()->startOfMonth();
-            $saleStartDateTo = Carbon::now()->endOfMonth();
+            $saleStartDateTo = Carbon::now()->endOfMonth()->addMonth(6);
         }
         $saleStartDateFrom = $saleStartDateFrom->format('Y-m-d');
         $saleStartDateTo = $saleStartDateTo->format('Y-m-d');

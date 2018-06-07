@@ -356,6 +356,7 @@ class WorkRepository
         $roleId = '';
         $response['supplement'] = '';
         $isAdult = null;
+        $isDocSet = false;
 
         if (empty($product)) {
             $product = (array)$productModel->setConditionByWorkIdNewestProduct($response['workId'], $this->saleType)->toCamel()->getOne();
@@ -426,6 +427,26 @@ class WorkRepository
                 $response['smallGenreId'],
                 $product['makerCd']
             );
+
+            if (array_key_exists('docText', $response)) {
+                $docs = json_decode($response['docText'], true);
+                if (!empty($docs)) {
+
+                    if ($product['msdbItem'] === 'video') {
+                        $response['docText'] = getSummaryComment(DOC_TABLE_MOVIE['tol'], $docs);
+                        $isDocSet = true;
+                    } else if ($product['msdbItem'] === 'book') {
+                        $response['docText'] = getSummaryComment(DOC_TABLE_BOOK['tol'], $docs);
+                        $isDocSet = true;
+                    } else if ($product['msdbItem'] === 'audio') {
+                        $response['docText'] = getSummaryComment(DOC_TABLE_MUSIC['tol'], $docs, true);
+                        $isDocSet = true;
+                    } else if ($product['msdbItem'] === 'game') {
+                        $response['docText'] = getSummaryComment(DOC_TABLE_GAME['tol'], $docs);
+                        $isDocSet = true;
+                    }
+                }
+            }
         }
         $response['newFlg'] = newFlg($response['saleStartDate']);
 
@@ -445,26 +466,6 @@ class WorkRepository
                 'sell' => ($productModel->setConditionByWorkIdSaleType($response['workId'], 'sell')->count() > 0) ? true : false,
                 'rental' => ($productModel->setConditionByWorkIdSaleType($response['workId'], 'rental')->count() > 0) ? true : false
             ];
-        }
-        $isDocSet = false;
-        if (array_key_exists('docText', $response)) {
-            $docs = json_decode($response['docText'], true);
-            if (!empty($docs)) {
-
-                if ($product['msdbItem'] === 'video') {
-                    $response['docText'] = getSummaryComment(DOC_TABLE_MOVIE['tol'], $docs);
-                    $isDocSet = true;
-                } else if ($product['msdbItem'] === 'book') {
-                    $response['docText'] = getSummaryComment(DOC_TABLE_BOOK['tol'], $docs);
-                    $isDocSet = true;
-                } else if ($product['msdbItem'] === 'audio') {
-                    $response['docText'] = getSummaryComment(DOC_TABLE_MUSIC['tol'], $docs);
-                    $isDocSet = true;
-                } else if ($product['msdbItem'] === 'game') {
-                    $response['docText'] = getSummaryComment(DOC_TABLE_GAME['tol'], $docs);
-                    $isDocSet = true;
-                }
-            }
         }
         // docがセットできなかった場合はブランクにする。
         if ($isDocSet === false) {
@@ -1009,7 +1010,6 @@ class WorkRepository
             $base['filmarks_id'] = $this->filmarksIdFormat($row);
             $base['rating_id'] = $row['rating_id'];
             $base['rating_name'] = $row['rating_name'];
-            // アダルトフラグ判定
             $base['adult_flg'] = $row['adult_flg'];
             $base['created_year'] = $row['created_year'];
             $base['created_countries'] = $row['created_countries'];
