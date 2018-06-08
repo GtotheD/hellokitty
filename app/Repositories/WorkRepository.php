@@ -697,8 +697,8 @@ class WorkRepository
                     'saleType' => '',
                     'supplement' => $saleTypeHas['supplement'],
                     'saleStartDate' => ($row['sale_start_date']) ? date('Y-m-d 00:00:00', strtotime($row['sale_start_date'])) : '',
-                    'saleStartDateSell' => ($row['sale_start_date_sell']) ? date('Y-m-d 00:00:00', strtotime($row['sale_start_date_sell'])) : '',
-                    'saleStartDateRental' => ($row['sale_start_date_rental']) ? date('Y-m-d 00:00:00', strtotime($row['sale_start_date_rental'])) : '',
+                    'saleStartDateSell' => $saleTypeHas['saleStartDateSell'],
+                    'saleStartDateRental' => $saleTypeHas['saleStartDateRental'],
                     'saleTypeHas' => [
                         'sell' => $saleTypeHas['sell'],
                         'rental' => $saleTypeHas['rental'],
@@ -759,17 +759,26 @@ class WorkRepository
         $rental = false;
         $supplement = '';
         $mediaFormatId = '';
+        $saleStartDateSell = null;
+        $saleStartDateRental = null;
         foreach ($products as $product) {
             // VHSを除外
             if ($product['service_id'] === 'tol') {
                 if ($product['product_type_id'] === 1 &&
                     $product['item_cd'] !== '0020' &&
                     $product['item_cd'] !== '0120') {
+                    // 最新の販売開始日を取得する。
+                    if ( $product['sale_start_date'] > $saleStartDateSell) {
+                        $saleStartDateSell = $product['sale_start_date'];
+                    }
                     $sell = true;
                 } else if ($product['product_type_id'] === 2 &&
                     $product['item_cd'] !== '0020' &&
                     $product['item_cd'] !== '0120') {
-                    $rental = true;
+                    // 最新の販売開始日を取得する。
+                    if ($product['sale_start_date'] > $saleStartDateRental) {
+                        $saleStartDateRental = $product['sale_start_date'];
+                    }                    $rental = true;
                 }
                 if ($itemType === 'game') {
                     $supplement = $product['game_model_name'];
@@ -796,7 +805,9 @@ class WorkRepository
             'supplement' => $supplement,
             'media_format_id' => $mediaFormatId,
             'maker_cd' => $makerCd,
-        ];
+            'saleStartDateSell' => $saleStartDateSell,
+            'saleStartDateRental' => $saleStartDateRental,
+            ];
 
     }
 
