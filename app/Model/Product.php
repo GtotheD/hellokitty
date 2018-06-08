@@ -111,6 +111,7 @@ class Product extends Model
         $subQuery = DB::table($this->table)->select(DB::raw($selectSubGrouping.$selectSub))
             ->whereRaw(DB::raw(' item_cd not like \'_1__\' '))
             ->whereRaw(DB::raw(' item_cd not like \'__20\' '))
+            ->whereRaw(DB::raw(' jan not like \'9999_________\' '))
             ->groupBy(DB::raw($selectSubGrouping));
         $this->dbObject = DB::table(DB::raw("({$subQuery->toSql()}) as t1"))
             ->join($this->table.' as t2', 't2.product_unique_id', '=', 't1.product_unique_id')

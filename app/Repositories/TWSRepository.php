@@ -89,6 +89,7 @@ class TWSRepository extends ApiRequesterRepository
             'productKey' => $productKey,
             'fieldSet' => 'stock',
             'storeId' => $storeId,
+            'adultAuthOK' => '1',
             'tolPlatformCode' => '00'
         ];
         return $this;

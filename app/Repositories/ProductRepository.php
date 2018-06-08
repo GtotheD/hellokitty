@@ -222,7 +222,7 @@ class ProductRepository
                     } else if ($product['msdbItem'] === 'book') {
                         $product['docText'] = getSummaryComment(DOC_TABLE_BOOK['tol'], $docs);
                     } else if ($product['msdbItem'] === 'audio') {
-                        $product['docText'] = getSummaryComment(DOC_TABLE_MUSIC['tol'], $docs);
+                        $product['docText'] = getSummaryComment(DOC_TABLE_MUSIC['tol'], $docs, true);
                     } else if ($product['msdbItem'] === 'game') {
                         $product['docText'] = getSummaryComment(DOC_TABLE_GAME['tol'], $docs);
                     }
@@ -255,6 +255,11 @@ class ProductRepository
             $product['saleType'] = $this->convertProductTypeToStr($product['productTypeId']);
             $product['jacketL'] = trimImageTag($product['jacketL']);
             $product['newFlg'] = newFlg($product['saleStartDate']);
+
+            // best_album_flg の 状況に応じて文字列（ベスト盤）を返す
+            if (array_key_exists('bestAlbumFlg', $product)) {
+                $product['bestAlbumFlg'] =  ($product['bestAlbumFlg'] == '1') ? 'ベスト盤' : '';
+            }
             $reformatResult[] = $product;
         }
         return $reformatResult;

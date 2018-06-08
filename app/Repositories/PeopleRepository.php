@@ -122,6 +122,7 @@ class PeopleRepository
         $peopleCount = $peopleModel->setConditionByProduct($newestProduct->product_unique_id)->count();
 
         $this->totalCount = $peopleCount ?: 0;
+        if ($this->totalCount === 0) return null;
 
         $people = $peopleModel->setConditionByProduct($newestProduct->product_unique_id)
             ->select($column)

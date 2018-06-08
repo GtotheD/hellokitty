@@ -10,6 +10,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Carbon;
 use App\Repositories\ReleaseCalenderRepository;
 use App\Model\HimoReleaseOrder;
 
@@ -32,6 +33,7 @@ class CreateReleaseCalendar extends Command
 
     const HIMO_RELEASE_ORDER_TABLE = 'ts_himo_release_orders';
     const HIMO_RELEASE_ORDER_TMP_TABLE = 'ts_himo_release_orders_tmp';
+    const HIMO_PRODUCT_TABLE = 'ts_products';
 
     const PARAM_MONTH = ['this', 'last', 'next'];
     /**
@@ -74,6 +76,41 @@ class CreateReleaseCalendar extends Command
             }
         }
         $this->info('一時テーブル作成完了 ['.date('Y/m/d H:i:s').']');
+
+        //（前提）
+        //    ・対象月から未来1年を取得対象とする(ReleaseCalenderRepository)
+        //
+        // tmpテーブルに対して更新
+        //   1. tmpからリストを持ってくる(month, tap_genre_id, work_id)
+        //   2. work_id に紐付くts_productsを確認（条件は下記）
+        //   3. 一致しない work_id は削除する
+        //
+        //（条件）
+        //    ・monthの範囲内
+        //    ・販売種別が一致（販売種別の取得方法は「ReleaseCalenderRepository.genreMappingにtap_genre_idを渡して販売種別を特定」）
+        //    ・アイテムコード（VHSを対象外とする）
+        $hrotObj = DB::table(self::HIMO_RELEASE_ORDER_TMP_TABLE)->orderBy('id')->get();
+        foreach($hrotObj as $columns) {
+            $mappingData = $releaseCalenderRepository->genreMapping($columns->tap_genre_id);
+            $saleType = $mappingData['productSellRentalFlg'];
+            $workId = $columns->work_id;
+            $monthFrom = $columns->month;
+            $monthTo = Carbon::parse($monthFrom)->endOfMonth();
+
+            $count = DB::table(self::HIMO_PRODUCT_TABLE)
+                        ->where('product_type_id', $saleType)
+                        ->where('work_id', $workId)
+                        ->where('sale_start_date', '>=', $monthFrom)
+                        ->where('sale_start_date', '<=', $monthTo)
+                        // VHSの除外
+                        ->whereRaw(DB::raw(' item_cd not like \'__20\' '))
+                        ->count();
+            if ($count === 0) {
+                DB::table(self::HIMO_RELEASE_ORDER_TMP_TABLE)
+                    ->where('id', $columns->id)
+                    ->delete();
+            }
+        }
 
         $this->info('テーブルの再作成 ['.date('Y/m/d H:i:s').']');
         // テーブルを削除
