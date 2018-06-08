@@ -92,7 +92,7 @@ class WorkRepository
     );
 
     const HIMO_SEARCH_IGNORE_ADULT_GENRE_ID = '-EXT000073X16:EXT0000741BA:: -EXT000073X18:EXT0000741CG:: -EXT000073X0V:EXT000074169:';
-    
+
     // 1=アルバム、2=シングル、3=音楽配信（複）、4=音楽配信（単）、5=ミュージックビデオ、6=グッズ
     const WORK_FORMAT_ID_ALBUM = '1';
     const WORK_FORMAT_ID_SINGLE = '2';
@@ -622,7 +622,7 @@ class WorkRepository
         if ($itemType === 'dvd') {
             $params['genreId'] = implode(' || ', self::HIMO_SEARCH_VIDEO_GENRE_ID);
         }
-        if ($adultFlg === 'false') {
+        if ($adultFlg !== 'true') {
             if (array_key_exists('genreId', $params)) {
                 $params['genreId'] .= self::HIMO_SEARCH_IGNORE_ADULT_GENRE_ID;
             } else {
