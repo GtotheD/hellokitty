@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Exceptions\AgeLimitException;
+use App\Model\DiscasProduct;
 use App\Model\MusicoUrl;
 use App\Model\People;
 use App\Model\Work;
@@ -540,6 +541,8 @@ class WorkRepository
                         } else if ($product['product_type_id'] == self::PRODUCT_TYPE_ID_SINGLE) {
                             $musicoUrl = sprintf(self::MUSICO_LINK_SINGLE, $product['ccc_product_id']);
                         }
+                    } else if ($product['service_id'] === 'discas') {
+                        $discasCCCprodctId = $product['ccc_product_id'];
                     } else if ($product['service_id'] === 'tol') {
                         // ミュジックビデオの場合はaudioからvideoに変換するために判定する。
                         if($row['work_format_id'] == self::WORK_FORMAT_ID_MUSICVIDEO) {
@@ -560,15 +563,23 @@ class WorkRepository
                         'url' => $musicoUrl
                     ];
                 }
+                if (!empty($discasCCCprodctId)) {
+                    $discasCCCprodctIdInsertArray[] = [
+                        'work_id' => $row['work_id'],
+                        'ccc_product_id' => $discasCCCprodctId
+                    ];
+                }
             }
             $productModel = new Product();
             $peopleModel = new People();
             $musicoUrl = new MusicoUrl();
+            $discasProduct = new DiscasProduct();
 
             $this->work->insertBulk($workData, $insertWorkId);
             $productModel->insertBulk($productData);
             $peopleModel->insertBulk($peopleData);
             $musicoUrl->insertBulk($musicoUrlInsertArray);
+            $discasProduct->insertBulk($discasCCCprodctIdInsertArray);
 
             DB::commit();
             return $insertWorkId;

@@ -264,10 +264,10 @@ $router->group([
     });
     // レビュー情報 discas
     $router->get('work/{workId}/review/discas', function (Request $request, $workId) {
-        $product = new Product();
+        $discasProduct = new \App\Model\DiscasProduct();
         $discasRepository = new DiscasRepository();
 
-        $productData = (array)$product->setConditionByWorkIdNewestProduct($workId)
+        $productData = (array)$discasProduct->setConditionByWorkId($workId)
             ->selectCamel(['ccc_product_id'])
             ->getOne();
         $discasRepository->setLimit($request->input('limit', 10));
