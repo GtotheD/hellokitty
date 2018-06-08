@@ -70,7 +70,7 @@ class HimoRepository extends ApiRequesterRepository
             'service_id' => 'tol',
             'scene_limit' => '20',
             'response_level' => $responseLevel,
-            'work_products_service_id' => ['tol', 'musico'],
+            'work_products_service_id' => ['tol', 'musico', 'discas'],
             'offset' => $this->offset,
             'limit' => $this->limit,
             'sort_by' => 'auto:asc',
