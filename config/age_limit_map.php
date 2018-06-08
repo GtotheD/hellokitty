@@ -82,13 +82,6 @@ return [
         'mediumGenreId' => 'EXT0000741CG',
         'smallGenreId' => null
     ],
-    [
-        'ageLimit' =>  null,
-        'ratingId' => null,
-        'bigGenreId' => 'EXT000073X18',
-        'mediumGenreId' => 'EXT0000741CG',
-        'smallGenreId' => null
-    ],
     // ムック　アダルト
     [
         'ageLimit' =>  null,
