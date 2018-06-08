@@ -156,18 +156,22 @@ class ReleaseCalenderRepository
             $saleStartMonth = date('Y-m', strtotime('-1 months'));
             $saleStartDateFrom = Carbon::parse('last month')->startOfMonth();
             $saleStartDateTo = Carbon::parse('last month')->endOfMonth()->addMonth(6);
+            $saleStartDateToForDB = Carbon::parse('last month')->endOfMonth();
         } else if ($this->month === 'next') {
             $saleStartMonth = date('Y-m', strtotime('+1 months'));
             $saleStartDateFrom = Carbon::parse('next month')->startOfMonth();
             $saleStartDateTo = Carbon::parse('next month')->endOfMonth()->addMonth(6);
+            $saleStartDateToForDB = Carbon::parse('next month')->endOfMonth();
         } else {
             $this->month = 'this';
             $saleStartMonth = date('Y-m');
             $saleStartDateFrom = Carbon::now()->startOfMonth();
             $saleStartDateTo = Carbon::now()->endOfMonth()->addMonth(6);
+            $saleStartDateToForDB = Carbon::now()->endOfMonth();
         }
         $saleStartDateFrom = $saleStartDateFrom->format('Y-m-d');
         $saleStartDateTo = $saleStartDateTo->format('Y-m-d');
+        $saleStartDateToForDB = $saleStartDateToForDB->format('Y-m-d');
 
         // Himo取得時のソートの指定
         $sortBy = 'auto:desc';
@@ -250,7 +254,7 @@ class ReleaseCalenderRepository
         }
         if ($this->onlyReleased === 'true') {
             $saleStartDateFrom = date('Y-m-01 00:00:00');
-            $saleStartDateTo = date('Y-m-d 00:00:00');
+            $saleStartDateToForDB = date('Y-m-d 00:00:00');
         }
         $this->himoReleaseOrder->setConditionGenreIdAndMonthAndProductTypeId(
             $this->genreId,
@@ -259,7 +263,7 @@ class ReleaseCalenderRepository
             $this->sort,
             $mediaFormat,
             $saleStartDateFrom,
-            $saleStartDateTo
+            $saleStartDateToForDB
         );
         $this->totalCount = $this->himoReleaseOrder->count();
         // キャッシュしたデータから対象の作品及び商品情報を集約し取得する。
