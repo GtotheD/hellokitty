@@ -71,7 +71,7 @@ class DiscasRepository extends ApiRequesterRepository
         if (!empty($xmlObj)) {
             foreach ($xmlObj->reviewList as $value) {
                 $reviews['rows'][] = [
-                    'rating' => (int)$value->reviewRating === 0 ? '0' : sprintf('%.1f', (int)$value->reviewRating / 100),
+                    'rating' => floatval(number_format($value->reviewRating / 100, 1)),
                     'contributor' => (string)$value->handle,
                     'contributorDate' => '',
                     'contents' => (string)$value->review,
@@ -79,7 +79,7 @@ class DiscasRepository extends ApiRequesterRepository
                 $reviews['totalCount']++;
             }
             if (!empty($reviews['rows'])) {
-                $reviews['averageRating'] = sprintf('%.1f', (int)$xmlObj->rating / 100);
+                $reviews['averageRating'] = floatval(number_format($xmlObj->rating / 100, 1));
                 $reviews['rows'] = array_slice($reviews['rows'], $this->offset, $this->limit);
                 return $reviews;
             }
