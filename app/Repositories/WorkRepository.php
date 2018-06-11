@@ -535,6 +535,7 @@ class WorkRepository
                 //$insertResult = $work->insert($base);
                 $musicoUrl = null;
                 $isMusicVideo = false;
+                $discasCCCprodctId = null;
                 foreach ($row['products'] as $product) {
                     // ダウンロード用のデータ生成
                     // 単一想定
