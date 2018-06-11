@@ -112,12 +112,28 @@ return [
         'mediumGenreId' => 'EXT0000741CG',
         'smallGenreId' => null
     ],
+    // アダルトノベルス2
+    [
+        'ageLimit' =>  null,
+        'ratingId' => null,
+        'bigGenreId' => 'EXT0000S12QH',
+        'mediumGenreId' => 'EXT0000S12RK',
+        'smallGenreId' => null
+    ],
     // ムック　アダルト
     [
         'ageLimit' =>  null,
         'ratingId' => null,
         'bigGenreId' => 'EXT000073X0V',
         'mediumGenreId' => 'EXT000074169',
+        'smallGenreId' => null
+    ],
+    // ムック　アダルト2
+    [
+        'ageLimit' =>  null,
+        'ratingId' => null,
+        'bigGenreId' => 'EXT0000S12QK',
+        'mediumGenreId' => 'EXT0000S12S4',
         'smallGenreId' => null
     ],
     // イメージ　アイドル
