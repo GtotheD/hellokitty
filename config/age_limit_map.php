@@ -120,6 +120,14 @@ return [
         'mediumGenreId' => 'EXT000074169',
         'smallGenreId' => null
     ],
+    // ムック　アダルト2
+    [
+        'ageLimit' =>  null,
+        'ratingId' => null,
+        'bigGenreId' => 'EXT0000S12QK',
+        'mediumGenreId' => 'EXT0000S12S4',
+        'smallGenreId' => null
+    ],
     // イメージ　アイドル
     [
         'ageLimit' =>  null,
