@@ -528,6 +528,7 @@ class WorkRepository
             $productData = [];
             $peopleData = [];
             $musicoUrlInsertArray = [];
+            $discasCCCprodctIdInsertArray = [];
             foreach ($himoResult['results']['rows'] as $row) {
                 $workData[] = $this->format($row);
                 $insertWorkId[] = $row['work_id'];
