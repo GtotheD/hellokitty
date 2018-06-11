@@ -28,6 +28,7 @@ class HimoReleaseOrder extends Model
         $workRepsitory = new WorkRepository;
         $selectSubGrouping =
             'p1.work_id,'
+            .'p1.product_type_id,'
             .'p1.sale_start_date,'
             .'hro.sort';
         $selectSub = ',MAX(p1.ccc_family_cd) AS ccc_family_cd ';
@@ -50,6 +51,7 @@ class HimoReleaseOrder extends Model
             ->join('ts_products as p3', function ($join) {
                 $join->on('p3.ccc_family_cd', '=', 'p2.ccc_family_cd')
                     ->on('p3.sale_start_date', '=', 'p2.sale_start_date')
+                    ->on('p3.product_type_id', '=', 'p2.product_type_id')
                     ->on('p3.work_id', '=', 'p2.work_id');
             })
             ->whereRaw(DB::raw(' item_cd not like \'_1__\' '))
