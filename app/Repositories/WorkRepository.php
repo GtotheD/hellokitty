@@ -528,12 +528,14 @@ class WorkRepository
             $productData = [];
             $peopleData = [];
             $musicoUrlInsertArray = [];
+            $discasCCCprodctIdInsertArray = [];
             foreach ($himoResult['results']['rows'] as $row) {
                 $workData[] = $this->format($row);
                 $insertWorkId[] = $row['work_id'];
                 //$insertResult = $work->insert($base);
                 $musicoUrl = null;
                 $isMusicVideo = false;
+                $discasCCCprodctId = null;
                 foreach ($row['products'] as $product) {
                     // ダウンロード用のデータ生成
                     // 単一想定
@@ -697,8 +699,8 @@ class WorkRepository
                     'saleType' => '',
                     'supplement' => $saleTypeHas['supplement'],
                     'saleStartDate' => ($row['sale_start_date']) ? date('Y-m-d 00:00:00', strtotime($row['sale_start_date'])) : '',
-                    'saleStartDateSell' => $saleTypeHas['saleStartDateSell'],
-                    'saleStartDateRental' => $saleTypeHas['saleStartDateRental'],
+                    'saleStartDateSell' => ($row['sale_start_date']) ? date('Y-m-d 00:00:00', strtotime($saleTypeHas['saleStartDateSell'])) : '',
+                    'saleStartDateRental' => ($row['sale_start_date']) ? date('Y-m-d 00:00:00', strtotime($saleTypeHas['saleStartDateRental'])) : '',
                     'saleTypeHas' => [
                         'sell' => $saleTypeHas['sell'],
                         'rental' => $saleTypeHas['rental'],
