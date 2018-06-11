@@ -701,7 +701,7 @@ class WorkRepository
                     'workTitle' => $base['work_title'],
                     'jacketL' => ($displayImage) ? $base['jacket_l'] : '',
                     'newFlg' => newFlg($base['sale_start_date']),
-                    'adultFlg' => ($base['adult_flg'] === 1) ? true : false,
+                    'adultFlg' => ($base['adult_flg'] === 1) ? true : $isAdult,
                     'itemType' => $itemTypeVal,
                     'saleType' => '',
                     'supplement' => $saleTypeHas['supplement'],
@@ -944,6 +944,14 @@ class WorkRepository
                     $base['medium_genre_id'],
                     $base['small_genre_id'],
                     $saleTypeHas['maker_cd']);
+                // アダルト判定
+                $isAdult = isAdult(
+                    $base['rating_id'],
+                    $base['big_genre_id'],
+                    $base['medium_genre_id'],
+                    $base['small_genre_id'],
+                    $saleTypeHas['maker_cd']
+                );
                 $result['rows'][] = [
                     'workId' => $base['work_id'],
                     'urlCd' => $base['url_cd'],
@@ -951,7 +959,7 @@ class WorkRepository
                     'workTitle' => $base['work_title'],
                     'jacketL' => ($displayImage) ? $base['jacket_l'] : '',
                     'newFlg' => newFlg($base['sale_start_date']),
-                    'adultFlg' => ($base['adult_flg'] === 1) ? true : false,
+                    'adultFlg' => ($base['adult_flg'] === 1) ? true : $isAdult,
                     'itemType' => $itemType,
                     'saleType' => $saleType,
                     // DVDの場合は空にする。
