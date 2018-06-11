@@ -91,7 +91,14 @@ class WorkRepository
         'EXT000000ECY:', 'EXT000000EVS:', 'EXT000000Q1W:', 'EXT00001T1BJ'
     );
 
-    const HIMO_SEARCH_IGNORE_ADULT_GENRE_ID = '-EXT000073X16:EXT0000741BA:: -EXT000073X18:EXT0000741CG:: -EXT000073X0V:EXT000074169:';
+    //
+    const HIMO_SEARCH_IGNORE_ADULT_GENRE_ID =
+        '-EXT000073X16:EXT0000741BA:: '. // アダルト文庫
+        '-EXT000073X18:EXT0000741CG:: '. // アダルトノベルス1
+        '-EXT0000S12QH:EXT0000S12RK:: '. // アダルトノベルス2
+        ' -EXT000073X0V:EXT000074169::'. // ムック　アダルト1
+        ' -EXT0000S12QK:EXT0000S12S4:' // ムック　アダルト2
+    ;
 
     // 1=アルバム、2=シングル、3=音楽配信（複）、4=音楽配信（単）、5=ミュージックビデオ、6=グッズ
     const WORK_FORMAT_ID_ALBUM = '1';
