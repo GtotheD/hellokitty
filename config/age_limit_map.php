@@ -112,6 +112,14 @@ return [
         'mediumGenreId' => 'EXT0000741CG',
         'smallGenreId' => null
     ],
+    // アダルトノベルス2
+    [
+        'ageLimit' =>  null,
+        'ratingId' => null,
+        'bigGenreId' => 'EXT0000S12QH',
+        'mediumGenreId' => 'EXT0000S12RK',
+        'smallGenreId' => null
+    ],
     // ムック　アダルト
     [
         'ageLimit' =>  null,
