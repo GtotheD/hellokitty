@@ -387,7 +387,7 @@ class WorkRepository
                 }
             }
             // レンタルDVDの場合はsupplementを空にする
-            if ($product['msdbItem'] === 'video') {
+            if ($product['msdbItem'] === 'video' && $response['bigGenreId'] !== 'EXT0000003GW') {
                 $response['supplement'] = '';
             }
 
@@ -504,7 +504,7 @@ class WorkRepository
                 $person = $people->setConditionByRoleId($productUniqueId, $id)->getOne();
                 if (!empty($person)) break;
             }
-        } elseif ($msdbItem === 'audio') {
+        } elseif ($msdbItem === 'audio' || $msdbItem === 'video') {
             foreach (self::HIMO_ROLE_ID_MUSIC as $id) {
                 $person = $people->setConditionByRoleId($productUniqueId, $id)->getOne();
                 if (!empty($person)) break;
@@ -694,6 +694,17 @@ class WorkRepository
                     $base['small_genre_id'],
                     $saleTypeHas['maker_cd']
                 );
+
+                $saleStartDateSell = "";
+                if ($saleTypeHas['sell'] === true) {
+                    $saleStartDateSell = ($row['sale_start_date']) ? date('Y-m-d 00:00:00', strtotime($saleTypeHas['saleStartDateSell'])) : '';
+                }
+
+                $saleStartDateRental = "";
+                if ($saleTypeHas['rental'] === true) {
+                    $saleStartDateRental = ($row['sale_start_date']) ? date('Y-m-d 00:00:00', strtotime($saleTypeHas['saleStartDateRental'])) : '';
+                }
+
                 $result['rows'][] = [
                     'workId' => $base['work_id'],
                     'urlCd' => $base['url_cd'],
@@ -706,8 +717,8 @@ class WorkRepository
                     'saleType' => '',
                     'supplement' => $saleTypeHas['supplement'],
                     'saleStartDate' => ($row['sale_start_date']) ? date('Y-m-d 00:00:00', strtotime($row['sale_start_date'])) : '',
-                    'saleStartDateSell' => ($row['sale_start_date']) ? date('Y-m-d 00:00:00', strtotime($saleTypeHas['saleStartDateSell'])) : '',
-                    'saleStartDateRental' => ($row['sale_start_date']) ? date('Y-m-d 00:00:00', strtotime($saleTypeHas['saleStartDateRental'])) : '',
+                    'saleStartDateSell' => $saleStartDateSell,
+                    'saleStartDateRental' => $saleStartDateRental,
                     'saleTypeHas' => [
                         'sell' => $saleTypeHas['sell'],
                         'rental' => $saleTypeHas['rental'],
@@ -787,7 +798,8 @@ class WorkRepository
                     // 最新の販売開始日を取得する。
                     if ($product['sale_start_date'] > $saleStartDateRental) {
                         $saleStartDateRental = $product['sale_start_date'];
-                    }                    $rental = true;
+                    }
+                    $rental = true;
                 }
                 if ($itemType === 'game') {
                     $supplement = $product['game_model_name'];
