@@ -25,6 +25,7 @@ class ReleaseCalenderRepository
     protected $onlyReleased;
     protected $mediaFormat;
     protected $himoReleaseOrder;
+    protected $ageLimitCheck;
 
     const HIMO_TAP_RECOMMEND_KEYWORD = 'riricaleinfo';
     const HIMO_TAP_RECOMMEND = 'recommendation';
@@ -134,6 +135,14 @@ class ReleaseCalenderRepository
     public function setMediaFormat($mediaFormat)
     {
         $this->mediaFormat = $mediaFormat;
+    }
+
+    /**
+     * @param mixed $ageLimitCheck
+     */
+    public function setAgeLimitCheck($ageLimitCheck)
+    {
+        $this->ageLimitCheck = $ageLimitCheck;
     }
 
     /**
@@ -279,7 +288,7 @@ class ReleaseCalenderRepository
             $this->hasNext = false;
         }
         // アダルト表示は常に許可しておく。
-        $workRepository->setAgeLimitCheck('true');
+        $workRepository->setAgeLimitCheck($this->ageLimitCheck);
         foreach ($results as $result) {
             $tmpData = $workRepository->formatAddOtherData((array)$result, false, (array)$result);
 

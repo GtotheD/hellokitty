@@ -543,6 +543,7 @@ $router->group([
         $releaseCalenderRepository->setSort($request->input('sort'));
         $releaseCalenderRepository->setMediaFormat($request->input('cdFormatType'));
         $releaseCalenderRepository->setOnlyReleased($request->input('onlyReleased', 'false'));
+        $releaseCalenderRepository->setAgeLimitCheck($request->input('ageLimitCheck', false));
         $rows = $releaseCalenderRepository->get();
         if (empty($rows)) {
             throw new NoContentsException;
