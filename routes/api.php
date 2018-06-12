@@ -148,6 +148,14 @@ $router->group([
         return $sectionData;
     });
 
+    // レコメンドセクション取得API
+    $router->get('section/release/himo/{periodType}/{tapGenreId}', function (Request $request, $periodType, $genreId) {
+        $sectionRepository = new SectionRepository;
+        $sectionRepository->setSupplementVisible($request->input('supplementVisibleFlg', false));
+        $sectionData = $sectionRepository->releaseHimo($periodType, $genreId);
+        return $sectionData;
+    });
+
     // 作品基本情報
     $router->get('work/{workId}', function (Request $request, $workId) {
         $work = new WorkRepository();
