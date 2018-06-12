@@ -387,7 +387,7 @@ class WorkRepository
                 }
             }
             // レンタルDVDの場合はsupplementを空にする
-            if ($product['msdbItem'] === 'video') {
+            if ($product['msdbItem'] === 'video' && $response['bigGenreId'] !== 'EXT0000003GW') {
                 $response['supplement'] = '';
             }
 
@@ -504,7 +504,7 @@ class WorkRepository
                 $person = $people->setConditionByRoleId($productUniqueId, $id)->getOne();
                 if (!empty($person)) break;
             }
-        } elseif ($msdbItem === 'audio') {
+        } elseif ($msdbItem === 'audio' || $msdbItem === 'video') {
             foreach (self::HIMO_ROLE_ID_MUSIC as $id) {
                 $person = $people->setConditionByRoleId($productUniqueId, $id)->getOne();
                 if (!empty($person)) break;
