@@ -189,7 +189,7 @@ class SectionRepository
             $period = null;
         }
         $tws = new TWSRepository;
-        $tws->setLimit(30);
+        $tws->setLimit($this->limit);
         $tws->setPage($this->page);
         $rows = $tws->ranking($rankingConcentrationCd, $period)->get();
         if (empty($rows['totalResults'])) {
