@@ -18,6 +18,7 @@ class Kernel extends ConsoleKernel
         \App\Console\Commands\ImportHimoKeyword::class,
         \App\Console\Commands\ImportBk2Recommend::class,
         \App\Console\Commands\CreateReleaseCalendar::class,
+        \App\Console\Commands\CheckHimoTables::class,
         \App\Console\Commands\CreateTopRelease::class,
     ];
 
