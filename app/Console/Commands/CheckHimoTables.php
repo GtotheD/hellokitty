@@ -3,7 +3,6 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\DB;
 use App\Model\HimoUpdateWork;
 use Illuminate\Support\Carbon;
@@ -18,7 +17,8 @@ class CheckHimoTables extends Command
     protected $signature = 'CheckHimoTables {--test} {--dir=}';
 
     private $himoUpdateWork;
-    private $lastUpdateDate;
+    private $lastUpdateDateStart;
+    private $lastUpdateDateEnd;
 
     /**
      * /**
@@ -52,8 +52,7 @@ class CheckHimoTables extends Command
             $loopPerOnce = 1000;  // 一度のループで処理する件数
             $offset = 0;
             while (true) {
-                $this->info('Limit: '.$loopPerOnce);
-                $this->info('Offset: '.$offset);
+                $this->info('Offset: '.$offset.' Limit: '.$loopPerOnce);
                 $result = $this->$method($loopPerOnce, $offset);
                 // 取得できなくなるまで実行
                 if (empty($result)) {
