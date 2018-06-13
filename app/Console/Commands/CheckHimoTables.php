@@ -5,6 +5,8 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\DB;
+use App\Model\HimoUpdateWork;
+use Illuminate\Support\Carbon;
 
 class CheckHimoTables extends Command
 {
@@ -15,7 +17,9 @@ class CheckHimoTables extends Command
      */
     protected $signature = 'CheckHimoTables {--test} {--dir=}';
 
-    private $testData = [];
+    private $himoUpdateWork;
+    private $lastUpdateDate;
+
     /**
      * /**
      * Create a new command instance.
@@ -23,10 +27,9 @@ class CheckHimoTables extends Command
     public function __construct()
     {
         parent::__construct();
-        for ($i=1;$i <= 100000; $i++) {
-            $this->testData[] = $i;
-        }
-
+        $this->himoUpdateWork = new HimoUpdateWork;
+        $this->lastUpdateDateStart = $dt = Carbon::yesterday()->format('Y-m-d 05:00:00');
+        $this->lastUpdateDateEnd = $dt = Carbon::today()->format('Y-m-d 05:00:00');
     }
 
     /**
@@ -41,24 +44,27 @@ class CheckHimoTables extends Command
         $himoTables = config('himo_tables');
         // テーブル一つづつ更新を確認
         $i =1;
-        $loopPerOnece = 1000;  // 一度のループで処理する件数
+        $loopPerOnce = 1000;  // 一度のループで処理する件数
         $offset = 0;
         foreach ($himoTables as $table) {
             $this->info($i++.':'.$table);
             $method = camel_case($table);
-            $loopPerOnece = 1000;  // 一度のループで処理する件数
+            $loopPerOnce = 1000;  // 一度のループで処理する件数
             $offset = 0;
             while (true) {
-                $this->info('Limit: '.$loopPerOnece);
+                $this->info('Limit: '.$loopPerOnce);
                 $this->info('Offset: '.$offset);
-                $result = $this->$method($loopPerOnece, $offset);
-                // 更新があれば処理を実行
-                // テーブルによって関連テーブルを紐づけwork_idを抽出しテーブルに格納していく。
+                $result = $this->$method($loopPerOnce, $offset);
                 // 取得できなくなるまで実行
                 if (empty($result)) {
                     break;
                 }
-                $offset += $loopPerOnece;
+                foreach ($result as $work) {
+                    $work[] = ['work_id' => $work->himo_work_pk];
+                }
+                // テーブルによって関連テーブルを紐づけwork_idを抽出しテーブルに格納していく。
+                $this->himoUpdateWork->bulkInsertOnDuplicateKey($result);
+                $offset += $loopPerOnce;
             }
         }
         // 全てのテーブルをチェックしてテーブルを確認後、対象のwork_idに関連するテーブルからデータを削除する。
@@ -67,17 +73,18 @@ class CheckHimoTables extends Command
         return true;
     }
 
-
-    function himoAreas($limit, $offset)
-    {
-        $workIds = array_slice($this->testData, $offset, $limit);
-        return $workIds;
-    }
-
+    // 更新日以降で取得する。
     function himoCountries($limit, $offset)
     {
-        $workIds = [];
-        return $workIds;
+        $dbObject = DB::table('himo_products AS hp')
+            ->select('hwp.himo_work_pk')
+            ->join('himo_product_countries AS hpc', 'hp.himo_product_pk', '=', 'hpc.himo_product_pk')
+            ->join('himo_countries AS hc', 'hpc.country_id', '=', 'hc.id')
+            ->join('himo_work_products AS hwp', 'hp.himo_product_pk', '=', 'hwp.himo_product_pk')
+            ->whereBetween('hc.modified', [$this->lastUpdateDateStart, $this->lastUpdateDateEnd])
+            ->skip($offset)->take($limit)
+            ->groupBy('work_id');
+        return $dbObject->get();
     }
 
     function himoDevices($limit, $offset)
