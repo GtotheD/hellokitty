@@ -676,6 +676,40 @@
  */
 /**
  * @SWG\Get(
+ *     path="/section/release/himo/{periodType}/{tapGenreId}",
+ *     description="自動取得のリリースカレンダー情報を返却する（HiMOを利用）",
+ *     produces={"application/json"},
+ *     tags={"Top"},
+ *     security={{"api_key":{}}},
+ *     @SWG\Parameter(
+ *       name="periodType",
+ *       in="path",
+ *       description="リリカレ表示種別（newest|lastest）",
+ *       required=true,
+ *       type="string"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="tapGenreId",
+ *       in="path",
+ *       description="リリカレ用ジャンルID（newest：1|9|17|22|28|39|51、lastest：11|12|13|24|25）",
+ *       required=true,
+ *       type="string"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="supplementVisible",
+ *       in="query",
+ *       description="出演者・アーティスト・著者・機種等を表示/非表示を切り替える為のフラグ。trueにすると非表示になる。",
+ *       type="boolean"
+ *     ),
+ *     @SWG\Response(response=200, description="Success"),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+/**
+ * @SWG\Get(
  *     path="/work/{workId}",
  *     description="作品基本情報を取得する",
  *     tags={"Work"},
