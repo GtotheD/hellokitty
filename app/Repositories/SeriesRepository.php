@@ -166,6 +166,7 @@ class SeriesRepository
         // Fetch workList and get response
         $rows = [];
 
+        $workRepository->setSaleType($this->saleType);
         $workRepository->setAgeLimitCheck($this->ageLimitCheck);
         foreach ($workList as $work) {
             $base = $workRepository->formatAddOtherData((array)$work, null, null, true);
