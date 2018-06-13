@@ -101,6 +101,26 @@ class Product extends Model
         return $this;
     }
 
+    public function setConditionByWorkIdSaleTypeSaleStartDate($workId, $saleType = null, $saleStartDateFrom = null, $saleStartDateTo = null)
+    {
+        $this->dbObject = DB::table($this->table)
+            ->whereRaw(DB::raw(' item_cd not like \'__20\' '))
+            ->where([
+                'work_id' => $workId,
+            ]);
+        if($saleType) {
+            $this->dbObject->where('product_type_id', $this->convertSaleType($saleType));
+        }
+        $this->dbObject->orderBy('number_of_volume', 'desc');
+        if($saleStartDateFrom) {
+            $this->dbObject->where('sale_start_date', '>=', $saleStartDateFrom);
+        }
+        if($saleStartDateTo) {
+            $this->dbObject->where('sale_start_date', '<=', $saleStartDateTo);
+        }
+        return $this;
+    }
+
     public function setConditionProductGroupingByWorkIdSaleType($workId, $saleType = null, $order = null)
     {
         $selectSubGrouping = 'item_cd,'
