@@ -71,7 +71,19 @@ return [
             'strict'    => env('DB_STRICT_MODE', false),
             'options'   => [PDO::MYSQL_ATTR_LOCAL_INFILE=>true],
         ],
-
+        'mysql_himo' => [
+            'driver'    => 'mysql',
+            'host'      => env('HIMO_DB_HOST', 'localhost'),
+            'port'      => env('HIMO_DB_PORT', 3306),
+            'database'  => env('HIMO_DB_DATABASE', 'forge'),
+            'username'  => env('HIMO_DB_USERNAME', 'forge'),
+            'password'  => env('HIMO_DB_PASSWORD', ''),
+            'charset'   => env('HIMO_DB_CHARSET', 'utf8'),
+            'collation' => env('HIMO_DB_COLLATION', 'utf8_unicode_ci'),
+            'prefix'    => env('HIMO_DB_PREFIX', ''),
+            'strict'    => env('HIMO_DB_STRICT_MODE', false),
+            'options'   => [PDO::MYSQL_ATTR_LOCAL_INFILE=>true],
+        ],
         'pgsql' => [
             'driver'   => 'pgsql',
             'host'     => env('DB_HOST', 'localhost'),

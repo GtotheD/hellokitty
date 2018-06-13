@@ -75,7 +75,7 @@ class CheckHimoTables extends Command
     // 更新日以降で取得する。
     function himoCountries($limit, $offset)
     {
-        $dbObject = DB::table('himo_products AS hp')
+        $dbObject = DB::connection('mysql_himo')->table('himo_products AS hp')
             ->select('hwp.himo_work_pk')
             ->join('himo_product_countries AS hpc', 'hp.himo_product_pk', '=', 'hpc.himo_product_pk')
             ->join('himo_countries AS hc', 'hpc.country_id', '=', 'hc.id')
