@@ -226,6 +226,8 @@ class SeriesRepository
             'saleType',
             'itemType',
             'adultFlg'
+
+            
         ];
     }
 

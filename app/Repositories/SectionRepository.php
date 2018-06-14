@@ -505,7 +505,8 @@ class SectionRepository
             $rowUnit['saleType'] = $work['saleType'];
             $rowUnit['itemType'] = $work['itemType'];
             $rowUnit['adultFlg'] = $work['adultFlg'];
-            $rowUnit['saleStartDate'] = $work['saleStartDate'];
+//            $rowUnit['saleStartDate'] = $work['saleStartDate'];
+            $rowUnit['saleStartDate'] = null;
 
             // modelNameがあったゲームなので、ゲーム名を取得するようにする。
             if (!$this->supplementVisible) {
