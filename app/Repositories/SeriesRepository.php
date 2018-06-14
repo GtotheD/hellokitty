@@ -227,7 +227,7 @@ class SeriesRepository
             'itemType',
             'adultFlg'
 
-            
+
         ];
     }
 
