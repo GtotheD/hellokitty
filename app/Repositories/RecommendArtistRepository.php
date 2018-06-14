@@ -109,6 +109,9 @@ class RecommendArtistRepository extends ApiRequesterRepository
 
         // STEP 3: Get related_people from system and return response
         $this->totalCount = $relatedPeople->count();
+        if ($this->totalCount === 0) {
+            throw new NoContentsException();
+        }
         $result = $relatedPeople->toCamel($skipColumns)->limit($this->limit)->offset($this->offset)->orderBy('id', 'asc')->get();
 
         if (count($result) + $this->offset < $this->totalCount) {
