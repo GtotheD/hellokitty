@@ -55,7 +55,7 @@ class ApiRequesterRepository
         } catch (ClientException $e) {
             $statusCode = $e->getResponse()->getStatusCode();
             if ($statusCode == '404') {
-                throw new NotFoundHttpException();
+                throw new NoContentsException();
             }
             throw new $e;
         }
