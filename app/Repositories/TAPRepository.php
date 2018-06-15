@@ -75,9 +75,9 @@ class TAPRepository extends ApiRequesterRepository
                     'contributeDate' => date('Y-m-d', strtotime($review['createdAt'])),
                     'contents' => $review['review'],
                 ];
-                $reviews['totalCount']++;
             }
             if (!empty($reviews['rows'])) {
+                $reviews['totalCount'] = $apiResult['entry']['movie']['markCount'];
                 $reviews['averageRating'] = floatval(number_format($apiResult['entry']['movie']['averageScore'], 1));
                 return $reviews;
             }
