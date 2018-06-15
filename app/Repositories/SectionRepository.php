@@ -157,7 +157,7 @@ class SectionRepository
                 'title' => $section->title,
                 'supplement' => $this->supplementVisible ? '' : $section->supplement, // アーティスト名、著者、機種等
                 'code' => $section->code,
-                'urlCode' => $section->url_code,
+                'urlCd' => $section->url_code,
                 'workId' => $section->work_id
             ];
             if ($saleType == $structureRepository::RENTAL) {
@@ -353,7 +353,7 @@ class SectionRepository
                         'workTitle' => $product->product_name,
                         'workId' => $row->work_id,
                         'code' => $product->product_id,
-                        'urlCode' => $work['urlCd'],
+                        'urlCd' => $work['urlCd'],
                         'sort' => $count
                     ];
                 $formattedRow['saleStartDate'] = $this->dateFormat($product->sale_start_date);
@@ -405,7 +405,7 @@ class SectionRepository
                     'workTitle' => $work['workTitle'],
                     'workId' => $work['workId'],
                     'code' => $row['productId'],
-                    'urlCode' => $row['urlCd']
+                    'urlCd' => $row['urlCd']
                 ];
             if (array_key_exists('releaseDate', $row)) {
                 $formattedRow['saleStartDate'] = $this->dateFormat($row['releaseDate']);
@@ -444,7 +444,7 @@ class SectionRepository
                 'title' => $row['productName'],
 //                'code' => $row['janCd'],
                 'code' => $row['productKey'],
-                'urlCode' => $row['urlCd']
+                'urlCd' => $row['urlCd']
             ];
             if (!$this->supplementVisible) {
                 if (array_key_exists('artistList', $row)) {
