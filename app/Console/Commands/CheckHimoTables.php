@@ -512,10 +512,28 @@ class CheckHimoTables extends Command
             ->get();
     }
 
+    // productだけ
     function himoGameModels($targetWorksArray)
     {
-        $workIds = [];
-        return $workIds;
+        return DB::connection('mysql_himo')->table('himo_products AS hp')
+            ->select('hw.himo_work_id')
+            ->join('himo_game_models AS hgm', function ($join) {
+                $join->on('hp.game_model_id', '=', 'hgm.id')
+                    ->where('hgm.delete_flg', '=', 0);
+            })
+            ->join('himo_work_products AS hwp', function ($join) {
+                $join->on('hp.himo_product_pk', '=', 'hwp.himo_product_pk')
+                    ->where('hwp.delete_flg', '=', 0);
+            })
+            ->join('himo_works AS hw', function ($join) {
+                $join->on('hwp.himo_work_pk', '=', 'hw.himo_work_pk')
+                    ->where('hw.delete_flg', '=', 0);
+            })
+            ->where('hp.delete_flg', '=', 0)
+            ->whereBetween('hgm.modified', [$this->lastUpdateDateStart, $this->lastUpdateDateEnd])
+            ->whereIn('hw.himo_work_id', $targetWorksArray)
+            ->groupBy('hw.himo_work_id')
+            ->get();
     }
 
     function himoGenres($targetWorksArray)
@@ -524,11 +542,28 @@ class CheckHimoTables extends Command
         return $workIds;
     }
 
+    // productだけ
     function himoItems($targetWorksArray)
     {
-        $workIds = [];
-        return $workIds;
-    }
+        return DB::connection('mysql_himo')->table('himo_products AS hp')
+            ->select('hw.himo_work_id')
+            ->join('himo_items AS hi', function ($join) {
+                $join->on('hp.item_cd', '=', 'hi.item_cd')
+                    ->where('hgm.delete_flg', '=', 0);
+            })
+            ->join('himo_work_products AS hwp', function ($join) {
+                $join->on('hp.himo_product_pk', '=', 'hwp.himo_product_pk')
+                    ->where('hwp.delete_flg', '=', 0);
+            })
+            ->join('himo_works AS hw', function ($join) {
+                $join->on('hwp.himo_work_pk', '=', 'hw.himo_work_pk')
+                    ->where('hw.delete_flg', '=', 0);
+            })
+            ->where('hp.delete_flg', '=', 0)
+            ->whereBetween('hm.modified', [$this->lastUpdateDateStart, $this->lastUpdateDateEnd])
+            ->whereIn('hw.himo_work_id', $targetWorksArray)
+            ->groupBy('hw.himo_work_id')
+            ->get();    }
 
     function himoJobs($targetWorksArray)
     {
@@ -536,16 +571,54 @@ class CheckHimoTables extends Command
         return $workIds;
     }
 
+    // productだけ
+    // todo:ER上はhimo_makers.idをキーにしているが間違ってる？
     function himoMakers($targetWorksArray)
     {
-        $workIds = [];
-        return $workIds;
+        return DB::connection('mysql_himo')->table('himo_products AS hp')
+            ->select('hw.himo_work_id')
+            ->join('himo_makers AS hm', function ($join) {
+                $join->on('hp.maker_cd', '=', 'hm.maker_cd')
+                    ->where('hgm.delete_flg', '=', 0);
+            })
+            ->join('himo_work_products AS hwp', function ($join) {
+                $join->on('hp.himo_product_pk', '=', 'hwp.himo_product_pk')
+                    ->where('hwp.delete_flg', '=', 0);
+            })
+            ->join('himo_works AS hw', function ($join) {
+                $join->on('hwp.himo_work_pk', '=', 'hw.himo_work_pk')
+                    ->where('hw.delete_flg', '=', 0);
+            })
+            ->where('hp.delete_flg', '=', 0)
+            ->whereBetween('hm.modified', [$this->lastUpdateDateStart, $this->lastUpdateDateEnd])
+            ->whereIn('hw.himo_work_id', $targetWorksArray)
+            ->groupBy('hw.himo_work_id')
+            ->get();
     }
 
+    // productだけ
+    // todo:IDの確認
     function himoMediaCategories($targetWorksArray)
     {
-        $workIds = [];
-        return $workIds;
+        return DB::connection('mysql_himo')->table('himo_products AS hp')
+            ->select('hw.himo_work_id')
+            ->join('himo_media_categories AS hmc', function ($join) {
+                $join->on('hp.media_category_cd', '=', 'hmc.id')
+                    ->where('hgm.delete_flg', '=', 0);
+            })
+            ->join('himo_work_products AS hwp', function ($join) {
+                $join->on('hp.himo_product_pk', '=', 'hwp.himo_product_pk')
+                    ->where('hwp.delete_flg', '=', 0);
+            })
+            ->join('himo_works AS hw', function ($join) {
+                $join->on('hwp.himo_work_pk', '=', 'hw.himo_work_pk')
+                    ->where('hw.delete_flg', '=', 0);
+            })
+            ->where('hp.delete_flg', '=', 0)
+            ->whereBetween('hm.modified', [$this->lastUpdateDateStart, $this->lastUpdateDateEnd])
+            ->whereIn('hw.himo_work_id', $targetWorksArray)
+            ->groupBy('hw.himo_work_id')
+            ->get();
     }
 
     function himoMediaFormats($targetWorksArray)
