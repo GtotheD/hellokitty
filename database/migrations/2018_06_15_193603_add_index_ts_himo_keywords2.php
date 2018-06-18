@@ -20,7 +20,6 @@ class AddIndexTsHimoKeywords2 extends Migration
             $table->index('hiragana');
             $table->string('katakana',255)->change();
             $table->index('katakana');
-            $table->index('roman_alphabet');
         });
     }
 
