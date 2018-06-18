@@ -944,20 +944,58 @@ class CheckHimoTables extends Command
 
     function himoBigSeries($targetWorksArray)
     {
-        $workIds = [];
-        return $workIds;
+        return DB::connection('mysql_himo')->table('himo_works AS hw')
+            ->select('hw.himo_work_id')
+            ->join('himo_small_series_works AS hssw', function ($join) {
+                $join->on('hssw.himo_work_pk', '=', 'hw.himo_work_pk')
+                    ->where('hssw.delete_flg', '=', 0);
+            })
+            ->join('himo_small_series AS hss', function ($join) {
+                $join->on('hss.id', '=', 'hssw.small_series_id')
+                    ->where('hss.delete_flg', '=', 0);
+            })
+            ->join('himo_big_series_small_series AS hbsss', function ($join) {
+                $join->on('hbsss.small_series_id', '=', 'hss.id')
+                    ->where('hbsss.delete_flg', '=', 0);
+            })
+            ->join('himo_big_series AS hbs', function ($join) {
+                $join->on('hbs.id', '=', 'hbsss.big_series_id')
+                    ->where('hbs.delete_flg', '=', 0);
+            })
+            ->where('hw.delete_flg', '=', 0)
+            ->whereBetween('hbs.modified', [$this->lastUpdateDateStart, $this->lastUpdateDateEnd])
+            ->whereIn('hw.himo_work_id', $targetWorksArray)
+            ->groupBy('hw.himo_work_id')
+            ->get();
     }
 
     function himoBigSeriesSmallSeries($targetWorksArray)
     {
-        $workIds = [];
-        return $workIds;
+        return DB::connection('mysql_himo')->table('himo_works AS hw')
+            ->select('hw.himo_work_id')
+            ->join('himo_small_series_works AS hssw', function ($join) {
+                $join->on('hssw.himo_work_pk', '=', 'hw.himo_work_pk')
+                    ->where('hssw.delete_flg', '=', 0);
+            })
+            ->join('himo_small_series AS hss', function ($join) {
+                $join->on('hss.id', '=', 'hssw.small_series_id')
+                    ->where('hss.delete_flg', '=', 0);
+            })
+            ->join('himo_big_series_small_series AS hbsss', function ($join) {
+                $join->on('hbsss.small_series_id', '=', 'hss.id')
+                    ->where('hbsss.delete_flg', '=', 0);
+            })
+            ->where('hw.delete_flg', '=', 0)
+            ->whereBetween('hbsss.modified', [$this->lastUpdateDateStart, $this->lastUpdateDateEnd])
+            ->whereIn('hw.himo_work_id', $targetWorksArray)
+            ->groupBy('hw.himo_work_id')
+            ->get();
     }
 
     // himo_small_series ↓
     // himo_small_series_works ↓
     // himo_works
-    function himoSmallSeries1($targetWorksArray)
+    function himoSmallSeries($targetWorksArray)
     {
         return DB::connection('mysql_himo')->table('himo_works AS hw')
             ->select('hw.himo_work_id')
@@ -976,28 +1014,6 @@ class CheckHimoTables extends Command
             ->get();
     }
 
-    // himo_small_series ↓
-    // himo_small_series_works ↓
-    // himo_works
-    function himoSmallSeries2($targetWorksArray)
-    {
-        return DB::connection('mysql_himo')->table('himo_works AS hw')
-            ->select('hw.himo_work_id')
-            ->join('himo_small_series_works AS hssw', function ($join) {
-                $join->on('hssw.himo_work_pk', '=', 'hw.himo_work_pk')
-                    ->where('hssw.delete_flg', '=', 0);
-            })
-            ->join('himo_small_series AS hss', function ($join) {
-                $join->on('hss.id', '=', 'hssw.small_series_id')
-                    ->where('hssw.delete_flg', '=', 0);
-            })
-            ->where('hw.delete_flg', '=', 0)
-            ->whereBetween('hss.modified', [$this->lastUpdateDateStart, $this->lastUpdateDateEnd])
-            ->whereIn('hw.himo_work_id', $targetWorksArray)
-            ->groupBy('hw.himo_work_id')
-            ->get();
-
-    }
 
     function himoSmallSeriesWorks($targetWorksArray)
     {
@@ -1016,20 +1032,76 @@ class CheckHimoTables extends Command
 
     function himoXmediaBigSeries($targetWorksArray)
     {
-        $workIds = [];
-        return $workIds;
+        return DB::connection('mysql_himo')->table('himo_works AS hw')
+            ->select('hw.himo_work_id')
+            ->join('himo_small_series_works AS hssw', function ($join) {
+                $join->on('hssw.himo_work_pk', '=', 'hw.himo_work_pk')
+                    ->where('hssw.delete_flg', '=', 0);
+            })
+            ->join('himo_small_series AS hss', function ($join) {
+                $join->on('hss.id', '=', 'hssw.small_series_id')
+                    ->where('hss.delete_flg', '=', 0);
+            })
+            ->join('himo_big_series_small_series AS hbsss', function ($join) {
+                $join->on('hbsss.small_series_id', '=', 'hss.id')
+                    ->where('hbsss.delete_flg', '=', 0);
+            })
+            ->join('himo_big_series AS hbs', function ($join) {
+                $join->on('hbs.id', '=', 'hbsss.big_series_id')
+                    ->where('hbs.delete_flg', '=', 0);
+            })
+            ->join('himo_xmedia_big_series AS hxbs', function ($join) {
+                $join->on('hxbs.big_series_id', '=', 'hbs.id')
+                    ->where('hxbs.delete_flg', '=', 0);
+            })
+            ->where('hw.delete_flg', '=', 0)
+            ->whereBetween('hxbs.modified', [$this->lastUpdateDateStart, $this->lastUpdateDateEnd])
+            ->whereIn('hw.himo_work_id', $targetWorksArray)
+            ->groupBy('hw.himo_work_id')
+            ->get();
     }
 
+    /* 必要がない？
     function himoXmediaRelationTypes($targetWorksArray)
     {
         $workIds = [];
         return $workIds;
     }
+    */
 
     function himoXmedias($targetWorksArray)
     {
-        $workIds = [];
-        return $workIds;
+        return DB::connection('mysql_himo')->table('himo_works AS hw')
+            ->select('hw.himo_work_id')
+            ->join('himo_small_series_works AS hssw', function ($join) {
+                $join->on('hssw.himo_work_pk', '=', 'hw.himo_work_pk')
+                    ->where('hssw.delete_flg', '=', 0);
+            })
+            ->join('himo_small_series AS hss', function ($join) {
+                $join->on('hss.id', '=', 'hssw.small_series_id')
+                    ->where('hss.delete_flg', '=', 0);
+            })
+            ->join('himo_big_series_small_series AS hbsss', function ($join) {
+                $join->on('hbsss.small_series_id', '=', 'hss.id')
+                    ->where('hbsss.delete_flg', '=', 0);
+            })
+            ->join('himo_big_series AS hbs', function ($join) {
+                $join->on('hbs.id', '=', 'hbsss.big_series_id')
+                    ->where('hbs.delete_flg', '=', 0);
+            })
+            ->join('himo_xmedia_big_series AS hxbs', function ($join) {
+                $join->on('hxbs.big_series_id', '=', 'hbs.id')
+                    ->where('hxbs.delete_flg', '=', 0);
+            })
+            ->join('himo_xmedias AS hx', function ($join) {
+                $join->on('hx.id', '=', 'hxbs.xmedia_id')
+                    ->where('hx.delete_flg', '=', 0);
+            })
+            ->where('hw.delete_flg', '=', 0)
+            ->whereBetween('hx.modified', [$this->lastUpdateDateStart, $this->lastUpdateDateEnd])
+            ->whereIn('hw.himo_work_id', $targetWorksArray)
+            ->groupBy('hw.himo_work_id')
+            ->get();
     }
 
 }
