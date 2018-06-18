@@ -468,7 +468,7 @@ class WorkRepository
         }
         $response['itemType'] = $this->convertWorkTypeIdToStr($response['workTypeId']);
 
-        if ($response['workFormatId'] == 5) {
+        if ($response['workFormatId'] == self::WORK_FORMAT_ID_MUSICVIDEO) {
             $response['itemType'] = 'dvd';
         }
         if ($addSaleTypeHas) {
@@ -682,7 +682,7 @@ class WorkRepository
                     } else {
                         $workFormatName = $base['work_format_name'];
                     }
-                    if ($base['work_format_id'] == 5) {
+                    if ($base['work_format_id'] == self::WORK_FORMAT_ID_MUSICVIDEO) {
                         $itemTypeVal = 'dvd';
                     }
                 }
@@ -943,7 +943,7 @@ class WorkRepository
             foreach ($data['results']['rows'] as $row) {
                 $base = $this->format($row);
                 $itemType = $this->convertWorkTypeIdToStr($base['work_type_id']);
-                if ($base['work_format_id'] == 5) {
+                if ($base['work_format_id'] == self::WORK_FORMAT_ID_MUSICVIDEO) {
                     $itemType = 'dvd';
                 }
                 $saleTypeHas = $this->parseFromArray($row['products'], $itemType);
@@ -1019,7 +1019,7 @@ class WorkRepository
         }
         $result['workId'] = $himoResult['results']['rows'][0]['work_id'];
         $result['itemType'] = $workRepository->convertWorkTypeIdToStr($himoResult['results']['rows'][0]['work_type_id']);
-        if ($himoResult['results']['rows'][0]['work_format_id'] == 5) {
+        if ($himoResult['results']['rows'][0]['work_format_id'] == self::WORK_FORMAT_ID_MUSICVIDEO) {
             $result['itemType'] = 'dvd';
         }
         return $result;

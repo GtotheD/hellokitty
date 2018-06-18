@@ -78,6 +78,9 @@ class RecommendOtherRepository
         $workRepository->getWorkList($workIdList);
         // 自分自身のアイテム種別を取得
         $baseWork = $work->setConditionByWorkId($workId)->getOne();
+        if ($baseWork->work_format_id == $workRepository::WORK_FORMAT_ID_MUSICVIDEO) {
+            $baseWork->work_type_id = $workRepository::WORK_TYPE_DVD;
+        }
         $work->getWorkWithProductIdsIn($workIdList, $saleType, $workId, null, $baseWork->work_type_id);
         $this->totalCount = $work->count();
         $workList = $work->selectCamel($this->selectColumn())->get($this->limit, $this->offset);
