@@ -21,7 +21,7 @@ class HimoKeyword extends Model
             ->orWhere('roman_alphabet', 'like', "{$keyword}%")
             ->orWhere('hiragana', 'like', "{$keyword}%")
             ->orWhere('katakana', 'like', "{$keyword}%")
-            ->orderBy('weight')
+            ->orderBy('weight', 'desc')
             ->orderBy('keyword');
         return $this;
     }
