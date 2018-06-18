@@ -89,7 +89,9 @@ class CheckHimoTables extends Command
         return true;
     }
 
-
+    /*
+     * 対象テーブル：himo_works
+     */
     function himoWorks($targetWorksArray)
     {
         return DB::connection('mysql_himo')->table('himo_works AS hw')
@@ -101,6 +103,9 @@ class CheckHimoTables extends Command
             ->get();
     }
 
+    /*
+     * 対象テーブル：himo_work_countries
+     */
     function himoWorkCountries($targetWorksArray)
     {
         return DB::connection('mysql_himo')->table('himo_works AS hw')
@@ -109,16 +114,15 @@ class CheckHimoTables extends Command
                 $join->on('hw.himo_work_pk', '=', 'hwc.himo_work_pk')
                     ->where('hwc.delete_flg', '=', 0);
             })
-            ->join('himo_countries AS hc', function ($join) {
-                $join->on('hwc.country_id', '=', 'hc.id')
-                    ->where('hc.delete_flg', '=', 0);
-            })
             ->whereBetween('hwc.modified', [$this->lastUpdateDateStart, $this->lastUpdateDateEnd])
             ->whereIn('hw.himo_work_id', $targetWorksArray)
             ->groupBy('hw.himo_work_id')
             ->get();
     }
 
+    /*
+     * 対象テーブル：himo_work_docs
+     */
     function himoWorkDocs($targetWorksArray)
     {
         return DB::connection('mysql_himo')->table('himo_works AS hw')
@@ -133,6 +137,9 @@ class CheckHimoTables extends Command
             ->get();
     }
 
+    /*
+     * 対象テーブル：himo_work_products
+     */
     function himoWorkProducts($targetWorksArray)
     {
         return DB::connection('mysql_himo')->table('himo_works AS hw')
@@ -147,6 +154,9 @@ class CheckHimoTables extends Command
             ->get();
     }
 
+    /*
+     * 対象テーブル：himo_work_relations
+     */
     function himoWorkRelations($targetWorksArray)
     {
         return DB::connection('mysql_himo')->table('himo_works AS hw')
@@ -161,6 +171,9 @@ class CheckHimoTables extends Command
             ->get();
     }
 
+    /*
+     * 対象テーブル：himo_work_scenes
+     */
     function himoWorkScenes($targetWorksArray)
     {
         return DB::connection('mysql_himo')->table('himo_works AS hw')
@@ -175,6 +188,9 @@ class CheckHimoTables extends Command
             ->get();
     }
 
+    /*
+     * 対象テーブル：himo_work_types
+     */
     function himoWorkTypes($targetWorksArray)
     {
         return DB::connection('mysql_himo')->table('himo_works AS hw')
@@ -189,6 +205,9 @@ class CheckHimoTables extends Command
             ->get();
     }
 
+    /*
+     * 対象テーブル：himo_work_works
+     */
     function himoWorkWorks($targetWorksArray)
     {
         return DB::connection('mysql_himo')->table('himo_works AS hw')
@@ -203,7 +222,9 @@ class CheckHimoTables extends Command
             ->get();
     }
 
-
+    /*
+     * 対象テーブル：himo_products
+     */
     function himoProducts($targetWorksArray)
     {
         return DB::connection('mysql_himo')->table('himo_products AS hp')
@@ -223,6 +244,9 @@ class CheckHimoTables extends Command
             ->get();
     }
 
+    /*
+     * 対象テーブル：himo_product_countries
+     */
     function himoProductCountries($targetWorksArray)
     {
         return DB::connection('mysql_himo')->table('himo_products AS hp')
@@ -246,6 +270,9 @@ class CheckHimoTables extends Command
             ->get();
     }
 
+    /*
+     * 対象テーブル：himo_product_devices
+     */
     function himoProductDevices($targetWorksArray)
     {
         return DB::connection('mysql_himo')->table('himo_products AS hp')
@@ -269,6 +296,9 @@ class CheckHimoTables extends Command
             ->get();
     }
 
+    /*
+     * 対象テーブル：himo_product_docs
+     */
     function himoProductDocs($targetWorksArray)
     {
         return DB::connection('mysql_himo')->table('himo_products AS hp')
@@ -292,6 +322,9 @@ class CheckHimoTables extends Command
             ->get();
     }
 
+    /*
+     * 対象テーブル：himo_product_genres
+     */
     function himoProductGenres($targetWorksArray)
     {
         return DB::connection('mysql_himo')->table('himo_products AS hp')
@@ -315,6 +348,9 @@ class CheckHimoTables extends Command
             ->get();
     }
 
+    /*
+     * 対象テーブル：himo_product_people
+     */
     function himoProductPeople($targetWorksArray)
     {
         return DB::connection('mysql_himo')->table('himo_products AS hp')
@@ -338,6 +374,9 @@ class CheckHimoTables extends Command
             ->get();
     }
 
+    /*
+     * 対象テーブル：himo_product_scenes
+     */
     function himoProductScenes($targetWorksArray)
     {
         return DB::connection('mysql_himo')->table('himo_products AS hp')
@@ -361,6 +400,9 @@ class CheckHimoTables extends Command
             ->get();
     }
 
+    /*
+     * 対象テーブル：himo_product_tracks
+     */
     function himoProductTracks($targetWorksArray)
     {
         return DB::connection('mysql_himo')->table('himo_products AS hp')
@@ -383,6 +425,10 @@ class CheckHimoTables extends Command
             ->groupBy('hw.himo_work_id')
             ->get();
     }
+    /*
+     * 対象テーブル：himo_product_types
+     */
+    //
     /*
         function himoProductTypes($targetWorksArray)
         {
@@ -408,9 +454,25 @@ class CheckHimoTables extends Command
         }
     */
 
+    function himoCountriesToWork($targetWorksArray)
+    {
+        return DB::connection('mysql_himo')->table('himo_works AS hw')
+            ->select('hw.himo_work_id')
+            ->join('himo_work_countries AS hwc', function ($join) {
+                $join->on('hw.himo_work_pk', '=', 'hwc.himo_work_pk')
+                    ->where('hwc.delete_flg', '=', 0);
+            })
+            ->join('himo_countries AS hc', function ($join) {
+                $join->on('hwc.country_id', '=', 'hc.id')
+                    ->where('hc.delete_flg', '=', 0);
+            })
+            ->whereBetween('hc.modified', [$this->lastUpdateDateStart, $this->lastUpdateDateEnd])
+            ->whereIn('hw.himo_work_id', $targetWorksArray)
+            ->groupBy('hw.himo_work_id')
+            ->get();
+    }
 
-    // todo:works側もやる
-    function himoCountries($targetWorksArray)
+    function himoCountriesToProduct($targetWorksArray)
     {
         return DB::connection('mysql_himo')->table('himo_products AS hp')
             ->select('hw.himo_work_id')
@@ -1060,14 +1122,6 @@ class CheckHimoTables extends Command
             ->groupBy('hw.himo_work_id')
             ->get();
     }
-
-    /* 必要がない？
-    function himoXmediaRelationTypes($targetWorksArray)
-    {
-        $workIds = [];
-        return $workIds;
-    }
-    */
 
     function himoXmedias($targetWorksArray)
     {
