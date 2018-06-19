@@ -83,10 +83,86 @@ class CheckHimoTables extends Command
                 $offset += $loopPerOnce;
             }
         }
+
         // 全てのテーブルをチェックしてテーブルを確認後、対象のwork_idに関連するテーブルからデータを削除する。
+        $this->deleteFromTables();
 
 
         return true;
+    }
+
+    function deleteFromTables()
+    {
+        DB::beginTransaction();
+        try {
+            $this->info('Delete Start');
+            $personSubQuery = DB::table('ts_works AS tw')
+                ->select(DB::raw('distinct(tpe.person_id)'))
+                ->join('ts_products as tp', function ($join) {
+                    $join->on('tp.work_id', '=', 'tw.work_id');
+                })
+                ->join('ts_people as tpe', function ($join) {
+                    $join->on('tpe.product_unique_id', '=', 'tp.product_unique_id');
+                })
+                ->join('ts_himo_update_works as thuw', function ($join) {
+                    $join->on('tw.work_id', '=', 'thuw.work_id');
+                });
+            DB::table('ts_related_people')
+                ->whereRaw('people_id IN ('.$personSubQuery->toSql().')')
+                ->delete();
+            DB::table('ts_people_related_works')
+                ->whereRaw('person_id IN ('.$personSubQuery->toSql().')')
+                ->delete();
+
+            $productsSubQuery = DB::table('ts_works AS tw')
+                ->select(DB::raw('distinct(tp.product_unique_id)'))
+                ->join('ts_products as tp', function ($join) {
+                    $join->on('tp.work_id', '=', 'tw.work_id');
+                })
+                ->join('ts_himo_update_works as thuw', function ($join) {
+                    $join->on('tw.work_id', '=', 'thuw.work_id');
+                });
+
+            DB::table('ts_people')
+                ->whereRaw('product_unique_id IN ('.$productsSubQuery->toSql().')')
+                ->delete();
+
+            DB::table('ts_musico_url as tmu')
+                ->join('ts_himo_update_works as thuw', function ($join) {
+                    $join->on('tmu.work_id', '=', 'thuw.work_id');
+                })->delete();
+
+            DB::table('ts_discas_products as tdp')
+                ->join('ts_himo_update_works as thuw', function ($join) {
+                    $join->on('tdp.work_id', '=', 'thuw.work_id');
+                })->delete();
+
+            DB::table('ts_series as ts')
+                ->join('ts_himo_update_works as thuw', function ($join) {
+                    $join->on('ts.work_id', '=', 'thuw.work_id');
+                })->delete();
+
+            DB::table('ts_related_works as trw')
+                ->join('ts_himo_update_works as thuw', function ($join) {
+                    $join->on('trw.work_id', '=', 'thuw.work_id');
+                })->delete();
+
+            DB::table('ts_products as tp')
+                ->join('ts_himo_update_works as thuw', function ($join) {
+                    $join->on('tp.work_id', '=', 'thuw.work_id');
+                })->delete();
+
+            DB::table('ts_works as tw')
+                ->join('ts_himo_update_works as thuw', function ($join) {
+                    $join->on('tw.work_id', '=', 'thuw.work_id');
+                })->delete();
+            DB::commit();
+            $this->info('Delete Success!');
+        } catch (\Exception $exception) {
+            $this->info('Delete Error...');
+            DB::rollback();
+        }
+
     }
 
     /*
@@ -1156,6 +1232,10 @@ class CheckHimoTables extends Command
             ->whereIn('hw.himo_work_id', $targetWorksArray)
             ->groupBy('hw.himo_work_id')
             ->get();
+    }
+    function himoPersonRelations($targetWorksArray)
+    {
+
     }
 
 }
