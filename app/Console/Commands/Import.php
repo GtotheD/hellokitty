@@ -197,7 +197,7 @@ class Import extends Command
             }
             $this->infoH1('Update Structure Table Data.');
             if ($isTest === false) {
-                $this->updateSectionsData();
+                $this->updateSectionsDataFromHimo();
             }
             $this->commitImportControlInfo();
         });
