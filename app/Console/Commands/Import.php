@@ -28,7 +28,7 @@ class Import extends Command
      *
      * @var string
      */
-    protected $signature = 'import {--test} {--dir=}';
+    protected $signature = 'import {--test} {--update-only} {--dir=}';
 
     /**
      * The console command description.
@@ -117,6 +117,7 @@ class Import extends Command
      */
     public function handle()
     {
+        $updateOnly = $this->option('update-only');
         $isTest = $this->option('test');
         $dir = $this->option('dir');
         if (isset($dir)) {
@@ -124,6 +125,11 @@ class Import extends Command
             $this->baseDir = $dir . DIRECTORY_SEPARATOR;
         }
 
+        // updateのみ実行の場合
+        if ($updateOnly === true ) {
+            $this->updateSectionsDataFromHimo();
+            return true;
+        }
         $this->getImportControlInfo();
 
         $this->infoH1('Start Json Data Import Command. [' . date('Y/m/d H:i:s') . ']');
@@ -500,17 +506,14 @@ class Import extends Command
 
     private function updateSectionsDataFromHimo()
     {
-        $sectionRepository = new SectionRepository;
         $workRepository = new WorkRepository;
         $section = new Section;
         // 全件を対象
-        $sections = $section->conditionAll()->get(10000);
-        $himo = new HimoRepository;
+        $sections = $section->conditionNoWorkIdActiveRow()->select(['t1.*'])->get();
         foreach ($sections as $sectionRow) {
             $this->infoH2($sectionRow->id . ' : ' . $sectionRow->code);
             if (!empty($sectionRow->code)) {
                 try {
-                    //$res = $himo->crosswork([$sectionRow->code], '0206')->get();
                     $length = strlen($sectionRow->code);
                     // rental_product_cd
                     if ($length === 9) {
@@ -519,7 +522,6 @@ class Import extends Command
                         $codeType = '0205';
                     }
                     $this->infoMessage('Id Type: ' . $codeType);
-
                     $res = $workRepository->get($sectionRow->code, [], $codeType);
                     $updateValues = [
                         'work_id' => $res['workId'],
@@ -527,13 +529,10 @@ class Import extends Command
                         'url_code' => $res['urlCd'],
                         'updated_at' => date('Y-m-d H:i:s')
                     ];
-
                     $updateValues['image_url'] = $res['jacketL'];
-
                     $updateValues['sale_start_date'] = $res['saleStartDate'];
-
                     $updateValues['supplement'] = $res['supplement'];
-                    // $section->update($sectionRow->id, $updateValues);
+                    $section->update($sectionRow->id, $updateValues);
                 } catch (NoContentsException $e) {
                     $this->infoMessage('Skip up date: No Contents');
                 }
