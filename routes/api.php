@@ -43,7 +43,7 @@ $router->group([
     $router->get('version', function () {
         $version = config('version');
         $version['version'] = hash('sha256', serialize($version));
-        return response()->json($version);
+        return response()->json($version)->header('X-Accel-Expires', '0');
     });
 
     // コンテンツ構成取得API
@@ -60,7 +60,7 @@ $router->group([
             'totalCount' => $structures->getTotalCount(),
             'rows' => $structures->getRows(),
         ];
-        return response()->json($response);
+        return response()->json($response)->header('X-Accel-Expires', '0');
     });
 
     // 固定コンテンツ取得API
@@ -78,7 +78,7 @@ $router->group([
             'height' => $banner->getHeight(),
             'rows' => $banner->getRows()
         ];
-        return response()->json($response);
+        return response()->json($response)->header('X-Accel-Expires', '0');
     });
 
     // 通常セクション取得API
@@ -99,7 +99,7 @@ $router->group([
             'totalCount' => $section->getTotalCount(),
             'rows' => $section->getRows()
         ];
-        return response()->json($response);
+        return response()->json($response)->header('X-Accel-Expires', '1800');
     });
 
     // バナーセクション取得API
@@ -117,7 +117,7 @@ $router->group([
             'height' => $banner->getHeight(),
             'rows' => $banner->getRows()
         ];
-        return response()->json($response);
+        return response()->json($response)->header('X-Accel-Expires', '0');
     });
 
     // レコメンドセクション取得API
@@ -126,7 +126,7 @@ $router->group([
         $sectionRepository->setLimit(20);
         $sectionRepository->setSupplementVisible($request->input('supplementVisibleFlg', false));
         $sectionData = $sectionRepository->ranking($codeType, $code, $period);
-        return $sectionData;
+        return response()->json($sectionData)->header('X-Accel-Expires', '86400');
     });
 
     // レコメンドセクション取得API
@@ -137,7 +137,7 @@ $router->group([
         $sectionRepository = new SectionRepository;
         $sectionRepository->setSupplementVisible($request->input('supplementVisibleFlg', false));
         $sectionData = $sectionRepository->releaseManual($tapCategoryId, $releaseDateTo);
-        return $sectionData;
+        return response()->json($sectionData)->header('X-Accel-Expires', '0');
     });
 
     // レコメンドセクション取得API
@@ -145,7 +145,7 @@ $router->group([
         $sectionRepository = new SectionRepository;
         $sectionRepository->setSupplementVisible($request->input('supplementVisibleFlg', false));
         $sectionData = $sectionRepository->releaseAuto($genreId, $storeProductItemCd);
-        return $sectionData;
+        return response()->json($sectionData)->header('X-Accel-Expires', '86400');
     });
 
     // レコメンドセクション取得API
@@ -153,7 +153,7 @@ $router->group([
         $sectionRepository = new SectionRepository;
         $sectionRepository->setSupplementVisible($request->input('supplementVisibleFlg', false));
         $sectionData = $sectionRepository->releaseHimo($periodType, $genreId);
-        return $sectionData;
+        return response()->json($sectionData)->header('X-Accel-Expires', '86400');
     });
 
     // 作品基本情報
@@ -181,7 +181,7 @@ $router->group([
         $response = [
             'data' => $result
         ];
-        return response()->json($response);
+        return response()->json($response)->header('X-Accel-Expires', '86400');
     });
     // 商品一覧情報取得
     $router->get('work/{workId}/products', function (Request $request, $workId) {
@@ -199,7 +199,7 @@ $router->group([
             'totalCount' => $product->getTotalCount(),
             'rows' => $result
         ];
-        return response()->json($response);
+        return response()->json($response)->header('X-Accel-Expires', '86400');
     });
     // 商品一覧情報取得（DVDレンタル時のグルーピング（問い合わせ時のLimit数がおかしくなる為にグルーピングが必要））
     $router->get('work/{workId}/products/rental', function (Request $request, $workId) {
@@ -216,7 +216,7 @@ $router->group([
             'totalCount' => $product->getTotalCount(),
             'rows' => $result
         ];
-        return response()->json($response);
+        return response()->json($response)->header('X-Accel-Expires', '86400');
     });
     // Himo作品ID作品検索
     $router->get('work/{workId}/products/has', function (Request $request, $workId) {
@@ -230,7 +230,7 @@ $router->group([
         $response = [
             'data' => $result
         ];
-        return response()->json($response);
+        return response()->json($response)->header('X-Accel-Expires', '86400');
     });
     // キャストスタッフ一覧取得
     $router->get('work/{workId}/people', function (Request $request, $workId) {
@@ -242,7 +242,7 @@ $router->group([
         if (empty($response)) {
             throw new NoContentsException;
         }
-        return response()->json($response);
+        return response()->json($response)->header('X-Accel-Expires', '86400');
     });
 
     // 作品シリーズ情報
@@ -256,7 +256,7 @@ $router->group([
         if (empty($response)) {
             throw new NoContentsException;
         }
-        return response()->json($response);
+        return response()->json($response)->header('X-Accel-Expires', '86400');
     });
     // レビュー情報 filmarks
     $router->get('work/{workId}/review/filmarks', function (Request $request, $workId) {
@@ -268,7 +268,7 @@ $router->group([
         if (empty($response)) {
             throw new NoContentsException;
         }
-        return response()->json($response);
+        return response()->json($response)->header('X-Accel-Expires', '7200');
     });
     // レビュー情報 discas
     $router->get('work/{workId}/review/discas', function (Request $request, $workId) {
@@ -286,7 +286,7 @@ $router->group([
             throw new NoContentsException;
         }
 
-        return response()->json($response);
+        return response()->json($response)->header('X-Accel-Expires', '7200');
     });
     // レビュー情報 tol
     $router->get('work/{workId}/review/tol', function (Request $request, $workId) {
@@ -302,7 +302,7 @@ $router->group([
             throw new NoContentsException;
         }
 
-        return response()->json($response);
+        return response()->json($response)->header('X-Accel-Expires', '7200');
     });
     // 関連作品
     $router->get('work/{workId}/relation/works', function (Request $request, $workId) {
@@ -319,7 +319,7 @@ $router->group([
             'totalCount' => $relateadWorkRepository->getTotalCount(),
             'rows' => $results
         ];
-        return response()->json($response);
+        return response()->json($response)->header('X-Accel-Expires', '86400');
     });
 
     // 関連画像
@@ -346,7 +346,7 @@ $router->group([
             'totalCount' => $total,
             'rows' => $rows
         ];
-        return response()->json($response);
+        return response()->json($response)->header('X-Accel-Expires', '86400');
     });
     // 関連アーティスト
     $router->get('work/{workId}/relation/artist', function (Request $request, $workId) {
@@ -354,11 +354,11 @@ $router->group([
         $recommendArtistRepository->setLimit($request->input('limit', 10));
         $recommendArtistRepository->setOffset($request->input('offset', 0));
         $response = $recommendArtistRepository->getArtist($workId);
-        return response()->json($response);
+        return response()->json($response)->header('X-Accel-Expires', '86400');
     });
     // キャスト情報
     $router->get('cast/{castId}', function (Request $request, $workId) {
-        return $json;
+        return response()->json($json)->header('X-Accel-Expires', '86400');
     });
     // 作品レコメンド（この作品を見た人はこんな作品もみています）
     $router->get('work/{workId}/recommend/other', function (Request $request, $workId) {
@@ -375,7 +375,7 @@ $router->group([
             'totalCount' => $recommendOtherRepository->getTotalCount(),
             'rows' => $rows
         ];
-        return response()->json($response);
+        return response()->json($response)->header('X-Accel-Expires', '86400');
     });
     // 作者レコメンド
     $router->get('work/{workId}/recommend/author', function (Request $request, $workId) {
@@ -393,7 +393,7 @@ $router->group([
             'totalCount' => $peopleRelatedWorksRepository->getTotalCount(),
             'rows' => $rows
         ];
-        return response()->json($response);
+        return response()->json($response)->header('X-Accel-Expires', '86400');
     });
     // 作品レコメンド
     $router->get('work/{workId}/recommend/artist', function (Request $request, $workId) {
@@ -411,7 +411,7 @@ $router->group([
             'totalCount' => $peopleRelatedWorksRepository->getTotalCount(),
             'rows' => $rows
         ];
-        return response()->json($response);
+        return response()->json($response)->header('X-Accel-Expires', '86400');
     });
     // 変換
     $router->get('convert/work/{idType}/{id}', function (Request $request, $idType, $id) {
@@ -420,7 +420,7 @@ $router->group([
         if(empty($response)){
             throw new NoContentsException;
         }
-        return response()->json($response);
+        return response()->json($response)->header('X-Accel-Expires', '86400');
     });
 
     // 変換
@@ -433,7 +433,7 @@ $router->group([
         $response = [
             'data' => $result
         ];
-        return response()->json($response);
+        return response()->json($response)->header('X-Accel-Expires', '86400');
     });
 
     // 店舗在庫
@@ -443,7 +443,7 @@ $router->group([
         if(empty($response)){
             throw new NoContentsException;
         }
-        return response()->json($response);
+        return response()->json($response)->header('X-Accel-Expires', '0');
     });
 
     //人物関連作品取得
@@ -468,7 +468,7 @@ $router->group([
         ];
 
 
-        return response()->json($response);
+        return response()->json($response)->header('X-Accel-Expires', '86400');
     });
 
     // キーワード検索
@@ -491,7 +491,7 @@ $router->group([
         if(empty($response)){
             throw new NoContentsException;
         }
-        return response()->json($response);
+        return response()->json($response)->header('X-Accel-Expires', '86400');
     });
 
     // キーワードサジェスト
@@ -509,7 +509,7 @@ $router->group([
             'totalCount' => $himoKeywordRepository->getTotalCount(),
             'rows' => $keywords
         ];
-        return response()->json($response);
+        return response()->json($response)->header('X-Accel-Expires', '86400');
     });
 
     // ジャンルからの作品一覧取得
@@ -530,7 +530,7 @@ $router->group([
         if (empty($response)) {
             throw new NoContentsException;
         }
-        return response()->json($response);
+        return response()->json($response)->header('X-Accel-Expires', '86400');
     });
 
     $router->get('release/has/recommend', function () {
@@ -539,7 +539,7 @@ $router->group([
         $response = [
             'data' => $response
         ];
-        return response()->json($response);
+        return response()->json($response)->header('X-Accel-Expires', '86400');
     });
 
     $router->get('release/{month}/{genreId}', function (Request $request, $month, $genreId) {
@@ -563,7 +563,7 @@ $router->group([
             'baseMonth' => \Carbon\Carbon::now()->format('Y-m'),
             'rows' => $rows
         ];
-        return response()->json($response);
+        return response()->json($response)->header('X-Accel-Expires', '86400');
     });
 
     $router->get('ranking/{codeType:himo|agg}/{code}[/{period}]', function (Request $request, $codeType, $code, $period = null) {
@@ -576,7 +576,7 @@ $router->group([
         if (empty($sectionData)) {
             throw new NoContentsException;
         }
-        return response()->json($sectionData);
+        return response()->json($sectionData)->header('X-Accel-Expires', '86400');
     });
 
     // 検証環境まで有効にするテスト要
@@ -584,7 +584,7 @@ $router->group([
         $router->get('himo/{workId}', function (Request $request, $workId) {
             $himo = new HimoRepository();
             $response = $himo->crosswork([$workId])->get();
-            return response()->json($response);
+            return response()->json($response)->header('X-Accel-Expires', '0');
         });
 
     }
@@ -593,6 +593,6 @@ $router->group(['prefix' => env('URL_PATH_PREFIX') . env('API_VERSION')], functi
     // APIドキュメント
     $router->get('docs/swagger.json', function () {
         $swagger = \Swagger\scan(base_path('routes'));
-        return response()->json($swagger);
+        return response()->json($swagger)->header('X-Accel-Expires', '0');
     });
 });

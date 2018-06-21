@@ -372,7 +372,8 @@ class WorkRepository
             $product = (array)$productModel->setConditionByWorkIdNewestProduct($response['workId'], $this->saleType)->toCamel()->getOne();
         }
         if (!empty($product)) {
-            if (substr($product['itemCd'], -2) === '75' && !empty($product['numberOfVolume'])) {
+            if ((substr($product['itemCd'], -2) === '75' && !empty($product['numberOfVolume'])) ||
+                (substr($product['itemCd'], -2) === '76' && !empty($product['numberOfVolume']))) {
                 $response['productName'] = $product['productName'] . "（{$product['numberOfVolume']}）";
             }
             // 全ての在庫ページで表示する日付を商品の最新のものにする。
