@@ -56,6 +56,12 @@ class Model
         return $this->dbObject->count();
     }
 
+    public function getAll()
+    {
+        return $this->dbObject
+            ->get();
+    }
+
     public function get($limit = 100, $offset = 0)
     {
         return $this->dbObject
