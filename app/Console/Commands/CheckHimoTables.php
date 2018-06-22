@@ -86,8 +86,6 @@ class CheckHimoTables extends Command
 
         // 全てのテーブルをチェックしてテーブルを確認後、対象のwork_idに関連するテーブルからデータを削除する。
         $this->deleteFromTables();
-
-
         return true;
     }
 
@@ -1233,9 +1231,36 @@ class CheckHimoTables extends Command
             ->groupBy('hw.himo_work_id')
             ->get();
     }
+
     function himoPersonRelations($targetWorksArray)
     {
-
+        return DB::connection('mysql_himo')->table('himo_products AS hp')
+            ->select('hw.himo_work_id')
+            ->join('himo_person_relations AS hpr', function ($join) {
+                $join->on('hp.himo_person_pk', '=', 'hpr.himo_person_pk_from')
+                    ->where('hpr.delete_flg', '=', 0);
+            })
+            ->join('himo_people AS hp', function ($join) {
+                $join->on('hp.himo_person_pk', '=', 'hpp.himo_person_pk')
+                    ->where('hp.delete_flg', '=', 0);
+            })
+            ->join('himo_product_people AS hpp', function ($join) {
+                $join->on('hp.himo_product_pk', '=', 'hpp.himo_product_pk')
+                    ->where('hpp.delete_flg', '=', 0);
+            })
+            ->join('himo_work_products AS hwp', function ($join) {
+                $join->on('hp.himo_product_pk', '=', 'hwp.himo_product_pk')
+                    ->where('hwp.delete_flg', '=', 0);
+            })
+            ->join('himo_works AS hw', function ($join) {
+                $join->on('hwp.himo_work_pk', '=', 'hw.himo_work_pk')
+                    ->where('hw.delete_flg', '=', 0);
+            })
+            ->where('hp.delete_flg', '=', 0)
+            ->whereBetween('hpr.modified', [$this->lastUpdateDateStart, $this->lastUpdateDateEnd])
+            ->whereIn('hw.himo_work_id', $targetWorksArray)
+            ->groupBy('hw.himo_work_id')
+            ->get();
     }
 
 }
