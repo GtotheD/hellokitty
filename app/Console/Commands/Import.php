@@ -207,6 +207,7 @@ class Import extends Command
             }
             $this->commitImportControlInfo();
         });
+
         $this->info('Finish!');
         return true;
     }
@@ -509,7 +510,7 @@ class Import extends Command
         $workRepository = new WorkRepository;
         $section = new Section;
         // 全件を対象
-        $sections = $section->conditionNoWorkIdActiveRow()->select(['t1.*'])->get();
+        $sections = $section->conditionNoWorkIdActiveRow()->select(['t1.*'])->getAll();
         foreach ($sections as $sectionRow) {
             $this->infoH2($sectionRow->id . ' : ' . $sectionRow->code);
             if (!empty($sectionRow->code)) {
