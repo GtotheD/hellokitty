@@ -41,6 +41,11 @@ class Model
             ->update($values);
     }
 
+    public function delete()
+    {
+        return $this->dbObject->delete();
+    }
+
     public function limit($limit)
     {
         return $this->dbObject->limit($limit);

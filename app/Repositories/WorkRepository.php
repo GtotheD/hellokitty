@@ -561,6 +561,8 @@ class WorkRepository
                             $isMusicVideo = true;
                         }
                         $productData[] = $productRepository->format($row['work_id'], $product, $isMusicVideo);
+                        // 削除対象のIDを抽出
+                        $deleteProduct[] = $product['id'];
                         // Insert people
                         if ($people = array_get($product, 'people')) {
                             foreach ($people as $person) {
@@ -588,6 +590,8 @@ class WorkRepository
             $discasProduct = new DiscasProduct();
 
             $this->work->insertBulk($workData, $insertWorkId);
+            // インサート前に存在していれば削除する。
+            $productModel->setConditionByProductUniqueIdIn($deleteProduct)->delete();
             $productModel->insertBulk($productData);
             $peopleModel->insertBulk($peopleData);
             $musicoUrl->insertBulk($musicoUrlInsertArray);

@@ -31,6 +31,13 @@ class Product extends Model
         return $this;
     }
 
+    public function setConditionByProductUniqueIdIn(array $productUniqueIds)
+    {
+        $this->dbObject = DB::table($this->table)
+            ->whereIn('product_unique_id', $productUniqueIds);
+        return $this;
+    }
+
     /*
      * Get Newest Product
      */
