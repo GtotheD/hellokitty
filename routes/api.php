@@ -60,7 +60,7 @@ $router->group([
             'totalCount' => $structures->getTotalCount(),
             'rows' => $structures->getRows(),
         ];
-        return response()->json($response)->header('X-Accel-Expires', '0');
+        return response()->json($response)->header('X-Accel-Expires', '600');
     });
 
     // 固定コンテンツ取得API
@@ -78,7 +78,7 @@ $router->group([
             'height' => $banner->getHeight(),
             'rows' => $banner->getRows()
         ];
-        return response()->json($response)->header('X-Accel-Expires', '0');
+        return response()->json($response)->header('X-Accel-Expires', '600');
     });
 
     // 通常セクション取得API
@@ -99,7 +99,7 @@ $router->group([
             'totalCount' => $section->getTotalCount(),
             'rows' => $section->getRows()
         ];
-        return response()->json($response)->header('X-Accel-Expires', '1800');
+        return response()->json($response)->header('X-Accel-Expires', '600');
     });
 
     // バナーセクション取得API
@@ -117,7 +117,7 @@ $router->group([
             'height' => $banner->getHeight(),
             'rows' => $banner->getRows()
         ];
-        return response()->json($response)->header('X-Accel-Expires', '0');
+        return response()->json($response)->header('X-Accel-Expires', '600');
     });
 
     // レコメンドセクション取得API
@@ -137,7 +137,7 @@ $router->group([
         $sectionRepository = new SectionRepository;
         $sectionRepository->setSupplementVisible($request->input('supplementVisibleFlg', false));
         $sectionData = $sectionRepository->releaseManual($tapCategoryId, $releaseDateTo);
-        return response()->json($sectionData)->header('X-Accel-Expires', '0');
+        return response()->json($sectionData)->header('X-Accel-Expires', '600');
     });
 
     // レコメンドセクション取得API
@@ -268,7 +268,7 @@ $router->group([
         if (empty($response)) {
             throw new NoContentsException;
         }
-        return response()->json($response)->header('X-Accel-Expires', '7200');
+        return response()->json($response)->header('X-Accel-Expires', '86400');
     });
     // レビュー情報 discas
     $router->get('work/{workId}/review/discas', function (Request $request, $workId) {
@@ -286,7 +286,7 @@ $router->group([
             throw new NoContentsException;
         }
 
-        return response()->json($response)->header('X-Accel-Expires', '7200');
+        return response()->json($response)->header('X-Accel-Expires', '86400');
     });
     // レビュー情報 tol
     $router->get('work/{workId}/review/tol', function (Request $request, $workId) {
@@ -302,7 +302,7 @@ $router->group([
             throw new NoContentsException;
         }
 
-        return response()->json($response)->header('X-Accel-Expires', '7200');
+        return response()->json($response)->header('X-Accel-Expires', '86400');
     });
     // 関連作品
     $router->get('work/{workId}/relation/works', function (Request $request, $workId) {
