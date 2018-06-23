@@ -1069,14 +1069,14 @@ class CheckHimoTables extends Command
     {
         return DB::connection('mysql_himo')->table('himo_products AS hp')
             ->select('hw.himo_work_id')
-            ->join('himo_person_relations AS hpr', function ($join) {
-                $join->on('hp.himo_person_pk', '=', 'hpr.himo_person_pk_from');
-            })
-            ->join('himo_people AS hp', function ($join) {
-                $join->on('hp.himo_person_pk', '=', 'hpp.himo_person_pk');
-            })
             ->join('himo_product_people AS hpp', function ($join) {
                 $join->on('hp.himo_product_pk', '=', 'hpp.himo_product_pk');
+            })
+            ->join('himo_people AS hpe', function ($join) {
+                $join->on('hpe.himo_person_pk', '=', 'hpp.himo_person_pk');
+            })
+            ->join('himo_person_relations AS hpr', function ($join) {
+                $join->on('hpe.himo_person_pk', '=', 'hpr.himo_person_pk_from');
             })
             ->join('himo_work_products AS hwp', function ($join) {
                 $join->on('hp.himo_product_pk', '=', 'hwp.himo_product_pk');
