@@ -346,11 +346,19 @@ class SectionRepository
             $product = new Product();
             $product = $product->setConditionByWorkIdSaleTypeSaleStartDate($row->work_id, $saleType, $from, $to)->getOne();
             if (!empty($product)) {
+
+                $productName = $product->product_name;
+
+                if ((substr($product->item_cd, -2) === '75' && !empty($product->number_of_volume)) ||
+                    (substr($product->item_cd, -2) === '76' && !empty($product->number_of_volume))) {
+                    $productName = $product->product_name . "（{$product->number_of_volume}）";
+                }
+
                 $formattedRow =
                     [
                         'imageUrl' => $product->jacket_l,
-                        'title' => $product->product_name,
-                        'workTitle' => $product->product_name,
+                        'title' => $productName,
+                        'workTitle' => $work['workTitle'],
                         'workId' => $row->work_id,
                         'code' => $product->product_id,
                         'urlCd' => $work['urlCd'],
