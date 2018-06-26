@@ -85,6 +85,7 @@ class Product extends Model
             ->join($this->table . ' AS p2', 'p1.ccc_family_cd', '=', 'p2.ccc_family_cd')
             ->select(DB::raw('p1.*'))
             ->where([
+                ['p1.work_id', '=', 'p2.work_id'],
                 ['p1.jan', '=', $jan],
                 ['p2.rental_product_cd', '<>', '']
             ]);

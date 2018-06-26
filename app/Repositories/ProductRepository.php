@@ -384,6 +384,7 @@ class ProductRepository
 
     public function stock($storeId, $productKey)
     {
+
         $message = null;
         $rentalPossibleDay = null;
         $lastUpdate = null;
@@ -393,6 +394,7 @@ class ProductRepository
         // rental_product_cd
         if ($length === 9) {
             $res = $this->product->setConditionByRentalProductCd($productKey)->get();
+            dd($res);
             foreach ($res as $item) {
                 $queryIdList[] = $item->rental_product_cd;
             }
