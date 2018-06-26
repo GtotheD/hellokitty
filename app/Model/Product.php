@@ -69,7 +69,7 @@ class Product extends Model
             ->join($this->table . ' AS p2', function($join) {
                 $join->on('p1.ccc_family_cd','=','p2.ccc_family_cd')
                     ->on('p1.product_type_id','=','p2.product_type_id')
-                    ->on(DB::raw('RIGHT(p1.item_cd, 2)'), '=', DB::raw('RIGHT(p2.item_cd, 2)'));
+                    ->on('p1.item_cd_right_2', '=', 'p2.item_cd_right_2');
             })
             ->select(DB::raw('p2.*'))
             ->where([
