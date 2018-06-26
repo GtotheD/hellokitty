@@ -14,6 +14,7 @@ class AddIndexTsProductsItemCdRight extends Migration
     public function up()
     {
         Schema::table('ts_products', function (Blueprint $table) {
+            $table->string('ccc_family_cd',255)->change();
             $table->index(['ccc_family_cd', 'product_type_id', 'item_cd_right_2']);
             $table->index('item_cd_right_2');
         });
@@ -29,6 +30,7 @@ class AddIndexTsProductsItemCdRight extends Migration
         Schema::table('ts_products', function (Blueprint $table) {
             $table->dropIndex(['ccc_family_cd', 'product_type_id', 'item_cd_right_2']);
             $table->dropIndex('item_cd_right_2');
+            $table->text('ccc_family_cd')->change();
         });
     }
 }
