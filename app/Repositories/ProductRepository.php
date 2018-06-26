@@ -352,6 +352,7 @@ class ProductRepository
             $productBase['msdb_item'] = $product['msdb_item'];
         }
         $productBase['item_cd'] = $product['item_cd'];
+        $productBase['item_cd_right_2'] = substr($product['item_cd'], -2);
         $productBase['item_name'] = $product['item_name'];
         $productBase['number_of_volume'] = $product['number_of_volume'];
         $productBase['disc_info'] = $product['disc_info'];
@@ -394,7 +395,6 @@ class ProductRepository
         // rental_product_cd
         if ($length === 9) {
             $res = $this->product->setConditionByRentalProductCd($productKey)->get();
-            dd($res);
             foreach ($res as $item) {
                 $queryIdList[] = $item->rental_product_cd;
             }
