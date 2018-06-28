@@ -20,6 +20,7 @@ class Kernel extends ConsoleKernel
         \App\Console\Commands\CreateReleaseCalendar::class,
         \App\Console\Commands\CheckHimoTables::class,
         \App\Console\Commands\CreateTopRelease::class,
+        \App\Console\Commands\TruncateTables::class,
     ];
 
     /**
