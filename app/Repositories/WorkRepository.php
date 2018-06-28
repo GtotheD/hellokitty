@@ -545,6 +545,7 @@ class WorkRepository
                 $isMusicVideo = false;
                 $discasCCCprodctId = null;
                 foreach ($row['products'] as $product) {
+
                     // ダウンロード用のデータ生成
                     // 単一想定
                     if ($product['service_id'] === 'musico') {
@@ -556,6 +557,13 @@ class WorkRepository
                     } else if ($product['service_id'] === 'discas') {
                         $discasCCCprodctId = $product['ccc_product_id'];
                     } else if ($product['service_id'] === 'tol') {
+                        // CDのダミーデータだった時は無視する。
+                        if (
+                            $product['msdb_item'] === 'audio' &&
+                            preg_match('/([A-Z]|[a-z])$/', $product['product_code'], $matches) !== 0
+                        ) {
+                            continue;
+                        }
                         // ミュジックビデオの場合はaudioからvideoに変換するために判定する。
                         if($row['work_format_id'] == self::WORK_FORMAT_ID_MUSICVIDEO) {
                             $isMusicVideo = true;
