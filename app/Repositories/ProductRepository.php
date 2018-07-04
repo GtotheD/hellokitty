@@ -412,7 +412,6 @@ class ProductRepository
                 if ($statusCode > $stockStatus['level']) {
                     continue;
                 }
-
                 $statusCode = 0;
                 $message = null;
                 $rentalPossibleDay = null;
