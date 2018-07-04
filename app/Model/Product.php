@@ -63,14 +63,16 @@ class Product extends Model
         return $this;
     }
 
-    public function setConditionByRentalProductCd($rentalProductCd)
+    public function setConditionByRentalProductCdFamilyGroup($rentalProductCd, $isAudio = false)
     {
         $this->dbObject = DB::table($this->table . ' AS p1')
-            ->join($this->table . ' AS p2', function($join) {
+            ->join($this->table . ' AS p2', function($join) use($isAudio){
                 $join->on('p1.ccc_family_cd','=','p2.ccc_family_cd')
-                    ->on('p1.ccc_product_id','=','p2.ccc_product_id')
                     ->on('p1.product_type_id','=','p2.product_type_id')
                     ->on('p1.item_cd_right_2', '=', 'p2.item_cd_right_2');
+                if ($isAudio) {
+                    $join->on('p1.base_product_code','=','p2.base_product_code');
+                }
             })
             ->select(DB::raw('p2.*'))
             ->where([
@@ -80,7 +82,7 @@ class Product extends Model
         return $this;
     }
 
-    public function setConditionByJan($jan)
+    public function setConditionByJanFamilyGroup($jan)
     {
         $this->dbObject = DB::table($this->table . ' AS p1')
             ->join($this->table . ' AS p2', 'p1.ccc_family_cd', '=', 'p2.ccc_family_cd')
@@ -89,6 +91,15 @@ class Product extends Model
                 ['p1.work_id', '=', 'p2.work_id'],
                 ['p1.jan', '=', $jan],
                 ['p2.rental_product_cd', '<>', '']
+            ]);
+        return $this;
+    }
+
+    public function setConditionByRentalProductCd($rentalProductCd)
+    {
+        $this->dbObject = DB::table($this->table . ' AS p1')
+            ->where([
+                ['p1.rental_product_cd', '=', $rentalProductCd],
             ]);
         return $this;
     }
@@ -130,7 +141,7 @@ class Product extends Model
         return $this;
     }
 
-    public function setConditionProductGroupingByWorkIdSaleType($workId, $saleType = null, $order = null)
+    public function setConditionProductGroupingByWorkIdSaleType($workId, $saleType = null, $order = null ,$isAudio)
     {
         $selectSubGrouping = 'item_cd,'
             .'product_type_id,'
@@ -143,6 +154,9 @@ class Product extends Model
             ->whereRaw(DB::raw(' item_cd not like \'__20\' '))
             ->whereRaw(DB::raw(' jan not like \'9999_________\' '))
             ->groupBy(DB::raw($selectSubGrouping));
+        if ($isAudio) {
+            $subQuery->whereRaw(DB::raw(' is_dummy = 0 '));
+        }
         $this->dbObject = DB::table(DB::raw("({$subQuery->toSql()}) as t1"))
             ->join($this->table.' as t2', 't2.product_unique_id', '=', 't1.product_unique_id')
             ->where('work_id','=',$workId);

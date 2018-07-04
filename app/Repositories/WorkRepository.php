@@ -237,10 +237,10 @@ class WorkRepository
                 $productResult = (array)$this->work->setConditionByUrlCd($workId)->getOne();
                 break;
             case '0205':
-                $productResult = (array)$product->setConditionByJan($workId)->getOne();
+                $productResult = (array)$product->setConditionByJanFamilyGroup($workId)->getOne();
                 break;
             case '0206':
-                $productResult = (array)$product->setConditionByRentalProductCd($workId)->getOne();
+                $productResult = (array)$product->setConditionByRentalProductCdFamilyGroup($workId)->getOne();
                 break;
         }
         if ($productResult) {
