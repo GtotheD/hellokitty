@@ -404,7 +404,6 @@ class ProductRepository
         } else {
             throw new BadRequestHttpException();
         }
-        dd($queryIdList);
         $twsRepository = new TWSRepository();
         foreach ($queryIdList as $queryId) {
             $stockInfo = (array)$twsRepository->stock($storeId, $queryId)->get();
