@@ -24,6 +24,7 @@ class HimoRepository extends ApiRequesterRepository
 
     const ID_TYPE = '0102';
     const INTEGRATION_API = '/search/crossworks';
+    const MEDIA_FORMAT_ID_VHS = 'EXT00001Q3OJ';
 
     public function __construct($sort = 'asc', $offset = 0, $limit = 10)
     {
@@ -319,8 +320,9 @@ class HimoRepository extends ApiRequesterRepository
         //checkKeyword
         if (array_key_exists('keyword', $params)) {
             $this->queryParams['query'] = $params['keyword'];
+            // キーワード検索の時にVHS除外の条件を足す
+            $this->queryParams['media_format_id'] = '-'.self::MEDIA_FORMAT_ID_VHS;
         }
-
         //check saleType
         if (array_key_exists('saleType', $params)) {
             $productSellRentalFlg = null;
