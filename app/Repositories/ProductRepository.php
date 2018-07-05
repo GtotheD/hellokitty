@@ -146,9 +146,16 @@ class ProductRepository
             "t2.number_of_volume",
             "t2.sale_start_date",
         ];
-        $this->totalCount = $this->product->setConditionProductGroupingByWorkIdSaleType($workId, $this->saleType, $this->sort)->count();
+        $isAudio = false;
+        $products = $this->product->setConditionByWorkIdNewestProduct($workId)->select('msdb_item')->getOne();
+        if(empty($products)) {
+            return null;
+        }
+        if ($products->msdb_item === 'audio') {
+            $isAudio = true;
+        }
+        $this->totalCount = $this->product->setConditionProductGroupingByWorkIdSaleType($workId, $this->saleType, $this->sort, $isAudio)->count();
         $results = $this->product->selectCamel($column)->get($this->limit, $this->offset);
-//        $results = $this->product->get($this->limit, $this->offset);
         if (count($results) + $this->offset < $this->totalCount) {
             $this->hasNext = true;
         } else {
@@ -334,6 +341,8 @@ class ProductRepository
         $productBase['product_unique_id'] = $product['id'];
         $productBase['product_id'] = $product['product_id'];
         $productBase['product_code'] = $product['product_code'];
+        $productBase['base_product_code'] = preg_replace('/[A-Z]$/','' ,$product['product_code']);
+        $productBase['is_dummy'] = preg_match('/[1-9]([A-Z]|[a-z])$/', $product['product_code'], $matches);
         $productBase['jan'] = $product['jan'];
         $productBase['game_model_id'] = $product['game_model_id'];
         $productBase['game_model_name'] = $product['game_model_name'];
@@ -391,14 +400,23 @@ class ProductRepository
         $lastUpdate = null;
         $res = null;
         $statusCode = 0;
+        $isAudio = false;
         $length = strlen($productKey);
-        // rental_product_cd
+        // レンタルの場合はPPT等複数媒体がある場合がある為、対象を複数取得する
         if ($length === 9) {
-            $res = $this->product->setConditionByRentalProductCd($productKey)->get();
+            // CDかどうか確認する為に対象媒体を一度検索
+            $products =  $this->product->setConditionByRentalProductCd($productKey)->select('msdb_item')->getOne();
+            if(empty($products)) {
+                return null;
+            }
+            if ($products->msdb_item === 'audio') {
+                $isAudio = true;
+            }
+            $res = $this->product->setConditionByRentalProductCdFamilyGroup($productKey, $isAudio)->get();
             foreach ($res as $item) {
                 $queryIdList[] = $item->rental_product_cd;
             }
-            //jan
+        // JANで渡ってきた場合は、販売商品の為単一検索
         } elseif ($length === 13) {
             $queryIdList[] = $productKey;
         } else {
@@ -412,7 +430,6 @@ class ProductRepository
                 if ($statusCode > $stockStatus['level']) {
                     continue;
                 }
-
                 $statusCode = 0;
                 $message = null;
                 $rentalPossibleDay = null;
