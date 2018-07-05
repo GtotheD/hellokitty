@@ -341,8 +341,8 @@ class ProductRepository
         $productBase['product_unique_id'] = $product['id'];
         $productBase['product_id'] = $product['product_id'];
         $productBase['product_code'] = $product['product_code'];
-        $productBase['base_product_code'] = preg_replace('/[A-Z]$/','' ,$product['product_code']);
-        $productBase['is_dummy'] = preg_match('/[1-9]([A-Z]|[a-z])$/', $product['product_code'], $matches);
+        $productBase['base_product_code'] = preg_replace('/([A-Z]|[a-z])$/','' ,$product['product_code']);
+        $productBase['is_dummy'] = preg_match('/([A-Z]|[a-z])$/', $product['product_code'], $matches);
         $productBase['jan'] = $product['jan'];
         $productBase['game_model_id'] = $product['game_model_id'];
         $productBase['game_model_name'] = $product['game_model_name'];
