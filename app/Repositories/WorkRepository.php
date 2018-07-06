@@ -637,6 +637,7 @@ class WorkRepository
         if ($itemType === 'dvd') {
             $params['genreId'] = implode(' || ', self::HIMO_SEARCH_VIDEO_GENRE_ID);
         }
+
         if ($adultFlg !== 'true') {
             if (array_key_exists('genreId', $params)) {
                 $params['genreId'] .= self::HIMO_SEARCH_IGNORE_ADULT_GENRE_ID;
