@@ -278,10 +278,12 @@ $router->group([
         $productData = (array)$discasProduct->setConditionByWorkId($workId)
             ->selectCamel(['ccc_product_id'])
             ->getOne();
+        if (empty($productData)) {
+            throw new NoContentsException;
+        }
         $discasRepository->setLimit($request->input('limit', 10));
         $discasRepository->setOffset($request->input('offset', 0));
         $response = $discasRepository->getReview($productData['cccProductId']);
-
         if (empty($response)) {
             throw new NoContentsException;
         }
