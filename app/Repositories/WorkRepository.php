@@ -93,20 +93,20 @@ class WorkRepository
 
     //
     const HIMO_SEARCH_IGNORE_ADULT_GENRE_ID =
-        '-EXT000073X16:EXT0000741BA:: '. // アダルト文庫
-        '-EXT000073X18:EXT0000741CG:: '. // アダルトノベルス1
-        '-EXT0000S12QH:EXT0000S12RK:: '. // アダルトノベルス2
-        ' -EXT000073X0V:EXT000074169::'. // ムック　アダルト1
+        '-EXT000073X16:EXT0000741BA:: ' . // アダルト文庫
+        '-EXT000073X18:EXT0000741CG:: ' . // アダルトノベルス1
+        '-EXT0000S12QH:EXT0000S12RK:: ' . // アダルトノベルス2
+        ' -EXT000073X0V:EXT000074169::' . // ムック　アダルト1
         ' -EXT0000S12QK:EXT0000S12S4:' // ムック　アダルト2
     ;
 
     // 1=アルバム、2=シングル、3=音楽配信（複）、4=音楽配信（単）、5=ミュージックビデオ、6=グッズ
     const WORK_FORMAT_ID_ALBUM = '1';
     const WORK_FORMAT_ID_SINGLE = '2';
-    const WORK_FORMAT_ID_DELIVERY_MULTI= '3';
-    const WORK_FORMAT_ID_DELIVERY_SINGLE= '4';
-    const WORK_FORMAT_ID_MUSICVIDEO= '5';
-    const WORK_FORMAT_ID_GOODS= '6';
+    const WORK_FORMAT_ID_DELIVERY_MULTI = '3';
+    const WORK_FORMAT_ID_DELIVERY_SINGLE = '4';
+    const WORK_FORMAT_ID_MUSICVIDEO = '5';
+    const WORK_FORMAT_ID_GOODS = '6';
 
     const HIMO_MEDIA_FORMAT_ID = 'EXT0000000FY';
     const MSDB_ITEM_AUDIO_SINGLE_NAME = 'シングル';
@@ -544,8 +544,8 @@ class WorkRepository
                 $musicoUrl = null;
                 $isMusicVideo = false;
                 $discasCCCprodctId = null;
+                $deleteProduct = [];
                 foreach ($row['products'] as $product) {
-
                     // ダウンロード用のデータ生成
                     // 単一想定
                     if ($product['service_id'] === 'musico') {
@@ -558,7 +558,7 @@ class WorkRepository
                         $discasCCCprodctId = $product['ccc_product_id'];
                     } else if ($product['service_id'] === 'tol') {
                         // ミュジックビデオの場合はaudioからvideoに変換するために判定する。
-                        if($row['work_format_id'] == self::WORK_FORMAT_ID_MUSICVIDEO) {
+                        if ($row['work_format_id'] == self::WORK_FORMAT_ID_MUSICVIDEO) {
                             $isMusicVideo = true;
                         }
                         $productData[] = $productRepository->format($row['work_id'], $product, $isMusicVideo);
@@ -592,7 +592,9 @@ class WorkRepository
 
             $this->work->insertBulk($workData, $insertWorkId);
             // インサート前に存在していれば削除する。
-            $productModel->setConditionByProductUniqueIdIn($deleteProduct)->delete();
+            if (!empty($deleteProduct)) {
+                $productModel->setConditionByProductUniqueIdIn($deleteProduct)->delete();
+            }
             $productModel->insertBulk($productData);
             $peopleModel->insertBulk($peopleData);
             $musicoUrl->insertBulk($musicoUrlInsertArray);
@@ -794,7 +796,7 @@ class WorkRepository
                     $product['item_cd'] !== '0020' &&
                     $product['item_cd'] !== '0120') {
                     // 最新の販売開始日を取得する。
-                    if ( $product['sale_start_date'] > $saleStartDateSell) {
+                    if ($product['sale_start_date'] > $saleStartDateSell) {
                         $saleStartDateSell = $product['sale_start_date'];
                     }
                     $sell = true;
@@ -834,7 +836,7 @@ class WorkRepository
             'maker_cd' => $makerCd,
             'saleStartDateSell' => $saleStartDateSell,
             'saleStartDateRental' => $saleStartDateRental,
-            ];
+        ];
 
     }
 
