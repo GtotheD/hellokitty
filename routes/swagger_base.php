@@ -132,6 +132,10 @@
  *   name="Search",
  *   description="検索関連",
  * )
+ * @SWG\Tag(
+ *   name="Favorite",
+ *   description="お気に入り",
+ * )
  */
 
 /**

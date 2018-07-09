@@ -648,3 +648,38 @@
  *          ),
  *  )
  * */
+/**
+ *  @SWG\Definition(
+ *          definition="favorite",
+ *          @SWG\Property(
+ *              property="work_id",
+ *              type="string",
+ *              description="Himo作品ID"
+ *          ),
+ *          @SWG\Property(
+ *              property="item_type",
+ *              type="string",
+ *              description="Himo作品ID"
+ *          ),
+ *          @SWG\Property(
+ *              property="created_at",
+ *              type="string",
+ *              description="最終更新日時"
+ *          ),
+ *  )
+ * */
+/**
+ *  @SWG\Definition(
+ *          definition="favorite_status",
+ *          @SWG\Property(
+ *              property="status",
+ *              type="string",
+ *              description="success or error"
+ *          ),
+ *          @SWG\Property(
+ *              property="message",
+ *              type="string",
+ *              description="メッセージ（処理が成功しました）"
+ *          )
+ *  )
+ * */

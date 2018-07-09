@@ -1670,3 +1670,208 @@
  *     @SWG\Response(response=500, description="Server error")
  * )
  */
+/**
+ * @SWG\Get(
+ *     path="/favorite/list",
+ *     description="お気に入り作品取得",
+ *     produces={"application/json"},
+ *     tags={"Favorite"},
+ *     security={{"api_key":{}}},
+ *     @SWG\Parameter(
+ *       name="body",
+ *       in="body",
+ *       description="",
+ *       type="array",
+ *       @SWG\Schema(
+ *         @SWG\Property(
+ *             property="tlsc",
+ *             type="string",
+ *             description="ユーザー識別番号(TLSC)",
+ *         ),
+ *       )
+ *     ),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          ref="$/responses/ListJson",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="rows",
+ *                  type="array",
+ *                  @SWG\Items(ref="#/definitions/favorite"),
+ *                  description="作品情報",
+ *              ),
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+/**
+ * @SWG\Get(
+ *     path="/favorite/works",
+ *     description="お気に入り作品詳細取得",
+ *     produces={"application/json"},
+ *     tags={"Favorite"},
+ *     security={{"api_key":{}}},
+ *     @SWG\Parameter(
+ *       name="body",
+ *       in="body",
+ *       description="",
+ *       type="array",
+ *       @SWG\Schema(
+ *         @SWG\Property(
+ *             property="saleType",
+ *             type="string",
+ *             description="セルレンタル区分（sell or rental）",
+ *         ),
+ *         @SWG\Property(
+ *             property="ids",
+ *             type="array",
+ *             description="「WorkId」もしくは「urlCd」",
+ *             @SWG\Items(
+ *                  type="string",
+ *             ),
+ *         )
+ *       )
+ *     ),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          ref="$/responses/ListJson",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="rows",
+ *                  type="array",
+ *                  @SWG\Items(ref="#/definitions/WorkNarrow"),
+ *                  description="作品情報",
+ *              ),
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+/**
+ * @SWG\Post(
+ *     path="/favorite/add",
+ *     description="お気に入り追加（件数オーバー時はエラーを返却）",
+ *     produces={"application/json"},
+ *     tags={"Favorite"},
+ *     security={{"api_key":{}}},
+ *     @SWG\Parameter(
+ *       name="body",
+ *       in="body",
+ *       description="",
+ *       type="array",
+ *       @SWG\Schema(
+ *         @SWG\Property(
+ *             property="tlsc",
+ *             type="string",
+ *             description="ユーザー識別番号(TLSC)",
+ *         ),
+ *         @SWG\Property(
+ *             property="ids",
+ *             type="array",
+ *             description="「WorkId」もしくは「urlCd」",
+ *             @SWG\Items(
+ *                  type="string",
+ *             ),
+ *         )
+ *       )
+ *     ),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          @SWG\Schema(
+ *              ref="#/definitions/favorite_status",
+ *          )
+ *      ),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+/**
+ * @SWG\Post(
+ *     path="/favorite/merge",
+ *     description="お気に入り追加（件数をオーバー時は古いものを削除してマージする）",
+ *     produces={"application/json"},
+ *     tags={"Favorite"},
+ *     security={{"api_key":{}}},
+ *     @SWG\Parameter(
+ *       name="body",
+ *       in="body",
+ *       description="",
+ *       type="array",
+ *       @SWG\Schema(
+ *         @SWG\Property(
+ *             property="tlsc",
+ *             type="string",
+ *             description="ユーザー識別番号(TLSC)",
+ *         ),
+ *         @SWG\Property(
+ *             property="ids",
+ *             type="array",
+ *             description="「WorkId」もしくは「urlCd」",
+ *             @SWG\Items(
+ *               @SWG\Property(property="id",type="string"),
+ *               @SWG\Property(property="created_at",type="string")
+ *             ),
+ *         )
+ *       )
+ *     ),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          @SWG\Schema(
+ *              ref="#/definitions/favorite_status",
+ *          )
+ *      ),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+/**
+ * @SWG\Delete(
+ *     path="/favorite/delete",
+ *     description="お気に入り削除",
+ *     produces={"application/json"},
+ *     tags={"Favorite"},
+ *     security={{"api_key":{}}},
+ *     @SWG\Parameter(
+ *       name="body",
+ *       in="body",
+ *       description="",
+ *       type="array",
+ *       @SWG\Schema(
+ *         @SWG\Property(
+ *             property="tlsc",
+ *             type="string",
+ *             description="ユーザー識別番号(TLSC)",
+ *         ),
+ *         @SWG\Property(
+ *             property="ids",
+ *             type="array",
+ *             description="IDリスト",
+ *             @SWG\Items(
+ *                type="string"
+ *            ),
+ *         )
+ *       )
+ *     ),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success"),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+
