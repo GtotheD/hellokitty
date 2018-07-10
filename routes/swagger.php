@@ -1798,8 +1798,8 @@
  */
 /**
  * @SWG\Post(
- *     path="/favorite/merge",
- *     description="お気に入り追加（件数をオーバー時は古いものを削除してマージする）",
+ *     path="/favorite/add/merge",
+ *     description="お気に入り追加マージモード（件数をオーバー時は古いものを削除してマージする）",
  *     produces={"application/json"},
  *     tags={"Favorite"},
  *     security={{"api_key":{}}},
@@ -1867,7 +1867,11 @@
  *     ),
  *     @SWG\Response(
  *          response=200,
- *          description="success"),
+ *          description="success",
+ *          @SWG\Schema(
+ *              ref="#/definitions/favorite_status",
+ *          )
+ *      ),
  *     @SWG\Response(response=204, description="Contents not found"),
  *     @SWG\Response(response=401, description="Auth error"),
  *     @SWG\Response(response=404, description="Page not found"),
