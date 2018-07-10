@@ -679,7 +679,7 @@
  *          @SWG\Property(
  *              property="message",
  *              type="string",
- *              description="メッセージ（処理が成功しました）"
+ *              description="メッセージ（処理が成功しました等のメッセージ）"
  *          )
  *  )
  * */
