@@ -1680,7 +1680,7 @@
  *     @SWG\Parameter(
  *       name="sort",
  *       in="query",
- *       description="並び順new(新しい順),old(古い順）",
+ *       description="並び順 new(新しい順) ※デフォルト / old(古い順）",
  *       type="string"
  *     ),
  *     @SWG\Parameter(
