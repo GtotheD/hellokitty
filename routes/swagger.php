@@ -1734,12 +1734,9 @@
  *             description="ユーザー識別番号(TLSC)",
  *         ),
  *         @SWG\Property(
- *             property="ids",
- *             type="array",
+ *             property="id",
+ *             type="string",
  *             description="「WorkId」もしくは「urlCd」",
- *             @SWG\Items(
- *                  type="string",
- *             ),
  *         )
  *       )
  *     ),
