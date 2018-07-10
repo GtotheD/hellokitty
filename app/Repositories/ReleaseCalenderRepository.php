@@ -220,10 +220,10 @@ class ReleaseCalenderRepository
                     }
                     $params['genre'] = implode(' || ', $ignoreVideoGenres);
                 }
+                $params['genre'] = $params['genre'] . ':';
             } else {
                 $params['genre'] = $mappingData['genres'];
             }
-
             // 10件づつ処理
             $processLimit = 10;
             $himoRepository->setLimit($processLimit);
