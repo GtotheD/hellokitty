@@ -206,11 +206,24 @@ class ReleaseCalenderRepository
                 'onlyReleased' => $this->onlyReleased,
                 'sort' => $sortBy
             ];
+            // TSUTAYA一押しの処理
             if ($mappingData['genres'] === self::HIMO_TAP_RECOMMEND) {
                 $params['workTags'] = self::HIMO_TAP_RECOMMEND_KEYWORD;
+                // TSUTAYA一押しでmsdbitemがcdの場合ミュージックdvdを含めない
+                if($mappingData['msdbItem'][0] === 'video') {
+                    $params['genre'] = implode(' || ', $workRepository::HIMO_SEARCH_VIDEO_GENRE_ID);
+                } else if($mappingData['msdbItem'][0] === 'audio') {
+                    // 除外に変換
+                    $ignoreVideoGenres = [];
+                    foreach($workRepository::HIMO_SEARCH_VIDEO_GENRE_ID as $videoGenre) {
+                        $ignoreVideoGenres[] = '-'.$videoGenre;
+                    }
+                    $params['genre'] = implode(' || ', $ignoreVideoGenres);
+                }
             } else {
                 $params['genre'] = $mappingData['genres'];
             }
+
             // 10件づつ処理
             $processLimit = 10;
             $himoRepository->setLimit($processLimit);
