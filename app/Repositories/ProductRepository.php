@@ -155,7 +155,22 @@ class ProductRepository
             $isAudio = true;
         }
         $this->totalCount = $this->product->setConditionProductGroupingByWorkIdSaleType($workId, $this->saleType, $this->sort, $isAudio)->count();
-        $results = $this->product->selectCamel($column)->get($this->limit, $this->offset);
+        if ($products->msdb_item === 'audio') {
+            $isAudio = true;
+            // 複数ある場合
+            if ($this->totalCount > 1) {
+
+
+            // 単数の場合
+            } else {
+
+            }
+
+        } else {
+            $results = $this->product->selectCamel($column)->get($this->limit, $this->offset);
+        }
+
+
         if (count($results) + $this->offset < $this->totalCount) {
             $this->hasNext = true;
         } else {
