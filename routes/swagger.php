@@ -1716,6 +1716,53 @@
  * )
  */
 /**
+ * @SWG\Get(
+ *     path="/favorite/works",
+ *     description="お気に入り作品詳細取得",
+ *     produces={"application/json"},
+ *     tags={"Favorite"},
+ *     security={{"api_key":{}}},
+ *     @SWG\Parameter(
+ *       name="body",
+ *       in="body",
+ *       description="",
+ *       type="array",
+ *       @SWG\Schema(
+ *         @SWG\Property(
+ *             property="saleType",
+ *             type="string",
+ *             description="セルレンタル区分（sell or rental）",
+ *         ),
+ *         @SWG\Property(
+ *             property="ids",
+ *             type="array",
+ *             description="「WorkId」もしくは「urlCd」",
+ *             @SWG\Items(
+ *                  type="string",
+ *             ),
+ *         )
+ *       )
+ *     ),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          ref="$/responses/ListJson",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="rows",
+ *                  type="array",
+ *                  @SWG\Items(ref="#/definitions/WorkNarrow"),
+ *                  description="作品情報",
+ *              ),
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+/**
  * @SWG\Post(
  *     path="/favorite/add",
  *     description="お気に入り追加（件数オーバー時はエラーを返却）",
