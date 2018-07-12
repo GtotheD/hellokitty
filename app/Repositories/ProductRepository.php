@@ -134,12 +134,12 @@ class ProductRepository
                     $workData =  $work->setConditionByWorkId($product->workId)->toCamel()->getOne();
                     $baseRentalProduct['productName'] = $workData->workTitle;
                     $baseRentalProduct['contents'] = $rentalProduct['productName'] . "\n" . $rentalProduct['contents'];
-                }
+                } else {
                 // コンテンツのマージ
                 $baseRentalProduct['productCode'] = $baseRentalProduct['productCode'] . ', '.$rentalProduct['productCode'];
                 // コンテンツのマージ
-
                 $baseRentalProduct['contents'] = $baseRentalProduct['contents'] . "\n" . $rentalProduct['productName'] . "\n" . $rentalProduct['contents'];
+                }
             }
             return $this->productReformat([$baseRentalProduct])[0];
         }
