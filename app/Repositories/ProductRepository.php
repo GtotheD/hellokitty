@@ -117,9 +117,31 @@ class ProductRepository
 
     public function get($productUniqueId)
     {
-        $product = $this->product->setConditionByProductUniqueId($productUniqueId)->toCamel(['id'])->getOne();
+        $product = $this->product->setConditionByProductUniqueId($productUniqueId)->toCamel(['id','base_product_code','is_dummy'])->getOne();
         if (empty($product)) {
             return null;
+        }
+        // CDレンタルだった場合
+        if ($product->msdbItem === 'audio' && $product->productTypeId == $this->product::PRODUCT_TYPE_ID_RENTAL) {
+            $rentalProducts = $this->product->setConditionByWorkIdForRentalCd($product->workId)->toCamel(['id','base_product_code','is_dummy'], 't2.')->get();
+            $baseRentalProduct = [];
+            foreach ($rentalProducts as $rentalProduct) {
+                $rentalProduct = (array)$rentalProduct;
+                // ベースとなるプロダクトを設定
+                if (empty($baseRentalProduct)) {
+                    $baseRentalProduct = $rentalProduct;
+                    $work = new Work();
+                    $workData =  $work->setConditionByWorkId($product->workId)->toCamel()->getOne();
+                    $baseRentalProduct['productName'] = $workData->workTitle;
+                    $baseRentalProduct['contents'] = $rentalProduct['productName'] . "\n" . $rentalProduct['contents'];
+                }
+                // コンテンツのマージ
+                $baseRentalProduct['productCode'] = $baseRentalProduct['productCode'] . ', '.$rentalProduct['productCode'];
+                // コンテンツのマージ
+
+                $baseRentalProduct['contents'] = $baseRentalProduct['contents'] . "\n" . $rentalProduct['productName'] . "\n" . $rentalProduct['contents'];
+            }
+            return $this->productReformat([$baseRentalProduct])[0];
         }
         return $this->productReformat([$product])[0];
     }
@@ -151,26 +173,26 @@ class ProductRepository
         if(empty($products)) {
             return null;
         }
-        if ($products->msdb_item === 'audio') {
+        // レンタルCDだった場合
+        if ($products->msdb_item === 'audio' && $this->saleType === 'rental') {
             $isAudio = true;
-        }
-        $this->totalCount = $this->product->setConditionProductGroupingByWorkIdSaleType($workId, $this->saleType, $this->sort, $isAudio)->count();
-        if ($products->msdb_item === 'audio') {
-            $isAudio = true;
+            $rentalProducts = $this->product->setConditionByWorkIdForRentalCd($workId)->get();
             // 複数ある場合
-            if ($this->totalCount > 1) {
-
-
-            // 単数の場合
-            } else {
-
+            if (count($rentalProducts) > 1) {
+                // Productをworkのタイトルに書き換える対応
+                // 結果を１件にセット
+                $column = array_diff($column, ['t2.product_name']);
+                // カラムを入れ替えるために追加
+                $column[] = 't1.work_title AS productName';
+                $this->totalCount = 1;
+                $this->hasNext = false;
+                $results = $this->product->selectCamel($column)->get(1, 0);
+                return $this->productReformat($results);
             }
-
-        } else {
-            $results = $this->product->selectCamel($column)->get($this->limit, $this->offset);
         }
 
-
+        $this->totalCount = $this->product->setConditionProductGroupingByWorkIdSaleType($workId, $this->saleType, $this->sort, $isAudio)->count();
+        $results = $this->product->selectCamel($column)->get($this->limit, $this->offset);
         if (count($results) + $this->offset < $this->totalCount) {
             $this->hasNext = true;
         } else {
