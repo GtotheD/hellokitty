@@ -582,10 +582,10 @@ $router->group([
     });
 
     // Favorite list
-    $router->get('favorite/list', function (Request $request, $sort) {
+    $router->get('favorite/list', function (Request $request, $sort = 'new') {
         $stringSample = '{
             "hasNext": true,
-            "totalCount": 2,
+            "totalCount": 10,
             "rows": [
             {
                 "work_id": "PTA00007Y8TH",
@@ -596,6 +596,46 @@ $router->group([
                 "work_id": "PTA0000818QA",
                 "item_type": "dvd",
                 "created_at": "2017-04-11 16:34:18"
+            },
+            {
+                "work_id": "PTA00007XPBZ",
+                "item_type": "dvd",
+                "created_at": "2017-04-15 16:34:18"
+            },
+            {
+                "work_id": "PTA00007Y8TH",
+                "item_type": "dvd",
+                "created_at": "2017-04-16 16:34:18"
+            },
+            {
+                "work_id": "PTA00007YIZN",
+                "item_type": "dvd",
+                "created_at": "2017-04-17 16:34:18"
+            },
+            {
+                "work_id": "PTA000080QW6",
+                "item_type": "dvd",
+                "created_at": "2017-04-18 16:34:18"
+            },
+            {
+                "work_id": "PTA000081J9R",
+                "item_type": "dvd",
+                "created_at": "2017-04-19 16:34:18"
+            },
+            {
+                "work_id": "PTA00008M81I",
+                "item_type": "dvd",
+                "created_at": "2017-04-20 16:34:18"
+            },
+            {
+                "work_id": "PTA000092WMF",
+                "item_type": "dvd",
+                "created_at": "2017-04-21 16:34:18"
+            },
+            {
+                "work_id": "PTA000094PYP",
+                "item_type": "dvd",
+                "created_at": "2017-04-22 16:34:18"
             }
             ]
         }';
@@ -607,7 +647,7 @@ $router->group([
     $router->get('favorite/works', function (Request $request) {
         $stringSample = '{
             "hasNext": true,
-            "totalCount": 2,
+            "totalCount": 5,
             "rows": [
             {
                 "workId": "PTA00007Y8TH",
@@ -629,6 +669,42 @@ $router->group([
                 "newFlg": true,
                 "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07330/9999203273852_1L.jpg",
                 "supplement": "(C)Disney",
+                "saleType": "rental",
+                "itemType": "dvd",
+                "adultFlg": false
+            },
+            {
+                "workId": "PTA00007XPBZ",
+                "urlCd": "10325267",
+                "cccWorkCd": "10332228",
+                "workTitle": "キングダム",
+                "newFlg": true,
+                "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/08599/9999203822998_1L.jpg",
+                "supplement": "(C)Disney",
+                "saleType": "rental",
+                "itemType": "dvd",
+                "adultFlg": false
+            },
+            {
+                "workId": "PTA00007Y8TH",
+                "urlCd": "10001145",
+                "cccWorkCd": "10001155",
+                "workTitle": "エマニエル夫人",
+                "newFlg": true,
+                "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/05838/9999202758091_1L.jpg",
+                "supplement": "(C)Disney",
+                "saleType": "rental",
+                "itemType": "dvd",
+                "adultFlg": false
+            },
+            {
+                "workId": "PTA00007YIZN",
+                "urlCd": "10000152",
+                "cccWorkCd": "10000154",
+                "workTitle": "ダイ・ハード 2",
+                "newFlg": true,
+                "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/06112/9999202330438_1L.jpg",
+                "supplement": "Twentieth Century Fox Home Entertainment LLC",
                 "saleType": "rental",
                 "itemType": "dvd",
                 "adultFlg": false
