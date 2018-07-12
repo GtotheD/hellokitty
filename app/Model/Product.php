@@ -17,6 +17,9 @@ class Product extends Model
     const PRODUCT_TYPE_ID_SELL = 1;
     const PRODUCT_TYPE_ID_RENTAL = 2;
 
+    const DUMMY_DATA_IS_NOT_DUMMY = 0;
+    const DUMMY_DATA_IS_DUMMY = 1;
+
     function __construct()
     {
         parent::__construct(self::TABLE);
@@ -35,6 +38,27 @@ class Product extends Model
     {
         $this->dbObject = DB::table($this->table)
             ->whereIn('product_unique_id', $productUniqueIds);
+        return $this;
+    }
+
+    public function setConditionByWorkId($workId)
+    {
+        $this->dbObject = DB::table($this->table)
+            ->where('work_id', $workId);
+        return $this;
+    }
+
+    public function setConditionByWorkIdForRentalCd($workId)
+    {
+        $this->dbObject = DB::table($this->table . ' AS t2')
+            ->join('ts_works AS t1', 't2.work_id', '=', 't1.work_id')
+            ->where('t2.work_id', $workId)
+            ->where('is_dummy', '=', self::DUMMY_DATA_IS_NOT_DUMMY)
+            ->where('product_type_id', '=', self::PRODUCT_TYPE_ID_RENTAL)
+            ->whereRaw(DB::raw(' item_cd not like \'_1__\' '))
+            ->whereRaw(DB::raw(' jan not like \'9999_________\' '))
+            ->orderBy('t2.ccc_product_id', 'desc') // 最古のものを一番上にもってきて取得する為
+        ;
         return $this;
     }
 
@@ -154,7 +178,7 @@ class Product extends Model
             ->whereRaw(DB::raw(' item_cd not like \'__20\' '))
             ->whereRaw(DB::raw(' jan not like \'9999_________\' '))
             ->groupBy(DB::raw($selectSubGrouping));
-        if ($isAudio) {
+        if ($isAudio && $saleType === 'rental') {
             $subQuery->whereRaw(DB::raw(' is_dummy = 0 '));
         }
         $this->dbObject = DB::table(DB::raw("({$subQuery->toSql()}) as t1"))

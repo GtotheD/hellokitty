@@ -85,16 +85,16 @@ class Model
         return $this->dbObject->first();
     }
 
-    public function toCamel($ignoreColumn = [])
+    public function toCamel($ignoreColumn = [], $prefix = null)
     {
-        $this->dbObject->select(DB::raw($this->camelCaseColumn($ignoreColumn)));
+        $this->dbObject->select(DB::raw($this->camelCaseColumn($ignoreColumn, $prefix)));
         return $this;
     }
 
-    private function camelCaseColumn($ignoreColumn = [])
+    private function camelCaseColumn($ignoreColumn = [], $prefix = null)
     {
         $columns = Schema::getColumnListing($this->table);
-        return $this->convertCamelCase($columns, $ignoreColumn);
+        return $this->convertCamelCase($columns, $ignoreColumn, $prefix);
     }
 
     public function selectCamel($columns)
@@ -103,12 +103,20 @@ class Model
         return $this;
     }
 
-    private function convertCamelCase($columns, $ignoreColumn = [])
+    private function convertCamelCase($columns, $ignoreColumn = [], $prefix = null)
     {
         foreach ($columns as $column) {
             if(!in_array($column, $ignoreColumn)) {
-                // エイリアスを削除する
-                $aliasName[] = $column. ' AS '. camel_case(preg_replace('/.*\./', '', $column));
+                if ($prefix) {
+                    $column = $prefix.$column;
+                }
+                // 既にエイリアスが存在する場合は無視
+                if (!preg_match('/(\sas\s|\sAS\s)/', $column,$matches)) {
+                    // エイリアスを作成する
+                    $aliasName[] = $column. ' AS '. camel_case(preg_replace('/.*\./', '', $column));
+                } else {
+                    $aliasName[] = $column;
+                }
             }
         }
         return implode($aliasName, ',');
