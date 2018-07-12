@@ -581,6 +581,89 @@ $router->group([
         return response()->json($sectionData)->header('X-Accel-Expires', '86400');
     });
 
+    // Favorite list
+    $router->get('favorite/list', function (Request $request, $sort) {
+        $stringSample = '{
+            "hasNext": true,
+            "totalCount": 2,
+            "rows": [
+            {
+                "work_id": "PTA00007Y8TH",
+                "item_type": "dvd",
+                "created_at": "2017-04-11 16:34:18"
+            },
+            {
+                "work_id": "PTA0000818QA",
+                "item_type": "dvd",
+                "created_at": "2017-04-11 16:34:18"
+            }
+            ]
+        }';
+        $response = json_decode($stringSample);
+        return response()->json($response)->header('X-Accel-Expires', '86400');
+    });  
+
+    // Favorite works
+    $router->get('favorite/works', function (Request $request) {
+        $stringSample = '{
+            "hasNext": true,
+            "totalCount": 2,
+            "rows": [
+            {
+                "workId": "PTA00007Y8TH",
+                "urlCd": "10001145",
+                "cccWorkCd": "10001155",
+                "workTitle": "エマニエル夫人",
+                "newFlg": true,
+                "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/05838/9999202758091_1L.jpg",
+                "supplement": "(C) 2017 Disney",
+                "saleType": "rental",
+                "itemType": "dvd",
+                "adultFlg": false
+            },
+            {
+                "workId": "PTA0000818QA",
+                "urlCd": "10101681",
+                "cccWorkCd": "10107504",
+                "workTitle": "カンフー・パンダ",
+                "newFlg": true,
+                "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07330/9999203273852_1L.jpg",
+                "supplement": "(C)Disney",
+                "saleType": "rental",
+                "itemType": "dvd",
+                "adultFlg": false
+            }
+        ]
+        }';
+        $response = json_decode($stringSample);
+        return response()->json($response)->header('X-Accel-Expires', '86400');
+    });
+
+    // Favorite add
+    $router->post('favorite/add', function (Request $request) {
+        $stringSample = '{
+            "status": "200",
+            "message": "Add success"
+        }';
+        $response = json_decode($stringSample);
+        return response()->json($response)->header('X-Accel-Expires', '86400');
+    });
+
+    // Favorite merge
+    $router->post('favorite/merge', function (Request $request) {
+        $stringSample = '{
+            "status": "200",
+            "message": "Merge success"
+        }';
+        $response = json_decode($stringSample);
+        return response()->json($response)->header('X-Accel-Expires', '86400');
+    });
+
+    // Favorite delete
+    $router->post('favorite/delete', function (Request $request) {
+        return response('OK', 200)->header('X-Accel-Expires', '86400');
+    });
+
     // 検証環境まで有効にするテスト要
     if (env('APP_ENV') === 'local' || env('APP_ENV') === 'develop' || env('APP_ENV') === 'staging') {
         $router->get('himo/{workId}', function (Request $request, $workId) {
