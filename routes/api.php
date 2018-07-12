@@ -600,7 +600,7 @@ $router->group([
             ]
         }';
         $response = json_decode($stringSample);
-        return response()->json($response)->header('X-Accel-Expires', '86400');
+        return response()->json($response);
     });  
 
     // Favorite works
@@ -636,7 +636,7 @@ $router->group([
         ]
         }';
         $response = json_decode($stringSample);
-        return response()->json($response)->header('X-Accel-Expires', '86400');
+        return response()->json($response);
     });
 
     // Favorite add
@@ -646,7 +646,7 @@ $router->group([
             "message": "Add success"
         }';
         $response = json_decode($stringSample);
-        return response()->json($response)->header('X-Accel-Expires', '86400');
+        return response()->json($response);
     });
 
     // Favorite merge
@@ -656,12 +656,12 @@ $router->group([
             "message": "Merge success"
         }';
         $response = json_decode($stringSample);
-        return response()->json($response)->header('X-Accel-Expires', '86400');
+        return response()->json($response);
     });
 
     // Favorite delete
     $router->post('favorite/delete', function (Request $request) {
-        return response('OK', 200)->header('X-Accel-Expires', '86400');
+        return response('OK', 200);
     });
 
     // 検証環境まで有効にするテスト要
