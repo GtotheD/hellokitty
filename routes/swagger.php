@@ -754,6 +754,54 @@
  */
 /**
  * @SWG\Get(
+ *     path="/work/bulk",
+ *     description="作品詳細一括取得
+ * 最大取得数30件まで",
+ *     produces={"application/json"},
+ *     tags={"Work"},
+ *     security={{"api_key":{}}},
+ *     @SWG\Parameter(
+ *       name="body",
+ *       in="body",
+ *       description="",
+ *       type="array",
+ *       @SWG\Schema(
+ *         @SWG\Property(
+ *             property="saleType",
+ *             type="string",
+ *             description="セルレンタル区分（sell or rental）",
+ *         ),
+ *         @SWG\Property(
+ *             property="ids",
+ *             type="array",
+ *             description="「WorkId」もしくは「urlCd」",
+ *             @SWG\Items(
+ *                  type="string",
+ *             ),
+ *         )
+ *       )
+ *     ),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          ref="$/responses/ListJson",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="rows",
+ *                  type="array",
+ *                  @SWG\Items(ref="#/definitions/WorkNarrow"),
+ *                  description="作品情報",
+ *              ),
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+/**
+ * @SWG\Get(
  *     path="/work/{workId}/products",
  *     description="商品一覧情報取得",
  *     tags={"Work"},
@@ -1715,10 +1763,12 @@
  *     @SWG\Response(response=500, description="Server error")
  * )
  */
+
 /**
  * @SWG\Post(
  *     path="/favorite/add",
- *     description="お気に入り追加（件数オーバー時はエラーを返却）",
+ *     description="お気に入り追加
+ *  件数オーバー時はエラーを返却",
  *     produces={"application/json"},
  *     tags={"Favorite"},
  *     security={{"api_key":{}}},
@@ -1755,7 +1805,8 @@
 /**
  * @SWG\Post(
  *     path="/favorite/add/merge",
- *     description="お気に入り追加マージモード（件数をオーバー時は古いものを削除してマージする）",
+ *     description="お気に入り追加マージモード
+ *  件数をオーバー時は古いものを削除してマージする",
  *     produces={"application/json"},
  *     tags={"Favorite"},
  *     security={{"api_key":{}}},
@@ -1796,7 +1847,8 @@
 /**
  * @SWG\Delete(
  *     path="/favorite/delete",
- *     description="お気に入り削除（削除対象がなくても200で返却。エラーコード返却はしない。）",
+ *     description="お気に入り削除
+ * 削除対象がなくても200で返却。エラーコード返却はしない。",
  *     produces={"application/json"},
  *     tags={"Favorite"},
  *     security={{"api_key":{}}},
