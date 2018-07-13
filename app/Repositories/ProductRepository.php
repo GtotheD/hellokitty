@@ -124,6 +124,12 @@ class ProductRepository
         // CDレンタルだった場合
         if ($product->msdbItem === 'audio' && $product->productTypeId == $this->product::PRODUCT_TYPE_ID_RENTAL) {
             $rentalProducts = $this->product->setConditionByWorkIdForRentalCd($product->workId)->toCamel(['id','base_product_code','is_dummy'], 't2.')->get();
+            if (empty($rentalProducts)) {
+                return null;
+            }
+            if (count($rentalProducts) === 1) {
+                return $this->productReformat([$product])[0];
+            }
             $baseRentalProduct = [];
             foreach ($rentalProducts as $rentalProduct) {
                 $rentalProduct = (array)$rentalProduct;
@@ -133,12 +139,12 @@ class ProductRepository
                     $work = new Work();
                     $workData =  $work->setConditionByWorkId($product->workId)->toCamel()->getOne();
                     $baseRentalProduct['productName'] = $workData->workTitle;
-                    $baseRentalProduct['contents'] = $rentalProduct['productName'] . "\n" . $rentalProduct['contents'];
+                    $baseRentalProduct['contents'] = "■" . $rentalProduct['productName'] . "\n" . $rentalProduct['contents'];
                 } else {
                 // コンテンツのマージ
                 $baseRentalProduct['productCode'] = $baseRentalProduct['productCode'] . ', '.$rentalProduct['productCode'];
                 // コンテンツのマージ
-                $baseRentalProduct['contents'] = $baseRentalProduct['contents'] . "\n" . $rentalProduct['productName'] . "\n" . $rentalProduct['contents'];
+                    $baseRentalProduct['contents'] = $baseRentalProduct['contents'] . "\n" . "■" . $rentalProduct['productName'] . "\n" . $rentalProduct['contents'];
                 }
             }
             return $this->productReformat([$baseRentalProduct])[0];
