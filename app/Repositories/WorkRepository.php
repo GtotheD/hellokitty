@@ -384,11 +384,13 @@ class WorkRepository
             } else {
                 $person = $this->getPerson($product['msdbItem'], $product['productUniqueId']);
                 if (!empty($person)) {
+                    $response['personId'] = $person->person_id;
                     $response['supplement'] = $person->person_name;
                 }
             }
             // レンタルDVDの場合はsupplementを空にする
             if ($product['msdbItem'] === 'video' && $response['bigGenreId'] !== 'EXT0000003GW') {
+                $response['personId'] = '';
                 $response['supplement'] = '';
             }
 
