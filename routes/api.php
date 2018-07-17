@@ -581,6 +581,165 @@ $router->group([
         return response()->json($sectionData)->header('X-Accel-Expires', '86400');
     });
 
+    // Favorite list
+    $router->get('favorite/list', function (Request $request, $sort = 'new') {
+        $stringSample = '{
+            "hasNext": true,
+            "totalCount": 10,
+            "rows": [
+            {
+                "work_id": "PTA00007Y8TH",
+                "item_type": "dvd",
+                "created_at": "2017-04-11 16:34:18"
+            },
+            {
+                "work_id": "PTA0000818QA",
+                "item_type": "dvd",
+                "created_at": "2017-04-11 16:34:18"
+            },
+            {
+                "work_id": "PTA00007XPBZ",
+                "item_type": "dvd",
+                "created_at": "2017-04-15 16:34:18"
+            },
+            {
+                "work_id": "PTA00007Y8TH",
+                "item_type": "dvd",
+                "created_at": "2017-04-16 16:34:18"
+            },
+            {
+                "work_id": "PTA00007YIZN",
+                "item_type": "dvd",
+                "created_at": "2017-04-17 16:34:18"
+            },
+            {
+                "work_id": "PTA000080QW6",
+                "item_type": "dvd",
+                "created_at": "2017-04-18 16:34:18"
+            },
+            {
+                "work_id": "PTA000081J9R",
+                "item_type": "dvd",
+                "created_at": "2017-04-19 16:34:18"
+            },
+            {
+                "work_id": "PTA00008M81I",
+                "item_type": "dvd",
+                "created_at": "2017-04-20 16:34:18"
+            },
+            {
+                "work_id": "PTA000092WMF",
+                "item_type": "dvd",
+                "created_at": "2017-04-21 16:34:18"
+            },
+            {
+                "work_id": "PTA000094PYP",
+                "item_type": "dvd",
+                "created_at": "2017-04-22 16:34:18"
+            }
+            ]
+        }';
+        $response = json_decode($stringSample);
+        return response()->json($response);
+    });  
+
+    // Favorite works
+    $router->get('favorite/works', function (Request $request) {
+        $stringSample = '{
+            "hasNext": true,
+            "totalCount": 5,
+            "rows": [
+            {
+                "workId": "PTA00007Y8TH",
+                "urlCd": "10001145",
+                "cccWorkCd": "10001155",
+                "workTitle": "エマニエル夫人",
+                "newFlg": true,
+                "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/05838/9999202758091_1L.jpg",
+                "supplement": "(C) 2017 Disney",
+                "saleType": "rental",
+                "itemType": "dvd",
+                "adultFlg": false
+            },
+            {
+                "workId": "PTA0000818QA",
+                "urlCd": "10101681",
+                "cccWorkCd": "10107504",
+                "workTitle": "カンフー・パンダ",
+                "newFlg": true,
+                "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07330/9999203273852_1L.jpg",
+                "supplement": "(C)Disney",
+                "saleType": "rental",
+                "itemType": "dvd",
+                "adultFlg": false
+            },
+            {
+                "workId": "PTA00007XPBZ",
+                "urlCd": "10325267",
+                "cccWorkCd": "10332228",
+                "workTitle": "キングダム",
+                "newFlg": true,
+                "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/08599/9999203822998_1L.jpg",
+                "supplement": "(C)Disney",
+                "saleType": "rental",
+                "itemType": "dvd",
+                "adultFlg": false
+            },
+            {
+                "workId": "PTA00007Y8TH",
+                "urlCd": "10001145",
+                "cccWorkCd": "10001155",
+                "workTitle": "エマニエル夫人",
+                "newFlg": true,
+                "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/05838/9999202758091_1L.jpg",
+                "supplement": "(C)Disney",
+                "saleType": "rental",
+                "itemType": "dvd",
+                "adultFlg": false
+            },
+            {
+                "workId": "PTA00007YIZN",
+                "urlCd": "10000152",
+                "cccWorkCd": "10000154",
+                "workTitle": "ダイ・ハード 2",
+                "newFlg": true,
+                "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/06112/9999202330438_1L.jpg",
+                "supplement": "Twentieth Century Fox Home Entertainment LLC",
+                "saleType": "rental",
+                "itemType": "dvd",
+                "adultFlg": false
+            }
+        ]
+        }';
+        $response = json_decode($stringSample);
+        return response()->json($response);
+    });
+
+    // Favorite add
+    $router->post('favorite/add', function (Request $request) {
+        $stringSample = '{
+            "status": "200",
+            "message": "Add success"
+        }';
+        $response = json_decode($stringSample);
+        return response()->json($response);
+    });
+
+    // Favorite merge
+    $router->post('favorite/merge', function (Request $request) {
+        $stringSample = '{
+            "status": "200",
+            "message": "Merge success"
+        }';
+        $response = json_decode($stringSample);
+        return response()->json($response);
+    });
+
+    // Favorite delete
+    $router->post('favorite/delete', function (Request $request) {
+        return response('OK', 200);
+    });
+
     // 検証環境まで有効にするテスト要
     if (env('APP_ENV') === 'local' || env('APP_ENV') === 'develop' || env('APP_ENV') === 'staging') {
         $router->get('himo/{workId}', function (Request $request, $workId) {
