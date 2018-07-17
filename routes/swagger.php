@@ -753,7 +753,7 @@
  * )
  */
 /**
- * @SWG\Get(
+ * @SWG\Post(
  *     path="/work/bulk",
  *     description="作品詳細一括取得
  * 最大取得数30件まで",
@@ -1719,9 +1719,9 @@
  * )
  */
 /**
- * @SWG\Get(
+ * @SWG\Post(
  *     path="/favorite/list",
- *     description="お気に入り作品取得",
+ *     description="お気に入り一覧取得",
  *     produces={"application/json"},
  *     tags={"Favorite"},
  *     security={{"api_key":{}}},
@@ -1834,7 +1834,7 @@
  *     ),
  *     @SWG\Response(
  *          response=200,
- *          description="success（status=errorは）",
+ *          description="success（status=errorは返却なし。）",
  *          @SWG\Schema(
  *              ref="#/definitions/favorite_status",
  *          )
@@ -1845,7 +1845,7 @@
  * )
  */
 /**
- * @SWG\Delete(
+ * @SWG\Post(
  *     path="/favorite/delete",
  *     description="お気に入り削除
  * 削除対象がなくても200で返却。エラーコード返却はしない。",

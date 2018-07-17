@@ -582,7 +582,7 @@ $router->group([
     });
 
     // Favorite list
-    $router->get('favorite/list', function (Request $request, $sort = 'new') {
+    $router->post('favorite/list', function (Request $request, $sort = 'new') {
         $stringSample = '{
             "hasNext": true,
             "totalCount": 10,
@@ -644,7 +644,7 @@ $router->group([
     });  
 
     // Favorite works
-    $router->get('favorite/works', function (Request $request) {
+    $router->post('/work/bulk', function (Request $request) {
         $stringSample = '{
             "hasNext": true,
             "totalCount": 5,
@@ -726,7 +726,7 @@ $router->group([
     });
 
     // Favorite merge
-    $router->post('favorite/merge', function (Request $request) {
+    $router->post('favorite/add/merge', function (Request $request) {
         $stringSample = '{
             "status": "200",
             "message": "Merge success"
@@ -737,7 +737,12 @@ $router->group([
 
     // Favorite delete
     $router->post('favorite/delete', function (Request $request) {
-        return response('OK', 200);
+        $stringSample = '{
+            "status": "200",
+            "message": "Delete success"
+        }';
+        $response = json_decode($stringSample);
+        return response()->json($response);
     });
 
     // 検証環境まで有効にするテスト要
