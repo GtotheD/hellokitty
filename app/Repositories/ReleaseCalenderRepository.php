@@ -212,6 +212,8 @@ class ReleaseCalenderRepository
                 // TSUTAYA一押しでmsdbitemがcdの場合ミュージックdvdを含めない
                 if($mappingData['msdbItem'][0] === 'video') {
                     $params['genre'] = implode(' || ', $workRepository::HIMO_SEARCH_VIDEO_GENRE_ID);
+                    // msdbitemにaudioを追加
+                    $params['msdbItem'] = ['video','audio'];
                 } else if($mappingData['msdbItem'][0] === 'audio') {
                     // 除外に変換
                     $ignoreVideoGenres = [];
