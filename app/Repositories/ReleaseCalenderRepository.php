@@ -212,6 +212,7 @@ class ReleaseCalenderRepository
                 // TSUTAYA一押しでmsdbitemがcdの場合ミュージックdvdを含めない
                 if($mappingData['msdbItem'][0] === 'video') {
                     $params['genre'] = implode(' || ', $workRepository::HIMO_SEARCH_VIDEO_GENRE_ID);
+                    $params['genre'] = $params['genre'] . ':';
                     // msdbitemにaudioを追加
                     $params['msdbItem'] = ['video','audio'];
                 } else if($mappingData['msdbItem'][0] === 'audio') {
@@ -221,8 +222,8 @@ class ReleaseCalenderRepository
                         $ignoreVideoGenres[] = '-'.$videoGenre;
                     }
                     $params['genre'] = implode(' || ', $ignoreVideoGenres);
+                    $params['genre'] = $params['genre'] . ':';
                 }
-                $params['genre'] = $params['genre'] . ':';
             } else {
                 $params['genre'] = $mappingData['genres'];
             }
