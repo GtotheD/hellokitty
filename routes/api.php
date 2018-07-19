@@ -603,8 +603,8 @@ $router->group([
                 "created_at": "2017-04-15 16:34:18"
             },
             {
-                "work_id": "PTA00007Y8TH",
-                "item_type": "dvd",
+                "work_id": "PTA0000SQEHA",
+                "item_type": "cd",
                 "created_at": "2017-04-16 16:34:18"
             },
             {
@@ -666,6 +666,22 @@ $router->group([
                 "makerName":"NBCユニバーサル・エンターテイメントジャパン"
             },
             {
+                "workId": "PTA0000SQEHA",
+                "urlCd": "20604554",
+                "cccWorkCd": "20755460",
+                "workTitle": "和と洋",
+                "newFlg": true,
+                "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/12493/4988031250617_1L.jpg",
+                "supplement": "AI",
+                "saleType": "rental",
+                "itemType": "cd",
+                "adultFlg": false,
+                "saleStartSate":"2017/11/11",
+                "priceTaxOut":"2000",
+                "workFormatName":"アルバム",
+                "makerName":"ユニバーサル・ミュージック"
+            },
+            {
                 "workId": "PTA0000818QA",
                 "urlCd": "10101681",
                 "cccWorkCd": "10107504",
@@ -696,22 +712,6 @@ $router->group([
                 "priceTaxOut":"3000",
                 "workFormatName":"",
                 "makerName":"エイベックス・ピクチャーズ"
-            },
-            {
-                "workId": "PTA00007Y8TH",
-                "urlCd": "10001145",
-                "cccWorkCd": "10001155",
-                "workTitle": "エマニエル夫人",
-                "newFlg": true,
-                "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/05838/9999202758091_1L.jpg",
-                "supplement": "(C)Disney",
-                "saleType": "rental",
-                "itemType": "dvd",
-                "adultFlg": false,
-                "saleStartSate":"2010/11/26",
-                "priceTaxOut":"4000",
-                "workFormatName":"",
-                "makerName":"NBCユニバーサル・エンターテイメントジャパン"
             },
             {
                 "workId": "PTA00007YIZN",
