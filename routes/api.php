@@ -647,7 +647,7 @@ $router->group([
     $router->post('/work/bulk', function (Request $request) {
         $stringSample = '{
             "hasNext": true,
-            "totalCount": 5,
+            "totalCount": 6,
             "rows": [
             {
                 "workId": "PTA00007Y8TH",
@@ -659,7 +659,11 @@ $router->group([
                 "supplement": "(C) 2017 Disney",
                 "saleType": "rental",
                 "itemType": "dvd",
-                "adultFlg": false
+                "adultFlg": false,
+                "saleStartSate":"2010/11/26",
+                "priceTaxOut":"1200",
+                "workFormatName":"",
+                "makerName":"NBCユニバーサル・エンターテイメントジャパン"
             },
             {
                 "workId": "PTA0000818QA",
@@ -671,7 +675,11 @@ $router->group([
                 "supplement": "(C)Disney",
                 "saleType": "rental",
                 "itemType": "dvd",
-                "adultFlg": false
+                "adultFlg": false,
+                "saleStartSate":"2012/01/20",
+                "priceTaxOut":"200",
+                "workFormatName":"",
+                "makerName":"パラマウント ジャパン"
             },
             {
                 "workId": "PTA00007XPBZ",
@@ -683,7 +691,11 @@ $router->group([
                 "supplement": "(C)Disney",
                 "saleType": "rental",
                 "itemType": "dvd",
-                "adultFlg": false
+                "adultFlg": false,
+                "saleStartSate":"2013/05/03",
+                "priceTaxOut":"3000",
+                "workFormatName":"",
+                "makerName":"エイベックス・ピクチャーズ"
             },
             {
                 "workId": "PTA00007Y8TH",
@@ -695,7 +707,11 @@ $router->group([
                 "supplement": "(C)Disney",
                 "saleType": "rental",
                 "itemType": "dvd",
-                "adultFlg": false
+                "adultFlg": false,
+                "saleStartSate":"2010/11/26",
+                "priceTaxOut":"4000",
+                "workFormatName":"",
+                "makerName":"NBCユニバーサル・エンターテイメントジャパン"
             },
             {
                 "workId": "PTA00007YIZN",
@@ -707,7 +723,27 @@ $router->group([
                 "supplement": "Twentieth Century Fox Home Entertainment LLC",
                 "saleType": "rental",
                 "itemType": "dvd",
-                "adultFlg": false
+                "adultFlg": false,
+                "saleStartSate":"2009/07/01",
+                "priceTaxOut":"1400",
+                "workFormatName":"",
+                "makerName":"20世紀フォックス・ホーム・エンターテイメント・ジャパン"
+            },
+            {
+                "workId": "PTA000080QW6",
+                "urlCd": "20522978",
+                "cccWorkCd": "20673893",
+                "workTitle": "The Entertainer",
+                "newFlg": true,
+                "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/09028/4988064163892_1L.jpg",
+                "supplement": "三浦大知",
+                "saleType": "rental",
+                "itemType": "cd",
+                "adultFlg": false,
+                "saleStartSate":"2013/11/20",
+                "priceTaxOut":"2500",
+                "workFormatName":"アルバム",
+                "makerName":"エイベックス・ミュージック・クリエイティヴ"
             }
         ]
         }';
