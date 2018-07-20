@@ -663,7 +663,10 @@ $router->group([
         $defineWorkId = 'PTA';
         $workIdsArray = [];
         // Covert urlCd to id if have
+        $maxElement = 30;
+        $count = 1;
         foreach ($idsArray as $idElement) {
+            
             if(substr($idElement, 0, strlen($defineWorkId)) !== $defineWorkId) {
                 // Convert urlCd to workId
                 // $convertData = $work->get($idElement,['work_id'],'0105');
@@ -671,6 +674,7 @@ $router->group([
                 $idElement = $convertData->work_id; 
             }
             array_push($workIdsArray, $idElement);
+            
         }
         $workRepository->setSaleType($saleType);
         $workData = $workRepository->getWorkList($workIdsArray);
@@ -680,20 +684,22 @@ $router->group([
         $workDataFormat = [];
         // format output workData
         foreach ($workData['rows'] as $itemWork) {
+            if($count > $maxElement) break;
             $tempData['workId'] = $itemWork['workId'];
             $tempData['supplement'] = $itemWork['supplement'];
-            $tempData['saleType'] = $itemWork['saleType'];
+            $tempData['saleType'] = isset($itemWork['saleType']) ? $itemWork['saleType']: '';
             $tempData['itemType'] = $itemWork['itemType'];
             $tempData['adultFlg'] = $itemWork['adultFlg'];
             $tempData['saleStartDate'] = $itemWork['saleStartDate'];
             $tempData['workFormatName'] = $itemWork['workFormatName'];
             $tempData['priceTaxOut'] = ''; // priceTaxOut not return
-            $tempData['makerName'] = $itemWork['makerName'];
+            $tempData['makerName'] = isset($itemWork['makerName']) ? $itemWork['makerName']: '';
             array_push($workDataFormat, $tempData);
+            $count ++;
         }
         $response = [
             'hasNext' => false,
-            'totalCount' => $workRepository->getTotalCount(),
+            'totalCount' => $count,
             'rows' => $workDataFormat
         ];
         return response()->json($response);
