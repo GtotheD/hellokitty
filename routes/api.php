@@ -31,6 +31,7 @@ use App\Repositories\HimoRepository;
 use App\Exceptions\AgeLimitException;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use App\Model\Product;
+use App\Model\Work;
 use App\Repositories\ReleaseCalenderRepository;
 
 // Api Group
@@ -645,73 +646,56 @@ $router->group([
 
     // Favorite works
     $router->post('/work/bulk', function (Request $request) {
-        $stringSample = '{
-            "hasNext": true,
-            "totalCount": 5,
-            "rows": [
-            {
-                "workId": "PTA00007Y8TH",
-                "urlCd": "10001145",
-                "cccWorkCd": "10001155",
-                "workTitle": "エマニエル夫人",
-                "newFlg": true,
-                "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/05838/9999202758091_1L.jpg",
-                "supplement": "(C) 2017 Disney",
-                "saleType": "rental",
-                "itemType": "dvd",
-                "adultFlg": false
-            },
-            {
-                "workId": "PTA0000818QA",
-                "urlCd": "10101681",
-                "cccWorkCd": "10107504",
-                "workTitle": "カンフー・パンダ",
-                "newFlg": true,
-                "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/07330/9999203273852_1L.jpg",
-                "supplement": "(C)Disney",
-                "saleType": "rental",
-                "itemType": "dvd",
-                "adultFlg": false
-            },
-            {
-                "workId": "PTA00007XPBZ",
-                "urlCd": "10325267",
-                "cccWorkCd": "10332228",
-                "workTitle": "キングダム",
-                "newFlg": true,
-                "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/08599/9999203822998_1L.jpg",
-                "supplement": "(C)Disney",
-                "saleType": "rental",
-                "itemType": "dvd",
-                "adultFlg": false
-            },
-            {
-                "workId": "PTA00007Y8TH",
-                "urlCd": "10001145",
-                "cccWorkCd": "10001155",
-                "workTitle": "エマニエル夫人",
-                "newFlg": true,
-                "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/05838/9999202758091_1L.jpg",
-                "supplement": "(C)Disney",
-                "saleType": "rental",
-                "itemType": "dvd",
-                "adultFlg": false
-            },
-            {
-                "workId": "PTA00007YIZN",
-                "urlCd": "10000152",
-                "cccWorkCd": "10000154",
-                "workTitle": "ダイ・ハード 2",
-                "newFlg": true,
-                "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/06112/9999202330438_1L.jpg",
-                "supplement": "Twentieth Century Fox Home Entertainment LLC",
-                "saleType": "rental",
-                "itemType": "dvd",
-                "adultFlg": false
+        $body_obj = json_decode($request->getContent(), true);
+        $saleType = isset($body_obj['saleType']) ? $body_obj['saleType'] : '';
+        // Check if have no data for input saleType
+        if(empty($saleType)) {
+            throw new BadRequestHttpException;
+            
+        }
+        // Check ids must have value
+        $idsArray = isset($body_obj['ids']) ? $body_obj['ids'] : '';
+        if(empty($idsArray) || count($idsArray) <= 0) {
+            throw new BadRequestHttpException;
+        }
+        $workRepository = new WorkRepository();
+        $work = new Work();
+        $defineWorkId = 'PTA';
+        $workIdsArray = [];
+        // Covert urlCd to id if have
+        foreach ($idsArray as $idElement) {
+            if(substr($idElement, 0, strlen($defineWorkId)) !== $defineWorkId) {
+                // Convert urlCd to workId
+                // $convertData = $work->get($idElement,['work_id'],'0105');
+                $convertData = $work->setConditionByUrlCd($idElement)->getOne();
+                $idElement = $convertData->work_id; 
             }
-        ]
-        }';
-        $response = json_decode($stringSample);
+            array_push($workIdsArray, $idElement);
+        }
+        $workRepository->setSaleType($saleType);
+        $workData = $workRepository->getWorkList($workIdsArray);
+        if (empty($workData)) {
+            throw new NoContentsException;
+        }
+        $workDataFormat = [];
+        // format output workData
+        foreach ($workData['rows'] as $itemWork) {
+            $tempData['workId'] = $itemWork['workId'];
+            $tempData['supplement'] = $itemWork['supplement'];
+            $tempData['saleType'] = $itemWork['saleType'];
+            $tempData['itemType'] = $itemWork['itemType'];
+            $tempData['adultFlg'] = $itemWork['adultFlg'];
+            $tempData['saleStartDate'] = $itemWork['saleStartDate'];
+            $tempData['workFormatName'] = $itemWork['workFormatName'];
+            $tempData['priceTaxOut'] = ''; // priceTaxOut not return
+            $tempData['makerName'] = $itemWork['makerName'];
+            array_push($workDataFormat, $tempData);
+        }
+        $response = [
+            'hasNext' => false,
+            'totalCount' => $workRepository->getTotalCount(),
+            'rows' => $workDataFormat
+        ];
         return response()->json($response);
     });
 
