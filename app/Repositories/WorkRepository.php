@@ -595,7 +595,10 @@ class WorkRepository
             $this->work->insertBulk($workData, $insertWorkId);
             // インサート前に存在していれば削除する。
             if (!empty($deleteProduct)) {
-                $productModel->setConditionByProductUniqueIdIn($deleteProduct)->delete();
+                $count = $productModel->setConditionByProductUniqueIdIn($deleteProduct)->count();
+                if ($count > 0) {
+                    $productModel->setConditionByProductUniqueIdIn($deleteProduct)->delete();
+                }
             }
             $productModel->insertBulk($productData);
             $peopleModel->insertBulk($peopleData);
