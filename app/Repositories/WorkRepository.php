@@ -280,11 +280,51 @@ class WorkRepository
         }
         return $response;
     }
+    /**
+     * Get work data by input urlcd
+     * @param type $workId 
+     * @param type|null $selectColumns 
+     * @return response
+     */
+    public function getWorkByUrlCd($workId, $selectColumns = null)
+    {
+        $product = new Product;
+        $response = [];
+        $productResult = null;
+        $productResult = (array)$this->work->setConditionByUrlCd($workId)->getOne();
+        if ($productResult) {
+            $workId = $productResult['work_id'];
+        }
+        $this->work->setConditionByWorkId($workId);
+        // if have no data on table ts_works
+        // Get data from himo
+        if ($this->work->count() == 0) {
+            $himo = new HimoRepository();
+            $himoResult = $himo->crosswork([$workId], $idType)->get();
+            if (empty($himoResult['results']['rows'])) {
+                return null;
+            }
+            // インサートしたものを取得するため条件を再設定
+            $workId = $himoResult['results']['rows'][0]['work_id'];
+            $this->work->setConditionByWorkId($workId);
+            if ($this->work->count() == 0) {
+                $this->insertWorkData($himoResult, $this->work);
+            }
+        }
+        // If have selected column get this column
+        if (empty($selectColumns)) {
+            $response = (array)$this->work->toCamel(['id'])->getOne();
+        } else {
+            $response = (array)$this->work->selectCamel($selectColumns)->getOne();
+        }
+
+        return $response;
+    }
 
     /**
      *
      *
-     * @param $workIds
+     * @param $workIds, $selectColumns
      * @return null
      *
      * @throws NoContentsException
@@ -378,6 +418,8 @@ class WorkRepository
             }
             // 全ての在庫ページで表示する日付を商品の最新のものにする。
             $response['saleStartDate'] = $product['saleStartDate'];
+            // Add price_tax_out
+            $response['priceTaxOut'] = $product['priceTaxOut'];
             // add supplement
             if ($product['msdbItem'] === 'game') {
                 $response['supplement'] = $product['gameModelName'];

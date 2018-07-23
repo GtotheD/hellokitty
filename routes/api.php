@@ -31,7 +31,6 @@ use App\Repositories\HimoRepository;
 use App\Exceptions\AgeLimitException;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use App\Model\Product;
-use App\Model\Work;
 use App\Repositories\ReleaseCalenderRepository;
 
 // Api Group
@@ -659,7 +658,6 @@ $router->group([
             throw new BadRequestHttpException;
         }
         $workRepository = new WorkRepository();
-        $work = new Work();
         $defineWorkId = 'PTA';
         $workIdsArray = [];
         // Covert urlCd to id if have
@@ -669,9 +667,10 @@ $router->group([
             
             if(substr($idElement, 0, strlen($defineWorkId)) !== $defineWorkId) {
                 // Convert urlCd to workId
-                // $convertData = $work->get($idElement,['work_id'],'0105');
-                $convertData = $work->setConditionByUrlCd($idElement)->getOne();
-                $idElement = $convertData->work_id; 
+                $convertData = $workRepository->getWorkByUrlCd($idElement,['work_id']);
+                if(count($convertData) > 0 && isset($convertData['work_id'])) {
+                    $idElement = $convertData['work_id'];
+                }
             }
             array_push($workIdsArray, $idElement);
             
@@ -692,14 +691,14 @@ $router->group([
             $tempData['adultFlg'] = $itemWork['adultFlg'];
             $tempData['saleStartDate'] = $itemWork['saleStartDate'];
             $tempData['workFormatName'] = $itemWork['workFormatName'];
-            $tempData['priceTaxOut'] = ''; // priceTaxOut not return
+            $tempData['priceTaxOut'] = isset($itemWork['priceTaxOut']) ? $itemWork['priceTaxOut']: '';
             $tempData['makerName'] = isset($itemWork['makerName']) ? $itemWork['makerName']: '';
             array_push($workDataFormat, $tempData);
             $count ++;
         }
         $response = [
             'hasNext' => false,
-            'totalCount' => $count,
+            'totalCount' => $count-1,
             'rows' => $workDataFormat
         ];
         return response()->json($response);
