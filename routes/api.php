@@ -685,14 +685,19 @@ $router->group([
         foreach ($workData['rows'] as $itemWork) {
             if($count > $maxElement) break;
             $tempData['workId'] = $itemWork['workId'];
+            $tempData['urlCd'] = $itemWork['urlCd'];
+            $tempData['cccWorkCd'] = $itemWork['cccWorkCd'];
+            $tempData['workTitle'] = $itemWork['workTitle'];
+            $tempData['newFlg'] = $itemWork['newFlg'];
+            $tempData['jacketL'] = $itemWork['jacketL'];
             $tempData['supplement'] = $itemWork['supplement'];
             $tempData['saleType'] = isset($itemWork['saleType']) ? $itemWork['saleType']: '';
             $tempData['itemType'] = $itemWork['itemType'];
             $tempData['adultFlg'] = $itemWork['adultFlg'];
-            $tempData['saleStartDate'] = $itemWork['saleStartDate'];
-            $tempData['workFormatName'] = $itemWork['workFormatName'];
             $tempData['priceTaxOut'] = isset($itemWork['priceTaxOut']) ? $itemWork['priceTaxOut']: '';
+            $tempData['workFormatName'] = $itemWork['workFormatName'];
             $tempData['makerName'] = isset($itemWork['makerName']) ? $itemWork['makerName']: '';
+            $tempData['saleStartDate'] = $itemWork['saleStartDate'];
             array_push($workDataFormat, $tempData);
             $count ++;
         }

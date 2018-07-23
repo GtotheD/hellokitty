@@ -789,7 +789,7 @@
  *              @SWG\Property(
  *                  property="rows",
  *                  type="array",
- *                  @SWG\Items(ref="#/definitions/WorkNarrow"),
+ *                  @SWG\Items(ref="#/definitions/WorkNarrowBulk"),
  *                  description="作品情報",
  *              ),
  *          )
