@@ -281,6 +281,60 @@ class WorkRepository
         return $response;
     }
     /**
+     * Description
+     * @param type|array $idsArray 
+     * @return type|array $workIdsArray
+     */
+    public function convertUrlCdToWorkId($idsArray = []) {
+        $defineWorkId = 'PTA';
+        $workIdsArray = [];
+        foreach ($idsArray as $idElement) {
+            if(substr($idElement, 0, strlen($defineWorkId)) !== $defineWorkId) {
+                // Convert urlCd to workId
+                $convertData = $this->getWorkByUrlCd($idElement,['work_id']);
+                if(count($convertData) > 0 && isset($convertData['work_id'])) {
+                    $idElement = $convertData['work_id'];
+                    array_push($workIdsArray, $idElement);
+                }
+                continue;
+            }
+            array_push($workIdsArray, $idElement);   
+        }
+        return $workIdsArray;
+    }
+    /**
+     * Description
+     * @param type $workData 
+     * @param type|int $maxElement 
+     * @return type|array $workData
+     */
+    public function formatOutputBulk($workData, $maxElement = 30) {
+        $workDataFormat = [];
+        $count = 1;
+        // format output workData
+        foreach ($workData['rows'] as $itemWork) {
+            if($count > $maxElement) break;
+            $tempData['workId'] = $itemWork['workId'];
+            $tempData['urlCd'] = $itemWork['urlCd'];
+            $tempData['cccWorkCd'] = $itemWork['cccWorkCd'];
+            $tempData['workTitle'] = $itemWork['workTitle'];
+            $tempData['newFlg'] = $itemWork['newFlg'];
+            $tempData['jacketL'] = $itemWork['jacketL'];
+            $tempData['supplement'] = $itemWork['supplement'];
+            $tempData['saleType'] = isset($itemWork['saleType']) ? $itemWork['saleType']: '';
+            $tempData['itemType'] = $itemWork['itemType'];
+            $tempData['adultFlg'] = $itemWork['adultFlg'];
+            $tempData['priceTaxOut'] = isset($itemWork['priceTaxOut']) ? $itemWork['priceTaxOut']: '';
+            $tempData['workFormatName'] = $itemWork['workFormatName'];
+            $tempData['makerName'] = isset($itemWork['makerName']) ? $itemWork['makerName']: '';
+            $tempData['saleStartDate'] = $itemWork['saleStartDate'];
+            array_push($workDataFormat, $tempData);
+            $count ++;
+        }
+        return $workDataFormat;
+    }
+
+    /**
      * Get work data by input urlcd
      * @param type $workId 
      * @param type|null $selectColumns 
