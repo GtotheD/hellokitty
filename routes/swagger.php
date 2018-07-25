@@ -1750,6 +1750,11 @@
  *          ref="$/responses/ListJson",
  *          @SWG\Schema(
  *              @SWG\Property(
+ *                  property="version",
+ *                  type="string",
+ *                  description="取得した際のバージョン",
+ *              ),
+ *              @SWG\Property(
  *                  property="rows",
  *                  type="array",
  *                  @SWG\Items(ref="#/definitions/favorite"),
@@ -1820,6 +1825,11 @@
  *             property="tlsc",
  *             type="string",
  *             description="ユーザー識別番号(TLSC)",
+ *         ),
+ *         @SWG\Property(
+ *             property="version",
+ *             description="登録バージョン（このバージョンをサーバー側で保持している値と比較することによって、同期するかどうかを判定する。）",
+ *             type="string"
  *         ),
  *         @SWG\Property(
  *             property="ids",
