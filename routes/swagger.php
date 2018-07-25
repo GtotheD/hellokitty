@@ -1792,7 +1792,12 @@
  *             property="id",
  *             type="string",
  *             description="「WorkId」もしくは「urlCd」",
- *         )
+ *         ),
+ *         @SWG\Property(
+ *             property="version",
+ *             description="登録バージョン（このバージョンをサーバー側で保持している値と比較することによって、同期するかどうかを判定する。）",
+ *             type="string"
+ *         ),
  *       )
  *     ),
  *     @SWG\Response(
