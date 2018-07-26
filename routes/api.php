@@ -603,8 +603,8 @@ $router->group([
                 "created_at": "2017-04-15 16:34:18"
             },
             {
-                "work_id": "PTA00007Y8TH",
-                "item_type": "dvd",
+                "work_id": "PTA0000SQEHA",
+                "item_type": "cd",
                 "created_at": "2017-04-16 16:34:18"
             },
             {
