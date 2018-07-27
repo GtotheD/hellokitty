@@ -593,7 +593,7 @@ $router->group([
         $favoriteRepository = new FavoriteRepository();
         $favoriteRepository->setTlsc($bodyObj['tlsc']);
         // Check version
-        $version = $request->input('version');
+        $version = isset($bodyObj['version']) ? $bodyObj['version'] : '';
         $favoriteRepository->setLimit($request->input('limit', 2000));
         $favoriteRepository->setOffset($request->input('offset', 0));
         $favoriteRepository->setSort($request->input('sort', 'new'));
@@ -671,6 +671,10 @@ $router->group([
             $response = json_decode($addFvrString);
             return response()->json($response);
         }
+        $version = isset($bodyObj['version']) ? $bodyObj['version'] : '';
+        if(empty($version)) {
+            throw new BadRequestHttpException;
+        }
         // Call api add
         $response = $favoriteRepository->add($bodyObj);
         // Other error
@@ -698,6 +702,10 @@ $router->group([
         $favoriteRepository->setTlsc($bodyObj['tlsc']);
         $favoriteRepository->setWorkIds($bodyObj['rows']);
         // Call api merge
+        $version = isset($bodyObj['version']) ? $bodyObj['version'] : '';
+        if(empty($version)) {
+            throw new BadRequestHttpException;
+        }
         $response = $favoriteRepository->merge($bodyObj);
         // Limit error
         if($response['status'] == 'error') {
@@ -723,6 +731,10 @@ $router->group([
         $favoriteRepository = new FavoriteRepository();
         $favoriteRepository->setTlsc($bodyObj['tlsc']);
         $favoriteRepository->setWorkIds($bodyObj['rows']);
+        $version = isset($bodyObj['version']) ? $bodyObj['version'] : '';
+        if(empty($version)) {
+            throw new BadRequestHttpException;
+        }
         // Call api add
         $response = $favoriteRepository->delete($bodyObj);
         if($response['status'] == 'error') {
