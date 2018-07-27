@@ -65,6 +65,31 @@ class ApiRequesterRepository
         return $result->getBody()->getContents();
     }
 
+    /**
+     * post json in body
+     * @param type|bool $jsonResponse 
+     * @return result
+     */
+    public function postBody($jsonResponse = true) 
+    {
+        $url = $this->apiPath;
+        $client = new Client();
+        try {
+            $result = $client->post($this->apiPath,array(
+                'body'  => $this->queryParams)
+            );
+        } catch (ClientException $e) {
+            $statusCode = $e->getResponse()->getStatusCode();
+            if ($statusCode == '404') {
+                throw new NoContentsException();
+            }
+            throw new $e;
+        }
+        if ($jsonResponse) {
+            return json_decode($result->getBody()->getContents(), true);
+        }
+        return $result->getBody()->getContents();
+    }
 
     public function setHeader($key, $value)
     {

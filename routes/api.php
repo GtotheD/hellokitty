@@ -32,6 +32,7 @@ use App\Exceptions\AgeLimitException;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use App\Model\Product;
 use App\Repositories\ReleaseCalenderRepository;
+use App\Repositories\FavoriteRepository;
 
 // Api Group
 $router->group([
@@ -582,64 +583,38 @@ $router->group([
     });
 
     // Favorite list
-    $router->post('favorite/list', function (Request $request, $sort = 'new') {
-        $stringSample = '{
-            "hasNext": true,
-            "totalCount": 10,
-            "rows": [
-            {
-                "work_id": "PTA00007Y8TH",
-                "item_type": "dvd",
-                "created_at": "2017-04-11 16:34:18"
-            },
-            {
-                "work_id": "PTA0000818QA",
-                "item_type": "dvd",
-                "created_at": "2017-04-11 16:34:18"
-            },
-            {
-                "work_id": "PTA00007XPBZ",
-                "item_type": "dvd",
-                "created_at": "2017-04-15 16:34:18"
-            },
-            {
-                "work_id": "PTA00007Y8TH",
-                "item_type": "dvd",
-                "created_at": "2017-04-16 16:34:18"
-            },
-            {
-                "work_id": "PTA00007YIZN",
-                "item_type": "dvd",
-                "created_at": "2017-04-17 16:34:18"
-            },
-            {
-                "work_id": "PTA000080QW6",
-                "item_type": "dvd",
-                "created_at": "2017-04-18 16:34:18"
-            },
-            {
-                "work_id": "PTA000081J9R",
-                "item_type": "dvd",
-                "created_at": "2017-04-19 16:34:18"
-            },
-            {
-                "work_id": "PTA00008M81I",
-                "item_type": "dvd",
-                "created_at": "2017-04-20 16:34:18"
-            },
-            {
-                "work_id": "PTA000092WMF",
-                "item_type": "dvd",
-                "created_at": "2017-04-21 16:34:18"
-            },
-            {
-                "work_id": "PTA000094PYP",
-                "item_type": "dvd",
-                "created_at": "2017-04-22 16:34:18"
-            }
-            ]
-        }';
-        $response = json_decode($stringSample);
+    $router->post('favorite/list', function (Request $request) {
+        $bodyObj = json_decode($request->getContent(), true);
+        $tlsc = isset($bodyObj['tlsc']) ? $bodyObj['tlsc'] : '';
+        // Check tlsc
+        if(empty($tlsc)) {
+            throw new BadRequestHttpException;
+        }
+        $favoriteRepository = new FavoriteRepository();
+        $favoriteRepository->setTlsc($bodyObj['tlsc']);
+        // Check version
+        $version = $request->input('version');
+        $favoriteRepository->setLimit($request->input('limit', 2000));
+        $favoriteRepository->setOffset($request->input('offset', 0));
+        $favoriteRepository->setSort($request->input('sort', 'new'));
+        if(empty($version)) {
+            throw new BadRequestHttpException;
+        }
+        $response = $favoriteRepository->list($bodyObj);
+        // Check version
+        if($response['version'] == $version) {
+            $versionUpdateString = '{
+                "status": "200",
+                "message": "No favorite version update"
+            }';
+            $response = json_decode($versionUpdateString);
+            return response()->json($response);
+        }
+        // Check number record return
+        if($response['totalCount'] <= 0 ) {
+            throw new NoContentsException;
+        }
+        $response = $favoriteRepository->formatData($response);
         return response()->json($response);
     });  
 
@@ -650,7 +625,6 @@ $router->group([
         // Check if have no data for input saleType
         if(empty($saleType)) {
             throw new BadRequestHttpException;
-            
         }
         // Check ids must have value
         $idsArray = isset($body_obj['ids']) ? $body_obj['ids'] : '';
@@ -678,31 +652,87 @@ $router->group([
 
     // Favorite add
     $router->post('favorite/add', function (Request $request) {
-        $stringSample = '{
-            "status": "200",
-            "message": "Add success"
-        }';
-        $response = json_decode($stringSample);
+        $bodyObj = json_decode($request->getContent(), true);
+        $tlsc = isset($bodyObj['tlsc']) ? $bodyObj['tlsc'] : '';
+        $workId = isset($bodyObj['rows'][0]['workId']) ? count($bodyObj['rows']) : '';
+        // Check tlsc and $workId
+        if(empty($tlsc) || empty($workId)) {
+            throw new BadRequestHttpException;
+        }
+        $favoriteRepository = new FavoriteRepository();
+        $favoriteRepository->setTlsc($bodyObj['tlsc']);
+        $favoriteRepository->setWorkIds($bodyObj['rows']);
+        // Check limit
+        if($favoriteRepository->count($tlsc) >= $favoriteRepository->getLimit()) {
+            $addFvrString = '{
+                "status": "88",
+                "message": "Limit 2000 record"
+            }';
+            $response = json_decode($addFvrString);
+            return response()->json($response);
+        }
+        // Call api add
+        $response = $favoriteRepository->add($bodyObj);
+        // Other error
+        if($response['status'] == 'error') {
+            $addFvrString = '{
+                "status": "99",
+                "message": "通信エラーもしくは内部エラー"
+            }';
+            $response = json_decode($addFvrString);
+            return response()->json($response);
+        }
         return response()->json($response);
     });
 
     // Favorite merge
-    $router->post('favorite/add/merge', function (Request $request) {
-        $stringSample = '{
-            "status": "200",
-            "message": "Merge success"
-        }';
-        $response = json_decode($stringSample);
+    $router->post('favorite/merge', function (Request $request) {
+        $bodyObj = json_decode($request->getContent(), true);
+        $tlsc = isset($bodyObj['tlsc']) ? $bodyObj['tlsc'] : '';
+        $workId = isset($bodyObj['rows'][0]['workId']) ? count($bodyObj['rows']) : '';
+        // Check tlsc and $workId
+        if(empty($tlsc) || empty($workId)) {
+            throw new BadRequestHttpException;
+        }
+        $favoriteRepository = new FavoriteRepository();
+        $favoriteRepository->setTlsc($bodyObj['tlsc']);
+        $favoriteRepository->setWorkIds($bodyObj['rows']);
+        // Call api merge
+        $response = $favoriteRepository->merge($bodyObj);
+        // Limit error
+        if($response['status'] == 'error') {
+            $mergeString = '{
+                "status": "99",
+                "message": "通信エラーもしくは内部エラー"
+            }';
+            $response = json_decode($mergeString);
+            return response()->json($response);
+        }
         return response()->json($response);
     });
 
     // Favorite delete
     $router->post('favorite/delete', function (Request $request) {
-        $stringSample = '{
-            "status": "200",
-            "message": "Delete success"
-        }';
-        $response = json_decode($stringSample);
+        $bodyObj = json_decode($request->getContent(), true);
+        $tlsc = isset($bodyObj['tlsc']) ? $bodyObj['tlsc'] : '';
+        $workId = isset($bodyObj['rows'][0]['workId']) ? count($bodyObj['rows']) : '';
+        // Check tlsc and $workId
+        if(empty($tlsc) || empty($workId)) {
+            throw new BadRequestHttpException;
+        }
+        $favoriteRepository = new FavoriteRepository();
+        $favoriteRepository->setTlsc($bodyObj['tlsc']);
+        $favoriteRepository->setWorkIds($bodyObj['rows']);
+        // Call api add
+        $response = $favoriteRepository->delete($bodyObj);
+        if($response['status'] == 'error') {
+            $versionUpdateString = '{
+                "status": "99",
+                "message": "通信エラーもしくは内部エラー"
+            }';
+            $response = json_decode($versionUpdateString);
+            return response()->json($response);
+        }
         return response()->json($response);
     });
 
