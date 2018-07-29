@@ -73,7 +73,7 @@ class Product extends Model
             if($saleType) {
                 $this->dbObject->where('product_type_id', $this->convertSaleType($saleType));
             }
-        $this->dbObject->orderBy('t2.ccc_product_id', 'desc') // 最古のものを一番上にもってきて取得する為
+        $this->dbObject->orderBy('t2.ccc_product_id', 'asc') // 最新のものを取得
         ;
         return $this;
     }
