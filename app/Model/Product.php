@@ -62,6 +62,22 @@ class Product extends Model
         return $this;
     }
 
+    public function setConditionByUrlCd($urlCd, $saleType)
+    {
+        $this->dbObject = DB::table($this->table . ' AS t2')
+            ->join('ts_works AS t1', 't2.work_id', '=', 't1.work_id')
+            ->where('t1.url_cd', $urlCd)
+            ->where('is_dummy', '=', self::DUMMY_DATA_IS_NOT_DUMMY)
+            ->whereRaw(DB::raw(' item_cd not like \'_1__\' '))
+            ->whereRaw(DB::raw(' jan not like \'9999_________\' '));
+            if($saleType) {
+                $this->dbObject->where('product_type_id', $this->convertSaleType($saleType));
+            }
+        $this->dbObject->orderBy('t2.ccc_product_id', 'desc') // 最古のものを一番上にもってきて取得する為
+        ;
+        return $this;
+    }
+
     /*
      * Get Newest Product
      */

@@ -234,7 +234,7 @@ class WorkRepository
         $productResult = null;
         switch ($idType) {
             case '0105':
-                $productResult = (array)$this->work->setConditionByUrlCd($workId)->getOne();
+                $productResult = (array)$product->setConditionByUrlCd($workId, $this->saleType)->getOne();
                 break;
             case '0205':
                 $productResult = (array)$product->setConditionByJanFamilyGroup($workId)->getOne();
@@ -1210,6 +1210,26 @@ class WorkRepository
                 break;
             case self::WORK_TYPE_DVD:
                 $itemType = 'dvd';
+                break;
+            case self::WORK_TYPE_BOOK:
+                $itemType = 'book';
+                break;
+            case self::WORK_TYPE_GAME:
+                $itemType = 'game';
+                break;
+        }
+        return $itemType;
+    }
+
+    public function convertWorkTypeIdToMsdbItem($workTypeId)
+    {
+        $itemType = null;
+        switch ($workTypeId) {
+            case self::WORK_TYPE_CD:
+                $itemType = 'audio';
+                break;
+            case self::WORK_TYPE_DVD:
+                $itemType = 'video';
                 break;
             case self::WORK_TYPE_BOOK:
                 $itemType = 'book';
