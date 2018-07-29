@@ -1837,7 +1837,7 @@
  *             description="「WorkId」もしくは「urlCd」",
  *             @SWG\Items(
  *               @SWG\Property(property="id",type="string"),
- *               @SWG\Property(property="app_created_at",type="string")
+ *               @SWG\Property(property="appCreatedAt",type="string")
  *             ),
  *         )
  *       )

@@ -678,23 +678,17 @@ $router->group([
     });
 
     // Favorite merge
-    $router->post('favorite/merge', function (Request $request) {
+    $router->post('favorite/add/merge', function (Request $request) {
         $bodyObj = json_decode($request->getContent(), true);
         $tlsc = isset($bodyObj['tlsc']) ? $bodyObj['tlsc'] : '';
-        $workId = isset($bodyObj['rows'][0]['workId']) ? count($bodyObj['rows']) : '';
+        $ids = isset($bodyObj['ids']) ? $bodyObj['ids'] : '';
         // Check tlsc and $workId
-        if(empty($tlsc) || empty($workId)) {
+        if(empty($tlsc) || empty(count($ids))) {
             throw new BadRequestHttpException;
         }
         $favoriteRepository = new FavoriteRepository();
         $favoriteRepository->setTlsc($bodyObj['tlsc']);
-        $favoriteRepository->setWorkIds($bodyObj['rows']);
-        // Call api merge
-        $version = isset($bodyObj['version']) ? $bodyObj['version'] : '';
-        if(empty($version)) {
-            throw new BadRequestHttpException;
-        }
-        $response = $favoriteRepository->merge($bodyObj);
+        $response = $favoriteRepository->merge($ids);
         // Limit error
         if($response['status'] == 'error') {
             $mergeString = '{
