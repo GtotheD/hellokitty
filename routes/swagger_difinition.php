@@ -747,6 +747,11 @@
  *  @SWG\Definition(
  *          definition="favorite_status",
  *          @SWG\Property(
+ *              property="version",
+ *              type="string",
+ *              description="お気に入りデータのバージョン"
+ *          ),
+ *          @SWG\Property(
  *              property="status",
  *              type="string",
  *              description="success or error"

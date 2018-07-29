@@ -1742,6 +1742,11 @@
  *             type="string",
  *             description="ユーザー識別番号(TLSC)",
  *         ),
+ *         @SWG\Property(
+ *             property="version",
+ *             type="string",
+ *             description="お気に入りデータのバージョン",
+ *         ),
  *       )
  *     ),
  *     @SWG\Response(
@@ -1792,12 +1797,7 @@
  *             property="id",
  *             type="string",
  *             description="「WorkId」もしくは「urlCd」",
- *         ),
- *         @SWG\Property(
- *             property="version",
- *             description="登録バージョン（このバージョンをサーバー側で保持している値と比較することによって、同期するかどうかを判定する。）",
- *             type="string"
- *         ),
+ *         )
  *       )
  *     ),
  *     @SWG\Response(
@@ -1830,11 +1830,6 @@
  *             property="tlsc",
  *             type="string",
  *             description="ユーザー識別番号(TLSC)",
- *         ),
- *         @SWG\Property(
- *             property="version",
- *             description="登録バージョン（このバージョンをサーバー側で保持している値と比較することによって、同期するかどうかを判定する。）",
- *             type="string"
  *         ),
  *         @SWG\Property(
  *             property="ids",
