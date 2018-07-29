@@ -121,11 +121,6 @@ class FavoriteRepository extends ApiRequesterRepository
             'tlsc' => $this->tlsc,
             'systemId' => $this->systemId,
             'rows' =>[
-                [
-                    'workId' => $work['workId'],
-                    'msdbItem' => $workRepository->convertWorkTypeIdToMsdbItem($work['workTypeId']),
-                    'appCreatedAt' => $date->toDateTimeString()
-                ]
             ]
         ];
     	$this->apiPath = $this->apiHost . '/api/v1/favorite/add/';
@@ -139,8 +134,34 @@ class FavoriteRepository extends ApiRequesterRepository
      * @return string
      * @throws NoContentsException
      */
-    public function merge($request) 
+    public function merge($ids)
     {
+        $workRepository = New WorkRepository;
+        $workIds = [];
+        foreach ($ids as $id) {
+            // PTAがあった場合はworkId
+            if (preg_match('/^PTA/', $id['id'])) {
+                $work = $workRepository->get($id['id']);
+                // なかった場合はurlCd
+            } else {
+                $work = $workRepository->get($id['id'],null,'0105');
+            }
+            // 検索がヒットしなかった場合でもそのまま続行
+            if (empty($work)) {
+                continue;
+            }
+            $workIds[] = [
+                'workId' => $work['workId'],
+                'msdbItem' => $workRepository->convertWorkTypeIdToMsdbItem($work['workTypeId']),
+                'appCreatedAt' => $id['appCreatedAt']
+            ];
+        }
+        $request = [
+            'tlsc' => $this->tlsc,
+            'systemId' => $this->systemId,
+            'rows' => $workIds
+        ];
+
         $this->apiPath = $this->apiHost . '/api/v1/favorite/add?force=true';
         $this->queryParams = json_encode($request);
         return $this->postBody(true);
@@ -155,7 +176,7 @@ class FavoriteRepository extends ApiRequesterRepository
     public function delete($ids)
     {
         $workRepository = New WorkRepository;
-
+        $workIds = [];
         foreach ($ids as $id) {
             // PTAがあった場合はworkId
             if (preg_match('/^PTA/', $id)) {
