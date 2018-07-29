@@ -152,8 +152,28 @@ class FavoriteRepository extends ApiRequesterRepository
      * @return string
      * @throws NoContentsException
      */
-    public function delete($request) 
+    public function delete($ids)
     {
+        $workRepository = New WorkRepository;
+
+        foreach ($ids as $id) {
+            // PTAがあった場合はworkId
+            if (preg_match('/^PTA/', $id)) {
+                $work = $workRepository->get($id);
+                // なかった場合はurlCd
+            } else {
+                $work = $workRepository->get($id,null,'0105');
+            }
+            // 検索がヒットしなかった場合でもそのまま続行
+            if (empty($work)) {
+                continue;
+            }
+            $workIds[] = ['workId' => $work['workId']];
+        }
+        $request = [
+            'tlsc' => $this->tlsc,
+            'rows' => $workIds
+        ];
     	$this->apiPath = $this->apiHost . '/api/v1/favorite/delete/';
         $this->queryParams = json_encode($request);
         return $this->postBody(true);

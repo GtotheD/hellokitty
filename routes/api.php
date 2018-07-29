@@ -711,20 +711,14 @@ $router->group([
     $router->post('favorite/delete', function (Request $request) {
         $bodyObj = json_decode($request->getContent(), true);
         $tlsc = isset($bodyObj['tlsc']) ? $bodyObj['tlsc'] : '';
-        $workId = isset($bodyObj['rows'][0]['workId']) ? count($bodyObj['rows']) : '';
+        $ids = isset($bodyObj['ids']) ? $bodyObj['ids'] : '';
         // Check tlsc and $workId
-        if(empty($tlsc) || empty($workId)) {
+        if(empty($tlsc) || empty(count($ids))) {
             throw new BadRequestHttpException;
         }
         $favoriteRepository = new FavoriteRepository();
         $favoriteRepository->setTlsc($bodyObj['tlsc']);
-        $favoriteRepository->setWorkIds($bodyObj['rows']);
-        $version = isset($bodyObj['version']) ? $bodyObj['version'] : '';
-        if(empty($version)) {
-            throw new BadRequestHttpException;
-        }
-        // Call api add
-        $response = $favoriteRepository->delete($bodyObj);
+        $response = $favoriteRepository->delete($ids);
         if($response['status'] == 'error') {
             $versionUpdateString = '{
                 "status": "99",
