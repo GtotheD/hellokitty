@@ -68,7 +68,7 @@ class ApiRequesterRepository
     /**
      * post json in body
      * @param type|bool $jsonResponse 
-     * @return result
+     * @return string
      */
     public function postBody($jsonResponse = true) 
     {

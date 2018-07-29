@@ -2,10 +2,9 @@
 
 namespace App\Repositories;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Exception\ClientException;
+use App\Exceptions\NoContentsException;
 
-class FavoriteRepository extends ApiRequesterRepository 
+class FavoriteRepository extends ApiRequesterRepository
 {
     protected $sort;
     protected $offset;
@@ -67,8 +66,8 @@ class FavoriteRepository extends ApiRequesterRepository
 
     /**
      * Set work ids
-     * @param type $rowsData 
-     * @return type
+     * @param type $rowsData
+     * @return string
      */
     public function setWorkIds($rowsData)
     {
@@ -81,8 +80,9 @@ class FavoriteRepository extends ApiRequesterRepository
 
     /**
      * List
-     * @param type $tlsc 
-     * @return type
+     * @param type $tlsc
+     * @return string
+     * @throws NoContentsException
      */
     public function list($tlsc) 
     {
@@ -93,8 +93,9 @@ class FavoriteRepository extends ApiRequesterRepository
 
     /**
      * Add
-     * @param type $tlsc 
-     * @return type
+     * @param type $tlsc
+     * @return string
+     * @throws NoContentsException
      */
     public function add($request) 
     {
@@ -106,7 +107,8 @@ class FavoriteRepository extends ApiRequesterRepository
     /**
      * Merge
      * @param type $tlsc 
-     * @return type
+     * @return string
+     * @throws NoContentsException
      */
     public function merge($request) 
     {
@@ -118,7 +120,8 @@ class FavoriteRepository extends ApiRequesterRepository
     /**
      * Description
      * @param type $request 
-     * @return type
+     * @return string
+     * @throws NoContentsException
      */
     public function delete($request) 
     {
@@ -158,5 +161,3 @@ class FavoriteRepository extends ApiRequesterRepository
         return $responseFormat;
     }
 }
-
-?>
