@@ -3,6 +3,8 @@
 namespace App\Repositories;
 
 use App\Exceptions\NoContentsException;
+use App\Repositories\WorkRepository;
+use Carbon\Carbon;
 
 class FavoriteRepository extends ApiRequesterRepository
 {
@@ -11,12 +13,15 @@ class FavoriteRepository extends ApiRequesterRepository
     protected $limit;
     protected $apiHost;
 
+    protected $tlsc;
+
     public function __construct($sort = 'asc', $offset = 0, $limit = 2000)
     {
         $this->sort = $sort;
         $this->offset = $offset;
         $this->limit = $limit;
         $this->apiHost = env('FAVORITE_API_HOST');
+        $this->systemId = env('FAVORITE_API_SYSTEM_ID');
         $this->method = 'POST';
     }
 
@@ -97,8 +102,32 @@ class FavoriteRepository extends ApiRequesterRepository
      * @return string
      * @throws NoContentsException
      */
-    public function add($request) 
+    public function add($id)
     {
+        $workRepository = New WorkRepository;
+        // PTAがあった場合はworkId
+        if (preg_match('/^PTA/', $id)) {
+            $work = $workRepository->get($id);
+        // なかった場合はurlCd
+        } else {
+            $work = $workRepository->get($id,null,'0105');
+        }
+        // 検索がヒットしなかった場合はfalseを返却
+        if (empty($work)) {
+            return false;
+        }
+        $date = Carbon::now();
+        $request = [
+            'tlsc' => $this->tlsc,
+            'systemId' => $this->systemId,
+            'rows' =>[
+                [
+                    'workId' => $work['workId'],
+                    'msdbItem' => $workRepository->convertWorkTypeIdToMsdbItem($work['workTypeId']),
+                    'appCreatedAt' => $date->toDateTimeString()
+                ]
+            ]
+        ];
     	$this->apiPath = $this->apiHost . '/api/v1/favorite/add/';
         $this->queryParams = json_encode($request);
         return $this->postBody(true);
@@ -106,7 +135,7 @@ class FavoriteRepository extends ApiRequesterRepository
 
     /**
      * Merge
-     * @param type $tlsc 
+     * @param type $tlsc
      * @return string
      * @throws NoContentsException
      */
