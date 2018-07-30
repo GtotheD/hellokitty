@@ -12,7 +12,7 @@ class FavoriteRepository extends ApiRequesterRepository
     protected $limit;
     protected $apiHost;
 
-    public function __construct($sort = 'asc', $offset = 0, $limit = 2000)
+    public function __construct($sort = 'new', $offset = 0, $limit = 2000)
     {
         $this->sort = $sort;
         $this->offset = $offset;

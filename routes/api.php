@@ -594,9 +594,12 @@ $router->group([
         $favoriteRepository->setTlsc($bodyObj['tlsc']);
         // Check version
         $version = isset($bodyObj['version']) ? $bodyObj['version'] : '';
-        $favoriteRepository->setLimit($request->input('limit', 2000));
-        $favoriteRepository->setOffset($request->input('offset', 0));
-        $favoriteRepository->setSort($request->input('sort', 'new'));
+        $limit = isset($bodyObj['limit']) ? $bodyObj['limit'] : 2000;
+        $offset = isset($bodyObj['offset']) ? $bodyObj['offset'] : 0;
+        $sort = isset($bodyObj['sort']) ? $bodyObj['sort'] : 'new';
+        $favoriteRepository->setLimit($limit);
+        $favoriteRepository->setOffset($offset);
+        $favoriteRepository->setSort($sort);
         if(empty($version)) {
             throw new BadRequestHttpException;
         }
