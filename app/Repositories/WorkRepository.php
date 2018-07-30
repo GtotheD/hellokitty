@@ -31,10 +31,14 @@ class WorkRepository
     protected $hasNext;
     protected $totalCount;
 
+    // 1=音楽、2=映像、3=書籍、4=ゲーム、5=グッズ、6=音楽単曲、7=映画
     const WORK_TYPE_CD = 1;
     const WORK_TYPE_DVD = 2;
     const WORK_TYPE_BOOK = 3;
     const WORK_TYPE_GAME = 4;
+    const WORK_TYPE_GOODS = 5;
+    const WORK_TYPE_MUSIC_UNIT = 6;
+    const WORK_TYPE_MOVIE = 7;
 
     const HIMO_REQUEAST_MAX = 200;
     const HIMO_REQUEAST_PER_ONCE = 20;
@@ -1216,6 +1220,12 @@ class WorkRepository
                 break;
             case self::WORK_TYPE_GAME:
                 $itemType = 'game';
+                break;
+            case self::WORK_TYPE_MUSIC_UNIT:
+                $itemType = 'cd';
+                break;
+            case self::WORK_TYPE_MOVIE:
+                $itemType = 'dvd';
                 break;
         }
         return $itemType;
