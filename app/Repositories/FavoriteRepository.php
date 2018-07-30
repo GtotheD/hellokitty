@@ -121,6 +121,11 @@ class FavoriteRepository extends ApiRequesterRepository
             'tlsc' => $this->tlsc,
             'systemId' => $this->systemId,
             'rows' =>[
+                [
+                    'workId' => $work['workId'],
+                    'msdbItem' => $workRepository->convertWorkTypeIdToMsdbItem($work['workTypeId']),
+                    'appCreatedAt' => $date->toDateTimeString()
+                ]
             ]
         ];
     	$this->apiPath = $this->apiHost . '/api/v1/favorite/add/';
