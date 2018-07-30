@@ -221,10 +221,11 @@ class FavoriteRepository extends ApiRequesterRepository
      */
     public function formatData($response) {
         $rowsFormat = [];
+        $productRepository = New ProductRepository;
         foreach ($response['rows'] as $rowElement) {
             $tempElemet['workId'] = $rowElement['workId'];
-            $tempElemet['item_type'] = $rowElement['msdbItem'];
-            $tempElemet['created_at'] = $rowElement['appCreatedAt'];
+            $tempElemet['itemType'] = $productRepository->convertMsdbItemToItemType($rowElement['msdbItem']);
+            $tempElemet['createdAt'] = $rowElement['appCreatedAt'];
             array_push($rowsFormat, $tempElemet);
         }
 
