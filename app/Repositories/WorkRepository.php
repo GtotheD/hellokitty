@@ -1247,6 +1247,12 @@ class WorkRepository
             case self::WORK_TYPE_GAME:
                 $itemType = 'game';
                 break;
+            case self::WORK_TYPE_MUSIC_UNIT:
+                $itemType = 'audio';
+                break;
+            case self::WORK_TYPE_MOVIE:
+                $itemType = 'video';
+                break;
         }
         return $itemType;
     }
