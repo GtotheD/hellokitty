@@ -28,6 +28,11 @@ class ProductRepository
     const PRODUCT_TYPE_SELL = '1';
     const PRODUCT_TYPE_RENTAL = '2';
 
+    const MSDBITEM_NAME_AUDIO = 'audio';
+    const MSDBITEM_NAME_VIDEO = 'video';
+    const MSDBITEM_NAME_BOOK = 'book';
+    const MSDBITEM_NAME_GAME = 'game';
+
     public function __construct($sort = 'asc', $offset = 0, $limit = 10)
     {
         $this->sort = $sort;
@@ -575,4 +580,25 @@ class ProductRepository
         }
         return ($hour != '00') ? "{$min}分" : "{$min}分";
     }
+
+    public function convertMsdbItemToItemType($msdbItem)
+    {
+        $itemType = null;
+        switch ($msdbItem) {
+            case self::MSDBITEM_NAME_AUDIO :
+                $itemType = 'cd';
+                break;
+            case self::MSDBITEM_NAME_VIDEO:
+                $itemType = 'dvd';
+                break;
+            case self::MSDBITEM_NAME_BOOK:
+                $itemType = 'book';
+                break;
+            case self::MSDBITEM_NAME_GAME:
+                $itemType = 'game';
+                break;
+        }
+        return $itemType;
+    }
+
 }
