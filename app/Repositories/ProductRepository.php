@@ -178,6 +178,7 @@ class ProductRepository
             "t2.rental_product_cd",
             "t2.number_of_volume",
             "t2.sale_start_date",
+            "t2.price_tax_out",
         ];
         $isAudio = false;
         $products = $this->product->setConditionByWorkIdNewestProduct($workId)->select('msdb_item')->getOne();
