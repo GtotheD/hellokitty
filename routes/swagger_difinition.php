@@ -650,7 +650,12 @@
  *              property="newFlg",
  *              type="boolean",
  *              description="NEW表示フラグ"
- *          )
+ *          ),
+ *          @SWG\Property(
+ *              property="priceTaxOut",
+ *              type="string",
+ *              description="定価（税抜）"
+ *          ),
  *  )
  * */
 /**
@@ -727,17 +732,17 @@
  *  @SWG\Definition(
  *          definition="favorite",
  *          @SWG\Property(
- *              property="work_id",
+ *              property="workId",
  *              type="string",
  *              description="Himo作品ID"
  *          ),
  *          @SWG\Property(
- *              property="item_type",
+ *              property="itemType",
  *              type="string",
  *              description="Himo作品ID"
  *          ),
  *          @SWG\Property(
- *              property="created_at",
+ *              property="createdAt",
  *              type="string",
  *              description="最終更新日時"
  *          ),
@@ -746,6 +751,11 @@
 /**
  *  @SWG\Definition(
  *          definition="favorite_status",
+ *          @SWG\Property(
+ *              property="version",
+ *              type="string",
+ *              description="お気に入りデータのバージョン"
+ *          ),
  *          @SWG\Property(
  *              property="status",
  *              type="string",

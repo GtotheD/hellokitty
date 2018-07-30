@@ -657,29 +657,17 @@ $router->group([
     $router->post('favorite/add', function (Request $request) {
         $bodyObj = json_decode($request->getContent(), true);
         $tlsc = isset($bodyObj['tlsc']) ? $bodyObj['tlsc'] : '';
-        $workId = isset($bodyObj['rows'][0]['workId']) ? count($bodyObj['rows']) : '';
+        $id = isset($bodyObj['id']) ? $bodyObj['id'] : '';
         // Check tlsc and $workId
-        if(empty($tlsc) || empty($workId)) {
+        if(empty($tlsc) || empty($id)) {
             throw new BadRequestHttpException;
         }
         $favoriteRepository = new FavoriteRepository();
         $favoriteRepository->setTlsc($bodyObj['tlsc']);
-        $favoriteRepository->setWorkIds($bodyObj['rows']);
-        // Check limit
-        if($favoriteRepository->count($tlsc) >= $favoriteRepository->getLimit()) {
-            $addFvrString = '{
-                "status": "88",
-                "message": "Limit 2000 record"
-            }';
-            $response = json_decode($addFvrString);
-            return response()->json($response);
+        $response = $favoriteRepository->add($id);
+        if ($response === false) {
+            return response()->json(['status' => 'error', 'message' => '対象の作品は存在しません。']);
         }
-        $version = isset($bodyObj['version']) ? $bodyObj['version'] : '';
-        if(empty($version)) {
-            throw new BadRequestHttpException;
-        }
-        // Call api add
-        $response = $favoriteRepository->add($bodyObj);
         // Other error
         if($response['status'] == 'error') {
             $addFvrString = '{
@@ -693,23 +681,17 @@ $router->group([
     });
 
     // Favorite merge
-    $router->post('favorite/merge', function (Request $request) {
+    $router->post('favorite/add/merge', function (Request $request) {
         $bodyObj = json_decode($request->getContent(), true);
         $tlsc = isset($bodyObj['tlsc']) ? $bodyObj['tlsc'] : '';
-        $workId = isset($bodyObj['rows'][0]['workId']) ? count($bodyObj['rows']) : '';
+        $ids = isset($bodyObj['ids']) ? $bodyObj['ids'] : '';
         // Check tlsc and $workId
-        if(empty($tlsc) || empty($workId)) {
+        if(empty($tlsc) || empty(count($ids))) {
             throw new BadRequestHttpException;
         }
         $favoriteRepository = new FavoriteRepository();
         $favoriteRepository->setTlsc($bodyObj['tlsc']);
-        $favoriteRepository->setWorkIds($bodyObj['rows']);
-        // Call api merge
-        $version = isset($bodyObj['version']) ? $bodyObj['version'] : '';
-        if(empty($version)) {
-            throw new BadRequestHttpException;
-        }
-        $response = $favoriteRepository->merge($bodyObj);
+        $response = $favoriteRepository->merge($ids);
         // Limit error
         if($response['status'] == 'error') {
             $mergeString = '{
@@ -726,20 +708,14 @@ $router->group([
     $router->post('favorite/delete', function (Request $request) {
         $bodyObj = json_decode($request->getContent(), true);
         $tlsc = isset($bodyObj['tlsc']) ? $bodyObj['tlsc'] : '';
-        $workId = isset($bodyObj['rows'][0]['workId']) ? count($bodyObj['rows']) : '';
+        $ids = isset($bodyObj['ids']) ? $bodyObj['ids'] : '';
         // Check tlsc and $workId
-        if(empty($tlsc) || empty($workId)) {
+        if(empty($tlsc) || empty(count($ids))) {
             throw new BadRequestHttpException;
         }
         $favoriteRepository = new FavoriteRepository();
         $favoriteRepository->setTlsc($bodyObj['tlsc']);
-        $favoriteRepository->setWorkIds($bodyObj['rows']);
-        $version = isset($bodyObj['version']) ? $bodyObj['version'] : '';
-        if(empty($version)) {
-            throw new BadRequestHttpException;
-        }
-        // Call api add
-        $response = $favoriteRepository->delete($bodyObj);
+        $response = $favoriteRepository->delete($ids);
         if($response['status'] == 'error') {
             $versionUpdateString = '{
                 "status": "99",
