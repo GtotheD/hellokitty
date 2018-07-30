@@ -650,7 +650,12 @@
  *              property="newFlg",
  *              type="boolean",
  *              description="NEW表示フラグ"
- *          )
+ *          ),
+ *          @SWG\Property(
+ *              property="priceTaxOut",
+ *              type="string",
+ *              description="定価（税抜）"
+ *          ),
  *  )
  * */
 /**
