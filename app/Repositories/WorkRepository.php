@@ -421,7 +421,7 @@ class WorkRepository
                 ) {
                     $himoResult = $himo->crosswork($getList)->get();
                     // Himoから取得できなかった場合はスキップする
-                    if (!empty($himoResult)) {
+                    if (!empty($himoResult) && $himoResult['status'] !== 204) {
                         $insertResult = $this->insertWorkData($himoResult);
                     }
                     // リセットをかける
