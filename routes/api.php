@@ -603,16 +603,17 @@ $router->group([
         if(empty($version)) {
             throw new BadRequestHttpException;
         }
-        $response = $favoriteRepository->list($bodyObj);
+        $versionResponse = $favoriteRepository->getFavoriteVersion($bodyObj['tlsc']);
         // Check version
-        if($response['version'] == $version) {
+        if(!empty($versionResponse) && $versionResponse == $version) {
             $versionUpdateString = '{
-                "status": "200",
+                "isUpdate": "false",
                 "message": "No favorite version update"
             }';
             $response = json_decode($versionUpdateString);
             return response()->json($response);
         }
+        $response = $favoriteRepository->list($bodyObj);
         // Check number record return
         if($response['totalCount'] <= 0 ) {
             throw new NoContentsException;

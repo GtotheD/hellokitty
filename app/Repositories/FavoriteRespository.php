@@ -127,6 +127,11 @@ class FavoriteRepository extends ApiRequesterRepository
         return $this->postBody(true);
     }
 
+    /**
+     * count record
+     * @param type $tlsc 
+     * @return type
+     */
     public function count($tlsc)
     {
         $this->apiPath = $this->apiHost . '/api/v1/favorite/count/';
@@ -134,6 +139,20 @@ class FavoriteRepository extends ApiRequesterRepository
         $this->queryParams = json_encode($tlscObj);
         $response = $this->postBody(true);
         return $response['totalCount'];
+    }
+
+    /**
+     * get favorite version
+     * @param type $tlsc 
+     * @return type
+     */
+    public function getFavoriteVersion($tlsc)
+    {
+        $this->apiPath = $this->apiHost . '/api/v1/favorite/version/';
+        $tlscObj['tlsc'] = $tlsc;
+        $this->queryParams = json_encode($tlscObj);
+        $response = $this->postBody(true);
+        return $response['version'];
     }
 
     /**
