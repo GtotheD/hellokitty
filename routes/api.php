@@ -615,7 +615,7 @@ $router->group([
         }
         $response = $favoriteRepository->list($bodyObj);
         // Check number record return
-        if($response['totalCount'] <= 0 ) {
+        if(!array_key_exists('totalCount', $response) || $response['totalCount'] <= 0 ) {
             throw new NoContentsException;
         }
         $response = $favoriteRepository->formatData($response);

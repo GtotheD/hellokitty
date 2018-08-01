@@ -73,11 +73,13 @@ class ApiRequesterRepository
     public function postBody($jsonResponse = true) 
     {
         $url = $this->apiPath;
-        $client = new Client();
+        $client = new Client([
+            'headers' => [ 'Content-Type' => 'application/json' ]
+        ]);
         try {
-            $result = $client->post($this->apiPath,array(
-                'body'  => $this->queryParams)
-            );
+            $result = $client->post($this->apiPath,[
+                'body'  => $this->queryParams
+            ]);
         } catch (ClientException $e) {
             $statusCode = $e->getResponse()->getStatusCode();
             if ($statusCode == '404') {
