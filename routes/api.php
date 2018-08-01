@@ -594,22 +594,26 @@ $router->group([
         $favoriteRepository->setTlsc($bodyObj['tlsc']);
         // Check version
         $version = isset($bodyObj['version']) ? $bodyObj['version'] : '';
-        $favoriteRepository->setLimit($request->input('limit', 2000));
-        $favoriteRepository->setOffset($request->input('offset', 0));
-        $favoriteRepository->setSort($request->input('sort', 'new'));
+        $limit = isset($bodyObj['limit']) ? $bodyObj['limit'] : 2000;
+        $offset = isset($bodyObj['offset']) ? $bodyObj['offset'] : 0;
+        $sort = isset($bodyObj['sort']) ? $bodyObj['sort'] : 'new';
+        $favoriteRepository->setLimit($limit);
+        $favoriteRepository->setOffset($offset);
+        $favoriteRepository->setSort($sort);
         if(empty($version)) {
             throw new BadRequestHttpException;
         }
-        $response = $favoriteRepository->list($bodyObj);
+        $versionResponse = $favoriteRepository->getFavoriteVersion($bodyObj['tlsc']);
         // Check version
-        if($response['version'] == $version) {
+        if(!empty($versionResponse) && $versionResponse == $version) {
             $versionUpdateString = '{
-                "status": "200",
+                "isUpdate": "false",
                 "message": "No favorite version update"
             }';
             $response = json_decode($versionUpdateString);
             return response()->json($response);
         }
+        $response = $favoriteRepository->list($bodyObj);
         // Check number record return
         if($response['totalCount'] <= 0 ) {
             throw new NoContentsException;
