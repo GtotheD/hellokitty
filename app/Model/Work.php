@@ -32,8 +32,12 @@ class Work extends Model
 
     public function setConditionByUrlCd($urlCd)
     {
-        $this->dbObject = DB::table($this->table)
-            ->where(['url_cd' => $urlCd]);
+        $this->dbObject = DB::table($this->table);
+        if (is_array($urlCd)) {
+            $this->dbObject->whereIn('url_cd', $urlCd);
+        } else {
+            $this->dbObject->where(['url_cd' => $urlCd]);
+        }
         return $this;
     }
 
