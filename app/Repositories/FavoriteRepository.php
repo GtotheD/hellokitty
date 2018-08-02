@@ -123,7 +123,7 @@ class FavoriteRepository extends ApiRequesterRepository
             'rows' =>[
                 [
                     'workId' => $work['workId'],
-                    'msdbItem' => $workRepository->convertWorkTypeIdToMsdbItem($work['workTypeId']),
+                    'msdbItem' => $work['msdbItem'],
                     'appCreatedAt' => $date->toDateTimeString()
                 ]
             ]
