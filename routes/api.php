@@ -645,7 +645,7 @@ $router->group([
             throw new NoContentsException;
         }
         // Format output work data
-        $workDataFormat = $workRepository->formatOutputBulk($workData);
+        $workDataFormat = $workRepository->formatOutputBulk($workIdsArray, $workData);
         $response = [
             'hasNext' => false,
             'totalCount' => count($workDataFormat),
