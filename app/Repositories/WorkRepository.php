@@ -387,13 +387,22 @@ class WorkRepository
      *
      * @throws NoContentsException
      */
-    public function getWorkList($workIds, $selectColumns = null)
+    public function getWorkList($workIds, $selectColumns = null, $idType = null, $workOnly = false)
     {
         $himo = new HimoRepository();
         $workIdsExistedArray = [];
-        $workIdsExisted = $this->work->getWorkIdsIn($workIds)->select('work_id')->get();
+        switch ($idType) {
+            case '0105':
+                $workIdsExisted = $this->work->setConditionByUrlCd($workIds)->select('url_cd')->get();
+                $targetColumn = 'url_cd';
+                break;
+            default:
+                $workIdsExisted = $this->work->getWorkIdsIn($workIds)->select('work_id')->get();
+                $targetColumn = 'work_id';
+                break;
+        }
         foreach ($workIdsExisted as $workIdsExistedItem) {
-            $workIdsExistedArray[] = $workIdsExistedItem->work_id;
+                $workIdsExistedArray[] = $workIdsExistedItem->$targetColumn;
         }
 
         // STEP 3: IDが取得出来なかった場合は全てHimoから新規で詳細情報を取得するためのリストを作成。
@@ -410,6 +419,7 @@ class WorkRepository
             $loopCount = 0;
             $limitOnce = 0;
             $mergeWorks = [];
+            $himoResult = [];
             // 10件ずつ問い合わせ。アプリ上で何件だすかで制御を変更する。
             foreach ($workIdsNew as $workId) {
                 $loopCount++;
@@ -419,7 +429,11 @@ class WorkRepository
                     (count($workIdsNew) - $loopCount) === 0 ||
                     $loopCount == $max
                 ) {
-                    $himoResult = $himo->crosswork($getList)->get();
+                    if (isset($idType)) {
+                        $himoResult = $himo->crosswork($getList, $idType)->get();
+                    } else {
+                        $himoResult = $himo->crosswork($getList)->get();
+                    }
                     // Himoから取得できなかった場合はスキップする
                     if (!empty($himoResult) && $himoResult['status'] !== 204) {
                         $insertResult = $this->insertWorkData($himoResult);
@@ -434,13 +448,19 @@ class WorkRepository
             }
         }
 
-        // STEP 5: 条件をセット
-        $this->work->getWorkIdsIn($workIds);
+        // STEP 5: 再検索する為に条件をセット
+        switch ($idType) {
+            case '0105':
+                $this->work->setConditionByUrlCd($workIds);
+                break;
+            default:
+                $this->work->getWorkIdsIn($workIds);
+                break;
+        }
         $this->totalCount = $this->work->count();
         if (!$this->totalCount) {
             return null;
         }
-
         if (empty($selectColumns)) {
             $workArray = $this->work->toCamel(['id'])->get();
         } else {
@@ -450,7 +470,11 @@ class WorkRepository
         // productsからとってくるが、仮データ
         foreach ($workArray as $workItem) {
             $row = (array)$workItem;
-            $response['rows'][] = $this->formatAddOtherData($row);
+            if ($workOnly) {
+                $response['rows'][] = $row;
+            } else  {
+                $response['rows'][] = $this->formatAddOtherData($row);
+            }
         }
         return $response;
     }
@@ -1158,6 +1182,7 @@ class WorkRepository
 
         // ベースのデータの整形
         $base['work_id'] = $row['work_id'];
+        $base['msdb_item'] = $row['msdb_item'];
         $base['work_type_id'] = $row['work_type_id'];
         $base['work_format_id'] = $row['work_format_id'];
         $base['work_format_name'] = $row['work_format_name'];

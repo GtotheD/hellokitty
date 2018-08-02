@@ -692,7 +692,7 @@ $router->group([
         }
         $favoriteRepository = new FavoriteRepository();
         $favoriteRepository->setTlsc($bodyObj['tlsc']);
-        $response = $favoriteRepository->merge($ids);
+         $response = $favoriteRepository->merge($ids);
         // Limit error
         if($response['status'] == 'error') {
             $mergeString = '{
