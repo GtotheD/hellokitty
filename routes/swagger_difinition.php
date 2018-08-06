@@ -768,3 +768,33 @@
  *          )
  *  )
  * */
+/**
+ *  @SWG\Definition(
+ *          definition="coupon",
+ *          @SWG\Property(
+ *              property="StoreCd",
+ *              type="string",
+ *              description="店舗番号"
+ *          ),
+ *          @SWG\Property(
+ *              property="tokuban",
+ *              type="string",
+ *              description="トクばん"
+ *          ),
+ *          @SWG\Property(
+ *              property="deliveryStartDate",
+ *              type="string",
+ *              description="施策開始日"
+ *          ),
+ *          @SWG\Property(
+ *              property="deliveryEndDate",
+ *              type="string",
+ *              description="施策終了日"
+ *          ),
+ *          @SWG\Property(
+ *              property="image",
+ *              type="string",
+ *              description="クーポン画像ファイルをBase64文字列したもの"
+ *          ),
+ *  )
+ * */
