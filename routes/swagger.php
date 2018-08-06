@@ -1897,3 +1897,42 @@
  * )
  */
 
+/**
+ * @SWG\Post(
+ *     path="/coupon/list",
+ *     description="ワンタイムクーポン一覧取得",
+ *     produces={"application/json"},
+ *     tags={"Coupon"},
+ *     security={{"api_key":{}}},
+ *     @SWG\Parameter(
+ *       name="body",
+ *       in="body",
+ *       description="",
+ *       type="array",
+ *       @SWG\Schema(
+ *         @SWG\Property(
+ *             property="storeCd",
+ *             type="string",
+ *             description="店舗コード",
+ *         ),
+ *       )
+ *     ),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          ref="$/responses/ListJson",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="rows",
+ *                  type="array",
+ *                  @SWG\Items(ref="#/definitions/coupon"),
+ *                  description="店舗毎のクーポン情報",
+ *              ),
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
