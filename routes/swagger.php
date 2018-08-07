@@ -1914,6 +1914,9 @@
  *             property="storeCds",
  *             type="array",
  *             description="店舗コード",
+ *             @SWG\Items(
+ *                  type="string",
+ *             ),
  *         ),
  *       )
  *     ),
