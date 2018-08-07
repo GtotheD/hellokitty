@@ -5,6 +5,7 @@ namespace App\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use App\Model\Product;
+DB::enableQueryLog();
 
 /**
  * Created by PhpStorm.
@@ -15,6 +16,7 @@ use App\Model\Product;
 class Work extends Model
 {
     const TABLE = 'ts_works';
+
 
     function __construct()
     {
@@ -30,13 +32,21 @@ class Work extends Model
         return $this;
     }
 
-    public function setConditionByUrlCd($urlCd)
+    public function setConditionByUrlCd($urlCd, $saleType = null)
     {
         $this->dbObject = DB::table($this->table);
         if (is_array($urlCd)) {
             $this->dbObject->whereIn('url_cd', $urlCd);
         } else {
             $this->dbObject->where(['url_cd' => $urlCd]);
+        }
+        if($saleType) {
+            $existsWahere = $this->getClauseProductSaleType($saleType);
+            $productsSubQuery = DB::table('ts_products AS tp')
+                ->select(DB::raw('tp.work_id'))
+                ->whereRaw($existsWahere);
+            $this->dbObject = DB::table($this->table. ' AS t1')
+                ->whereRaw('t1.work_id IN ('.$productsSubQuery->toSql().')');
         }
         return $this;
     }
@@ -180,6 +190,44 @@ class Work extends Model
                 ->orderBy('t2.ccc_family_cd', 'desc');
         }
         return $this;
+    }
+
+    /**
+     * Get work data from product sale type
+     * @param type|array $works 
+     * @param type $saleType 
+     * @return type
+     */
+    public function getWorkBySaleType($workIds = [], $saleType)
+    {
+        $existsWahere = $this->getClauseProductSaleType($saleType);
+        $productsSubQuery = DB::table('ts_products AS tp')
+                ->select(DB::raw('tp.work_id'))
+                ->whereRaw($existsWahere);
+        
+        $this->dbObject = DB::table($this->table. ' AS t1')
+                ->whereRaw('t1.work_id IN ('.$productsSubQuery->toSql().')')
+                ->whereIn('t1.work_id', $workIds);
+        return $this;
+    }
+
+    /**
+     * Get clause product sale type
+     * @param type $saleType 
+     * @return type
+     */
+    function getClauseProductSaleType($saleType) 
+    {
+        // 全て
+        if($saleType === 'sell') {
+            $existsWahere = 'product_type_id = 1';
+        } else if ($saleType === 'rental') {
+            $existsWahere = 'product_type_id = 2';
+        } else {
+            $existsWahere = 'product_type_id = 1 OR product_type_id = 2';
+        }
+
+        return $existsWahere;
     }
 
     /**
