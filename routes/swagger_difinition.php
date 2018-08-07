@@ -794,7 +794,7 @@
  *          @SWG\Property(
  *              property="image",
  *              type="string",
- *              description="クーポン画像ファイルをBase64文字列したもの"
+ *              description="クーポン画像ファイルをBase64文字列にしたもの"
  *          ),
  *  )
  * */
