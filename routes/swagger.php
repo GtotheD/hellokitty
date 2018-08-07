@@ -1911,8 +1911,8 @@
  *       type="array",
  *       @SWG\Schema(
  *         @SWG\Property(
- *             property="storeCd",
- *             type="string",
+ *             property="storeCds",
+ *             type="array",
  *             description="店舗コード",
  *         ),
  *       )
