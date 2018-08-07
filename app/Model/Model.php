@@ -122,7 +122,7 @@ class Model
         return implode($aliasName, ',');
     }
 
-    public function bulkInsertOnDuplicateKey($insertData)
+    public function bulkInsertOnDuplicateKey($insertData, $updateIdString = null)
     {
         if (empty($insertData)){
             return null;
@@ -143,7 +143,11 @@ class Model
         }
         $columnList = implode(',', $columns);
         $insertList = implode(',', $insertValues);
-        $query = sprintf("INSERT INTO `%s`(%s) VALUE %s ON DUPLICATE KEY UPDATE id = id;", $this->table, $columnList, $insertList);
+        if (empty($updateIdString)) {
+            $query = sprintf("INSERT INTO `%s`(%s) VALUE %s ON DUPLICATE KEY UPDATE id = id;", $this->table, $columnList, $insertList);
+        } else {
+            $query = sprintf("INSERT INTO `%s`(%s) VALUE %s ON DUPLICATE KEY UPDATE %s;", $this->table, $columnList, $insertList, $updateIdString);
+        }
         return $pdo->exec($query);
     }
 
