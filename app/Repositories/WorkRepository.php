@@ -392,17 +392,17 @@ class WorkRepository
      *
      * @throws NoContentsException
      */
-    public function getWorkList($workIds, $selectColumns = null, $idType = null, $workOnly = false)
+    public function getWorkList($workIds, $selectColumns = null, $idType = null, $workOnly = false, $saleType = null)
     {
         $himo = new HimoRepository();
         $workIdsExistedArray = [];
         switch ($idType) {
             case '0105':
-                $workIdsExisted = $this->work->setConditionByUrlCd($workIds)->select('url_cd')->get();
+                $workIdsExisted = $this->work->setConditionByUrlCd($workIds, $saleType)->select('url_cd')->get();
                 $targetColumn = 'url_cd';
                 break;
             default:
-                $workIdsExisted = $this->work->getWorkIdsIn($workIds)->select('work_id')->get();
+                $workIdsExisted = $this->work->getWorkWithProductByWorkIdsIn($workIds, $saleType)->select('work_id')->get();
                 $targetColumn = 'work_id';
                 break;
         }
