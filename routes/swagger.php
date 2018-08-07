@@ -1923,7 +1923,6 @@
  *     @SWG\Response(
  *         response=200,
  *         description="success",
- *         ref="$/responses/ListJson",
  *         @SWG\Schema(
  *             @SWG\Property(
  *                 property="rows",
