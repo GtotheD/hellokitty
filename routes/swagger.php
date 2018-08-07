@@ -36,7 +36,7 @@
  *                  ),
  *                  @SWG\Property(
  *                      property="infomation",
- *                      type="array",
+ *                      type="string",
  *                      description="アプリ新機能紹介ページ。アプリの状態でのメッセージに関しては、API側でアプリバージョン番号を受けて切り替えるか、アプリ内ので固定メッセージを出し分ける。",
  *                  ),
  *              ),
@@ -1921,21 +1921,36 @@
  *       )
  *     ),
  *     @SWG\Response(
- *          response=200,
- *          description="success",
- *          ref="$/responses/ListJson",
- *          @SWG\Schema(
- *              @SWG\Property(
- *                  property="rows",
- *                  type="array",
- *                  @SWG\Items(ref="#/definitions/coupon"),
- *                  description="店舗毎のクーポン情報",
- *              ),
- *          )
- *      ),
+ *         response=200,
+ *         description="success",
+ *         ref="$/responses/ListJson",
+ *         @SWG\Schema(
+ *             @SWG\Property(
+ *                 property="rows",
+ *                 type="array",
+ *                 description="店舗毎のクーポン情報",
+ *                 @SWG\Items(
+ *                     @SWG\Property(
+ *                         property="storeCd",
+ *                         type="array",
+ *                         description="店舗コード",
+ *                         @SWG\Items(
+ *                             @SWG\Property(
+ *                                 property="tokuban",
+ *                                 type="array",
+ *                                 description="トクばん",
+ *                                 @SWG\Items(ref="#/definitions/coupon"),
+ *                             ),
+ *                         )
+ *                     ),
+ *                 )
+ *             ),
+ *         )
+ *     ),
  *     @SWG\Response(response=204, description="Contents not found"),
  *     @SWG\Response(response=401, description="Auth error"),
  *     @SWG\Response(response=404, description="Page not found"),
  *     @SWG\Response(response=500, description="Server error")
  * )
  */
+
