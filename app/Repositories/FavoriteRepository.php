@@ -14,7 +14,6 @@ class FavoriteRepository extends ApiRequesterRepository
     protected $apiHost;
 
     protected $tlsc;
-    const WORK_FORMAT_ID_MUSICVIDEO = '5';
 
     public function __construct($sort = 'asc', $offset = 0, $limit = 2000)
     {
@@ -222,10 +221,11 @@ class FavoriteRepository extends ApiRequesterRepository
     public function formatData($response) {
         $rowsFormat = [];
         $productRepository = New ProductRepository;
+        $workRepository = new WorkRepository;
         foreach ($response['rows'] as $rowElement) {
             $tempElemet['workId'] = $rowElement['workId'];
             $tempElemet['itemType'] = $productRepository->convertMsdbItemToItemType($rowElement['msdbItem']);
-            if ($rowElement['workFormatId'] == self::WORK_FORMAT_ID_MUSICVIDEO) {
+            if ($rowElement['workFormatId'] == $workRepository::WORK_FORMAT_ID_MUSICVIDEO) {
                 $tempElemet['itemType'] = 'dvd';
             }
             $tempElemet['createdAt'] = $rowElement['appCreatedAt'];
@@ -250,11 +250,11 @@ class FavoriteRepository extends ApiRequesterRepository
                 $workIds[] = $id['id'];
             }
         }
-        $works = $workRepository->getWorkList($urlCd, null, '0105', true)['rows'];
+        $works = $workRepository->getWorkList($urlCd, ['work_id', 'url_cd', 'msdb_item', 'work_format_id'], '0105', true)['rows'];
         if (!empty($works)) {
-            array_merge($works, $workRepository->getWorkList($workIds, null, null, true)['rows']);
+            array_merge($works, $workRepository->getWorkList($workIds, ['work_id', 'url_cd', 'msdb_item', 'work_format_id'], null, true)['rows']);
         }
-        $works = $workRepository->getWorkList($workIds, null, null, true)['rows'];
+        $works = $workRepository->getWorkList($workIds, ['work_id', 'url_cd', 'msdb_item', 'work_format_id'], null, true)['rows'];
         foreach ($ids as $key => $id) {
             foreach ($works as $work) {
                 if($work['urlCd'] == $id['id']) {
