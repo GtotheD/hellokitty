@@ -6,6 +6,7 @@ use GuzzleHttp\Exception\ClientException;
 use App\Model\OneTimeCoupon;
 use App\Exceptions\NoContentsException;
 use Illuminate\Support\Carbon;
+use Log;
 
 /**
  * Class CouponRepository
@@ -71,6 +72,8 @@ class CouponRepository
                 $data = $this->oneTimeCoupon->getAll();
                 foreach($data as $row) {
 
+                    Log::info('store_cd['.$storeCd."] tokuban[".$row->tokuban."]");
+
                     try {
                         $response = $tapRepository->getCoupon(
                             $storeCd,
@@ -84,26 +87,33 @@ class CouponRepository
                             // $response['error']['message']
                             // $response['error']['status']
                             // $response['error']['code']
+                            Log::warn("error code[".$response['error']['code']."] status[".$response['error']['status']."] message:".$response['error']['message']);
                             continue;
                         }
 
                         $coupons[] = [
                             'tokuban' => $row->tokuban,
-                            'deliveryStartDate' => Carbon::parse($row->delivery_start_date)->format('YmdHi'),
-                            'deliveryEndDate' => Carbon::parse($row->delivery_end_date)->format('YmdHi'),
+                            'deliveryStartDate' => Carbon::parse($row->delivery_start_date)->format('Y-m-d H:i:s'),
+                            'deliveryEndDate' => Carbon::parse($row->delivery_end_date)->format('Y-m-d H:i:s'),
                             'image' => $response['entry']['qrimg']
                         ];
 
+                    } catch (NoContentsException $e) {
+                        Log::warn('status[404] Exception:'.$e->getMessage());
                     } catch (ClientException $e) {
                         // 403 APIKey指定エラー
                         // 400 パラメータ不正
+                        // 処理を終了して500を返却する
+                        Log::error('Exception:'.$e->getMessage());
                     }
                 }
 
-                $rowData = [
-                    'storeCd' => $storeCd,
-                    'coupons' => $coupons
-                ];
+                if (!empty($coupons)) {
+                    $rowData = [
+                        'storeCd' => $storeCd,
+                        'coupons' => $coupons
+                    ];
+                }
                 $coupons = [];
             }
 
