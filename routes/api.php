@@ -728,6 +728,26 @@ $router->group([
         return response()->json($response);
     });
 
+    // Coupon list
+    $router->post('coupon/list', function (Request $request) {
+        $bodyObj = json_decode($request->getContent(), true);
+        $storeCds = isset($bodyObj['storeCd']) ? $bodyObj['storeCd'] : '';
+        if(empty($storeCds)) {
+            throw new BadRequestHttpException;
+        }
+        $couponRepository = new CouponRepository();
+        $couponRepository->setStoreCd($bodyObj['storeCd']);
+
+        $rows = $couponRepository->get();
+        if (empty($rows)) {
+            throw new NoContentsException;
+        }
+        $response = [
+            'rows' => $rows
+        ];
+        return response()->json($response)->header('X-Accel-Expires', '0');
+    });
+
     // 検証環境まで有効にするテスト要
     if (env('APP_ENV') === 'local' || env('APP_ENV') === 'develop' || env('APP_ENV') === 'staging') {
         $router->get('himo/{workId}', function (Request $request, $workId) {

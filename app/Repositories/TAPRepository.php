@@ -103,6 +103,23 @@ class TAPRepository extends ApiRequesterRepository
         return $this->get();
     }
 
+    public function getCoupon($storeCd, $tokuban, $deliveryId, $deliveryStartDate, $deliveryEndDate)
+    {
+
+        $this->apiPath ='/tsutayaappapi/tm/cpn/qr';
+
+        $this->apiPath = $this->apiHost . $this->apiPath;
+        $this->queryParams = [
+            'api_key' => $this->apiKey,
+            'fcid' => $storeCd,
+            'tokuid' => $tokuban,
+            'sendid' => $deliveryId,
+            'validfrom' => $deliveryStartDate,
+            'validto' => $deliveryEndDate
+        ];
+        return $this->get();
+    }
+
     private function stub($apiName, $filename)
     {
 
