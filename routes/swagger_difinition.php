@@ -772,6 +772,11 @@
  *  @SWG\Definition(
  *          definition="coupon",
  *          @SWG\Property(
+ *              property="tokuban",
+ *              type="string",
+ *              description="トクばん"
+ *          ),
+ *          @SWG\Property(
  *              property="deliveryStartDate",
  *              type="string",
  *              description="施策開始日"

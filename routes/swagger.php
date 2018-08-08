@@ -1931,16 +1931,14 @@
  *                 @SWG\Items(
  *                     @SWG\Property(
  *                         property="storeCd",
- *                         type="array",
+ *                         type="string",
  *                         description="店舗コード",
- *                         @SWG\Items(
- *                             @SWG\Property(
- *                                 property="tokuban",
- *                                 type="array",
- *                                 description="トクばん",
- *                                 @SWG\Items(ref="#/definitions/coupon"),
- *                             ),
- *                         )
+ *                      ),
+ *                     @SWG\Property(
+ *                         property="coupons",
+ *                         type="array",
+ *                         description="クーポン情報",
+ *                         @SWG\Items(ref="#/definitions/coupon"),
  *                     ),
  *                 )
  *             ),

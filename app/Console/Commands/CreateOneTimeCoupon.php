@@ -59,8 +59,6 @@ class CreateOneTimeCoupon extends Command
      */
     public function handle()
     {
-//        $periodType = $this->argument('periodType');
-
         $this->info('クーポン情報取り込み処理開始 ['.date('Y/m/d H:i:s').']');
 
         //（前提）
@@ -102,24 +100,25 @@ class CreateOneTimeCoupon extends Command
                 foreach($rows as $key => $cols) {
 
                     $rowData = array();
+
+                    // 企業コードは固定
+                    $rowData['company_id'] = '0000';
+
                     foreach ($cols as $k => $val) {
                         switch ($k) {
                             case 0:
-                                $rowData['company_id'] = $val;
-                                break;
-                            case 1:
                                 $rowData['store_cd'] = $val;
                                 break;
-                            case 2:
+                            case 1:
                                 $rowData['delivery_id'] = $val;
                                 break;
-                            case 3:
+                            case 2:
                                 $rowData['tokuban'] = $val;
                                 break;
-                            case 4:
+                            case 3:
                                 $rowData['delivery_start_date'] = date('Y-m-d H:i', strtotime($val));
                                 break;
-                            case 5:
+                            case 4:
                                 $rowData['delivery_end_date'] = date('Y-m-d H:i', strtotime($val));
                                 break;
                         }

@@ -25,6 +25,16 @@ class OneTimeCoupon extends Model
         return $this;
     }
 
+    public function setConditionByStoreCdAndDeliveryDt($storeCd)
+    {
+        $this->dbObject = DB::table($this->table)
+            ->where('store_cd', '=', $storeCd)
+            ->whereRaw('delivery_start_date <= now()')
+            ->whereRaw('delivery_end_date >= now()');
+
+        return $this;
+    }
+
     /**
      * Insert bulk records
      *
