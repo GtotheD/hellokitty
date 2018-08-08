@@ -33,6 +33,7 @@ use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use App\Model\Product;
 use App\Repositories\ReleaseCalenderRepository;
 use App\Repositories\FavoriteRepository;
+use App\Repositories\CouponRepository;
 
 // Api Group
 $router->group([
@@ -731,12 +732,12 @@ $router->group([
     // Coupon list
     $router->post('coupon/list', function (Request $request) {
         $bodyObj = json_decode($request->getContent(), true);
-        $storeCds = isset($bodyObj['storeCd']) ? $bodyObj['storeCd'] : '';
+        $storeCds = isset($bodyObj['storeCds']) ? $bodyObj['storeCds'] : '';
         if(empty($storeCds)) {
             throw new BadRequestHttpException;
         }
         $couponRepository = new CouponRepository();
-        $couponRepository->setStoreCd($bodyObj['storeCd']);
+        $couponRepository->setStoreCds($storeCds);
 
         $rows = $couponRepository->get();
         if (empty($rows)) {

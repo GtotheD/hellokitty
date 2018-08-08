@@ -49,7 +49,7 @@ class CouponRepository
     {
         $storeCds = [];
         foreach ($rowsData as $row) {
-            array_push($storeCds, $row['storeCd']);
+            array_push($storeCds, $row);
         }
         $this->storeCds = $storeCds;
     }
@@ -87,11 +87,12 @@ class CouponRepository
                             continue;
                         }
 
-                        $rowData = [
-                            'storeCd' => $storeCd,
-                            'coupons' => $coupons
+                        $coupons[] = [
+                            'tokuban' => $row->tokuban,
+                            'deliveryStartDate' => Carbon::parse($row->delivery_start_date)->format('YmdHi'),
+                            'deliveryEndDate' => Carbon::parse($row->delivery_end_date)->format('YmdHi'),
+                            'image' => $response['entry']['qrimg']
                         ];
-                        $coupons = [];
 
                     } catch (ClientException $e) {
                         // 403 APIKey指定エラー
@@ -99,16 +100,17 @@ class CouponRepository
                     }
                 }
 
-                if (!empty($rowData)) {
-                    $rows[] = $rowData;
-                }
-                $rowData = [];
+                $rowData = [
+                    'storeCd' => $storeCd,
+                    'coupons' => $coupons
+                ];
+                $coupons = [];
             }
-        }
 
-        if (empty($rows)) {
-            // リクエストの全店舗のクーポン情報が存在しない場合
-            throw new NoContentsException();
+            if (!empty($rowData)) {
+                $rows[] = $rowData;
+            }
+            $rowData = [];
         }
 
         return $rows;
