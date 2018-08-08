@@ -14,6 +14,7 @@ class FavoriteRepository extends ApiRequesterRepository
     protected $apiHost;
 
     protected $tlsc;
+    const WORK_FORMAT_ID_MUSICVIDEO = '5';
 
     public function __construct($sort = 'asc', $offset = 0, $limit = 2000)
     {
@@ -124,6 +125,7 @@ class FavoriteRepository extends ApiRequesterRepository
                 [
                     'workId' => $work['workId'],
                     'msdbItem' => $work['msdbItem'],
+                    'workFormatId' => $work['workFormatId'],
                     'appCreatedAt' => $date->toDateTimeString()
                 ]
             ]
@@ -147,6 +149,7 @@ class FavoriteRepository extends ApiRequesterRepository
             $workIds[] = [
                 'workId' => $id['id'],
                 'msdbItem' => $id['msdbItem'],
+                'workFormatId' => $id['workFormatId'],
                 'appCreatedAt' => $id['appCreatedAt']
             ];
         }
@@ -222,6 +225,9 @@ class FavoriteRepository extends ApiRequesterRepository
         foreach ($response['rows'] as $rowElement) {
             $tempElemet['workId'] = $rowElement['workId'];
             $tempElemet['itemType'] = $productRepository->convertMsdbItemToItemType($rowElement['msdbItem']);
+            if ($rowElement['workFormatId'] == self::WORK_FORMAT_ID_MUSICVIDEO) {
+                $tempElemet['itemType'] = 'dvd';
+            }
             $tempElemet['createdAt'] = $rowElement['appCreatedAt'];
             array_push($rowsFormat, $tempElemet);
         }
@@ -244,17 +250,18 @@ class FavoriteRepository extends ApiRequesterRepository
                 $workIds[] = $id['id'];
             }
         }
-        $works = $workRepository->getWorkList($urlCd, ['work_id', 'url_cd', 'msdb_item'], '0105', true)['rows'];
+        $works = $workRepository->getWorkList($urlCd, null, '0105', true)['rows'];
         if (!empty($works)) {
-            array_merge($works, $workRepository->getWorkList($workIds, ['work_id', 'url_cd', 'msdb_item'], null, true)['rows']);
+            array_merge($works, $workRepository->getWorkList($workIds, null, null, true)['rows']);
         }
-        $works = $workRepository->getWorkList($workIds, ['work_id', 'url_cd', 'msdb_item'], null, true)['rows'];
+        $works = $workRepository->getWorkList($workIds, null, null, true)['rows'];
         foreach ($ids as $key => $id) {
             foreach ($works as $work) {
                 if($work['urlCd'] == $id['id']) {
                     $id['id'] = $work['workId'];
                 }
                 $id['msdbItem'] = $work['msdbItem'];
+                $id['workFormatId'] = $work['workFormatId'];
                 $ids[$key] = $id;
             }
         }
