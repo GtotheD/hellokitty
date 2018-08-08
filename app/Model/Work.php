@@ -5,7 +5,6 @@ namespace App\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use App\Model\Product;
-DB::enableQueryLog();
 
 /**
  * Created by PhpStorm.
