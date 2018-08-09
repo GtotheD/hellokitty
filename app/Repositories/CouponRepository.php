@@ -62,7 +62,14 @@ class CouponRepository
     {
         $rows = [];
 
+        // QR画像生成API呼び出し用
         $tapRepository = new TAPRepository();
+
+        // QR画像に埋め込む有効期限
+        $validFrom = Carbon::now()->format('YmdHi'));
+        $validTo = Carbon::now()->addDay(30)->format('Ymd1000'));
+        Log::info('validFrom['.$validFrom.'] validTo['.$validTo.']');
+
         foreach($this->storeCds as $storeCd) {
 
             // 店舗番号から有効なクーポン情報を取得
@@ -79,8 +86,8 @@ class CouponRepository
                             $storeCd,
                             sprintf('%03d', $row->tokuban),
                             $row->delivery_id,
-                            Carbon::parse($row->delivery_start_date)->format('YmdHi'),
-                            Carbon::parse($row->delivery_end_date)->format('YmdHi'));
+                            $validFrom,
+                            $validTo);
 
                         // クーポン画像の生成エラー判定
                         if ($response['result'] == 1) {
