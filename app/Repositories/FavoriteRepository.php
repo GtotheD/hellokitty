@@ -177,7 +177,7 @@ class FavoriteRepository extends ApiRequesterRepository
         $tempIds = [];
         // convert ids to array of id
         foreach ($ids as $id) {
-            $tempId[] = $id;
+            $tempIds[]['id'] = $id;
         }
         if(!empty($tempIds)) {
             $ids = $tempIds;
