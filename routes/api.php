@@ -641,7 +641,7 @@ $router->group([
         $workIdsArray = $workRepository->convertUrlCdToWorkId($idsArray);
         $workRepository->setSaleType($saleType);
         // Get work data
-        $workData = $workRepository->getWorkList($workIdsArray);
+        $workData = $workRepository->getWorkList($workIdsArray, null, null, false, $saleType);
         if (empty($workData)) {
             throw new NoContentsException;
         }

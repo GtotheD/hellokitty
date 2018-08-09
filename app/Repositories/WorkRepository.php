@@ -296,8 +296,8 @@ class WorkRepository
             if(substr($idElement, 0, strlen($defineWorkId)) !== $defineWorkId) {
                 // Convert urlCd to workId
                 $convertData = $this->getWorkByUrlCd($idElement,['work_id']);
-                if(count($convertData) > 0 && isset($convertData['work_id'])) {
-                    $idElement = $convertData['work_id'];
+                if(count($convertData) > 0 && isset($convertData['workId'])) {
+                    $idElement = $convertData['workId'];
                     array_push($workIdsArray, $idElement);
                 }
                 continue;
@@ -380,7 +380,6 @@ class WorkRepository
         } else {
             $response = (array)$this->work->selectCamel($selectColumns)->getOne();
         }
-
         return $response;
     }
 
@@ -392,17 +391,17 @@ class WorkRepository
      *
      * @throws NoContentsException
      */
-    public function getWorkList($workIds, $selectColumns = null, $idType = null, $workOnly = false)
+    public function getWorkList($workIds, $selectColumns = null, $idType = null, $workOnly = false, $saleType = null)
     {
         $himo = new HimoRepository();
         $workIdsExistedArray = [];
         switch ($idType) {
             case '0105':
-                $workIdsExisted = $this->work->setConditionByUrlCd($workIds)->select('url_cd')->get();
+                $workIdsExisted = $this->work->setConditionByUrlCd($workIds, $saleType)->select('url_cd')->get();
                 $targetColumn = 'url_cd';
                 break;
             default:
-                $workIdsExisted = $this->work->getWorkIdsIn($workIds)->select('work_id')->get();
+                $workIdsExisted = $this->work->getWorkBySaleType($workIds, $saleType)->select('work_id')->get();
                 $targetColumn = 'work_id';
                 break;
         }
@@ -456,10 +455,10 @@ class WorkRepository
         // STEP 5: 再検索する為に条件をセット
         switch ($idType) {
             case '0105':
-                $this->work->setConditionByUrlCd($workIds);
+                $this->work->setConditionByUrlCd($workIds, $saleType);
                 break;
             default:
-                $this->work->getWorkIdsIn($workIds);
+                $this->work->getWorkBySaleType($workIds, $saleType);
                 break;
         }
         $this->totalCount = $this->work->count();
