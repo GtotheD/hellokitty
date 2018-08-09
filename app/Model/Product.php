@@ -191,7 +191,7 @@ class Product extends Model
         $subQuery = DB::table($this->table)->select(DB::raw($selectSubGrouping.$selectSub))
             ->whereRaw(DB::raw(' work_id = \''.$workId .'\''))
             ->whereRaw(DB::raw(' item_cd not like \'_1__\' '))
-            ->whereRaw(DB::raw(' item_cd not like \'__20\' '))
+            //->whereRaw(DB::raw(' item_cd not like \'__20\' ')) // VHSも出力するように変更
             ->whereRaw(DB::raw(' jan not like \'9999_________\' '))
             ->groupBy(DB::raw($selectSubGrouping));
         if ($isAudio && $saleType === 'rental') {
@@ -234,10 +234,11 @@ class Product extends Model
         $subQuery = DB::table($this->table)->select(DB::raw($selectQuery))
             ->whereRaw(DB::raw('work_id = \''.$workId . '\''))
             ->whereRaw(DB::raw('item_cd not like \'_1__\''))
-            ->whereRaw(DB::raw(' item_cd not like \'__20\' '))
+            //->whereRaw(DB::raw(' item_cd not like \'__20\' ')) //VHSも出力するように変更
             ->whereRaw(DB::raw(' product_type_id = 2 '))
             ->groupBy(DB::raw($groupingColumn))
-            ->havingRaw(' NOT (dvd IS NULL AND bluray IS NULL)');
+            // ->havingRaw(' NOT (dvd IS NULL AND bluray IS NULL)') // 特殊メディア（VHS等）の場合はひっかからないのでnullも許容する。
+        ;
         $this->dbObject = DB::table(DB::raw("({$subQuery->toSql()}) as sub"))
             ->where(['work_id' => $workId]);
         if ($order === 'old') {

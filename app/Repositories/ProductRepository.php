@@ -205,6 +205,7 @@ class ProductRepository
 
         $this->totalCount = $this->product->setConditionProductGroupingByWorkIdSaleType($workId, $this->saleType, $this->sort, $isAudio)->count();
         $results = $this->product->selectCamel($column)->get($this->limit, $this->offset);
+
         if (count($results) + $this->offset < $this->totalCount) {
             $this->hasNext = true;
         } else {
@@ -241,6 +242,7 @@ class ProductRepository
     private function rentalGroupReformat($products)
     {
         $reformatResult = null;
+        $message = config('messages.onlyVHS');
         // reformat data
         foreach ($products as $product) {
             $product = (array)$product;
@@ -252,6 +254,8 @@ class ProductRepository
             $product['newFlg'] = newFlg($product['saleStartDate']);
             unset($product['dvd']);
             unset($product['bluray']);
+            // VHSのみだった場合のメッセージ
+            $product['message'] = $message;
 
             $reformatResult[] = $product;
         }
@@ -262,6 +266,7 @@ class ProductRepository
     private function productReformat($products)
     {
         $reformatResult = [];
+        $message = config('messages.onlyVHS');
         // reformat data
         foreach ($products as $product) {
             $product = (array)$product;
@@ -317,6 +322,8 @@ class ProductRepository
             if (array_key_exists('bestAlbumFlg', $product)) {
                 $product['bestAlbumFlg'] =  ($product['bestAlbumFlg'] == '1') ? 'ベスト盤' : '';
             }
+            // VHSのみだった場合のメッセージ
+            $product['message'] = $message;
             $reformatResult[] = $product;
         }
         return $reformatResult;
