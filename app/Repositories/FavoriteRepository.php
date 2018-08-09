@@ -124,6 +124,7 @@ class FavoriteRepository extends ApiRequesterRepository
                 [
                     'workId' => $work['workId'],
                     'msdbItem' => $work['msdbItem'],
+                    'workFormatId' => $work['workFormatId'],
                     'appCreatedAt' => $date->toDateTimeString()
                 ]
             ]
@@ -151,6 +152,7 @@ class FavoriteRepository extends ApiRequesterRepository
             $workIds[] = [
                 'workId' => $id['id'],
                 'msdbItem' => $id['msdbItem'],
+                'workFormatId' => $id['workFormatId'],
                 'appCreatedAt' => $id['appCreatedAt']
             ];
         }
@@ -236,9 +238,13 @@ class FavoriteRepository extends ApiRequesterRepository
     public function formatData($response) {
         $rowsFormat = [];
         $productRepository = New ProductRepository;
+        $workRepository = new WorkRepository;
         foreach ($response['rows'] as $rowElement) {
             $tempElemet['workId'] = $rowElement['workId'];
             $tempElemet['itemType'] = $productRepository->convertMsdbItemToItemType($rowElement['msdbItem']);
+            if ($rowElement['workFormatId'] == $workRepository::WORK_FORMAT_ID_MUSICVIDEO) {
+                $tempElemet['itemType'] = 'dvd';
+            }
             $tempElemet['createdAt'] = $rowElement['appCreatedAt'];
             array_push($rowsFormat, $tempElemet);
         }
@@ -262,11 +268,11 @@ class FavoriteRepository extends ApiRequesterRepository
                 $workIds[] = $id['id'];
             }
         }
-        $works = $workRepository->getWorkList($urlCd, ['work_id', 'url_cd', 'msdb_item'], '0105', true)['rows'];
+        $works = $workRepository->getWorkList($urlCd, ['work_id', 'url_cd', 'msdb_item', 'work_format_id'], '0105', true)['rows'];
         if (!empty($works)) {
-            array_merge($works, $workRepository->getWorkList($workIds, ['work_id', 'url_cd', 'msdb_item'], null, true)['rows']);
+            array_merge($works, $workRepository->getWorkList($workIds, ['work_id', 'url_cd', 'msdb_item', 'work_format_id'], null, true)['rows']);
         }
-        $works = $workRepository->getWorkList($workIds, ['work_id', 'url_cd', 'msdb_item'], null, true)['rows'];
+        $works = $workRepository->getWorkList($workIds, ['work_id', 'url_cd', 'msdb_item', 'work_format_id'], null, true)['rows'];
         // 検索がヒットしなかった場合はfalseを返却
         if (empty($works)) {
             return [];
@@ -277,6 +283,7 @@ class FavoriteRepository extends ApiRequesterRepository
                     $id['id'] = $work['workId'];
                 }
                 $id['msdbItem'] = $work['msdbItem'];
+                $id['workFormatId'] = $work['workFormatId'];
                 $ids[$key] = $id;
             }
         }
