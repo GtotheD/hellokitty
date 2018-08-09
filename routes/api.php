@@ -33,6 +33,7 @@ use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use App\Model\Product;
 use App\Repositories\ReleaseCalenderRepository;
 use App\Repositories\FavoriteRepository;
+use App\Repositories\CouponRepository;
 
 // Api Group
 $router->group([
@@ -640,7 +641,7 @@ $router->group([
         $workIdsArray = $workRepository->convertUrlCdToWorkId($idsArray);
         $workRepository->setSaleType($saleType);
         // Get work data
-        $workData = $workRepository->getWorkList($workIdsArray);
+        $workData = $workRepository->getWorkList($workIdsArray, null, null, false, $saleType);
         if (empty($workData)) {
             throw new NoContentsException;
         }
@@ -692,7 +693,10 @@ $router->group([
         }
         $favoriteRepository = new FavoriteRepository();
         $favoriteRepository->setTlsc($bodyObj['tlsc']);
-         $response = $favoriteRepository->merge($ids);
+        $response = $favoriteRepository->merge($ids);
+        if ($response === false) {
+            return response()->json(['status' => 'error', 'message' => '対象の作品は存在しません。']);
+        }
         // Limit error
         if($response['status'] == 'error') {
             $mergeString = '{
@@ -717,6 +721,9 @@ $router->group([
         $favoriteRepository = new FavoriteRepository();
         $favoriteRepository->setTlsc($bodyObj['tlsc']);
         $response = $favoriteRepository->delete($ids);
+        if ($response === false) {
+            return response()->json(['status' => 'error', 'message' => '対象の作品は存在しません。']);
+        }
         if($response['status'] == 'error') {
             $versionUpdateString = '{
                 "status": "99",
@@ -726,6 +733,26 @@ $router->group([
             return response()->json($response);
         }
         return response()->json($response);
+    });
+
+    // Coupon list
+    $router->post('coupon/list', function (Request $request) {
+        $bodyObj = json_decode($request->getContent(), true);
+        $storeCds = isset($bodyObj['storeCds']) ? $bodyObj['storeCds'] : '';
+        if(empty($storeCds)) {
+            throw new BadRequestHttpException;
+        }
+        $couponRepository = new CouponRepository();
+        $couponRepository->setStoreCds($storeCds);
+
+        $rows = $couponRepository->get();
+        if (empty($rows)) {
+            throw new NoContentsException;
+        }
+        $response = [
+            'rows' => $rows
+        ];
+        return response()->json($response)->header('X-Accel-Expires', '0');
     });
 
     // 検証環境まで有効にするテスト要

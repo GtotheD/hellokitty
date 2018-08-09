@@ -1931,22 +1931,21 @@
  *                 @SWG\Items(
  *                     @SWG\Property(
  *                         property="storeCd",
- *                         type="array",
+ *                         type="string",
  *                         description="店舗コード",
- *                         @SWG\Items(
- *                             @SWG\Property(
- *                                 property="tokuban",
- *                                 type="array",
- *                                 description="トクばん",
- *                                 @SWG\Items(ref="#/definitions/coupon"),
- *                             ),
- *                         )
+ *                      ),
+ *                     @SWG\Property(
+ *                         property="coupons",
+ *                         type="array",
+ *                         description="クーポン情報",
+ *                         @SWG\Items(ref="#/definitions/coupon"),
  *                     ),
  *                 )
  *             ),
  *         )
  *     ),
  *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=400, description="Bad Request"),
  *     @SWG\Response(response=401, description="Auth error"),
  *     @SWG\Response(response=404, description="Page not found"),
  *     @SWG\Response(response=500, description="Server error")

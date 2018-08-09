@@ -143,6 +143,10 @@ class FavoriteRepository extends ApiRequesterRepository
     public function merge($ids)
     {
         $ids =  $this->convertUrlCdToWorkId($ids);
+        // 検索がヒットしなかった場合はfalseを返却
+        if (empty($ids)) {
+            return false;
+        }
         $workIds = [];
         foreach ($ids as $id) {
             $workIds[] = [
@@ -170,7 +174,20 @@ class FavoriteRepository extends ApiRequesterRepository
      */
     public function delete($ids)
     {
+        $tempIds = [];
+        // convert ids to array of id
+        foreach ($ids as $id) {
+            $tempId['id'] = $id;
+            array_push($tempIds, $tempId);
+        }
+        if(!empty($tempIds)) {
+            $ids = $tempIds;
+        }
         $ids =  $this->convertUrlCdToWorkId($ids);
+        // 検索がヒットしなかった場合はfalseを返却
+        if (empty($ids)) {
+            return false;
+        }
         foreach ($ids as $id) {
             $workIds[] = ['workId' => $id['id']];
         }
@@ -242,6 +259,7 @@ class FavoriteRepository extends ApiRequesterRepository
 
     public function convertUrlCdToWorkId($ids) {
         $workRepository = new WorkRepository;
+        $urlCd = [];
         foreach ($ids as $id) {
             // PTAがあった場合はworkId
             if (!preg_match('/^PTA/', $id['id'])) {
@@ -255,6 +273,10 @@ class FavoriteRepository extends ApiRequesterRepository
             array_merge($works, $workRepository->getWorkList($workIds, ['work_id', 'url_cd', 'msdb_item', 'work_format_id'], null, true)['rows']);
         }
         $works = $workRepository->getWorkList($workIds, ['work_id', 'url_cd', 'msdb_item', 'work_format_id'], null, true)['rows'];
+        // 検索がヒットしなかった場合はfalseを返却
+        if (empty($works)) {
+            return [];
+        }
         foreach ($ids as $key => $id) {
             foreach ($works as $work) {
                 if($work['urlCd'] == $id['id']) {
