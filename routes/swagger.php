@@ -1760,6 +1760,11 @@
  *                  description="取得した際のバージョン",
  *              ),
  *              @SWG\Property(
+ *                  property="isUpdate",
+ *                  type="boolean",
+ *                  description="更新フラグ",
+ *              ),
+ *              @SWG\Property(
  *                  property="rows",
  *                  type="array",
  *                  @SWG\Items(ref="#/definitions/favorite"),
