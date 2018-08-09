@@ -113,6 +113,7 @@ $app->configure('age_limit_map');
 $app->configure('age_limit_maker_map');
 $app->configure('hidden_video_map');
 $app->configure('himo_tables');
+$app->configure('messages');
 
 /*
 |--------------------------------------------------------------------------
