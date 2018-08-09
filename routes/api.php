@@ -608,8 +608,8 @@ $router->group([
         // Check version
         if(!empty($versionResponse) && $versionResponse == $version) {
             $versionUpdateString = '{
-                "isUpdate": "false",
-                "message": "No favorite version update"
+                "isUpdate": false,
+                "rows":null
             }';
             $response = json_decode($versionUpdateString);
             return response()->json($response);

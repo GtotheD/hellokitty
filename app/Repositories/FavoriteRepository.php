@@ -251,6 +251,7 @@ class FavoriteRepository extends ApiRequesterRepository
 
         $responseFormat = [
             'hasNext' => $response['hasNext'],
+            "isUpdate" => true,
             'totalCount' => $response['totalCount'],
             'rows' => $rowsFormat
         ];
