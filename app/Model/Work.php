@@ -40,10 +40,10 @@ class Work extends Model
             $this->dbObject->where(['url_cd' => $urlCd]);
         }
         if($saleType) {
-            $existsWahere = $this->getClauseProductSaleType($saleType);
+            $existsWhere = $this->getClauseProductSaleType($saleType);
             $productsSubQuery = DB::table('ts_products AS tp')
                 ->select(DB::raw('tp.work_id'))
-                ->whereRaw($existsWahere);
+                ->whereRaw($existsWhere);
             $this->dbObject = DB::table($this->table. ' AS t1')
                 ->whereRaw('t1.work_id IN ('.$productsSubQuery->toSql().')');
         }
@@ -199,10 +199,10 @@ class Work extends Model
      */
     public function getWorkBySaleType($workIds = [], $saleType)
     {
-        $existsWahere = $this->getClauseProductSaleType($saleType);
+        $existsWhere = $this->getClauseProductSaleType($saleType);
         $productsSubQuery = DB::table('ts_products AS tp')
                 ->select(DB::raw('tp.work_id'))
-                ->whereRaw($existsWahere);
+                ->whereRaw($existsWhere);
         
         $this->dbObject = DB::table($this->table. ' AS t1')
                 ->whereRaw('t1.work_id IN ('.$productsSubQuery->toSql().')')
@@ -219,14 +219,14 @@ class Work extends Model
     {
         // 全て
         if($saleType === 'sell') {
-            $existsWahere = 'product_type_id = 1';
+            $existsWhere = 'product_type_id = 1';
         } else if ($saleType === 'rental') {
-            $existsWahere = 'product_type_id = 2';
+            $existsWhere = 'product_type_id = 2';
         } else {
-            $existsWahere = 'product_type_id = 1 OR product_type_id = 2';
+            $existsWhere = 'product_type_id = 1 OR product_type_id = 2';
         }
 
-        return $existsWahere;
+        return $existsWhere;
     }
 
     /**
