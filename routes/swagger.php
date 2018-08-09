@@ -1945,6 +1945,7 @@
  *         )
  *     ),
  *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=400, description="Bad Request"),
  *     @SWG\Response(response=401, description="Auth error"),
  *     @SWG\Response(response=404, description="Page not found"),
  *     @SWG\Response(response=500, description="Server error")
