@@ -601,9 +601,6 @@ $router->group([
         $favoriteRepository->setLimit($limit);
         $favoriteRepository->setOffset($offset);
         $favoriteRepository->setSort($sort);
-        if(empty($version)) {
-            throw new BadRequestHttpException;
-        }
         $versionResponse = $favoriteRepository->getFavoriteVersion($bodyObj['tlsc']);
         // Check version
         if(!empty($versionResponse) && $versionResponse == $version) {
@@ -620,6 +617,7 @@ $router->group([
             throw new NoContentsException;
         }
         $response = $favoriteRepository->formatData($response);
+        $response['version'] = $versionResponse;
         return response()->json($response);
     });  
 
