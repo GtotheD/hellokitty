@@ -693,7 +693,10 @@ $router->group([
         }
         $favoriteRepository = new FavoriteRepository();
         $favoriteRepository->setTlsc($bodyObj['tlsc']);
-         $response = $favoriteRepository->merge($ids);
+        $response = $favoriteRepository->merge($ids);
+        if ($response === false) {
+            return response()->json(['status' => 'error', 'message' => '対象の作品は存在しません。']);
+        }
         // Limit error
         if($response['status'] == 'error') {
             $mergeString = '{
@@ -718,6 +721,9 @@ $router->group([
         $favoriteRepository = new FavoriteRepository();
         $favoriteRepository->setTlsc($bodyObj['tlsc']);
         $response = $favoriteRepository->delete($ids);
+        if ($response === false) {
+            return response()->json(['status' => 'error', 'message' => '対象の作品は存在しません。']);
+        }
         if($response['status'] == 'error') {
             $versionUpdateString = '{
                 "status": "99",
