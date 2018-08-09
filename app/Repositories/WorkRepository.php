@@ -926,17 +926,13 @@ class WorkRepository
         foreach ($products as $product) {
             // VHSを除外
             if ($product['service_id'] === 'tol') {
-                if ($product['product_type_id'] === 1 &&
-                    $product['item_cd'] !== '0020' &&
-                    $product['item_cd'] !== '0120') {
+                if ($product['product_type_id'] === 1 ) { // VHSの条件を除外
                     // 最新の販売開始日を取得する。
                     if ($product['sale_start_date'] > $saleStartDateSell) {
                         $saleStartDateSell = $product['sale_start_date'];
                     }
                     $sell = true;
-                } else if ($product['product_type_id'] === 2 &&
-                    $product['item_cd'] !== '0020' &&
-                    $product['item_cd'] !== '0120') {
+                } else if ($product['product_type_id'] === 2 ) { // VHSの条件を除外
                     // 最新の販売開始日を取得する。
                     if ($product['sale_start_date'] > $saleStartDateRental) {
                         $saleStartDateRental = $product['sale_start_date'];
