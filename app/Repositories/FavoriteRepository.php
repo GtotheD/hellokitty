@@ -177,8 +177,7 @@ class FavoriteRepository extends ApiRequesterRepository
         $tempIds = [];
         // convert ids to array of id
         foreach ($ids as $id) {
-            $tempId['id'] = $id;
-            array_push($tempIds, $tempId);
+            $tempId[] = $id;
         }
         if(!empty($tempIds)) {
             $ids = $tempIds;
@@ -259,8 +258,10 @@ class FavoriteRepository extends ApiRequesterRepository
     }
 
     public function convertUrlCdToWorkId($ids) {
+
         $workRepository = new WorkRepository;
         $urlCd = [];
+        $workIds =[];
         foreach ($ids as $id) {
             // PTAがあった場合はworkId
             if (!preg_match('/^PTA/', $id['id'])) {
@@ -285,7 +286,10 @@ class FavoriteRepository extends ApiRequesterRepository
                 }
                 $id['msdbItem'] = $work['msdbItem'];
                 $id['workFormatId'] = $work['workFormatId'];
-                $ids[$key] = $id;
+                if (array_key_exists('app_created_at', $id)) {
+                    $id['appCreatedAt'] = $id['app_created_at'];
+                }
+               $ids[$key] = $id;
             }
         }
         return $ids;
