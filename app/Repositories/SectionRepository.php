@@ -329,6 +329,7 @@ class SectionRepository
                 $dt = new Carbon($row->month);
                 if ($dt->eq($nowMonth)) {
                     $from = Carbon::today();
+                    $from->startOfWeek();
                 } else {
                     $from = Carbon::parse($row->month)->startOfMonth();
                 }

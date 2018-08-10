@@ -102,7 +102,7 @@ class CouponRepository
                             'tokuban' => $row->tokuban,
                             'deliveryStartDate' => Carbon::parse($row->delivery_start_date)->format('Y-m-d H:i:s'),
                             'deliveryEndDate' => Carbon::parse($row->delivery_end_date)->format('Y-m-d H:i:s'),
-                            'image' => $response['entry']['qrimg']
+                            'image' => $response['entry']['qrImg']
                         ];
 
                     } catch (NoContentsException $e) {
