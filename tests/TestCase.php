@@ -50,4 +50,13 @@ abstract class TestCase extends Laravel\Lumen\Testing\TestCase
             $param, ['HTTP_Authorization' => 'k8AJR0NxM114Ogdl']);
     }
 
+    public function postJsonWithAuth($uri, $param = [])
+    {
+        return $this->json('POST', $uri,
+            $param, ['HTTP_Authorization' => 'k8AJR0NxM114Ogdl']);
+    }
+
+    public function setIsSetUp($isSetUp = true) {
+        self::$isSetup = true;
+    }
 }
