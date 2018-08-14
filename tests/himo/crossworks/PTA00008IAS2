@@ -1,0 +1,971 @@
+{
+    "status": 200,
+    "message": null,
+    "results": {
+        "total": 1,
+        "rows": [
+            {
+                "work_id": "PTA00008IAS2",
+                "work_type_id": "2",
+                "msdb_item": "video",
+                "work_format_id": null,
+                "work_format_name": "",
+                "work_title": "ディープ・シー20000",
+                "work_title_kana": "でいーぷしー20000",
+                "work_title_en": "",
+                "work_title_orig": "",
+                "work_title_sub": "",
+                "work_comment": "",
+                "work_outline": "",
+                "work_copyright": "(C)1997 Village Roadshow Pictures Worldwide．All Rights Reserved．",
+                "rating_id": "EXT000000008",
+                "rating_name": "",
+                "adult_flg": 0,
+                "primary_product_source_id": "PDT000059FKF",
+                "primary_product_service_id": "ec",
+                "primary_product_type_id": 1,
+                "disp_start_date": "1900-01-01 00:00:00",
+                "disp_start_month": "1900-01",
+                "sale_start_date": "2000-08-04",
+                "sale_start_month": "2000-08",
+                "created_year_from": "",
+                "created_year_to": "",
+                "created_year": "",
+                "created_countries": "",
+                "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/00012/4932545024110_1S.jpg",
+                "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/00012/4932545024110_1M.jpg",
+                "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/00012/4932545024110_1L.jpg",
+                "jacket_l4": "",
+                "scene_s": [],
+                "scene_m": [],
+                "scene_l": [],
+                "trailor_pc": [
+                    "//store-tsutaya.tsite.jp/MAX331_y.ram"
+                ],
+                "season_name": "",
+                "season_number": null,
+                "book_series_name": "",
+                "book_series_name_kana": "",
+                "feature_keywords": [],
+                "priv_keywords": [],
+                "work_tags": [],
+                "wakati_words": [],
+                "is_compilation": 0,
+                "series_completed": 0,
+                "disable_flg": 0,
+                "delete_flg": 0,
+                "ids": [
+                    {
+                        "id_type": "0103",
+                        "id_value": "10011732"
+                    },
+                    {
+                        "id_type": "0105",
+                        "id_value": "10010970"
+                    }
+                ],
+                "docs": [
+                    {
+                        "doc_type_id": "01",
+                        "doc_source_id": "01",
+                        "doc_text": "太平洋で、次々と戦艦が沈没するという事件が発生。その真相を究明しようと航海に出た科学者ピエールの前に、巨大潜水艦ノーチラス号を操る謎の男ネモが現れる。ジュール・ベルヌの小説『海底２万マイル』を、デジタルＳＦＸ技術を駆使して映画化したＳＦ海洋アドベンチャー。"
+                    }
+                ],
+                "awards": [],
+                "screens": [],
+                "onairs": [],
+                "magazines": [],
+                "genres": [
+                    {
+                        "big_genre_id": "EXT00000018Q",
+                        "big_genre_name": "洋画アクション",
+                        "medium_genre_id": "EXT0000002H9",
+                        "medium_genre_name": "パニック",
+                        "small_genre_id": "",
+                        "small_genre_name": "",
+                        "shikiriban_id": "",
+                        "shikiriban_name": ""
+                    }
+                ],
+                "products": [
+                    {
+                        "id": "PDT00000LRQD",
+                        "product_id": "PPD00000LRQD",
+                        "product_type_id": 2,
+                        "product_type_name": "レンタル",
+                        "service_id": "tol",
+                        "service_name": "tol",
+                        "msdb_item": "video",
+                        "item_cd": "0020",
+                        "item_name": "ＶＨＳ",
+                        "product_name": "ディープ シー20000",
+                        "product_kana": "でいーぷしー20000",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2007-09-30 01:19:56",
+                        "disp_start_month": "2007-09",
+                        "disp_end_date": "2030-12-28 00:00:00",
+                        "disp_end_month": "2030-12",
+                        "sale_start_date": "2000-08-04",
+                        "sale_start_month": "2000-08",
+                        "sale_end_date": "2030-12-28",
+                        "sale_end_month": "2030-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA00008IAS2"
+                        ],
+                        "tieup": "",
+                        "copyright": "(C)1997 Village Roadshow Pictures Worldwide.All Rights Reserved.",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "",
+                        "created_year_to": "",
+                        "created_year_str": "",
+                        "created_countries": "",
+                        "maker_cd": "EXT000000X1H",
+                        "maker_name": "マクザム",
+                        "maker_name_kana": "まくざむ",
+                        "maker_name_abbrev": "マクザム",
+                        "label_name": "",
+                        "sell_rental_flag": 2,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10011732",
+                        "ccc_family_cd": "10011732001",
+                        "ccc_product_id": "000406463",
+                        "rental_product_cd": "051426610",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4932545024110",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "MAX331",
+                        "icpn": "",
+                        "media_category_cd": "12",
+                        "media_category_name": "レンタルDVD",
+                        "media_format_id": "EXT00001Q3OJ",
+                        "media_format_name": "VHS",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "021500",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": 1,
+                        "subtitle": "",
+                        "sound_spec": "",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "",
+                        "video_info": "",
+                        "number_of_volume": "",
+                        "number_of_set": "",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/00012/4932545024110_1S.jpg",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/00012/4932545024110_1M.jpg",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/00012/4932545024110_1L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [],
+                        "scene_m": [],
+                        "scene_l": [],
+                        "trailor_pc": [
+                            "//store-tsutaya.tsite.jp/MAX331_y.ram"
+                        ],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": null,
+                        "price_tax_in": null,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "01",
+                                "doc_source_id": "01",
+                                "doc_text": "太平洋で、次々と戦艦が沈没するという事件が発生。その真相を究明しようと航海に出た科学者ピエールの前に、巨大潜水艦ノーチラス号を操る謎の男ネモが現れる。ジュール・ベルヌの小説『海底２万マイル』を、デジタルＳＦＸ技術を駆使して映画化したＳＦ海洋アドベンチャー。"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT00000018Q",
+                                "big_genre_name": "洋画アクション",
+                                "medium_genre_id": "EXT0000002H9",
+                                "medium_genre_name": "パニック",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS00000ELST",
+                                "person_name": "ロッド・ハーディ",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS0000001EK",
+                                "person_name": "マイケル・ケイン",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000007L9",
+                                "person_name": "ミア・サラ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000003HNS",
+                                "person_name": "ブライアン・ブラウン",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000006VM",
+                                "person_name": "パトリック・デンプシー",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT00000LRSI",
+                        "product_id": "PPD00000LRSI",
+                        "product_type_id": 2,
+                        "product_type_name": "レンタル",
+                        "service_id": "tol",
+                        "service_name": "tol",
+                        "msdb_item": "video",
+                        "item_cd": "0020",
+                        "item_name": "ＶＨＳ",
+                        "product_name": "ディープ シー20000",
+                        "product_kana": "でいーぷしー20000 ふきかえ",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2007-09-30 01:16:09",
+                        "disp_start_month": "2007-09",
+                        "disp_end_date": "2030-12-28 00:00:00",
+                        "disp_end_month": "2030-12",
+                        "sale_start_date": "2000-08-04",
+                        "sale_start_month": "2000-08",
+                        "sale_end_date": "2030-12-28",
+                        "sale_end_month": "2030-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA00008IAS2"
+                        ],
+                        "tieup": "",
+                        "copyright": "",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "",
+                        "created_year_to": "",
+                        "created_year_str": "",
+                        "created_countries": "",
+                        "maker_cd": "EXT000000X1H",
+                        "maker_name": "マクザム",
+                        "maker_name_kana": "まくざむ",
+                        "maker_name_abbrev": "マクザム",
+                        "label_name": "",
+                        "sell_rental_flag": 2,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10011732",
+                        "ccc_family_cd": "10011732001",
+                        "ccc_product_id": "000406464",
+                        "rental_product_cd": "051426621",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4932545024219",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "MAX332",
+                        "icpn": "",
+                        "media_category_cd": "12",
+                        "media_category_name": "レンタルDVD",
+                        "media_format_id": "EXT00001Q3OJ",
+                        "media_format_name": "VHS",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "021500",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": 2,
+                        "subtitle": "",
+                        "sound_spec": "",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "",
+                        "video_info": "",
+                        "number_of_volume": "",
+                        "number_of_set": "",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "",
+                        "jacket_m": "",
+                        "jacket_l": "",
+                        "jacket_l4": "",
+                        "scene_s": [],
+                        "scene_m": [],
+                        "scene_l": [],
+                        "trailor_pc": [
+                            "//store-tsutaya.tsite.jp/MAX331_y.ram"
+                        ],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": null,
+                        "price_tax_in": null,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "01",
+                                "doc_source_id": "01",
+                                "doc_text": "太平洋で、次々と戦艦が沈没するという事件が発生。その真相を究明しようと航海に出た科学者ピエールの前に、巨大潜水艦ノーチラス号を操る謎の男ネモが現れる。ジュール・ベルヌの小説『海底２万マイル』を、デジタルＳＦＸ技術を駆使して映画化したＳＦ海洋アドベンチャー。"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT00000018Q",
+                                "big_genre_name": "洋画アクション",
+                                "medium_genre_id": "EXT0000002H9",
+                                "medium_genre_name": "パニック",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS00000ELST",
+                                "person_name": "ロッド・ハーディ",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS0000001EK",
+                                "person_name": "マイケル・ケイン",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000007L9",
+                                "person_name": "ミア・サラ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000003HNS",
+                                "person_name": "ブライアン・ブラウン",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000006VM",
+                                "person_name": "パトリック・デンプシー",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    }
+                ],
+                "video_relations": [
+                    {
+                        "relation_type_name": "別バージョン",
+                        "work": {
+                            "work_id": "PTA000080J28",
+                            "work_type_id": "2",
+                            "msdb_item": "video",
+                            "work_format_id": null,
+                            "work_format_name": "",
+                            "work_title": "海底2万里 ディープ・シー20000",
+                            "work_title_kana": "かいてい2まんりでいーぷしー2000",
+                            "work_title_en": "",
+                            "work_title_orig": "20,000 LEAGUES UNDER THE SEA",
+                            "work_title_sub": "",
+                            "work_comment": "",
+                            "work_outline": "",
+                            "work_copyright": "",
+                            "rating_id": "EXT000000008",
+                            "rating_name": "",
+                            "adult_flg": 0,
+                            "primary_product_source_id": "PDT000055AM8",
+                            "primary_product_service_id": "ec",
+                            "primary_product_type_id": 1,
+                            "disp_start_date": "1900-01-01 00:00:00",
+                            "disp_start_month": "1900-01",
+                            "sale_start_date": "2002-05-24",
+                            "sale_start_month": "2002-05",
+                            "created_year_from": "",
+                            "created_year_to": "",
+                            "created_year": "1997",
+                            "created_countries": "アメリカ",
+                            "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/05865/9999200410207_1S.jpg",
+                            "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/05865/9999200410207_1M.jpg",
+                            "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/05865/9999200410207_1L.jpg",
+                            "jacket_l4": "",
+                            "scene_s": [],
+                            "scene_m": [],
+                            "scene_l": [],
+                            "trailor_pc": [],
+                            "season_name": "",
+                            "season_number": null,
+                            "book_series_name": "",
+                            "book_series_name_kana": "",
+                            "feature_keywords": [],
+                            "priv_keywords": [],
+                            "work_tags": [],
+                            "wakati_words": [],
+                            "is_compilation": 0,
+                            "series_completed": 0,
+                            "disable_flg": 0,
+                            "delete_flg": 0,
+                            "ids": [
+                                {
+                                    "id_type": "0103",
+                                    "id_value": "10023538"
+                                },
+                                {
+                                    "id_type": "0105",
+                                    "id_value": "10021861"
+                                },
+                                {
+                                    "id_type": "0108",
+                                    "id_value": "43269"
+                                },
+                                {
+                                    "id_type": "0107",
+                                    "id_value": "160224"
+                                }
+                            ],
+                            "docs": [
+                                {
+                                    "doc_type_id": "01",
+                                    "doc_source_id": "01",
+                                    "doc_text": "「デンジャラス・ビューティー」で渋い演技を披露したマイケル・ケイン主演の海洋アドベンチャー。ビデオ版に４５分の未公開シーンを追加。より壮大な冒険を繰り広げるノーカット完全版。"
+                                },
+                                {
+                                    "doc_type_id": "01",
+                                    "doc_source_id": "03",
+                                    "doc_text": "多発する戦艦沈没事故。それを引き起こしていたのは、クジラよりも大きく、恐るべき速さで移動する超巨大潜水艦ノーチラス号だった……。ビデオ版には未収録のシーンも追加された完全版ＤＶＤ。"
+                                },
+                                {
+                                    "doc_type_id": "02",
+                                    "doc_source_id": "01",
+                                    "doc_text": "多発する潜水艦沈没事故。その背後には鯨より巨大で、しかも恐るべき速さで移動するモンスターの影があった。真相究明中の科学者ピエールは、モンスターの襲撃に遭い遭難するが、謎の人物・ネモに危機を救われる。そしてそのモンスターの正体は、最新科学を駆使した超巨大潜水艦・ノーチラス号だった…！"
+                                },
+                                {
+                                    "doc_type_id": "06",
+                                    "doc_source_id": "04",
+                                    "doc_text": "ビデオ版に４５分の未公開シーンを追加したノーカット完全版"
+                                },
+                                {
+                                    "doc_type_id": "11",
+                                    "doc_source_id": "03",
+                                    "doc_text": "未公開シーン"
+                                }
+                            ],
+                            "awards": [],
+                            "screens": [],
+                            "onairs": [],
+                            "magazines": [],
+                            "genres": [
+                                {
+                                    "big_genre_id": "EXT00000018Q",
+                                    "big_genre_name": "洋画アクション",
+                                    "medium_genre_id": "EXT0000002H9",
+                                    "medium_genre_name": "パニック",
+                                    "small_genre_id": "",
+                                    "small_genre_name": "",
+                                    "shikiriban_id": "",
+                                    "shikiriban_name": ""
+                                }
+                            ],
+                            "discas_grade_point": 289,
+                            "discas_item": [
+                                "DiscasMovie"
+                            ],
+                            "ttv_trailer_flg": 0,
+                            "ttv_free_movie_flg": 0,
+                            "ttv_sell_rental_flg": [],
+                            "ttv_low_price": null,
+                            "cinema_id": [
+                                "160224"
+                            ],
+                            "filmarks_id": [
+                                "43269"
+                            ],
+                            "dramarks_id": [],
+                            "catch_copy": "",
+                            "sale_start_date_sell": "2002-05-24",
+                            "sale_start_date_rental": "2002-05-24",
+                            "trailer_urls": [],
+                            "scenes": [],
+                            "filmarks_mark": 12,
+                            "filmarks_clip": 6,
+                            "filmarks_average": 3.33333,
+                            "people": [
+                                {
+                                    "person_id": "PPS000013B79",
+                                    "person_name": "キース・ピアース",
+                                    "role_id": "EXT0000001AC",
+                                    "role_name": "製作総指揮"
+                                },
+                                {
+                                    "person_id": "PPS0000001EK",
+                                    "person_name": "マイケル・ケイン",
+                                    "role_id": "EXT0000000UM",
+                                    "role_name": "出演者"
+                                },
+                                {
+                                    "person_id": "PPS00000CAG3",
+                                    "person_name": "ジェフリー・M・ヘイズ",
+                                    "role_id": "EXT0000001AC",
+                                    "role_name": "製作総指揮"
+                                },
+                                {
+                                    "person_id": "PPS00000ELST",
+                                    "person_name": "ロッド・ハーディ",
+                                    "role_id": "EXT0000000UH",
+                                    "role_name": "監督"
+                                },
+                                {
+                                    "person_id": "PPS000001VO5",
+                                    "person_name": "ジュール・ヴェルヌ",
+                                    "role_id": "EXT0000000UQ",
+                                    "role_name": "原作者"
+                                },
+                                {
+                                    "person_id": "PPS0000007L9",
+                                    "person_name": "ミア・サラ",
+                                    "role_id": "EXT0000000UM",
+                                    "role_name": "出演者"
+                                },
+                                {
+                                    "person_id": "PPS000003HNS",
+                                    "person_name": "ブライアン・ブラウン",
+                                    "role_id": "EXT0000000UM",
+                                    "role_name": "出演者"
+                                },
+                                {
+                                    "person_id": "PPS0000006VM",
+                                    "person_name": "パトリック・デンプシー",
+                                    "role_id": "EXT0000000UM",
+                                    "role_name": "出演者"
+                                },
+                                {
+                                    "person_id": "PPS000013B7T",
+                                    "person_name": "リチャード・ピアース[製作]",
+                                    "role_id": "EXT0000001AC",
+                                    "role_name": "製作総指揮"
+                                },
+                                {
+                                    "person_id": "PPS00000BM53",
+                                    "person_name": "ブライアン・ネルソン",
+                                    "role_id": "EXT00000018Y",
+                                    "role_name": "脚本"
+                                },
+                                {
+                                    "person_id": "PPS000006GY4",
+                                    "person_name": "マーク・スノウ",
+                                    "role_id": "EXT000000197",
+                                    "role_name": "音楽"
+                                },
+                                {
+                                    "person_id": "PPS00000L5Y5",
+                                    "person_name": "ケリー・アームストロング",
+                                    "role_id": "EXT0000000UM",
+                                    "role_name": "出演者"
+                                },
+                                {
+                                    "person_id": "PPS00000535K",
+                                    "person_name": "ピーター・マッコーリー",
+                                    "role_id": "EXT0000000UM",
+                                    "role_name": "出演者"
+                                },
+                                {
+                                    "person_id": "PPS000013B80",
+                                    "person_name": "セシリー・チュン",
+                                    "role_id": "EXT0000000UM",
+                                    "role_name": "出演者"
+                                },
+                                {
+                                    "person_id": "PPS00000B7JA",
+                                    "person_name": "アドウェール",
+                                    "role_id": "EXT0000000UM",
+                                    "role_name": "出演者"
+                                }
+                            ],
+                            "merged_from": [],
+                            "need_age_auth_flg": 0
+                        }
+                    },
+                    {
+                        "relation_type_name": "リメイク",
+                        "work": {
+                            "work_id": "PTA000080WQ6",
+                            "work_type_id": "2",
+                            "msdb_item": "video",
+                            "work_format_id": null,
+                            "work_format_name": "",
+                            "work_title": "海底2万マイル",
+                            "work_title_kana": "かいてい20000まいる",
+                            "work_title_en": "",
+                            "work_title_orig": "20,000 LEAGUES UNDER THE SEA",
+                            "work_title_sub": "",
+                            "work_comment": "",
+                            "work_outline": "",
+                            "work_copyright": "(C)Disney．",
+                            "rating_id": "EXT000000008",
+                            "rating_name": "",
+                            "adult_flg": 0,
+                            "primary_product_source_id": "PDT00002KDNL",
+                            "primary_product_service_id": "ec",
+                            "primary_product_type_id": 1,
+                            "disp_start_date": "1900-01-01 00:00:00",
+                            "disp_start_month": "1900-01",
+                            "sale_start_date": "1984-10-05",
+                            "sale_start_month": "1984-10",
+                            "created_year_from": "",
+                            "created_year_to": "",
+                            "created_year": "1954",
+                            "created_countries": "アメリカ",
+                            "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/05994/9999200875151_1S.jpg",
+                            "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/05994/9999200875151_1M.jpg",
+                            "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/05994/9999200875151_1L.jpg",
+                            "jacket_l4": "",
+                            "scene_s": [],
+                            "scene_m": [],
+                            "scene_l": [],
+                            "trailor_pc": [],
+                            "season_name": "",
+                            "season_number": null,
+                            "book_series_name": "",
+                            "book_series_name_kana": "",
+                            "feature_keywords": [],
+                            "priv_keywords": [],
+                            "work_tags": [],
+                            "wakati_words": [],
+                            "is_compilation": 0,
+                            "series_completed": 0,
+                            "disable_flg": 0,
+                            "delete_flg": 0,
+                            "ids": [
+                                {
+                                    "id_type": "0103",
+                                    "id_value": "10012889"
+                                },
+                                {
+                                    "id_type": "0105",
+                                    "id_value": "10012041"
+                                },
+                                {
+                                    "id_type": "0108",
+                                    "id_value": "5996"
+                                },
+                                {
+                                    "id_type": "0107",
+                                    "id_value": "4236"
+                                },
+                                {
+                                    "id_type": "0106",
+                                    "id_value": "100017292"
+                                }
+                            ],
+                            "docs": [
+                                {
+                                    "doc_type_id": "01",
+                                    "doc_source_id": "03",
+                                    "doc_text": "世界中の海で、軍艦や船の沈没事件が続発。一体、原因は何なのか？　調査に乗り出したのは巨大潜水艦ノーチラス号だった……。アカデミーで特撮賞、色彩美術賞を受賞したディズニー永遠のＳＦ傑作。"
+                                },
+                                {
+                                    "doc_type_id": "02",
+                                    "doc_source_id": "04",
+                                    "doc_text": "１９世紀半ば、世界各地の海で謎の怪物による沈没事故が続発していた。そして、米政府が送り出した調査船の目の前に現れた怪物。その正体は、戦争を憎むネモ船長が操る万能潜水艦ノーチラス号だった……。ジュール・ヴェルヌの古典ＳＦをディズニーが映画化した冒険大作。"
+                                },
+                                {
+                                    "doc_type_id": "06",
+                                    "doc_source_id": "04",
+                                    "doc_text": "ピクチャーディスク"
+                                },
+                                {
+                                    "doc_type_id": "10",
+                                    "doc_source_id": "03",
+                                    "doc_text": "キネマ旬報監修作品解説"
+                                }
+                            ],
+                            "awards": [],
+                            "screens": [],
+                            "onairs": [],
+                            "magazines": [],
+                            "genres": [
+                                {
+                                    "big_genre_id": "EXT0000002GF",
+                                    "big_genre_name": "洋画ＳＦ",
+                                    "medium_genre_id": "EXT000000AW4",
+                                    "medium_genre_name": "アドベンチャー",
+                                    "small_genre_id": "",
+                                    "small_genre_name": "",
+                                    "shikiriban_id": "",
+                                    "shikiriban_name": ""
+                                }
+                            ],
+                            "discas_grade_point": 325,
+                            "discas_item": [
+                                "DiscasMovie",
+                                "TTV"
+                            ],
+                            "ttv_trailer_flg": 0,
+                            "ttv_free_movie_flg": 0,
+                            "ttv_sell_rental_flg": [
+                                "3"
+                            ],
+                            "ttv_low_price": 432,
+                            "cinema_id": [
+                                "4236"
+                            ],
+                            "filmarks_id": [
+                                "5996"
+                            ],
+                            "dramarks_id": [],
+                            "catch_copy": "",
+                            "sale_start_date_sell": "1989-09-15",
+                            "sale_start_date_rental": "1984-10-05",
+                            "trailer_urls": [],
+                            "scenes": [],
+                            "filmarks_mark": 739,
+                            "filmarks_clip": 366,
+                            "filmarks_average": 3.35,
+                            "people": [
+                                {
+                                    "person_id": "PPS000003H4A",
+                                    "person_name": "リチャード・フライシャー",
+                                    "role_id": "EXT0000000UH",
+                                    "role_name": "監督"
+                                },
+                                {
+                                    "person_id": "PPS000001VO5",
+                                    "person_name": "ジュール・ヴェルヌ",
+                                    "role_id": "EXT0000000UQ",
+                                    "role_name": "原作者"
+                                },
+                                {
+                                    "person_id": "PPS0000003U4",
+                                    "person_name": "カーク・ダグラス",
+                                    "role_id": "EXT0000000UM",
+                                    "role_name": "出演者"
+                                },
+                                {
+                                    "person_id": "PPS000018QNY",
+                                    "person_name": "アール・フェルトン",
+                                    "role_id": "EXT00000018Y",
+                                    "role_name": "脚本"
+                                },
+                                {
+                                    "person_id": "PPS00000N8WA",
+                                    "person_name": "ポール・J・スミス",
+                                    "role_id": "EXT000000197",
+                                    "role_name": "音楽"
+                                },
+                                {
+                                    "person_id": "PPS000001E4B",
+                                    "person_name": "ジェームズ・メイソン",
+                                    "role_id": "EXT0000000UM",
+                                    "role_name": "出演者"
+                                },
+                                {
+                                    "person_id": "PPS000001A12",
+                                    "person_name": "ポール・ルーカス",
+                                    "role_id": "EXT0000000UM",
+                                    "role_name": "出演者"
+                                },
+                                {
+                                    "person_id": "PPS00000188W",
+                                    "person_name": "ピーター・ローレ",
+                                    "role_id": "EXT0000000UM",
+                                    "role_name": "出演者"
+                                },
+                                {
+                                    "person_id": "PPS00000OCSM",
+                                    "person_name": "ロバート・J・ウィルク",
+                                    "role_id": "EXT0000000UM",
+                                    "role_name": "出演者"
+                                },
+                                {
+                                    "person_id": "PPS000007667",
+                                    "person_name": "テッド・デ・コルシア",
+                                    "role_id": "EXT0000000UM",
+                                    "role_name": "出演者"
+                                },
+                                {
+                                    "person_id": "PPS0000OVGU7",
+                                    "person_name": "カールトン・ヤング",
+                                    "role_id": "EXT0000000UM",
+                                    "role_name": "出演者"
+                                },
+                                {
+                                    "person_id": "PPS0000018CU",
+                                    "person_name": "J・M・ケリガン",
+                                    "role_id": "EXT0000000UM",
+                                    "role_name": "出演者"
+                                },
+                                {
+                                    "person_id": "PPS000018QOD",
+                                    "person_name": "パーシー・ヘルトン",
+                                    "role_id": "EXT0000000UM",
+                                    "role_name": "出演者"
+                                },
+                                {
+                                    "person_id": "PPS000018QOF",
+                                    "person_name": "テッド・クーパー",
+                                    "role_id": "EXT0000000UM",
+                                    "role_name": "出演者"
+                                }
+                            ],
+                            "merged_from": [],
+                            "need_age_auth_flg": 0
+                        }
+                    }
+                ],
+                "discas_grade_point": null,
+                "discas_item": [],
+                "ttv_trailer_flg": 0,
+                "ttv_free_movie_flg": 0,
+                "ttv_sell_rental_flg": [],
+                "ttv_low_price": null,
+                "cinema_id": [],
+                "filmarks_id": [],
+                "dramarks_id": [],
+                "catch_copy": "",
+                "sale_start_date_sell": "2000-08-04",
+                "sale_start_date_rental": "2000-08-04",
+                "trailer_urls": [],
+                "scenes": [],
+                "filmarks_mark": null,
+                "filmarks_clip": null,
+                "filmarks_average": null,
+                "people": [
+                    {
+                        "person_id": "PPS00000ELST",
+                        "person_name": "ロッド・ハーディ",
+                        "role_id": "EXT0000000UH",
+                        "role_name": "監督"
+                    },
+                    {
+                        "person_id": "PPS0000001EK",
+                        "person_name": "マイケル・ケイン",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS0000007L9",
+                        "person_name": "ミア・サラ",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS000003HNS",
+                        "person_name": "ブライアン・ブラウン",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS0000006VM",
+                        "person_name": "パトリック・デンプシー",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    }
+                ],
+                "tracks": [],
+                "merged_from": [],
+                "need_age_auth_flg": 0
+            }
+        ]
+    }
+}
