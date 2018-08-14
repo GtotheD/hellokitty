@@ -348,11 +348,17 @@ class ProductRepository
         $item = '';
         $itemCd = substr($itemCd, -2);
         switch ($itemCd) {
+            case '20':
+                $item = 'vhs';
+                break;
             case '21':
                 $item = 'dvd';
                 break;
             case '22':
                 $item = 'bluray';
+                break;
+            case '40':
+                $item = 'game';
                 break;
             case '75':
                 $item = 'book';
