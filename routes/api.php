@@ -671,8 +671,8 @@ $router->group([
         // Other error
         if($response['status'] == 'error') {
             $addFvrString = '{
-                "status": "99",
-                "message": "通信エラーもしくは内部エラー"
+                "status": "error",
+                "message": "登録上限に達しています。"
             }';
             $response = json_decode($addFvrString);
             return response()->json($response);
