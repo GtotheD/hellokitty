@@ -262,6 +262,7 @@ class FavoriteRepository extends ApiRequesterRepository
         $workRepository = new WorkRepository;
         $urlCd = [];
         $workIds =[];
+        $newIds = [];
         foreach ($ids as $id) {
             // PTAがあった場合はworkId
             if (!preg_match('/^PTA/', $id['id'])) {
@@ -281,17 +282,18 @@ class FavoriteRepository extends ApiRequesterRepository
         }
         foreach ($ids as $key => $id) {
             foreach ($works as $work) {
-                if($work['urlCd'] == $id['id']) {
+                // マッチしたものだけ入れる
+                if($work['urlCd'] === $id['id'] || $work['workId'] === $id['id']) {
                     $id['id'] = $work['workId'];
+                    $id['msdbItem'] = $work['msdbItem'];
+                    $id['workFormatId'] = $work['workFormatId'];
+                    if (array_key_exists('app_created_at', $id)) {
+                        $id['appCreatedAt'] = $id['app_created_at'];
+                    }
+                    $newIds[$key] = $id;
                 }
-                $id['msdbItem'] = $work['msdbItem'];
-                $id['workFormatId'] = $work['workFormatId'];
-                if (array_key_exists('app_created_at', $id)) {
-                    $id['appCreatedAt'] = $id['app_created_at'];
-                }
-               $ids[$key] = $id;
             }
         }
-        return $ids;
+        return $newIds;
     }
 }
