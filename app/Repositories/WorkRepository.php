@@ -538,7 +538,6 @@ class WorkRepository
             } else {
                 $response['videoFlg'] = false;
             }
-
             if (!empty($product)) {
                 $response['makerName'] = $product['makerName'];
             } else {
