@@ -321,7 +321,8 @@ class HimoRepository extends ApiRequesterRepository
         if (array_key_exists('keyword', $params)) {
             $this->queryParams['query'] = $params['keyword'];
             // キーワード検索の時にVHS除外の条件を足す
-            $this->queryParams['media_format_id'] = '-'.self::MEDIA_FORMAT_ID_VHS;
+            // $this->queryParams['media_format_id'] = '-'.self::MEDIA_FORMAT_ID_VHS;
+            // VHSを許可するように修正
         }
         //check saleType
         if (array_key_exists('saleType', $params)) {

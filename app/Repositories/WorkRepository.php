@@ -40,7 +40,7 @@ class WorkRepository
     const WORK_TYPE_MUSIC_UNIT = 6;
     const WORK_TYPE_MOVIE = 7;
 
-    const HIMO_REQUEAST_MAX = 200;
+    const HIMO_REQUEAST_MAX = 2000;
     const HIMO_REQUEAST_PER_ONCE = 20;
 
     const HIMO_ROLE_ID_MUSIC = array(
@@ -397,11 +397,11 @@ class WorkRepository
         $workIdsExistedArray = [];
         switch ($idType) {
             case '0105':
-                $workIdsExisted = $this->work->setConditionByUrlCd($workIds, $saleType)->select('url_cd')->get();
+                $workIdsExisted = $this->work->setConditionByUrlCd($workIds, $saleType)->select('url_cd')->getAll();
                 $targetColumn = 'url_cd';
                 break;
             default:
-                $workIdsExisted = $this->work->getWorkBySaleType($workIds, $saleType)->select('work_id')->get();
+                $workIdsExisted = $this->work->getWorkBySaleType($workIds, $saleType)->select('work_id')->getAll();
                 $targetColumn = 'work_id';
                 break;
         }
@@ -466,9 +466,9 @@ class WorkRepository
             return null;
         }
         if (empty($selectColumns)) {
-            $workArray = $this->work->toCamel(['id'])->get();
+            $workArray = $this->work->toCamel(['id'])->getAll();
         } else {
-            $workArray = $this->work->selectCamel($selectColumns)->get();
+            $workArray = $this->work->selectCamel($selectColumns)->getAll();
         }
 
         // productsからとってくるが、仮データ
