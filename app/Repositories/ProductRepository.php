@@ -205,6 +205,7 @@ class ProductRepository
 
         $this->totalCount = $this->product->setConditionProductGroupingByWorkIdSaleType($workId, $this->saleType, $this->sort, $isAudio)->count();
         $results = $this->product->selectCamel($column)->get($this->limit, $this->offset);
+        $results = $this->pptProductFilter($results);
 
         if (count($results) + $this->offset < $this->totalCount) {
             $this->hasNext = true;
@@ -233,7 +234,7 @@ class ProductRepository
         } else {
             $this->hasNext = false;
         }
-
+dd($results);
         return $this->rentalGroupReformat($results);
 
 
@@ -615,4 +616,32 @@ class ProductRepository
         return $itemType;
     }
 
+
+    /*
+     * PPTフィルター
+     * DBから商品を取得後、PPTのみ商品の場合はPPTを出力
+     * PPT以外の場合は、PPTを削除する。
+     */
+    public function pptProductFilter ($products) {
+        // 一旦全てループし、PPTを除外したものとしていないものを生成
+        $onlyPptProducts = [];
+        $notPptProducts = [];
+        foreach ($products as $product) {
+            // 頭から2つめに1がある場合はPPT
+            if (substr($product->itemCd, 1,1) === '1') {
+                $onlyPptProducts[] = $product;
+            } else {
+                $notPptProducts[] = $product;
+            }
+        }
+        // PPTがあり、通常商品がない場合はPPTのみで表示
+        if (count($onlyPptProducts) !== 0 && count($notPptProducts) === 0) {
+            return $onlyPptProducts;
+        // PPTが混じっている場合は通常商品のみを出す。
+        } else if (count($onlyPptProducts) !== 0 && count($notPptProducts) !== 0) {
+            return $notPptProducts;
+        }
+        // 上記以外は、通常商品のみなのでそのまま返却
+        return $products;
+    }
 }
