@@ -234,7 +234,6 @@ class ProductRepository
         } else {
             $this->hasNext = false;
         }
-dd($results);
         return $this->rentalGroupReformat($results);
 
 
