@@ -334,6 +334,9 @@ class WorkRepository
                     $tempData['workFormatName'] = $itemWork['workFormatName'];
                     $tempData['makerName'] = isset($itemWork['makerName']) ? $itemWork['makerName']: '';
                     $tempData['saleStartDate'] = $itemWork['saleStartDate'];
+                    if($tempData['itemType'] == 'book') {
+                        $tempData['bookSeriesName'] = $itemWork['bookSeriesName'];
+                    }
                     array_push($workDataFormat, $tempData);
                     $count ++;
                     continue;
