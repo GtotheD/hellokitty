@@ -594,7 +594,7 @@ $router->group([
         $favoriteRepository = new FavoriteRepository();
         $favoriteRepository->setTlsc($bodyObj['tlsc']);
         // Check version
-        $version = isset($bodyObj['version']) ? $bodyObj['version'] : '';
+        $version = isset($bodyObj['version']) ? $bodyObj['version'] : null;
         $limit = isset($bodyObj['limit']) ? $bodyObj['limit'] : 2000;
         $offset = isset($bodyObj['offset']) ? $bodyObj['offset'] : 0;
         $sort = isset($bodyObj['sort']) ? $bodyObj['sort'] : 'new';
@@ -603,7 +603,7 @@ $router->group([
         $favoriteRepository->setSort($sort);
         $versionResponse = $favoriteRepository->getFavoriteVersion($bodyObj['tlsc']);
         // Check version
-        if(!empty($versionResponse) && $versionResponse == $version) {
+        if($versionResponse == $version) {
             $versionUpdateString = '{
                 "isUpdate": false,
                 "rows":null
@@ -614,7 +614,14 @@ $router->group([
         $response = $favoriteRepository->list($bodyObj);
         // Check number record return
         if(!isset($response) || !array_key_exists('totalCount', $response) || $response['totalCount'] <= 0 ) {
-            throw new NoContentsException;
+            $response = [
+                'hasNext' => false,
+                'isUpdate' => true,
+                'totalCount' => 0,
+                'version' => $versionResponse,
+                'rows' => []
+            ];
+            return response()->json($response);
         }
         $response = $favoriteRepository->formatData($response);
         $response['version'] = $versionResponse;
