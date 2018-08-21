@@ -220,15 +220,13 @@ class Product extends Model
     public function setConditionRentalGroup($workId, $order = null)
     {
         $groupingColumn = 'work_id, product_name, ccc_family_cd';
-        $productUniqueId = 'MAX(product_unique_id) AS product_unique_id';
+//        $productUniqueId = 'MAX(product_unique_id) AS product_unique_id';
         $saleStartDate = 'MAX(sale_start_date) AS sale_start_date';
-        $jacketQuery = 'MAX(jacket_l) AS jacket_l';
+//        $jacketQuery = 'MAX(jacket_l) AS jacket_l';
         $dvdQuery = 'MAX(CASE WHEN (item_cd = \'0021\' OR item_cd = \'0121\') THEN rental_product_cd ELSE NULL END) AS dvd';
         $blurayQuery = 'MAX(CASE WHEN (item_cd = \'0022\' OR item_cd = \'0122\') THEN rental_product_cd ELSE NULL END) AS bluray';
         $selectQuery = $groupingColumn. ','.
-            $productUniqueId. ','.
             $saleStartDate. ','.
-            $jacketQuery. ','.
             $dvdQuery. ','.
             $blurayQuery;
         $subQuery = DB::table($this->table)->select(DB::raw($selectQuery))
@@ -238,6 +236,7 @@ class Product extends Model
             ->whereRaw(DB::raw(' product_type_id = 2 '))
             ->groupBy(DB::raw($groupingColumn))
             // ->havingRaw(' NOT (dvd IS NULL AND bluray IS NULL)') // 特殊メディア（VHS等）の場合はひっかからないのでnullも許容する。
+//             ->havingRaw('MAX(sale_start_date) = sale_start_date AND MAX(ccc_product_id) = ccc_product_id ')
         ;
         $this->dbObject = DB::table(DB::raw("({$subQuery->toSql()}) as sub"))
             ->where(['work_id' => $workId]);
@@ -252,6 +251,30 @@ class Product extends Model
         }
         return $this;
     }
+
+    public function setConditionRentalGroupNewestCccProductId($workId, $cccFamilyCd, $saleStartData)
+    {
+        $groupingColumn = 'work_id, ccc_family_cd, sale_start_date';
+        $columns = 'MAX(ccc_product_id) as ccc_product_id';
+        $selectQuery = $groupingColumn.','.$columns;
+        $subQuery = DB::table($this->table)->select(DB::raw($selectQuery))
+            ->whereRaw(DB::raw('work_id = \''.$workId . '\''))
+            ->whereRaw(DB::raw('ccc_family_cd = \''.$cccFamilyCd . '\''))
+            ->whereRaw(DB::raw('sale_start_date = \''.$saleStartData . '\''))
+            ->whereRaw(DB::raw(' product_type_id = 2 '))
+            ->groupBy(DB::raw($groupingColumn));
+        $this->dbObject = DB::table(DB::raw("({$subQuery->toSql()}) as t1"))
+            ->join($this->table.' as t2', function ($join) {
+                $join->on('t2.work_id', '=', 't1.work_id')
+                    ->whereRaw(DB::raw('t2.work_id = t1.work_id'))
+                    ->whereRaw(DB::raw('t2.ccc_family_cd = t1.ccc_family_cd'))
+                    ->whereRaw(DB::raw('t2.sale_start_date = t1.sale_start_date'));
+            });
+//        dd($this->dbObject->toSql());
+        return $this;
+    }
+
+
 
     public function insert($data)
     {

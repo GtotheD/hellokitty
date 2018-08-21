@@ -218,23 +218,30 @@ class ProductRepository
 
     public function getRentalGroup($workId, $sort = null)
     {
-        $column = [
-            "product_name AS productName",
-            "product_unique_id AS productUniqueId",
-            "jacket_l AS jacketL",
-            "sale_start_date AS saleStartDate",
-            "ccc_family_cd AS cccFamilyCd",
-            "dvd",
-            "bluray",
+        $columnOutput = [
+            "t2.product_name AS productName",
+            "t2.product_unique_id AS productUniqueId",
+            "t2.jacket_l AS jacketL",
+            "t2.sale_start_date AS saleStartDate",
+            "t2.ccc_family_cd AS cccFamilyCd",
         ];
         $this->totalCount = $this->product->setConditionRentalGroup($workId, $sort)->count();
-        $results = $this->product->select($column)->get($this->limit, $this->offset);
+        $results = $this->product->get($this->limit, $this->offset);
+
+        foreach ($results as $result) {
+            $tmp = $this->product->setConditionRentalGroupNewestCccProductId(
+                $result->work_id, $result->ccc_family_cd, $result->sale_start_date
+            )->select($columnOutput)->getOne();
+            $tmp->dvd = $result->dvd;
+            $tmp->bluray = $result->bluray;
+            $response[] = $tmp;
+        }
         if (count($results) + $this->offset < $this->totalCount) {
             $this->hasNext = true;
         } else {
             $this->hasNext = false;
         }
-        return $this->rentalGroupReformat($results);
+        return $this->rentalGroupReformat($response);
 
 
     }
