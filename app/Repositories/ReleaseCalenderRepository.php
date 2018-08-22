@@ -2,13 +2,9 @@
 
 namespace App\Repositories;
 
-use App\Exceptions\NoContentsException;
-use App\Model\RelateadWork;
-use App\Model\Work;
-use App\Model\HimoReleaseOrder;
 use DB;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Carbon;
+use App\Model\HimoReleaseOrder;
 
 class ReleaseCalenderRepository
 {
@@ -158,6 +154,7 @@ class ReleaseCalenderRepository
         // 音楽の場合single albumなどを指定する為。
         $mediaFormat = null;
         $workRepository = new WorkRepository();
+        $productRepository = new ProductRepository();
         $himoReleaseOrder = new HimoReleaseOrder();
 
         // パラメーターを取得する　未指定の場合は当月
@@ -178,6 +175,8 @@ class ReleaseCalenderRepository
             $saleStartDateTo = Carbon::now()->endOfMonth()->addMonth(6);
             $saleStartDateToForDB = Carbon::now()->endOfMonth();
         }
+        // タグに仕様するフォーマット
+        $tagSaleStartDateFrom = $saleStartDateFrom->format('Ym');
         $saleStartDateFrom = $saleStartDateFrom->format('Y-m-d');
         $saleStartDateTo = $saleStartDateTo->format('Y-m-d');
         $saleStartDateToForDB = $saleStartDateToForDB->format('Y-m-d');
@@ -207,8 +206,12 @@ class ReleaseCalenderRepository
                 'sort' => $sortBy
             ];
             // TSUTAYA一押しの処理
+            // 日付と種別でTSUTAYA一押し要のタグを生成する
             if ($mappingData['genres'] === self::HIMO_TAP_RECOMMEND) {
-                $params['workTags'] = self::HIMO_TAP_RECOMMEND_KEYWORD;
+                $worktTag = self::HIMO_TAP_RECOMMEND_KEYWORD . '_' .
+                    $tagSaleStartDateFrom . '_' .
+                    $productRepository->convertProductTypeToStr($mappingData['productSellRentalFlg']);
+                $params['workTags'] = $worktTag;
                 // TSUTAYA一押しでmsdbitemがcdの場合ミュージックdvdを含めない
                 if($mappingData['msdbItem'][0] === 'video') {
                     $params['genre'] = implode(' || ', $workRepository::HIMO_SEARCH_VIDEO_GENRE_ID);
