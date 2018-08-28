@@ -755,6 +755,7 @@ $router->group([
             throw new NoContentsException;
         }
         $response = [
+            'requestDate' => date('YmdHis'),
             'rows' => $rows
         ];
         return response()->json($response)->header('X-Accel-Expires', '0');
