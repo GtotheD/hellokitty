@@ -74,17 +74,22 @@ class Model
         $this->dbObject->select(DB::raw($this->camelCaseColumn($ignoreColumn, $prefix)));
         return $this;
     }
-    private function camelCaseColumn($ignoreColumn = [], $prefix = null)
+    public function camelCaseColumn($ignoreColumn = [], $prefix = null)
     {
-        $columns = Schema::getColumnListing($this->table);
-        return $this->convertCamelCase($columns, $ignoreColumn, $prefix);
+        return $this->convertCamelCase($this->getColumn(), $ignoreColumn, $prefix);
     }
+
+    public function getColumn()
+    {
+        return Schema::getColumnListing($this->table);
+    }
+
     public function selectCamel($columns)
     {
         $this->dbObject->select(DB::raw($this->convertCamelCase($columns)));
         return $this;
     }
-    private function convertCamelCase($columns, $ignoreColumn = [], $prefix = null)
+    public function convertCamelCase($columns, $ignoreColumn = [], $prefix = null)
     {
         foreach ($columns as $column) {
             if(!in_array($column, $ignoreColumn)) {

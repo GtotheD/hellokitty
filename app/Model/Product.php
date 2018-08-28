@@ -83,7 +83,7 @@ class Product extends Model
      */
     public function setConditionByWorkIdNewestProduct($workId, $saleType = null, $isMovie = false)
     {
-        $this->dbObject = DB::table($this->table)
+        $this->dbObject = DB::table($this->table . ' as t1')
             ->where([
                 'work_id' => $workId,
             ]);
@@ -95,12 +95,48 @@ class Product extends Model
             ]);
         }
         if ($isMovie) {
+            // PPTのみの場合も該当する
             $this->dbObject->whereRaw(DB::raw(' item_cd like \'__21\' '));
         }
         $this->dbObject->orderBy('ccc_family_cd', 'desc')
             ->orderBy('sale_start_date', 'desc')
             ->limit(1);
         return $this;
+    }
+
+    public function selectWithDvdJacketL()
+    {
+        $column = $this->getColumn();
+        array_forget($column, 'jacket_l');
+        $jacketSubQuery = DB::table($this->table . ' as t2')
+            ->select('jacket_l')
+            ->whereRaw(DB::raw('t2.work_id = t1.work_id'))
+            ->whereRaw(DB::raw('t2.product_type_id = t1.product_type_id'))
+            ->whereRaw(DB::raw('(jacket_l <> null OR jacket_l <> \'\')'))
+            ->orderBy('ccc_family_cd', 'desc')
+            ->orderBy('item_cd_right_2', 'asc')
+            ->orderBy('sale_start_date', 'desc')
+            ->limit(1);
+        $column[] = '('.$jacketSubQuery->toSql().') as jacketL';
+        $this->selectCamel($column);
+        return $this;
+    }
+
+    public function setConditionSelectJacket($workId, $saleType)
+    {
+        $this->dbObject = DB::table($this->table)
+            ->select('jacket_l as jacketL')
+            ->whereRaw(DB::raw('(jacket_l <> null OR jacket_l <> \'\')'))
+            ->where([
+                'work_id' => $workId,
+                'product_type_id' => $this->convertSaleType($saleType),
+            ])
+            ->orderBy('ccc_family_cd', 'desc')
+            ->orderBy('item_cd_right_2', 'asc')
+            ->orderBy('sale_start_date', 'desc')
+            ->limit(1);
+        return $this;
+
     }
 
     public function setConditionByRentalProductCdFamilyGroup($rentalProductCd, $isAudio = false)
