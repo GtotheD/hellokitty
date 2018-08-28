@@ -1930,6 +1930,11 @@
  *         description="success",
  *         @SWG\Schema(
  *             @SWG\Property(
+ *                 property="requestDate",
+ *                 type="string",
+ *                 description="リクエスト日時",
+ *             ),
+ *             @SWG\Property(
  *                 property="rows",
  *                 type="array",
  *                 description="店舗毎のクーポン情報",
