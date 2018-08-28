@@ -31,6 +31,16 @@ class WorkRepository
     protected $hasNext;
     protected $totalCount;
 
+    // 本プログラムで使っている販売タイプの文字列
+    const SALE_TYPE_SELL = 'sell';
+    const SALE_TYPE_RENTAL = 'rental';
+
+    // MSDBアイテム種別
+    const MSDB_ITEM_VIDEO = 'video';
+    const MSDB_ITEM_MUSIC = 'music';
+    const MSDB_ITEM_BOOK = 'book';
+    const MSDB_ITEM_GAME = 'game';
+
     // 1=音楽、2=映像、3=書籍、4=ゲーム、5=グッズ、6=音楽単曲、7=映画
     const WORK_TYPE_CD = 1;
     const WORK_TYPE_DVD = 2;
@@ -496,11 +506,18 @@ class WorkRepository
         $response['supplement'] = '';
         $isAdult = null;
         $isDocSet = false;
-
+        // プロダクトが存在しなかった場合（workベースで取得した場合等）は、各販売種別の最新商品情報で取得する。
+        // プロダクトを指定のもので取得したい場合は引数にてプロダクト情報を付与すると、その情報から生成する。
         if (empty($product)) {
             $product = (array)$productModel->setConditionByWorkIdNewestProduct($response['workId'], $this->saleType)->toCamel()->getOne();
         }
+
         if (!empty($product)) {
+            // 映像の場合は、ジャケ写を最新刊のブルーレイ優先で取得する。
+            if ($response['msdbItem'] === self::MSDB_ITEM_VIDEO) {
+                $jacket = (array)$productModel->setConditionSelectJacket($response['workId'], $this->saleType)->getOne();
+                $product['jacketL'] = $jacket['jacketL'];
+            }
             if ((substr($product['itemCd'], -2) === '75' && !empty($product['numberOfVolume'])) ||
                 (substr($product['itemCd'], -2) === '76' && !empty($product['numberOfVolume']))) {
                 $response['productName'] = $product['productName'] . "（{$product['numberOfVolume']}）";
