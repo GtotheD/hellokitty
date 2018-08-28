@@ -331,7 +331,7 @@ class WorkRepository
                     $tempData['itemType'] = $itemWork['itemType'];
                     $tempData['adultFlg'] = $itemWork['adultFlg'];
                     $tempData['priceTaxOut'] = isset($itemWork['priceTaxOut']) ? $itemWork['priceTaxOut']: '';
-                    $tempData['workFormatName'] = $itemWork['workFormatName'];
+                    $tempData['workFormatName'] = $tempData['itemType'] == 'cd' ? $itemWork['workFormatName']: '';
                     $tempData['makerName'] = isset($itemWork['makerName']) ? $itemWork['makerName']: '';
                     $tempData['saleStartDate'] = $itemWork['saleStartDate'];
                     if($tempData['itemType'] == 'book') {
