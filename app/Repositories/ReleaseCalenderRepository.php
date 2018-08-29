@@ -456,7 +456,7 @@ class ReleaseCalenderRepository
             'adult_flg',
             'product_name',
             'maker_name',
-            'msdb_item',
+            'p4.msdb_item',
             'media_format_id',
             'game_model_name',
             'number_of_volume',

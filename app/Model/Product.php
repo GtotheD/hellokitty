@@ -129,9 +129,13 @@ class Product extends Model
             ->whereRaw(DB::raw('(jacket_l <> null OR jacket_l <> \'\')'))
             ->where([
                 'work_id' => $workId,
+            ]);
+        if ($saleType) {
+            $this->dbObject->where([
                 'product_type_id' => $this->convertSaleType($saleType),
-            ])
-            ->orderBy('ccc_family_cd', 'desc')
+            ]);
+        }
+        $this->dbObject->orderBy('ccc_family_cd', 'desc')
             ->orderBy('item_cd_right_2', 'asc')
             ->orderBy('sale_start_date', 'desc')
             ->limit(1);

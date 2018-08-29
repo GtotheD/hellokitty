@@ -515,6 +515,7 @@ class WorkRepository
         if (!empty($product)) {
             // 映像の場合は、ジャケ写を最新刊のブルーレイ優先で取得する。
             if ($response['msdbItem'] === self::MSDB_ITEM_VIDEO) {
+                // saleTypeの指定がない場合は関係なく出す。
                 $jacket = (array)$productModel->setConditionSelectJacket($response['workId'], $this->saleType)->getOne();
                 $product['jacketL'] = $jacket['jacketL'];
             }
@@ -525,7 +526,9 @@ class WorkRepository
             // 全ての在庫ページで表示する日付を商品の最新のものにする。
             $response['saleStartDate'] = $product['saleStartDate'];
             // Add price_tax_out
-            $response['priceTaxOut'] = $product['priceTaxOut'];
+            if (array_key_exists('priceTaxOut', $product)) {
+                $response['priceTaxOut'] = $product['priceTaxOut'];
+            }
             // add supplement
             if ($product['msdbItem'] === 'game') {
                 $response['supplement'] = $product['gameModelName'];
@@ -1373,7 +1376,7 @@ class WorkRepository
             'maker_name',
             'game_model_name',
             'adult_flg',
-            'msdb_item',
+            'p2.msdb_item',
             'media_format_id',
             'number_of_volume',
             'item_cd',
