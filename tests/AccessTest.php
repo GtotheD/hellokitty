@@ -329,6 +329,16 @@ class AccessTest extends TestCase
         $response = $this->getJsonWithAuth('/people/PPS00001LBUW');
         $response->assertResponseStatus(200);
     }
+
+    /**
+     * @test
+     */
+    public function peopleMovie()
+    {
+        $response = $this->getJsonWithAuth('/people/PPS000001YWE');
+        $response->assertResponseStatus(200);
+    }
+
     /**
      * @test
      */
