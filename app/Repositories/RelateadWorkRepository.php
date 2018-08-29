@@ -213,7 +213,7 @@ class RelateadWorkRepository
             'maker_name',
             'game_model_name',
             'adult_flg',
-            'msdb_item',
+            't2.msdb_item',
             'media_format_id',
             'number_of_volume',
             'item_cd',

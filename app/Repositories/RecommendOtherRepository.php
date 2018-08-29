@@ -75,6 +75,7 @@ class RecommendOtherRepository
             return null;
         }
         $workIdList = explode(',', $bk2Recoomend->list_work_id);
+        $workRepository->setSaleType($saleType);
         $workRepository->getWorkList($workIdList);
         // 自分自身のアイテム種別を取得
         $baseWork = $work->setConditionByWorkId($workId)->getOne();
@@ -143,7 +144,7 @@ class RecommendOtherRepository
             'maker_name',
             'game_model_name',
             'adult_flg',
-            'msdb_item',
+            'p2.msdb_item',
             'media_format_id',
             'number_of_volume',
             'item_cd',
