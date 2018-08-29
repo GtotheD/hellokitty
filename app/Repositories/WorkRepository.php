@@ -236,7 +236,8 @@ class WorkRepository
             'ccc_work_cd',
             'jacket_l',
             'sale_start_date',
-            'adult_flg'
+            'adult_flg',
+            'msdb_item'
         ];
         return $this->get($workId, $columns);
     }
