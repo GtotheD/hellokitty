@@ -517,7 +517,10 @@ class WorkRepository
             if ($response['msdbItem'] === self::MSDB_ITEM_VIDEO) {
                 // saleTypeの指定がない場合は関係なく出す。
                 $jacket = (array)$productModel->setConditionSelectJacket($response['workId'], $this->saleType)->getOne();
-                $product['jacketL'] = $jacket['jacketL'];
+                // ジャケットがある場合のみ差し替え
+                if (count($jacket) > 0) {
+                    $product['jacketL'] = $jacket['jacketL'];
+                }
             }
             if ((substr($product['itemCd'], -2) === '75' && !empty($product['numberOfVolume'])) ||
                 (substr($product['itemCd'], -2) === '76' && !empty($product['numberOfVolume']))) {
@@ -581,6 +584,7 @@ class WorkRepository
                 $response['mediumGenreId'],
                 $response['smallGenreId'],
                 $product['makerCd']);
+            // ジャケ写の挿入
             $response['jacketL'] = ($displayImage) ? $product['jacketL'] : '';
             // アダルト判定
             $isAdult = isAdult(
@@ -1032,7 +1036,6 @@ class WorkRepository
         foreach ($data['results']['rows'] as $row) {
             $workList[] = $row['work_id'];
         }
-
         $this->getWorkList($workList);
         $this->work->getWorkWithProductIdsIn($workList, $this->saleType, null, $sort);
         $this->totalCount = $this->work->count();

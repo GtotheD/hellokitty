@@ -238,7 +238,6 @@ class HimoRepository extends ApiRequesterRepository
         if (env('APP_ENV') === 'local') {
             return $this;
         }
-
         $this->apiPath = $this->apiHost . '/search/crossworks';
         $sortBy = 'auto:desc';
         if ($sort == 'new') {
