@@ -2,7 +2,7 @@
 
 use tests\TestData;
 
-class WorkProducts extends TestCase
+class WorkProductsRental extends TestCase
 {
     private $apiPath;
 
@@ -46,94 +46,11 @@ class WorkProducts extends TestCase
      * @dataProvider dataProvider
      * @test
      */
-    public function workProduct($workId, $expected)
-    {
-        $url = '/work/'.$workId;
-        $this->getJsonWithAuth( $url);
-        $response = $this->getJsonWithAuth('/work/'.$workId.'/products');
-        $response->assertResponseStatus(200);
-    }
-
-    /**
-     * Rental
-     * @dataProvider dataProvider
-     * @test
-     */
     public function workProductRental($workId, $expected)
     {
         $url = '/work/'.$workId;
         $this->getJsonWithAuth( $url);
-        $response = $this->getJsonWithAuth('/work/'.$workId.'/products?saleType=rental');
+        $response = $this->getJsonWithAuth('/work/'.$workId.'/products/rental');
         $response->assertResponseStatus(200);
     }
-
-    /**
-     * Sell
-     * @dataProvider dataProvider
-     * @test
-     */
-    public function workProductSell($workId, $expected)
-    {
-        $url = '/work/'.$workId;
-        $this->getJsonWithAuth( $url);
-        $response = $this->getJsonWithAuth('/work/'.$workId.'/products?saleType=sell');
-        $response->assertResponseStatus(200);
-    }
-//
-//    /**
-//     * Video:巻数を付与されていること
-//     * @test
-//     */
-//    public function workProductCheckNumberOfVolumeForBook()
-//    {
-//        $url = '/work/PTA0000G66F0';
-//        $this->getJsonWithAuth( $url);
-//        $response = $this->getJsonWithAuth('/work/PTA0000G66F0/products');
-//        $response->seeJson([
-//            'totalCount' => 65,
-//            'productName' => '進撃の巨人<限定版> DVD付き（26）',
-//        ]);
-//    }
-//
-//    /**
-//     * 巻数が一巻のみの場合は巻数を付与しない
-//     * @test
-//     */
-//    public function workProductCheckNotNumberOfVolumeForBook()
-//    {
-//        $url = '/work/PTA0000R81I8';
-//        $this->getJsonWithAuth( $url);
-//        $response = $this->getJsonWithAuth('/work/PTA0000R81I8/products');
-//        $response->seeJson([
-//                'totalCount' => 1,
-//                'productName' => 'こちら葛飾区亀有公園前派出所 ∞巻<特装版>',
-//            ]);
-//    }
-//
-//    /**
-//     * VHSかつダミーデータ(JANが9999始まり)のもの場合出力しない。
-//     * @test
-//     */
-//    public function workProductIgnoreVHS()
-//    {
-//        $url = '/work/PTA00008M81I';
-//        $this->getJsonWithAuth( $url);
-//        $response = $this->getJsonWithAuth('/work/PTA00008M81I/products?saleType=rental');
-//        $response->assertResponseStatus(204);
-//    }
-//
-//    /**
-//     *　セルのみの商品
-//     * @test
-//     */
-//    public function workProductIgnoreVHSDisplayOtherData()
-//    {
-//        $url = '/work/PTA00008M81I';
-//        $this->getJsonWithAuth( $url);
-//        $response = $this->getJsonWithAuth('/work/PTA00008M81I/products?saleType=sell');
-//        $response->seeJson([
-//            'totalCount' => 6,
-//            'productName' => '鉄人タイガーセブン 5',
-//        ]);
-//    }
 }

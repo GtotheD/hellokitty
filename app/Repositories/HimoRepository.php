@@ -6,6 +6,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use App\Repositories\WorkRepository;
 use App\Model\Work;
+use Illuminate\Filesystem;
 
 /**
  * Created by PhpStorm.
@@ -438,10 +439,19 @@ class HimoRepository extends ApiRequesterRepository
         }
         $path = base_path('tests/himo/');
         $path = $path . $apiName;
-        if (!realpath($path . '/' . $filename)) {
-            return null;
+        if ($apiName === 'crossworks') {
+            $list = glob($path . '/*/' . $filename);
+            if (!empty($list)) {
+                $file = file_get_contents($list[0]);
+            } else {
+                return null;
+            }
+        } else {
+            if (!realpath($path . '/' . $filename)) {
+                return null;
+            }
+            $file = file_get_contents($path . '/' . $filename);
         }
-        $file = file_get_contents($path . '/' . $filename);
         $file = str_replace(["\n", "\r\n", "\r", PHP_EOL], '', $file);
         return json_decode($file, TRUE);
     }

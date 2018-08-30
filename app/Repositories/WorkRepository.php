@@ -512,7 +512,6 @@ class WorkRepository
         if (empty($product)) {
             $product = (array)$productModel->setConditionByWorkIdNewestProduct($response['workId'], $this->saleType)->toCamel()->getOne();
         }
-
         if (!empty($product)) {
             // 映像の場合は、ジャケ写を最新刊のブルーレイ優先で取得する。
             if ($response['msdbItem'] === self::MSDB_ITEM_VIDEO) {
