@@ -644,6 +644,8 @@ $router->group([
         $workRepository = new WorkRepository();
         // Covert urlCd to id if have
         $workIdsArray = $workRepository->convertUrlCdToWorkId($idsArray);
+        $ageLimitCheck = isset($body_obj['ageLimitCheck']) ? $body_obj['ageLimitCheck'] : false;
+        $workRepository->setAgeLimitCheck($ageLimitCheck);
         $workRepository->setSaleType($saleType);
         // Get work data
         $workData = $workRepository->getWorkList($workIdsArray, null, null, false, $saleType);

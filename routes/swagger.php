@@ -772,6 +772,11 @@
  *             description="セルレンタル区分（sell or rental）",
  *         ),
  *         @SWG\Property(
+ *             property="ageLimitCheck",
+ *             type="boolean",
+ *             description="既に年齢認証済みかどうか。認証済み=true、未認証=false",
+ *         ),
+ *         @SWG\Property(
  *             property="ids",
  *             type="array",
  *             description="「WorkId」もしくは「urlCd」",
