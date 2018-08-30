@@ -275,8 +275,12 @@ class FavoriteRepository extends ApiRequesterRepository
         if (!empty($urlCd)) {
             $works = $workRepository->getWorkList($urlCd, ['work_id', 'url_cd', 'msdb_item', 'work_format_id'], '0105', true)['rows'];
     	}
+    	// UrlCdで検索後workが存在していた場合はマージ
         if (!empty($works)) {
             $works = array_merge($works, $workRepository->getWorkList($workIds, ['work_id', 'url_cd', 'msdb_item', 'work_format_id'], null, true)['rows']);
+        // workが存在していない場合はマージなしで通常取得
+        } else {
+            $works = $workRepository->getWorkList($workIds, ['work_id', 'url_cd', 'msdb_item', 'work_format_id'], null, true)['rows'];
         }
         // 検索がヒットしなかった場合はfalseを返却
         if (empty($works)) {

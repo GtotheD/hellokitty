@@ -673,7 +673,7 @@ $router->group([
         $favoriteRepository->setTlsc($bodyObj['tlsc']);
         $response = $favoriteRepository->add($id);
         if ($response === false) {
-            throw new Exception;
+            throw new BadRequestHttpException('該当の作品が存在しない為、処理できませんでした。');
         }
         // Other error
         if($response['status'] == 'error') {
@@ -700,7 +700,7 @@ $router->group([
         $favoriteRepository->setTlsc($bodyObj['tlsc']);
         $response = $favoriteRepository->merge($ids);
         if ($response === false) {
-            throw new Exception;
+            throw new BadRequestHttpException('該当の作品が存在しない為、処理できませんでした。');
         }
         // Limit error
         if($response['status'] == 'error') {
@@ -722,7 +722,7 @@ $router->group([
         $favoriteRepository->setTlsc($bodyObj['tlsc']);
         $response = $favoriteRepository->delete($ids);
         if ($response === false) {
-            throw new Exception;
+            throw new BadRequestHttpException('該当の作品が存在しない為、処理できませんでした。');
         }
         if($response['status'] == 'error') {
             throw new Exception;
