@@ -79,7 +79,11 @@
                     }
                 ],
                 "docs": [
-
+                    {
+                        "doc_type_id": "01",
+                        "doc_source_id": "01",
+                        "doc_text": "西暦２０１６年を舞台に「人命」「企業」「友愛」を描く、近未来ロボットエンターテイメント。アイドルと巨大ロボを使い、会社アピールと人名救助のミッションをやり遂げて、２年間で１００億円とうノルマを克服しなければならない。実相寺昭雄・小林誠が描くビジュアルを全面に出した、戦略・経営・恋愛の要素をミックスさせたシミュレーションゲームの表現が魅力。【２０００年４月２０日、廉価版として再発売。】"
+                    }
                 ],
                 "awards": [
 
@@ -106,7 +110,484 @@
                     }
                 ],
                 "products": [
+                    {
+                        "id": "PDT0000M1PXJ",
+                        "product_id": "PPD00007GDB9",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "tol",
+                        "service_name": "tol",
+                        "msdb_item": "game",
+                        "item_cd": "1040",
+                        "item_name": "ゲームソフト",
+                        "product_name": "有限会社地球防衛隊 普及版",
+                        "product_kana": "ゆうげんがいしやちきゆうぼうえいた",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2007-09-30 01:41:37",
+                        "disp_start_month": "2007-09",
+                        "disp_end_date": "2030-12-28 00:00:00",
+                        "disp_end_month": "2030-12",
+                        "sale_start_date": "2000-04-20",
+                        "sale_start_month": "2000-04",
+                        "sale_end_date": "2030-12-28",
+                        "sale_end_month": "2030-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000FDHW4"
+                        ],
+                        "tieup": "",
+                        "copyright": "",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "1999",
+                        "created_year_to": "",
+                        "created_year_str": "1999",
+                        "created_countries": "",
+                        "maker_cd": "EXT000077APM",
+                        "maker_name": "メディアリング",
+                        "maker_name_kana": "めでいありんぐ",
+                        "maker_name_abbrev": "メディアリング",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "30001229",
+                        "ccc_family_cd": "30001229001",
+                        "ccc_product_id": "000582738",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4989006000190",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "SLPS02722",
+                        "icpn": "",
+                        "media_category_cd": "24",
+                        "media_category_name": "販売ゲーム",
+                        "media_format_id": "EXT0000797CA",
+                        "media_format_name": "ディスク",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "EXT000077CI4",
+                        "game_model_name": "ＰｌａｙＳｔａｔｉｏｎ",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "000000",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "",
+                        "video_info": "",
+                        "number_of_volume": "",
+                        "number_of_set": "0",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/00366/4989006000190_1S.jpg ",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/00366/4989006000190_1M.jpg ",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/00366/4989006000190_1L.jpg ",
+                        "jacket_l4": "",
+                        "scene_s": [
 
+                        ],
+                        "scene_m": [
+
+                        ],
+                        "scene_l": [
+
+                        ],
+                        "trailor_pc": [
+
+                        ],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [
+
+                        ],
+                        "priv_keywords": [
+
+                        ],
+                        "package_tags": [
+
+                        ],
+                        "product_tags": [
+
+                        ],
+                        "price_tax_out": 1500,
+                        "price_tax_in": 1620,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "01",
+                                "doc_source_id": "01",
+                                "doc_text": "西暦２０１６年を舞台に「人命」「企業」「友愛」を描く、近未来ロボットエンターテイメント。アイドルと巨大ロボを使い、会社アピールと人名救助のミッションをやり遂げて、２年間で１００億円とうノルマを克服しなければならない。実相寺昭雄・小林誠が描くビジュアルを全面に出した、戦略・経営・恋愛の要素をミックスさせたシミュレーションゲームの表現が魅力。【２０００年４月２０日、廉価版として再発売。】"
+                            }
+                        ],
+                        "devices": [
+
+                        ],
+                        "distribution_plans": [
+
+                        ],
+                        "awards": [
+
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT000073WX0",
+                                "big_genre_name": "シミュレーション",
+                                "medium_genre_id": "EXT000073YTP",
+                                "medium_genre_name": "その他",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [
+
+                        ],
+                        "onairs": [
+
+                        ],
+                        "magazines": [
+
+                        ],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [
+
+                        ],
+                        "filmarks_id": [
+
+                        ],
+                        "dramarks_id": [
+
+                        ],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS00000D0WP",
+                                "person_name": "三五美奈子",
+                                "role_id": "EXT000015AXU",
+                                "role_name": "声優"
+                            },
+                            {
+                                "person_id": "PPS00007DHGC",
+                                "person_name": "友永朱音",
+                                "role_id": "EXT000015AXU",
+                                "role_name": "声優"
+                            },
+                            {
+                                "person_id": "PPS00007FHT1",
+                                "person_name": "七瀬里緒",
+                                "role_id": "EXT000015AXU",
+                                "role_name": "声優"
+                            },
+                            {
+                                "person_id": "PPS00007GDB2",
+                                "person_name": "MARIO",
+                                "role_id": "EXT000015AXU",
+                                "role_name": "声優"
+                            },
+                            {
+                                "person_id": "PPS00007CVSN",
+                                "person_name": "静木亜美",
+                                "role_id": "EXT000015AXU",
+                                "role_name": "声優"
+                            },
+                            {
+                                "person_id": "PPS00007GDB3",
+                                "person_name": "渡邉優子",
+                                "role_id": "EXT000015AXU",
+                                "role_name": "声優"
+                            },
+                            {
+                                "person_id": "PPS000002IQA",
+                                "person_name": "佐藤美佳子",
+                                "role_id": "EXT000015AXU",
+                                "role_name": "声優"
+                            },
+                            {
+                                "person_id": "PPS00007GDB4",
+                                "person_name": "小川育海",
+                                "role_id": "EXT000015AXU",
+                                "role_name": "声優"
+                            },
+                            {
+                                "person_id": "PPS00007CVSR",
+                                "person_name": "武藤ヨシヒロ",
+                                "role_id": "EXT000015AXU",
+                                "role_name": "声優"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT0000M1M7Q",
+                        "product_id": "PPD00007GDB1",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "tol",
+                        "service_name": "tol",
+                        "msdb_item": "game",
+                        "item_cd": "1040",
+                        "item_name": "ゲームソフト",
+                        "product_name": "有限会社 地球防衛隊",
+                        "product_kana": "ゆうげんがいしやちきゆうぼうえいたい",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2007-09-30 02:06:41",
+                        "disp_start_month": "2007-09",
+                        "disp_end_date": "2030-12-28 00:00:00",
+                        "disp_end_month": "2030-12",
+                        "sale_start_date": "1999-04-28",
+                        "sale_start_month": "1999-04",
+                        "sale_end_date": "2030-12-28",
+                        "sale_end_month": "2030-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000FDHW4"
+                        ],
+                        "tieup": "",
+                        "copyright": "",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "1999",
+                        "created_year_to": "",
+                        "created_year_str": "1999",
+                        "created_countries": "",
+                        "maker_cd": "EXT000077APM",
+                        "maker_name": "メディアリング",
+                        "maker_name_kana": "めでいありんぐ",
+                        "maker_name_abbrev": "メディアリング",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "30001229",
+                        "ccc_family_cd": "30001229001",
+                        "ccc_product_id": "000582150",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4989006000152",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "SLPS02024",
+                        "icpn": "",
+                        "media_category_cd": "24",
+                        "media_category_name": "販売ゲーム",
+                        "media_format_id": "EXT0000797CA",
+                        "media_format_name": "ディスク",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "EXT000077CI4",
+                        "game_model_name": "ＰｌａｙＳｔａｔｉｏｎ",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "000000",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "",
+                        "video_info": "",
+                        "number_of_volume": "",
+                        "number_of_set": "",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "",
+                        "jacket_m": "",
+                        "jacket_l": "",
+                        "jacket_l4": "",
+                        "scene_s": [
+
+                        ],
+                        "scene_m": [
+
+                        ],
+                        "scene_l": [
+
+                        ],
+                        "trailor_pc": [
+
+                        ],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [
+
+                        ],
+                        "priv_keywords": [
+
+                        ],
+                        "package_tags": [
+
+                        ],
+                        "product_tags": [
+
+                        ],
+                        "price_tax_out": 6800,
+                        "price_tax_in": 7344,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "01",
+                                "doc_source_id": "01",
+                                "doc_text": "西暦２０１６年を舞台に「人命」「企業」「友愛」を描く、近未来ロボットエンターテイメント。アイドルと巨大ロボを使い、会社アピールと人名救助のミッションをやり遂げて、２年間で１００億円とうノルマを克服しなければならない。実相寺昭雄・小林誠が描くビジュアルを全面に出した、戦略・経営・恋愛の要素をミックスさせたシミュレーションゲームの表現が魅力。【２０００年４月２０日、廉価版として再発売。】"
+                            }
+                        ],
+                        "devices": [
+
+                        ],
+                        "distribution_plans": [
+
+                        ],
+                        "awards": [
+
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT000073WX0",
+                                "big_genre_name": "シミュレーション",
+                                "medium_genre_id": "EXT000073YTP",
+                                "medium_genre_name": "その他",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [
+
+                        ],
+                        "onairs": [
+
+                        ],
+                        "magazines": [
+
+                        ],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [
+
+                        ],
+                        "filmarks_id": [
+
+                        ],
+                        "dramarks_id": [
+
+                        ],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS00000D0WP",
+                                "person_name": "三五美奈子",
+                                "role_id": "EXT000015AXU",
+                                "role_name": "声優"
+                            },
+                            {
+                                "person_id": "PPS00007DHGC",
+                                "person_name": "友永朱音",
+                                "role_id": "EXT000015AXU",
+                                "role_name": "声優"
+                            },
+                            {
+                                "person_id": "PPS00007FHT1",
+                                "person_name": "七瀬里緒",
+                                "role_id": "EXT000015AXU",
+                                "role_name": "声優"
+                            },
+                            {
+                                "person_id": "PPS00007GDB2",
+                                "person_name": "MARIO",
+                                "role_id": "EXT000015AXU",
+                                "role_name": "声優"
+                            },
+                            {
+                                "person_id": "PPS00007CVSN",
+                                "person_name": "静木亜美",
+                                "role_id": "EXT000015AXU",
+                                "role_name": "声優"
+                            },
+                            {
+                                "person_id": "PPS00007GDB3",
+                                "person_name": "渡邉優子",
+                                "role_id": "EXT000015AXU",
+                                "role_name": "声優"
+                            },
+                            {
+                                "person_id": "PPS000002IQA",
+                                "person_name": "佐藤美佳子",
+                                "role_id": "EXT000015AXU",
+                                "role_name": "声優"
+                            },
+                            {
+                                "person_id": "PPS00007GDB4",
+                                "person_name": "小川育海",
+                                "role_id": "EXT000015AXU",
+                                "role_name": "声優"
+                            },
+                            {
+                                "person_id": "PPS00007CVSR",
+                                "person_name": "武藤ヨシヒロ",
+                                "role_id": "EXT000015AXU",
+                                "role_name": "声優"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    }
                 ],
                 "video_relations": [
                     {
@@ -186,7 +667,11 @@
                                 }
                             ],
                             "docs": [
-
+                                {
+                                    "doc_type_id": "12",
+                                    "doc_source_id": "03",
+                                    "doc_text": "プレステ版ゲームのインスト曲とヴォーカル曲を収録したアルバム。インスト曲は、戦隊ものを想起させるような勇壮なものが多い。また、登場するキャラクターのテーマ・ソングも収録されており、それぞれの個性を楽しむことができる。ファンユースな一枚だ。"
+                                }
                             ],
                             "awards": [
 
@@ -228,6 +713,9 @@
                             "filmarks_id": [
 
                             ],
+                            "dramarks_id": [
+
+                            ],
                             "catch_copy": "",
                             "sale_start_date_sell": "1999-06-17",
                             "sale_start_date_rental": "1999-07-03",
@@ -237,10 +725,16 @@
                             "scenes": [
 
                             ],
-                            "filmarks_mark": null,
-                            "filmarks_clip": null,
-                            "filmarks_average": null,
+                            "filmarks_mark": 0,
+                            "filmarks_clip": 0,
+                            "filmarks_average": 0,
                             "people": [
+                                {
+                                    "person_id": "PPS0000M8PL3",
+                                    "person_name": "有限会社地球防衛隊",
+                                    "role_id": "EXT00000000D",
+                                    "role_name": "演奏者"
+                                },
                                 {
                                     "person_id": "PPS00000017P",
                                     "person_name": "ゲーム・ミュージック",
@@ -271,6 +765,9 @@
                 "filmarks_id": [
 
                 ],
+                "dramarks_id": [
+
+                ],
                 "catch_copy": "",
                 "sale_start_date_sell": "1999-04-28",
                 "sale_start_date_rental": "",
@@ -280,9 +777,9 @@
                 "scenes": [
 
                 ],
-                "filmarks_mark": null,
-                "filmarks_clip": null,
-                "filmarks_average": null,
+                "filmarks_mark": 0,
+                "filmarks_clip": 0,
+                "filmarks_average": 0,
                 "people": [
                     {
                         "person_id": "PPS00000D0WP",
@@ -291,8 +788,50 @@
                         "role_name": "声優"
                     },
                     {
+                        "person_id": "PPS00007DHGC",
+                        "person_name": "友永朱音",
+                        "role_id": "EXT000015AXU",
+                        "role_name": "声優"
+                    },
+                    {
+                        "person_id": "PPS00007FHT1",
+                        "person_name": "七瀬里緒",
+                        "role_id": "EXT000015AXU",
+                        "role_name": "声優"
+                    },
+                    {
+                        "person_id": "PPS00007GDB2",
+                        "person_name": "MARIO",
+                        "role_id": "EXT000015AXU",
+                        "role_name": "声優"
+                    },
+                    {
+                        "person_id": "PPS00007CVSN",
+                        "person_name": "静木亜美",
+                        "role_id": "EXT000015AXU",
+                        "role_name": "声優"
+                    },
+                    {
+                        "person_id": "PPS00007GDB3",
+                        "person_name": "渡邉優子",
+                        "role_id": "EXT000015AXU",
+                        "role_name": "声優"
+                    },
+                    {
                         "person_id": "PPS000002IQA",
                         "person_name": "佐藤美佳子",
+                        "role_id": "EXT000015AXU",
+                        "role_name": "声優"
+                    },
+                    {
+                        "person_id": "PPS00007GDB4",
+                        "person_name": "小川育海",
+                        "role_id": "EXT000015AXU",
+                        "role_name": "声優"
+                    },
+                    {
+                        "person_id": "PPS00007CVSR",
+                        "person_name": "武藤ヨシヒロ",
                         "role_id": "EXT000015AXU",
                         "role_name": "声優"
                     }

@@ -37,13 +37,46 @@
                 "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/00384/4988601003575_1L.jpg ",
                 "jacket_l4": "",
                 "scene_s": [
-
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00038/4988601003599_B001S.jpg ",
+                        "no": "001"
+                    },
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00058/4988601003599_B002S.jpg ",
+                        "no": "002"
+                    },
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00071/4988601003599_B003S.jpg ",
+                        "no": "003"
+                    }
                 ],
                 "scene_m": [
-
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00038/4988601003599_B001M.jpg ",
+                        "no": "001"
+                    },
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00058/4988601003599_B002M.jpg ",
+                        "no": "002"
+                    },
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00071/4988601003599_B003M.jpg ",
+                        "no": "003"
+                    }
                 ],
                 "scene_l": [
-
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00038/4988601003599_B001L.jpg ",
+                        "no": "001"
+                    },
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00058/4988601003599_B002L.jpg ",
+                        "no": "002"
+                    },
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00071/4988601003599_B003L.jpg ",
+                        "no": "003"
+                    }
                 ],
                 "trailor_pc": [
 
@@ -79,7 +112,16 @@
                     }
                 ],
                 "docs": [
-
+                    {
+                        "doc_type_id": "01",
+                        "doc_source_id": "01",
+                        "doc_text": "ＲＰＧの柱であるシナリオ・ドラマを主体に構成された「グランディアシリーズ」。戦闘では仲間との合体技・コンボによる経験値追加ボーナス、魔法を組み合わせて好みの魔法を作り出せる「魔法合成」など、グランディアの完成度がより強固に！さらに戦闘への移行はローディングのストレスをほとんど感じさせず、遊びのテンポを崩さない派手な攻撃法・合体技が加わってより楽しくなった必殺技の数々、見所満載！！"
+                    },
+                    {
+                        "doc_type_id": "02",
+                        "doc_source_id": "01",
+                        "doc_text": "５０年ほど前から起きている自然精霊の力による「精霊暴走」。地震や噴火によって自然は変貌し人々は不穏な日々を送っていた。主人公エヴァンは新興国家ノーチスのとある地方に暮らす“地道師”。“地導師”とは地脈に流れる気の力を操る職業。エヴァンにノーチスから依頼が届く、「精霊暴走阻止に強力せよ」と。エヴァンが嫌うクロイツという男が軍を率いるため依頼は断り続けていたが、ディーネ少尉に力ずくで計画に参加させられる。軍の横暴さに腹を立てたエヴァンだったが、世界平和を主張するディーネに共感、「遺跡」へ向かうことに・・・。"
+                    }
                 ],
                 "awards": [
 
@@ -106,10 +148,1728 @@
                     }
                 ],
                 "products": [
+                    {
+                        "id": "PDT0000L76VW",
+                        "product_id": "PPD00007G8UO",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "tol",
+                        "service_name": "tol",
+                        "msdb_item": "game",
+                        "item_cd": "1040",
+                        "item_name": "ゲームソフト",
+                        "product_name": "グランディア エクストリーム",
+                        "product_kana": "ぐらんでいあえくすとりーむ",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2007-09-30 01:44:12",
+                        "disp_start_month": "2007-09",
+                        "disp_end_date": "2030-12-28 00:00:00",
+                        "disp_end_month": "2030-12",
+                        "sale_start_date": "2002-01-31",
+                        "sale_start_month": "2002-01",
+                        "sale_end_date": "2030-12-28",
+                        "sale_end_month": "2030-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000FDFM9"
+                        ],
+                        "tieup": "",
+                        "copyright": "(C)1997,1999,2000 GAME ARTS (C)GAME ARTS/ENIX 2002",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "2002",
+                        "created_year_to": "",
+                        "created_year_str": "2002",
+                        "created_countries": "",
+                        "maker_cd": "EXT00000L93I",
+                        "maker_name": "スクウェア・エニックス",
+                        "maker_name_kana": "すくうえあえにつくす",
+                        "maker_name_abbrev": "スクウェア・エニックス",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "30007070",
+                        "ccc_family_cd": "30007070001",
+                        "ccc_product_id": "000579554",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4988601003575",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "SLPM65089",
+                        "icpn": "",
+                        "media_category_cd": "24",
+                        "media_category_name": "販売ゲーム",
+                        "media_format_id": "EXT0000797CA",
+                        "media_format_name": "ディスク",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "EXT000077CI2",
+                        "game_model_name": "ＰｌａｙＳｔａｔｉｏｎ２",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "000000",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "",
+                        "video_info": "",
+                        "number_of_volume": "",
+                        "number_of_set": "",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/00384/4988601003575_1S.jpg ",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/00384/4988601003575_1M.jpg ",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/00384/4988601003575_1L.jpg ",
+                        "jacket_l4": "",
+                        "scene_s": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00038/4988601003599_B001S.jpg ",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00058/4988601003599_B002S.jpg ",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00071/4988601003599_B003S.jpg ",
+                                "no": "003"
+                            }
+                        ],
+                        "scene_m": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00038/4988601003599_B001M.jpg ",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00058/4988601003599_B002M.jpg ",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00071/4988601003599_B003M.jpg ",
+                                "no": "003"
+                            }
+                        ],
+                        "scene_l": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00038/4988601003599_B001L.jpg ",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00058/4988601003599_B002L.jpg ",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00071/4988601003599_B003L.jpg ",
+                                "no": "003"
+                            }
+                        ],
+                        "trailor_pc": [
 
+                        ],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [
+
+                        ],
+                        "priv_keywords": [
+
+                        ],
+                        "package_tags": [
+
+                        ],
+                        "product_tags": [
+
+                        ],
+                        "price_tax_out": 7800,
+                        "price_tax_in": 8424,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "01",
+                                "doc_source_id": "01",
+                                "doc_text": "ＲＰＧの柱であるシナリオ・ドラマを主体に構成された「グランディアシリーズ」。戦闘では仲間との合体技・コンボによる経験値追加ボーナス、魔法を組み合わせて好みの魔法を作り出せる「魔法合成」など、グランディアの完成度がより強固に！さらに戦闘への移行はローディングのストレスをほとんど感じさせず、遊びのテンポを崩さない派手な攻撃法・合体技が加わってより楽しくなった必殺技の数々、見所満載！！"
+                            },
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "01",
+                                "doc_text": "５０年ほど前から起きている自然精霊の力による「精霊暴走」。地震や噴火によって自然は変貌し人々は不穏な日々を送っていた。主人公エヴァンは新興国家ノーチスのとある地方に暮らす“地道師”。“地導師”とは地脈に流れる気の力を操る職業。エヴァンにノーチスから依頼が届く、「精霊暴走阻止に強力せよ」と。エヴァンが嫌うクロイツという男が軍を率いるため依頼は断り続けていたが、ディーネ少尉に力ずくで計画に参加させられる。軍の横暴さに腹を立てたエヴァンだったが、世界平和を主張するディーネに共感、「遺跡」へ向かうことに・・・。"
+                            }
+                        ],
+                        "devices": [
+
+                        ],
+                        "distribution_plans": [
+
+                        ],
+                        "awards": [
+
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT000073WWV",
+                                "big_genre_name": "ロールプレイング",
+                                "medium_genre_id": "EXT000073YQJ",
+                                "medium_genre_name": "ロールプレイング",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [
+
+                        ],
+                        "onairs": [
+
+                        ],
+                        "magazines": [
+
+                        ],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [
+
+                        ],
+                        "filmarks_id": [
+
+                        ],
+                        "dramarks_id": [
+
+                        ],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS00007G8UP",
+                                "person_name": "高橋秀信",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS00007EDJ1",
+                                "person_name": "藤原カムイ",
+                                "role_id": "EXT00000B3US",
+                                "role_name": "キャラクターデザイン"
+                            },
+                            {
+                                "person_id": "PPS00007G8UQ",
+                                "person_name": "斎藤勝紀",
+                                "role_id": "EXT00000ANB5",
+                                "role_name": "プロデューサー"
+                            },
+                            {
+                                "person_id": "PPS00007G8UR",
+                                "person_name": "樋口亘",
+                                "role_id": "EXT00000ANB5",
+                                "role_name": "プロデューサー"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT0000L76VX",
+                        "product_id": "PPD00007G8UT",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "tol",
+                        "service_name": "tol",
+                        "msdb_item": "game",
+                        "item_cd": "1040",
+                        "item_name": "ゲームソフト",
+                        "product_name": "グランディア エクストリーム <リミテッドボックス>",
+                        "product_kana": "ぐらんでいあえくすとりーむりみてつどぼつくす*げんてい*",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2007-09-30 01:57:46",
+                        "disp_start_month": "2007-09",
+                        "disp_end_date": "2030-12-28 00:00:00",
+                        "disp_end_month": "2030-12",
+                        "sale_start_date": "2002-01-31",
+                        "sale_start_month": "2002-01",
+                        "sale_end_date": "2030-12-28",
+                        "sale_end_month": "2030-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000FDFM9"
+                        ],
+                        "tieup": "",
+                        "copyright": "",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "2002",
+                        "created_year_to": "",
+                        "created_year_str": "2002",
+                        "created_countries": "",
+                        "maker_cd": "EXT00000L93I",
+                        "maker_name": "スクウェア・エニックス",
+                        "maker_name_kana": "すくうえあえにつくす",
+                        "maker_name_abbrev": "スクウェア・エニックス",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 1,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "30007070",
+                        "ccc_family_cd": "30007070001",
+                        "ccc_product_id": "000579551",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4988601003599",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "SLPM65082",
+                        "icpn": "",
+                        "media_category_cd": "24",
+                        "media_category_name": "販売ゲーム",
+                        "media_format_id": "EXT0000797CA",
+                        "media_format_name": "ディスク",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "EXT000077CI2",
+                        "game_model_name": "ＰｌａｙＳｔａｔｉｏｎ２",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "000000",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "",
+                        "video_info": "",
+                        "number_of_volume": "",
+                        "number_of_set": "",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "",
+                        "jacket_m": "",
+                        "jacket_l": "",
+                        "jacket_l4": "",
+                        "scene_s": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00038/4988601003599_B001S.jpg ",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00058/4988601003599_B002S.jpg ",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00071/4988601003599_B003S.jpg ",
+                                "no": "003"
+                            }
+                        ],
+                        "scene_m": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00038/4988601003599_B001M.jpg ",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00058/4988601003599_B002M.jpg ",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00071/4988601003599_B003M.jpg ",
+                                "no": "003"
+                            }
+                        ],
+                        "scene_l": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00038/4988601003599_B001L.jpg ",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00058/4988601003599_B002L.jpg ",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00071/4988601003599_B003L.jpg ",
+                                "no": "003"
+                            }
+                        ],
+                        "trailor_pc": [
+
+                        ],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [
+
+                        ],
+                        "priv_keywords": [
+
+                        ],
+                        "package_tags": [
+
+                        ],
+                        "product_tags": [
+
+                        ],
+                        "price_tax_out": 9800,
+                        "price_tax_in": 10584,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "01",
+                                "doc_source_id": "01",
+                                "doc_text": "ＲＰＧの柱であるシナリオ・ドラマを主体に構成された「グランディアシリーズ」。戦闘では仲間との合体技・コンボによる経験値追加ボーナス、魔法を組み合わせて好みの魔法を作り出せる「魔法合成」など、グランディアの完成度がより強固に！さらに戦闘への移行はローディングのストレスをほとんど感じさせず、遊びのテンポを崩さない派手な攻撃法・合体技が加わってより楽しくなった必殺技の数々、見所満載！！"
+                            },
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "01",
+                                "doc_text": "５０年ほど前から起きている自然精霊の力による「精霊暴走」。地震や噴火によって自然は変貌し人々は不穏な日々を送っていた。主人公エヴァンは新興国家ノーチスのとある地方に暮らす“地道師”。“地導師”とは地脈に流れる気の力を操る職業。エヴァンにノーチスから依頼が届く、「精霊暴走阻止に強力せよ」と。エヴァンが嫌うクロイツという男が軍を率いるため依頼は断り続けていたが、ディーネ少尉に力ずくで計画に参加させられる。軍の横暴さに腹を立てたエヴァンだったが、世界平和を主張するディーネに共感、「遺跡」へ向かうことに・・・。"
+                            }
+                        ],
+                        "devices": [
+
+                        ],
+                        "distribution_plans": [
+
+                        ],
+                        "awards": [
+
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT000073WWV",
+                                "big_genre_name": "ロールプレイング",
+                                "medium_genre_id": "EXT000073YQJ",
+                                "medium_genre_name": "ロールプレイング",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [
+
+                        ],
+                        "onairs": [
+
+                        ],
+                        "magazines": [
+
+                        ],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [
+
+                        ],
+                        "filmarks_id": [
+
+                        ],
+                        "dramarks_id": [
+
+                        ],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS00007G8UP",
+                                "person_name": "高橋秀信",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS00007EDJ1",
+                                "person_name": "藤原カムイ",
+                                "role_id": "EXT00000B3US",
+                                "role_name": "キャラクターデザイン"
+                            },
+                            {
+                                "person_id": "PPS00007G8UQ",
+                                "person_name": "斎藤勝紀",
+                                "role_id": "EXT00000ANB5",
+                                "role_name": "プロデューサー"
+                            },
+                            {
+                                "person_id": "PPS00007G8UR",
+                                "person_name": "樋口亘",
+                                "role_id": "EXT00000ANB5",
+                                "role_name": "プロデューサー"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    }
                 ],
                 "video_relations": [
+                    {
+                        "relation_type_name": "攻略本",
+                        "work": {
+                            "work_id": "PTA0000GQ5FE",
+                            "work_type_id": "3",
+                            "msdb_item": "book",
+                            "work_format_id": null,
+                            "work_format_name": "",
+                            "work_title": "グランディア エクストリーム パーフェクトガイド",
+                            "work_title_kana": "ぐらんでいあえくすとりーむぱーふえくとがいど",
+                            "work_title_en": "",
+                            "work_title_orig": "",
+                            "work_title_sub": "",
+                            "work_comment": "",
+                            "work_outline": "",
+                            "work_copyright": "",
+                            "rating_id": "EXT000000008",
+                            "rating_name": "",
+                            "adult_flg": 0,
+                            "primary_product_source_id": "PDT0000AXQD8",
+                            "primary_product_service_id": "ec",
+                            "primary_product_type_id": 1,
+                            "disp_start_date": "1900-01-01 00:00:00",
+                            "disp_start_month": "1900-01",
+                            "sale_start_date": "2002-03-01",
+                            "sale_start_month": "2002-03",
+                            "created_year_from": "",
+                            "created_year_to": "",
+                            "created_year": "2002",
+                            "created_countries": "",
+                            "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/02579/9784757707924_1S.jpg ",
+                            "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/02579/9784757707924_1M.jpg ",
+                            "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/02579/9784757707924_1L.jpg ",
+                            "jacket_l4": "",
+                            "scene_s": [
 
+                            ],
+                            "scene_m": [
+
+                            ],
+                            "scene_l": [
+
+                            ],
+                            "trailor_pc": [
+
+                            ],
+                            "season_name": "",
+                            "season_number": null,
+                            "book_series_name": "",
+                            "book_series_name_kana": "",
+                            "feature_keywords": [
+
+                            ],
+                            "priv_keywords": [
+
+                            ],
+                            "work_tags": [
+
+                            ],
+                            "wakati_words": [
+
+                            ],
+                            "is_compilation": 0,
+                            "series_completed": 0,
+                            "disable_flg": 0,
+                            "delete_flg": 0,
+                            "ids": [
+                                {
+                                    "id_type": "0103",
+                                    "id_value": "40052301"
+                                },
+                                {
+                                    "id_type": "0105",
+                                    "id_value": "40035491"
+                                }
+                            ],
+                            "docs": [
+                                {
+                                    "doc_type_id": "01",
+                                    "doc_source_id": "02",
+                                    "doc_text": "知りたい情報と知らせたい情報を全４６４ページに掲載。戦闘の基本から応用、さらにミニゲームや最強エッグの合成法までも解説。ダンジョンのマップ攻略に加え出現モンスター、出現アイテムをすべて紹介。武器、防具、スキル、魔法、モンスターなど１３００以上の情報を完全掲載。『グランディアエクストリーム』監督・高橋秀信氏への単独インタビュー。奥深きダンジョンへと導く完全攻略本。"
+                                },
+                                {
+                                    "doc_type_id": "03",
+                                    "doc_source_id": "02",
+                                    "doc_text": "戦術体系指南（礎―いしずえ；嚢―ふくろ；宴―うたげ）；局地制圧兵法；各種情報一覧；設定機密文書"
+                                }
+                            ],
+                            "awards": [
+
+                            ],
+                            "screens": [
+
+                            ],
+                            "onairs": [
+
+                            ],
+                            "magazines": [
+
+                            ],
+                            "genres": [
+                                {
+                                    "big_genre_id": "EXT000073X1D",
+                                    "big_genre_name": "ゲーム攻略本",
+                                    "medium_genre_id": "EXT0000741CW",
+                                    "medium_genre_name": "ゲーム攻略本",
+                                    "small_genre_id": "EXT0000754M6",
+                                    "small_genre_name": "ＰＳ・ＰＳ２",
+                                    "shikiriban_id": "EXT000075KU6",
+                                    "shikiriban_name": "ＰＳ・ＰＳ２"
+                                }
+                            ],
+                            "discas_grade_point": null,
+                            "discas_item": [
+
+                            ],
+                            "ttv_trailer_flg": 0,
+                            "ttv_free_movie_flg": 0,
+                            "ttv_sell_rental_flg": [
+
+                            ],
+                            "ttv_low_price": null,
+                            "cinema_id": [
+
+                            ],
+                            "filmarks_id": [
+
+                            ],
+                            "dramarks_id": [
+
+                            ],
+                            "catch_copy": "",
+                            "sale_start_date_sell": "2002-03-01",
+                            "sale_start_date_rental": "",
+                            "trailer_urls": [
+
+                            ],
+                            "scenes": [
+
+                            ],
+                            "filmarks_mark": null,
+                            "filmarks_clip": null,
+                            "filmarks_average": null,
+                            "people": [
+                                {
+                                    "person_id": "PPS000098ERD",
+                                    "person_name": "ファミ通書籍編集部",
+                                    "role_id": "EXT00000BWU9",
+                                    "role_name": "著者"
+                                }
+                            ],
+                            "merged_from": [
+
+                            ],
+                            "need_age_auth_flg": 0
+                        }
+                    },
+                    {
+                        "relation_type_name": "シリーズ",
+                        "work": {
+                            "work_id": "PTA0000FDFM7",
+                            "work_type_id": "4",
+                            "msdb_item": "game",
+                            "work_format_id": null,
+                            "work_format_name": "",
+                            "work_title": "グランディア II",
+                            "work_title_kana": "ぐらんでいあ 2",
+                            "work_title_en": "",
+                            "work_title_orig": "",
+                            "work_title_sub": "",
+                            "work_comment": "",
+                            "work_outline": "",
+                            "work_copyright": "(C)1997,1999,2000 GAME ARTS (C)GAME ARTS/ENIX 2002",
+                            "rating_id": "EXT000000008",
+                            "rating_name": "",
+                            "adult_flg": 0,
+                            "primary_product_source_id": "PDT00007G8UI",
+                            "primary_product_service_id": "ec",
+                            "primary_product_type_id": 1,
+                            "disp_start_date": "1900-01-01 00:00:00",
+                            "disp_start_month": "1900-01",
+                            "sale_start_date": "2002-02-21",
+                            "sale_start_month": "2002-02",
+                            "created_year_from": "",
+                            "created_year_to": "",
+                            "created_year": "2002",
+                            "created_countries": "",
+                            "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/00384/4988601003544_1S.jpg ",
+                            "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/00384/4988601003544_1M.jpg ",
+                            "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/00384/4988601003544_1L.jpg ",
+                            "jacket_l4": "",
+                            "scene_s": [
+                                {
+                                    "url": "//store-tsutaya.tsite.jp/images/bamen/00038/4988601003544_B001S.jpg ",
+                                    "no": "001"
+                                },
+                                {
+                                    "url": "//store-tsutaya.tsite.jp/images/bamen/00058/4988601003544_B002S.jpg ",
+                                    "no": "002"
+                                }
+                            ],
+                            "scene_m": [
+                                {
+                                    "url": "//store-tsutaya.tsite.jp/images/bamen/00038/4988601003544_B001M.jpg ",
+                                    "no": "001"
+                                },
+                                {
+                                    "url": "//store-tsutaya.tsite.jp/images/bamen/00058/4988601003544_B002M.jpg ",
+                                    "no": "002"
+                                }
+                            ],
+                            "scene_l": [
+                                {
+                                    "url": "//store-tsutaya.tsite.jp/images/bamen/00038/4988601003544_B001L.jpg ",
+                                    "no": "001"
+                                },
+                                {
+                                    "url": "//store-tsutaya.tsite.jp/images/bamen/00058/4988601003544_B002L.jpg ",
+                                    "no": "002"
+                                }
+                            ],
+                            "trailor_pc": [
+
+                            ],
+                            "season_name": "",
+                            "season_number": null,
+                            "book_series_name": "",
+                            "book_series_name_kana": "",
+                            "feature_keywords": [
+
+                            ],
+                            "priv_keywords": [
+
+                            ],
+                            "work_tags": [
+
+                            ],
+                            "wakati_words": [
+
+                            ],
+                            "is_compilation": 0,
+                            "series_completed": 0,
+                            "disable_flg": 0,
+                            "delete_flg": 0,
+                            "ids": [
+                                {
+                                    "id_type": "0103",
+                                    "id_value": "30007152"
+                                },
+                                {
+                                    "id_type": "0105",
+                                    "id_value": "30005453"
+                                }
+                            ],
+                            "docs": [
+                                {
+                                    "doc_type_id": "01",
+                                    "doc_source_id": "01",
+                                    "doc_text": "ＲＰＧ「グランディアＩＩ」が新たなムービーを追加してＰｌａｙＳｔａｔｉｏｎ２で甦る！アルティメットアクションバトルシステムにより、カスタマイズしたキャラクター達のアクションゲームさながらの動きによって大迫力の戦闘を楽しむことができる。"
+                                },
+                                {
+                                    "doc_type_id": "02",
+                                    "doc_source_id": "01",
+                                    "doc_text": "スカイとともにシオハウンドとして仕事をこなすリュード。無事に仕事を終え、一息ついているところに新たな依頼が舞い込んできた。依頼の内容は、グラナスの歌姫エレナを護衛しトクベツな儀式が行われるというガルミアの塔に送り届け、さらに儀式が終わったあと村まで無事に連れて帰ってきてほしいというものだった。人付き合いの悪いリュードは仕事と割り切って依頼を引き受けるが、これが長く険しい旅の始まりだった・・・。"
+                                }
+                            ],
+                            "awards": [
+
+                            ],
+                            "screens": [
+
+                            ],
+                            "onairs": [
+
+                            ],
+                            "magazines": [
+
+                            ],
+                            "genres": [
+                                {
+                                    "big_genre_id": "EXT000073WWV",
+                                    "big_genre_name": "ロールプレイング",
+                                    "medium_genre_id": "EXT000073YQJ",
+                                    "medium_genre_name": "ロールプレイング",
+                                    "small_genre_id": "",
+                                    "small_genre_name": "",
+                                    "shikiriban_id": "",
+                                    "shikiriban_name": ""
+                                }
+                            ],
+                            "discas_grade_point": null,
+                            "discas_item": [
+
+                            ],
+                            "ttv_trailer_flg": 0,
+                            "ttv_free_movie_flg": 0,
+                            "ttv_sell_rental_flg": [
+
+                            ],
+                            "ttv_low_price": null,
+                            "cinema_id": [
+
+                            ],
+                            "filmarks_id": [
+
+                            ],
+                            "dramarks_id": [
+
+                            ],
+                            "catch_copy": "",
+                            "sale_start_date_sell": "2002-02-21",
+                            "sale_start_date_rental": "",
+                            "trailer_urls": [
+
+                            ],
+                            "scenes": [
+
+                            ],
+                            "filmarks_mark": 0,
+                            "filmarks_clip": 0,
+                            "filmarks_average": 0,
+                            "people": [
+                                {
+                                    "person_id": "PPS00007G8UJ",
+                                    "person_name": "小山洋幸",
+                                    "role_id": "EXT00000ANB5",
+                                    "role_name": "プロデューサー"
+                                },
+                                {
+                                    "person_id": "PPS00007G8UK",
+                                    "person_name": "益田直幸",
+                                    "role_id": "EXT00000ANB5",
+                                    "role_name": "プロデューサー"
+                                },
+                                {
+                                    "person_id": "PPS000000VWW",
+                                    "person_name": "森久保祥太郎",
+                                    "role_id": "EXT000015AXU",
+                                    "role_name": "声優"
+                                },
+                                {
+                                    "person_id": "PPS0000047KU",
+                                    "person_name": "小西寛子",
+                                    "role_id": "EXT000015AXU",
+                                    "role_name": "声優"
+                                },
+                                {
+                                    "person_id": "PPS00000D0WM",
+                                    "person_name": "星河舞(まつもとみわ)",
+                                    "role_id": "EXT000015AXU",
+                                    "role_name": "声優"
+                                },
+                                {
+                                    "person_id": "PPS00007G8UL",
+                                    "person_name": "かのえゆうし",
+                                    "role_id": "EXT00000B3US",
+                                    "role_name": "キャラクターデザイン"
+                                }
+                            ],
+                            "merged_from": [
+
+                            ],
+                            "need_age_auth_flg": 0
+                        }
+                    },
+                    {
+                        "relation_type_name": "攻略本",
+                        "work": {
+                            "work_id": "PTA0000GPW2V",
+                            "work_type_id": "3",
+                            "msdb_item": "book",
+                            "work_format_id": null,
+                            "work_format_name": "",
+                            "work_title": "グランディアエクストリーム公式ガイドブック",
+                            "work_title_kana": "ぐらんでいあえくすとりーむこうしきがいどぶつく",
+                            "work_title_en": "",
+                            "work_title_orig": "",
+                            "work_title_sub": "",
+                            "work_comment": "",
+                            "work_outline": "",
+                            "work_copyright": "",
+                            "rating_id": "EXT000000008",
+                            "rating_name": "",
+                            "adult_flg": 0,
+                            "primary_product_source_id": "PDT0000AW13V",
+                            "primary_product_service_id": "ec",
+                            "primary_product_type_id": 1,
+                            "disp_start_date": "1900-01-01 00:00:00",
+                            "disp_start_month": "1900-01",
+                            "sale_start_date": "2002-01-31",
+                            "sale_start_month": "2002-01",
+                            "created_year_from": "",
+                            "created_year_to": "",
+                            "created_year": "2002",
+                            "created_countries": "",
+                            "jacket_s": "",
+                            "jacket_m": "",
+                            "jacket_l": "",
+                            "jacket_l4": "",
+                            "scene_s": [
+
+                            ],
+                            "scene_m": [
+
+                            ],
+                            "scene_l": [
+
+                            ],
+                            "trailor_pc": [
+
+                            ],
+                            "season_name": "",
+                            "season_number": null,
+                            "book_series_name": "",
+                            "book_series_name_kana": "",
+                            "feature_keywords": [
+
+                            ],
+                            "priv_keywords": [
+
+                            ],
+                            "work_tags": [
+
+                            ],
+                            "wakati_words": [
+
+                            ],
+                            "is_compilation": 0,
+                            "series_completed": 0,
+                            "disable_flg": 0,
+                            "delete_flg": 0,
+                            "ids": [
+                                {
+                                    "id_type": "0103",
+                                    "id_value": "40050387"
+                                },
+                                {
+                                    "id_type": "0105",
+                                    "id_value": "40034278"
+                                }
+                            ],
+                            "docs": [
+
+                            ],
+                            "awards": [
+
+                            ],
+                            "screens": [
+
+                            ],
+                            "onairs": [
+
+                            ],
+                            "magazines": [
+
+                            ],
+                            "genres": [
+                                {
+                                    "big_genre_id": "EXT000073X1D",
+                                    "big_genre_name": "ゲーム攻略本",
+                                    "medium_genre_id": "EXT0000741CW",
+                                    "medium_genre_name": "ゲーム攻略本",
+                                    "small_genre_id": "EXT0000754M6",
+                                    "small_genre_name": "ＰＳ・ＰＳ２",
+                                    "shikiriban_id": "EXT000075KU6",
+                                    "shikiriban_name": "ＰＳ・ＰＳ２"
+                                }
+                            ],
+                            "discas_grade_point": null,
+                            "discas_item": [
+
+                            ],
+                            "ttv_trailer_flg": 0,
+                            "ttv_free_movie_flg": 0,
+                            "ttv_sell_rental_flg": [
+
+                            ],
+                            "ttv_low_price": null,
+                            "cinema_id": [
+
+                            ],
+                            "filmarks_id": [
+
+                            ],
+                            "dramarks_id": [
+
+                            ],
+                            "catch_copy": "",
+                            "sale_start_date_sell": "2002-01-31",
+                            "sale_start_date_rental": "",
+                            "trailer_urls": [
+
+                            ],
+                            "scenes": [
+
+                            ],
+                            "filmarks_mark": null,
+                            "filmarks_clip": null,
+                            "filmarks_average": null,
+                            "people": [
+
+                            ],
+                            "merged_from": [
+
+                            ],
+                            "need_age_auth_flg": 0
+                        }
+                    },
+                    {
+                        "relation_type_name": "攻略本",
+                        "work": {
+                            "work_id": "PTA0000GL7TR",
+                            "work_type_id": "3",
+                            "msdb_item": "book",
+                            "work_format_id": null,
+                            "work_format_name": "",
+                            "work_title": "グランディア エクストリーム",
+                            "work_title_kana": "ぐらんでいあえくすとりーむ",
+                            "work_title_en": "",
+                            "work_title_orig": "",
+                            "work_title_sub": "",
+                            "work_comment": "",
+                            "work_outline": "",
+                            "work_copyright": "",
+                            "rating_id": "EXT000000008",
+                            "rating_name": "",
+                            "adult_flg": 0,
+                            "primary_product_source_id": "PDT0000A142E",
+                            "primary_product_service_id": "ec",
+                            "primary_product_type_id": 1,
+                            "disp_start_date": "1900-01-01 00:00:00",
+                            "disp_start_month": "1900-01",
+                            "sale_start_date": "2002-01-30",
+                            "sale_start_month": "2002-01",
+                            "created_year_from": "",
+                            "created_year_to": "",
+                            "created_year": "2002",
+                            "created_countries": "",
+                            "jacket_s": "",
+                            "jacket_m": "",
+                            "jacket_l": "",
+                            "jacket_l4": "",
+                            "scene_s": [
+
+                            ],
+                            "scene_m": [
+
+                            ],
+                            "scene_l": [
+
+                            ],
+                            "trailor_pc": [
+
+                            ],
+                            "season_name": "",
+                            "season_number": null,
+                            "book_series_name": "Vジャンプブックス",
+                            "book_series_name_kana": "",
+                            "feature_keywords": [
+
+                            ],
+                            "priv_keywords": [
+
+                            ],
+                            "work_tags": [
+
+                            ],
+                            "wakati_words": [
+
+                            ],
+                            "is_compilation": 0,
+                            "series_completed": 0,
+                            "disable_flg": 0,
+                            "delete_flg": 0,
+                            "ids": [
+                                {
+                                    "id_type": "0103",
+                                    "id_value": "40050385"
+                                },
+                                {
+                                    "id_type": "0105",
+                                    "id_value": "40034277"
+                                }
+                            ],
+                            "docs": [
+
+                            ],
+                            "awards": [
+
+                            ],
+                            "screens": [
+
+                            ],
+                            "onairs": [
+
+                            ],
+                            "magazines": [
+
+                            ],
+                            "genres": [
+                                {
+                                    "big_genre_id": "EXT000073X1D",
+                                    "big_genre_name": "ゲーム攻略本",
+                                    "medium_genre_id": "EXT0000741CW",
+                                    "medium_genre_name": "ゲーム攻略本",
+                                    "small_genre_id": "EXT0000754M6",
+                                    "small_genre_name": "ＰＳ・ＰＳ２",
+                                    "shikiriban_id": "EXT000075KU6",
+                                    "shikiriban_name": "ＰＳ・ＰＳ２"
+                                }
+                            ],
+                            "discas_grade_point": null,
+                            "discas_item": [
+
+                            ],
+                            "ttv_trailer_flg": 0,
+                            "ttv_free_movie_flg": 0,
+                            "ttv_sell_rental_flg": [
+
+                            ],
+                            "ttv_low_price": null,
+                            "cinema_id": [
+
+                            ],
+                            "filmarks_id": [
+
+                            ],
+                            "dramarks_id": [
+
+                            ],
+                            "catch_copy": "",
+                            "sale_start_date_sell": "2002-01-30",
+                            "sale_start_date_rental": "",
+                            "trailer_urls": [
+
+                            ],
+                            "scenes": [
+
+                            ],
+                            "filmarks_mark": null,
+                            "filmarks_clip": null,
+                            "filmarks_average": null,
+                            "people": [
+                                {
+                                    "person_id": "PPS00009JU9A",
+                                    "person_name": "Vジャンプ編集部",
+                                    "role_id": "EXT00000BWU9",
+                                    "role_name": "著者"
+                                }
+                            ],
+                            "merged_from": [
+
+                            ],
+                            "need_age_auth_flg": 0
+                        }
+                    },
+                    {
+                        "relation_type_name": "シリーズ",
+                        "work": {
+                            "work_id": "PTA0000FDGO8",
+                            "work_type_id": "4",
+                            "msdb_item": "game",
+                            "work_format_id": null,
+                            "work_format_name": "",
+                            "work_title": "グランディア パラレルトリッパーズ",
+                            "work_title_kana": "ぐらんでいあぱられるとりつぱーず",
+                            "work_title_en": "",
+                            "work_title_orig": "",
+                            "work_title_sub": "",
+                            "work_comment": "",
+                            "work_outline": "",
+                            "work_copyright": "(C)2000 GAME ARTS (C)2000 HUDSON SOFT (C)2000 ESP",
+                            "rating_id": "EXT000000008",
+                            "rating_name": "",
+                            "adult_flg": 0,
+                            "primary_product_source_id": "PDT00007GAR0",
+                            "primary_product_service_id": "ec",
+                            "primary_product_type_id": 1,
+                            "disp_start_date": "1900-01-01 00:00:00",
+                            "disp_start_month": "1900-01",
+                            "sale_start_date": "2000-12-22",
+                            "sale_start_month": "2000-12",
+                            "created_year_from": "",
+                            "created_year_to": "",
+                            "created_year": "2000",
+                            "created_countries": "",
+                            "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/00362/4988607005597_1S.jpg ",
+                            "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/00362/4988607005597_1M.jpg ",
+                            "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/00362/4988607005597_1L.jpg ",
+                            "jacket_l4": "",
+                            "scene_s": [
+
+                            ],
+                            "scene_m": [
+
+                            ],
+                            "scene_l": [
+
+                            ],
+                            "trailor_pc": [
+
+                            ],
+                            "season_name": "",
+                            "season_number": null,
+                            "book_series_name": "",
+                            "book_series_name_kana": "",
+                            "feature_keywords": [
+
+                            ],
+                            "priv_keywords": [
+
+                            ],
+                            "work_tags": [
+
+                            ],
+                            "wakati_words": [
+
+                            ],
+                            "is_compilation": 0,
+                            "series_completed": 0,
+                            "disable_flg": 0,
+                            "delete_flg": 0,
+                            "ids": [
+                                {
+                                    "id_type": "0103",
+                                    "id_value": "30005240"
+                                },
+                                {
+                                    "id_type": "0105",
+                                    "id_value": "30004027"
+                                }
+                            ],
+                            "docs": [
+                                {
+                                    "doc_type_id": "01",
+                                    "doc_source_id": "01",
+                                    "doc_text": "冒険の代名詞『グランディア』がＧＢＣに登場！ＳＳ版、ＤＣ版の流れをくむ本格的ＲＰＧ。プレイ次第で、全く別なシナリオが発生し、パーティメンバーが増えたりする。戦闘はグランディアシリーズ同様、ＩＰ（イニシアティブポイント）ゲージを起用。キャラごとにアクションをゲージ上に配置し、バトルカードを使って戦う。カードの配置によっては防御効果や技のコンボなどが起こり、戦略性を必要とする。カードは魔法・技などの種類豊富で、合成することで新しい技を習得することができる。通信対戦を使った友達との対戦やカードトレーディングも可能。"
+                                },
+                                {
+                                    "doc_type_id": "02",
+                                    "doc_source_id": "01",
+                                    "doc_text": "主人公ユウヒとその友達ミズキとシロウの３人は、ある事件がきっかけで学校から別次元の世界に飛ばされてしまった。ミズキやシロウとはぐれ、気を失ってしまったユウヒを助けてくれたのはスーという少女だった。ユウヒ達が異世界の人間であることを知る世界の管理人リエーテは、元の世界に戻るために各地に散らばる『カギ』が必要であると教える。『カギ』を集めて友達と元の世界に戻るためにユウヒは、心強い味方ジャスティン・スー・フィーナと共に旅へ出る。どうしてユウヒたちは別次元の世界に迷い込んでしまったのだろうか？"
+                                }
+                            ],
+                            "awards": [
+
+                            ],
+                            "screens": [
+
+                            ],
+                            "onairs": [
+
+                            ],
+                            "magazines": [
+
+                            ],
+                            "genres": [
+                                {
+                                    "big_genre_id": "EXT000073WWV",
+                                    "big_genre_name": "ロールプレイング",
+                                    "medium_genre_id": "EXT000073YRH",
+                                    "medium_genre_name": "その他",
+                                    "small_genre_id": "",
+                                    "small_genre_name": "",
+                                    "shikiriban_id": "",
+                                    "shikiriban_name": ""
+                                }
+                            ],
+                            "discas_grade_point": null,
+                            "discas_item": [
+
+                            ],
+                            "ttv_trailer_flg": 0,
+                            "ttv_free_movie_flg": 0,
+                            "ttv_sell_rental_flg": [
+
+                            ],
+                            "ttv_low_price": null,
+                            "cinema_id": [
+
+                            ],
+                            "filmarks_id": [
+
+                            ],
+                            "dramarks_id": [
+
+                            ],
+                            "catch_copy": "",
+                            "sale_start_date_sell": "",
+                            "sale_start_date_rental": "",
+                            "trailer_urls": [
+
+                            ],
+                            "scenes": [
+
+                            ],
+                            "filmarks_mark": null,
+                            "filmarks_clip": null,
+                            "filmarks_average": null,
+                            "people": [
+
+                            ],
+                            "merged_from": [
+
+                            ],
+                            "need_age_auth_flg": 0
+                        }
+                    },
+                    {
+                        "relation_type_name": "シリーズ",
+                        "work": {
+                            "work_id": "PTA0000FDHS9",
+                            "work_type_id": "4",
+                            "msdb_item": "game",
+                            "work_format_id": null,
+                            "work_format_name": "",
+                            "work_title": "グランディア II",
+                            "work_title_kana": "ぐらんでいあ 2",
+                            "work_title_en": "",
+                            "work_title_orig": "",
+                            "work_title_sub": "",
+                            "work_comment": "",
+                            "work_outline": "",
+                            "work_copyright": "(C)2000 GAME ARTS",
+                            "rating_id": "EXT000000008",
+                            "rating_name": "",
+                            "adult_flg": 0,
+                            "primary_product_source_id": "PDT00007GD3S",
+                            "primary_product_service_id": "ec",
+                            "primary_product_type_id": 1,
+                            "disp_start_date": "1900-01-01 00:00:00",
+                            "disp_start_month": "1900-01",
+                            "sale_start_date": "2000-08-03",
+                            "sale_start_month": "2000-08",
+                            "created_year_from": "",
+                            "created_year_to": "",
+                            "created_year": "2000",
+                            "created_countries": "",
+                            "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/00365/4988649034388_1S.jpg ",
+                            "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/00365/4988649034388_1M.jpg ",
+                            "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/00365/4988649034388_1L.jpg ",
+                            "jacket_l4": "",
+                            "scene_s": [
+                                {
+                                    "url": "//store-tsutaya.tsite.jp/images/bamen/00042/4988649244480_B001S.jpg ",
+                                    "no": "001"
+                                },
+                                {
+                                    "url": "//store-tsutaya.tsite.jp/images/bamen/00061/4988649244480_B002S.jpg ",
+                                    "no": "002"
+                                },
+                                {
+                                    "url": "//store-tsutaya.tsite.jp/images/bamen/00074/4988649244480_B003S.jpg ",
+                                    "no": "003"
+                                },
+                                {
+                                    "url": "//store-tsutaya.tsite.jp/images/bamen/00079/4988649244480_B004S.jpg ",
+                                    "no": "004"
+                                },
+                                {
+                                    "url": "//store-tsutaya.tsite.jp/images/bamen/00081/4988649244480_B005S.jpg ",
+                                    "no": "005"
+                                },
+                                {
+                                    "url": "//store-tsutaya.tsite.jp/images/bamen/00082/4988649244480_B006S.jpg ",
+                                    "no": "006"
+                                },
+                                {
+                                    "url": "//store-tsutaya.tsite.jp/images/bamen/00083/4988649244480_B007S.jpg ",
+                                    "no": "007"
+                                },
+                                {
+                                    "url": "//store-tsutaya.tsite.jp/images/bamen/00083/4988649244480_B008S.jpg ",
+                                    "no": "008"
+                                }
+                            ],
+                            "scene_m": [
+                                {
+                                    "url": "//store-tsutaya.tsite.jp/images/bamen/00042/4988649244480_B001M.jpg ",
+                                    "no": "001"
+                                },
+                                {
+                                    "url": "//store-tsutaya.tsite.jp/images/bamen/00061/4988649244480_B002M.jpg ",
+                                    "no": "002"
+                                },
+                                {
+                                    "url": "//store-tsutaya.tsite.jp/images/bamen/00074/4988649244480_B003M.jpg ",
+                                    "no": "003"
+                                },
+                                {
+                                    "url": "//store-tsutaya.tsite.jp/images/bamen/00079/4988649244480_B004M.jpg ",
+                                    "no": "004"
+                                },
+                                {
+                                    "url": "//store-tsutaya.tsite.jp/images/bamen/00081/4988649244480_B005M.jpg ",
+                                    "no": "005"
+                                },
+                                {
+                                    "url": "//store-tsutaya.tsite.jp/images/bamen/00082/4988649244480_B006M.jpg ",
+                                    "no": "006"
+                                },
+                                {
+                                    "url": "//store-tsutaya.tsite.jp/images/bamen/00083/4988649244480_B007M.jpg ",
+                                    "no": "007"
+                                },
+                                {
+                                    "url": "//store-tsutaya.tsite.jp/images/bamen/00083/4988649244480_B008M.jpg ",
+                                    "no": "008"
+                                }
+                            ],
+                            "scene_l": [
+                                {
+                                    "url": "//store-tsutaya.tsite.jp/images/bamen/00042/4988649244480_B001L.jpg ",
+                                    "no": "001"
+                                },
+                                {
+                                    "url": "//store-tsutaya.tsite.jp/images/bamen/00061/4988649244480_B002L.jpg ",
+                                    "no": "002"
+                                },
+                                {
+                                    "url": "//store-tsutaya.tsite.jp/images/bamen/00074/4988649244480_B003L.jpg ",
+                                    "no": "003"
+                                },
+                                {
+                                    "url": "//store-tsutaya.tsite.jp/images/bamen/00079/4988649244480_B004L.jpg ",
+                                    "no": "004"
+                                },
+                                {
+                                    "url": "//store-tsutaya.tsite.jp/images/bamen/00081/4988649244480_B005L.jpg ",
+                                    "no": "005"
+                                },
+                                {
+                                    "url": "//store-tsutaya.tsite.jp/images/bamen/00082/4988649244480_B006L.jpg ",
+                                    "no": "006"
+                                },
+                                {
+                                    "url": "//store-tsutaya.tsite.jp/images/bamen/00083/4988649244480_B007L.jpg ",
+                                    "no": "007"
+                                },
+                                {
+                                    "url": "//store-tsutaya.tsite.jp/images/bamen/00083/4988649244480_B008L.jpg ",
+                                    "no": "008"
+                                }
+                            ],
+                            "trailor_pc": [
+
+                            ],
+                            "season_name": "",
+                            "season_number": null,
+                            "book_series_name": "",
+                            "book_series_name_kana": "",
+                            "feature_keywords": [
+
+                            ],
+                            "priv_keywords": [
+
+                            ],
+                            "work_tags": [
+
+                            ],
+                            "wakati_words": [
+
+                            ],
+                            "is_compilation": 0,
+                            "series_completed": 0,
+                            "disable_flg": 0,
+                            "delete_flg": 0,
+                            "ids": [
+                                {
+                                    "id_type": "0103",
+                                    "id_value": "30004752"
+                                },
+                                {
+                                    "id_type": "0105",
+                                    "id_value": "30003670"
+                                }
+                            ],
+                            "docs": [
+                                {
+                                    "doc_type_id": "01",
+                                    "doc_source_id": "01",
+                                    "doc_text": "スカイと共にジオハウンドとしての仕事をこなすリュード。無事仕事を終え一息ついているところに、新たな依頼が舞い込んできた。今度の仕事はグラナス教会からのものだった。２人は依頼を受けるために教会へと向かった。教会から美しい歌声が聞こえ、リュード達は誘われるように教会の中へ。そこで歌っていたのはグラナスの歌姫・エレナ。依頼の内容は、このエレナを特別な儀式が行われるというガルミアの塔まで送り届け、さらに儀式が終わった後に村まで無事連れ帰るというものだった。人付き合いが苦手なリュードは仕事と割り切り依頼を引き受けるが、これこそが長く険しい旅の始まりだった。【２００２年５月２３日、廉価版として再発売。】"
+                                }
+                            ],
+                            "awards": [
+
+                            ],
+                            "screens": [
+
+                            ],
+                            "onairs": [
+
+                            ],
+                            "magazines": [
+
+                            ],
+                            "genres": [
+                                {
+                                    "big_genre_id": "EXT000073WWV",
+                                    "big_genre_name": "ロールプレイング",
+                                    "medium_genre_id": "EXT000073YQJ",
+                                    "medium_genre_name": "ロールプレイング",
+                                    "small_genre_id": "",
+                                    "small_genre_name": "",
+                                    "shikiriban_id": "",
+                                    "shikiriban_name": ""
+                                }
+                            ],
+                            "discas_grade_point": null,
+                            "discas_item": [
+
+                            ],
+                            "ttv_trailer_flg": 0,
+                            "ttv_free_movie_flg": 0,
+                            "ttv_sell_rental_flg": [
+
+                            ],
+                            "ttv_low_price": null,
+                            "cinema_id": [
+
+                            ],
+                            "filmarks_id": [
+
+                            ],
+                            "dramarks_id": [
+
+                            ],
+                            "catch_copy": "",
+                            "sale_start_date_sell": "2000-08-03",
+                            "sale_start_date_rental": "",
+                            "trailer_urls": [
+
+                            ],
+                            "scenes": [
+
+                            ],
+                            "filmarks_mark": 0,
+                            "filmarks_clip": 0,
+                            "filmarks_average": 0,
+                            "people": [
+                                {
+                                    "person_id": "PPS00007G8UL",
+                                    "person_name": "かのえゆうし",
+                                    "role_id": "EXT00000B3US",
+                                    "role_name": "キャラクターデザイン"
+                                }
+                            ],
+                            "merged_from": [
+
+                            ],
+                            "need_age_auth_flg": 0
+                        }
+                    },
+                    {
+                        "relation_type_name": "シリーズ",
+                        "work": {
+                            "work_id": "PTA0000FDHSA",
+                            "work_type_id": "4",
+                            "msdb_item": "game",
+                            "work_format_id": null,
+                            "work_format_name": "",
+                            "work_title": "グランディア",
+                            "work_title_kana": "ぐらんでいあ",
+                            "work_title_en": "",
+                            "work_title_orig": "",
+                            "work_title_sub": "",
+                            "work_comment": "",
+                            "work_outline": "",
+                            "work_copyright": "(C)1997,1999 GAME ARTS/ESP",
+                            "rating_id": "EXT000000008",
+                            "rating_name": "",
+                            "adult_flg": 0,
+                            "primary_product_source_id": "PDT00007GD3P",
+                            "primary_product_service_id": "ec",
+                            "primary_product_type_id": 1,
+                            "disp_start_date": "1900-01-01 00:00:00",
+                            "disp_start_month": "1900-01",
+                            "sale_start_date": "1999-06-24",
+                            "sale_start_month": "1999-06",
+                            "created_year_from": "",
+                            "created_year_to": "",
+                            "created_year": "1999",
+                            "created_countries": "",
+                            "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/00365/4988649073431_1S.jpg ",
+                            "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/00365/4988649073431_1M.jpg ",
+                            "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/00365/4988649073431_1L.jpg ",
+                            "jacket_l4": "",
+                            "scene_s": [
+                                {
+                                    "url": "//store-tsutaya.tsite.jp/images/bamen/00042/4988649073431_B001S.jpg ",
+                                    "no": "001"
+                                },
+                                {
+                                    "url": "//store-tsutaya.tsite.jp/images/bamen/00061/4988649073431_B002S.jpg ",
+                                    "no": "002"
+                                }
+                            ],
+                            "scene_m": [
+                                {
+                                    "url": "//store-tsutaya.tsite.jp/images/bamen/00042/4988649073431_B001M.jpg ",
+                                    "no": "001"
+                                },
+                                {
+                                    "url": "//store-tsutaya.tsite.jp/images/bamen/00061/4988649073431_B002M.jpg ",
+                                    "no": "002"
+                                }
+                            ],
+                            "scene_l": [
+                                {
+                                    "url": "//store-tsutaya.tsite.jp/images/bamen/00042/4988649073431_B001L.jpg ",
+                                    "no": "001"
+                                },
+                                {
+                                    "url": "//store-tsutaya.tsite.jp/images/bamen/00061/4988649073431_B002L.jpg ",
+                                    "no": "002"
+                                }
+                            ],
+                            "trailor_pc": [
+
+                            ],
+                            "season_name": "",
+                            "season_number": null,
+                            "book_series_name": "",
+                            "book_series_name_kana": "",
+                            "feature_keywords": [
+
+                            ],
+                            "priv_keywords": [
+
+                            ],
+                            "work_tags": [
+
+                            ],
+                            "wakati_words": [
+
+                            ],
+                            "is_compilation": 0,
+                            "series_completed": 0,
+                            "disable_flg": 0,
+                            "delete_flg": 0,
+                            "ids": [
+                                {
+                                    "id_type": "0103",
+                                    "id_value": "30001148"
+                                },
+                                {
+                                    "id_type": "0105",
+                                    "id_value": "30001106"
+                                }
+                            ],
+                            "docs": [
+                                {
+                                    "doc_type_id": "01",
+                                    "doc_source_id": "01",
+                                    "doc_text": "冒険者達が名を馳せた大航海時代が終わり、人々は新しい土地で新しい日常を築きつつあった。世界の果てが見つかり、冒険家が夢見たエンジュール都市は、結局は伝説の中でのみ存在するものになったのだと、世の中の誰もが認めつつあった、そんな頃……。この物語の主人公ジャスティンは亡き父の跡を継ぎ、歴史に残るような大冒険をしてやるのだという志を持った、心の熱い少年である。父から譲り受けた精霊石を持って新大陸のニューパームへと旅だち、未知の世界への冒険の幕を開けることになる。愛と夢のロールプレイングゲームにキミも涙するだろう。【２０００年７月２７日廉価版として再発売。】"
+                                }
+                            ],
+                            "awards": [
+
+                            ],
+                            "screens": [
+
+                            ],
+                            "onairs": [
+
+                            ],
+                            "magazines": [
+
+                            ],
+                            "genres": [
+                                {
+                                    "big_genre_id": "EXT000073WWV",
+                                    "big_genre_name": "ロールプレイング",
+                                    "medium_genre_id": "EXT000073YQJ",
+                                    "medium_genre_name": "ロールプレイング",
+                                    "small_genre_id": "",
+                                    "small_genre_name": "",
+                                    "shikiriban_id": "",
+                                    "shikiriban_name": ""
+                                }
+                            ],
+                            "discas_grade_point": null,
+                            "discas_item": [
+
+                            ],
+                            "ttv_trailer_flg": 0,
+                            "ttv_free_movie_flg": 0,
+                            "ttv_sell_rental_flg": [
+
+                            ],
+                            "ttv_low_price": null,
+                            "cinema_id": [
+
+                            ],
+                            "filmarks_id": [
+
+                            ],
+                            "dramarks_id": [
+
+                            ],
+                            "catch_copy": "",
+                            "sale_start_date_sell": "1999-06-24",
+                            "sale_start_date_rental": "",
+                            "trailer_urls": [
+
+                            ],
+                            "scenes": [
+
+                            ],
+                            "filmarks_mark": 0,
+                            "filmarks_clip": 0,
+                            "filmarks_average": 0,
+                            "people": [
+                                {
+                                    "person_id": "PPS000008JV8",
+                                    "person_name": "橘ひかり",
+                                    "role_id": "EXT000015AXU",
+                                    "role_name": "声優"
+                                }
+                            ],
+                            "merged_from": [
+
+                            ],
+                            "need_age_auth_flg": 0
+                        }
+                    }
                 ],
                 "discas_grade_point": null,
                 "discas_item": [
@@ -127,6 +1887,9 @@
                 "filmarks_id": [
 
                 ],
+                "dramarks_id": [
+
+                ],
                 "catch_copy": "",
                 "sale_start_date_sell": "2002-01-31",
                 "sale_start_date_rental": "",
@@ -136,15 +1899,33 @@
                 "scenes": [
 
                 ],
-                "filmarks_mark": null,
-                "filmarks_clip": null,
-                "filmarks_average": null,
+                "filmarks_mark": 0,
+                "filmarks_clip": 0,
+                "filmarks_average": 0,
                 "people": [
+                    {
+                        "person_id": "PPS00007G8UP",
+                        "person_name": "高橋秀信",
+                        "role_id": "EXT0000000UH",
+                        "role_name": "監督"
+                    },
                     {
                         "person_id": "PPS00007EDJ1",
                         "person_name": "藤原カムイ",
                         "role_id": "EXT00000B3US",
                         "role_name": "キャラクターデザイン"
+                    },
+                    {
+                        "person_id": "PPS00007G8UQ",
+                        "person_name": "斎藤勝紀",
+                        "role_id": "EXT00000ANB5",
+                        "role_name": "プロデューサー"
+                    },
+                    {
+                        "person_id": "PPS00007G8UR",
+                        "person_name": "樋口亘",
+                        "role_id": "EXT00000ANB5",
+                        "role_name": "プロデューサー"
                     }
                 ],
                 "tracks": [

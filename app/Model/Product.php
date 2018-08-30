@@ -221,7 +221,14 @@ class Product extends Model
         return $this;
     }
 
-    public function setConditionProductGroupingByWorkIdSaleType($workId, $saleType = null, $order = null ,$isAudio)
+    /*
+     * $workId
+     * $saleType
+     * $order
+     * $isAudio
+     * $withPpt 含める場合はTrue、含めない場合はFalse
+     */
+    public function setConditionProductGroupingByWorkIdSaleType($workId, $saleType = null, $order = null ,$isAudio, $withPpt = true)
     {
         $selectSubGrouping = 'item_cd,'
             .'product_type_id,'
@@ -229,10 +236,13 @@ class Product extends Model
             .'ccc_family_cd ';
         $selectSub = ',MAX(product_unique_id) AS product_unique_id ';
         $subQuery = DB::table($this->table)->select(DB::raw($selectSubGrouping.$selectSub))
-            ->whereRaw(DB::raw(' work_id = \''.$workId .'\''))
-            //->whereRaw(DB::raw(' item_cd not like \'_1__\' '))
+            ->whereRaw(DB::raw(' work_id = \''.$workId .'\''));
+        // PPTを含める
+        if($withPpt === false) {
+            $subQuery->whereRaw(DB::raw(' item_cd not like \'_1__\' '));
+        }
             //->whereRaw(DB::raw(' item_cd not like \'__20\' ')) // VHSも出力するように変更
-            ->whereRaw(DB::raw(' jan not like \'9999_________\' '))
+        $subQuery->whereRaw(DB::raw(' jan not like \'9999_________\' '))
             ->groupBy(DB::raw($selectSubGrouping));
         if ($isAudio && $saleType === 'rental') {
             $subQuery->whereRaw(DB::raw(' is_dummy = 0 '));
@@ -270,6 +280,7 @@ class Product extends Model
         $subQuery = DB::table($this->table)->select(DB::raw($selectQuery))
             ->whereRaw(DB::raw('work_id = \''.$workId . '\''))
             ->whereRaw(DB::raw(' product_type_id = 2 '))
+            ->whereRaw(DB::raw(' jan not like \'9999_________\' '))
             ->groupBy(DB::raw($groupingColumn))
         ;
         $this->dbObject = DB::table(DB::raw("({$subQuery->toSql()}) as sub"))
@@ -300,6 +311,7 @@ class Product extends Model
         $this->dbObject = DB::table(DB::raw("({$subQuery->toSql()}) as t1"))
             ->join($this->table.' as t2', function ($join) {
                 $join->on('t2.work_id', '=', 't1.work_id')
+                    ->whereRaw(DB::raw(' jan not like \'9999_________\' '))
                     ->whereRaw(DB::raw('t2.work_id = t1.work_id'))
                     ->whereRaw(DB::raw('t2.ccc_family_cd = t1.ccc_family_cd'))
                     ->whereRaw(DB::raw('t2.sale_start_date = t1.sale_start_date'));

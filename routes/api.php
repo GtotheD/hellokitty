@@ -165,7 +165,7 @@ $router->group([
         $ageLimitCheck = $request->input('ageLimitCheck', false);
         $work->setAgeLimitCheck($ageLimitCheck);
         $result = $work->get($workId);
-        if (empty($result)) {
+        if (empty($result) || array_key_exists('makerCd', $result) === false) {
             throw new NoContentsException;
         }
         $checkAgeLimit = checkAgeLimit(

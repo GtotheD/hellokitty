@@ -203,9 +203,29 @@ class ProductRepository
             }
         }
 
-        $this->totalCount = $this->product->setConditionProductGroupingByWorkIdSaleType($workId, $this->saleType, $this->sort, $isAudio)->count();
-        $results = $this->product->selectCamel($column)->get($this->limit, $this->offset);
-        $results = $this->pptProductFilter($results);
+        $this->totalCount = $this->product
+            ->setConditionProductGroupingByWorkIdSaleType($workId, $this->saleType, $this->sort, $isAudio, false)
+            ->count();
+        $results = $this->product
+            ->setConditionProductGroupingByWorkIdSaleType($workId, $this->saleType, $this->sort, $isAudio, false)
+            ->selectCamel($column)
+            ->get($this->limit, $this->offset);
+
+        // todo
+        // VHS等の特殊媒体のみだった場合PPTも検索
+        // PPTを除いたProductが存在しない場合PPTを含めて検索する。
+        if (empty($results)) {
+            $this->totalCount = $this->product
+                ->setConditionProductGroupingByWorkIdSaleType($workId, $this->saleType, $this->sort, $isAudio, true)
+                ->count();
+            $results = $this->product
+                ->setConditionProductGroupingByWorkIdSaleType($workId, $this->saleType, $this->sort, $isAudio, true)
+                ->selectCamel($column)
+                ->get($this->limit, $this->offset);
+            // todo
+            // PPTを検索した結果なければそのまま、PPTが存在したらPPTを含めたデータを取得する。
+            $results = $this->pptProductFilter($results);
+        }
 
         if (count($results) + $this->offset < $this->totalCount) {
             $this->hasNext = true;
@@ -227,7 +247,6 @@ class ProductRepository
         ];
         $this->totalCount = $this->product->setConditionRentalGroup($workId, $sort)->count();
         $results = $this->product->get($this->limit, $this->offset);
-
         foreach ($results as $result) {
             $tmp = $this->product->setConditionRentalGroupNewestCccProductId(
                 $result->work_id, $result->ccc_family_cd, $result->sale_start_date
@@ -236,14 +255,15 @@ class ProductRepository
             $tmp->bluray = $result->bluray;
             $response[] = $tmp;
         }
+        if (empty($response)) {
+            return null;
+        }
         if (count($results) + $this->offset < $this->totalCount) {
             $this->hasNext = true;
         } else {
             $this->hasNext = false;
         }
         return $this->rentalGroupReformat($response);
-
-
     }
 
     private function rentalGroupReformat($products)
