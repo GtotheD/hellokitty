@@ -673,7 +673,7 @@ $router->group([
         $favoriteRepository->setTlsc($bodyObj['tlsc']);
         $response = $favoriteRepository->add($id);
         if ($response === false) {
-            return response()->json(['status' => 'error', 'message' => '対象の作品は存在しません。']);
+            throw new Exception;
         }
         // Other error
         if($response['status'] == 'error') {
@@ -700,16 +700,11 @@ $router->group([
         $favoriteRepository->setTlsc($bodyObj['tlsc']);
         $response = $favoriteRepository->merge($ids);
         if ($response === false) {
-            return response()->json(['status' => 'error', 'message' => '対象の作品は存在しません。']);
+            throw new Exception;
         }
         // Limit error
         if($response['status'] == 'error') {
-            $mergeString = '{
-                "status": "99",
-                "message": "通信エラーもしくは内部エラー"
-            }';
-            $response = json_decode($mergeString);
-            return response()->json($response);
+            throw new Exception;
         }
         return response()->json($response);
     });
@@ -727,15 +722,10 @@ $router->group([
         $favoriteRepository->setTlsc($bodyObj['tlsc']);
         $response = $favoriteRepository->delete($ids);
         if ($response === false) {
-            return response()->json(['status' => 'error', 'message' => '対象の作品は存在しません。']);
+            throw new Exception;
         }
         if($response['status'] == 'error') {
-            $versionUpdateString = '{
-                "status": "99",
-                "message": "通信エラーもしくは内部エラー"
-            }';
-            $response = json_decode($versionUpdateString);
-            return response()->json($response);
+            throw new Exception;
         }
         return response()->json($response);
     });
