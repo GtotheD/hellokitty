@@ -344,8 +344,8 @@ class SectionRepository
                 $from = Carbon::parse($row->month)->startOfMonth();
             }
             // 商品情報の取得
-            $product = new Product();
-            $product = $product->setConditionByWorkIdSaleTypeSaleStartDate($row->work_id, $saleType, $from, $to)->getOne();
+            $productModel = new Product();
+            $product = $productModel->setConditionByWorkIdSaleTypeSaleStartDate($row->work_id, $saleType, $from, $to)->getOne();
             if (!empty($product)) {
 
                 $productName = $product->product_name;
@@ -363,7 +363,8 @@ class SectionRepository
                         'workId' => $row->work_id,
                         'code' => $product->product_id,
                         'urlCd' => $work['urlCd'],
-                        'sort' => $count
+                        'sort' => $count,
+                        'msdbItem' => $work['msdbItem'],
                     ];
                 $formattedRow['saleStartDate'] = $this->dateFormat($product->sale_start_date);
                 if (!$this->supplementVisible) {
@@ -392,7 +393,17 @@ class SectionRepository
             if ($index >= 20) unset($formattedRows[$k]);
             $index++;
         }
-
+        foreach ($formattedRows as $formattedRowKey => $formattedRow) {
+            // 映像の場合は、ジャケ写を最新刊のブルーレイ優先で取得する。
+            if ($formattedRow['msdbItem'] === $workRepository::MSDB_ITEM_VIDEO) {
+                // saleTypeの指定がない場合は関係なく出す。
+                $jacket = (array)$productModel->setConditionSelectJacket($formattedRow['workId'], $saleType)->getOne();
+                // ジャケットがある場合のみ差し替え
+                if (count($jacket) > 0) {
+                    $formattedRows[$formattedRowKey]['imageUrl'] = $jacket['jacketL'];
+                }
+            }
+        }
         return $formattedRows;
     }
 
