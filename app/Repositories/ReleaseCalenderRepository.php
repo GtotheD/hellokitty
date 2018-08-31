@@ -159,15 +159,28 @@ class ReleaseCalenderRepository
 
         // パラメーターを取得する　未指定の場合は当月
         if ($this->month === 'last') {
-            $saleStartMonth = date('Y-m', strtotime('-1 months'));
-            $saleStartDateFrom = Carbon::parse('last month')->startOfMonth();
-            $saleStartDateTo = Carbon::parse('last month')->endOfMonth()->addMonth(6);
-            $saleStartDateToForDB = Carbon::parse('last month')->endOfMonth();
+//            $saleStartMonth = date('Y-m', strtotime('-1 months'));
+            $saleStartMonth = date('Y-m', mktime(0, 0, 0, date('n') - 1, 1, date('Y')));
+            /*
+                        $saleStartDateFrom = Carbon::parse('last month')->startOfMonth();
+                        $saleStartDateTo = Carbon::parse('last month')->endOfMonth()->addMonth(6);
+                        $saleStartDateToForDB = Carbon::parse('last month')->endOfMonth();
+            */
+            $saleStartDateFrom = Carbon::parse($saleStartMonth)->startOfMonth();
+            $saleStartDateTo = Carbon::parse($saleStartMonth)->endOfMonth()->addMonth(6);
+            $saleStartDateToForDB = Carbon::parse($saleStartMonth)->endOfMonth();
+
         } else if ($this->month === 'next') {
-            $saleStartMonth = date('Y-m', strtotime('+1 months'));
-            $saleStartDateFrom = Carbon::parse('next month')->startOfMonth();
-            $saleStartDateTo = Carbon::parse('next month')->endOfMonth()->addMonth(6);
-            $saleStartDateToForDB = Carbon::parse('next month')->endOfMonth();
+//            $saleStartMonth = date('Y-m', strtotime('+1 months'));
+            $saleStartMonth = date('Y-m', mktime(0, 0, 0, date('n') + 1, 1, date('Y')));
+            /*
+                        $saleStartDateFrom = Carbon::parse('next month')->startOfMonth();
+                        $saleStartDateTo = Carbon::parse('next month')->endOfMonth()->addMonth(6);
+                        $saleStartDateToForDB = Carbon::parse('next month')->endOfMonth();
+            */
+            $saleStartDateFrom = Carbon::parse($saleStartMonth)->startOfMonth();
+            $saleStartDateTo = Carbon::parse($saleStartMonth)->endOfMonth()->addMonth(6);
+            $saleStartDateToForDB = Carbon::parse($saleStartMonth)->endOfMonth();
         } else {
             $this->month = 'this';
             $saleStartMonth = date('Y-m');
@@ -190,6 +203,7 @@ class ReleaseCalenderRepository
             $this->genreId,
             $saleStartMonth . '-01'
         )->count();
+
         if (empty($cacheDataCount)) {
             // キャッシュがなければデータを新規で取得する
             $himoRepository = new HimoRepository();
