@@ -211,21 +211,42 @@ class ProductRepository
             ->selectCamel($column)
             ->get($this->limit, $this->offset);
 
-        // todo
-        // VHS等の特殊媒体のみだった場合PPTも検索
-        // PPTを除いたProductが存在しない場合PPTを含めて検索する。
-        if (empty($results)) {
-            $this->totalCount = $this->product
-                ->setConditionProductGroupingByWorkIdSaleType($workId, $this->saleType, $this->sort, $isAudio, true)
-                ->count();
-            $results = $this->product
-                ->setConditionProductGroupingByWorkIdSaleType($workId, $this->saleType, $this->sort, $isAudio, true)
-                ->selectCamel($column)
-                ->get($this->limit, $this->offset);
-            // todo
-            // PPTを検索した結果なければそのまま、PPTが存在したらPPTを含めたデータを取得する。
-            $results = $this->pptProductFilter($results);
+        if ($products->msdb_item === 'video') {
+
+            // １，PPTを除いた取得結果VHS等の特殊媒体のみだった場合PPTも検索
+            $research = true;
+            if(!empty($results)) {
+                foreach ($results as $row) {
+                    $baseItemCode = substr($row->itemCd, -2);
+                    // いずれかが存在してい場合は再検索を実施しない
+                    if($baseItemCode === '21' || $baseItemCode === '21' ) {
+                        $research = false;
+                        break;
+                    }
+                }
+            }
+
+            // PPTを除いたProductが存在しない場合PPTを含めて検索する。
+            // また、１にて再検索が必要だった場合は再検索
+            $pptResults = false;
+            if (empty($results) || $research === true) {
+                $this->product = new Product();
+                $pptResults = $this->product
+                    ->setConditionProductGroupingByWorkIdSaleType($workId, $this->saleType, $this->sort, $isAudio, true)
+                    ->selectCamel($column)
+                    ->get($this->limit, $this->offset);
+                // 検索した結果dvdもしくはbrが存在していればVHS以外は除いて出力する。
+                $pptResults = $this->checkVideoDataFilter($pptResults);
+                // データが存在しなかった場合はresultにコピーして件数を取得しなおす
+                if (!empty($pptResults)) {
+                    $results = $pptResults;
+                    $this->totalCount = $this->product
+                        ->setConditionProductGroupingByWorkIdSaleType($workId, $this->saleType, $this->sort, $isAudio, true)
+                        ->count();
+                }
+            }
         }
+
 
         if (count($results) + $this->offset < $this->totalCount) {
             $this->hasNext = true;
@@ -648,26 +669,20 @@ class ProductRepository
      * DBから商品を取得後、PPTのみ商品の場合はPPTを出力
      * PPT以外の場合は、PPTを削除する。
      */
-    public function pptProductFilter ($products) {
-        // 一旦全てループし、PPTを除外したものとしていないものを生成
-        $onlyPptProducts = [];
-        $notPptProducts = [];
+    public function checkVideoDataFilter ($products) {
+        // 存在確認
+        $deleteFlg = false;
         foreach ($products as $product) {
-            // 頭から2つめに1がある場合はPPT
-            if (substr($product->itemCd, 1,1) === '1') {
-                $onlyPptProducts[] = $product;
+            $itemCd = substr($product->itemCd, -2);
+            if ($itemCd === '21' || $itemCd === '22') {
+                $normalProducts[] = $product;
             } else {
-                $notPptProducts[] = $product;
+                $otherProducts[] = $product;
             }
         }
-        // PPTがあり、通常商品がない場合はPPTのみで表示
-        if (count($onlyPptProducts) !== 0 && count($notPptProducts) === 0) {
-            return $onlyPptProducts;
-        // PPTが混じっている場合は通常商品のみを出す。
-        } else if (count($onlyPptProducts) !== 0 && count($notPptProducts) !== 0) {
-            return $notPptProducts;
+        if (count($normalProducts) > 0 ) {
+            return $normalProducts;
         }
-        // 上記以外は、通常商品のみなのでそのまま返却
-        return $products;
+        return false;
     }
 }
