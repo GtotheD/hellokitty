@@ -230,23 +230,30 @@ class Product extends Model
      */
     public function setConditionProductGroupingByWorkIdSaleType($workId, $saleType = null, $order = null ,$isAudio, $withPpt = true)
     {
-        $selectSubGrouping = 'item_cd,'
+        $selectSubGrouping = 'item_cd_right_2,'
             .'product_type_id,'
             .'product_name,'
             .'ccc_family_cd ';
-        $selectSub = ',MAX(product_unique_id) AS product_unique_id ';
-        $subQuery = DB::table($this->table)->select(DB::raw($selectSubGrouping.$selectSub))
-            ->whereRaw(DB::raw(' work_id = \''.$workId .'\''));
-        // PPTを含める
-        if($withPpt === false) {
-            $subQuery->whereRaw(DB::raw(' item_cd not like \'_1__\' '));
-        }
+        $selectSub = ',MAX(CASE WHEN SUBSTRING(item_cd, 2, 1) = \'0\' THEN product_unique_id END) AS no_ppt,'
+            .'MAX(CASE WHEN SUBSTRING(item_cd, 2, 1) = \'1\' THEN product_unique_id END) AS ppt ';
+        $subQueryBase = DB::table($this->table)->select(DB::raw($selectSubGrouping.$selectSub))
+            ->whereRaw(DB::raw(' work_id = \''.$workId .'\''))
+            //->whereRaw(DB::raw(' item_cd not like \'_1__\' '))
             //->whereRaw(DB::raw(' item_cd not like \'__20\' ')) // VHSも出力するように変更
-        $subQuery->whereRaw(DB::raw(' jan not like \'9999_________\' '))
+            ->whereRaw(DB::raw(' jan not like \'9999_________\' '))
             ->groupBy(DB::raw($selectSubGrouping));
         if ($isAudio && $saleType === 'rental') {
-            $subQuery->whereRaw(DB::raw(' is_dummy = 0 '));
+            $subQueryBase->whereRaw(DB::raw(' is_dummy = 0 '));
         }
+        $subQuerySelect = 'item_cd_right_2,'
+            .'product_type_id,'
+            .'product_name,'
+            .'ccc_family_cd,'
+            .'no_ppt,'
+            .'ppt,'
+            .'CASE WHEN no_ppt is not null THEN no_ppt ELSE ppt END AS product_unique_id';
+        $subQuery = DB::table(DB::raw("({$subQueryBase->toSql()}) as t1"))
+            ->select(DB::raw($subQuerySelect));
         $this->dbObject = DB::table(DB::raw("({$subQuery->toSql()}) as t1"))
             ->join($this->table.' as t2', 't2.product_unique_id', '=', 't1.product_unique_id')
             ->where('work_id','=',$workId);

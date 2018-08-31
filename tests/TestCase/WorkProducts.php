@@ -21,52 +21,52 @@ class WorkProducts extends TestCase
         $keywordSeeder->run();
     }
 
-//    /**
-//     * @return array
-//     */
-//    public function dataProvider()
-//    {
-//        $path = base_path('tests/himo/crossworks/');
-//        $audioList = glob($path . '/audio/*');
-//        $videoList = glob($path . '/video/*');
-//        $bookList = glob($path . '/book/*');
-//        $gameList = glob($path . '/game/*');
-//        $list = array_merge($audioList, $videoList, $bookList, $gameList);
-//        foreach ($list as $row) {
-//            $workIds[] = [
-//                basename($row),
-//                ''
-//            ];
-//        }
-//        return $workIds;
-//    }
+    /**
+     * @return array
+     */
+    public function dataProvider()
+    {
+        $path = base_path('tests/himo/crossworks/');
+        $audioList = glob($path . '/audio/*');
+        $videoList = glob($path . '/video/*');
+        $bookList = glob($path . '/book/*');
+        $gameList = glob($path . '/game/*');
+        $list = array_merge($audioList, $videoList, $bookList, $gameList);
+        foreach ($list as $row) {
+            $workIds[] = [
+                basename($row),
+                ''
+            ];
+        }
+        return $workIds;
+    }
 
-//    /**
-//     * All
-//     * @dataProvider dataProvider
-//     * @test
-//     */
-//    public function workProduct($workId, $expected)
-//    {
-//        $url = '/work/' . $workId;
-//        $this->getJsonWithAuth($url);
-//        $response = $this->getJsonWithAuth('/work/' . $workId . '/products');
-//        $response->assertResponseStatus(200, 204);
-//    }
-//
-//    /**
-//     * Rental
-//     * @dataProvider dataProvider
-//     * @test
-//     */
-//    public function workProductRental($workId, $expected)
-//    {
-//        $url = '/work/' . $workId;
-//        $this->getJsonWithAuth($url);
-//        $response = $this->getJsonWithAuth('/work/' . $workId . '/products?saleType=rental');
-//        $response->assertResponseStatus(200, 204);
-//    }
-//
+    /**
+     * All
+     * @dataProvider dataProvider
+     * @test
+     */
+    public function workProduct($workId, $expected)
+    {
+        $url = '/work/' . $workId;
+        $this->getJsonWithAuth($url);
+        $response = $this->getJsonWithAuth('/work/' . $workId . '/products');
+        $response->assertResponseStatus(200, 204);
+    }
+
+    /**
+     * Rental
+     * @dataProvider dataProvider
+     * @test
+     */
+    public function workProductRental($workId, $expected)
+    {
+        $url = '/work/' . $workId;
+        $this->getJsonWithAuth($url);
+        $response = $this->getJsonWithAuth('/work/' . $workId . '/products?saleType=rental');
+        $response->assertResponseStatus(200, 204);
+    }
+
 //    /**
 //     * Sell
 //     * @dataProvider dataProvider

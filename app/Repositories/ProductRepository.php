@@ -202,52 +202,12 @@ class ProductRepository
                 return $this->productReformat($results);
             }
         }
-
-        $this->totalCount = $this->product
-            ->setConditionProductGroupingByWorkIdSaleType($workId, $this->saleType, $this->sort, $isAudio, false)
-            ->count();
-        $results = $this->product
-            ->setConditionProductGroupingByWorkIdSaleType($workId, $this->saleType, $this->sort, $isAudio, false)
-            ->selectCamel($column)
-            ->get($this->limit, $this->offset);
-
-        if ($products->msdb_item === 'video') {
-
-            // １，PPTを除いた取得結果VHS等の特殊媒体のみだった場合PPTも検索
-            $research = true;
-            if(!empty($results)) {
-                foreach ($results as $row) {
-                    $baseItemCode = substr($row->itemCd, -2);
-                    // いずれかが存在してい場合は再検索を実施しない
-                    if($baseItemCode === '21' || $baseItemCode === '21' ) {
-                        $research = false;
-                        break;
-                    }
-                }
-            }
-
-            // PPTを除いたProductが存在しない場合PPTを含めて検索する。
-            // また、１にて再検索が必要だった場合は再検索
-            $pptResults = false;
-            if (empty($results) || $research === true) {
-                $this->product = new Product();
-                $pptResults = $this->product
-                    ->setConditionProductGroupingByWorkIdSaleType($workId, $this->saleType, $this->sort, $isAudio, true)
-                    ->selectCamel($column)
-                    ->get($this->limit, $this->offset);
-                // 検索した結果dvdもしくはbrが存在していればVHS以外は除いて出力する。
-                $pptResults = $this->checkVideoDataFilter($pptResults);
-                // データが存在しなかった場合はresultにコピーして件数を取得しなおす
-                if (!empty($pptResults)) {
-                    $results = $pptResults;
-                    $this->totalCount = $this->product
-                        ->setConditionProductGroupingByWorkIdSaleType($workId, $this->saleType, $this->sort, $isAudio, true)
-                        ->count();
-                }
-            }
+        $this->totalCount = $this->product->setConditionProductGroupingByWorkIdSaleType($workId, $this->saleType, $this->sort, $isAudio)->count();
+        $results = $this->product->selectCamel($column)->get($this->limit, $this->offset);
+        if (count($results) === 0) {
+            return null;
         }
-
-
+        $results = $this->pptProductFilter($results);
         if (count($results) + $this->offset < $this->totalCount) {
             $this->hasNext = true;
         } else {
@@ -664,25 +624,26 @@ class ProductRepository
     }
 
 
-    /*
-     * PPTフィルター
-     * DBから商品を取得後、PPTのみ商品の場合はPPTを出力
-     * PPT以外の場合は、PPTを削除する。
-     */
-    public function checkVideoDataFilter ($products) {
-        // 存在確認
-        $deleteFlg = false;
+    public function pptProductFilter ($products) {
+        // 一旦全てループし、PPTを除外したものとしていないものを生成
+        $normalProducts = [];
+        $otherProducts = [];
         foreach ($products as $product) {
+            // DVD/BRとそれ以外でわける
             $itemCd = substr($product->itemCd, -2);
             if ($itemCd === '21' || $itemCd === '22') {
-                $normalProducts[] = $product;
+                $normalProducts[] = (array)$product;
             } else {
-                $otherProducts[] = $product;
+                $otherProducts[] = (array)$product;
             }
         }
-        if (count($normalProducts) > 0 ) {
+        // DVD/BRが存在していた場合は、DVD/BRのみを返却
+        if (count($normalProducts) !== 0) {
             return $normalProducts;
         }
-        return false;
+        // DVD/BRが存在しない場合は複数をまとめてsale_start_dateが最新のもので１件にする。
+        foreach ($otherProducts as $val) $keys[] = $val['saleStartDate'];
+        array_multisort($keys, SORT_DESC, $otherProducts);
+        return [$otherProducts[0]];
     }
 }
