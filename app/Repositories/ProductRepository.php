@@ -202,31 +202,12 @@ class ProductRepository
                 return $this->productReformat($results);
             }
         }
-
-        $this->totalCount = $this->product
-            ->setConditionProductGroupingByWorkIdSaleType($workId, $this->saleType, $this->sort, $isAudio, false)
-            ->count();
-        $results = $this->product
-            ->setConditionProductGroupingByWorkIdSaleType($workId, $this->saleType, $this->sort, $isAudio, false)
-            ->selectCamel($column)
-            ->get($this->limit, $this->offset);
-
-        // todo
-        // VHS等の特殊媒体のみだった場合PPTも検索
-        // PPTを除いたProductが存在しない場合PPTを含めて検索する。
-        if (empty($results)) {
-            $this->totalCount = $this->product
-                ->setConditionProductGroupingByWorkIdSaleType($workId, $this->saleType, $this->sort, $isAudio, true)
-                ->count();
-            $results = $this->product
-                ->setConditionProductGroupingByWorkIdSaleType($workId, $this->saleType, $this->sort, $isAudio, true)
-                ->selectCamel($column)
-                ->get($this->limit, $this->offset);
-            // todo
-            // PPTを検索した結果なければそのまま、PPTが存在したらPPTを含めたデータを取得する。
-            $results = $this->pptProductFilter($results);
+        $this->totalCount = $this->product->setConditionProductGroupingByWorkIdSaleType($workId, $this->saleType, $this->sort, $isAudio)->count();
+        $results = $this->product->selectCamel($column)->get($this->limit, $this->offset);
+        if (count($results) === 0) {
+            return null;
         }
-
+        $results = $this->pptProductFilter($results);
         if (count($results) + $this->offset < $this->totalCount) {
             $this->hasNext = true;
         } else {
@@ -643,31 +624,26 @@ class ProductRepository
     }
 
 
-    /*
-     * PPTフィルター
-     * DBから商品を取得後、PPTのみ商品の場合はPPTを出力
-     * PPT以外の場合は、PPTを削除する。
-     */
     public function pptProductFilter ($products) {
         // 一旦全てループし、PPTを除外したものとしていないものを生成
-        $onlyPptProducts = [];
-        $notPptProducts = [];
+        $normalProducts = [];
+        $otherProducts = [];
         foreach ($products as $product) {
-            // 頭から2つめに1がある場合はPPT
-            if (substr($product->itemCd, 1,1) === '1') {
-                $onlyPptProducts[] = $product;
+            // DVD/BRとそれ以外でわける
+            $itemCd = substr($product->itemCd, -2);
+            if ($itemCd === '21' || $itemCd === '22') {
+                $normalProducts[] = (array)$product;
             } else {
-                $notPptProducts[] = $product;
+                $otherProducts[] = (array)$product;
             }
         }
-        // PPTがあり、通常商品がない場合はPPTのみで表示
-        if (count($onlyPptProducts) !== 0 && count($notPptProducts) === 0) {
-            return $onlyPptProducts;
-        // PPTが混じっている場合は通常商品のみを出す。
-        } else if (count($onlyPptProducts) !== 0 && count($notPptProducts) !== 0) {
-            return $notPptProducts;
+        // DVD/BRが存在していた場合は、DVD/BRのみを返却
+        if (count($normalProducts) !== 0) {
+            return $normalProducts;
         }
-        // 上記以外は、通常商品のみなのでそのまま返却
-        return $products;
+        // DVD/BRが存在しない場合は複数をまとめてsale_start_dateが最新のもので１件にする。
+        foreach ($otherProducts as $val) $keys[] = $val['saleStartDate'];
+        array_multisort($keys, SORT_DESC, $otherProducts);
+        return [$otherProducts[0]];
     }
 }
