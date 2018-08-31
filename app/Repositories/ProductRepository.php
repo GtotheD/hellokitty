@@ -207,7 +207,10 @@ class ProductRepository
         if (count($results) === 0) {
             return null;
         }
-        $results = $this->pptProductFilter($results);
+        // ビデオのときだけ処理を行う
+        if($products->msdb_item === 'video') {
+            $results = $this->pptProductFilter($results);
+        }
         if (count($results) + $this->offset < $this->totalCount) {
             $this->hasNext = true;
         } else {
