@@ -154,7 +154,7 @@ $router->group([
     $router->get('section/release/himo/{periodType}/{tapGenreId}', function (Request $request, $periodType, $genreId) {
         $sectionRepository = new SectionRepository;
         $sectionRepository->setSupplementVisible($request->input('supplementVisibleFlg', false));
-            $sectionData = $sectionRepository->releaseHimo($periodType, $genreId);
+        $sectionData = $sectionRepository->releaseHimo($periodType, $genreId);
         return response()->json($sectionData)->header('X-Accel-Expires', '86400');
     });
 
