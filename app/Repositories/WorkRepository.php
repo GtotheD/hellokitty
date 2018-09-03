@@ -747,13 +747,10 @@ class WorkRepository
             $discasProduct = new DiscasProduct();
 
             $this->work->insertBulk($workData, $insertWorkId);
-            // インサート前に存在していれば削除する。
-            if (!empty($deleteProduct)) {
-                $count = $productModel->setConditionByProductUniqueIdIn($deleteProduct)->count();
-                if ($count > 0) {
-                    $productModel->setConditionByProductUniqueIdIn($deleteProduct)->delete();
-                }
-            }
+
+            // デッドロックがDELETEで起こっていた。
+            // 一日一回DBをTRUNCATEしている為、削除処理はなくす。
+
             $productModel->insertBulk($productData);
             $peopleModel->insertBulk($peopleData);
             $musicoUrl->insertBulk($musicoUrlInsertArray);

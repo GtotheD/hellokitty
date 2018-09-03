@@ -393,6 +393,8 @@ class SectionRepository
             if ($index >= 20) unset($formattedRows[$k]);
             $index++;
         }
+
+        // todo ProductのFormatは共通化できそうだったらする。
         foreach ($formattedRows as $formattedRowKey => $formattedRow) {
             // 映像の場合は、ジャケ写を最新刊のブルーレイ優先で取得する。
             if ($formattedRow['msdbItem'] === $workRepository::MSDB_ITEM_VIDEO) {
