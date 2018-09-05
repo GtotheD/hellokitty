@@ -173,4 +173,18 @@ class StructureRepository
         }
     }
 
+    /**
+     * @return string
+     */
+    public function convertSaleTypeToString($saleTypeId)
+    {
+        switch ($saleTypeId) {
+            case self::RENTAL:
+                return 'rental';
+            case self::SELL:
+                return 'sell';
+            default:
+                return false;
+        }
+    }
 }

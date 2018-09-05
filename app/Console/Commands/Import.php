@@ -509,8 +509,9 @@ class Import extends Command
     {
         $workRepository = new WorkRepository;
         $section = new Section;
+        $structureRepository = new StructureRepository();
         // 全件を対象
-        $sections = $section->conditionNoWorkIdActiveRow()->select(['t1.*'])->getAll();
+        $sections = $section->conditionNoWorkIdActiveRow()->select(['t1.*', 'sale_type'])->getAll();
         foreach ($sections as $sectionRow) {
             $this->infoH2($sectionRow->id . ' : ' . $sectionRow->code);
             if (!empty($sectionRow->code)) {
@@ -523,6 +524,8 @@ class Import extends Command
                         $codeType = '0205';
                     }
                     $this->infoMessage('Id Type: ' . $codeType);
+                    // 作成する場合、
+                    $workRepository->setSaleType($structureRepository->convertSaleTypeToString($sectionRow->sale_type));
                     $res = $workRepository->get($sectionRow->code, [], $codeType);
                     $updateValues = [
                         'work_id' => $res['workId'],
