@@ -222,10 +222,11 @@ class ReleaseCalenderRepository
             // TSUTAYA一押しの処理
             // 日付と種別でTSUTAYA一押し要のタグを生成する
             if ($mappingData['genres'] === self::HIMO_TAP_RECOMMEND) {
-                $worktTag = self::HIMO_TAP_RECOMMEND_KEYWORD .
-                    $tagSaleStartDateFrom .
-                    substr($productRepository->convertProductTypeToStr($mappingData['productSellRentalFlg']), 0, 1);
-                $params['workTags'] = $worktTag;
+//                $worktTag = self::HIMO_TAP_RECOMMEND_KEYWORD .
+//                    $tagSaleStartDateFrom .
+//                    substr($productRepository->convertProductTypeToStr($mappingData['productSellRentalFlg']), 0, 1);
+//                $params['workTags'] = $worktTag;
+                $params['workTags'] = self::HIMO_TAP_RECOMMEND_KEYWORD;
                 // TSUTAYA一押しでmsdbitemがcdの場合ミュージックdvdを含めない
                 if($mappingData['msdbItem'][0] === 'video') {
                     $params['genre'] = implode(' || ', $workRepository::HIMO_SEARCH_VIDEO_GENRE_ID);
