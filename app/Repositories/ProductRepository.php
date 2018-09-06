@@ -238,26 +238,27 @@ class ProductRepository
         }
         $this->totalCount = $this->product->setConditionRentalGroup($workId, $sort, $ignoreFlag)->count();
         $results = $this->product->get($this->limit, $this->offset);
+        // 2018/9/6 別ccc_family_cdの場合は全巻だすために単体集約はしない
         // otherだった場合は商品をまとめる
-        if($itemCount->dvd === 0 && $itemCount->other > 0) {
-            // 配列に変換
-            $otherProductTemp = [];
-            foreach ($results as $resultRow) {
-                $otherProductTemp[] = (array)$resultRow;
-            }
-            // ソートをして最新刊を抽出
-            foreach ($otherProductTemp as $val) $keys[] = $val['ccc_family_cd'];
-            array_multisort($keys, SORT_DESC, $otherProductTemp);
-            $otherProductTemp = $otherProductTemp[0];
-            $tmp = $this->product->setConditionRentalGroupNewestCccProductId(
-                $otherProductTemp['work_id'], $otherProductTemp['ccc_family_cd'], $otherProductTemp['sale_start_date']
-            )->select($columnOutput)->getOne();
-            $tmp->dvd = null;
-            $tmp->bluray = null;
-            $response[] = $tmp;
-            // カウントを1に設定
-            $this->totalCount = 1;
-        } else {
+//        if($itemCount->dvd === 0 && $itemCount->other > 0) {
+//            // 配列に変換
+//            $otherProductTemp = [];
+//            foreach ($results as $resultRow) {
+//                $otherProductTemp[] = (array)$resultRow;
+//            }
+//            // ソートをして最新刊を抽出
+//            foreach ($otherProductTemp as $val) $keys[] = $val['ccc_family_cd'];
+//            array_multisort($keys, SORT_DESC, $otherProductTemp);
+//            $otherProductTemp = $otherProductTemp[0];
+//            $tmp = $this->product->setConditionRentalGroupNewestCccProductId(
+//                $otherProductTemp['work_id'], $otherProductTemp['ccc_family_cd'], $otherProductTemp['sale_start_date']
+//            )->select($columnOutput)->getOne();
+//            $tmp->dvd = null;
+//            $tmp->bluray = null;
+//            $response[] = $tmp;
+//            // カウントを1に設定
+//            $this->totalCount = 1;
+//        } else {
             foreach ($results as $result) {
                 $tmp = $this->product->setConditionRentalGroupNewestCccProductId(
                     $result->work_id, $result->ccc_family_cd, $result->sale_start_date
@@ -269,7 +270,7 @@ class ProductRepository
             if (empty($response)) {
                 return null;
             }
-        }
+//        }
 
         //
         if (count($results) + $this->offset < $this->totalCount) {
