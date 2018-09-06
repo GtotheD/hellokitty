@@ -4,9 +4,54 @@
  *     path="/version",
  *     description="バージョンを管理する為の情報を取得する",
  *     produces={"application/json"},
- *     tags={"Version"},
+ *     tags={"Utility"},
  *     security={{"api_key":{}}},
- *     @SWG\Response(response=200, description="Success"),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="取得成功",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="appinfo",
+ *                  type="object",
+ *                  description="処理結果",
+ *                  @SWG\Property(
+ *                      property="latestVersion",
+ *                      type="string",
+ *                      description="最新バージョン",
+ *                  ),
+ *                  @SWG\Property(
+ *                      property="lowestVersion",
+ *                      type="string",
+ *                      description="アップデートなしでサポートする最低バージョン",
+ *                  ),
+ *                  @SWG\Property(
+ *                      property="alert",
+ *                      type="string",
+ *                      description="更新必須の場合のアラート",
+ *                  ),
+ *                  @SWG\Property(
+ *                      property="nugde",
+ *                      type="string",
+ *                      description="アップデートを促すメッセージ",
+ *                  ),
+ *                  @SWG\Property(
+ *                      property="infomation",
+ *                      type="string",
+ *                      description="アプリ新機能紹介ページ。アプリの状態でのメッセージに関しては、API側でアプリバージョン番号を受けて切り替えるか、アプリ内ので固定メッセージを出し分ける。",
+ *                  ),
+ *              ),
+ *              @SWG\Property(
+ *                  property="update",
+ *                  type="string",
+ *                  description="更新日時",
+ *              ),
+ *              @SWG\Property(
+ *                  property="version",
+ *                  type="string",
+ *                  description="API出力時にバージョン制御のシリアル値",
+ *              )
+ *          )
+ *      ),
  *     @SWG\Response(response=500, description="Server error")
  * )
  */
@@ -15,7 +60,7 @@
  *     path="/structure/dvd/rental",
  *     description="DVD-レンタルのTOP構造を返却する",
  *     produces={"application/json"},
- *     tags={"Structure"},
+ *     tags={"Top"},
  *     security={{"api_key":{}}},
  *     @SWG\Parameter(
  *       name="limit",
@@ -41,7 +86,7 @@
  *     path="/structure/dvd/sell",
  *     description="DVD-セルのTOP構造を返却する",
  *     produces={"application/json"},
- *     tags={"Structure"},
+ *     tags={"Top"},
  *     security={{"api_key":{}}},
  *     @SWG\Parameter(
  *       name="limit",
@@ -67,7 +112,7 @@
  *     path="/structure/book/rental",
  *     description="DVD-セルのTOP構造を返却する",
  *     produces={"application/json"},
- *     tags={"Structure"},
+ *     tags={"Top"},
  *     security={{"api_key":{}}},
  *     @SWG\Parameter(
  *       name="limit",
@@ -93,7 +138,7 @@
  *     path="/structure/book/sell",
  *     description="DVD-セルのTOP構造を返却する",
  *     produces={"application/json"},
- *     tags={"Structure"},
+ *     tags={"Top"},
  *     security={{"api_key":{}}},
  *     @SWG\Parameter(
  *       name="limit",
@@ -119,7 +164,7 @@
  *     path="/structure/cd/rental",
  *     description="DVD-セルのTOP構造を返却する",
  *     produces={"application/json"},
- *     tags={"Structure"},
+ *     tags={"Top"},
  *     security={{"api_key":{}}},
  *     @SWG\Parameter(
  *       name="limit",
@@ -145,7 +190,7 @@
  *     path="/structure/cd/sell",
  *     description="DVD-セルのTOP構造を返却する",
  *     produces={"application/json"},
- *     tags={"Structure"},
+ *     tags={"Top"},
  *     security={{"api_key":{}}},
  *     @SWG\Parameter(
  *       name="limit",
@@ -171,7 +216,7 @@
  *     path="/structure/game/sell",
  *     description="DVD-セルのTOP構造を返却する",
  *     produces={"application/json"},
- *     tags={"Structure"},
+ *     tags={"Top"},
  *     security={{"api_key":{}}},
  *     @SWG\Parameter(
  *       name="limit",
@@ -199,7 +244,7 @@
  *     path="/fixed/banner",
  *     description="固定のバナー枠内情報の返却",
  *     produces={"application/json"},
- *     tags={"Fixed"},
+ *     tags={"Top"},
  *     security={{"api_key":{}}},
  *     @SWG\Parameter(
  *       name="isLoggedIn",
@@ -233,7 +278,7 @@
  *     path="/section/dvd/rental/{sectionName}",
  *     description="DVD-レンタルのリスト情報を返却する",
  *     produces={"application/json"},
- *     tags={"Section"},
+ *     tags={"Top"},
  *     security={{"api_key":{}}},
  *     @SWG\Parameter(
  *       name="sectionName",
@@ -267,7 +312,7 @@
  *     path="/section/dvd/sell/{sectionName}",
  *     description="DVD-セルのリスト情報を返却する",
  *     produces={"application/json"},
- *     tags={"Section"},
+ *     tags={"Top"},
  *     security={{"api_key":{}}},
  *     @SWG\Parameter(
  *       name="sectionName",
@@ -301,7 +346,7 @@
  *     path="/section/book/rental/{sectionName}",
  *     description="DVD-セルのリスト情報を返却する",
  *     produces={"application/json"},
- *     tags={"Section"},
+ *     tags={"Top"},
  *     security={{"api_key":{}}},
  *     @SWG\Parameter(
  *       name="sectionName",
@@ -335,7 +380,7 @@
  *     path="/section/book/sell/{sectionName}",
  *     description="DVD-セルのTOP構造を返却する",
  *     produces={"application/json"},
- *     tags={"Section"},
+ *     tags={"Top"},
  *     security={{"api_key":{}}},
  *     @SWG\Parameter(
  *       name="sectionName",
@@ -369,7 +414,7 @@
  *     path="/section/cd/rental/{sectionName}",
  *     description="DVD-セルのTOP構造を返却する",
  *     produces={"application/json"},
- *     tags={"Section"},
+ *     tags={"Top"},
  *     security={{"api_key":{}}},
  *     @SWG\Parameter(
  *       name="sectionName",
@@ -403,7 +448,7 @@
  *     path="/section/cd/sell/{sectionName}",
  *     description="DVD-セルのTOP構造を返却する",
  *     produces={"application/json"},
- *     tags={"Section"},
+ *     tags={"Top"},
  *     security={{"api_key":{}}},
  *     @SWG\Parameter(
  *       name="sectionName",
@@ -437,7 +482,7 @@
  *     path="/section/game/sell/{sectionName}",
  *     description="DVD-セルのTOP構造を返却する",
  *     produces={"application/json"},
- *     tags={"Section"},
+ *     tags={"Top"},
  *     security={{"api_key":{}}},
  *     @SWG\Parameter(
  *       name="sectionName",
@@ -471,7 +516,7 @@
  *     path="/section/banner/{sectionName}",
  *     description="DVD-セルのTOP構造を返却する",
  *     produces={"application/json"},
- *     tags={"Section"},
+ *     tags={"Top"},
  *     security={{"api_key":{}}},
  *     @SWG\Parameter(
  *       name="sectionName",
@@ -508,9 +553,9 @@
 /**
  * @SWG\Get(
  *     path="/section/ranking/{codeType}/{code}/{period}",
- *     description="DVD-セルのTOP構造を返却する",
+ *     description="DVD-セルのTOP構造を返却する（hasNextは最終レスポンスがlimit以下だった場合にfalseとする）",
  *     produces={"application/json"},
- *     tags={"Section"},
+ *     tags={"Top"},
  *     security={{"api_key":{}}},
  *     @SWG\Parameter(
  *       name="codeType",
@@ -538,20 +583,36 @@
  *       description="出演者・アーティスト・著者・機種等を表示/非表示を切り替える為のフラグ。trueにすると非表示になる。",
  *       type="boolean"
  *     ),
- *     @SWG\Response(response=200, description="Success"),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          ref="$/responses/ListJson",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="aggregationPeriod",
+ *                  type="string",
+ *                  description="集計期間（デイリー：yyyy/mm/dd集計 週間：yyyy/mm/dd～yyyy/mm/dd集計 月間：yyyy/mm集計）",
+ *              ),
+ *              @SWG\Property(
+ *                  property="rows",
+ *                  type="array",
+ *                  @SWG\Items(ref="#/definitions/WorkNarrowRelease"),
+ *                  description="作品情報",
+ *              ),
+ *          )
+ *      ),
  *     @SWG\Response(response=204, description="Contents not found"),
  *     @SWG\Response(response=401, description="Auth error"),
  *     @SWG\Response(response=404, description="Page not found"),
  *     @SWG\Response(response=500, description="Server error")
  * )
  */
-
 /**
  * @SWG\Get(
  *     path="/section/release/manual/{tapCategoryId}/{releaseDateTo}",
  *     description="手動運用のリリースカレンダー情報を返却する（TAP API経由）",
  *     produces={"application/json"},
- *     tags={"Section"},
+ *     tags={"Top"},
  *     security={{"api_key":{}}},
  *     @SWG\Parameter(
  *       name="tapCategoryId",
@@ -584,7 +645,7 @@
  *     path="/section/release/auto/{largeGenreCd}/{storeProductItemCd}",
  *     description="自動取得のリリースカレンダー情報を返却する（TWSのサーチを利用）",
  *     produces={"application/json"},
- *     tags={"Section"},
+ *     tags={"Top"},
  *     security={{"api_key":{}}},
  *     @SWG\Parameter(
  *       name="largeGenreCd",
@@ -613,3 +674,1296 @@
  *     @SWG\Response(response=500, description="Server error")
  * )
  */
+/**
+ * @SWG\Get(
+ *     path="/section/release/himo/{periodType}/{tapGenreId}",
+ *     description="自動取得のリリースカレンダー情報を返却する（HiMOを利用）",
+ *     produces={"application/json"},
+ *     tags={"Top"},
+ *     security={{"api_key":{}}},
+ *     @SWG\Parameter(
+ *       name="periodType",
+ *       in="path",
+ *       description="リリカレ表示種別（newest|lastest）",
+ *       required=true,
+ *       type="string"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="tapGenreId",
+ *       in="path",
+ *       description="リリカレ用ジャンルID（newest：1|9|17|22|28|39|51、lastest：11|12|13|24|25）",
+ *       required=true,
+ *       type="string"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="supplementVisible",
+ *       in="query",
+ *       description="出演者・アーティスト・著者・機種等を表示/非表示を切り替える為のフラグ。trueにすると非表示になる。",
+ *       type="boolean"
+ *     ),
+ *     @SWG\Response(response=200, description="Success"),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+/**
+ * @SWG\Get(
+ *     path="/work/{workId}",
+ *     description="作品基本情報を取得する",
+ *     tags={"Work"},
+ *     produces={"application/json"},
+ *     security={{"api_key":{}}},
+ *     @SWG\Parameter(ref="#/parameters/workId"),
+ *     @SWG\Parameter(
+ *       name="saleType",
+ *       in="query",
+ *       description="販売タイプ（sell, rental） ※デフォルトはrental",
+ *       type="string"
+ *     ),
+ *     @SWG\Parameter(ref="#/parameters/ageLimitCheck"),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="data",
+ *                  type="object",
+ *                  ref="#/definitions/Work",
+ *                  description="作品情報",
+ *              ),
+ *          )
+ *      ),
+ *     @SWG\Response(
+ *          response=202,
+ *          description="Age Limit Error Response",
+ *          @SWG\Property(
+ *              property="rows",
+ *              type="object",
+ *              @SWG\Property(property="status",type="string",description="ステータスコード（error）"),
+ *              @SWG\Property(property="message",type="string",description="ステータスコードの内容"),
+ *              description="エラー情報",
+ *          ),
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+/**
+ * @SWG\Post(
+ *     path="/work/bulk",
+ *     description="作品詳細一括取得
+ * 最大取得数30件まで",
+ *     produces={"application/json"},
+ *     tags={"Work"},
+ *     security={{"api_key":{}}},
+ *     @SWG\Parameter(
+ *       name="body",
+ *       in="body",
+ *       description="",
+ *       type="array",
+ *       @SWG\Schema(
+ *         @SWG\Property(
+ *             property="saleType",
+ *             type="string",
+ *             description="セルレンタル区分（sell or rental）",
+ *         ),
+ *         @SWG\Property(
+ *             property="ageLimitCheck",
+ *             type="boolean",
+ *             description="既に年齢認証済みかどうか。認証済み=true、未認証=false",
+ *         ),
+ *         @SWG\Property(
+ *             property="ids",
+ *             type="array",
+ *             description="「WorkId」もしくは「urlCd」",
+ *             @SWG\Items(
+ *                  type="string",
+ *             ),
+ *         )
+ *       )
+ *     ),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          ref="$/responses/ListJson",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="rows",
+ *                  type="array",
+ *                  @SWG\Items(ref="#/definitions/WorkNarrowBulk"),
+ *                  description="作品情報",
+ *              ),
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+/**
+ * @SWG\Get(
+ *     path="/work/{workId}/products",
+ *     description="商品一覧情報取得",
+ *     tags={"Work"},
+ *     produces={"application/json"},
+ *     security={{"api_key":{}}},
+ *     @SWG\Parameter(ref="#/parameters/workId"),
+ *     @SWG\Parameter(ref="#/parameters/limit"),
+ *     @SWG\Parameter(ref="#/parameters/offset"),
+ *     @SWG\Parameter(ref="#/parameters/saleType"),
+ *     @SWG\Parameter(ref="#/parameters/sort"),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          ref="$/responses/ListJson",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="rows",
+ *                  type="array",
+ *                  @SWG\Items(ref="#/definitions/ProductNarrow"),
+ *                  description="作品情報",
+ *              ),
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+/**
+ * @SWG\Get(
+ *     path="/work/{workId}/products/rental",
+ *     description="商品一覧情報取得（DVDレンタル時のグルーピング（問い合わせ時のLimit数がおかしくなる為にグルーピングが必要））",
+ *     tags={"Work"},
+ *     security={{"api_key":{}}},
+ *     produces={"application/json"},
+ *     @SWG\Parameter(ref="#/parameters/workId"),
+ *     @SWG\Parameter(ref="#/parameters/limit"),
+ *     @SWG\Parameter(ref="#/parameters/offset"),
+ *     @SWG\Parameter(ref="#/parameters/sort"),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          ref="$/responses/ListJson",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="rows",
+ *                  type="array",
+ *                  @SWG\Items(ref="#/definitions/ProductGroup"),
+ *                  description="作品情報",
+ *              ),
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+/**
+ * @SWG\Get(
+ *     path="/work/{workId}/products/has",
+ *     description="Himo作品ID作品検索",
+ *     tags={"Work"},
+ *     security={{"api_key":{}}},
+ *     produces={"application/json"},
+ *     @SWG\Parameter(ref="#/parameters/ageLimitCheck"),
+ *     @SWG\Parameter(ref="#/parameters/workId"),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="data",
+ *                  type="object",
+ *                  ref="$/definitions/WorkNarrowSearch",
+ *                  description="作品情報",
+ *              ),
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+/**
+ * @SWG\Get(
+ *     path="/work/{workId}/people",
+ *     description="キャストスタッフ一覧取得",
+ *     tags={"Work"},
+ *     security={{"api_key":{}}},
+ *     produces={"application/json"},
+ *     @SWG\Parameter(ref="#/parameters/workId"),
+ *     @SWG\Parameter(ref="#/parameters/limit"),
+ *     @SWG\Parameter(ref="#/parameters/offset"),
+ *     @SWG\Parameter(ref="#/parameters/saleType"),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          ref="$/responses/ListJson",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="rows",
+ *                  type="array",
+ *                  @SWG\Items(
+ *                       @SWG\Property(property="personId",type="string"),
+ *                       @SWG\Property(property="personName",type="string"),
+ *                       @SWG\Property(property="roleId",type="string"),
+ *                       @SWG\Property(property="roleName",type="string"),
+ *                  ),
+ *              ),
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+/**
+ * @SWG\Get(
+ *     path="/work/{workId}/series",
+ *     description="シリーズ作品取得",
+ *     tags={"Work"},
+ *     security={{"api_key":{}}},
+ *     produces={"application/json"},
+ *     @SWG\Parameter(ref="#/parameters/workId"),
+ *     @SWG\Parameter(ref="#/parameters/limit"),
+ *     @SWG\Parameter(ref="#/parameters/offset"),
+ *     @SWG\Parameter(ref="#/parameters/saleType"),
+ *     @SWG\Parameter(ref="#/parameters/ageLimitCheck"),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          ref="$/responses/ListJson",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="rows",
+ *                  type="array",
+ *                  @SWG\Items(ref="#/definitions/WorkNarrow"),
+ *                  description="作品情報",
+ *              ),
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+/**
+ * @SWG\Get(
+ *     path="/work/{workId}/review/filmarks",
+ *     description="Filmarksレビュー取得",
+ *     tags={"Work"},
+ *     security={{"api_key":{}}},
+ *     produces={"application/json"},
+ *     @SWG\Parameter(ref="#/parameters/workId"),
+ *     @SWG\Parameter(ref="#/parameters/limit"),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          ref="$/responses/ReviewFormat",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="rows",
+ *                  type="array",
+ *                  description="レビュー",
+ *                  @SWG\Items(ref="#/definitions/Review"),
+ *              ),
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+/**
+ * @SWG\Get(
+ *     path="/work/{workId}/review/discas",
+ *     description="DISCASレビュー取得",
+ *     tags={"Work"},
+ *     security={{"api_key":{}}},
+ *     produces={"application/json"},
+ *     @SWG\Parameter(ref="#/parameters/workId"),
+ *     @SWG\Parameter(ref="#/parameters/limit"),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          ref="$/responses/ReviewFormat",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="rows",
+ *                  type="array",
+ *                  description="レビュー",
+ *                  @SWG\Items(ref="#/definitions/Review"),
+ *              ),
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+/**
+ * @SWG\Get(
+ *     path="/work/{workId}/review/tol",
+ *     description="TOLレビュー取得",
+ *     tags={"Work"},
+ *     security={{"api_key":{}}},
+ *     produces={"application/json"},
+ *     @SWG\Parameter(ref="#/parameters/workId"),
+ *     @SWG\Parameter(ref="#/parameters/limit"),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          ref="$/responses/ReviewFormat",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="rows",
+ *                  type="array",
+ *                  description="レビュー",
+ *                  @SWG\Items(ref="#/definitions/Review"),
+ *              ),
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+/**
+ * @SWG\Get(
+ *     path="/work/{workId}/relation/works",
+ *     description="関連作品取得",
+ *     tags={"Work"},
+ *     security={{"api_key":{}}},
+ *     produces={"application/json"},
+ *     @SWG\Parameter(ref="#/parameters/workId"),
+ *     @SWG\Parameter(ref="#/parameters/limit"),
+ *     @SWG\Parameter(ref="#/parameters/offset"),
+ *     @SWG\Parameter(ref="#/parameters/ageLimitCheck"),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          ref="$/responses/ListJson",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="rows",
+ *                  type="array",
+ *                  @SWG\Items(ref="#/definitions/WorkNarrow"),
+ *                  description="作品情報",
+ *              ),
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+/**
+ * @SWG\Get(
+ *     path="/work/{workId}/relation/pics",
+ *     description="関連画像取得",
+ *     tags={"Work"},
+ *     security={{"api_key":{}}},
+ *     produces={"application/json"},
+ *     @SWG\Parameter(ref="#/parameters/workId"),
+ *     @SWG\Parameter(ref="#/parameters/limit"),
+ *     @SWG\Parameter(ref="#/parameters/offset"),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          ref="$/responses/ListJson",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="rows",
+ *                  type="array",
+ *                  @SWG\Items(
+ *                       type="string",
+ *                  ),
+ *                  description="作品情報",
+ *              ),
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+/**
+ * @SWG\Get(
+ *     path="/work/{workId}/relation/artist",
+ *     description="関連アーティスト一覧取得",
+ *     tags={"Work"},
+ *     security={{"api_key":{}}},
+ *     produces={"application/json"},
+ *     @SWG\Parameter(ref="#/parameters/workId"),
+ *     @SWG\Parameter(ref="#/parameters/limit"),
+ *     @SWG\Parameter(ref="#/parameters/offset"),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          ref="$/responses/ListJson",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="rows",
+ *                  type="array",
+ *                  @SWG\Items(
+ *                       @SWG\Property(property="personId",type="string"),
+ *                       @SWG\Property(property="personName",type="string"),
+ *                  ),
+ *                  description="アーティスト情報",
+ *              ),
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+/**
+ * @SWG\Get(
+ *     path="/people/{personId}",
+ *     description="人物関連作品取得",
+ *     tags={"People"},
+ *     security={{"api_key":{}}},
+ *     produces={"application/json"},
+ *     @SWG\Parameter(ref="#/parameters/personId"),
+ *     @SWG\Parameter(ref="#/parameters/limit"),
+ *     @SWG\Parameter(ref="#/parameters/offset"),
+ *     @SWG\Parameter(ref="#/parameters/saleType"),
+ *     @SWG\Parameter(ref="#/parameters/itemType"),
+ *     @SWG\Parameter(ref="#/parameters/sort"),
+ *     @SWG\Parameter(ref="#/parameters/ageLimitCheck"),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          ref="$/responses/ListJson",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="rows",
+ *                  type="array",
+ *                  @SWG\Items(ref="#/definitions/WorkNarrow"),
+ *                  description="作品情報",
+ *              ),
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+/**
+ * @SWG\Get(
+ *     path="/genre/{genreId}",
+ *     description="ジャンルからの作品一覧取得",
+ *     tags={"Genre"},
+ *     security={{"api_key":{}}},
+ *     produces={"application/json"},
+ *     @SWG\Parameter(ref="#/parameters/genreId"),
+ *     @SWG\Parameter(ref="#/parameters/limit"),
+ *     @SWG\Parameter(ref="#/parameters/offset"),
+ *     @SWG\Parameter(ref="#/parameters/saleType"),
+ *     @SWG\Parameter(ref="#/parameters/ageLimitCheck"),
+ *     @SWG\Parameter(
+ *       name="sort",
+ *       in="path",
+ *       description="並び順（お薦め(デフォルト)、新しい順 = new、 古い順 = old）",
+ *       type="string"
+ *     ),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          ref="$/responses/ListJson",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="rows",
+ *                  type="array",
+ *                  @SWG\Items(ref="#/definitions/WorkNarrow"),
+ *                  description="作品情報",
+ *              ),
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+/**
+ * @SWG\Get(
+ *     path="/work/{workId}/recommend/other",
+ *     description="お薦め作品一覧取得",
+ *     tags={"Work"},
+ *     security={{"api_key":{}}},
+ *     produces={"application/json"},
+ *     @SWG\Parameter(ref="#/parameters/workId"),
+ *     @SWG\Parameter(ref="#/parameters/limit"),
+ *     @SWG\Parameter(ref="#/parameters/offset"),
+ *     @SWG\Parameter(ref="#/parameters/saleType"),
+ *     @SWG\Parameter(ref="#/parameters/ageLimitCheck"),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          ref="$/responses/ListJson",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="rows",
+ *                  type="array",
+ *                  @SWG\Items(ref="#/definitions/WorkNarrow"),
+ *                  description="作品情報",
+ *              ),
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+/**
+ * @SWG\Get(
+ *     path="/work/{workId}/recommend/author",
+ *     description="著者作品一覧取得",
+ *     tags={"Work"},
+ *     security={{"api_key":{}}},
+ *     produces={"application/json"},
+ *     @SWG\Parameter(ref="#/parameters/workId"),
+ *     @SWG\Parameter(ref="#/parameters/limit"),
+ *     @SWG\Parameter(ref="#/parameters/offset"),
+ *     @SWG\Parameter(ref="#/parameters/sort"),
+ *     @SWG\Parameter(ref="#/parameters/ageLimitCheck"),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          ref="$/responses/ListJson",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="rows",
+ *                  type="array",
+ *                  @SWG\Items(ref="#/definitions/WorkNarrow"),
+ *                  description="作品情報",
+ *              ),
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+/**
+ * @SWG\Get(
+ *     path="/work/{workId}/recommend/artist",
+ *     description="アーティスト作品一覧取得",
+ *     tags={"Work"},
+ *     security={{"api_key":{}}},
+ *     produces={"application/json"},
+ *     @SWG\Parameter(ref="#/parameters/workId"),
+ *     @SWG\Parameter(ref="#/parameters/limit"),
+ *     @SWG\Parameter(ref="#/parameters/offset"),
+ *     @SWG\Parameter(ref="#/parameters/sort"),
+ *     @SWG\Parameter(ref="#/parameters/ageLimitCheck"),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          ref="$/responses/ListJson",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="rows",
+ *                  type="array",
+ *                  @SWG\Items(ref="#/definitions/WorkNarrow"),
+ *                  description="作品情報",
+ *              ),
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+/**
+ * @SWG\Get(
+ *     path="/convert/work/{idType}/{id}",
+ *     description="HimoID取得 (CCC商品IDと商品IDから作品ID取得を取得する)",
+ *     tags={"Work"},
+ *     security={{"api_key":{}}},
+ *     produces={"application/json"},
+ *     @SWG\Parameter(
+ *       name="idType",
+ *       in="path",
+ *       description="IDタイプ=Himo作品ID = workId、CCC作品ID= cccWorkCd、JAN= jan、レンタル商品コード= rentalProductId、URLCD= urlCd",
+ *       required=true,
+ *       type="string"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="id",
+ *       in="path",
+ *       description="各種ID",
+ *       type="string"
+ *     ),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="workId",
+ *                  type="string",
+ *                  description="作品ID",
+ *              ),
+ *              @SWG\Property(
+ *                  property="itemType",
+ *                  type="string",
+ *                  description="アイテム種別　（cd, dvd, book, game）",
+ *              ),
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+/**
+ * @SWG\Get(
+ *     path="/product/{productUniqueId}",
+ *     description="商品詳細情報取得",
+ *     tags={"Product"},
+ *     security={{"api_key":{}}},
+ *     produces={"application/json"},
+ *     @SWG\Parameter(
+ *       name="productUniqueId",
+ *       in="path",
+ *       description="商品ID(product.id でproduct.product_idではない)",
+ *       type="string",
+ *       required=true
+ *     ),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="data",
+ *                  type="object",
+ *                  ref="#/definitions/Product",
+ *                  description="商品詳細情報",
+ *              ),
+ *          )
+ *     ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+/**
+ * @SWG\Get(
+ *     path="/product/stock/{storeCd}/{productKey}",
+ *     description="在庫確認",
+ *     tags={"Product"},
+ *     security={{"api_key":{}}},
+ *     produces={"application/json"},
+ *     @SWG\Parameter(
+ *       name="storeCd",
+ *       in="path",
+ *       description="店舗コード",
+ *       type="string"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="productKey",
+ *       in="path",
+ *       description="レンタルの場合はレンタル商品コード、セルの場合はJANコード",
+ *       type="string"
+ *     ),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="stockStatus",
+ *                  type="integer",
+ *                  description="在庫ステータス（0=取り扱いなし、1=在庫なし、2=在庫あり）",
+ *              ),
+ *              @SWG\Property(
+ *                  property="message",
+ *                  type="string",
+ *                  description="メッセージ",
+ *              ),
+ *              @SWG\Property(
+ *                  property="rentalPossibleDay",
+ *                  type="string",
+ *                  description="返却予定日（yyyy-mm-dd）",
+ *              ),
+ *              @SWG\Property(
+ *                  property="lastUpdate",
+ *                  type="string",
+ *                  description="最終更新日時（yyyy-mm-dd hh:ii:ss）",
+ *              ),
+ *          )
+ *     ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+/**
+ * @SWG\Get(
+ *     path="/search/{keyword}",
+ *     description="キーワード検索",
+ *     tags={"Search"},
+ *     security={{"api_key":{}}},
+ *     produces={"application/json"},
+ *     @SWG\Parameter(
+ *       name="keyword",
+ *       in="path",
+ *       description="キーワード",
+ *       required=true,
+ *       type="string"
+ *     ),
+ *     @SWG\Parameter(ref="#/parameters/limit"),
+ *     @SWG\Parameter(ref="#/parameters/offset"),
+ *     @SWG\Parameter(
+ *       name="sort",
+ *       in="query",
+ *       description="並び順（お薦め(デフォルト)、新しい順 = new、 古い順 = old）",
+ *       type="string"
+ *     ),
+ *     @SWG\Parameter(ref="#/parameters/itemType"),
+ *     @SWG\Parameter(
+ *       name="periodType",
+ *       in="query",
+ *       description="期間指定（rental3, rental12, sell3, sell12）※未指定でALL",
+ *       type="string"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="adultFlg",
+ *       in="query",
+ *       description="アダルト取得フラグ（デフォルト=false）",
+ *       type="boolean"
+ *     ),
+ *     @SWG\Parameter(ref="#/parameters/ageLimitCheck"),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          ref="$/responses/ListJson",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="counts",
+ *                  type="object",
+ *                  ref="#/definitions/Count",
+ *                  description="カウント関連",
+ *              ),
+ *              @SWG\Property(
+ *                  property="rows",
+ *                  type="array",
+ *                  @SWG\Items(ref="#/definitions/WorkNarrowSearch"),
+ *                  description="作品情報",
+ *              ),
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+/**
+ * @SWG\Get(
+ *     path="/search/suggest/{keyword}",
+ *     description="キーワードサジェスト",
+ *     tags={"Search"},
+ *     security={{"api_key":{}}},
+ *     produces={"application/json"},
+ *     @SWG\Parameter(
+ *       name="keyword",
+ *       in="path",
+ *       description="",
+ *       type="string"
+ *     ),
+ *     @SWG\Parameter(ref="#/parameters/limit"),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          ref="$/responses/ListJson",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="rows",
+ *                  type="array",
+ *                  @SWG\Items(
+ *                       type="string",
+ *                  ),
+ *                  description="作品情報",
+ *              ),
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+
+/**
+ * @SWG\Get(
+ *     path="/release/{month}/{genreId}",
+ *     description="リリース情報（商品名を出す為、対象の商品を特定時に、ジャンルIDからセルレンタル区分を判別し特定する）",
+ *     tags={"Release"},
+ *     security={{"api_key":{}}},
+ *     produces={"application/json"},
+ *     @SWG\Parameter(
+ *       name="month",
+ *       in="path",
+ *       description="月（前月=last、今月=this、来月=next）",
+ *       type="string"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="genreId",
+ *       in="path",
+ *       description="ジャンルID（このAPI独自のID）",
+ *       type="string"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="onlyReleased",
+ *       in="query",
+ *       description="リリース済みのみ",
+ *       type="boolean"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="cdFormatType",
+ *       in="path",
+ *       description="CDのアルバム種別（single, album）",
+ *       type="string"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="sort",
+ *       in="query",
+ *       description="並び順（お薦め(デフォルト)、新しい順 = new、 古い順 = old）",
+ *       type="string"
+ *     ),
+ *     @SWG\Parameter(ref="#/parameters/limit"),
+ *     @SWG\Parameter(ref="#/parameters/offset"),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          ref="$/responses/ListJson",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="baseMonth",
+ *                  type="string",
+ *                  description="基準月（yyyy-m 2018-09）",
+ *              ),
+ *              @SWG\Property(
+ *                  property="rows",
+ *                  type="array",
+ *                  @SWG\Items(ref="#/definitions/WorkNarrowRelease"),
+ *                  description="作品情報",
+ *              ),
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+/**
+ * @SWG\Get(
+ *     path="/ranking/{codeType}/{code}/{period}",
+ *     description="DVD-セルのTOP構造を返却する（hasNextは最終レスポンスがlimit以下だった場合にfalseとする）",
+ *     produces={"application/json"},
+ *     tags={"ranking"},
+ *     security={{"api_key":{}}},
+ *     @SWG\Parameter(
+ *       name="codeType",
+ *       in="path",
+ *       description="コード種別(himo|agg)：Himoジャンルコードもしくは、ランキング集約コード",
+ *       required=true,
+ *       type="string"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="code",
+ *       in="path",
+ *       description="HimoジャンルID（例：EXT0000005F2）もしくは、ランキング集約コード（例：M086　月間コミックレンタル）",
+ *       required=true,
+ *       type="string"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="period",
+ *       in="path",
+ *       description="集計期間：実行月からn月前の月頭から月終わりまで",
+ *       type="string"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="supplementVisible",
+ *       in="query",
+ *       description="出演者・アーティスト・著者・機種等を表示/非表示を切り替える為のフラグ。trueにすると非表示になる。",
+ *       type="boolean"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="page",
+ *       in="query",
+ *       description="ページ番号",
+ *       type="string"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="limit",
+ *       in="query",
+ *       description="１ページ毎の取得件数",
+ *       type="string"
+ *     ),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          ref="$/responses/ListJson",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="aggregationPeriod",
+ *                  type="string",
+ *                  description="集計期間（デイリー：yyyy/mm/dd集計 週間：yyyy/mm/dd～yyyy/mm/dd集計 月間：yyyy/mm集計）",
+ *              ),
+ *              @SWG\Property(
+ *                  property="rows",
+ *                  type="array",
+ *                  @SWG\Items(ref="#/definitions/WorkNarrowRelease"),
+ *                  description="作品情報",
+ *              ),
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+/**
+ * @SWG\Get(
+ *     path="/release/has/recommend/",
+ *     description="TSUTAYA一押しの有無一覧",
+ *     produces={"application/json"},
+ *     tags={"Release"},
+ *     security={{"api_key":{}}},
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="data",
+ *                  type="object",
+ *              @SWG\Property(
+ *                  property="last",
+ *                  type="array",
+ *                  @SWG\Items(
+ *                      @SWG\Property(
+ *                          property="genreId",
+ *                          type="string",
+ *                          description="独自のジャンルID"
+ *                      ),
+ *                      @SWG\Property(
+ *                          property="exist",
+ *                          type="string",
+ *                          description="データの有無"
+ *                      ),
+ *                  ),
+ *              ),
+ *              @SWG\Property(
+ *                  property="this",
+ *                  type="array",
+ *                  @SWG\Items(
+ *                      @SWG\Property(
+ *                          property="genreId",
+ *                          type="string",
+ *                          description="独自のジャンルID"
+ *                      ),
+ *                      @SWG\Property(
+ *                          property="exist",
+ *                          type="string",
+ *                          description="データの有無"
+ *                      ),
+ *                  ),
+ *              ),
+ *              @SWG\Property(
+ *                  property="next",
+ *                  type="array",
+ *                  @SWG\Items(
+ *                      @SWG\Property(
+ *                          property="genreId",
+ *                          type="string",
+ *                          description="独自のジャンルID"
+ *                      ),
+ *                      @SWG\Property(
+ *                          property="exist",
+ *                          type="string",
+ *                          description="データの有無"
+ *                      ),
+ *                  ),
+ *              ),
+ *              ),
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+/**
+ * @SWG\Post(
+ *     path="/favorite/list",
+ *     description="お気に入り一覧取得",
+ *     produces={"application/json"},
+ *     tags={"Favorite"},
+ *     security={{"api_key":{}}},
+ *     @SWG\Parameter(
+ *       name="sort",
+ *       in="query",
+ *       description="並び順 new(新しい順) ※デフォルト / old(古い順）",
+ *       type="string"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="body",
+ *       in="body",
+ *       description="",
+ *       type="array",
+ *       @SWG\Schema(
+ *         @SWG\Property(
+ *             property="tlsc",
+ *             type="string",
+ *             description="ユーザー識別番号(TLSC)",
+ *         ),
+ *         @SWG\Property(
+ *             property="version",
+ *             type="string",
+ *             description="お気に入りデータのバージョン",
+ *         ),
+ *       )
+ *     ),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          ref="$/responses/ListJson",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="version",
+ *                  type="string",
+ *                  description="取得した際のバージョン",
+ *              ),
+ *              @SWG\Property(
+ *                  property="isUpdate",
+ *                  type="boolean",
+ *                  description="更新フラグ",
+ *              ),
+ *              @SWG\Property(
+ *                  property="rows",
+ *                  type="array",
+ *                  @SWG\Items(ref="#/definitions/favorite"),
+ *                  description="作品情報",
+ *              ),
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+
+/**
+ * @SWG\Post(
+ *     path="/favorite/add",
+ *     description="お気に入り追加
+ *  件数オーバー時はエラーを返却",
+ *     produces={"application/json"},
+ *     tags={"Favorite"},
+ *     security={{"api_key":{}}},
+ *     @SWG\Parameter(
+ *       name="body",
+ *       in="body",
+ *       description="",
+ *       type="array",
+ *       @SWG\Schema(
+ *         @SWG\Property(
+ *             property="tlsc",
+ *             type="string",
+ *             description="ユーザー識別番号(TLSC)",
+ *         ),
+ *         @SWG\Property(
+ *             property="id",
+ *             type="string",
+ *             description="「WorkId」もしくは「urlCd」",
+ *         )
+ *       )
+ *     ),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          @SWG\Schema(
+ *              ref="#/definitions/favorite_status",
+ *          )
+ *      ),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+/**
+ * @SWG\Post(
+ *     path="/favorite/add/merge",
+ *     description="お気に入り追加マージモード
+ *  件数をオーバー時は古いものを削除してマージする",
+ *     produces={"application/json"},
+ *     tags={"Favorite"},
+ *     security={{"api_key":{}}},
+ *     @SWG\Parameter(
+ *       name="body",
+ *       in="body",
+ *       description="",
+ *       type="array",
+ *       @SWG\Schema(
+ *         @SWG\Property(
+ *             property="tlsc",
+ *             type="string",
+ *             description="ユーザー識別番号(TLSC)",
+ *         ),
+ *         @SWG\Property(
+ *             property="ids",
+ *             type="array",
+ *             description="「WorkId」もしくは「urlCd」",
+ *             @SWG\Items(
+ *               @SWG\Property(property="id",type="string"),
+ *               @SWG\Property(property="appCreatedAt",type="string")
+ *             ),
+ *         )
+ *       )
+ *     ),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success（status=errorは返却なし。）",
+ *          @SWG\Schema(
+ *              ref="#/definitions/favorite_status",
+ *          )
+ *      ),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+/**
+ * @SWG\Post(
+ *     path="/favorite/delete",
+ *     description="お気に入り削除
+ * 削除対象がなくても200で返却。エラーコード返却はしない。",
+ *     produces={"application/json"},
+ *     tags={"Favorite"},
+ *     security={{"api_key":{}}},
+ *     @SWG\Parameter(
+ *       name="body",
+ *       in="body",
+ *       description="",
+ *       type="array",
+ *       @SWG\Schema(
+ *         @SWG\Property(
+ *             property="tlsc",
+ *             type="string",
+ *             description="ユーザー識別番号(TLSC)",
+ *         ),
+ *         @SWG\Property(
+ *             property="ids",
+ *             type="array",
+ *             description="IDリスト",
+ *             @SWG\Items(
+ *                type="string"
+ *            ),
+ *         )
+ *       )
+ *     ),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          @SWG\Schema(
+ *              ref="#/definitions/favorite_status",
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+
+/**
+ * @SWG\Post(
+ *     path="/coupon/list",
+ *     description="ワンタイムクーポン一覧取得",
+ *     produces={"application/json"},
+ *     tags={"Coupon"},
+ *     security={{"api_key":{}}},
+ *     @SWG\Parameter(
+ *       name="body",
+ *       in="body",
+ *       description="",
+ *       type="array",
+ *       @SWG\Schema(
+ *         @SWG\Property(
+ *             property="storeCds",
+ *             type="array",
+ *             description="店舗コード",
+ *             @SWG\Items(
+ *                  type="string",
+ *             ),
+ *         ),
+ *       )
+ *     ),
+ *     @SWG\Response(
+ *         response=200,
+ *         description="success",
+ *         @SWG\Schema(
+ *             @SWG\Property(
+ *                 property="requestDate",
+ *                 type="string",
+ *                 description="リクエスト日時",
+ *             ),
+ *             @SWG\Property(
+ *                 property="rows",
+ *                 type="array",
+ *                 description="店舗毎のクーポン情報",
+ *                 @SWG\Items(
+ *                     @SWG\Property(
+ *                         property="storeCd",
+ *                         type="string",
+ *                         description="店舗コード",
+ *                      ),
+ *                     @SWG\Property(
+ *                         property="coupons",
+ *                         type="array",
+ *                         description="クーポン情報",
+ *                         @SWG\Items(ref="#/definitions/coupon"),
+ *                     ),
+ *                 )
+ *             ),
+ *         )
+ *     ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=400, description="Bad Request"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+

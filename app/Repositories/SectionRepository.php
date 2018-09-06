@@ -2,13 +2,18 @@
 
 namespace App\Repositories;
 
+use Illuminate\Support\Carbon;
 use App\Model\Structure;
 use App\Repositories\TWSRepository;
 use App\Repositories\TAPRepository;
-use App\Repositories\SectionRepository;
 use App\Repositories\FixtureRepository;
+use App\Repositories\WorkRepository;
+use App\Repositories\ReleaseCalenderRepository;
 use App\Model\Section;
 use App\Model\Banner;
+use App\Model\TopReleaseNewest;
+use App\Model\TopReleaseLastest;
+use App\Model\Product;
 use App\Exceptions\NoContentsException;
 
 /**
@@ -28,6 +33,8 @@ class SectionRepository
     protected $page;
     protected $rows;
     protected $supplementVisible;
+
+    const PARAM_MOVIE_GENRE = [1,9,11,12,13];
 
     public function __construct()
     {
@@ -99,6 +106,14 @@ class SectionRepository
     }
 
     /**
+     * @param mixed $page
+     */
+    public function setPage($page)
+    {
+        $this->page = $page;
+    }
+
+    /**
      * @param mixed $supplementVisible
      */
     public function setSupplementVisible($supplementVisible)
@@ -123,7 +138,7 @@ class SectionRepository
         $goodsType = $structureRepository->convertGoodsTypeToId($goodsType);
         $saleType = $structureRepository->convertSaleTypeToId($saleType);
         $structureList = $structure->conditionFindFilenameWithDispTime($goodsType, $saleType, $sectionFileName)->getOne();
-        if(count($structureList) == 0) {
+        if (count($structureList) == 0) {
             $this->totalCount = 0;
         } else {
             $this->section->setConditionByTsStructureId($structureList->id);
@@ -142,7 +157,8 @@ class SectionRepository
                 'title' => $section->title,
                 'supplement' => $this->supplementVisible ? '' : $section->supplement, // アーティスト名、著者、機種等
                 'code' => $section->code,
-                'urlCode' => $section->url_code
+                'urlCd' => $section->url_code,
+                'workId' => $section->work_id
             ];
             if ($saleType == $structureRepository::RENTAL) {
                 $row['saleStartDate'] = $structureList->is_release_date == 1 ? $this->dateFormat($section->rental_start_date) : null;
@@ -166,6 +182,7 @@ class SectionRepository
             if (key_exists($genreCode, $genreMap)) {
                 $rankingConcentrationCd = $genreMap[$genreCode]['AggregationCode'];
             } else {
+                Log::error('Genre code is not found');
                 throw new NoContentsException();
             }
             $title = $genreMap[$genreCode]['HimoBigGenreName'] . ':' . $genreMap[$genreCode]['HimoMiddleGenreName'];
@@ -180,11 +197,21 @@ class SectionRepository
         }
         $tws = new TWSRepository;
         $tws->setLimit($this->limit);
+        $tws->setPage($this->page);
         $rows = $tws->ranking($rankingConcentrationCd, $period)->get();
+        if (empty($rows['totalResults'])) {
+            return null;
+        }
+
+        // TWSからセルレンタル区分を取り出す
+        $saleType = ($rows['rentalSalesSection'] == '1') ? 'rental' : 'sell';
+
+        // TOL API でlimit/offset処理に問題があるため、一旦50件一括取得（hasnext=false固定）
         $response = [
-            'hasNext' => null,
+            'hasNext' => false,
             'totalCount' => $rows['totalResults'],
-            'rows' => $this->convertFormatFromRanking($rows),
+            'aggregationPeriod' => $this->aggregationPeriodFormat($rows['totalingPeriod']),
+            'rows' => $this->convertFormatFromRanking($rows, $saleType),
         ];
         if ($title) {
             $response['title'] = $title;
@@ -195,6 +222,26 @@ class SectionRepository
         return $response;
     }
 
+    public function aggregationPeriodFormat($totalingPeriod)
+    {
+        $replacementString = mb_ereg_replace("(月$)|(日\(.\))", '', $totalingPeriod);
+        $replacementString = mb_ereg_replace("年|月", '/', $replacementString);
+        // 日があった場合は日次の変換
+        if (mb_ereg_match('.*～.*', $totalingPeriod)) {
+            $explodedArray = explode('～', $replacementString);
+            $startDate = date('Y/m/d', strtotime($explodedArray[0]));
+            $endDate = date('Y/m/d', strtotime($explodedArray[1]));
+            $replacementString = $startDate . '～' . $endDate;
+        } else if (mb_ereg_match('.*日(.*)$', $totalingPeriod)) {
+            $replacementString = date('Y/m/d', strtotime($replacementString));
+        } else {
+            $replacementString = date('Y/m', strtotime($replacementString . '/01'));
+        }
+
+        // 〜があった場合は週次の変換
+        // 上記以外は月次の変換
+        return $replacementString;
+    }
 
     // 01:レンタルDVD 02:レンタルCD 03:レンタルコミック 04:販売DVD 05:販売CD 06:販売ゲーム 07:販売本・コミック
     public function releaseManual($category, $releaseDateTo)
@@ -230,21 +277,157 @@ class SectionRepository
         return $response;
     }
 
+    public function releaseHimo($periodType, $genreId)
+    {
+        $rows = null;
+        if ($periodType === 'newest') {
+            $topReleaseNewest = new TopReleaseNewest();
+            $rows = $topReleaseNewest->setConditionByGenreId($genreId)->get();
+        } else if ($periodType === 'lastest') {
+            $topReleaseLastest = new TopReleaseLastest();
+            $rows = $topReleaseLastest->setConditionByGenreId($genreId)->get();
+        } else {
+            return null;
+        }
+        $formatRowData = $this->convertFormatFromHiMORelease($rows, $periodType);
+        $response = [
+            'hasNext' => false,
+            'totalCount' => count($formatRowData),
+            'rows' => $formatRowData,
+        ];
+        if (empty($response['rows'])) {
+            return null;
+        }
+        return $response;
+    }
+
+    /*
+     * 成形用メソッド：HiMOからのリリースカレンダーのレスポンスを成形する
+     */
+    private function convertFormatFromHiMORelease($rows, $periodType)
+    {
+        $nowMonth = Carbon::now()->startOfMonth();
+        $count = 1;
+        foreach ($rows as $row) {
+            $workRepository = new WorkRepository;
+            $releaseCalenderRepository = new ReleaseCalenderRepository;
+            if (empty($row)) {
+                return null;
+            }
+
+            // 作品情報（url_cd）の取得
+            $work = $workRepository->get($row->work_id);
+
+            // 販売種別の判定
+            $mappingData = $releaseCalenderRepository->genreMapping($row->tap_genre_id);
+            $saleType = $mappingData['productSellRentalFlg'];
+            $saleType = ($saleType == '1') ? 'sell' : 'rental';
+
+            $isMovie = (in_array($row->tap_genre_id, self::PARAM_MOVIE_GENRE)) ? true : false;
+
+            if ($periodType === 'newest') {
+                $dt = new Carbon($row->month);
+                if ($dt->eq($nowMonth)) {
+                    $from = Carbon::today();
+                    $from->startOfWeek();
+                } else {
+                    $from = Carbon::parse($row->month)->startOfMonth();
+                }
+                $to = Carbon::parse($row->month)->endOfMonth();
+            } else {
+                $dt = new Carbon($row->month);
+                if ($dt->eq($nowMonth)) {
+                    $to = Carbon::today();
+                } else {
+                    $to = $dt->endOfMonth();
+                }
+                $from = Carbon::parse($row->month)->startOfMonth();
+            }
+            // 商品情報の取得
+            $productModel = new Product();
+            $product = $productModel->setConditionByWorkIdSaleTypeSaleStartDate($row->work_id, $saleType, $from, $to)->getOne();
+            if (!empty($product)) {
+
+                $productName = $product->product_name;
+
+                if ((substr($product->item_cd, -2) === '75' && !empty($product->number_of_volume)) ||
+                    (substr($product->item_cd, -2) === '76' && !empty($product->number_of_volume))) {
+                    $productName = $product->product_name . "（{$product->number_of_volume}）";
+                }
+
+                $formattedRow =
+                    [
+                        'imageUrl' => $product->jacket_l,
+                        'title' => $productName,
+                        'workTitle' => $work['workTitle'],
+                        'workId' => $row->work_id,
+                        'code' => $product->product_id,
+                        'urlCd' => $work['urlCd'],
+                        'sort' => $count,
+                        'msdbItem' => $work['msdbItem'],
+                    ];
+                $formattedRow['saleStartDate'] = $this->dateFormat($product->sale_start_date);
+                if (!$this->supplementVisible) {
+                    $formattedRow['supplement'] = $work['supplement'];
+                } else {
+                    $formattedRow['supplement'] = null;
+                }
+                $formattedRows[] = $formattedRow;
+                $count++;
+            }
+        }
+
+        foreach ((array) $formattedRows as $key => $value) {
+            $sortSaleStartDate[$key] = $value['saleStartDate'];
+            $sortSort[$key] = $value['sort'];
+        }
+
+        if ($periodType === 'newest') {
+            array_multisort($sortSaleStartDate, SORT_ASC, $sortSort, SORT_ASC, $formattedRows);
+        } else {
+            array_multisort($sortSaleStartDate, SORT_DESC, $sortSort, SORT_DESC, $formattedRows);
+        }
+
+        $index = 0;
+        foreach ($formattedRows as $k => $v) {
+            if ($index >= 20) unset($formattedRows[$k]);
+            $index++;
+        }
+
+        // todo ProductのFormatは共通化できそうだったらする。
+        foreach ($formattedRows as $formattedRowKey => $formattedRow) {
+            // 映像の場合は、ジャケ写を最新刊のブルーレイ優先で取得する。
+            if ($formattedRow['msdbItem'] === $workRepository::MSDB_ITEM_VIDEO) {
+                // saleTypeの指定がない場合は関係なく出す。
+                $jacket = (array)$productModel->setConditionSelectJacket($formattedRow['workId'], $saleType)->getOne();
+                // ジャケットがある場合のみ差し替え
+                if (count($jacket) > 0) {
+                    $formattedRows[$formattedRowKey]['imageUrl'] = $jacket['jacketL'];
+                }
+            }
+        }
+        return $formattedRows;
+    }
+
     /*
      * 成形用メソッド：TAPからのリリースカレンダーのレスポンスを成形する
      */
     private function convertFormatFromTAPRelease($rows)
     {
         foreach ($rows as $row) {
+            $workRepository = new WorkRepository;
             if (empty($row)) {
                 return null;
             }
+            $work = $workRepository->get($row['urlCd'], [], '0105');
             $formattedRow =
                 [
                     'imageUrl' => $row['imageUrl'],
                     'title' => $row['productName'],
+                    'workTitle' => $work['workTitle'],
+                    'workId' => $work['workId'],
                     'code' => $row['productId'],
-                    'urlCode' => $row['urlCd']
+                    'urlCd' => $row['urlCd']
                 ];
             if (array_key_exists('releaseDate', $row)) {
                 $formattedRow['saleStartDate'] = $this->dateFormat($row['releaseDate']);
@@ -283,7 +466,7 @@ class SectionRepository
                 'title' => $row['productName'],
 //                'code' => $row['janCd'],
                 'code' => $row['productKey'],
-                'urlCode' => $row['urlCd']
+                'urlCd' => $row['urlCd']
             ];
             if (!$this->supplementVisible) {
                 if (array_key_exists('artistList', $row)) {
@@ -302,25 +485,60 @@ class SectionRepository
     /*
      * 成形用メソッド：TWSからのランキングのレスポンスを成形する
      */
-    private function convertFormatFromRanking($rows)
+    private function convertFormatFromRanking($rows, $saleType)
     {
+        $formattedRows = [];
+        $workRepository = new WorkRepository;
+        if (empty($rows['entry'])) {
+            return null;
+        }
+
+        // 作品/商品情報を取得する際の販売区分を指定する
+        $workRepository->setSaleType($saleType);
+
         foreach ($rows['entry'] as $row) {
-            if (empty($row)) {
-                return null;
+            $work = $workRepository->get($row['productKey'], [], $this->productKeyType($row['productKey']), false);
+            if (empty($work)) {
+                continue;
             }
-            $rowUnit = [
-                'saleStartDate' => null,
-                'imageUrl' => $row['productImage']['large'],
-                'title' => $row['productTitle'],
-                'code' => $row['productKey'],
-                'urlCode' => $row['urlCd']
-            ];
+            if (empty($row['lastRankNo'])) {
+                $comparison = 'new';
+            } else if ($row['rankNo'] == $row['lastRankNo']) {
+                $comparison = 'keep';
+            } else if ($row['rankNo'] < $row['lastRankNo']) {
+                $comparison = 'up';
+            } else if ($row['rankNo'] > $row['lastRankNo']) {
+                $comparison = 'down';
+            }
+            $rowUnit['title'] = $row['productTitle'];
+            $rowUnit['productTitle'] = $row['productTitle'];
+            $rowUnit['workTitle'] = $work['workTitle'];
+            $rowUnit['workId'] = $work['workId'];
+            $rowUnit['code'] = $row['productKey'];
+            $rowUnit['urlCd'] = !empty($row['urlCd']) ? $row['urlCd'] : "";
+            $rowUnit['rankNo'] = $row['rankNo'];
+            $rowUnit['comparison'] = $comparison;
+//            $rowUnit['jacketL'] = $work['jacketL'];
+            $rowUnit['jacketL'] = $row['productImage']['large'];
+//            $rowUnit['imageUrl'] = $work['jacketL'];
+            $rowUnit['imageUrl'] = $row['productImage']['large'];
+            $rowUnit['newFlg'] = $work['newFlg'];
+            $rowUnit['supplement'] = $work['supplement'];
+            $rowUnit['saleType'] = $work['saleType'];
+            $rowUnit['itemType'] = $work['itemType'];
+            $rowUnit['adultFlg'] = $work['adultFlg'];
+//            $rowUnit['saleStartDate'] = $work['saleStartDate'];
+            $rowUnit['saleStartDate'] = null;
+
             // modelNameがあったゲームなので、ゲーム名を取得するようにする。
             if (!$this->supplementVisible) {
                 if (array_key_exists('modelName', $row)) {
                     $rowUnit['supplement'] = $row['modelName'];
                 } else if (array_key_exists('artistInfoList', $row)) {
-                    $rowUnit['supplement'] = $this->getOneArtist($row['artistInfoList']['artistInfo'])['artistName'];
+                    if ($work['itemType'] === 'dvd') {
+                    } else {
+                        $rowUnit['supplement'] = $this->getOneArtist($row['artistInfoList']['artistInfo'])['artistName'];
+                    }
                 } else {
                     $rowUnit['supplement'] = null;
                 }
@@ -355,5 +573,18 @@ class SectionRepository
         } else {
             return null;
         }
+    }
+
+    private function productKeyType($productKey)
+    {
+        $length = strlen($productKey);
+        // rental_product_cd
+        if ($length === 9) {
+            $idCode = '0206';
+            //jan
+        } elseif ($length === 13) {
+            $idCode = '0205';
+        }
+        return $idCode;
     }
 }

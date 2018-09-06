@@ -237,6 +237,7 @@ class TestData
                     'no' => 1,
                     'productTitle' => '',
                     'jan' => $goodsType . $saleType . '0000001' . $updateSuffix,
+                    'himoId'=> $goodsType . $saleType . '0000011' . $updateSuffix,
                     'imageUrl' => '',
                     'displayStartDate' => '2017/12/01 00:00:00',
                     'displayEndDate' => '2025/12/31 23:59:59'
@@ -246,6 +247,7 @@ class TestData
                     'no' => 2,
                     'productTitle' => '',
                     'jan' => $goodsType . $saleType . '0000002',
+                    'himoId' => $goodsType . $saleType . '0000012',
                     'imageUrl' => '',
                     'displayStartDate' => '2017/12/01 00:00:00',
                     'displayEndDate' => '2025/12/31 23:59:59'
@@ -255,6 +257,7 @@ class TestData
                     'no' => 3,
                     'productTitle' => '',
                     'jan' => $goodsType . $saleType . '0000003' . $updateSuffix,
+                    'himoId' => $goodsType . $saleType . '0000013' . $updateSuffix,
                     'imageUrl' => '',
                     'displayStartDate' => '2017/12/01 00:00:00',
                     'displayEndDate' => '2025/12/31 23:59:59'
@@ -267,6 +270,7 @@ class TestData
                 'no' => 4,
                 'productTitle' => '',
                 'jan' => $goodsType . $saleType . '0000004',
+                'himoId' => $goodsType . $saleType . '0000014',
                 'imageUrl' => '',
                 'displayStartDate' => '2017/12/01 00:00:00',
                 'displayEndDate' => '2025/12/31 23:59:59'

@@ -1,0 +1,28 @@
+@startuml
+FavoriteRepository *- ApiRequester
+HimoRepository *- ApiRequester
+class WorkRepository {
+}
+class FavoriteRepository {
+    + tlsc : Array
+    + workIds : Array
+    + setTlsc()
+    + setWorkIds()
+    + get()
+    + add()
+    + merge()
+    + delete()
+}
+class HimoRepository {
+}
+class ApiRequester {
+    # apiPath : String
+    # queryParams : Array
+    # method : String
+    # headers : Array
+    get()
+    setHeader()
+    setHeaders()
+}
+
+@enduml

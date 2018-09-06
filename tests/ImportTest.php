@@ -11,15 +11,6 @@ class ImportTest extends TestCase
         parent::setUp();
     }
 
-
-    private function getWithAuth($apiPath, $param = [])
-    {
-        return $this->call('GET',
-            env('URL_PATH_PREFIX') . env('API_VERSION') . $apiPath,
-            $param, [], [], ['HTTP_Authorization' => 'k8AJR0NxM114Ogdl'], []
-        );
-    }
-
     /**
      * @test
      */
@@ -31,6 +22,9 @@ class ImportTest extends TestCase
 
     }
 
+    /**
+     * @return array
+     */
     public function fixedBannerProvider()
     {
         return [
@@ -70,6 +64,9 @@ class ImportTest extends TestCase
         $this->assertEquals($expected[1], $responseData['rows'][1]['imageUrl']);
     }
 
+    /**
+     * @return array
+     */
     public function structureProvider()
     {
         return [
@@ -104,13 +101,13 @@ class ImportTest extends TestCase
     public function sectionProvider()
     {
         return [
-            ['/section/dvd/rental/1_1_2', ['110000001', '110000002', '110000003']],
-            ['/section/dvd/sell/1_2_2', ['120000001', '120000002', '120000003']],
-            ['/section/cd/rental/2_1_2', ['210000001', '210000002', '210000003']],
-            ['/section/cd/sell/2_2_2', ['220000001', '220000002', '220000003']],
-            ['/section/book/rental/3_1_2', ['310000001', '310000002', '310000003']],
-            ['/section/book/sell/3_2_2', ['320000001', '320000002', '320000003']],
-            ['/section/game/sell/4_2_2', ['420000001', '420000002', '420000003']],
+            ['/section/dvd/rental/1_1_2', ['110000001', '110000002', '110000003'], ['110000011', '110000012', '110000013']],
+            ['/section/dvd/sell/1_2_2', ['120000001', '120000002', '120000003'], ['120000011', '120000012', '120000013']],
+            ['/section/cd/rental/2_1_2', ['210000001', '210000002', '210000003'], ['210000011', '210000012', '210000013']],
+            ['/section/cd/sell/2_2_2', ['220000001', '220000002', '220000003'], ['220000011', '220000012', '220000013']],
+            ['/section/book/rental/3_1_2', ['310000001', '310000002', '310000003'], ['310000011', '310000012', '310000013']],
+            ['/section/book/sell/3_2_2', ['320000001', '320000002', '320000003'], ['320000011', '320000012', '320000013']],
+            ['/section/game/sell/4_2_2', ['420000001', '420000002', '420000003'], ['420000011', '420000012', '420000013']],
         ];
     }
 
@@ -391,4 +388,5 @@ class ImportTest extends TestCase
     {
         $this->checkApiStructure($url, $expected);
     }
+
 }

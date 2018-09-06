@@ -11,7 +11,9 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use App\Repositories\SectionRepository;
 use App\Repositories\StructureRepository;
+use App\Repositories\WorkRepository;
 use App\Repositories\TWSRepository;
+use App\Repositories\HimoRepository;
 use App\Model\Section;
 use App\Model\Structure;
 use App\Model\ImportControl;
@@ -26,7 +28,7 @@ class Import extends Command
      *
      * @var string
      */
-    protected $signature = 'import {--test} {--dir=}';
+    protected $signature = 'import {--test} {--update-only} {--dir=}';
 
     /**
      * The console command description.
@@ -115,16 +117,22 @@ class Import extends Command
      */
     public function handle()
     {
+        $updateOnly = $this->option('update-only');
         $isTest = $this->option('test');
         $dir = $this->option('dir');
-        if(isset($dir)) {
+        if (isset($dir)) {
             $this->root = $dir . DIRECTORY_SEPARATOR . self::CATEGORY_DIR;
             $this->baseDir = $dir . DIRECTORY_SEPARATOR;
         }
 
+        // updateのみ実行の場合
+        if ($updateOnly === true ) {
+            $this->updateSectionsDataFromHimo();
+            return true;
+        }
         $this->getImportControlInfo();
 
-        $this->infoH1('Start Json Data Import Command. ['.date('Y/m/d H:i:s').']');
+        $this->infoH1('Start Json Data Import Command. [' . date('Y/m/d H:i:s') . ']');
 
         $this->info('Check import control file.');
         if (!file_exists($this->importControlFIle)) {
@@ -195,10 +203,11 @@ class Import extends Command
             }
             $this->infoH1('Update Structure Table Data.');
             if ($isTest === false) {
-                $this->updateSectionsData();
+                $this->updateSectionsDataFromHimo();
             }
             $this->commitImportControlInfo();
         });
+
         $this->info('Finish!');
         return true;
     }
@@ -227,7 +236,7 @@ class Import extends Command
                 }
             } else if ($explodeFilePath[0] === self::CATEGORY_DIR &&
                 (array_key_exists(3, $explodeFilePath) &&
-                $explodeFilePath[3] === self::BASE_FILE_NAME)
+                    $explodeFilePath[3] === self::BASE_FILE_NAME)
             ) {
                 $goodTypeCode = $this->structureRepository->convertGoodsTypeToId($explodeFilePath[1]);
                 $saleTypeCode = $this->structureRepository->convertSaleTypeToId($explodeFilePath[2]);
@@ -496,6 +505,45 @@ class Import extends Command
         }
     }
 
+    private function updateSectionsDataFromHimo()
+    {
+        $workRepository = new WorkRepository;
+        $section = new Section;
+        $structureRepository = new StructureRepository();
+        // 全件を対象
+        $sections = $section->conditionNoWorkIdActiveRow()->select(['t1.*', 'sale_type'])->getAll();
+        foreach ($sections as $sectionRow) {
+            $this->infoH2($sectionRow->id . ' : ' . $sectionRow->code);
+            if (!empty($sectionRow->code)) {
+                try {
+                    $length = strlen($sectionRow->code);
+                    // rental_product_cd
+                    if ($length === 9) {
+                        $codeType = '0206';
+                    } elseif ($length === 13) {
+                        $codeType = '0205';
+                    }
+                    $this->infoMessage('Id Type: ' . $codeType);
+                    // 作成する場合、
+                    $workRepository->setSaleType($structureRepository->convertSaleTypeToString($sectionRow->sale_type));
+                    $res = $workRepository->get($sectionRow->code, [], $codeType);
+                    $updateValues = [
+                        'work_id' => $res['workId'],
+                        'title' => $res['workTitle'],
+                        'url_code' => $res['urlCd'],
+                        'updated_at' => date('Y-m-d H:i:s')
+                    ];
+                    $updateValues['image_url'] = $res['jacketL'];
+                    $updateValues['sale_start_date'] = $res['saleStartDate'];
+                    $updateValues['supplement'] = $res['supplement'];
+                    $section->update($sectionRow->id, $updateValues);
+                } catch (NoContentsException $e) {
+                    $this->infoMessage('Skip up date: No Contents');
+                }
+            }
+        }
+    }
+
     /**
      *  import base.json to table structure
      * @param $goodType
@@ -586,7 +634,7 @@ class Import extends Command
                 $checkResult = $this->importCheck($filePath, $filePath['timestamp']);
                 if (!$checkResult) {
                     if (count($oldId) != 0 && array_key_exists($row['sectionFileName'], $oldId)) {
-                        $this->infoMessage('Update #section.ts_structure_id from : ' . $oldId[$row['sectionFileName']].' to: ' . $insertId);
+                        $this->infoMessage('Update #section.ts_structure_id from : ' . $oldId[$row['sectionFileName']] . ' to: ' . $insertId);
                         $sectionTable = DB::table(self::SECTION_TABLE);
                         $updateCount = $sectionTable->where('ts_structure_id', $oldId[$row['sectionFileName']])
                             ->update(['ts_structure_id' => $insertId]);
@@ -610,7 +658,7 @@ class Import extends Command
                 $checkResult = $this->importCheck($filePath, $filePath['timestamp']);
                 if (!$checkResult) {
                     if (count($oldId) != 0 && array_key_exists($row['sectionFileName'], $oldId)) {
-                        $this->infoMessage('Update #banner.ts_structure_id from : ' . $oldId[$row['sectionFileName']].' to: ' . $insertId);
+                        $this->infoMessage('Update #banner.ts_structure_id from : ' . $oldId[$row['sectionFileName']] . ' to: ' . $insertId);
                         $bannerTable = DB::table(self::BANNER_TABLE);
                         $updateCount = $bannerTable->where('ts_structure_id', $oldId[$row['sectionFileName']])
                             ->update(['ts_structure_id' => $insertId]);
@@ -651,6 +699,7 @@ class Import extends Command
         foreach ($dataSection['rows'] as $row) {
             $sectionArray[] = [
                 'code' => $row['jan'],
+//                'work_id' => $row['workId'],
                 'image_url' => (array_key_exists('imageUrl', $row) ? $row['imageUrl'] : ""),
                 'display_start_date' => $row['displayStartDate'],
                 'display_end_date' => $row['displayEndDate'],

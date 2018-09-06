@@ -1,0 +1,531 @@
+{
+    "status": 200,
+    "message": null,
+    "results": {
+        "total": 1,
+        "rows": [
+            {
+                "work_id": "PTA0000M6ZK2",
+                "work_type_id": "1",
+                "msdb_item": "audio",
+                "work_format_id": 1,
+                "work_format_name": "アルバム",
+                "work_title": "LIVE STYLE 2014",
+                "work_title_kana": "らいぶすたいる2014",
+                "work_title_en": "",
+                "work_title_orig": "",
+                "work_title_sub": "",
+                "work_comment": "",
+                "work_outline": "",
+                "work_copyright": "",
+                "rating_id": "EXT000000008",
+                "rating_name": "",
+                "adult_flg": 0,
+                "primary_product_source_id": "PDT0000M6XZK",
+                "primary_product_service_id": "tol",
+                "primary_product_type_id": 1,
+                "disp_start_date": "2015-01-12 00:00:00",
+                "disp_start_month": "2015-01",
+                "sale_start_date": "2015-02-11",
+                "sale_start_month": "2015-02",
+                "created_year_from": "",
+                "created_year_to": "",
+                "created_year": "",
+                "created_countries": "",
+                "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/10205/4988064990214_1S.jpg ",
+                "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/10205/4988064990214_1M.jpg ",
+                "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/10205/4988064990214_1L.jpg ",
+                "jacket_l4": "",
+                "scene_s": [
+
+                ],
+                "scene_m": [
+
+                ],
+                "scene_l": [
+
+                ],
+                "trailor_pc": [
+
+                ],
+                "season_name": "",
+                "season_number": null,
+                "book_series_name": "",
+                "book_series_name_kana": "",
+                "feature_keywords": [
+
+                ],
+                "priv_keywords": [
+
+                ],
+                "work_tags": [
+
+                ],
+                "wakati_words": [
+
+                ],
+                "is_compilation": 0,
+                "series_completed": 0,
+                "disable_flg": 0,
+                "delete_flg": 0,
+                "ids": [
+                    {
+                        "id_type": "0103",
+                        "id_value": "20702154"
+                    },
+                    {
+                        "id_type": "0105",
+                        "id_value": "20551248"
+                    }
+                ],
+                "docs": [
+
+                ],
+                "awards": [
+
+                ],
+                "screens": [
+
+                ],
+                "onairs": [
+
+                ],
+                "magazines": [
+
+                ],
+                "genres": [
+                    {
+                        "big_genre_id": "EXT0000000DY",
+                        "big_genre_name": "Ｊ−ＰＯＰ",
+                        "medium_genre_id": "EXT0000000E0",
+                        "medium_genre_name": "Ｊ−ＰＯＰ",
+                        "small_genre_id": "",
+                        "small_genre_name": "",
+                        "shikiriban_id": "",
+                        "shikiriban_name": ""
+                    }
+                ],
+                "products": [
+                    {
+                        "id": "PDT0000M6XZK",
+                        "product_id": "PPD0000M6XZK",
+                        "product_type_id": 2,
+                        "product_type_name": "レンタル",
+                        "service_id": "tol",
+                        "service_name": "tol",
+                        "msdb_item": "audio",
+                        "item_cd": "0000",
+                        "item_name": "ＣＤ",
+                        "product_name": "LIVE STYLE 2014",
+                        "product_kana": "らいぶすたいる2014",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2015-01-12 10:00:00",
+                        "disp_start_month": "2015-01",
+                        "disp_end_date": "2030-12-28 00:00:00",
+                        "disp_end_month": "2030-12",
+                        "sale_start_date": "2015-02-11",
+                        "sale_start_month": "2015-02",
+                        "sale_end_date": "2030-12-28",
+                        "sale_end_month": "2030-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000M6ZK2"
+                        ],
+                        "tieup": "",
+                        "copyright": "",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "",
+                        "created_year_to": "",
+                        "created_year_str": "",
+                        "created_countries": "",
+                        "maker_cd": "EXT000001B12",
+                        "maker_name": "エイベックス・ミュージック・クリエイティヴ",
+                        "maker_name_kana": "えいべつくすみゆーじつくくりえいていぶ",
+                        "maker_name_abbrev": "エイベックス・ミュージック",
+                        "label_name": "",
+                        "sell_rental_flag": 2,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "20702154",
+                        "ccc_family_cd": "20702154001",
+                        "ccc_product_id": "204519540",
+                        "rental_product_cd": "005371017",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4988064990214",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "AVC6 99021",
+                        "icpn": "",
+                        "media_category_cd": "11",
+                        "media_category_name": "レンタルCD",
+                        "media_format_id": "EXT000000007",
+                        "media_format_name": "CD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "",
+                        "video_info": "",
+                        "number_of_volume": "",
+                        "number_of_set": "2",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 1,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/10205/4988064990214_1S.jpg ",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/10205/4988064990214_1M.jpg ",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/10205/4988064990214_1L.jpg ",
+                        "jacket_l4": "",
+                        "scene_s": [
+
+                        ],
+                        "scene_m": [
+
+                        ],
+                        "scene_l": [
+
+                        ],
+                        "trailor_pc": [
+
+                        ],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [
+
+                        ],
+                        "priv_keywords": [
+
+                        ],
+                        "package_tags": [
+
+                        ],
+                        "product_tags": [
+
+                        ],
+                        "price_tax_out": null,
+                        "price_tax_in": null,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+
+                        ],
+                        "devices": [
+
+                        ],
+                        "distribution_plans": [
+
+                        ],
+                        "awards": [
+
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT0000000DY",
+                                "big_genre_name": "Ｊ−ＰＯＰ",
+                                "medium_genre_id": "EXT0000000E0",
+                                "medium_genre_name": "Ｊ−ＰＯＰ",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [
+
+                        ],
+                        "onairs": [
+
+                        ],
+                        "magazines": [
+
+                        ],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [
+
+                        ],
+                        "filmarks_id": [
+
+                        ],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS000004O0W",
+                                "person_name": "安室奈美恵",
+                                "role_id": "EXT00000000D",
+                                "role_name": "演奏者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT0000M8YCO",
+                        "product_id": "PPD0000M6XZK",
+                        "product_type_id": 2,
+                        "product_type_name": "レンタル",
+                        "service_id": "discas",
+                        "service_name": "discas",
+                        "msdb_item": "audio",
+                        "item_cd": "0000",
+                        "item_name": "ＣＤ",
+                        "product_name": "LIVE STYLE 2014",
+                        "product_kana": "ライブスタイル2014",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2015-01-12 00:00:00",
+                        "disp_start_month": "2015-01",
+                        "disp_end_date": "2099-12-31 00:00:00",
+                        "disp_end_month": "2099-12",
+                        "sale_start_date": "2015-02-11",
+                        "sale_start_month": "2015-02",
+                        "sale_end_date": "2099-12-31",
+                        "sale_end_month": "2099-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000M6ZK2"
+                        ],
+                        "tieup": "",
+                        "copyright": "",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "",
+                        "created_year_to": "",
+                        "created_year_str": "",
+                        "created_countries": "",
+                        "maker_cd": "EXT000001B12",
+                        "maker_name": "エイベックス・ミュージック・クリエイティヴ",
+                        "maker_name_kana": "えいべつくすみゆーじつくくりえいていぶ",
+                        "maker_name_abbrev": "エイベックス・ミュージック",
+                        "label_name": "",
+                        "sell_rental_flag": 2,
+                        "view_term": null,
+                        "reservation_flg": 1,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "20702154",
+                        "ccc_family_cd": "20702154001",
+                        "ccc_product_id": "2539841742",
+                        "rental_product_cd": "005371017",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4988064990214",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "AVC699021",
+                        "icpn": "",
+                        "media_category_cd": "11",
+                        "media_category_name": "レンタルCD",
+                        "media_format_id": "EXT000000007",
+                        "media_format_name": "CD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "",
+                        "video_info": "",
+                        "number_of_volume": "",
+                        "number_of_set": "2",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 1,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//img.discas.net/img/jacket/core/201502/10/4988064990214_1SX.jpg ",
+                        "jacket_m": "//img.discas.net/img/jacket/core/201502/10/4988064990214_1MX.jpg ",
+                        "jacket_l": "//img.discas.net/img/jacket/core/201502/10/4988064990214_1L.jpg ",
+                        "jacket_l4": "",
+                        "scene_s": [
+
+                        ],
+                        "scene_m": [
+
+                        ],
+                        "scene_l": [
+
+                        ],
+                        "trailor_pc": [
+
+                        ],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [
+
+                        ],
+                        "priv_keywords": [
+
+                        ],
+                        "package_tags": [
+
+                        ],
+                        "product_tags": [
+
+                        ],
+                        "price_tax_out": null,
+                        "price_tax_in": null,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "H1",
+                                "doc_text": "1.Ballerina\n2.Poiso\n3.ALARM\n4.WANT ME, WANT ME\n5.Big Boys Cry\n6.FUNKY TOWN\n7.Contrail\n8.グロテスク\n9.WHAT A FEELING\n10.Stardust In My Eyes\n11.SWEET 19 BLUES\n12.TSUKI\n13.La La La\n14.Rainbow\n15.Can You Feel This Love\n16.SWEETKISSES\n17.Whisper\n18.Alive\n19.Love Story\n20.The Meaneing Of Us\n21.CAN YOU CELEVRATE？\n22.Supernatural Love\n23.Hands On Me\n24.ROCK U\n25.Heaven\n26.Neonlight Lipsick\n27.BRIGHTER DAY\n28.CAN'T SLEEP,CAN'T EAT,I'M SICK\n29.Baby Don't Cry "
+                            }
+                        ],
+                        "devices": [
+
+                        ],
+                        "distribution_plans": [
+
+                        ],
+                        "awards": [
+
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT0000000DY",
+                                "big_genre_name": "Ｊ−ＰＯＰ",
+                                "medium_genre_id": "EXT0000000E0",
+                                "medium_genre_name": "Ｊ−ＰＯＰ",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [
+
+                        ],
+                        "onairs": [
+
+                        ],
+                        "magazines": [
+
+                        ],
+                        "discas_grade_point": 358,
+                        "discas_item": "DiscasMusic",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [
+
+                        ],
+                        "filmarks_id": [
+
+                        ],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS000004O0W",
+                                "person_name": "安室奈美恵",
+                                "role_id": "EXT00000000D",
+                                "role_name": "演奏者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    }
+                ],
+                "video_relations": [
+
+                ],
+                "discas_grade_point": 358,
+                "discas_item": [
+                    "DiscasMusic"
+                ],
+                "ttv_trailer_flg": 0,
+                "ttv_free_movie_flg": 0,
+                "ttv_sell_rental_flg": [
+
+                ],
+                "ttv_low_price": null,
+                "cinema_id": [
+
+                ],
+                "filmarks_id": [
+
+                ],
+                "catch_copy": "",
+                "sale_start_date_sell": "",
+                "sale_start_date_rental": "2015-02-11",
+                "trailer_urls": [
+
+                ],
+                "scenes": [
+
+                ],
+                "filmarks_mark": 0,
+                "filmarks_clip": 0,
+                "filmarks_average": 0,
+                "people": [
+                    {
+                        "person_id": "PPS000004O0W",
+                        "person_name": "安室奈美恵",
+                        "role_id": "EXT00000000D",
+                        "role_name": "演奏者"
+                    }
+                ],
+                "tracks": [
+
+                ],
+                "merged_from": [
+
+                ],
+                "need_age_auth_flg": 0
+            }
+        ]
+    }
+}

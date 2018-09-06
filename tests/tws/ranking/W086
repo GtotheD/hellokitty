@@ -1,0 +1,906 @@
+{
+   "entry" : [
+      {
+         "artistInfoList" : {
+            "artistInfo" : {
+               "artistName" : "下重暁子",
+               "artistCd" : "00413838",
+               "order" : "1",
+               "roleName" : "著者"
+            }
+         },
+         "sakuhinCd" : "42964698",
+         "nextUpDate" : "2018-05-14T11:16:45",
+         "productImageCrosswise" : "0",
+         "productTitle" : "極上の孤独",
+         "order" : "1",
+         "upDate" : "2018-05-07T10:16:45",
+         "productImage" : {
+            "small" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/12922/9784344984936_1S.jpg",
+            "large" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/12922/9784344984936_1L.jpg",
+            "medium" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/12922/9784344984936_1M.jpg"
+         },
+         "link" : [
+            {
+               "rel" : "detail",
+               "href" : "http://stg.www.tsutaya.co.jp/works/41723923.html",
+               "type" : "text/html"
+            }
+         ],
+         "publisherName" : "幻冬舎",
+         "transition" : "1",
+         "productImageLengthwise" : "0",
+         "nextUpDateEpoch" : 1526264205,
+         "sakuhinSearchType" : "4",
+         "productKey" : "9784344984936",
+         "rankNo" : "1",
+         "urlCd" : "41723923",
+         "lastRankNo" : "1",
+         "rankingConcentrationCd" : "W086"
+      },
+      {
+         "artistInfoList" : {
+            "artistInfo" : {
+               "artistName" : "岸本斉史",
+               "artistCd" : "00504791",
+               "order" : "1",
+               "roleName" : "著者"
+            }
+         },
+         "sakuhinCd" : "42965844",
+         "nextUpDate" : "2018-05-14T11:16:45",
+         "productImageCrosswise" : "0",
+         "productTitle" : "ＮＡＲＵＴＯ－ナルト－　ナルト新伝　親子の日",
+         "order" : "2",
+         "upDate" : "2018-05-07T10:16:45",
+         "productImage" : {
+            "small" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/12996/9784087034479_1S.jpg",
+            "large" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/12996/9784087034479_1L.jpg",
+            "medium" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/12996/9784087034479_1M.jpg"
+         },
+         "link" : [
+            {
+               "rel" : "detail",
+               "href" : "http://stg.www.tsutaya.co.jp/works/41725070.html",
+               "type" : "text/html"
+            }
+         ],
+         "publisherName" : "集英社",
+         "transition" : "0",
+         "productImageLengthwise" : "0",
+         "nextUpDateEpoch" : 1526264205,
+         "sakuhinSearchType" : "4",
+         "productKey" : "9784087034479",
+         "rankNo" : "2",
+         "urlCd" : "41725070",
+         "lastRankNo" : "19",
+         "rankingConcentrationCd" : "W086"
+      },
+      {
+         "artistInfoList" : {
+            "artistInfo" : {
+               "artistName" : "ジェリー・ミンチントン",
+               "artistCd" : "00418928",
+               "order" : "1",
+               "roleName" : "著者"
+            }
+         },
+         "sakuhinCd" : "42900715",
+         "nextUpDate" : "2018-05-14T11:16:45",
+         "productImageCrosswise" : "0",
+         "productTitle" : "うまくいっている人の考え方＜完全版＞　（花柄ピンクカバー）",
+         "order" : "3",
+         "upDate" : "2018-05-07T10:16:45",
+         "productImage" : {
+            "small" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/12783/9784799321317_1S.jpg",
+            "large" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/12783/9784799321317_1L.jpg",
+            "medium" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/12783/9784799321317_1M.jpg"
+         },
+         "link" : [
+            {
+               "rel" : "detail",
+               "href" : "http://stg.www.tsutaya.co.jp/works/41659343.html",
+               "type" : "text/html"
+            }
+         ],
+         "publisherName" : "ディスカヴァー・トゥエンティワン",
+         "transition" : "2",
+         "productImageLengthwise" : "0",
+         "nextUpDateEpoch" : 1526264205,
+         "sakuhinSearchType" : "4",
+         "productKey" : "9784799321317",
+         "rankNo" : "3",
+         "urlCd" : "41659343",
+         "lastRankNo" : "2",
+         "rankingConcentrationCd" : "W086"
+      },
+      {
+         "artistInfoList" : {
+            "artistInfo" : {
+               "artistName" : "菅野仁",
+               "artistCd" : "20156066",
+               "order" : "1",
+               "roleName" : "著者"
+            }
+         },
+         "sakuhinCd" : "40724278",
+         "nextUpDate" : "2018-05-14T11:16:45",
+         "productImageCrosswise" : "72",
+         "productTitle" : "友だち幻想",
+         "order" : "4",
+         "upDate" : "2018-05-07T10:16:45",
+         "productImage" : {
+            "small" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/03731/9784480687807_1S.jpg",
+            "large" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/03731/9784480687807_1L.jpg",
+            "medium" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/03731/9784480687807_1M.jpg"
+         },
+         "link" : [
+            {
+               "rel" : "detail",
+               "href" : "http://stg.www.tsutaya.co.jp/works/40695252.html",
+               "type" : "text/html"
+            }
+         ],
+         "publisherName" : "筑摩書房",
+         "transition" : "1",
+         "productImageLengthwise" : "115",
+         "nextUpDateEpoch" : 1526264205,
+         "sakuhinSearchType" : "4",
+         "productKey" : "9784480687807",
+         "rankNo" : "4",
+         "urlCd" : "40695252",
+         "lastRankNo" : "4",
+         "rankingConcentrationCd" : "W086"
+      },
+      {
+         "artistInfoList" : {
+            "artistInfo" : {
+               "artistName" : "堀江貴文",
+               "artistCd" : "00400412",
+               "order" : "1",
+               "roleName" : "著者"
+            }
+         },
+         "sakuhinCd" : "42949104",
+         "nextUpDate" : "2018-05-14T11:16:45",
+         "productImageCrosswise" : "0",
+         "productTitle" : "自分のことだけ考える。",
+         "order" : "5",
+         "upDate" : "2018-05-07T10:16:45",
+         "productImage" : {
+            "small" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/12935/9784591158319_1S.jpg",
+            "large" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/12935/9784591158319_1L.jpg",
+            "medium" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/12935/9784591158319_1M.jpg"
+         },
+         "link" : [
+            {
+               "rel" : "detail",
+               "href" : "http://stg.www.tsutaya.co.jp/works/41708203.html",
+               "type" : "text/html"
+            }
+         ],
+         "publisherName" : "ポプラ社",
+         "transition" : "2",
+         "productImageLengthwise" : "0",
+         "nextUpDateEpoch" : 1526264205,
+         "sakuhinSearchType" : "4",
+         "productKey" : "9784591158319",
+         "rankNo" : "5",
+         "urlCd" : "41708203",
+         "lastRankNo" : "3",
+         "rankingConcentrationCd" : "W086"
+      },
+      {
+         "artistInfoList" : {
+            "artistInfo" : {
+               "artistName" : "奥田昌子",
+               "artistCd" : "20415610",
+               "order" : "1",
+               "roleName" : "著者"
+            }
+         },
+         "sakuhinCd" : "42947557",
+         "nextUpDate" : "2018-05-14T11:16:45",
+         "productImageCrosswise" : "0",
+         "productTitle" : "内臓脂肪を最速で落とす",
+         "order" : "6",
+         "upDate" : "2018-05-07T10:16:45",
+         "productImage" : {
+            "small" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/12780/9784344984837_1S.jpg",
+            "large" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/12780/9784344984837_1L.jpg",
+            "medium" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/12780/9784344984837_1M.jpg"
+         },
+         "link" : [
+            {
+               "rel" : "detail",
+               "href" : "http://stg.www.tsutaya.co.jp/works/41706648.html",
+               "type" : "text/html"
+            }
+         ],
+         "publisherName" : "幻冬舎",
+         "transition" : "2",
+         "productImageLengthwise" : "0",
+         "nextUpDateEpoch" : 1526264205,
+         "sakuhinSearchType" : "4",
+         "productKey" : "9784344984837",
+         "rankNo" : "6",
+         "urlCd" : "41706648",
+         "lastRankNo" : "5",
+         "rankingConcentrationCd" : "W086"
+      },
+      {
+         "artistInfoList" : {
+            "artistInfo" : {
+               "artistName" : "磯田道史",
+               "artistCd" : "00421398",
+               "order" : "1",
+               "roleName" : "著者"
+            }
+         },
+         "sakuhinCd" : "42915045",
+         "nextUpDate" : "2018-05-14T11:16:45",
+         "productImageCrosswise" : "0",
+         "productTitle" : "日本史の内幕",
+         "order" : "7",
+         "upDate" : "2018-05-07T10:16:45",
+         "productImage" : {
+            "small" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/12532/9784121024558_1S.jpg",
+            "large" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/12532/9784121024558_1L.jpg",
+            "medium" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/12532/9784121024558_1M.jpg"
+         },
+         "link" : [
+            {
+               "rel" : "detail",
+               "href" : "http://stg.www.tsutaya.co.jp/works/41673905.html",
+               "type" : "text/html"
+            }
+         ],
+         "publisherName" : "中央公論新社",
+         "transition" : "2",
+         "productImageLengthwise" : "0",
+         "nextUpDateEpoch" : 1526264205,
+         "sakuhinSearchType" : "4",
+         "productKey" : "9784121024558",
+         "rankNo" : "7",
+         "urlCd" : "41673905",
+         "lastRankNo" : "6",
+         "rankingConcentrationCd" : "W086"
+      },
+      {
+         "artistInfoList" : {
+            "artistInfo" : {
+               "artistName" : "半藤一利",
+               "artistCd" : "00413519",
+               "order" : "1",
+               "roleName" : "著者"
+            }
+         },
+         "sakuhinCd" : "42964701",
+         "nextUpDate" : "2018-05-14T11:16:45",
+         "productImageCrosswise" : "0",
+         "productTitle" : "歴史と戦争",
+         "order" : "8",
+         "upDate" : "2018-05-07T10:16:45",
+         "productImage" : {
+            "small" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/12928/9784344984967_1S.jpg",
+            "large" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/12928/9784344984967_1L.jpg",
+            "medium" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/12928/9784344984967_1M.jpg"
+         },
+         "link" : [
+            {
+               "rel" : "detail",
+               "href" : "http://stg.www.tsutaya.co.jp/works/41723926.html",
+               "type" : "text/html"
+            }
+         ],
+         "publisherName" : "幻冬舎",
+         "transition" : "0",
+         "productImageLengthwise" : "0",
+         "nextUpDateEpoch" : 1526264205,
+         "sakuhinSearchType" : "4",
+         "productKey" : "9784344984967",
+         "rankNo" : "8",
+         "urlCd" : "41723926",
+         "lastRankNo" : "11",
+         "rankingConcentrationCd" : "W086"
+      },
+      {
+         "artistInfoList" : {
+            "artistInfo" : {
+               "artistName" : "尾田栄一郎",
+               "artistCd" : "00501057",
+               "order" : "1",
+               "roleName" : "著者"
+            }
+         },
+         "sakuhinCd" : "42956613",
+         "nextUpDate" : "2018-05-14T11:16:45",
+         "productImageCrosswise" : "0",
+         "productTitle" : "ＯＮＥ　ＰＩＥＣＥ　ｎｏｖｅｌ　Ａ－エース－　スペード海賊団結成篇",
+         "order" : "9",
+         "upDate" : "2018-05-07T10:16:45",
+         "productImage" : {
+            "small" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/12943/9784087034455_1S.jpg",
+            "large" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/12943/9784087034455_1L.jpg",
+            "medium" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/12943/9784087034455_1M.jpg"
+         },
+         "link" : [
+            {
+               "rel" : "detail",
+               "href" : "http://stg.www.tsutaya.co.jp/works/41715771.html",
+               "type" : "text/html"
+            }
+         ],
+         "publisherName" : "集英社",
+         "transition" : "2",
+         "productImageLengthwise" : "0",
+         "nextUpDateEpoch" : 1526264205,
+         "sakuhinSearchType" : "4",
+         "productKey" : "9784087034455",
+         "rankNo" : "9",
+         "urlCd" : "41715771",
+         "kansu" : "１",
+         "lastRankNo" : "7",
+         "rankingConcentrationCd" : "W086"
+      },
+      {
+         "artistInfoList" : {
+            "artistInfo" : {
+               "artistName" : "磯田道史",
+               "artistCd" : "00421398",
+               "order" : "1",
+               "roleName" : "著者"
+            }
+         },
+         "sakuhinCd" : "42961505",
+         "nextUpDate" : "2018-05-14T11:16:45",
+         "productImageCrosswise" : "0",
+         "productTitle" : "素顔の西郷隆盛",
+         "order" : "10",
+         "upDate" : "2018-05-07T10:16:45",
+         "productImage" : {
+            "small" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/12931/9784106107603_1S.jpg",
+            "large" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/12931/9784106107603_1L.jpg",
+            "medium" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/12931/9784106107603_1M.jpg"
+         },
+         "link" : [
+            {
+               "rel" : "detail",
+               "href" : "http://stg.www.tsutaya.co.jp/works/41720706.html",
+               "type" : "text/html"
+            }
+         ],
+         "publisherName" : "新潮社",
+         "transition" : "2",
+         "productImageLengthwise" : "0",
+         "nextUpDateEpoch" : 1526264205,
+         "sakuhinSearchType" : "4",
+         "productKey" : "9784106107603",
+         "rankNo" : "10",
+         "urlCd" : "41720706",
+         "lastRankNo" : "9",
+         "rankingConcentrationCd" : "W086"
+      },
+      {
+         "artistInfoList" : {
+            "artistInfo" : {
+               "artistName" : "百田尚樹",
+               "artistCd" : "00420120",
+               "order" : "1",
+               "roleName" : "著者"
+            }
+         },
+         "sakuhinCd" : "42945432",
+         "nextUpDate" : "2018-05-14T11:16:45",
+         "productImageCrosswise" : "0",
+         "productTitle" : "逃げる力",
+         "order" : "11",
+         "upDate" : "2018-05-07T10:16:45",
+         "productImage" : {
+            "small" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/12905/9784569837741_1S.jpg",
+            "large" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/12905/9784569837741_1L.jpg",
+            "medium" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/12905/9784569837741_1M.jpg"
+         },
+         "link" : [
+            {
+               "rel" : "detail",
+               "href" : "http://stg.www.tsutaya.co.jp/works/41704522.html",
+               "type" : "text/html"
+            }
+         ],
+         "publisherName" : "ＰＨＰ研究所",
+         "transition" : "1",
+         "productImageLengthwise" : "0",
+         "nextUpDateEpoch" : 1526264205,
+         "sakuhinSearchType" : "4",
+         "productKey" : "9784569837741",
+         "rankNo" : "10",
+         "urlCd" : "41704522",
+         "lastRankNo" : "10",
+         "rankingConcentrationCd" : "W086"
+      },
+      {
+         "artistInfoList" : {
+            "artistInfo" : {
+               "artistName" : "前野ウルド浩太郎",
+               "artistCd" : "20380245",
+               "order" : "1",
+               "roleName" : "著者"
+            }
+         },
+         "sakuhinCd" : "42875574",
+         "nextUpDate" : "2018-05-14T11:16:45",
+         "productImageCrosswise" : "0",
+         "productTitle" : "バッタを倒しにアフリカへ",
+         "order" : "12",
+         "upDate" : "2018-05-07T10:16:45",
+         "productImage" : {
+            "small" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/12190/9784334039899_1S.jpg",
+            "large" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/12190/9784334039899_1L.jpg",
+            "medium" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/12190/9784334039899_1M.jpg"
+         },
+         "link" : [
+            {
+               "rel" : "detail",
+               "href" : "http://stg.www.tsutaya.co.jp/works/41633432.html",
+               "type" : "text/html"
+            }
+         ],
+         "publisherName" : "光文社",
+         "transition" : "0",
+         "productImageLengthwise" : "0",
+         "nextUpDateEpoch" : 1526264205,
+         "sakuhinSearchType" : "4",
+         "productKey" : "9784334039899",
+         "rankNo" : "12",
+         "urlCd" : "41633432",
+         "lastRankNo" : "24",
+         "rankingConcentrationCd" : "W086"
+      },
+      {
+         "artistInfoList" : {
+            "artistInfo" : {
+               "artistName" : "呉座勇一",
+               "artistCd" : "20377658",
+               "order" : "1",
+               "roleName" : "著者"
+            }
+         },
+         "sakuhinCd" : "42951665",
+         "nextUpDate" : "2018-05-14T11:16:45",
+         "productImageCrosswise" : "0",
+         "productTitle" : "陰謀の日本中世史",
+         "order" : "13",
+         "upDate" : "2018-05-07T10:16:45",
+         "productImage" : {
+            "small" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/12870/9784040821221_1S.jpg",
+            "large" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/12870/9784040821221_1L.jpg",
+            "medium" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/12870/9784040821221_1M.jpg"
+         },
+         "link" : [
+            {
+               "rel" : "detail",
+               "href" : "http://stg.www.tsutaya.co.jp/works/41710805.html",
+               "type" : "text/html"
+            }
+         ],
+         "publisherName" : "ＫＡＤＯＫＡＷＡ",
+         "transition" : "2",
+         "productImageLengthwise" : "0",
+         "nextUpDateEpoch" : 1526264205,
+         "sakuhinSearchType" : "4",
+         "productKey" : "9784040821221",
+         "rankNo" : "13",
+         "urlCd" : "41710805",
+         "lastRankNo" : "8",
+         "rankingConcentrationCd" : "W086"
+      },
+      {
+         "artistInfoList" : {
+            "artistInfo" : {
+               "artistName" : "鴻上尚史",
+               "artistCd" : "00529611",
+               "order" : "1",
+               "roleName" : "著者"
+            }
+         },
+         "sakuhinCd" : "42922201",
+         "nextUpDate" : "2018-05-14T11:16:45",
+         "productImageCrosswise" : "0",
+         "productTitle" : "不死身の特攻兵",
+         "order" : "14",
+         "upDate" : "2018-05-07T10:16:45",
+         "productImage" : {
+            "small" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/12590/9784062884518_1S.jpg",
+            "large" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/12590/9784062884518_1L.jpg",
+            "medium" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/12590/9784062884518_1M.jpg"
+         },
+         "link" : [
+            {
+               "rel" : "detail",
+               "href" : "http://stg.www.tsutaya.co.jp/works/41681077.html",
+               "type" : "text/html"
+            }
+         ],
+         "publisherName" : "講談社",
+         "transition" : "2",
+         "productImageLengthwise" : "0",
+         "nextUpDateEpoch" : 1526264205,
+         "sakuhinSearchType" : "4",
+         "productKey" : "9784062884518",
+         "rankNo" : "14",
+         "urlCd" : "41681077",
+         "lastRankNo" : "13",
+         "rankingConcentrationCd" : "W086"
+      },
+      {
+         "artistInfoList" : {
+            "artistInfo" : {
+               "artistName" : "小野雅裕",
+               "artistCd" : "20403403",
+               "order" : "1",
+               "roleName" : "著者"
+            }
+         },
+         "sakuhinCd" : "42935451",
+         "nextUpDate" : "2018-05-14T11:16:45",
+         "productImageCrosswise" : "0",
+         "productTitle" : "宇宙に命はあるのか",
+         "order" : "15",
+         "upDate" : "2018-05-07T10:16:45",
+         "productImage" : {
+            "small" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/12679/9784797388503_1S.jpg",
+            "large" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/12679/9784797388503_1L.jpg",
+            "medium" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/12679/9784797388503_1M.jpg"
+         },
+         "link" : [
+            {
+               "rel" : "detail",
+               "href" : "http://stg.www.tsutaya.co.jp/works/41694446.html",
+               "type" : "text/html"
+            }
+         ],
+         "publisherName" : "ＳＢクリエイティブ",
+         "transition" : "0",
+         "productImageLengthwise" : "0",
+         "nextUpDateEpoch" : 1526264205,
+         "sakuhinSearchType" : "4",
+         "productKey" : "9784797388503",
+         "rankNo" : "15",
+         "urlCd" : "41694446",
+         "lastRankNo" : "26",
+         "rankingConcentrationCd" : "W086"
+      },
+      {
+         "artistInfoList" : {
+            "artistInfo" : {
+               "artistName" : "吉田裕",
+               "artistCd" : "00448352",
+               "order" : "1",
+               "roleName" : "著者"
+            }
+         },
+         "sakuhinCd" : "42930468",
+         "nextUpDate" : "2018-05-14T11:16:45",
+         "productTitle" : "日本軍兵士",
+         "order" : "16",
+         "upDate" : "2018-05-07T10:16:45",
+         "productImage" : {
+            "small" : "https://cdn.store-tsutaya.tsite.jp/images/cache/tmb/noimage/book_s.png",
+            "large" : "https://cdn.store-tsutaya.tsite.jp/images/cache/tmb/noimage/book_l.png",
+            "medium" : "https://cdn.store-tsutaya.tsite.jp/images/cache/tmb/noimage/book_m.png"
+         },
+         "publisherName" : "中央公論新社",
+         "link" : [
+            {
+               "rel" : "detail",
+               "href" : "http://stg.www.tsutaya.co.jp/works/41689414.html",
+               "type" : "text/html"
+            }
+         ],
+         "transition" : "2",
+         "nextUpDateEpoch" : 1526264205,
+         "sakuhinSearchType" : "4",
+         "productKey" : "9784121024657",
+         "rankNo" : "16",
+         "urlCd" : "41689414",
+         "lastRankNo" : "12",
+         "rankingConcentrationCd" : "W086"
+      },
+      {
+         "artistInfoList" : {
+            "artistInfo" : {
+               "artistName" : "眉村卓",
+               "artistCd" : "00523841",
+               "order" : "1",
+               "roleName" : "著者"
+            }
+         },
+         "sakuhinCd" : "40339448",
+         "nextUpDate" : "2018-05-14T11:16:45",
+         "productImageCrosswise" : "71",
+         "productTitle" : "妻に捧げた１７７８話",
+         "order" : "17",
+         "upDate" : "2018-05-07T10:16:45",
+         "productImage" : {
+            "small" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/02803/9784106100697_1S.jpg",
+            "large" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/02803/9784106100697_1L.jpg",
+            "medium" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/02803/9784106100697_1M.jpg"
+         },
+         "link" : [
+            {
+               "rel" : "detail",
+               "href" : "http://stg.www.tsutaya.co.jp/works/40317455.html",
+               "type" : "text/html"
+            }
+         ],
+         "publisherName" : "新潮社",
+         "transition" : "0",
+         "productImageLengthwise" : "115",
+         "nextUpDateEpoch" : 1526264205,
+         "sakuhinSearchType" : "4",
+         "productKey" : "9784106100697",
+         "rankNo" : "17",
+         "urlCd" : "40317455",
+         "lastRankNo" : "20",
+         "rankingConcentrationCd" : "W086"
+      },
+      {
+         "artistInfoList" : {
+            "artistInfo" : {
+               "artistName" : "河合雅司",
+               "artistCd" : "20411387",
+               "order" : "1",
+               "roleName" : "著者"
+            }
+         },
+         "sakuhinCd" : "42885512",
+         "nextUpDate" : "2018-05-14T11:16:45",
+         "productImageCrosswise" : "0",
+         "productTitle" : "未来の年表　人口減少日本でこれから起きること",
+         "order" : "18",
+         "upDate" : "2018-05-07T10:16:45",
+         "productImage" : {
+            "small" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/12214/9784062884310_1S.jpg",
+            "large" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/12214/9784062884310_1L.jpg",
+            "medium" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/12214/9784062884310_1M.jpg"
+         },
+         "link" : [
+            {
+               "rel" : "detail",
+               "href" : "http://stg.www.tsutaya.co.jp/works/41643682.html",
+               "type" : "text/html"
+            }
+         ],
+         "publisherName" : "講談社",
+         "transition" : "2",
+         "productImageLengthwise" : "0",
+         "nextUpDateEpoch" : 1526264205,
+         "sakuhinSearchType" : "4",
+         "productKey" : "9784062884310",
+         "rankNo" : "18",
+         "urlCd" : "41643682",
+         "lastRankNo" : "17",
+         "rankingConcentrationCd" : "W086"
+      },
+      {
+         "artistInfoList" : {
+            "artistInfo" : {
+               "artistName" : "本郷和人",
+               "artistCd" : "00433552",
+               "order" : "1",
+               "roleName" : "著者"
+            }
+         },
+         "sakuhinCd" : "42937252",
+         "nextUpDate" : "2018-05-14T11:16:45",
+         "productTitle" : "日本史のツボ",
+         "order" : "19",
+         "upDate" : "2018-05-07T10:16:45",
+         "productImage" : {
+            "small" : "https://cdn.store-tsutaya.tsite.jp/images/cache/tmb/noimage/book_s.png",
+            "large" : "https://cdn.store-tsutaya.tsite.jp/images/cache/tmb/noimage/book_l.png",
+            "medium" : "https://cdn.store-tsutaya.tsite.jp/images/cache/tmb/noimage/book_m.png"
+         },
+         "publisherName" : "文藝春秋",
+         "link" : [
+            {
+               "rel" : "detail",
+               "href" : "http://stg.www.tsutaya.co.jp/works/41696250.html",
+               "type" : "text/html"
+            }
+         ],
+         "transition" : "2",
+         "nextUpDateEpoch" : 1526264205,
+         "sakuhinSearchType" : "4",
+         "productKey" : "9784166611539",
+         "rankNo" : "19",
+         "urlCd" : "41696250",
+         "lastRankNo" : "15",
+         "rankingConcentrationCd" : "W086"
+      },
+      {
+         "artistInfoList" : {
+            "artistInfo" : {
+               "artistName" : "平松類",
+               "artistCd" : "00466448",
+               "order" : "1",
+               "roleName" : "著者"
+            }
+         },
+         "sakuhinCd" : "42895002",
+         "nextUpDate" : "2018-05-14T11:16:45",
+         "productImageCrosswise" : "0",
+         "productTitle" : "老人の取扱説明書",
+         "order" : "20",
+         "upDate" : "2018-05-07T10:16:45",
+         "productImage" : {
+            "small" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/12304/9784797392449_1S.jpg",
+            "large" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/12304/9784797392449_1L.jpg",
+            "medium" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/12304/9784797392449_1M.jpg"
+         },
+         "link" : [
+            {
+               "rel" : "detail",
+               "href" : "http://stg.www.tsutaya.co.jp/works/41653605.html",
+               "type" : "text/html"
+            }
+         ],
+         "publisherName" : "ＳＢクリエイティブ",
+         "transition" : "2",
+         "productImageLengthwise" : "0",
+         "nextUpDateEpoch" : 1526264205,
+         "sakuhinSearchType" : "4",
+         "productKey" : "9784797392449",
+         "rankNo" : "19",
+         "urlCd" : "41653605",
+         "lastRankNo" : "18",
+         "rankingConcentrationCd" : "W086"
+      }
+   ],
+   "rentalSalesSection" : "2",
+   "saleBookList" : {
+      "genreInfo" : [
+         {
+            "selectedFlag" : "1",
+            "genreName" : "書籍",
+            "typeName" : "総合",
+            "order" : "1",
+            "itemCd" : "1076",
+            "rankingConcentrationCd" : "W083",
+            "typeCode" : "0"
+         },
+         {
+            "selectedFlag" : "1",
+            "genreName" : "新書",
+            "order" : "2",
+            "itemCd" : "1076",
+            "rankingConcentrationCd" : "W086",
+            "lGenreCd" : "06"
+         },
+         {
+            "selectedFlag" : "1",
+            "genreName" : "文芸書",
+            "order" : "3",
+            "itemCd" : "1076",
+            "rankingConcentrationCd" : "W087",
+            "lGenreCd" : "33"
+         },
+         {
+            "selectedFlag" : "1",
+            "genreName" : "ビジネス",
+            "order" : "4",
+            "itemCd" : "1076",
+            "rankingConcentrationCd" : "W089",
+            "lGenreCd" : "66"
+         },
+         {
+            "selectedFlag" : "1",
+            "genreName" : "文庫",
+            "typeName" : "総合",
+            "order" : "5",
+            "itemCd" : "1076",
+            "rankingConcentrationCd" : "W084",
+            "typeCode" : "0"
+         },
+         {
+            "selectedFlag" : "1",
+            "genreName" : "ライトノベルス",
+            "order" : "6",
+            "itemCd" : "1076",
+            "rankingConcentrationCd" : "W085"
+         },
+         {
+            "selectedFlag" : "1",
+            "genreName" : "コミック",
+            "order" : "7",
+            "itemCd" : "1075",
+            "rankingConcentrationCd" : "W082"
+         },
+         {
+            "selectedFlag" : "1",
+            "genreName" : "週刊誌",
+            "order" : "8",
+            "itemCd" : "1071",
+            "rankingConcentrationCd" : "W079",
+            "lGenreCd" : "01"
+         },
+         {
+            "selectedFlag" : "1",
+            "genreName" : "月刊誌",
+            "order" : "9",
+            "itemCd" : "1071",
+            "rankingConcentrationCd" : "W080",
+            "lGenreCd" : "11"
+         },
+         {
+            "selectedFlag" : "1",
+            "genreName" : "ムック",
+            "order" : "10",
+            "itemCd" : "1071",
+            "rankingConcentrationCd" : "W081",
+            "lGenreCd" : "22"
+         },
+         {
+            "selectedFlag" : "1",
+            "genreName" : "タレント写真集",
+            "order" : "11",
+            "itemCd" : "1076",
+            "rankingConcentrationCd" : "W088",
+            "lGenreCd" : "36"
+         }
+      ]
+   },
+   "rankingTitle" : "ブックセルランキング",
+   "weeklyFlag" : "1",
+   "finishSet" : "20",
+   "genreName" : "新書",
+   "startSet" : "1",
+   "categoryCd" : "04",
+   "upDate" : "2009-04-20T15:55:00",
+   "totalResults" : "19",
+   "totalingPeriod" : "2018年4月30日(月)～2018年5月6日(日)",
+   "query" : {
+      "dispPageNo" : "1",
+      "tolPlatformCode" : "00",
+      "dispNums" : "20",
+      "rankinglimit" : "20",
+      "rankingConcentrationCd" : "W086",
+      "secureflg" : "1"
+   },
+   "dispPageNo" : "1",
+   "rankingType" : "3",
+   "nearrealFlag" : "0",
+   "rankingDispPCList" : {},
+   "rankingCalendarInfo" : {
+      "weeklyDispLinkList" : {
+         "totalingPeriodInfo" : [
+            {
+               "totalingPeriodFrom" : "20180430",
+               "totalingPeriodDisp" : "2018年4月30日(月)～2018年5月6日(日)"
+            },
+            {
+               "totalingPeriodFrom" : "20180423",
+               "totalingPeriodDisp" : "2018年4月23日(月)～2018年4月29日(日)"
+            },
+            {
+               "totalingPeriodFrom" : "20180416",
+               "totalingPeriodDisp" : "2018年4月16日(月)～2018年4月22日(日)"
+            },
+            {
+               "totalingPeriodFrom" : "20180409",
+               "totalingPeriodDisp" : "2018年4月9日(月)～2018年4月15日(日)"
+            },
+            {
+               "totalingPeriodFrom" : "20180402",
+               "totalingPeriodDisp" : "2018年4月2日(月)～2018年4月8日(日)"
+            }
+         ]
+      }
+   },
+   "startIndex" : 1,
+   "monthlyFlag" : "1",
+   "dailyFlag" : "1",
+   "itemsPerPage" : "19",
+   "rankingConcentrationCd" : "W086"
+}

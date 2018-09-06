@@ -71,6 +71,7 @@ class Section extends Model
                 " or display_end_date = '0000-00-00 00:00:00')" );
         return $this;
     }
+
     public function conditionNoUrlCode()
     {
         $this->dbObject = DB::table($this->table)
@@ -78,4 +79,16 @@ class Section extends Model
             ->where('title', '=', '');
         return $this;
     }
+
+    public function conditionNoWorkIdActiveRow()
+    {
+        $this->dbObject = DB::table($this->table . ' AS t1')
+            ->join('ts_structures AS t2', function ($join) {
+                $join->on('t1.ts_structure_id', '=', 't2.id');
+            })
+            ->where('code', '<>', '')
+            ->where('work_id', '=', '');
+        return $this;
+    }
+
 }

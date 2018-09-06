@@ -10,7 +10,9 @@
         "vlucas/phpdotenv": "~2.2",
         "guzzlehttp/guzzle": "^6.3",
         "zircote/swagger-php": "^2.0",
-        "league/csv": "^9.0"
+        "league/csv": "^9.0",
+        "doctrine/dbal": "^2.5",
+        "goodby/csv": "*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

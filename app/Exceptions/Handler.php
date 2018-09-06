@@ -7,7 +7,10 @@ use Illuminate\Validation\ValidationException;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Laravel\Lumen\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
+use App\Exceptions\NoContentsException as NoContentsException;
+use App\Exceptions\AgeLimitException as AgeLimitException;
 
 class Handler extends ExceptionHandler
 {
@@ -21,7 +24,8 @@ class Handler extends ExceptionHandler
         HttpException::class,
         ModelNotFoundException::class,
         ValidationException::class,
-        NoContentsException::class
+        NoContentsException::class,
+        AgeLimitException::class
     ];
 
     /**
@@ -46,18 +50,23 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
-        if ($e instanceof HttpException) {
-            // 403
-            if ($e->getStatusCode() == 403) {
-                return response()->json(['status' => '403'], 403);
+        if(env('APP_ENV') === 'local' || env('APP_ENV') === 'develop'){
+            if ($e instanceof AgeLimitException) {
+                return response()->json(['message' => $e->getMessage(), 'status' => '202'], 202);
+            } else if ($e instanceof NoContentsException) {
+                return response()->json(['status' => '204'], 204);
             }
-            // 404
-            if ($e->getStatusCode() == 404) {
-                return response()->json(['status' => '404'], 404);
-            }
+            return parent::render($request, $e);
+        }
 
+        if ($e instanceof HttpException) {
+            return response()->json(['status' => $e->getStatusCode()], $e->getStatusCode());
+        } else if ($e instanceof AgeLimitException) {
+            return response()->json(['message' => $e->getMessage(), 'status' => '202'], 202);
         } else if ($e instanceof NoContentsException) {
             return response()->json(['status' => '204'], 204);
+        } else if ($e instanceof BadRequestHttpException) {
+            return response()->json(['status' => '400'], 400);
         } else if ($e instanceof AuthorizationException) {
             return response()->json(['status' => '401'], 401);
         } else if ($e instanceof Exception) {

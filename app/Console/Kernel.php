@@ -13,7 +13,15 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        \App\Console\Commands\Import::class
+        \App\Console\Commands\Import::class,
+        \App\Console\Commands\Touch::class,
+        \App\Console\Commands\ImportHimoKeyword::class,
+        \App\Console\Commands\ImportBk2Recommend::class,
+        \App\Console\Commands\CreateReleaseCalendar::class,
+        \App\Console\Commands\CheckHimoTables::class,
+        \App\Console\Commands\CreateTopRelease::class,
+        \App\Console\Commands\TruncateTables::class,
+        \App\Console\Commands\CreateOneTimeCoupon::class,
     ];
 
     /**

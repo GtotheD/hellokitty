@@ -1,0 +1,1936 @@
+{
+    "status": 200,
+    "message": null,
+    "results": {
+        "total": 1,
+        "rows": [
+            {
+                "id": "XMD0000PMDY5",
+                "xmedia_type": "small_series",
+                "ccc_small_series_cd": "S40001130",
+                "small_series_name": "キン肉マン",
+                "small_series_kana": "きんにくまん",
+                "delete_flg": 0,
+                    "adult_flg": 0,
+                "create_date": "2016-03-03 07:52:46",
+                "xmedia_item_type": "4",
+                "works": [
+                    {
+                        "work_id": "PTA0000H72ME",
+                        "work_type_id": "3",
+                        "msdb_item": "book",
+                        "work_format_id": null,
+                        "work_format_name": "",
+                        "work_title": "キン肉マン 全18巻セット",
+                        "work_copyright": "",
+                        "adult_flg": 0,
+                        "jacket_s": "",
+                        "jacket_m": "",
+                        "jacket_l": "",
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "ids": [
+                            {
+                                "id_type": "0103",
+                                "id_value": "42536099"
+                            },
+                            {
+                                "id_type": "0105",
+                                "id_value": "41287064"
+                            }
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT000073X10",
+                                "big_genre_name": "コミック",
+                                "medium_genre_id": "EXT00007419A",
+                                "medium_genre_name": "コミック文庫",
+                                "small_genre_id": "EXT0000753BT",
+                                "small_genre_name": "少年・青年",
+                                "shikiriban_id": "EXT000075ARK",
+                                "shikiriban_name": "少年・青年"
+                            }
+                        ],
+                        "products": [],
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "people": [
+                            {
+                                "person_id": "PPS00000JBKP",
+                                "person_name": "ゆでたまご",
+                                "role_id": "EXT00000BWU9",
+                                "role_name": "著者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "work_id": "PTA0000H4C7V",
+                        "work_type_id": "3",
+                        "msdb_item": "book",
+                        "work_format_id": null,
+                        "work_format_name": "",
+                        "work_title": "キン肉マン",
+                        "work_copyright": "",
+                        "adult_flg": 0,
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/09762/9784088707259_1S.jpg",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/09762/9784088707259_1M.jpg",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/09762/9784088707259_1L.jpg",
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "ids": [
+                            {
+                                "id_type": "0103",
+                                "id_value": "42478412"
+                            },
+                            {
+                                "id_type": "0105",
+                                "id_value": "41229321"
+                            }
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT000073X10",
+                                "big_genre_name": "コミック",
+                                "medium_genre_id": "EXT00007417Y",
+                                "medium_genre_name": "少年コミック",
+                                "small_genre_id": "EXT00007538Z",
+                                "small_genre_name": "集英社少年",
+                                "shikiriban_id": "EXT000075AIT",
+                                "shikiriban_name": "集英社ジャンプＣ"
+                            }
+                        ],
+                        "products": [],
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "people": [
+                            {
+                                "person_id": "PPS00000JBKP",
+                                "person_name": "ゆでたまご",
+                                "role_id": "EXT00000BWU9",
+                                "role_name": "著者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "work_id": "PTA0000GADXN",
+                        "work_type_id": "3",
+                        "msdb_item": "book",
+                        "work_format_id": null,
+                        "work_format_name": "",
+                        "work_title": "JUMP COMICS キン肉マン 復刻BOX“伝説”-レジェンド-",
+                        "work_copyright": "",
+                        "adult_flg": 0,
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/05067/9784089081174_1S.jpg",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/05067/9784089081174_1M.jpg",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/05067/9784089081174_1L.jpg",
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "ids": [
+                            {
+                                "id_type": "0103",
+                                "id_value": "40908658"
+                            },
+                            {
+                                "id_type": "0105",
+                                "id_value": "40879633"
+                            }
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT000073X10",
+                                "big_genre_name": "コミック",
+                                "medium_genre_id": "EXT00007417Y",
+                                "medium_genre_name": "少年コミック",
+                                "small_genre_id": "EXT00007538Z",
+                                "small_genre_name": "集英社少年",
+                                "shikiriban_id": "EXT000075AIT",
+                                "shikiriban_name": "集英社ジャンプＣ"
+                            }
+                        ],
+                        "products": [],
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "people": [
+                            {
+                                "person_id": "PPS00000JBKP",
+                                "person_name": "ゆでたまご",
+                                "role_id": "EXT00000BWU9",
+                                "role_name": "著者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "work_id": "PTA0000G8UGB",
+                        "work_type_id": "3",
+                        "msdb_item": "book",
+                        "work_format_id": null,
+                        "work_format_name": "",
+                        "work_title": "キン肉マン",
+                        "work_copyright": "",
+                        "adult_flg": 0,
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/12866/9784088813769_1S.jpg",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/12866/9784088813769_1M.jpg",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/12866/9784088813769_1L.jpg",
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "ids": [
+                            {
+                                "id_type": "0103",
+                                "id_value": "40902007"
+                            },
+                            {
+                                "id_type": "0105",
+                                "id_value": "40872982"
+                            }
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT000073X10",
+                                "big_genre_name": "コミック",
+                                "medium_genre_id": "EXT00007417Y",
+                                "medium_genre_name": "少年コミック",
+                                "small_genre_id": "EXT00007538Z",
+                                "small_genre_name": "集英社少年",
+                                "shikiriban_id": "EXT000075AIT",
+                                "shikiriban_name": "集英社ジャンプＣ"
+                            }
+                        ],
+                        "products": [],
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "people": [
+                            {
+                                "person_id": "PPS00000JBKP",
+                                "person_name": "ゆでたまご",
+                                "role_id": "EXT00000BWU9",
+                                "role_name": "著者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "work_id": "PTA0000FHQ06",
+                        "work_type_id": "3",
+                        "msdb_item": "book",
+                        "work_format_id": null,
+                        "work_format_name": "",
+                        "work_title": "キン肉マン",
+                        "work_copyright": "",
+                        "adult_flg": 0,
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/01256/9784086174497_1S.jpg",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/01256/9784086174497_1M.jpg",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/01256/9784086174497_1L.jpg",
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "ids": [
+                            {
+                                "id_type": "0103",
+                                "id_value": "40003408"
+                            },
+                            {
+                                "id_type": "0105",
+                                "id_value": "40002178"
+                            }
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT000073X10",
+                                "big_genre_name": "コミック",
+                                "medium_genre_id": "EXT00007419A",
+                                "medium_genre_name": "コミック文庫",
+                                "small_genre_id": "EXT0000753BT",
+                                "small_genre_name": "少年・青年",
+                                "shikiriban_id": "EXT000075ARK",
+                                "shikiriban_name": "少年・青年"
+                            }
+                        ],
+                        "products": [],
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "people": [
+                            {
+                                "person_id": "PPS00000JBKP",
+                                "person_name": "ゆでたまご",
+                                "role_id": "EXT00000BWU9",
+                                "role_name": "著者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "work_id": "PTA0000GGT1A",
+                        "work_type_id": "3",
+                        "msdb_item": "book",
+                        "work_format_id": null,
+                        "work_format_name": "",
+                        "work_title": "キン肉マン",
+                        "work_copyright": "",
+                        "adult_flg": 0,
+                        "jacket_s": "",
+                        "jacket_m": "",
+                        "jacket_l": "",
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "ids": [
+                            {
+                                "id_type": "0103",
+                                "id_value": "40005329"
+                            },
+                            {
+                                "id_type": "0105",
+                                "id_value": "40003070"
+                            }
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT000073X10",
+                                "big_genre_name": "コミック",
+                                "medium_genre_id": "EXT00007417Y",
+                                "medium_genre_name": "少年コミック",
+                                "small_genre_id": "EXT00007538Z",
+                                "small_genre_name": "集英社少年",
+                                "shikiriban_id": "EXT000075AIT",
+                                "shikiriban_name": "集英社ジャンプＣ"
+                            }
+                        ],
+                        "products": [],
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "people": [
+                            {
+                                "person_id": "PPS00000JBKP",
+                                "person_name": "ゆでたまご",
+                                "role_id": "EXT00000BWU9",
+                                "role_name": "著者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "work_id": "PTA0000H4C2P",
+                        "work_type_id": "3",
+                        "msdb_item": "book",
+                        "work_format_id": null,
+                        "work_format_name": "",
+                        "work_title": "キン肉マン",
+                        "work_copyright": "",
+                        "adult_flg": 0,
+                        "jacket_s": "",
+                        "jacket_m": "",
+                        "jacket_l": "",
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "ids": [
+                            {
+                                "id_type": "0103",
+                                "id_value": "41086024"
+                            }
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT000073X10",
+                                "big_genre_name": "コミック",
+                                "medium_genre_id": "EXT00007417Y",
+                                "medium_genre_name": "少年コミック",
+                                "small_genre_id": "EXT00007538Z",
+                                "small_genre_name": "集英社少年",
+                                "shikiriban_id": "EXT000075AIT",
+                                "shikiriban_name": "集英社ジャンプＣ"
+                            }
+                        ],
+                        "products": [],
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "people": [
+                            {
+                                "person_id": "PPS00000JBKP",
+                                "person_name": "ゆでたまご",
+                                "role_id": "EXT00000BWU9",
+                                "role_name": "著者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "work_id": "PTA0000G89I1",
+                        "work_type_id": "3",
+                        "msdb_item": "book",
+                        "work_format_id": null,
+                        "work_format_name": "",
+                        "work_title": "キン肉マン",
+                        "work_copyright": "",
+                        "adult_flg": 0,
+                        "jacket_s": "",
+                        "jacket_m": "",
+                        "jacket_l": "",
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "ids": [
+                            {
+                                "id_type": "0103",
+                                "id_value": "41086342"
+                            }
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT000073X10",
+                                "big_genre_name": "コミック",
+                                "medium_genre_id": "EXT00007417Y",
+                                "medium_genre_name": "少年コミック",
+                                "small_genre_id": "EXT00007538Z",
+                                "small_genre_name": "集英社少年",
+                                "shikiriban_id": "EXT000075AIT",
+                                "shikiriban_name": "集英社ジャンプＣ"
+                            }
+                        ],
+                        "products": [],
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "people": [
+                            {
+                                "person_id": "PPS00000JBKP",
+                                "person_name": "ゆでたまご",
+                                "role_id": "EXT00000BWU9",
+                                "role_name": "著者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "work_id": "PTA0000G89HC",
+                        "work_type_id": "3",
+                        "msdb_item": "book",
+                        "work_format_id": null,
+                        "work_format_name": "",
+                        "work_title": "キン肉マン",
+                        "work_copyright": "",
+                        "adult_flg": 0,
+                        "jacket_s": "",
+                        "jacket_m": "",
+                        "jacket_l": "",
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "ids": [
+                            {
+                                "id_type": "0103",
+                                "id_value": "41086341"
+                            }
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT000073X10",
+                                "big_genre_name": "コミック",
+                                "medium_genre_id": "EXT00007417Y",
+                                "medium_genre_name": "少年コミック",
+                                "small_genre_id": "EXT00007538Z",
+                                "small_genre_name": "集英社少年",
+                                "shikiriban_id": "EXT000075AIT",
+                                "shikiriban_name": "集英社ジャンプＣ"
+                            }
+                        ],
+                        "products": [],
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "people": [
+                            {
+                                "person_id": "PPS00000JBKP",
+                                "person_name": "ゆでたまご",
+                                "role_id": "EXT00000BWU9",
+                                "role_name": "著者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "work_id": "PTA0000G89GO",
+                        "work_type_id": "3",
+                        "msdb_item": "book",
+                        "work_format_id": null,
+                        "work_format_name": "",
+                        "work_title": "キン肉マン",
+                        "work_copyright": "",
+                        "adult_flg": 0,
+                        "jacket_s": "",
+                        "jacket_m": "",
+                        "jacket_l": "",
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "ids": [
+                            {
+                                "id_type": "0103",
+                                "id_value": "41086340"
+                            }
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT000073X10",
+                                "big_genre_name": "コミック",
+                                "medium_genre_id": "EXT00007417Y",
+                                "medium_genre_name": "少年コミック",
+                                "small_genre_id": "EXT00007538Z",
+                                "small_genre_name": "集英社少年",
+                                "shikiriban_id": "EXT000075AIT",
+                                "shikiriban_name": "集英社ジャンプＣ"
+                            }
+                        ],
+                        "products": [],
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "people": [
+                            {
+                                "person_id": "PPS00000JBKP",
+                                "person_name": "ゆでたまご",
+                                "role_id": "EXT00000BWU9",
+                                "role_name": "著者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "work_id": "PTA0000G89G0",
+                        "work_type_id": "3",
+                        "msdb_item": "book",
+                        "work_format_id": null,
+                        "work_format_name": "",
+                        "work_title": "キン肉マン",
+                        "work_copyright": "",
+                        "adult_flg": 0,
+                        "jacket_s": "",
+                        "jacket_m": "",
+                        "jacket_l": "",
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "ids": [
+                            {
+                                "id_type": "0103",
+                                "id_value": "41086339"
+                            }
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT000073X10",
+                                "big_genre_name": "コミック",
+                                "medium_genre_id": "EXT00007417Y",
+                                "medium_genre_name": "少年コミック",
+                                "small_genre_id": "EXT00007538Z",
+                                "small_genre_name": "集英社少年",
+                                "shikiriban_id": "EXT000075AIT",
+                                "shikiriban_name": "集英社ジャンプＣ"
+                            }
+                        ],
+                        "products": [],
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "people": [
+                            {
+                                "person_id": "PPS00000JBKP",
+                                "person_name": "ゆでたまご",
+                                "role_id": "EXT00000BWU9",
+                                "role_name": "著者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "work_id": "PTA0000G89F8",
+                        "work_type_id": "3",
+                        "msdb_item": "book",
+                        "work_format_id": null,
+                        "work_format_name": "",
+                        "work_title": "キン肉マン",
+                        "work_copyright": "",
+                        "adult_flg": 0,
+                        "jacket_s": "",
+                        "jacket_m": "",
+                        "jacket_l": "",
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "ids": [
+                            {
+                                "id_type": "0103",
+                                "id_value": "41086338"
+                            }
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT000073X10",
+                                "big_genre_name": "コミック",
+                                "medium_genre_id": "EXT00007417Y",
+                                "medium_genre_name": "少年コミック",
+                                "small_genre_id": "EXT00007538Z",
+                                "small_genre_name": "集英社少年",
+                                "shikiriban_id": "EXT000075AIT",
+                                "shikiriban_name": "集英社ジャンプＣ"
+                            }
+                        ],
+                        "products": [],
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "people": [
+                            {
+                                "person_id": "PPS00000JBKP",
+                                "person_name": "ゆでたまご",
+                                "role_id": "EXT00000BWU9",
+                                "role_name": "著者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "work_id": "PTA0000G89EL",
+                        "work_type_id": "3",
+                        "msdb_item": "book",
+                        "work_format_id": null,
+                        "work_format_name": "",
+                        "work_title": "キン肉マン",
+                        "work_copyright": "",
+                        "adult_flg": 0,
+                        "jacket_s": "",
+                        "jacket_m": "",
+                        "jacket_l": "",
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "ids": [
+                            {
+                                "id_type": "0103",
+                                "id_value": "41086337"
+                            }
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT000073X10",
+                                "big_genre_name": "コミック",
+                                "medium_genre_id": "EXT00007417Y",
+                                "medium_genre_name": "少年コミック",
+                                "small_genre_id": "EXT00007538Z",
+                                "small_genre_name": "集英社少年",
+                                "shikiriban_id": "EXT000075AIT",
+                                "shikiriban_name": "集英社ジャンプＣ"
+                            }
+                        ],
+                        "products": [],
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "people": [
+                            {
+                                "person_id": "PPS00000JBKP",
+                                "person_name": "ゆでたまご",
+                                "role_id": "EXT00000BWU9",
+                                "role_name": "著者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "work_id": "PTA0000G89DW",
+                        "work_type_id": "3",
+                        "msdb_item": "book",
+                        "work_format_id": null,
+                        "work_format_name": "",
+                        "work_title": "キン肉マン",
+                        "work_copyright": "",
+                        "adult_flg": 0,
+                        "jacket_s": "",
+                        "jacket_m": "",
+                        "jacket_l": "",
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "ids": [
+                            {
+                                "id_type": "0103",
+                                "id_value": "41086336"
+                            }
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT000073X10",
+                                "big_genre_name": "コミック",
+                                "medium_genre_id": "EXT00007417Y",
+                                "medium_genre_name": "少年コミック",
+                                "small_genre_id": "EXT00007538Z",
+                                "small_genre_name": "集英社少年",
+                                "shikiriban_id": "EXT000075AIT",
+                                "shikiriban_name": "集英社ジャンプＣ"
+                            }
+                        ],
+                        "products": [],
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "people": [
+                            {
+                                "person_id": "PPS00000JBKP",
+                                "person_name": "ゆでたまご",
+                                "role_id": "EXT00000BWU9",
+                                "role_name": "著者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "work_id": "PTA0000G89DA",
+                        "work_type_id": "3",
+                        "msdb_item": "book",
+                        "work_format_id": null,
+                        "work_format_name": "",
+                        "work_title": "キン肉マン",
+                        "work_copyright": "",
+                        "adult_flg": 0,
+                        "jacket_s": "",
+                        "jacket_m": "",
+                        "jacket_l": "",
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "ids": [
+                            {
+                                "id_type": "0103",
+                                "id_value": "41086335"
+                            }
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT000073X10",
+                                "big_genre_name": "コミック",
+                                "medium_genre_id": "EXT00007417Y",
+                                "medium_genre_name": "少年コミック",
+                                "small_genre_id": "EXT00007538Z",
+                                "small_genre_name": "集英社少年",
+                                "shikiriban_id": "EXT000075AIT",
+                                "shikiriban_name": "集英社ジャンプＣ"
+                            }
+                        ],
+                        "products": [],
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "people": [
+                            {
+                                "person_id": "PPS00000JBKP",
+                                "person_name": "ゆでたまご",
+                                "role_id": "EXT00000BWU9",
+                                "role_name": "著者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "work_id": "PTA0000G89CL",
+                        "work_type_id": "3",
+                        "msdb_item": "book",
+                        "work_format_id": null,
+                        "work_format_name": "",
+                        "work_title": "キン肉マン",
+                        "work_copyright": "",
+                        "adult_flg": 0,
+                        "jacket_s": "",
+                        "jacket_m": "",
+                        "jacket_l": "",
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "ids": [
+                            {
+                                "id_type": "0103",
+                                "id_value": "41086334"
+                            }
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT000073X10",
+                                "big_genre_name": "コミック",
+                                "medium_genre_id": "EXT00007417Y",
+                                "medium_genre_name": "少年コミック",
+                                "small_genre_id": "EXT00007538Z",
+                                "small_genre_name": "集英社少年",
+                                "shikiriban_id": "EXT000075AIT",
+                                "shikiriban_name": "集英社ジャンプＣ"
+                            }
+                        ],
+                        "products": [],
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "people": [
+                            {
+                                "person_id": "PPS00000JBKP",
+                                "person_name": "ゆでたまご",
+                                "role_id": "EXT00000BWU9",
+                                "role_name": "著者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "work_id": "PTA0000G89BW",
+                        "work_type_id": "3",
+                        "msdb_item": "book",
+                        "work_format_id": null,
+                        "work_format_name": "",
+                        "work_title": "キン肉マン",
+                        "work_copyright": "",
+                        "adult_flg": 0,
+                        "jacket_s": "",
+                        "jacket_m": "",
+                        "jacket_l": "",
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "ids": [
+                            {
+                                "id_type": "0103",
+                                "id_value": "41086333"
+                            }
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT000073X10",
+                                "big_genre_name": "コミック",
+                                "medium_genre_id": "EXT00007417Y",
+                                "medium_genre_name": "少年コミック",
+                                "small_genre_id": "EXT00007538Z",
+                                "small_genre_name": "集英社少年",
+                                "shikiriban_id": "EXT000075AIT",
+                                "shikiriban_name": "集英社ジャンプＣ"
+                            }
+                        ],
+                        "products": [],
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "people": [
+                            {
+                                "person_id": "PPS00000JBKP",
+                                "person_name": "ゆでたまご",
+                                "role_id": "EXT00000BWU9",
+                                "role_name": "著者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "work_id": "PTA0000G89BA",
+                        "work_type_id": "3",
+                        "msdb_item": "book",
+                        "work_format_id": null,
+                        "work_format_name": "",
+                        "work_title": "キン肉マン",
+                        "work_copyright": "",
+                        "adult_flg": 0,
+                        "jacket_s": "",
+                        "jacket_m": "",
+                        "jacket_l": "",
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "ids": [
+                            {
+                                "id_type": "0103",
+                                "id_value": "41086332"
+                            }
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT000073X10",
+                                "big_genre_name": "コミック",
+                                "medium_genre_id": "EXT00007417Y",
+                                "medium_genre_name": "少年コミック",
+                                "small_genre_id": "EXT00007538Z",
+                                "small_genre_name": "集英社少年",
+                                "shikiriban_id": "EXT000075AIT",
+                                "shikiriban_name": "集英社ジャンプＣ"
+                            }
+                        ],
+                        "products": [],
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "people": [
+                            {
+                                "person_id": "PPS00000JBKP",
+                                "person_name": "ゆでたまご",
+                                "role_id": "EXT00000BWU9",
+                                "role_name": "著者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "work_id": "PTA0000G89AO",
+                        "work_type_id": "3",
+                        "msdb_item": "book",
+                        "work_format_id": null,
+                        "work_format_name": "",
+                        "work_title": "キン肉マン",
+                        "work_copyright": "",
+                        "adult_flg": 0,
+                        "jacket_s": "",
+                        "jacket_m": "",
+                        "jacket_l": "",
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "ids": [
+                            {
+                                "id_type": "0103",
+                                "id_value": "41086331"
+                            }
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT000073X10",
+                                "big_genre_name": "コミック",
+                                "medium_genre_id": "EXT00007417Y",
+                                "medium_genre_name": "少年コミック",
+                                "small_genre_id": "EXT00007538Z",
+                                "small_genre_name": "集英社少年",
+                                "shikiriban_id": "EXT000075AIT",
+                                "shikiriban_name": "集英社ジャンプＣ"
+                            }
+                        ],
+                        "products": [],
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "people": [
+                            {
+                                "person_id": "PPS00000JBKP",
+                                "person_name": "ゆでたまご",
+                                "role_id": "EXT00000BWU9",
+                                "role_name": "著者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "work_id": "PTA0000G89A1",
+                        "work_type_id": "3",
+                        "msdb_item": "book",
+                        "work_format_id": null,
+                        "work_format_name": "",
+                        "work_title": "キン肉マン",
+                        "work_copyright": "",
+                        "adult_flg": 0,
+                        "jacket_s": "",
+                        "jacket_m": "",
+                        "jacket_l": "",
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "ids": [
+                            {
+                                "id_type": "0103",
+                                "id_value": "41086330"
+                            }
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT000073X10",
+                                "big_genre_name": "コミック",
+                                "medium_genre_id": "EXT00007417Y",
+                                "medium_genre_name": "少年コミック",
+                                "small_genre_id": "EXT00007538Z",
+                                "small_genre_name": "集英社少年",
+                                "shikiriban_id": "EXT000075AIT",
+                                "shikiriban_name": "集英社ジャンプＣ"
+                            }
+                        ],
+                        "products": [],
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "people": [
+                            {
+                                "person_id": "PPS00000JBKP",
+                                "person_name": "ゆでたまご",
+                                "role_id": "EXT00000BWU9",
+                                "role_name": "著者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "work_id": "PTA0000G899C",
+                        "work_type_id": "3",
+                        "msdb_item": "book",
+                        "work_format_id": null,
+                        "work_format_name": "",
+                        "work_title": "キン肉マン",
+                        "work_copyright": "",
+                        "adult_flg": 0,
+                        "jacket_s": "",
+                        "jacket_m": "",
+                        "jacket_l": "",
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "ids": [
+                            {
+                                "id_type": "0103",
+                                "id_value": "41086329"
+                            }
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT000073X10",
+                                "big_genre_name": "コミック",
+                                "medium_genre_id": "EXT00007417Y",
+                                "medium_genre_name": "少年コミック",
+                                "small_genre_id": "EXT00007538Z",
+                                "small_genre_name": "集英社少年",
+                                "shikiriban_id": "EXT000075AIT",
+                                "shikiriban_name": "集英社ジャンプＣ"
+                            }
+                        ],
+                        "products": [],
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "people": [
+                            {
+                                "person_id": "PPS00000JBKP",
+                                "person_name": "ゆでたまご",
+                                "role_id": "EXT00000BWU9",
+                                "role_name": "著者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "work_id": "PTA0000G898L",
+                        "work_type_id": "3",
+                        "msdb_item": "book",
+                        "work_format_id": null,
+                        "work_format_name": "",
+                        "work_title": "キン肉マン",
+                        "work_copyright": "",
+                        "adult_flg": 0,
+                        "jacket_s": "",
+                        "jacket_m": "",
+                        "jacket_l": "",
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "ids": [
+                            {
+                                "id_type": "0103",
+                                "id_value": "41086328"
+                            }
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT000073X10",
+                                "big_genre_name": "コミック",
+                                "medium_genre_id": "EXT00007417Y",
+                                "medium_genre_name": "少年コミック",
+                                "small_genre_id": "EXT00007538Z",
+                                "small_genre_name": "集英社少年",
+                                "shikiriban_id": "EXT000075AIT",
+                                "shikiriban_name": "集英社ジャンプＣ"
+                            }
+                        ],
+                        "products": [],
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "people": [
+                            {
+                                "person_id": "PPS00000JBKP",
+                                "person_name": "ゆでたまご",
+                                "role_id": "EXT00000BWU9",
+                                "role_name": "著者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "work_id": "PTA0000G897X",
+                        "work_type_id": "3",
+                        "msdb_item": "book",
+                        "work_format_id": null,
+                        "work_format_name": "",
+                        "work_title": "キン肉マン",
+                        "work_copyright": "",
+                        "adult_flg": 0,
+                        "jacket_s": "",
+                        "jacket_m": "",
+                        "jacket_l": "",
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "ids": [
+                            {
+                                "id_type": "0103",
+                                "id_value": "41086327"
+                            }
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT000073X10",
+                                "big_genre_name": "コミック",
+                                "medium_genre_id": "EXT00007417Y",
+                                "medium_genre_name": "少年コミック",
+                                "small_genre_id": "EXT00007538Z",
+                                "small_genre_name": "集英社少年",
+                                "shikiriban_id": "EXT000075AIT",
+                                "shikiriban_name": "集英社ジャンプＣ"
+                            }
+                        ],
+                        "products": [],
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "people": [
+                            {
+                                "person_id": "PPS00000JBKP",
+                                "person_name": "ゆでたまご",
+                                "role_id": "EXT00000BWU9",
+                                "role_name": "著者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "work_id": "PTA0000G7Z1C",
+                        "work_type_id": "3",
+                        "msdb_item": "book",
+                        "work_format_id": null,
+                        "work_format_name": "",
+                        "work_title": "キン肉マン",
+                        "work_copyright": "",
+                        "adult_flg": 0,
+                        "jacket_s": "",
+                        "jacket_m": "",
+                        "jacket_l": "",
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "ids": [
+                            {
+                                "id_type": "0103",
+                                "id_value": "41086042"
+                            }
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT000073X10",
+                                "big_genre_name": "コミック",
+                                "medium_genre_id": "EXT00007417Y",
+                                "medium_genre_name": "少年コミック",
+                                "small_genre_id": "EXT00007538Z",
+                                "small_genre_name": "集英社少年",
+                                "shikiriban_id": "EXT000075AIT",
+                                "shikiriban_name": "集英社ジャンプＣ"
+                            }
+                        ],
+                        "products": [],
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "people": [
+                            {
+                                "person_id": "PPS00000JBKP",
+                                "person_name": "ゆでたまご",
+                                "role_id": "EXT00000BWU9",
+                                "role_name": "著者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "work_id": "PTA0000G7Z0L",
+                        "work_type_id": "3",
+                        "msdb_item": "book",
+                        "work_format_id": null,
+                        "work_format_name": "",
+                        "work_title": "キン肉マン",
+                        "work_copyright": "",
+                        "adult_flg": 0,
+                        "jacket_s": "",
+                        "jacket_m": "",
+                        "jacket_l": "",
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "ids": [
+                            {
+                                "id_type": "0103",
+                                "id_value": "41086041"
+                            }
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT000073X10",
+                                "big_genre_name": "コミック",
+                                "medium_genre_id": "EXT00007417Y",
+                                "medium_genre_name": "少年コミック",
+                                "small_genre_id": "EXT00007538Z",
+                                "small_genre_name": "集英社少年",
+                                "shikiriban_id": "EXT000075AIT",
+                                "shikiriban_name": "集英社ジャンプＣ"
+                            }
+                        ],
+                        "products": [],
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "people": [
+                            {
+                                "person_id": "PPS00000JBKP",
+                                "person_name": "ゆでたまご",
+                                "role_id": "EXT00000BWU9",
+                                "role_name": "著者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "work_id": "PTA0000G7YZT",
+                        "work_type_id": "3",
+                        "msdb_item": "book",
+                        "work_format_id": null,
+                        "work_format_name": "",
+                        "work_title": "キン肉マン",
+                        "work_copyright": "",
+                        "adult_flg": 0,
+                        "jacket_s": "",
+                        "jacket_m": "",
+                        "jacket_l": "",
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "ids": [
+                            {
+                                "id_type": "0103",
+                                "id_value": "41086040"
+                            }
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT000073X10",
+                                "big_genre_name": "コミック",
+                                "medium_genre_id": "EXT00007417Y",
+                                "medium_genre_name": "少年コミック",
+                                "small_genre_id": "EXT00007538Z",
+                                "small_genre_name": "集英社少年",
+                                "shikiriban_id": "EXT000075AIT",
+                                "shikiriban_name": "集英社ジャンプＣ"
+                            }
+                        ],
+                        "products": [],
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "people": [
+                            {
+                                "person_id": "PPS00000JBKP",
+                                "person_name": "ゆでたまご",
+                                "role_id": "EXT00000BWU9",
+                                "role_name": "著者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "work_id": "PTA0000G7YZ2",
+                        "work_type_id": "3",
+                        "msdb_item": "book",
+                        "work_format_id": null,
+                        "work_format_name": "",
+                        "work_title": "キン肉マン",
+                        "work_copyright": "",
+                        "adult_flg": 0,
+                        "jacket_s": "",
+                        "jacket_m": "",
+                        "jacket_l": "",
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "ids": [
+                            {
+                                "id_type": "0103",
+                                "id_value": "41086039"
+                            }
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT000073X10",
+                                "big_genre_name": "コミック",
+                                "medium_genre_id": "EXT00007417Y",
+                                "medium_genre_name": "少年コミック",
+                                "small_genre_id": "EXT00007538Z",
+                                "small_genre_name": "集英社少年",
+                                "shikiriban_id": "EXT000075AIT",
+                                "shikiriban_name": "集英社ジャンプＣ"
+                            }
+                        ],
+                        "products": [],
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "people": [
+                            {
+                                "person_id": "PPS00000JBKP",
+                                "person_name": "ゆでたまご",
+                                "role_id": "EXT00000BWU9",
+                                "role_name": "著者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "work_id": "PTA0000G7YYB",
+                        "work_type_id": "3",
+                        "msdb_item": "book",
+                        "work_format_id": null,
+                        "work_format_name": "",
+                        "work_title": "キン肉マン",
+                        "work_copyright": "",
+                        "adult_flg": 0,
+                        "jacket_s": "",
+                        "jacket_m": "",
+                        "jacket_l": "",
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "ids": [
+                            {
+                                "id_type": "0103",
+                                "id_value": "41086038"
+                            }
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT000073X10",
+                                "big_genre_name": "コミック",
+                                "medium_genre_id": "EXT00007417Y",
+                                "medium_genre_name": "少年コミック",
+                                "small_genre_id": "EXT00007538Z",
+                                "small_genre_name": "集英社少年",
+                                "shikiriban_id": "EXT000075AIT",
+                                "shikiriban_name": "集英社ジャンプＣ"
+                            }
+                        ],
+                        "products": [],
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "people": [
+                            {
+                                "person_id": "PPS00000JBKP",
+                                "person_name": "ゆでたまご",
+                                "role_id": "EXT00000BWU9",
+                                "role_name": "著者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "work_id": "PTA0000G7YXQ",
+                        "work_type_id": "3",
+                        "msdb_item": "book",
+                        "work_format_id": null,
+                        "work_format_name": "",
+                        "work_title": "キン肉マン",
+                        "work_copyright": "",
+                        "adult_flg": 0,
+                        "jacket_s": "",
+                        "jacket_m": "",
+                        "jacket_l": "",
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "ids": [
+                            {
+                                "id_type": "0103",
+                                "id_value": "41086037"
+                            }
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT000073X10",
+                                "big_genre_name": "コミック",
+                                "medium_genre_id": "EXT00007417Y",
+                                "medium_genre_name": "少年コミック",
+                                "small_genre_id": "EXT00007538Z",
+                                "small_genre_name": "集英社少年",
+                                "shikiriban_id": "EXT000075AIT",
+                                "shikiriban_name": "集英社ジャンプＣ"
+                            }
+                        ],
+                        "products": [],
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "people": [
+                            {
+                                "person_id": "PPS00000JBKP",
+                                "person_name": "ゆでたまご",
+                                "role_id": "EXT00000BWU9",
+                                "role_name": "著者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "work_id": "PTA0000G7YX3",
+                        "work_type_id": "3",
+                        "msdb_item": "book",
+                        "work_format_id": null,
+                        "work_format_name": "",
+                        "work_title": "キン肉マン",
+                        "work_copyright": "",
+                        "adult_flg": 0,
+                        "jacket_s": "",
+                        "jacket_m": "",
+                        "jacket_l": "",
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "ids": [
+                            {
+                                "id_type": "0103",
+                                "id_value": "41086036"
+                            }
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT000073X10",
+                                "big_genre_name": "コミック",
+                                "medium_genre_id": "EXT00007417Y",
+                                "medium_genre_name": "少年コミック",
+                                "small_genre_id": "EXT00007538Z",
+                                "small_genre_name": "集英社少年",
+                                "shikiriban_id": "EXT000075AIT",
+                                "shikiriban_name": "集英社ジャンプＣ"
+                            }
+                        ],
+                        "products": [],
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "people": [
+                            {
+                                "person_id": "PPS00000JBKP",
+                                "person_name": "ゆでたまご",
+                                "role_id": "EXT00000BWU9",
+                                "role_name": "著者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "work_id": "PTA0000G7YWD",
+                        "work_type_id": "3",
+                        "msdb_item": "book",
+                        "work_format_id": null,
+                        "work_format_name": "",
+                        "work_title": "キン肉マン",
+                        "work_copyright": "",
+                        "adult_flg": 0,
+                        "jacket_s": "",
+                        "jacket_m": "",
+                        "jacket_l": "",
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "ids": [
+                            {
+                                "id_type": "0103",
+                                "id_value": "41086035"
+                            }
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT000073X10",
+                                "big_genre_name": "コミック",
+                                "medium_genre_id": "EXT00007417Y",
+                                "medium_genre_name": "少年コミック",
+                                "small_genre_id": "EXT00007538Z",
+                                "small_genre_name": "集英社少年",
+                                "shikiriban_id": "EXT000075AIT",
+                                "shikiriban_name": "集英社ジャンプＣ"
+                            }
+                        ],
+                        "products": [],
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "people": [
+                            {
+                                "person_id": "PPS00000JBKP",
+                                "person_name": "ゆでたまご",
+                                "role_id": "EXT00000BWU9",
+                                "role_name": "著者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "work_id": "PTA0000G7YVO",
+                        "work_type_id": "3",
+                        "msdb_item": "book",
+                        "work_format_id": null,
+                        "work_format_name": "",
+                        "work_title": "キン肉マン",
+                        "work_copyright": "",
+                        "adult_flg": 0,
+                        "jacket_s": "",
+                        "jacket_m": "",
+                        "jacket_l": "",
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "ids": [
+                            {
+                                "id_type": "0103",
+                                "id_value": "41086034"
+                            }
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT000073X10",
+                                "big_genre_name": "コミック",
+                                "medium_genre_id": "EXT00007417Y",
+                                "medium_genre_name": "少年コミック",
+                                "small_genre_id": "EXT00007538Z",
+                                "small_genre_name": "集英社少年",
+                                "shikiriban_id": "EXT000075AIT",
+                                "shikiriban_name": "集英社ジャンプＣ"
+                            }
+                        ],
+                        "products": [],
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "people": [
+                            {
+                                "person_id": "PPS00000JBKP",
+                                "person_name": "ゆでたまご",
+                                "role_id": "EXT00000BWU9",
+                                "role_name": "著者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "work_id": "PTA0000G7YV0",
+                        "work_type_id": "3",
+                        "msdb_item": "book",
+                        "work_format_id": null,
+                        "work_format_name": "",
+                        "work_title": "キン肉マン",
+                        "work_copyright": "",
+                        "adult_flg": 0,
+                        "jacket_s": "",
+                        "jacket_m": "",
+                        "jacket_l": "",
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "ids": [
+                            {
+                                "id_type": "0103",
+                                "id_value": "41086033"
+                            }
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT000073X10",
+                                "big_genre_name": "コミック",
+                                "medium_genre_id": "EXT00007417Y",
+                                "medium_genre_name": "少年コミック",
+                                "small_genre_id": "EXT00007538Z",
+                                "small_genre_name": "集英社少年",
+                                "shikiriban_id": "EXT000075AIT",
+                                "shikiriban_name": "集英社ジャンプＣ"
+                            }
+                        ],
+                        "products": [],
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "people": [
+                            {
+                                "person_id": "PPS00000JBKP",
+                                "person_name": "ゆでたまご",
+                                "role_id": "EXT00000BWU9",
+                                "role_name": "著者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "work_id": "PTA0000G7YUB",
+                        "work_type_id": "3",
+                        "msdb_item": "book",
+                        "work_format_id": null,
+                        "work_format_name": "",
+                        "work_title": "キン肉マン",
+                        "work_copyright": "",
+                        "adult_flg": 0,
+                        "jacket_s": "",
+                        "jacket_m": "",
+                        "jacket_l": "",
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "ids": [
+                            {
+                                "id_type": "0103",
+                                "id_value": "41086032"
+                            }
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT000073X10",
+                                "big_genre_name": "コミック",
+                                "medium_genre_id": "EXT00007417Y",
+                                "medium_genre_name": "少年コミック",
+                                "small_genre_id": "EXT00007538Z",
+                                "small_genre_name": "集英社少年",
+                                "shikiriban_id": "EXT000075AIT",
+                                "shikiriban_name": "集英社ジャンプＣ"
+                            }
+                        ],
+                        "products": [],
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "people": [
+                            {
+                                "person_id": "PPS00000JBKP",
+                                "person_name": "ゆでたまご",
+                                "role_id": "EXT00000BWU9",
+                                "role_name": "著者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "work_id": "PTA0000G7YTN",
+                        "work_type_id": "3",
+                        "msdb_item": "book",
+                        "work_format_id": null,
+                        "work_format_name": "",
+                        "work_title": "キン肉マン",
+                        "work_copyright": "",
+                        "adult_flg": 0,
+                        "jacket_s": "",
+                        "jacket_m": "",
+                        "jacket_l": "",
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "ids": [
+                            {
+                                "id_type": "0103",
+                                "id_value": "41086031"
+                            }
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT000073X10",
+                                "big_genre_name": "コミック",
+                                "medium_genre_id": "EXT00007417Y",
+                                "medium_genre_name": "少年コミック",
+                                "small_genre_id": "EXT00007538Z",
+                                "small_genre_name": "集英社少年",
+                                "shikiriban_id": "EXT000075AIT",
+                                "shikiriban_name": "集英社ジャンプＣ"
+                            }
+                        ],
+                        "products": [],
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "people": [
+                            {
+                                "person_id": "PPS00000JBKP",
+                                "person_name": "ゆでたまご",
+                                "role_id": "EXT00000BWU9",
+                                "role_name": "著者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "work_id": "PTA0000G7YSY",
+                        "work_type_id": "3",
+                        "msdb_item": "book",
+                        "work_format_id": null,
+                        "work_format_name": "",
+                        "work_title": "キン肉マン",
+                        "work_copyright": "",
+                        "adult_flg": 0,
+                        "jacket_s": "",
+                        "jacket_m": "",
+                        "jacket_l": "",
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "ids": [
+                            {
+                                "id_type": "0103",
+                                "id_value": "41086030"
+                            }
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT000073X10",
+                                "big_genre_name": "コミック",
+                                "medium_genre_id": "EXT00007417Y",
+                                "medium_genre_name": "少年コミック",
+                                "small_genre_id": "EXT00007538Z",
+                                "small_genre_name": "集英社少年",
+                                "shikiriban_id": "EXT000075AIT",
+                                "shikiriban_name": "集英社ジャンプＣ"
+                            }
+                        ],
+                        "products": [],
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "people": [
+                            {
+                                "person_id": "PPS00000JBKP",
+                                "person_name": "ゆでたまご",
+                                "role_id": "EXT00000BWU9",
+                                "role_name": "著者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "work_id": "PTA0000G7YS8",
+                        "work_type_id": "3",
+                        "msdb_item": "book",
+                        "work_format_id": null,
+                        "work_format_name": "",
+                        "work_title": "キン肉マン",
+                        "work_copyright": "",
+                        "adult_flg": 0,
+                        "jacket_s": "",
+                        "jacket_m": "",
+                        "jacket_l": "",
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "ids": [
+                            {
+                                "id_type": "0103",
+                                "id_value": "41086029"
+                            }
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT000073X10",
+                                "big_genre_name": "コミック",
+                                "medium_genre_id": "EXT00007417Y",
+                                "medium_genre_name": "少年コミック",
+                                "small_genre_id": "EXT00007538Z",
+                                "small_genre_name": "集英社少年",
+                                "shikiriban_id": "EXT000075AIT",
+                                "shikiriban_name": "集英社ジャンプＣ"
+                            }
+                        ],
+                        "products": [],
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "people": [
+                            {
+                                "person_id": "PPS00000JBKP",
+                                "person_name": "ゆでたまご",
+                                "role_id": "EXT00000BWU9",
+                                "role_name": "著者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "work_id": "PTA0000G7YRK",
+                        "work_type_id": "3",
+                        "msdb_item": "book",
+                        "work_format_id": null,
+                        "work_format_name": "",
+                        "work_title": "キン肉マン",
+                        "work_copyright": "",
+                        "adult_flg": 0,
+                        "jacket_s": "",
+                        "jacket_m": "",
+                        "jacket_l": "",
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "ids": [
+                            {
+                                "id_type": "0103",
+                                "id_value": "41086028"
+                            }
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT000073X10",
+                                "big_genre_name": "コミック",
+                                "medium_genre_id": "EXT00007417Y",
+                                "medium_genre_name": "少年コミック",
+                                "small_genre_id": "EXT00007538Z",
+                                "small_genre_name": "集英社少年",
+                                "shikiriban_id": "EXT000075AIT",
+                                "shikiriban_name": "集英社ジャンプＣ"
+                            }
+                        ],
+                        "products": [],
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "people": [
+                            {
+                                "person_id": "PPS00000JBKP",
+                                "person_name": "ゆでたまご",
+                                "role_id": "EXT00000BWU9",
+                                "role_name": "著者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "work_id": "PTA0000G7YQY",
+                        "work_type_id": "3",
+                        "msdb_item": "book",
+                        "work_format_id": null,
+                        "work_format_name": "",
+                        "work_title": "キン肉マン",
+                        "work_copyright": "",
+                        "adult_flg": 0,
+                        "jacket_s": "",
+                        "jacket_m": "",
+                        "jacket_l": "",
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "ids": [
+                            {
+                                "id_type": "0103",
+                                "id_value": "41086027"
+                            }
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT000073X10",
+                                "big_genre_name": "コミック",
+                                "medium_genre_id": "EXT00007417Y",
+                                "medium_genre_name": "少年コミック",
+                                "small_genre_id": "EXT00007538Z",
+                                "small_genre_name": "集英社少年",
+                                "shikiriban_id": "EXT000075AIT",
+                                "shikiriban_name": "集英社ジャンプＣ"
+                            }
+                        ],
+                        "products": [],
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "people": [
+                            {
+                                "person_id": "PPS00000JBKP",
+                                "person_name": "ゆでたまご",
+                                "role_id": "EXT00000BWU9",
+                                "role_name": "著者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "work_id": "PTA0000G7YQ9",
+                        "work_type_id": "3",
+                        "msdb_item": "book",
+                        "work_format_id": null,
+                        "work_format_name": "",
+                        "work_title": "キン肉マン",
+                        "work_copyright": "",
+                        "adult_flg": 0,
+                        "jacket_s": "",
+                        "jacket_m": "",
+                        "jacket_l": "",
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "ids": [
+                            {
+                                "id_type": "0103",
+                                "id_value": "41086026"
+                            }
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT000073X10",
+                                "big_genre_name": "コミック",
+                                "medium_genre_id": "EXT00007417Y",
+                                "medium_genre_name": "少年コミック",
+                                "small_genre_id": "EXT00007538Z",
+                                "small_genre_name": "集英社少年",
+                                "shikiriban_id": "EXT000075AIT",
+                                "shikiriban_name": "集英社ジャンプＣ"
+                            }
+                        ],
+                        "products": [],
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "people": [
+                            {
+                                "person_id": "PPS00000JBKP",
+                                "person_name": "ゆでたまご",
+                                "role_id": "EXT00000BWU9",
+                                "role_name": "著者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "work_id": "PTA0000G7YPK",
+                        "work_type_id": "3",
+                        "msdb_item": "book",
+                        "work_format_id": null,
+                        "work_format_name": "",
+                        "work_title": "キン肉マン",
+                        "work_copyright": "",
+                        "adult_flg": 0,
+                        "jacket_s": "",
+                        "jacket_m": "",
+                        "jacket_l": "",
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "ids": [
+                            {
+                                "id_type": "0103",
+                                "id_value": "41086025"
+                            }
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT000073X10",
+                                "big_genre_name": "コミック",
+                                "medium_genre_id": "EXT00007417Y",
+                                "medium_genre_name": "少年コミック",
+                                "small_genre_id": "EXT00007538Z",
+                                "small_genre_name": "集英社少年",
+                                "shikiriban_id": "EXT000075AIT",
+                                "shikiriban_name": "集英社ジャンプＣ"
+                            }
+                        ],
+                        "products": [],
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "people": [
+                            {
+                                "person_id": "PPS00000JBKP",
+                                "person_name": "ゆでたまご",
+                                "role_id": "EXT00000BWU9",
+                                "role_name": "著者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "work_id": "PTA0000G7YOX",
+                        "work_type_id": "3",
+                        "msdb_item": "book",
+                        "work_format_id": null,
+                        "work_format_name": "",
+                        "work_title": "キン肉マン",
+                        "work_copyright": "",
+                        "adult_flg": 0,
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/08477/9784088511313_1S.jpg",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/08477/9784088511313_1M.jpg",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/08477/9784088511313_1L.jpg",
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "ids": [
+                            {
+                                "id_type": "0103",
+                                "id_value": "41086023"
+                            }
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT000073X10",
+                                "big_genre_name": "コミック",
+                                "medium_genre_id": "EXT00007417Y",
+                                "medium_genre_name": "少年コミック",
+                                "small_genre_id": "EXT00007538Z",
+                                "small_genre_name": "集英社少年",
+                                "shikiriban_id": "EXT000075AIT",
+                                "shikiriban_name": "集英社ジャンプＣ"
+                            }
+                        ],
+                        "products": [],
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "people": [
+                            {
+                                "person_id": "PPS00000JBKP",
+                                "person_name": "ゆでたまご",
+                                "role_id": "EXT00000BWU9",
+                                "role_name": "著者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    }
+                ]
+            }
+        ]
+    }
+}

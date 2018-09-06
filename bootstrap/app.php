@@ -77,8 +77,7 @@ $app->singleton(
 | totally optional, so you are not required to uncomment this line.
 |
 */
-
-// $app->register(App\Providers\AppServiceProvider::class);
+ $app->register(App\Providers\AppServiceProvider::class);
 // $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 
@@ -109,6 +108,12 @@ $app->router->group([
 $app->configure('api_key');
 $app->configure('genre_map');
 $app->configure('version');
+$app->configure('release_genre_map');
+$app->configure('age_limit_map');
+$app->configure('age_limit_maker_map');
+$app->configure('hidden_video_map');
+$app->configure('himo_tables');
+$app->configure('messages');
 
 /*
 |--------------------------------------------------------------------------
