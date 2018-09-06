@@ -229,19 +229,49 @@ class ProductRepository
             "t2.sale_start_date AS saleStartDate",
             "t2.ccc_family_cd AS cccFamilyCd",
         ];
-        $this->totalCount = $this->product->setConditionRentalGroup($workId, $sort)->count();
+        $itemCount = $this->product->rentalItemCount($workId)->getOne();
+        $ignoreFlag = false;
+        // 混在していた場合は、dvd以外を除外する。
+        // どちらか片方だった場合は、特に処理を行わずそのまま表示
+        if ($itemCount->dvd > 0 && $itemCount->other > 0) {
+            $ignoreFlag = true;
+        }
+        $this->totalCount = $this->product->setConditionRentalGroup($workId, $sort, $ignoreFlag)->count();
         $results = $this->product->get($this->limit, $this->offset);
-        foreach ($results as $result) {
+        // otherだった場合は商品をまとめる
+        if($itemCount->dvd === 0 && $itemCount->other > 0) {
+            // 配列に変換
+            $otherProductTemp = [];
+            foreach ($results as $resultRow) {
+                $otherProductTemp[] = (array)$resultRow;
+            }
+            // ソートをして最新刊を抽出
+            foreach ($otherProductTemp as $val) $keys[] = $val['ccc_family_cd'];
+            array_multisort($keys, SORT_DESC, $otherProductTemp);
+            $otherProductTemp = $otherProductTemp[0];
             $tmp = $this->product->setConditionRentalGroupNewestCccProductId(
-                $result->work_id, $result->ccc_family_cd, $result->sale_start_date
+                $otherProductTemp['work_id'], $otherProductTemp['ccc_family_cd'], $otherProductTemp['sale_start_date']
             )->select($columnOutput)->getOne();
-            $tmp->dvd = $result->dvd;
-            $tmp->bluray = $result->bluray;
+            $tmp->dvd = null;
+            $tmp->bluray = null;
             $response[] = $tmp;
+            // カウントを1に設定
+            $this->totalCount = 1;
+        } else {
+            foreach ($results as $result) {
+                $tmp = $this->product->setConditionRentalGroupNewestCccProductId(
+                    $result->work_id, $result->ccc_family_cd, $result->sale_start_date
+                )->select($columnOutput)->getOne();
+                $tmp->dvd = $result->dvd;
+                $tmp->bluray = $result->bluray;
+                $response[] = $tmp;
+            }
+            if (empty($response)) {
+                return null;
+            }
         }
-        if (empty($response)) {
-            return null;
-        }
+
+        //
         if (count($results) + $this->offset < $this->totalCount) {
             $this->hasNext = true;
         } else {
