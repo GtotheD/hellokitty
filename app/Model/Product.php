@@ -274,7 +274,7 @@ class Product extends Model
         return $this;
     }
 
-    public function setConditionRentalGroup($workId, $order = null)
+    public function setConditionRentalGroup($workId, $order = null, $ignoreOtherMedia = false)
     {
         $groupingColumn = 'work_id, product_name, ccc_family_cd';
         $saleStartDate = 'MAX(sale_start_date) AS sale_start_date';
@@ -292,6 +292,11 @@ class Product extends Model
         ;
         $this->dbObject = DB::table(DB::raw("({$subQuery->toSql()}) as sub"))
             ->where(['work_id' => $workId]);
+
+        if ($ignoreOtherMedia) {
+            $this->dbObject
+                ->whereRaw(DB::raw(' NOT (dvd is null AND bluray is null) '));
+        }
         if ($order === 'old') {
             $this->dbObject->orderBy('sale_start_date', 'asc')
                 ->orderBy('ccc_family_cd', 'asc')
@@ -377,5 +382,20 @@ class Product extends Model
             $insertData[$key]['created_at'] = date('Y-m-d H:i:s');
         }
         return $this->bulkInsertOnDuplicateKey($insertData);
+    }
+
+    public function rentalItemCount($workId)
+    {
+        // DVDとブルーレイのカウント
+        $dvdQuery = 'count(CASE WHEN item_cd_right_2  = \'21\' OR  item_cd_right_2  = \'22\'  THEN 1  END) as dvd';
+        $otherQuery = 'count(CASE WHEN !(item_cd_right_2  = \'21\' OR  item_cd_right_2  = \'22\')  THEN 1  END) as other';
+
+        $this->dbObject = DB::table($this->table)
+            ->where('work_id', $workId)
+            ->where('product_type_id', '2')
+            ->select(DB::raw($dvdQuery.','.$otherQuery))
+        ;
+        return $this;
+
     }
 }
