@@ -197,94 +197,91 @@ class ReleaseCalenderRepository
         // Himo取得時のソートの指定
         $sortBy = 'auto:desc';
 
-        // ジャンルIDをもとにキャッシュにデータがあるか確認しキャッシュがあればキャッシュからデータを取得する。
         $mappingData = $this->genreMapping($this->genreId);
-        $cacheDataCount = $this->himoReleaseOrder->setConditionByGenreIdAndMonth(
-            $this->genreId,
-            $saleStartMonth . '-01'
-        )->count();
 
-        if (empty($cacheDataCount)) {
-            // キャッシュがなければデータを新規で取得する
-            $himoRepository = new HimoRepository();
-            $params = [
-                'api' => 'release',
-                'id' => $this->month . '_' . $this->genreId . '_0',
-                'genreId' => $this->genreId,
-                'saleStartDateFrom' => $saleStartDateFrom,
-                'saleStartDateTo' => $saleStartDateTo,
-                'productSellRentalFlg' => $mappingData['productSellRentalFlg'],
-                'adultFlg' => $mappingData['adultFlg'],
-                'msdbItem' => $mappingData['msdbItem'],
-                'onlyReleased' => $this->onlyReleased,
-                'sort' => $sortBy
-            ];
-            // TSUTAYA一押しの処理
-            // 日付と種別でTSUTAYA一押し要のタグを生成する
-            if ($mappingData['genres'] === self::HIMO_TAP_RECOMMEND) {
-//                $worktTag = self::HIMO_TAP_RECOMMEND_KEYWORD .
-//                    $tagSaleStartDateFrom .
-//                    substr($productRepository->convertProductTypeToStr($mappingData['productSellRentalFlg']), 0, 1);
-//                $params['workTags'] = $worktTag;
-                $params['workTags'] = self::HIMO_TAP_RECOMMEND_KEYWORD;
-                // TSUTAYA一押しでmsdbitemがcdの場合ミュージックdvdを含めない
-                if($mappingData['msdbItem'][0] === 'video') {
-                    $params['genre'] = implode(' || ', $workRepository::HIMO_SEARCH_VIDEO_GENRE_ID);
-                    $params['genre'] = $params['genre'] . ':';
-                    // msdbitemにaudioを追加
-                    $params['msdbItem'] = ['video','audio'];
-                } else if($mappingData['msdbItem'][0] === 'audio') {
-                    // 除外に変換
-                    $ignoreVideoGenres = [];
-                    foreach($workRepository::HIMO_SEARCH_VIDEO_GENRE_ID as $videoGenre) {
-                        $ignoreVideoGenres[] = '-'.$videoGenre;
-                    }
-                    $params['genre'] = implode(' || ', $ignoreVideoGenres);
-                    $params['genre'] = $params['genre'] . ':';
-                }
-            } else {
-                $params['genre'] = $mappingData['genres'];
-            }
-            // 10件づつ処理
-            $processLimit = 10;
-            $himoRepository->setLimit($processLimit);
-            // 検索
-            $response = $himoRepository->searchCrossworksForRelease($params)->get();
-            // 初回だけ全体件数の取得
-            $totalCount = (int)$response['results']['total'];
-            $pageNum = 1;
-            $orderNum = 1;
-            for ($processCount = 0; $processCount < $totalCount; $processCount = $processCount + $processLimit) {
-                $params['id'] = $this->month . '_' . $this->genreId . '_' . $processCount; // test data
-                $himoRepository->setOffset($processCount);
-                $response = $himoRepository->searchCrossworksForRelease($params)->get();
-                if (empty($response)) {
-                    break;
-                }
-                $himoReleaseOrderData = [];
-                $insertWorkId = [];
-                foreach ($response['results']['rows'] as $row) {
-                    $insertWorkId[] = $row['work_id'];
-                    $himoReleaseOrderData[] = [
-                        'work_id' => $row['work_id'],
-                        'month' => $saleStartMonth . '-01',
-                        'tap_genre_id' => $this->genreId,
-                        'page_no' => $pageNum,
-                        'sort' => $orderNum,
-                    ];
-                    $orderNum++;
-                }
-                // データを取得する際は、常にお薦めで取得し、順序をDBに登録する。
-                // ここのリリカレモデルは入れ替えられるようにメンバ変数で保持
-                $this->himoReleaseOrder->insertBulk($himoReleaseOrderData);
-                $workRepository->getWorkList($insertWorkId);
-                if ($orderNum > $totalCount) {
-                    break;
-                }
-                $pageNum++;
-            }
-        }
+        //　APIから呼ばれた場合はキャッシュロジックは通過させない。
         if ($isCreateCache) {
+            // ジャンルIDをもとにキャッシュにデータがあるか確認しキャッシュがあればキャッシュからデータを取得する。
+            $cacheDataCount = $this->himoReleaseOrder->setConditionByGenreIdAndMonth(
+                $this->genreId,
+                $saleStartMonth . '-01'
+            )->count();
+            if (empty($cacheDataCount)) {
+                // キャッシュがなければデータを新規で取得する
+                $himoRepository = new HimoRepository();
+                $params = [
+                    'api' => 'release',
+                    'id' => $this->month . '_' . $this->genreId . '_0',
+                    'genreId' => $this->genreId,
+                    'saleStartDateFrom' => $saleStartDateFrom,
+                    'saleStartDateTo' => $saleStartDateTo,
+                    'productSellRentalFlg' => $mappingData['productSellRentalFlg'],
+                    'adultFlg' => $mappingData['adultFlg'],
+                    'msdbItem' => $mappingData['msdbItem'],
+                    'onlyReleased' => $this->onlyReleased,
+                    'sort' => $sortBy
+                ];
+                // TSUTAYA一押しの処理
+                // 日付と種別でTSUTAYA一押し要のタグを生成する
+                if ($mappingData['genres'] === self::HIMO_TAP_RECOMMEND) {
+                    $params['workTags'] = self::HIMO_TAP_RECOMMEND_KEYWORD;
+                    // TSUTAYA一押しでmsdbitemがcdの場合ミュージックdvdを含めない
+                    if ($mappingData['msdbItem'][0] === 'video') {
+                        $params['genre'] = implode(' || ', $workRepository::HIMO_SEARCH_VIDEO_GENRE_ID);
+                        $params['genre'] = $params['genre'] . ':';
+                        // msdbitemにaudioを追加
+                        $params['msdbItem'] = ['video', 'audio'];
+                    } else if ($mappingData['msdbItem'][0] === 'audio') {
+                        // 除外に変換
+                        $ignoreVideoGenres = [];
+                        foreach ($workRepository::HIMO_SEARCH_VIDEO_GENRE_ID as $videoGenre) {
+                            $ignoreVideoGenres[] = '-' . $videoGenre;
+                        }
+                        $params['genre'] = implode(' || ', $ignoreVideoGenres);
+                        $params['genre'] = $params['genre'] . ':';
+                    }
+                } else {
+                    $params['genre'] = $mappingData['genres'];
+                }
+                // 10件づつ処理
+                $processLimit = 10;
+                $himoRepository->setLimit($processLimit);
+                // 検索
+                $response = $himoRepository->searchCrossworksForRelease($params)->get();
+                // 初回だけ全体件数の取得
+                $totalCount = (int)$response['results']['total'];
+                $pageNum = 1;
+                $orderNum = 1;
+                for ($processCount = 0; $processCount < $totalCount; $processCount = $processCount + $processLimit) {
+                    $params['id'] = $this->month . '_' . $this->genreId . '_' . $processCount; // test data
+                    $himoRepository->setOffset($processCount);
+                    $response = $himoRepository->searchCrossworksForRelease($params)->get();
+                    if (empty($response)) {
+                        break;
+                    }
+                    $himoReleaseOrderData = [];
+                    $insertWorkId = [];
+                    foreach ($response['results']['rows'] as $row) {
+                        $insertWorkId[] = $row['work_id'];
+                        $himoReleaseOrderData[] = [
+                            'work_id' => $row['work_id'],
+                            'month' => $saleStartMonth . '-01',
+                            'tap_genre_id' => $this->genreId,
+                            'page_no' => $pageNum,
+                            'sort' => $orderNum,
+                        ];
+                        $orderNum++;
+                    }
+                    // データを取得する際は、常にお薦めで取得し、順序をDBに登録する。
+                    // ここのリリカレモデルは入れ替えられるようにメンバ変数で保持
+                    $this->himoReleaseOrder->insertBulk($himoReleaseOrderData);
+                    $workRepository->getWorkList($insertWorkId);
+                    if ($orderNum > $totalCount) {
+                        break;
+                    }
+                    $pageNum++;
+                }
+            }
             return true;
         }
         // 配列になっている為、変更
