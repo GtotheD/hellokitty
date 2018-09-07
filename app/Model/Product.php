@@ -238,7 +238,7 @@ class Product extends Model
             .'MAX(CASE WHEN SUBSTRING(item_cd, 2, 1) = \'1\' THEN product_unique_id END) AS ppt ';
         $subQueryBase = DB::table($this->table)->select(DB::raw($selectSubGrouping.$selectSub))
             ->whereRaw(DB::raw(' work_id = \''.$workId .'\''))
-            //->whereRaw(DB::raw(' item_cd not like \'_1__\' '))
+//            ->whereRaw(DB::raw(' item_cd not like \'_1__\' '))
             //->whereRaw(DB::raw(' item_cd not like \'__20\' ')) // VHSも出力するように変更
             ->whereRaw(DB::raw(' jan not like \'9999_________\' '))
             ->groupBy(DB::raw($selectSubGrouping));

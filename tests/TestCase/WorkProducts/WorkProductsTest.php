@@ -2,7 +2,7 @@
 
 use tests\TestData;
 
-class WorkProducts extends TestCase
+class WorkProductsTest extends TestCase
 {
     private $apiPath;
 
@@ -79,7 +79,9 @@ class WorkProducts extends TestCase
 //        $response = $this->getJsonWithAuth('/work/' . $workId . '/products?saleType=sell');
 //        $response->assertResponseStatus(200, 204);
 //    }
-
+/*
+ * MOVIE
+ */
     /**
      * @test
      */
