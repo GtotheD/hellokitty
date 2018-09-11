@@ -1,12 +1,12 @@
 <?php
 /**
  * @SWG\Swagger(
- *     basePath="/tapp/api/v2",
+ *     basePath="/tapp/api/v3",
  *     schemes={"https", "http"},
  * 		produces={"application/json"},
  * 		consumes={"application/json"},
  *      @SWG\Info(
- *         version="2.1",
+ *         version="3.0",
  *         title="TSUTAYAアプリ(TAP) - APIドキュメント",
  *         @SWG\License(name="TSUTAYA")
  *      ),

@@ -712,19 +712,19 @@ class WorkRepository
                         }
                     } else if ($product['service_id'] === 'discas') {
                         $discasCCCprodctId = $product['ccc_product_id'];
-                    } else if ($product['service_id'] === 'tol') {
-                        // ミュジックビデオの場合はaudioからvideoに変換するために判定する。
-                        if ($row['work_format_id'] == self::WORK_FORMAT_ID_MUSICVIDEO) {
-                            $isMusicVideo = true;
-                        }
-                        $productData[] = $productRepository->format($row['work_id'], $product, $isMusicVideo);
-                        // 削除対象のIDを抽出
-                        $deleteProduct[] = $product['id'];
-                        // Insert people
-                        if ($people = array_get($product, 'people')) {
-                            foreach ($people as $person) {
-                                $peopleData[] = $peopleRepository->format($product['id'], $person);
-                            }
+                    }
+
+                    // ミュジックビデオの場合はaudioからvideoに変換するために判定する。
+                    if ($row['work_format_id'] == self::WORK_FORMAT_ID_MUSICVIDEO) {
+                        $isMusicVideo = true;
+                    }
+                    $productData[] = $productRepository->format($row['work_id'], $product, $isMusicVideo);
+                    // 削除対象のIDを抽出
+                    $deleteProduct[] = $product['id'];
+                    // Insert people
+                    if ($people = array_get($product, 'people')) {
+                        foreach ($people as $person) {
+                            $peopleData[] = $peopleRepository->format($product['id'], $person);
                         }
                     }
                 }
