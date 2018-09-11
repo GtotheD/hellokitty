@@ -719,7 +719,7 @@
  *     @SWG\Parameter(
  *       name="saleType",
  *       in="query",
- *       description="販売タイプ（sell, rental） ※デフォルトはrental",
+ *       description="販売タイプ（sell, rental, theater(上映映画)） ※デフォルトはrental",
  *       type="string"
  *     ),
  *     @SWG\Parameter(ref="#/parameters/ageLimitCheck"),
@@ -769,7 +769,7 @@
  *         @SWG\Property(
  *             property="saleType",
  *             type="string",
- *             description="セルレンタル区分（sell or rental）",
+ *             description="セルレンタル区分（sell, rental）",
  *         ),
  *         @SWG\Property(
  *             property="ageLimitCheck",
@@ -1145,7 +1145,12 @@
  *     @SWG\Parameter(ref="#/parameters/personId"),
  *     @SWG\Parameter(ref="#/parameters/limit"),
  *     @SWG\Parameter(ref="#/parameters/offset"),
- *     @SWG\Parameter(ref="#/parameters/saleType"),
+ *     @SWG\Parameter(
+ *       name="saleType",
+ *       in="query",
+ *       description="販売タイプ（sell, rental)",
+ *       type="string"
+ *     ),
  *     @SWG\Parameter(ref="#/parameters/itemType"),
  *     @SWG\Parameter(ref="#/parameters/sort"),
  *     @SWG\Parameter(ref="#/parameters/ageLimitCheck"),
@@ -1178,7 +1183,12 @@
  *     @SWG\Parameter(ref="#/parameters/genreId"),
  *     @SWG\Parameter(ref="#/parameters/limit"),
  *     @SWG\Parameter(ref="#/parameters/offset"),
- *     @SWG\Parameter(ref="#/parameters/saleType"),
+ *     @SWG\Parameter(
+ *       name="saleType",
+ *       in="query",
+ *       description="販売タイプ（sell, rental)",
+ *       type="string"
+ *     ),
  *     @SWG\Parameter(ref="#/parameters/ageLimitCheck"),
  *     @SWG\Parameter(
  *       name="sort",

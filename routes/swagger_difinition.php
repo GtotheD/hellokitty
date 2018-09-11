@@ -35,7 +35,7 @@
  *          @SWG\Property(
  *              property="saleType",
  *              type="string",
- *              description="販売タイプ（sell, rental）"
+ *              description="販売タイプ（sell, rental, theater(上映映画), other(EC/配信等)）"
  *          ),
  *          @SWG\Property(
  *              property="itemType",
@@ -160,6 +160,11 @@
  *                  type="boolean",
  *                  description="レンタルの有無",
  *              ),
+ *              @SWG\Property(
+ *                  property="theater",
+ *                  type="boolean",
+ *                  description="上映映画の有無",
+ *              ),
  *          ),
  * )
  * */
@@ -204,7 +209,7 @@
  *          @SWG\Property(
  *              property="saleType",
  *              type="string",
- *              description="販売タイプ（sell, rental）",
+ *              description="販売タイプ（sell, rental, theater(上映映画), other(EC/配信等)）"
  *          ),
  *          @SWG\Property(
  *              property="itemType",
@@ -259,7 +264,7 @@
  *          @SWG\Property(
  *              property="saleType",
  *              type="string",
- *              description="販売タイプ（sell, rental）",
+ *              description="販売タイプ（sell, rental, theater(上映映画), other(EC/配信等)）"
  *          ),
  *          @SWG\Property(
  *              property="itemType",
@@ -278,6 +283,11 @@
  *                  property="rental",
  *                  type="boolean",
  *                  description="レンタルの有無",
+ *              ),
+ *              @SWG\Property(
+ *                  property="theater",
+ *                  type="boolean",
+ *                  description="上映映画の有無",
  *              ),
  *          ),
  *          @SWG\Property(
@@ -343,7 +353,7 @@
  *          @SWG\Property(
  *              property="saleType",
  *              type="string",
- *              description="販売タイプ（sell, rental）",
+ *              description="販売タイプ（sell, rental, theater(上映映画), other(EC/配信等)）"
  *          ),
  *          @SWG\Property(
  *              property="itemType",
@@ -398,7 +408,7 @@
  *          @SWG\Property(
  *              property="saleType",
  *              type="string",
- *              description="販売タイプ（sell, rental）",
+ *              description="販売タイプ（sell, rental, theater(上映映画), other(EC/配信等)）"
  *          ),
  *          @SWG\Property(
  *              property="itemType",
@@ -469,7 +479,7 @@
  *          @SWG\Property(
  *              property="saleType",
  *              type="string",
- *              description="販売タイプ（sell, rental）"
+ *              description="販売タイプ（sell, rental, theater(上映映画), other(EC/配信等)）"
  *          ),
  *          @SWG\Property(
  *              property="productCode",
