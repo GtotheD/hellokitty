@@ -719,7 +719,7 @@
  *     @SWG\Parameter(
  *       name="saleType",
  *       in="query",
- *       description="販売タイプ（sell, rental, theater(上映映画), other(EC/配信等)） ※デフォルトはrental",
+ *       description="販売タイプ（sell, rental, theater(上映映画)） ※デフォルトはrental",
  *       type="string"
  *     ),
  *     @SWG\Parameter(ref="#/parameters/ageLimitCheck"),

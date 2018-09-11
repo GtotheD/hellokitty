@@ -93,7 +93,7 @@
  * )
  * @SWG\Parameter(
  *      name="saleType",
- *      description="販売タイプ（sell, rental, theater(上映映画), other(EC/配信等)）",
+ *      description="販売タイプ（sell, rental, theater(上映映画)）",
  *      in="query",
  *      required=false,
  *      type="string",
