@@ -1,0 +1,630 @@
+{
+    "status": 200,
+    "message": null,
+    "results": {
+        "total": 1,
+        "rows": [
+            {
+                "work_id": "PTA0000TTVBS",
+                "work_type_id": "2",
+                "msdb_item": "video",
+                "work_format_id": null,
+                "work_format_name": "",
+                "work_title": "羊の木",
+                "work_title_kana": "ひつじのき",
+                "work_title_en": "",
+                "work_title_orig": "",
+                "work_title_sub": "",
+                "work_comment": "",
+                "work_outline": "",
+                "work_copyright": "(C)2018『羊の木』製作委員会(C)山上たつひこ いがらしみきお/講談社",
+                "rating_id": "EXT000000008",
+                "rating_name": "",
+                "adult_flg": 0,
+                "primary_product_source_id": "PDT0000WEDBT",
+                "primary_product_service_id": "ec",
+                "primary_product_type_id": 1,
+                "disp_start_date": "1900-01-01 00:00:00",
+                "disp_start_month": "1900-01",
+                "sale_start_date": "2018-08-08",
+                "sale_start_month": "2018-08",
+                "created_year_from": "",
+                "created_year_to": "",
+                "created_year": "2017",
+                "created_countries": "日本",
+                "jacket_s": "//store-tsutaya.tsite.jp/images/ecorg/458/01/17/62/70/4580117627049_S.jpg ",
+                "jacket_m": "//store-tsutaya.tsite.jp/images/ecorg/458/01/17/62/70/4580117627049_M.jpg ",
+                "jacket_l": "//store-tsutaya.tsite.jp/images/ecorg/458/01/17/62/70/4580117627049_L.jpg ",
+                "jacket_l4": "",
+                "scene_s": [
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00234/4580117627025_B001S.jpg ",
+                        "no": "001"
+                    },
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00234/4580117627025_B002S.jpg ",
+                        "no": "002"
+                    },
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00234/4580117627025_B003S.jpg ",
+                        "no": "003"
+                    },
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00234/4580117627025_B004S.jpg ",
+                        "no": "004"
+                    }
+                ],
+                "scene_m": [
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00234/4580117627025_B001M.jpg ",
+                        "no": "001"
+                    },
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00234/4580117627025_B002M.jpg ",
+                        "no": "002"
+                    },
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00234/4580117627025_B003M.jpg ",
+                        "no": "003"
+                    },
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00234/4580117627025_B004M.jpg ",
+                        "no": "004"
+                    }
+                ],
+                "scene_l": [
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00234/4580117627025_B001L.jpg ",
+                        "no": "001"
+                    },
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00234/4580117627025_B002L.jpg ",
+                        "no": "002"
+                    },
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00234/4580117627025_B003L.jpg ",
+                        "no": "003"
+                    },
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00234/4580117627025_B004L.jpg ",
+                        "no": "004"
+                    }
+                ],
+                "trailor_pc": [
+
+                ],
+                "season_name": "",
+                "season_number": null,
+                "book_series_name": "",
+                "book_series_name_kana": "",
+                "feature_keywords": [
+
+                ],
+                "priv_keywords": [
+
+                ],
+                "work_tags": [
+                    "riricaleinfo",
+                    "riricaleinfo201808"
+                ],
+                "wakati_words": [
+
+                ],
+                "is_compilation": 0,
+                "series_completed": 0,
+                "disable_flg": 0,
+                "delete_flg": 0,
+                "ids": [
+                    {
+                        "id_type": "0107",
+                        "id_value": "361374"
+                    },
+                    {
+                        "id_type": "0108",
+                        "id_value": "70192"
+                    },
+                    {
+                        "id_type": "0103",
+                        "id_value": "10611883"
+                    },
+                    {
+                        "id_type": "0105",
+                        "id_value": "10604923"
+                    }
+                ],
+                "docs": [
+                    {
+                        "doc_type_id": "01",
+                        "doc_source_id": "03",
+                        "doc_text": "『美しい星』の吉田大八監督作品。元受刑者6人を受け入れることになった過疎の港町を舞台に、新住民と素性の知れない彼らに対し不安を募らせていく一般市民の交流の行方を描くサスペンス。主演は錦戸亮。共演に木村文乃、松田龍平ほか。"
+                    },
+                    {
+                        "doc_type_id": "02",
+                        "doc_source_id": "04",
+                        "doc_text": "「美しい星」の吉田大八監督が山上たつひこ、いがらしみきお共作の同名コミックスを映画化したミステリー・ドラマ。元受刑者6人を受け入れることになった過疎の港町を舞台に、新住民と素性の知れない彼らに対し不安を募らせていく一般市民の交流の行方をサスペンスフルに綴る。主演は錦戸亮、共演に木村文乃、松田龍平。見知らぬ男女6人の移住受け入れを担当することになった魚深市の市役所職員・月末。やがて月末は彼らがみな仮釈放された元殺人犯であることを知る。彼らの転入は、犯罪者の更生と過疎化対策の一環として、この町に10年間住み続けることを条件に刑期を大幅に短縮して釈放させる政府の極秘プロジェクトによるものだった。もちろん、そんな新住民の過去は一般市民には一切知らされることはなかったのだが…。"
+                    },
+                    {
+                        "doc_type_id": "04",
+                        "doc_source_id": "03",
+                        "doc_text": "【Disc-1】
+羊の木"
+                    },
+                    {
+                        "doc_type_id": "04",
+                        "doc_source_id": "04",
+                        "doc_text": "本編ディスク、特典ディスク 1、特典ディスク 2"
+                    },
+                    {
+                        "doc_type_id": "06",
+                        "doc_source_id": "04",
+                        "doc_text": "三方背ケース+デジパック仕様
+
+
+＜封入特典＞
+
+ブックレット「羊の本」(16P)
+
+
+＜映像特典＞
+
+本編ディスク:
+
+予告編映像集
+
+特典ディスク 1:
+
+メイキング＆イベント映像集 (主演の錦戸亮、個性的な殺人犯を演じたキャストたちのインタビューなどを収録したメイキング映像に加え、完成披露試写会や直前イベント、初日舞台挨拶、大ヒット記念舞台挨拶のみならず、海外特派員向け記者会見や台湾公開記念舞台挨拶の模様を収めたイベント映像集を収録!)
+
+特典ディスク 2:
+
+錦戸亮＆吉田大八監督によるビジュアルコメンタリー (錦戸亮と吉田大八監督が「羊の木」の裏話を語りつくす、必見のビジュアルコメンタリーを収録!)"
+                    },
+                    {
+                        "doc_type_id": "10",
+                        "doc_source_id": "03",
+                        "doc_text": "［2］［3］特典ディスク/三方背ケース+デジパック仕様/ブックレット「羊の本」(16P)"
+                    },
+                    {
+                        "doc_type_id": "11",
+                        "doc_source_id": "03",
+                        "doc_text": "［1］予告編映像集/［2］メイキング＆イベント映像集/［3］錦戸亮＆吉田大八監督によるビジュアルコメンタリー"
+                    }
+                ],
+                "awards": [
+
+                ],
+                "screens": [
+
+                ],
+                "onairs": [
+
+                ],
+                "magazines": [
+
+                ],
+                "genres": [
+                    {
+                        "big_genre_id": "EXT00000014Q",
+                        "big_genre_name": "邦画ドラマ",
+                        "medium_genre_id": "EXT0000005ZE",
+                        "medium_genre_name": "サスペンス／ミステリー",
+                        "small_genre_id": "",
+                        "small_genre_name": "",
+                        "shikiriban_id": "",
+                        "shikiriban_name": ""
+                    }
+                ],
+                "products": [
+                    {
+                        "id": "PDT0000WJ8YS",
+                        "product_id": "PPD0000W95SX",
+                        "product_type_id": 2,
+                        "product_type_name": "レンタル",
+                        "service_id": "discas",
+                        "service_name": "discas",
+                        "msdb_item": "video",
+                        "item_cd": "0021",
+                        "item_name": "ＤＶＤ",
+                        "product_name": "羊の木",
+                        "product_kana": "ヒツジノキ",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2018-06-22 00:00:00",
+                        "disp_start_month": "2018-06",
+                        "disp_end_date": "2099-12-31 00:00:00",
+                        "disp_end_month": "2099-12",
+                        "sale_start_date": "2018-08-08",
+                        "sale_start_month": "2018-08",
+                        "sale_end_date": "2099-12-31",
+                        "sale_end_month": "2099-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000TTVBS"
+                        ],
+                        "tieup": "",
+                        "copyright": "(C)2018『羊の木』製作委員会(C)山上たつひこ いがらしみきお/講談社",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "2017",
+                        "created_year_to": "",
+                        "created_year_str": "2017",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT0000000HC",
+                        "maker_name": "ソニー・ミュージックマーケティング",
+                        "maker_name_kana": "そにーみゆーじつくまーけていんぐ",
+                        "maker_name_abbrev": "ソニー・ミュージックマーケティング",
+                        "label_name": "",
+                        "sell_rental_flag": 2,
+                        "view_term": null,
+                        "reservation_flg": 1,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10611883",
+                        "ccc_family_cd": "10611883001",
+                        "ccc_product_id": "3740254307",
+                        "rental_product_cd": "084051167",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4580117627056",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "JABR5008",
+                        "icpn": "",
+                        "media_category_cd": "12",
+                        "media_category_name": "レンタルDVD",
+                        "media_format_id": "EXT000006GPK",
+                        "media_format_name": "DVD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "020700",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": null,
+                        "subtitle": "日",
+                        "sound_spec": "",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "",
+                        "video_info": "",
+                        "number_of_volume": "001",
+                        "number_of_set": "1",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//img.discas.net/img/jacket/no_image_dvd_s.png ",
+                        "jacket_m": "//img.discas.net/img/jacket/no_image_dvd_m.png ",
+                        "jacket_l": "",
+                        "jacket_l4": "",
+                        "scene_s": [
+
+                        ],
+                        "scene_m": [
+
+                        ],
+                        "scene_l": [
+
+                        ],
+                        "trailor_pc": [
+
+                        ],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [
+
+                        ],
+                        "priv_keywords": [
+
+                        ],
+                        "package_tags": [
+
+                        ],
+                        "product_tags": [
+                            "riricaleinfo",
+                            "riricaleinfo201808"
+                        ],
+                        "price_tax_out": null,
+                        "price_tax_in": null,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "04",
+                                "doc_text": "「美しい星」の吉田大八監督が山上たつひこ、いがらしみきお共作の同名コミックスを映画化したミステリー・ドラマ。元受刑者6人を受け入れることになった過疎の港町を舞台に、新住民と素性の知れない彼らに対し不安を募らせていく一般市民の交流の行方をサスペンスフルに綴る。主演は錦戸亮、共演に木村文乃、松田龍平。見知らぬ男女6人の移住受け入れを担当することになった魚深市の市役所職員・月末。やがて月末は彼らがみな仮釈放された元殺人犯であることを知る。彼らの転入は、犯罪者の更生と過疎化対策の一環として、この町に10年間住み続けることを条件に刑期を大幅に短縮して釈放させる政府の極秘プロジェクトによるものだった。もちろん、そんな新住民の過去は一般市民には一切知らされることはなかったのだが…。"
+                            },
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "H1",
+                                "doc_text": "『紙の月』の吉田大八監督、錦戸亮主演によるヒューマンサスペンス。寂れた港町・魚深に移住してきた、互いに見知らぬ6人の男女。一見普通に見える彼らだが、何かがおかしかった。市役所職員の月末は、やがて驚愕の事実を知ることになる。※一般告知解禁日：6月6日"
+                            }
+                        ],
+                        "devices": [
+
+                        ],
+                        "distribution_plans": [
+
+                        ],
+                        "awards": [
+
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT00000014Q",
+                                "big_genre_name": "邦画ドラマ",
+                                "medium_genre_id": "EXT0000005ZE",
+                                "medium_genre_name": "サスペンス／ミステリー",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [
+
+                        ],
+                        "onairs": [
+
+                        ],
+                        "magazines": [
+
+                        ],
+                        "discas_grade_point": 313,
+                        "discas_item": "DiscasMovie",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [
+
+                        ],
+                        "filmarks_id": [
+
+                        ],
+                        "dramarks_id": [
+
+                        ],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS00000R5QH",
+                                "person_name": "吉田大八",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS000004TUL",
+                                "person_name": "錦戸亮",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000B2R1",
+                                "person_name": "木村文乃",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000B2X",
+                                "person_name": "北村一輝",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000D05",
+                                "person_name": "優香",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000DMP",
+                                "person_name": "市川実日子",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00001RT83",
+                                "person_name": "水澤紳吾",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000O5EOF",
+                                "person_name": "田中泯",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000CHZ",
+                                "person_name": "松田龍平",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000TTUNZ",
+                                "person_name": "山上たつひこ",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            },
+                            {
+                                "person_id": "PPS000007RR5",
+                                "person_name": "いがらしみきお",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            },
+                            {
+                                "person_id": "PPS0000015JM",
+                                "person_name": "中村有志",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000004RBW",
+                                "person_name": "安藤玉恵",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000022Z7",
+                                "person_name": "香川まさひと",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS00000012F",
+                                "person_name": "山上たつひこ",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    }
+                ],
+                "video_relations": [
+
+                ],
+                "discas_grade_point": 313,
+                "discas_item": [
+                    "DiscasMovie"
+                ],
+                "ttv_trailer_flg": 0,
+                "ttv_free_movie_flg": 0,
+                "ttv_sell_rental_flg": [
+
+                ],
+                "ttv_low_price": null,
+                "cinema_id": [
+                    "361374"
+                ],
+                "filmarks_id": [
+                    "70192"
+                ],
+                "dramarks_id": [
+
+                ],
+                "catch_copy": "",
+                "sale_start_date_sell": "2018-08-29",
+                "sale_start_date_rental": "2018-08-08",
+                "trailer_urls": [
+
+                ],
+                "scenes": [
+
+                ],
+                "filmarks_mark": 46,
+                "filmarks_clip": 5050,
+                "filmarks_average": 3.73,
+                "people": [
+                    {
+                        "person_id": "PPS000004TUL",
+                        "person_name": "錦戸亮",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS00000R5QH",
+                        "person_name": "吉田大八",
+                        "role_id": "EXT0000000UH",
+                        "role_name": "監督"
+                    },
+                    {
+                        "person_id": "PPS00000B2R1",
+                        "person_name": "木村文乃",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS000000B2X",
+                        "person_name": "北村一輝",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS000000D05",
+                        "person_name": "優香",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS000000DMP",
+                        "person_name": "市川実日子",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS00001RT83",
+                        "person_name": "水澤紳吾",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS0000O5EOF",
+                        "person_name": "田中泯",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS000000CHZ",
+                        "person_name": "松田龍平",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS0000022Z7",
+                        "person_name": "香川まさひと",
+                        "role_id": "EXT00000018Y",
+                        "role_name": "脚本"
+                    },
+                    {
+                        "person_id": "PPS0000TTUNZ",
+                        "person_name": "山上たつひこ",
+                        "role_id": "EXT0000000UQ",
+                        "role_name": "原作者"
+                    },
+                    {
+                        "person_id": "PPS000007RR5",
+                        "person_name": "いがらしみきお",
+                        "role_id": "EXT0000000UQ",
+                        "role_name": "原作者"
+                    },
+                    {
+                        "person_id": "PPS0000015JM",
+                        "person_name": "中村有志",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS000004RBW",
+                        "person_name": "安藤玉恵",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    }
+                ],
+                "tracks": [
+
+                ],
+                "merged_from": [
+
+                ],
+                "need_age_auth_flg": 0
+            }
+        ]
+    }
+}
