@@ -1310,6 +1310,37 @@
  */
 /**
  * @SWG\Get(
+ *     path="/work/{workId}/recommend/theater",
+ *     description="上映映画関連お薦め作品一覧取得",
+ *     tags={"Work"},
+ *     security={{"api_key":{}}},
+ *     produces={"application/json"},
+ *     @SWG\Parameter(ref="#/parameters/workId"),
+ *     @SWG\Parameter(ref="#/parameters/limit"),
+ *     @SWG\Parameter(ref="#/parameters/offset"),
+ *     @SWG\Parameter(ref="#/parameters/sort"),
+ *     @SWG\Parameter(ref="#/parameters/ageLimitCheck"),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          ref="$/responses/ListJson",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="rows",
+ *                  type="array",
+ *                  @SWG\Items(ref="#/definitions/WorkNarrow"),
+ *                  description="作品情報",
+ *              ),
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+/**
+ * @SWG\Get(
  *     path="/convert/work/{idType}/{id}",
  *     description="HimoID取得 (CCC商品IDと商品IDから作品ID取得を取得する)",
  *     tags={"Work"},
