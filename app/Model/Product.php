@@ -56,7 +56,7 @@ class Product extends Model
             ->where('is_dummy', '=', self::DUMMY_DATA_IS_NOT_DUMMY)
             ->where('product_type_id', '=', self::PRODUCT_TYPE_ID_RENTAL)
             ->whereRaw(DB::raw(' item_cd not like \'_1__\' '))
-            ->whereRaw(DB::raw(' jan not like \'9999_________\' '))
+//            ->whereRaw(DB::raw(' jan not like \'9999_________\' '))
             ->orderBy('t2.ccc_product_id', 'desc') // 最古のものを一番上にもってきて取得する為
         ;
         return $this;
@@ -68,8 +68,8 @@ class Product extends Model
             ->join('ts_works AS t1', 't2.work_id', '=', 't1.work_id')
             ->where('t1.url_cd', $urlCd)
             ->where('is_dummy', '=', self::DUMMY_DATA_IS_NOT_DUMMY)
-            ->whereRaw(DB::raw(' item_cd not like \'_1__\' '))
-            ->whereRaw(DB::raw(' jan not like \'9999_________\' '));
+            ->whereRaw(DB::raw(' item_cd not like \'_1__\' '));
+//            ->whereRaw(DB::raw(' jan not like \'9999_________\' '));
             if($saleType) {
                 $this->dbObject->where('product_type_id', $this->convertSaleType($saleType));
             }
@@ -240,7 +240,7 @@ class Product extends Model
             ->whereRaw(DB::raw(' work_id = \''.$workId .'\''))
             //->whereRaw(DB::raw(' item_cd not like \'_1__\' '))
             //->whereRaw(DB::raw(' item_cd not like \'__20\' ')) // VHSも出力するように変更
-            ->whereRaw(DB::raw(' jan not like \'9999_________\' '))
+//            ->whereRaw(DB::raw(' jan not like \'9999_________\' '))
             ->groupBy(DB::raw($selectSubGrouping));
         if ($isAudio && $saleType === 'rental') {
             $subQueryBase->whereRaw(DB::raw(' is_dummy = 0 '));
@@ -277,7 +277,8 @@ class Product extends Model
     public function setConditionRentalGroup($workId, $order = null, $ignoreOtherMedia = false)
     {
         $groupingColumn = 'work_id, product_name, ccc_family_cd';
-        $saleStartDate = 'MAX(sale_start_date) AS sale_start_date';
+//        $saleStartDate = 'MAX(sale_start_date) AS sale_start_date';
+        $saleStartDate = 'MIN(sale_start_date) AS sale_start_date';
         $dvdQuery = 'MAX(CASE WHEN (item_cd = \'0021\' OR item_cd = \'0121\') THEN rental_product_cd ELSE NULL END) AS dvd';
         $blurayQuery = 'MAX(CASE WHEN (item_cd = \'0022\' OR item_cd = \'0122\') THEN rental_product_cd ELSE NULL END) AS bluray';
         $selectQuery = $groupingColumn. ','.
@@ -287,7 +288,7 @@ class Product extends Model
         $subQuery = DB::table($this->table)->select(DB::raw($selectQuery))
             ->whereRaw(DB::raw('work_id = \''.$workId . '\''))
             ->whereRaw(DB::raw(' product_type_id = 2 '))
-            ->whereRaw(DB::raw(' jan not like \'9999_________\' '))
+//            ->whereRaw(DB::raw(' jan not like \'9999_________\' '))
             ->groupBy(DB::raw($groupingColumn))
         ;
         $this->dbObject = DB::table(DB::raw("({$subQuery->toSql()}) as sub"))
@@ -323,7 +324,7 @@ class Product extends Model
         $this->dbObject = DB::table(DB::raw("({$subQuery->toSql()}) as t1"))
             ->join($this->table.' as t2', function ($join) {
                 $join->on('t2.work_id', '=', 't1.work_id')
-                    ->whereRaw(DB::raw(' jan not like \'9999_________\' '))
+//                    ->whereRaw(DB::raw(' jan not like \'9999_________\' '))
                     ->whereRaw(DB::raw('t2.work_id = t1.work_id'))
                     ->whereRaw(DB::raw('t2.ccc_family_cd = t1.ccc_family_cd'))
                     ->whereRaw(DB::raw('t2.sale_start_date = t1.sale_start_date'));
