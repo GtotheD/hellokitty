@@ -33,6 +33,16 @@ class ProductRepository
     const MSDBITEM_NAME_BOOK = 'book';
     const MSDBITEM_NAME_GAME = 'game';
 
+    const MEDIA_FORMAT_ID_BLURAY = 'EXT0000001VI';
+
+    const ITEM_CD_BLURAY_BASE_CODE = '22';
+    const ITEM_CD_BLURAY = '0022';
+    const ITEM_CD_BLURAY_PPT = '0122';
+    const ITEM_CD_BLURAY_SELL = '1022';
+    const ITEM_CD_BLURAY_NAME = 'ブルーレイ';
+    const ITEM_CD_BLURAY_PPT_NAME = 'ブルーレイ－ＰＰＴ';
+    const ITEM_CD_BLURAY_SELL_NAME = 'ブルーレイ';
+
     public function __construct($sort = 'asc', $offset = 0, $limit = 10)
     {
         $this->sort = $sort;
@@ -463,6 +473,24 @@ class ProductRepository
             $productBase['msdb_item'] = 'video';
         } else {
             $productBase['msdb_item'] = $product['msdb_item'];
+        }
+        // BlurayがDVDのアイテムコードで入ってくる場合があるので
+        // media_format_idでblurayかどうか判定して入れ替える
+        if (self::MEDIA_FORMAT_ID_BLURAY === $product['media_format_id']) {
+            // 頭の２桁（販売タイプとPPT判別部分）はそのまま
+            $itemCdHead = substr($product['item_cd'], 0,2);
+            $product['item_cd'] = $itemCdHead . self::ITEM_CD_BLURAY_BASE_CODE;
+            switch ($product['item_cd']) {
+                case self::ITEM_CD_BLURAY:
+                    $product['item_name'] = self::ITEM_CD_BLURAY_NAME;
+                    break;
+                case self::ITEM_CD_BLURAY_PPT:
+                    $product['item_name'] = self::ITEM_CD_BLURAY_PPT_NAME;
+                    break;
+                case self::ITEM_CD_BLURAY_SELL:
+                    $product['item_name'] = self::ITEM_CD_BLURAY_SELL_NAME;
+                    break;
+            }
         }
         $productBase['item_cd'] = $product['item_cd'];
         $productBase['item_cd_right_2'] = substr($product['item_cd'], -2);
