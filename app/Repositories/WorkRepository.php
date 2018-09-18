@@ -911,6 +911,7 @@ class WorkRepository
                     'saleTypeHas' => [
                         'sell' => $saleTypeHas['sell'],
                         'rental' => $saleTypeHas['rental'],
+                        'theater' => $saleTypeHas['theater'],
                     ],
                     'workFormatName' => $workFormatName
                 ];
@@ -966,13 +967,14 @@ class WorkRepository
     {
         $sell = false;
         $rental = false;
+        $thater = false;
         $supplement = '';
         $mediaFormatId = '';
         $saleStartDateSell = null;
         $saleStartDateRental = null;
         foreach ($products as $product) {
             // VHSを除外
-            if ($product['service_id'] === 'tol') {
+            if ($product['service_id'] === 'tol' || $product['service_id'] === 'st') {
                 if ($product['product_type_id'] === 1 ) { // VHSの条件を除外
                     // 最新の販売開始日を取得する。
                     if ($product['sale_start_date'] > $saleStartDateSell) {
@@ -985,6 +987,8 @@ class WorkRepository
                         $saleStartDateRental = $product['sale_start_date'];
                     }
                     $rental = true;
+                } else if (empty($product['product_type_id']) && $product['service_id'] === 'st') { // VHSの条件を除外
+                    $thater = true;
                 }
                 if ($itemType === 'game') {
                     $supplement = $product['game_model_name'];
@@ -1008,6 +1012,7 @@ class WorkRepository
         return [
             'sell' => $sell,
             'rental' => $rental,
+            'theater' => $thater,
             'supplement' => $supplement,
             'media_format_id' => $mediaFormatId,
             'maker_cd' => $makerCd,
