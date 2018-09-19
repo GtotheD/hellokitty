@@ -34,6 +34,7 @@ class ProductRepository
     const MSDBITEM_NAME_GAME = 'game';
 
     const MEDIA_FORMAT_ID_BLURAY = 'EXT0000001VI';
+    const MEDIA_FORMAT_ID_THEATER = 'EXT0000R2PS1';
 
     const ITEM_CD_BLURAY_BASE_CODE = '22';
     const ITEM_CD_BLURAY = '0022';
@@ -42,6 +43,7 @@ class ProductRepository
     const ITEM_CD_BLURAY_NAME = 'ブルーレイ';
     const ITEM_CD_BLURAY_PPT_NAME = 'ブルーレイ－ＰＰＴ';
     const ITEM_CD_BLURAY_SELL_NAME = 'ブルーレイ';
+    const ITEM_CD_THEATER_DUMMY = '0000';
 
     public function __construct($sort = 'asc', $offset = 0, $limit = 10)
     {
@@ -189,6 +191,7 @@ class ProductRepository
             "t2.number_of_volume",
             "t2.sale_start_date",
             "t2.price_tax_out",
+            "t2.media_format_id",
         ];
         $isAudio = false;
         $products = $this->product->setConditionByWorkIdNewestProduct($workId)->select('msdb_item')->getOne();
@@ -366,7 +369,12 @@ class ProductRepository
                 $product['playTime'] = $this->editPlayTimeFormat($product['playTime']);
             }
             $product['itemName'] = $this->convertItemCdToStr($product['itemCd']);
-            $product['saleType'] = $this->convertProductTypeToStr($product['productTypeId']);
+            // シアターの場合は、saleTypeをtheaterに変更する。
+            if ( $product['mediaFormatId'] === self::MEDIA_FORMAT_ID_THEATER) {
+                $product['saleType'] = WorkRepository::SALE_TYPE_THEATER;
+            } else {
+                $product['saleType'] = $this->convertProductTypeToStr($product['productTypeId']);
+            }
             $product['jacketL'] = trimImageTag($product['jacketL']);
             $product['newFlg'] = newFlg($product['saleStartDate']);
 
@@ -491,6 +499,10 @@ class ProductRepository
                     $product['item_name'] = self::ITEM_CD_BLURAY_SELL_NAME;
                     break;
             }
+        }
+        // 上映映画でnullの場合は集約できないので、DBインサート時はDummyコードを入れる。
+        if ( $product['media_format_id'] === self::MEDIA_FORMAT_ID_THEATER) {
+            $product['item_cd'] = self::ITEM_CD_THEATER_DUMMY;
         }
         $productBase['item_cd'] = $product['item_cd'];
         $productBase['item_cd_right_2'] = substr($product['item_cd'], -2);
