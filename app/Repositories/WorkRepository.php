@@ -1301,7 +1301,7 @@ class WorkRepository
                 $itemType = 'cd';
                 break;
             case self::WORK_TYPE_THEATER:
-                $itemType = 'theater';
+                $itemType = 'dvd';
                 break;
         }
         return $itemType;
