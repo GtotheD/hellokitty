@@ -31,9 +31,15 @@ class WorkRepository
     protected $hasNext;
     protected $totalCount;
 
+    const REQUEST_ITEM_TYPE_DVD = 'dvd';
+    const REQUEST_ITEM_TYPE_CD = 'cd';
+    const REQUEST_ITEM_TYPE_BOOK = 'book';
+    const REQUEST_ITEM_TYPE_GAME = 'game';
+
     // 本プログラムで使っている販売タイプの文字列
     const SALE_TYPE_SELL = 'sell';
     const SALE_TYPE_RENTAL = 'rental';
+    const SALE_TYPE_THEATER = 'theater';
 
     // MSDBアイテム種別
     const MSDB_ITEM_VIDEO = 'video';
@@ -42,13 +48,13 @@ class WorkRepository
     const MSDB_ITEM_GAME = 'game';
 
     // 1=音楽、2=映像、3=書籍、4=ゲーム、5=グッズ、6=音楽単曲、7=映画
-    const WORK_TYPE_CD = 1;
-    const WORK_TYPE_DVD = 2;
-    const WORK_TYPE_BOOK = 3;
-    const WORK_TYPE_GAME = 4;
-    const WORK_TYPE_GOODS = 5;
-    const WORK_TYPE_MUSIC_UNIT = 6;
-    const WORK_TYPE_MOVIE = 7;
+    const WORK_TYPE_CD = '1';
+    const WORK_TYPE_DVD = '2';
+    const WORK_TYPE_BOOK = '3';
+    const WORK_TYPE_GAME = '4';
+    const WORK_TYPE_GOODS = '5';
+    const WORK_TYPE_MUSIC_UNIT = '6';
+    const WORK_TYPE_THEATER = '7';
 
     const HIMO_REQUEAST_MAX = 2000;
     const HIMO_REQUEAST_PER_ONCE = 20;
@@ -510,7 +516,11 @@ class WorkRepository
         // プロダクトが存在しなかった場合（workベースで取得した場合等）は、各販売種別の最新商品情報で取得する。
         // プロダクトを指定のもので取得したい場合は引数にてプロダクト情報を付与すると、その情報から生成する。
         if (empty($product)) {
-            $product = (array)$productModel->setConditionByWorkIdNewestProduct($response['workId'], $this->saleType)->toCamel()->getOne();
+            if ($response['workTypeId'] === self::WORK_TYPE_THEATER && $this->saleType === self::SALE_TYPE_THEATER) {
+                $product = (array)$productModel->setConditionByWorkId($response['workId'])->toCamel()->getOne();
+            } else {
+                $product = (array)$productModel->setConditionByWorkIdNewestProduct($response['workId'], $this->saleType)->toCamel()->getOne();
+            }
         }
         if (!empty($product)) {
             // 映像の場合は、ジャケ写を最新刊のブルーレイ優先で取得する。
@@ -629,14 +639,29 @@ class WorkRepository
             $response['itemType'] = 'dvd';
         }
         if ($addSaleTypeHas) {
-            $response['saleTypeHas'] = [
-                'sell' => ($productModel->setConditionByWorkIdSaleType($response['workId'], 'sell')->count() > 0) ? true : false,
-                'rental' => ($productModel->setConditionByWorkIdSaleType($response['workId'], 'rental')->count() > 0) ? true : false
-            ];
+            if($response['workTypeId'] === self::WORK_TYPE_THEATER) {
+                $response['saleTypeHas'] = [
+                    'sell' => false,
+                    'rental' => false,
+                    'theater' => true,
+                ];
+                $response['jacketL'] = current(json_decode($response['sceneL']));
+            } else {
+                $response['saleTypeHas'] = [
+                    'sell' => ($productModel->setConditionByWorkIdSaleType($response['workId'], 'sell')->count() > 0) ? true : false,
+                    'rental' => ($productModel->setConditionByWorkIdSaleType($response['workId'], 'rental')->count() > 0) ? true : false,
+                    'theater' => false,
+                ];
+            }
         }
         // docがセットできなかった場合はブランクにする。
         if ($isDocSet === false) {
             $response['docText'] = '';
+        }
+
+        // 映画の場合は入れ替える
+        if($response['workTypeId'] === self::WORK_TYPE_THEATER) {
+            $response['jacketL'] = current(json_decode($response['sceneL']));
         }
 
         // musicoリンク
@@ -682,7 +707,6 @@ class WorkRepository
      */
     public function insertWorkData($himoResult)
     {
-
         $productRepository = new ProductRepository();
         $peopleRepository = new PeopleRepository();
         // Create transaction for insert multiple tables
@@ -887,6 +911,7 @@ class WorkRepository
                     'saleTypeHas' => [
                         'sell' => $saleTypeHas['sell'],
                         'rental' => $saleTypeHas['rental'],
+                        'theater' => $saleTypeHas['theater'],
                     ],
                     'workFormatName' => $workFormatName
                 ];
@@ -942,13 +967,14 @@ class WorkRepository
     {
         $sell = false;
         $rental = false;
+        $thater = false;
         $supplement = '';
         $mediaFormatId = '';
         $saleStartDateSell = null;
         $saleStartDateRental = null;
         foreach ($products as $product) {
             // VHSを除外
-            if ($product['service_id'] === 'tol') {
+            if ($product['service_id'] === 'tol' || $product['service_id'] === 'st') {
                 if ($product['product_type_id'] === 1 ) { // VHSの条件を除外
                     // 最新の販売開始日を取得する。
                     if ($product['sale_start_date'] > $saleStartDateSell) {
@@ -961,6 +987,8 @@ class WorkRepository
                         $saleStartDateRental = $product['sale_start_date'];
                     }
                     $rental = true;
+                } else if (empty($product['product_type_id']) && $product['service_id'] === 'st') { // VHSの条件を除外
+                    $thater = true;
                 }
                 if ($itemType === 'game') {
                     $supplement = $product['game_model_name'];
@@ -984,6 +1012,7 @@ class WorkRepository
         return [
             'sell' => $sell,
             'rental' => $rental,
+            'theater' => $thater,
             'supplement' => $supplement,
             'media_format_id' => $mediaFormatId,
             'maker_cd' => $makerCd,
@@ -1271,8 +1300,8 @@ class WorkRepository
             case self::WORK_TYPE_MUSIC_UNIT:
                 $itemType = 'cd';
                 break;
-            case self::WORK_TYPE_MOVIE:
-                $itemType = 'dvd';
+            case self::WORK_TYPE_THEATER:
+                $itemType = 'theater';
                 break;
         }
         return $itemType;
@@ -1296,9 +1325,6 @@ class WorkRepository
                 break;
             case self::WORK_TYPE_MUSIC_UNIT:
                 $itemType = 'audio';
-                break;
-            case self::WORK_TYPE_MOVIE:
-                $itemType = 'video';
                 break;
         }
         return $itemType;

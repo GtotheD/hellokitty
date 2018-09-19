@@ -72,7 +72,7 @@ class HimoRepository extends ApiRequesterRepository
             'service_id' => 'tol',
             'scene_limit' => '20',
             'response_level' => $responseLevel,
-            'work_products_service_id' => ['tol', 'musico', 'discas'],
+            'work_products_service_id' => ['tol', 'musico', 'discas','st'],
             'offset' => $this->offset,
             'limit' => $this->limit,
             'sort_by' => 'auto:asc',
@@ -249,9 +249,9 @@ class HimoRepository extends ApiRequesterRepository
 
         $this->queryParams = [
             '_system' => 'TsutayaApp',
-            'service_id' => 'tol',
+            'service_id' => ['tol', 'st'],
             'scene_limit' => '20',
-            'work_products_service_id' => 'tol',
+            'work_products_service_id' => ['tol', 'st'],
             'response_level' => '9',
             'offset' => $this->offset,
             'limit' => $this->limit,
