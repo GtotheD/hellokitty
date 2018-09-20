@@ -1,0 +1,1835 @@
+{
+    "status": 200,
+    "message": null,
+    "results": {
+        "total": 1,
+        "rows": [
+            {
+                "work_id": "PTA0000V9KGR",
+                "work_type_id": "2",
+                "msdb_item": "video",
+                "work_format_id": null,
+                "work_format_name": "",
+                "work_title": "E351系特急スーパーあずさ【配信限定ver.】",
+                "work_title_kana": "イーサンゴウイチケイトッキュウスーパーアズサハイシンゲンテイバージョン",
+                "work_title_en": "",
+                "work_title_orig": "",
+                "work_title_sub": "車両紹介/走行シーン",
+                "work_comment": "",
+                "work_outline": "１９９４年１２月、ＪＲ東日本初の振り子式電車としてデビューしたＥ３５１系。軽量かつ低重心な車体を傾けることでカーブでの高速走行を可能にし、ビジネス・レジャー客の高速輸送に貢献した革新的車両である。本作はそのスーパーあずさの運転室展望、車両紹介、走行シーンを収録。振り子式特有の画面ごと傾斜するような運転室展望は必見である。台風一過の透き通った青空の下、はるかに見える深緑の稜線を追いかけながら、終点新宿へとひた走る。",
+                "work_copyright": "【JR東日本商品化許諾済】(C) 2017 TEICHIKU ENTERTAINMENT, INC.",
+                "rating_id": "EXT000000008",
+                "rating_name": "",
+                "adult_flg": 0,
+                "primary_product_source_id": "PDT0000V9HC5",
+                "primary_product_service_id": "discas",
+                "primary_product_type_id": 1,
+                "disp_start_date": "2018-01-22 00:00:00",
+                "disp_start_month": "2018-01",
+                "sale_start_date": "2018-01-22",
+                "sale_start_month": "2018-01",
+                "created_year_from": "",
+                "created_year_to": "",
+                "created_year": "2017",
+                "created_countries": "日本",
+                "jacket_s": "//img.discas.net/img/jacket/ttv_jacket/101/071/500/101071500_24SX.jpg ",
+                "jacket_m": "//img.discas.net/img/jacket/ttv_jacket/101/071/500/101071500_24MX.jpg ",
+                "jacket_l": "//img.discas.net/img/jacket/ttv_jacket/101/071/500/101071500_24L.jpg ",
+                "jacket_l4": "",
+                "scene_s": [
+
+                ],
+                "scene_m": [
+
+                ],
+                "scene_l": [
+
+                ],
+                "trailor_pc": [
+
+                ],
+                "season_name": "",
+                "season_number": null,
+                "book_series_name": "",
+                "book_series_name_kana": "",
+                "feature_keywords": [
+
+                ],
+                "priv_keywords": [
+
+                ],
+                "work_tags": [
+
+                ],
+                "wakati_words": [
+
+                ],
+                "is_compilation": 0,
+                "series_completed": 0,
+                "disable_flg": 0,
+                "delete_flg": 0,
+                "ids": [
+                    {
+                        "id_type": "0106",
+                        "id_value": "101018125"
+                    }
+                ],
+                "docs": [
+                    {
+                        "doc_type_id": "01",
+                        "doc_source_id": "H1",
+                        "doc_text": ""
+                    },
+                    {
+                        "doc_type_id": "02",
+                        "doc_source_id": "H1",
+                        "doc_text": "１９９４年１２月、ＪＲ東日本初の振り子式電車としてデビューしたＥ３５１系。軽量かつ低重心な車体を傾けることでカーブでの高速走行を可能にし、ビジネス・レジャー客の高速輸送に貢献した革新的車両である。本作はそのスーパーあずさの運転室展望、車両紹介、走行シーンを収録。振り子式特有の画面ごと傾斜するような運転室展望は必見である。台風一過の透き通った青空の下、はるかに見える深緑の稜線を追いかけながら、終点新宿へとひた走る。
+振り子式電車による迫力の傾斜展望を貴方に。＃７ではスーパーあずさの車両紹介ならびに走行シーンをお送りします。"
+                    }
+                ],
+                "awards": [
+
+                ],
+                "screens": [
+
+                ],
+                "onairs": [
+
+                ],
+                "magazines": [
+
+                ],
+                "genres": [
+                    {
+                        "big_genre_id": "EXT0000003L8",
+                        "big_genre_name": "ドキュメント／その他",
+                        "medium_genre_id": "EXT000073YI0",
+                        "medium_genre_name": "ドキュメント／その他",
+                        "small_genre_id": "",
+                        "small_genre_name": "",
+                        "shikiriban_id": "",
+                        "shikiriban_name": ""
+                    }
+                ],
+                "products": [
+                    {
+                        "id": "PDT0000V9HB1",
+                        "product_id": "PPD0000V9HB1",
+                        "product_type_id": 5,
+                        "product_type_name": "映像配信",
+                        "service_id": "discas",
+                        "service_name": "discas",
+                        "msdb_item": "video",
+                        "item_cd": "",
+                        "item_name": "",
+                        "product_name": "#6 E351系特急スーパーあずさ【配信限定ver.】",
+                        "product_kana": "イーサンゴウイチケイトッキュウスーパーアズサハイシンゲンテイバージョン",
+                        "product_en": "",
+                        "product_title_sub": "展望 東小金井～新宿/松本車両センター～松本駅(出区)",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "振り子式電車による迫力の傾斜展望を貴方に。＃６では東小金井から新宿まで、振り子式特有の画面ごと傾斜するような運転室展望をお送りします。",
+                        "disp_start_date": "2018-01-22 00:00:00",
+                        "disp_start_month": "2018-01",
+                        "disp_end_date": "2019-01-21 23:59:59",
+                        "disp_end_month": "2019-01",
+                        "sale_start_date": "2018-01-22",
+                        "sale_start_month": "2018-01",
+                        "sale_end_date": "2019-01-21",
+                        "sale_end_month": "2019-01",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000V9KGR"
+                        ],
+                        "tieup": "",
+                        "copyright": "【JR東日本商品化許諾済】(C) 2017 TEICHIKU ENTERTAINMENT, INC.",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "2017",
+                        "created_year_to": "",
+                        "created_year_str": "2017",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT0000NUXZT",
+                        "maker_name": "株式会社トムス・エンタテインメント",
+                        "maker_name_kana": "",
+                        "maker_name_abbrev": "",
+                        "label_name": "",
+                        "sell_rental_flag": 2,
+                        "view_term": 0,
+                        "reservation_flg": 1,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "",
+                        "ccc_family_cd": "",
+                        "ccc_product_id": "8004590684",
+                        "rental_product_cd": "",
+                        "common_vod_code": "101071499",
+                        "vod_goods_cd": "101071499",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "",
+                        "icpn": "",
+                        "media_category_cd": "",
+                        "media_category_name": "",
+                        "media_format_id": "EXT00001MHIJ",
+                        "media_format_name": "SD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "00:29:45",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": 2,
+                        "subtitle": "",
+                        "sound_spec": "",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "",
+                        "video_info": "",
+                        "number_of_volume": "",
+                        "number_of_set": "",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "＃６　Ｅ３５１系特急スーパーあずさ【配信限定ｖｅｒ．】",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//img.discas.net/img/jacket/ttv_jacket/101/071/499/101071499_24SX.jpg ",
+                        "jacket_m": "//img.discas.net/img/jacket/ttv_jacket/101/071/499/101071499_24MX.jpg ",
+                        "jacket_l": "//img.discas.net/img/jacket/ttv_jacket/101/071/499/101071499_24L.jpg ",
+                        "jacket_l4": "",
+                        "scene_s": [
+
+                        ],
+                        "scene_m": [
+
+                        ],
+                        "scene_l": [
+
+                        ],
+                        "trailor_pc": [
+
+                        ],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [
+
+                        ],
+                        "priv_keywords": [
+
+                        ],
+                        "package_tags": [
+
+                        ],
+                        "product_tags": [
+
+                        ],
+                        "price_tax_out": 100,
+                        "price_tax_in": 108,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "H1",
+                                "doc_text": "振り子式電車による迫力の傾斜展望を貴方に。＃６では東小金井から新宿まで、振り子式特有の画面ごと傾斜するような運転室展望をお送りします。"
+                            }
+                        ],
+                        "devices": [
+                            {
+                                "device_id": "EXT0000HEZXI",
+                                "device_name": "tv"
+                            },
+                            {
+                                "device_id": "EXT0000HIZ8U",
+                                "device_name": "android"
+                            },
+                            {
+                                "device_id": "EXT0000M42VG",
+                                "device_name": "ios"
+                            },
+                            {
+                                "device_id": "EXT0000NV29A",
+                                "device_name": "smart"
+                            },
+                            {
+                                "device_id": "EXT0000TC38V",
+                                "device_name": "androidtv"
+                            },
+                            {
+                                "device_id": "EXT0000TC38W",
+                                "device_name": "smarttv"
+                            }
+                        ],
+                        "distribution_plans": [
+
+                        ],
+                        "awards": [
+
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT0000003L8",
+                                "big_genre_name": "ドキュメント／その他",
+                                "medium_genre_id": "EXT000073YI0",
+                                "medium_genre_name": "ドキュメント／その他",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [
+
+                        ],
+                        "onairs": [
+
+                        ],
+                        "magazines": [
+
+                        ],
+                        "discas_grade_point": 300,
+                        "discas_item": "TTV",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [
+
+                        ],
+                        "filmarks_id": [
+
+                        ],
+                        "dramarks_id": [
+
+                        ],
+                        "catch_copy": "",
+                        "people": [
+
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT0000V9HB8",
+                        "product_id": "PPD0000V9HB8",
+                        "product_type_id": 6,
+                        "product_type_name": "映像配信パック",
+                        "service_id": "discas",
+                        "service_name": "discas",
+                        "msdb_item": "video",
+                        "item_cd": "",
+                        "item_name": "",
+                        "product_name": "#1～7 E351系特急スーパーあずさ【配信限定ver.】(全話パック)",
+                        "product_kana": "イーサンゴウイチケイトッキュウスーパーアズサハイシンゲンテイバージョン",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "１９９４年１２月、ＪＲ東日本初の振り子式電車としてデビューしたＥ３５１系。軽量かつ低重心な車体を傾けることでカーブでの高速走行を可能にし、ビジネス・レジャー客の高速輸送に貢献した革新的車両である。本作はそのスーパーあずさの運転室展望、車両紹介、走行シーンを収録。振り子式特有の画面ごと傾斜するような運転室展望は必見である。台風一過の透き通った青空の下、はるかに見える深緑の稜線を追いかけながら、終点新宿へとひた走る。",
+                        "disp_start_date": "2018-01-22 00:00:00",
+                        "disp_start_month": "2018-01",
+                        "disp_end_date": "2019-01-21 23:59:59",
+                        "disp_end_month": "2019-01",
+                        "sale_start_date": "2018-01-22",
+                        "sale_start_month": "2018-01",
+                        "sale_end_date": "2019-01-21",
+                        "sale_end_month": "2019-01",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000V9KGR"
+                        ],
+                        "tieup": "",
+                        "copyright": "【JR東日本商品化許諾済】(C) 2017 TEICHIKU ENTERTAINMENT, INC.",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "2017",
+                        "created_year_to": "",
+                        "created_year_str": "2017",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT0000NUXZT",
+                        "maker_name": "株式会社トムス・エンタテインメント",
+                        "maker_name_kana": "",
+                        "maker_name_abbrev": "",
+                        "label_name": "",
+                        "sell_rental_flag": 2,
+                        "view_term": 0,
+                        "reservation_flg": 1,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "",
+                        "ccc_family_cd": "",
+                        "ccc_product_id": "8004590678",
+                        "rental_product_cd": "",
+                        "common_vod_code": "101071493",
+                        "vod_goods_cd": "101071493",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "",
+                        "icpn": "",
+                        "media_category_cd": "",
+                        "media_category_name": "",
+                        "media_format_id": "EXT00001MHIJ",
+                        "media_format_name": "SD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": 2,
+                        "subtitle": "",
+                        "sound_spec": "",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "",
+                        "video_info": "",
+                        "number_of_volume": "",
+                        "number_of_set": "",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "＃１～７　Ｅ３５１系特急スーパーあずさ【配信限定ｖｅｒ．】（全話パック）",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//img.discas.net/img/jacket/ttv_jacket/101/071/493/101071493_24SX.jpg ",
+                        "jacket_m": "//img.discas.net/img/jacket/ttv_jacket/101/071/493/101071493_24MX.jpg ",
+                        "jacket_l": "//img.discas.net/img/jacket/ttv_jacket/101/071/493/101071493_24L.jpg ",
+                        "jacket_l4": "",
+                        "scene_s": [
+
+                        ],
+                        "scene_m": [
+
+                        ],
+                        "scene_l": [
+
+                        ],
+                        "trailor_pc": [
+
+                        ],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [
+
+                        ],
+                        "priv_keywords": [
+
+                        ],
+                        "package_tags": [
+
+                        ],
+                        "product_tags": [
+
+                        ],
+                        "price_tax_out": 490,
+                        "price_tax_in": 529,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "H1",
+                                "doc_text": "１９９４年１２月、ＪＲ東日本初の振り子式電車としてデビューしたＥ３５１系。軽量かつ低重心な車体を傾けることでカーブでの高速走行を可能にし、ビジネス・レジャー客の高速輸送に貢献した革新的車両である。本作はそのスーパーあずさの運転室展望、車両紹介、走行シーンを収録。振り子式特有の画面ごと傾斜するような運転室展望は必見である。台風一過の透き通った青空の下、はるかに見える深緑の稜線を追いかけながら、終点新宿へとひた走る。"
+                            }
+                        ],
+                        "devices": [
+                            {
+                                "device_id": "EXT0000HEZXI",
+                                "device_name": "tv"
+                            },
+                            {
+                                "device_id": "EXT0000HIZ8U",
+                                "device_name": "android"
+                            },
+                            {
+                                "device_id": "EXT0000M42VG",
+                                "device_name": "ios"
+                            },
+                            {
+                                "device_id": "EXT0000NV29A",
+                                "device_name": "smart"
+                            },
+                            {
+                                "device_id": "EXT0000TC38V",
+                                "device_name": "androidtv"
+                            },
+                            {
+                                "device_id": "EXT0000TC38W",
+                                "device_name": "smarttv"
+                            }
+                        ],
+                        "distribution_plans": [
+
+                        ],
+                        "awards": [
+
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT0000003L8",
+                                "big_genre_name": "ドキュメント／その他",
+                                "medium_genre_id": "EXT000073YI0",
+                                "medium_genre_name": "ドキュメント／その他",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [
+
+                        ],
+                        "onairs": [
+
+                        ],
+                        "magazines": [
+
+                        ],
+                        "discas_grade_point": 300,
+                        "discas_item": "TTV",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [
+
+                        ],
+                        "filmarks_id": [
+
+                        ],
+                        "dramarks_id": [
+
+                        ],
+                        "catch_copy": "",
+                        "people": [
+
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT0000V9HB9",
+                        "product_id": "PPD0000V9HB9",
+                        "product_type_id": 5,
+                        "product_type_name": "映像配信",
+                        "service_id": "discas",
+                        "service_name": "discas",
+                        "msdb_item": "video",
+                        "item_cd": "",
+                        "item_name": "",
+                        "product_name": "#5 E351系特急スーパーあずさ【配信限定ver.】",
+                        "product_kana": "イーサンゴウイチケイトッキュウスーパーアズサハイシンゲンテイバージョン",
+                        "product_en": "",
+                        "product_title_sub": "展望 相模湖～東小金井",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "振り子式電車による迫力の傾斜展望を貴方に。＃５では相模湖から東小金井まで、振り子式特有の画面ごと傾斜するような運転室展望をお送りします。",
+                        "disp_start_date": "2018-01-22 00:00:00",
+                        "disp_start_month": "2018-01",
+                        "disp_end_date": "2019-01-21 23:59:59",
+                        "disp_end_month": "2019-01",
+                        "sale_start_date": "2018-01-22",
+                        "sale_start_month": "2018-01",
+                        "sale_end_date": "2019-01-21",
+                        "sale_end_month": "2019-01",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000V9KGR"
+                        ],
+                        "tieup": "",
+                        "copyright": "【JR東日本商品化許諾済】(C) 2017 TEICHIKU ENTERTAINMENT, INC.",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "2017",
+                        "created_year_to": "",
+                        "created_year_str": "2017",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT0000NUXZT",
+                        "maker_name": "株式会社トムス・エンタテインメント",
+                        "maker_name_kana": "",
+                        "maker_name_abbrev": "",
+                        "label_name": "",
+                        "sell_rental_flag": 2,
+                        "view_term": 0,
+                        "reservation_flg": 1,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "",
+                        "ccc_family_cd": "",
+                        "ccc_product_id": "8004590683",
+                        "rental_product_cd": "",
+                        "common_vod_code": "101071498",
+                        "vod_goods_cd": "101071498",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "",
+                        "icpn": "",
+                        "media_category_cd": "",
+                        "media_category_name": "",
+                        "media_format_id": "EXT00001MHIJ",
+                        "media_format_name": "SD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "00:30:24",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": 2,
+                        "subtitle": "",
+                        "sound_spec": "",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "",
+                        "video_info": "",
+                        "number_of_volume": "",
+                        "number_of_set": "",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "＃５　Ｅ３５１系特急スーパーあずさ【配信限定ｖｅｒ．】",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//img.discas.net/img/jacket/ttv_jacket/101/071/498/101071498_24SX.jpg ",
+                        "jacket_m": "//img.discas.net/img/jacket/ttv_jacket/101/071/498/101071498_24MX.jpg ",
+                        "jacket_l": "//img.discas.net/img/jacket/ttv_jacket/101/071/498/101071498_24L.jpg ",
+                        "jacket_l4": "",
+                        "scene_s": [
+
+                        ],
+                        "scene_m": [
+
+                        ],
+                        "scene_l": [
+
+                        ],
+                        "trailor_pc": [
+
+                        ],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [
+
+                        ],
+                        "priv_keywords": [
+
+                        ],
+                        "package_tags": [
+
+                        ],
+                        "product_tags": [
+
+                        ],
+                        "price_tax_out": 100,
+                        "price_tax_in": 108,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "H1",
+                                "doc_text": "振り子式電車による迫力の傾斜展望を貴方に。＃５では相模湖から東小金井まで、振り子式特有の画面ごと傾斜するような運転室展望をお送りします。"
+                            }
+                        ],
+                        "devices": [
+                            {
+                                "device_id": "EXT0000HEZXI",
+                                "device_name": "tv"
+                            },
+                            {
+                                "device_id": "EXT0000HIZ8U",
+                                "device_name": "android"
+                            },
+                            {
+                                "device_id": "EXT0000M42VG",
+                                "device_name": "ios"
+                            },
+                            {
+                                "device_id": "EXT0000NV29A",
+                                "device_name": "smart"
+                            },
+                            {
+                                "device_id": "EXT0000TC38V",
+                                "device_name": "androidtv"
+                            },
+                            {
+                                "device_id": "EXT0000TC38W",
+                                "device_name": "smarttv"
+                            }
+                        ],
+                        "distribution_plans": [
+
+                        ],
+                        "awards": [
+
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT0000003L8",
+                                "big_genre_name": "ドキュメント／その他",
+                                "medium_genre_id": "EXT000073YI0",
+                                "medium_genre_name": "ドキュメント／その他",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [
+
+                        ],
+                        "onairs": [
+
+                        ],
+                        "magazines": [
+
+                        ],
+                        "discas_grade_point": 300,
+                        "discas_item": "TTV",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [
+
+                        ],
+                        "filmarks_id": [
+
+                        ],
+                        "dramarks_id": [
+
+                        ],
+                        "catch_copy": "",
+                        "people": [
+
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT0000V9HBC",
+                        "product_id": "PPD0000V9HBC",
+                        "product_type_id": 5,
+                        "product_type_name": "映像配信",
+                        "service_id": "discas",
+                        "service_name": "discas",
+                        "msdb_item": "video",
+                        "item_cd": "",
+                        "item_name": "",
+                        "product_name": "#4 E351系特急スーパーあずさ【配信限定ver.】",
+                        "product_kana": "イーサンゴウイチケイトッキュウスーパーアズサハイシンゲンテイバージョン",
+                        "product_en": "",
+                        "product_title_sub": "展望 甲斐大和～相模湖",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "振り子式電車による迫力の傾斜展望を貴方に。＃４では甲斐大和から相模湖まで、振り子式特有の画面ごと傾斜するような運転室展望をお送りします。",
+                        "disp_start_date": "2018-01-22 00:00:00",
+                        "disp_start_month": "2018-01",
+                        "disp_end_date": "2019-01-21 23:59:59",
+                        "disp_end_month": "2019-01",
+                        "sale_start_date": "2018-01-22",
+                        "sale_start_month": "2018-01",
+                        "sale_end_date": "2019-01-21",
+                        "sale_end_month": "2019-01",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000V9KGR"
+                        ],
+                        "tieup": "",
+                        "copyright": "【JR東日本商品化許諾済】(C) 2017 TEICHIKU ENTERTAINMENT, INC.",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "2017",
+                        "created_year_to": "",
+                        "created_year_str": "2017",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT0000NUXZT",
+                        "maker_name": "株式会社トムス・エンタテインメント",
+                        "maker_name_kana": "",
+                        "maker_name_abbrev": "",
+                        "label_name": "",
+                        "sell_rental_flag": 2,
+                        "view_term": 0,
+                        "reservation_flg": 1,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "",
+                        "ccc_family_cd": "",
+                        "ccc_product_id": "8004590682",
+                        "rental_product_cd": "",
+                        "common_vod_code": "101071497",
+                        "vod_goods_cd": "101071497",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "",
+                        "icpn": "",
+                        "media_category_cd": "",
+                        "media_category_name": "",
+                        "media_format_id": "EXT00001MHIJ",
+                        "media_format_name": "SD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "00:29:35",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": 2,
+                        "subtitle": "",
+                        "sound_spec": "",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "",
+                        "video_info": "",
+                        "number_of_volume": "",
+                        "number_of_set": "",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "＃４　Ｅ３５１系特急スーパーあずさ【配信限定ｖｅｒ．】",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//img.discas.net/img/jacket/ttv_jacket/101/071/497/101071497_24SX.jpg ",
+                        "jacket_m": "//img.discas.net/img/jacket/ttv_jacket/101/071/497/101071497_24MX.jpg ",
+                        "jacket_l": "//img.discas.net/img/jacket/ttv_jacket/101/071/497/101071497_24L.jpg ",
+                        "jacket_l4": "",
+                        "scene_s": [
+
+                        ],
+                        "scene_m": [
+
+                        ],
+                        "scene_l": [
+
+                        ],
+                        "trailor_pc": [
+
+                        ],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [
+
+                        ],
+                        "priv_keywords": [
+
+                        ],
+                        "package_tags": [
+
+                        ],
+                        "product_tags": [
+
+                        ],
+                        "price_tax_out": 100,
+                        "price_tax_in": 108,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "H1",
+                                "doc_text": "振り子式電車による迫力の傾斜展望を貴方に。＃４では甲斐大和から相模湖まで、振り子式特有の画面ごと傾斜するような運転室展望をお送りします。"
+                            }
+                        ],
+                        "devices": [
+                            {
+                                "device_id": "EXT0000HEZXI",
+                                "device_name": "tv"
+                            },
+                            {
+                                "device_id": "EXT0000HIZ8U",
+                                "device_name": "android"
+                            },
+                            {
+                                "device_id": "EXT0000M42VG",
+                                "device_name": "ios"
+                            },
+                            {
+                                "device_id": "EXT0000NV29A",
+                                "device_name": "smart"
+                            },
+                            {
+                                "device_id": "EXT0000TC38V",
+                                "device_name": "androidtv"
+                            },
+                            {
+                                "device_id": "EXT0000TC38W",
+                                "device_name": "smarttv"
+                            }
+                        ],
+                        "distribution_plans": [
+
+                        ],
+                        "awards": [
+
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT0000003L8",
+                                "big_genre_name": "ドキュメント／その他",
+                                "medium_genre_id": "EXT000073YI0",
+                                "medium_genre_name": "ドキュメント／その他",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [
+
+                        ],
+                        "onairs": [
+
+                        ],
+                        "magazines": [
+
+                        ],
+                        "discas_grade_point": 300,
+                        "discas_item": "TTV",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [
+
+                        ],
+                        "filmarks_id": [
+
+                        ],
+                        "dramarks_id": [
+
+                        ],
+                        "catch_copy": "",
+                        "people": [
+
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT0000V9HBN",
+                        "product_id": "PPD0000V9HBN",
+                        "product_type_id": 5,
+                        "product_type_name": "映像配信",
+                        "service_id": "discas",
+                        "service_name": "discas",
+                        "msdb_item": "video",
+                        "item_cd": "",
+                        "item_name": "",
+                        "product_name": "#2 E351系特急スーパーあずさ【配信限定ver.】",
+                        "product_kana": "イーサンゴウイチケイトッキュウスーパーアズサハイシンゲンテイバージョン",
+                        "product_en": "",
+                        "product_title_sub": "展望 普門寺信号場～穴山",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "振り子式電車による迫力の傾斜展望を貴方に。＃２では普門寺信号場から穴山まで、振り子式特有の画面ごと傾斜するような運転室展望をお送りします。",
+                        "disp_start_date": "2018-01-22 00:00:00",
+                        "disp_start_month": "2018-01",
+                        "disp_end_date": "2019-01-21 23:59:59",
+                        "disp_end_month": "2019-01",
+                        "sale_start_date": "2018-01-22",
+                        "sale_start_month": "2018-01",
+                        "sale_end_date": "2019-01-21",
+                        "sale_end_month": "2019-01",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000V9KGR"
+                        ],
+                        "tieup": "",
+                        "copyright": "【JR東日本商品化許諾済】(C) 2017 TEICHIKU ENTERTAINMENT, INC.",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "2017",
+                        "created_year_to": "",
+                        "created_year_str": "2017",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT0000NUXZT",
+                        "maker_name": "株式会社トムス・エンタテインメント",
+                        "maker_name_kana": "",
+                        "maker_name_abbrev": "",
+                        "label_name": "",
+                        "sell_rental_flag": 2,
+                        "view_term": 0,
+                        "reservation_flg": 1,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "",
+                        "ccc_family_cd": "",
+                        "ccc_product_id": "8004590680",
+                        "rental_product_cd": "",
+                        "common_vod_code": "101071495",
+                        "vod_goods_cd": "101071495",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "",
+                        "icpn": "",
+                        "media_category_cd": "",
+                        "media_category_name": "",
+                        "media_format_id": "EXT00001MHIJ",
+                        "media_format_name": "SD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "00:30:01",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": 2,
+                        "subtitle": "",
+                        "sound_spec": "",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "",
+                        "video_info": "",
+                        "number_of_volume": "",
+                        "number_of_set": "",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "＃２　Ｅ３５１系特急スーパーあずさ【配信限定ｖｅｒ．】",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//img.discas.net/img/jacket/ttv_jacket/101/071/495/101071495_24SX.jpg ",
+                        "jacket_m": "//img.discas.net/img/jacket/ttv_jacket/101/071/495/101071495_24MX.jpg ",
+                        "jacket_l": "//img.discas.net/img/jacket/ttv_jacket/101/071/495/101071495_24L.jpg ",
+                        "jacket_l4": "",
+                        "scene_s": [
+
+                        ],
+                        "scene_m": [
+
+                        ],
+                        "scene_l": [
+
+                        ],
+                        "trailor_pc": [
+
+                        ],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [
+
+                        ],
+                        "priv_keywords": [
+
+                        ],
+                        "package_tags": [
+
+                        ],
+                        "product_tags": [
+
+                        ],
+                        "price_tax_out": 100,
+                        "price_tax_in": 108,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "H1",
+                                "doc_text": "振り子式電車による迫力の傾斜展望を貴方に。＃２では普門寺信号場から穴山まで、振り子式特有の画面ごと傾斜するような運転室展望をお送りします。"
+                            }
+                        ],
+                        "devices": [
+                            {
+                                "device_id": "EXT0000HEZXI",
+                                "device_name": "tv"
+                            },
+                            {
+                                "device_id": "EXT0000HIZ8U",
+                                "device_name": "android"
+                            },
+                            {
+                                "device_id": "EXT0000M42VG",
+                                "device_name": "ios"
+                            },
+                            {
+                                "device_id": "EXT0000NV29A",
+                                "device_name": "smart"
+                            },
+                            {
+                                "device_id": "EXT0000TC38V",
+                                "device_name": "androidtv"
+                            },
+                            {
+                                "device_id": "EXT0000TC38W",
+                                "device_name": "smarttv"
+                            }
+                        ],
+                        "distribution_plans": [
+
+                        ],
+                        "awards": [
+
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT0000003L8",
+                                "big_genre_name": "ドキュメント／その他",
+                                "medium_genre_id": "EXT000073YI0",
+                                "medium_genre_name": "ドキュメント／その他",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [
+
+                        ],
+                        "onairs": [
+
+                        ],
+                        "magazines": [
+
+                        ],
+                        "discas_grade_point": 300,
+                        "discas_item": "TTV",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [
+
+                        ],
+                        "filmarks_id": [
+
+                        ],
+                        "dramarks_id": [
+
+                        ],
+                        "catch_copy": "",
+                        "people": [
+
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT0000V9HBT",
+                        "product_id": "PPD0000V9HBT",
+                        "product_type_id": 5,
+                        "product_type_name": "映像配信",
+                        "service_id": "discas",
+                        "service_name": "discas",
+                        "msdb_item": "video",
+                        "item_cd": "",
+                        "item_name": "",
+                        "product_name": "#3 E351系特急スーパーあずさ【配信限定ver.】",
+                        "product_kana": "イーサンゴウイチケイトッキュウスーパーアズサハイシンゲンテイバージョン",
+                        "product_en": "",
+                        "product_title_sub": "展望 穴山～甲斐大和",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "振り子式電車による迫力の傾斜展望を貴方に。＃３では穴山から甲斐大和まで、振り子式特有の画面ごと傾斜するような運転室展望をお送りします。",
+                        "disp_start_date": "2018-01-22 00:00:00",
+                        "disp_start_month": "2018-01",
+                        "disp_end_date": "2019-01-21 23:59:59",
+                        "disp_end_month": "2019-01",
+                        "sale_start_date": "2018-01-22",
+                        "sale_start_month": "2018-01",
+                        "sale_end_date": "2019-01-21",
+                        "sale_end_month": "2019-01",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000V9KGR"
+                        ],
+                        "tieup": "",
+                        "copyright": "【JR東日本商品化許諾済】(C) 2017 TEICHIKU ENTERTAINMENT, INC.",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "2017",
+                        "created_year_to": "",
+                        "created_year_str": "2017",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT0000NUXZT",
+                        "maker_name": "株式会社トムス・エンタテインメント",
+                        "maker_name_kana": "",
+                        "maker_name_abbrev": "",
+                        "label_name": "",
+                        "sell_rental_flag": 2,
+                        "view_term": 0,
+                        "reservation_flg": 1,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "",
+                        "ccc_family_cd": "",
+                        "ccc_product_id": "8004590681",
+                        "rental_product_cd": "",
+                        "common_vod_code": "101071496",
+                        "vod_goods_cd": "101071496",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "",
+                        "icpn": "",
+                        "media_category_cd": "",
+                        "media_category_name": "",
+                        "media_format_id": "EXT00001MHIJ",
+                        "media_format_name": "SD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "00:30:34",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": 2,
+                        "subtitle": "",
+                        "sound_spec": "",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "",
+                        "video_info": "",
+                        "number_of_volume": "",
+                        "number_of_set": "",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "＃３　Ｅ３５１系特急スーパーあずさ【配信限定ｖｅｒ．】",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//img.discas.net/img/jacket/ttv_jacket/101/071/496/101071496_24SX.jpg ",
+                        "jacket_m": "//img.discas.net/img/jacket/ttv_jacket/101/071/496/101071496_24MX.jpg ",
+                        "jacket_l": "//img.discas.net/img/jacket/ttv_jacket/101/071/496/101071496_24L.jpg ",
+                        "jacket_l4": "",
+                        "scene_s": [
+
+                        ],
+                        "scene_m": [
+
+                        ],
+                        "scene_l": [
+
+                        ],
+                        "trailor_pc": [
+
+                        ],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [
+
+                        ],
+                        "priv_keywords": [
+
+                        ],
+                        "package_tags": [
+
+                        ],
+                        "product_tags": [
+
+                        ],
+                        "price_tax_out": 100,
+                        "price_tax_in": 108,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "H1",
+                                "doc_text": "振り子式電車による迫力の傾斜展望を貴方に。＃３では穴山から甲斐大和まで、振り子式特有の画面ごと傾斜するような運転室展望をお送りします。"
+                            }
+                        ],
+                        "devices": [
+                            {
+                                "device_id": "EXT0000HEZXI",
+                                "device_name": "tv"
+                            },
+                            {
+                                "device_id": "EXT0000HIZ8U",
+                                "device_name": "android"
+                            },
+                            {
+                                "device_id": "EXT0000M42VG",
+                                "device_name": "ios"
+                            },
+                            {
+                                "device_id": "EXT0000NV29A",
+                                "device_name": "smart"
+                            },
+                            {
+                                "device_id": "EXT0000TC38V",
+                                "device_name": "androidtv"
+                            },
+                            {
+                                "device_id": "EXT0000TC38W",
+                                "device_name": "smarttv"
+                            }
+                        ],
+                        "distribution_plans": [
+
+                        ],
+                        "awards": [
+
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT0000003L8",
+                                "big_genre_name": "ドキュメント／その他",
+                                "medium_genre_id": "EXT000073YI0",
+                                "medium_genre_name": "ドキュメント／その他",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [
+
+                        ],
+                        "onairs": [
+
+                        ],
+                        "magazines": [
+
+                        ],
+                        "discas_grade_point": 300,
+                        "discas_item": "TTV",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [
+
+                        ],
+                        "filmarks_id": [
+
+                        ],
+                        "dramarks_id": [
+
+                        ],
+                        "catch_copy": "",
+                        "people": [
+
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT0000V9HC2",
+                        "product_id": "PPD0000V9HC2",
+                        "product_type_id": 5,
+                        "product_type_name": "映像配信",
+                        "service_id": "discas",
+                        "service_name": "discas",
+                        "msdb_item": "video",
+                        "item_cd": "",
+                        "item_name": "",
+                        "product_name": "#1 E351系特急スーパーあずさ【配信限定ver.】",
+                        "product_kana": "イーサンゴウイチケイトッキュウスーパーアズサハイシンゲンテイバージョン",
+                        "product_en": "",
+                        "product_title_sub": "展望 松本～普門寺信号場",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "振り子式電車による迫力の傾斜展望を貴方に。＃１では松本から普門寺信号場まで、振り子式特有の画面ごと傾斜するような運転室展望をお送りします。",
+                        "disp_start_date": "2018-01-22 00:00:00",
+                        "disp_start_month": "2018-01",
+                        "disp_end_date": "2019-01-21 23:59:59",
+                        "disp_end_month": "2019-01",
+                        "sale_start_date": "2018-01-22",
+                        "sale_start_month": "2018-01",
+                        "sale_end_date": "2019-01-21",
+                        "sale_end_month": "2019-01",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000V9KGR"
+                        ],
+                        "tieup": "",
+                        "copyright": "【JR東日本商品化許諾済】(C) 2017 TEICHIKU ENTERTAINMENT, INC.",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "2017",
+                        "created_year_to": "",
+                        "created_year_str": "2017",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT0000NUXZT",
+                        "maker_name": "株式会社トムス・エンタテインメント",
+                        "maker_name_kana": "",
+                        "maker_name_abbrev": "",
+                        "label_name": "",
+                        "sell_rental_flag": 2,
+                        "view_term": 0,
+                        "reservation_flg": 1,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "",
+                        "ccc_family_cd": "",
+                        "ccc_product_id": "8004590679",
+                        "rental_product_cd": "",
+                        "common_vod_code": "101071494",
+                        "vod_goods_cd": "101071494",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "",
+                        "icpn": "",
+                        "media_category_cd": "",
+                        "media_category_name": "",
+                        "media_format_id": "EXT00001MHIJ",
+                        "media_format_name": "SD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "00:29:31",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": 2,
+                        "subtitle": "",
+                        "sound_spec": "",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "",
+                        "video_info": "",
+                        "number_of_volume": "",
+                        "number_of_set": "",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "＃１　Ｅ３５１系特急スーパーあずさ【配信限定ｖｅｒ．】",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//img.discas.net/img/jacket/ttv_jacket/101/071/494/101071494_24SX.jpg ",
+                        "jacket_m": "//img.discas.net/img/jacket/ttv_jacket/101/071/494/101071494_24MX.jpg ",
+                        "jacket_l": "//img.discas.net/img/jacket/ttv_jacket/101/071/494/101071494_24L.jpg ",
+                        "jacket_l4": "",
+                        "scene_s": [
+
+                        ],
+                        "scene_m": [
+
+                        ],
+                        "scene_l": [
+
+                        ],
+                        "trailor_pc": [
+
+                        ],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [
+
+                        ],
+                        "priv_keywords": [
+
+                        ],
+                        "package_tags": [
+
+                        ],
+                        "product_tags": [
+
+                        ],
+                        "price_tax_out": 100,
+                        "price_tax_in": 108,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "H1",
+                                "doc_text": "振り子式電車による迫力の傾斜展望を貴方に。＃１では松本から普門寺信号場まで、振り子式特有の画面ごと傾斜するような運転室展望をお送りします。"
+                            }
+                        ],
+                        "devices": [
+                            {
+                                "device_id": "EXT0000HEZXI",
+                                "device_name": "tv"
+                            },
+                            {
+                                "device_id": "EXT0000HIZ8U",
+                                "device_name": "android"
+                            },
+                            {
+                                "device_id": "EXT0000M42VG",
+                                "device_name": "ios"
+                            },
+                            {
+                                "device_id": "EXT0000NV29A",
+                                "device_name": "smart"
+                            },
+                            {
+                                "device_id": "EXT0000TC38V",
+                                "device_name": "androidtv"
+                            },
+                            {
+                                "device_id": "EXT0000TC38W",
+                                "device_name": "smarttv"
+                            }
+                        ],
+                        "distribution_plans": [
+
+                        ],
+                        "awards": [
+
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT0000003L8",
+                                "big_genre_name": "ドキュメント／その他",
+                                "medium_genre_id": "EXT000073YI0",
+                                "medium_genre_name": "ドキュメント／その他",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [
+
+                        ],
+                        "onairs": [
+
+                        ],
+                        "magazines": [
+
+                        ],
+                        "discas_grade_point": 300,
+                        "discas_item": "TTV",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [
+
+                        ],
+                        "filmarks_id": [
+
+                        ],
+                        "dramarks_id": [
+
+                        ],
+                        "catch_copy": "",
+                        "people": [
+
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT0000V9HC5",
+                        "product_id": "PPD0000V9HC5",
+                        "product_type_id": 5,
+                        "product_type_name": "映像配信",
+                        "service_id": "discas",
+                        "service_name": "discas",
+                        "msdb_item": "video",
+                        "item_cd": "",
+                        "item_name": "",
+                        "product_name": "#7 E351系特急スーパーあずさ【配信限定ver.】",
+                        "product_kana": "イーサンゴウイチケイトッキュウスーパーアズサハイシンゲンテイバージョン",
+                        "product_en": "",
+                        "product_title_sub": "車両紹介/走行シーン",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "振り子式電車による迫力の傾斜展望を貴方に。＃７ではスーパーあずさの車両紹介ならびに走行シーンをお送りします。",
+                        "disp_start_date": "2018-01-22 00:00:00",
+                        "disp_start_month": "2018-01",
+                        "disp_end_date": "2019-01-21 23:59:59",
+                        "disp_end_month": "2019-01",
+                        "sale_start_date": "2018-01-22",
+                        "sale_start_month": "2018-01",
+                        "sale_end_date": "2019-01-21",
+                        "sale_end_month": "2019-01",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000V9KGR"
+                        ],
+                        "tieup": "",
+                        "copyright": "【JR東日本商品化許諾済】(C) 2017 TEICHIKU ENTERTAINMENT, INC.",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "2017",
+                        "created_year_to": "",
+                        "created_year_str": "2017",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT0000NUXZT",
+                        "maker_name": "株式会社トムス・エンタテインメント",
+                        "maker_name_kana": "",
+                        "maker_name_abbrev": "",
+                        "label_name": "",
+                        "sell_rental_flag": 2,
+                        "view_term": 0,
+                        "reservation_flg": 1,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "",
+                        "ccc_family_cd": "",
+                        "ccc_product_id": "8004590685",
+                        "rental_product_cd": "",
+                        "common_vod_code": "101071500",
+                        "vod_goods_cd": "101071500",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "",
+                        "icpn": "",
+                        "media_category_cd": "",
+                        "media_category_name": "",
+                        "media_format_id": "EXT00001MHIJ",
+                        "media_format_name": "SD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "00:30:01",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": 2,
+                        "subtitle": "",
+                        "sound_spec": "",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "",
+                        "video_info": "",
+                        "number_of_volume": "",
+                        "number_of_set": "",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "＃７　Ｅ３５１系特急スーパーあずさ【配信限定ｖｅｒ．】",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//img.discas.net/img/jacket/ttv_jacket/101/071/500/101071500_24SX.jpg ",
+                        "jacket_m": "//img.discas.net/img/jacket/ttv_jacket/101/071/500/101071500_24MX.jpg ",
+                        "jacket_l": "//img.discas.net/img/jacket/ttv_jacket/101/071/500/101071500_24L.jpg ",
+                        "jacket_l4": "",
+                        "scene_s": [
+
+                        ],
+                        "scene_m": [
+
+                        ],
+                        "scene_l": [
+
+                        ],
+                        "trailor_pc": [
+
+                        ],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [
+
+                        ],
+                        "priv_keywords": [
+
+                        ],
+                        "package_tags": [
+
+                        ],
+                        "product_tags": [
+
+                        ],
+                        "price_tax_out": 100,
+                        "price_tax_in": 108,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "H1",
+                                "doc_text": "振り子式電車による迫力の傾斜展望を貴方に。＃７ではスーパーあずさの車両紹介ならびに走行シーンをお送りします。"
+                            }
+                        ],
+                        "devices": [
+                            {
+                                "device_id": "EXT0000HEZXI",
+                                "device_name": "tv"
+                            },
+                            {
+                                "device_id": "EXT0000HIZ8U",
+                                "device_name": "android"
+                            },
+                            {
+                                "device_id": "EXT0000M42VG",
+                                "device_name": "ios"
+                            },
+                            {
+                                "device_id": "EXT0000NV29A",
+                                "device_name": "smart"
+                            },
+                            {
+                                "device_id": "EXT0000TC38V",
+                                "device_name": "androidtv"
+                            },
+                            {
+                                "device_id": "EXT0000TC38W",
+                                "device_name": "smarttv"
+                            }
+                        ],
+                        "distribution_plans": [
+
+                        ],
+                        "awards": [
+
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT0000003L8",
+                                "big_genre_name": "ドキュメント／その他",
+                                "medium_genre_id": "EXT000073YI0",
+                                "medium_genre_name": "ドキュメント／その他",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [
+
+                        ],
+                        "onairs": [
+
+                        ],
+                        "magazines": [
+
+                        ],
+                        "discas_grade_point": 300,
+                        "discas_item": "TTV",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [
+
+                        ],
+                        "filmarks_id": [
+
+                        ],
+                        "dramarks_id": [
+
+                        ],
+                        "catch_copy": "",
+                        "people": [
+
+                        ],
+                        "need_age_auth_flg": 0
+                    }
+                ],
+                "video_relations": [
+
+                ],
+                "discas_grade_point": 300,
+                "discas_item": [
+                    "TTV"
+                ],
+                "ttv_trailer_flg": 0,
+                "ttv_free_movie_flg": 0,
+                "ttv_sell_rental_flg": [
+                    "2"
+                ],
+                "ttv_low_price": 108,
+                "cinema_id": [
+
+                ],
+                "filmarks_id": [
+
+                ],
+                "dramarks_id": [
+
+                ],
+                "catch_copy": "",
+                "sale_start_date_sell": "",
+                "sale_start_date_rental": "",
+                "trailer_urls": [
+
+                ],
+                "scenes": [
+
+                ],
+                "filmarks_mark": 0,
+                "filmarks_clip": 0,
+                "filmarks_average": 0,
+                "people": [
+
+                ],
+                "tracks": [
+
+                ],
+                "merged_from": [
+
+                ],
+                "need_age_auth_flg": 0
+            }
+        ]
+    }
+}
