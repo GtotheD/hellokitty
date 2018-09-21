@@ -2,7 +2,7 @@
 
 use tests\TestData;
 
-class Work extends TestCase
+class WorkTest extends TestCase
 {
     private $apiPath;
 
@@ -25,7 +25,7 @@ class Work extends TestCase
      * @test
      * 作品情報取得テスト
      */
-    public function work()
+    public function Work()
     {
         $url = '/work/PTA0000SF309';
         $response = $this->getJsonWithAuth( $url);
