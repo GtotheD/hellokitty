@@ -16,6 +16,31 @@ class Work extends Model
 {
     const TABLE = 'ts_works';
 
+    const REQUEST_ITEM_TYPE_DVD = 'dvd';
+    const REQUEST_ITEM_TYPE_CD = 'cd';
+    const REQUEST_ITEM_TYPE_BOOK = 'book';
+    const REQUEST_ITEM_TYPE_GAME = 'game';
+
+    // 本プログラムで使っている販売タイプの文字列
+    const SALE_TYPE_SELL = 'sell';
+    const SALE_TYPE_RENTAL = 'rental';
+    const SALE_TYPE_THEATER = 'theater';
+    const SALE_TYPE_OTHER = 'other';
+
+    // MSDBアイテム種別
+    const MSDB_ITEM_VIDEO = 'video';
+    const MSDB_ITEM_MUSIC = 'music';
+    const MSDB_ITEM_BOOK = 'book';
+    const MSDB_ITEM_GAME = 'game';
+
+    // 1=音楽、2=映像、3=書籍、4=ゲーム、5=グッズ、6=音楽単曲、7=映画
+    const WORK_TYPE_CD = '1';
+    const WORK_TYPE_DVD = '2';
+    const WORK_TYPE_BOOK = '3';
+    const WORK_TYPE_GAME = '4';
+    const WORK_TYPE_GOODS = '5';
+    const WORK_TYPE_MUSIC_UNIT = '6';
+    const WORK_TYPE_THEATER = '7';
 
     function __construct()
     {

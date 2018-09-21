@@ -40,6 +40,7 @@ class WorkRepository
     const SALE_TYPE_SELL = 'sell';
     const SALE_TYPE_RENTAL = 'rental';
     const SALE_TYPE_THEATER = 'theater';
+    const SALE_TYPE_OTHER = 'other';
 
     // MSDBアイテム種別
     const MSDB_ITEM_VIDEO = 'video';
@@ -293,6 +294,7 @@ class WorkRepository
             foreach ($productResult as $key => $item) {
                 $productResultCamel[camel_case($key)] = $item;
             }
+
             $response = $this->formatAddOtherData($response, $addSaleTypeHas, $productResultCamel);
             // saleStartDateをproductのものでで書き換える。
             $response['saleStartDate'] = $productResultCamel['saleStartDate'];
@@ -516,10 +518,21 @@ class WorkRepository
         // プロダクトが存在しなかった場合（workベースで取得した場合等）は、各販売種別の最新商品情報で取得する。
         // プロダクトを指定のもので取得したい場合は引数にてプロダクト情報を付与すると、その情報から生成する。
         if (empty($product)) {
-            if ($response['workTypeId'] === self::WORK_TYPE_THEATER && $this->saleType === self::SALE_TYPE_THEATER) {
+            // 上映映画じゃなかった場合
+            if ($response['workTypeId'] !== self::WORK_TYPE_THEATER && $this->saleType === self::SALE_TYPE_THEATER) {
+                return $response;
+            } else if ($response['workTypeId'] === self::WORK_TYPE_THEATER && $this->saleType === self::SALE_TYPE_THEATER) {
                 $product = (array)$productModel->setConditionByWorkId($response['workId'])->toCamel()->getOne();
+                // 映画作品の場合は固定でいれる
+                $response['saleType'] = self::SALE_TYPE_THEATER;
             } else {
                 $product = (array)$productModel->setConditionByWorkIdNewestProduct($response['workId'], $this->saleType)->toCamel()->getOne();
+            }
+            // 上記で何も拾えなかった場合は、映像のみか確認する。
+            if ($productModel->isOnlyOtherItem($response['workId'])) {
+                $product = (array)$productModel->setConditionByWorkIdNewestProduct($response['workId'])->toCamel()->getOne();
+                // 映像のみの作品は固定で入れる
+                $response['saleType'] = self::SALE_TYPE_OTHER;
             }
         }
         if (!empty($product)) {
@@ -584,7 +597,11 @@ class WorkRepository
                     $response['workFormatName'] = self::MSDB_ITEM_AUDIO_SINGLE_NAME;
                 }
             }
-            $response['saleType'] = $productRepository->convertProductTypeToStr($product['productTypeId']);
+
+            if (empty($response['saleType'])) {
+                $response['saleType'] = $productRepository->convertProductTypeToStr($product['productTypeId']);
+            }
+
             // 年齢チェック表示チェック
             $displayImage = checkAgeLimit(
                 $this->ageLimitCheck,
@@ -633,8 +650,10 @@ class WorkRepository
         } else {
             $response['adultFlg'] = ($response['adultFlg'] === '1') ? true : false;
         }
+
         $response['itemType'] = $this->convertWorkTypeIdToStr($response['workTypeId']);
 
+        // ItemTypeの設計
         if ($response['workFormatId'] == self::WORK_FORMAT_ID_MUSICVIDEO) {
             $response['itemType'] = 'dvd';
         }
