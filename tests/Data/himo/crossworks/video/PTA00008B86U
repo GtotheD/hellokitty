@@ -1,0 +1,335 @@
+{
+    "status": 200,
+    "message": null,
+    "results": {
+        "total": 1,
+        "rows": [
+            {
+                "work_id": "PTA00008B86U",
+                "work_type_id": "2",
+                "msdb_item": "video",
+                "work_format_id": null,
+                "work_format_name": "",
+                "work_title": "朱蒙(チュモン) 第二章 後編2",
+                "work_title_kana": "ちゆもんだいにしようこうへん2",
+                "work_title_en": "",
+                "work_title_orig": "",
+                "work_title_sub": "",
+                "work_comment": "",
+                "work_outline": "",
+                "work_copyright": "",
+                "rating_id": "EXT000000008",
+                "rating_name": "",
+                "adult_flg": 0,
+                "primary_product_source_id": "PDT00001UL22",
+                "primary_product_service_id": "ec",
+                "primary_product_type_id": 1,
+                "disp_start_date": "1900-01-01 00:00:00",
+                "disp_start_month": "1900-01",
+                "sale_start_date": "2020-10-13",
+                "sale_start_month": "2020-10",
+                "created_year_from": "",
+                "created_year_to": "",
+                "created_year": "",
+                "created_countries": "",
+                "jacket_s": "",
+                "jacket_m": "//store-tsutaya.tsite.jp/images/ecorg/202/41/50/02/03/2024150020303_M.jpg ",
+                "jacket_l": "//store-tsutaya.tsite.jp/images/ecorg/202/41/50/02/03/2024150020303_L.jpg ",
+                "jacket_l4": "",
+                "scene_s": [
+
+                ],
+                "scene_m": [
+
+                ],
+                "scene_l": [
+
+                ],
+                "trailor_pc": [
+
+                ],
+                "season_name": "",
+                "season_number": null,
+                "book_series_name": "",
+                "book_series_name_kana": "",
+                "feature_keywords": [
+
+                ],
+                "priv_keywords": [
+
+                ],
+                "work_tags": [
+
+                ],
+                "wakati_words": [
+
+                ],
+                "is_compilation": 0,
+                "series_completed": 0,
+                "disable_flg": 0,
+                "delete_flg": 0,
+                "ids": [
+                    {
+                        "id_type": "0103",
+                        "id_value": "80008006"
+                    }
+                ],
+                "docs": [
+
+                ],
+                "awards": [
+
+                ],
+                "screens": [
+
+                ],
+                "onairs": [
+
+                ],
+                "magazines": [
+
+                ],
+                "genres": [
+                    {
+                        "big_genre_id": "EXT0000001N4",
+                        "big_genre_name": "アジアＴＶドラマ",
+                        "medium_genre_id": "",
+                        "medium_genre_name": "",
+                        "small_genre_id": "",
+                        "small_genre_name": "",
+                        "shikiriban_id": "",
+                        "shikiriban_name": ""
+                    }
+                ],
+                "products": [
+                    {
+                        "id": "PDT00001UL22",
+                        "product_id": "PPD00001UL22",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "ec",
+                        "service_name": "ec",
+                        "msdb_item": "video",
+                        "item_cd": "1021",
+                        "item_name": "ＤＶＤ",
+                        "product_name": "朱蒙(チュモン) 第二章 後編2 <ノーカット完全版> [初回限定盤] ",
+                        "product_kana": "ちゆもんだいにしようこうへん2",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "1900-01-01 00:00:00",
+                        "disp_start_month": "1900-01",
+                        "disp_end_date": "2099-12-28 23:59:59",
+                        "disp_end_month": "2099-12",
+                        "sale_start_date": "2020-10-13",
+                        "sale_start_month": "2020-10",
+                        "sale_end_date": "2070-10-13",
+                        "sale_end_month": "2070-10",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA00008B86U"
+                        ],
+                        "tieup": "",
+                        "copyright": "",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "",
+                        "created_year_to": "",
+                        "created_year_str": "",
+                        "created_countries": "",
+                        "maker_cd": "EXT00000C1NH",
+                        "maker_name": "ロリマン",
+                        "maker_name_kana": "ろりまん",
+                        "maker_name_abbrev": "ロリマン",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "80008006",
+                        "ccc_family_cd": "",
+                        "ccc_product_id": "",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "2024150020303",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "2024150020303",
+                        "icpn": "",
+                        "media_category_cd": "22",
+                        "media_category_name": "販売DVD",
+                        "media_format_id": "EXT000006GPK",
+                        "media_format_name": "DVD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "",
+                        "video_info": "",
+                        "number_of_volume": "",
+                        "number_of_set": "",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/ecorg/202/41/50/02/03/2024150020303_M.jpg ",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/ecorg/202/41/50/02/03/2024150020303_L.jpg ",
+                        "jacket_l4": "",
+                        "scene_s": [
+
+                        ],
+                        "scene_m": [
+
+                        ],
+                        "scene_l": [
+
+                        ],
+                        "trailor_pc": [
+
+                        ],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [
+
+                        ],
+                        "priv_keywords": [
+
+                        ],
+                        "package_tags": [
+
+                        ],
+                        "product_tags": [
+
+                        ],
+                        "price_tax_out": 6400,
+                        "price_tax_in": 6912,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+
+                        ],
+                        "devices": [
+
+                        ],
+                        "distribution_plans": [
+
+                        ],
+                        "awards": [
+
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT0000001N4",
+                                "big_genre_name": "アジアＴＶドラマ",
+                                "medium_genre_id": "",
+                                "medium_genre_name": "",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [
+
+                        ],
+                        "onairs": [
+
+                        ],
+                        "magazines": [
+
+                        ],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [
+
+                        ],
+                        "filmarks_id": [
+
+                        ],
+                        "dramarks_id": [
+
+                        ],
+                        "catch_copy": "",
+                        "people": [
+
+                        ],
+                        "need_age_auth_flg": 0
+                    }
+                ],
+                "video_relations": [
+
+                ],
+                "discas_grade_point": null,
+                "discas_item": [
+
+                ],
+                "ttv_trailer_flg": 0,
+                "ttv_free_movie_flg": 0,
+                "ttv_sell_rental_flg": [
+
+                ],
+                "ttv_low_price": null,
+                "cinema_id": [
+
+                ],
+                "filmarks_id": [
+
+                ],
+                "dramarks_id": [
+
+                ],
+                "catch_copy": "",
+                "sale_start_date_sell": "2020-10-13",
+                "sale_start_date_rental": "",
+                "trailer_urls": [
+
+                ],
+                "scenes": [
+
+                ],
+                "filmarks_mark": null,
+                "filmarks_clip": null,
+                "filmarks_average": null,
+                "people": [
+
+                ],
+                "tracks": [
+
+                ],
+                "merged_from": [
+
+                ],
+                "need_age_auth_flg": 0
+            }
+        ]
+    }
+}
