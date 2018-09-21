@@ -417,6 +417,24 @@ $router->group([
         ];
         return response()->json($response)->header('X-Accel-Expires', '86400');
     });
+    // 上映映画用レコメンド
+    $router->get('work/{workId}/recommend/theater', function (Request $request, $workId) {
+        $peopleRelatedWorksRepository = new RecommendTheaterRepository();
+        $peopleRelatedWorksRepository->setOffset($request->input('offset', 0));
+        $peopleRelatedWorksRepository->setLimit($request->input('limit', 10));
+        $peopleRelatedWorksRepository->setSort($request->input('sort', 'new'));
+        $peopleRelatedWorksRepository->setAgeLimitCheck($request->input('ageLimitCheck', false));
+        $rows = $peopleRelatedWorksRepository->getWorksByArtist($workId);
+        if (empty($rows)) {
+            throw new NoContentsException;
+        }
+        $response = [
+            'hasNext' => $peopleRelatedWorksRepository->getHasNext(),
+            'totalCount' => $peopleRelatedWorksRepository->getTotalCount(),
+            'rows' => $rows
+        ];
+        return response()->json($response)->header('X-Accel-Expires', '86400');
+    });
     // 変換
     $router->get('convert/work/{idType}/{id}', function (Request $request, $idType, $id) {
         $workRepository = new WorkRepository();
