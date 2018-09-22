@@ -165,7 +165,6 @@ class SeriesRepository
 
         // Fetch workList and get response
         $rows = [];
-
         $workRepository->setSaleType($this->saleType);
         $workRepository->setAgeLimitCheck($this->ageLimitCheck);
         foreach ($workList as $work) {
@@ -177,7 +176,7 @@ class SeriesRepository
                 'workTitle' => $base['workTitle'],
                 'jacketL' => $base['jacketL'],
                 'supplement' => $base['supplement'], // Template value, waiting for confirm
-                'saleType' => $this->saleType, // Template value, waiting for confirm
+                'saleType' => $base['saleType'], // Template value, waiting for confirm
                 'itemType' => $workRepository->convertWorkTypeIdToStr( $base['workTypeId']),
                 'adultFlg' =>$base['adultFlg'],
             ];
@@ -238,6 +237,7 @@ class SeriesRepository
             'work_type_id',
             'work_title',
             'work_format_id',
+            'scene_l',
             'rating_id',
             'big_genre_id',
             'medium_genre_id',

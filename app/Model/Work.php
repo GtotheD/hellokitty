@@ -222,13 +222,13 @@ class Work extends Model
      * @param type $saleType 
      * @return type
      */
-    public function getWorkBySaleType($workIds = [], $saleType)
+    public function getWorkBySaleType($workIds = [], $saleType = null)
     {
-        $existsWhere = $this->getClauseProductSaleType($saleType);
         $productsSubQuery = DB::table('ts_products AS tp')
-                ->select(DB::raw('tp.work_id'))
-                ->whereRaw($existsWhere);
-        
+                ->select(DB::raw('tp.work_id'));
+        if($saleType) {
+            $productsSubQuery->whereRaw($this->getClauseProductSaleType($saleType));
+        }
         $this->dbObject = DB::table($this->table. ' AS t1')
                 ->whereRaw('t1.work_id IN ('.$productsSubQuery->toSql().')')
                 ->whereIn('t1.work_id', $workIds);
@@ -244,13 +244,12 @@ class Work extends Model
     {
         // 全て
         if($saleType === 'sell') {
-            $existsWhere = 'product_type_id = 1';
+            $existsWhere = 'product_type_id = 1 OR (product_type_id = \'\' AND service_id = \'st\')';
         } else if ($saleType === 'rental') {
-            $existsWhere = 'product_type_id = 2';
+            $existsWhere = 'product_type_id = 2 OR (product_type_id = \'\' AND service_id = \'st\')';
         } else {
-            $existsWhere = 'product_type_id = 1 OR product_type_id = 2';
+            $existsWhere = 'product_type_id = 1 OR product_type_id = 2  OR (product_type_id = \'\' AND service_id = \'st\')';
         }
-
         return $existsWhere;
     }
 

@@ -419,11 +419,11 @@ class WorkRepository
         $workIdsExistedArray = [];
         switch ($idType) {
             case '0105':
-                $workIdsExisted = $this->work->setConditionByUrlCd($workIds, $saleType)->select('url_cd')->getAll();
+                $workIdsExisted = $this->work->setConditionByUrlCd($workIds)->select('url_cd')->getAll();
                 $targetColumn = 'url_cd';
                 break;
             default:
-                $workIdsExisted = $this->work->getWorkBySaleType($workIds, $saleType)->select('work_id')->getAll();
+                $workIdsExisted = $this->work->getWorkBySaleType($workIds)->select('work_id')->getAll();
                 $targetColumn = 'work_id';
                 break;
         }
@@ -492,7 +492,6 @@ class WorkRepository
         } else {
             $workArray = $this->work->selectCamel($selectColumns)->getAll();
         }
-
         // productsからとってくるが、仮データ
         foreach ($workArray as $workItem) {
             $row = (array)$workItem;
@@ -521,7 +520,7 @@ class WorkRepository
             // 上映映画じゃなかった場合
             if ($response['workTypeId'] !== self::WORK_TYPE_THEATER && $this->saleType === self::SALE_TYPE_THEATER) {
                 return $response;
-            } else if ($response['workTypeId'] === self::WORK_TYPE_THEATER && $this->saleType === self::SALE_TYPE_THEATER) {
+            } else if ($response['workTypeId'] === self::WORK_TYPE_THEATER) {
                 $product = (array)$productModel->setConditionByWorkId($response['workId'])->toCamel()->getOne();
                 // 映画作品の場合は固定でいれる
                 $response['saleType'] = self::SALE_TYPE_THEATER;
