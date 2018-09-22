@@ -4,6 +4,7 @@ namespace App\Model;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
+use App\Model\Work;
 
 /**
  * Created by PhpStorm.
@@ -238,7 +239,8 @@ class Product extends Model
             .'MAX(CASE WHEN SUBSTRING(item_cd, 2, 1) = \'1\' THEN product_unique_id END) AS ppt ';
         $subQueryBase = DB::table($this->table)->select(DB::raw($selectSubGrouping.$selectSub))
             ->whereRaw(DB::raw(' work_id = \''.$workId .'\''))
-            //->whereRaw(DB::raw(' item_cd not like \'_1__\' '))
+            ->whereRaw(DB::raw(' service_id not in  (\'discas\', \'ec\', \'musico\')'))
+//            ->whereRaw(DB::raw(' item_cd not like \'_1__\' '))
             //->whereRaw(DB::raw(' item_cd not like \'__20\' ')) // VHSも出力するように変更
 //            ->whereRaw(DB::raw(' jan not like \'9999_________\' '))
             ->groupBy(DB::raw($selectSubGrouping));
@@ -288,6 +290,7 @@ class Product extends Model
         $subQuery = DB::table($this->table)->select(DB::raw($selectQuery))
             ->whereRaw(DB::raw('work_id = \''.$workId . '\''))
             ->whereRaw(DB::raw(' product_type_id = 2 '))
+            ->whereRaw(DB::raw(' service_id not in  (\'discas\', \'ec\', \'musico\')'))
 //            ->whereRaw(DB::raw(' jan not like \'9999_________\' '))
             ->groupBy(DB::raw($groupingColumn))
         ;
@@ -397,6 +400,14 @@ class Product extends Model
             ->select(DB::raw($dvdQuery.','.$otherQuery))
         ;
         return $this;
+    }
 
+    public function isOnlyOtherItem($workId)
+    {
+        $this->dbObject = DB::table($this->table)
+            ->where('work_id', $workId)
+            ->whereNotIn('service_id', ['discas','ec','musico']);
+        $count = $this->dbObject->count();
+        return ($count == 0);
     }
 }

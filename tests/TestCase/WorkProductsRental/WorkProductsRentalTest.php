@@ -2,7 +2,7 @@
 
 use tests\TestData;
 
-class WorkProductsRental extends TestCase
+class WorkProductsRentalTest extends TestCase
 {
     private $apiPath;
 

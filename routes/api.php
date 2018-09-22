@@ -14,7 +14,6 @@
 use Illuminate\Http\Request;
 use App\Repositories\StructureRepository;
 use App\Repositories\SectionRepository;
-use App\Exceptions\NoContentsException;
 use App\Repositories\BannerRepository;
 use App\Repositories\WorkRepository;
 use App\Repositories\ProductRepository;
@@ -28,12 +27,14 @@ use App\Repositories\PeopleRelatedWorksRepository;
 use App\Repositories\RelateadWorkRepository;
 use App\Repositories\RecommendOtherRepository;
 use App\Repositories\HimoRepository;
-use App\Exceptions\AgeLimitException;
-use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use App\Model\Product;
 use App\Repositories\ReleaseCalenderRepository;
 use App\Repositories\FavoriteRepository;
 use App\Repositories\CouponRepository;
+use App\Exceptions\AgeLimitException;
+use App\Exceptions\ContentsException;
+use App\Exceptions\NoContentsException;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 // Api Group
 $router->group([
@@ -161,10 +162,16 @@ $router->group([
     // 作品基本情報
     $router->get('work/{workId}', function (Request $request, $workId) {
         $work = new WorkRepository();
-        $work->setSaleType($request->input('saleType', 'rental'));
+        $saleType = $request->input('saleType', $work::SALE_TYPE_RENTAL);
+        $work->setSaleType($saleType);
         $ageLimitCheck = $request->input('ageLimitCheck', false);
         $work->setAgeLimitCheck($ageLimitCheck);
         $result = $work->get($workId);
+        // 映画リクエストでレスポンスがなかった場合
+        if (empty(array_key_exists('makerCd', $result)) && $saleType === $work::SALE_TYPE_THEATER) {
+            throw new ContentsException('202-002');
+        }
+
         if (empty($result) || array_key_exists('makerCd', $result) === false) {
             throw new NoContentsException;
         }
@@ -402,6 +409,24 @@ $router->group([
     // 作品レコメンド
     $router->get('work/{workId}/recommend/artist', function (Request $request, $workId) {
         $peopleRelatedWorksRepository = new PeopleRelatedWorksRepository();
+        $peopleRelatedWorksRepository->setOffset($request->input('offset', 0));
+        $peopleRelatedWorksRepository->setLimit($request->input('limit', 10));
+        $peopleRelatedWorksRepository->setSort($request->input('sort', 'new'));
+        $peopleRelatedWorksRepository->setAgeLimitCheck($request->input('ageLimitCheck', false));
+        $rows = $peopleRelatedWorksRepository->getWorksByArtist($workId);
+        if (empty($rows)) {
+            throw new NoContentsException;
+        }
+        $response = [
+            'hasNext' => $peopleRelatedWorksRepository->getHasNext(),
+            'totalCount' => $peopleRelatedWorksRepository->getTotalCount(),
+            'rows' => $rows
+        ];
+        return response()->json($response)->header('X-Accel-Expires', '86400');
+    });
+    // 上映映画用レコメンド
+    $router->get('work/{workId}/recommend/theater', function (Request $request, $workId) {
+        $peopleRelatedWorksRepository = new RecommendTheaterRepository();
         $peopleRelatedWorksRepository->setOffset($request->input('offset', 0));
         $peopleRelatedWorksRepository->setLimit($request->input('limit', 10));
         $peopleRelatedWorksRepository->setSort($request->input('sort', 'new'));
