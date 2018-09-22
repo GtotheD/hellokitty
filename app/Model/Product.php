@@ -290,6 +290,7 @@ class Product extends Model
         $subQuery = DB::table($this->table)->select(DB::raw($selectQuery))
             ->whereRaw(DB::raw('work_id = \''.$workId . '\''))
             ->whereRaw(DB::raw(' product_type_id = 2 '))
+            ->whereRaw(DB::raw(' service_id not in  (\'discas\', \'ec\', \'musico\')'))
 //            ->whereRaw(DB::raw(' jan not like \'9999_________\' '))
             ->groupBy(DB::raw($groupingColumn))
         ;

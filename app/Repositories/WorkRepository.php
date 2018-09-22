@@ -652,7 +652,6 @@ class WorkRepository
 
         $response['itemType'] = $this->convertWorkTypeIdToStr($response['workTypeId']);
 
-        // ItemTypeの設計
         if ($response['workFormatId'] == self::WORK_FORMAT_ID_MUSICVIDEO) {
             $response['itemType'] = 'dvd';
         }
