@@ -27,6 +27,7 @@ use App\Repositories\PeopleRelatedWorksRepository;
 use App\Repositories\RelateadWorkRepository;
 use App\Repositories\RecommendOtherRepository;
 use App\Repositories\HimoRepository;
+use App\Repositories\RecommendTheaterRepository;
 use App\Model\Product;
 use App\Repositories\ReleaseCalenderRepository;
 use App\Repositories\FavoriteRepository;
@@ -426,18 +427,19 @@ $router->group([
     });
     // 上映映画用レコメンド
     $router->get('work/{workId}/recommend/theater', function (Request $request, $workId) {
-        $peopleRelatedWorksRepository = new RecommendTheaterRepository();
-        $peopleRelatedWorksRepository->setOffset($request->input('offset', 0));
-        $peopleRelatedWorksRepository->setLimit($request->input('limit', 10));
-        $peopleRelatedWorksRepository->setSort($request->input('sort', 'new'));
-        $peopleRelatedWorksRepository->setAgeLimitCheck($request->input('ageLimitCheck', false));
-        $rows = $peopleRelatedWorksRepository->getWorksByArtist($workId);
+        $recommendTheaterRepository = new RecommendTheaterRepository();
+        $recommendTheaterRepository->setOffset($request->input('offset', 0));
+        $recommendTheaterRepository->setLimit($request->input('limit', 10));
+        $recommendTheaterRepository->setSort($request->input('sort', 'new'));
+        $recommendTheaterRepository->setSaleType($request->input('saleType', 'new'));
+        $recommendTheaterRepository->setAgeLimitCheck($request->input('ageLimitCheck', false));
+        $rows = $recommendTheaterRepository->get($workId);
         if (empty($rows)) {
             throw new NoContentsException;
         }
         $response = [
-            'hasNext' => $peopleRelatedWorksRepository->getHasNext(),
-            'totalCount' => $peopleRelatedWorksRepository->getTotalCount(),
+            'hasNext' => $recommendTheaterRepository->getHasNext(),
+            'totalCount' => $recommendTheaterRepository->getTotalCount(),
             'rows' => $rows
         ];
         return response()->json($response)->header('X-Accel-Expires', '86400');
@@ -543,22 +545,25 @@ $router->group([
 
     // ジャンルからの作品一覧取得
     $router->get('genre/{genreId}', function (Request $request, $genreId) {
-        $work = new WorkRepository();
-        $work->setLimit($request->input('limit', 10));
-        $work->setOffset($request->input('offset', 0));
-        $work->setAgeLimitCheck($request->input('ageLimitCheck', false));
-
-        $sort = $request->input('sort', '');
-        $saleType = $request->input('saleType', '');
+        $workRepository = new WorkRepository();
+        $workRepository->setLimit($request->input('limit', 10));
+        $workRepository->setOffset($request->input('offset', 0));
+        $workRepository->setSaleType($request->input('saleType', null));
+        $workRepository->setSort($request->input('sort'));
+        $workRepository->setAgeLimitCheck($request->input('ageLimitCheck', false));
         $genreId = urldecode($genreId);
-
         if(empty($saleType)) {
             throw new BadRequestHttpException;
         }
-        $response = $work->genre($genreId, $sort, $saleType);
-        if (empty($response)) {
+        $rows = $workRepository->genre($genreId);
+        if (empty($rows)) {
             throw new NoContentsException;
         }
+        $response = [
+            'hasNext' => $work->getHasNext(),
+            'totalCount' => $work->getTotalCount(),
+            'rows' => $rows
+        ];
         return response()->json($response)->header('X-Accel-Expires', '86400');
     });
 

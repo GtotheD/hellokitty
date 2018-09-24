@@ -522,8 +522,6 @@ class WorkRepository
                 return $response;
             } else if ($response['workTypeId'] === self::WORK_TYPE_THEATER) {
                 $product = (array)$productModel->setConditionByWorkId($response['workId'])->toCamel()->getOne();
-                // 映画作品の場合は固定でいれる
-                $response['saleType'] = self::SALE_TYPE_THEATER;
             } else {
                 $product = (array)$productModel->setConditionByWorkIdNewestProduct($response['workId'], $this->saleType)->toCamel()->getOne();
             }
@@ -599,6 +597,10 @@ class WorkRepository
 
             if (empty($response['saleType'])) {
                 $response['saleType'] = $productRepository->convertProductTypeToStr($product['productTypeId']);
+            }
+            if ($response['workTypeId'] === self::WORK_TYPE_THEATER) {
+                // 映画作品の場合は固定でいれる
+                $response['saleType'] = self::SALE_TYPE_THEATER;
             }
 
             // 年齢チェック表示チェック
@@ -1118,18 +1120,18 @@ class WorkRepository
      * @throws NoContentsException
      */
 
-    public function genre($genreId, $sort = null, $saleType = null)
+    public function genre($genreId)
     {
         $himoRepository = new HimoRepository('asc', $this->offset, $this->limit);
 
         $params = [
             'genreId' => $genreId,
-            'saleType' => $saleType,
+            'saleType' => $this->saleType,
             'api' => 'genre',//dummy data
             'id' => $genreId //dummy data
         ];
 
-        $data = $himoRepository->searchCrossworks($params, $sort)->get();
+        $data = $himoRepository->searchCrossworks($params, $this->sort)->get();
 
         if (!empty($data['status']) && $data['status'] == '200') {
             if (count($data['results']['rows']) + $this->offset < $data['results']['total']) {
@@ -1138,13 +1140,7 @@ class WorkRepository
                 $this->hasNext = false;
             }
 
-            $result = [
-                'hasNext' => $this->hasNext,
-                'totalCount' => $data['results']['total'],
-                'rows' => []
-            ];
-
-
+            $this->totalCount = $data['results']['total'];
             $displayImage = true;
             foreach ($data['results']['rows'] as $row) {
                 $base = $this->format($row);
@@ -1170,7 +1166,7 @@ class WorkRepository
                     $base['small_genre_id'],
                     $saleTypeHas['maker_cd']
                 );
-                $result['rows'][] = [
+                $result[] = [
                     'workId' => $base['work_id'],
                     'urlCd' => $base['url_cd'],
                     'cccWorkCd' => $base['ccc_work_cd'],
@@ -1179,7 +1175,7 @@ class WorkRepository
                     'newFlg' => newFlg($base['sale_start_date']),
                     'adultFlg' => ($base['adult_flg'] === 1) ? true : $isAdult,
                     'itemType' => $itemType,
-                    'saleType' => $saleType,
+                    'saleType' => $this->saleType,
                     // DVDの場合は空にする。
                     'supplement' => ($itemType === 'dvd') ? '' : $saleTypeHas['supplement'],
                     'saleStartDate' => ($row['sale_start_date']) ? date('Y-m-d 00:00:00', strtotime($row['sale_start_date'])) : '',
@@ -1187,13 +1183,8 @@ class WorkRepository
                     'saleStartDateRental' => ($row['sale_start_date_rental']) ? date('Y-m-d 00:00:00', strtotime($row['sale_start_date_rental'])) : '',
                 ];
             }
-
-            if (count($result['rows']) > 0) {
-                return $result;
-            }
         }
-
-        return null;
+        return $result;
     }
 
     public function convert($idType, $id)
@@ -1404,6 +1395,7 @@ class WorkRepository
             'work_type_id',
             'work_title',
             'work_format_id',
+            'scene_l',
             'rating_id',
             'big_genre_id',
             'medium_genre_id',

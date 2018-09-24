@@ -375,6 +375,7 @@ class HimoRepository extends ApiRequesterRepository
         if ($msdbItem) {
             $this->queryParams['msdb_item'] = $msdbItem;
         }
+        dd($this->queryParams);
         return $this;
     }
 
