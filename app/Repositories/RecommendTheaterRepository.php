@@ -2,193 +2,108 @@
 
 namespace App\Repositories;
 
-use App\Exceptions\NoContentsException;
 use App\Model\People;
 use App\Model\Product;
 use App\Model\Work;
 use App\Repositories\WorkRepository;
 
-class RecommendTheaterRepository
+class RecommendTheaterRepository extends BaseRepository
 {
-    protected $sort;
-    protected $offset;
-    protected $limit;
-    protected $apiHost;
-    protected $apiKey;
-    protected $saleType;
-    protected $totalCount;
+    const ROLE_ID_ORIGINAL_AUTHOR = 'EXT0000000UQ';
+    const ROLE_ID_PERFORMER = 'EXT0000000UM';
+    const ROLE_ID_DIRECTOR = 'EXT0000000UH';
 
-    public function __construct($sort = 'asc', $offset = 0, $limit = 10)
+    const BIG_GENRE_ID_ANIME = 'EXT0000001CL';
+    const BIG_GENRE_ID_ACTION = 'EXT00000018Q';
+    const BIG_GENRE_ID_HORROR = 'EXT00000022S';
+    const BIG_GENRE_ID_DRAMA = 'EXT0000001DO';
+    const BIG_GENRE_ID_SF = 'EXT0000002GF';
+    const BIG_GENRE_ID_JP_HORROR = 'EXT0000001DL';
+    const BIG_GENRE_ID_JP_ACTION = 'EXT00000016A';
+    const BIG_GENRE_ID_JP_DRAMA = 'EXT00000014Q';
+    const BIG_GENRE_ID_JP_SF = 'EXT0000000ZQ';
+
+    public function get($workId)
     {
-        $this->sort = $sort;
-        $this->offset = $offset;
-        $this->limit = $limit;
-    }
+        // レンタルのみ表示する。
+        $this->saleType = 'rental';
+        $workModel = new Work();
 
+        $work = $workModel->setConditionByWorkId($workId)->selectCamel(['big_genre_id'])->getOne();
+        // 該当のジャンルを取得
+        switch ($work->bigGenreId) {
+            case self::BIG_GENRE_ID_ANIME:
+                return $this->getPeopleWorks($workId, [self::ROLE_ID_ORIGINAL_AUTHOR]);
+                break;
+            case self::BIG_GENRE_ID_ACTION:
+                $genreId = self::BIG_GENRE_ID_ACTION;
+                return $this->getGenreWorks($genreId);
+                break;
+            case self::BIG_GENRE_ID_HORROR:
+                $genreId = self::BIG_GENRE_ID_HORROR;
+                return $this->getGenreWorks($genreId);
+                break;
+            case self::BIG_GENRE_ID_DRAMA:
+                $genreId = self::BIG_GENRE_ID_DRAMA;
+                return $this->getGenreWorks($genreId);
+                break;
+            case self::BIG_GENRE_ID_SF:
+                $genreId = self::BIG_GENRE_ID_SF;
+                return $this->getGenreWorks($genreId);
+                break;
+            case self::BIG_GENRE_ID_JP_HORROR:
+            case self::BIG_GENRE_ID_JP_ACTION:
+            case self::BIG_GENRE_ID_JP_DRAMA:
+            case self::BIG_GENRE_ID_JP_SF:
+                return $this->getPeopleWorks($workId, [self::ROLE_ID_PERFORMER, self::ROLE_ID_DIRECTOR]);
+                break;
 
-    /**
-     * @return mixed
-     */
-    public function getHasNext()
-    {
-        return $this->hasNext;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getLimit()
-    {
-        return (int)$this->limit;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getOffset()
-    {
-        return (int)$this->offset;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getTotalCount()
-    {
-        return $this->totalCount;
-    }
-
-    /**
-     * @return Array
-     */
-    public function getRows()
-    {
-        return $this->rows;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPage()
-    {
-        return $this->page;
-    }
-
-    /**
-     * @param mixed $limit
-     */
-    public function setLimit($limit)
-    {
-        $this->limit = $limit;
-    }
-
-    /**
-     * @param mixed $offset
-     */
-    public function setOffset($offset)
-    {
-        $this->offset = $offset;
-    }
-
-    public function getNarrow($workId, $saleType)
-    {
-        $ignoreColumn = [
-            'id',
-            'product_unique_id',
-            'created_at',
-            'updated_at'
-        ];
-
-        $productRepository = new ProductRepository();
-        $work = new Work();
-        $workData = $work->setConditionByWorkId($workId)->getOne();
-        $isMovie = false;
-        if($workData->work_type_id == 2) {
-            $isMovie = true;
         }
-        $newestProduct = $productRepository->getNewestProductByWorkId($workId, $saleType, $isMovie)->getOne();
-        if (!$newestProduct) {
-            throw new NoContentsException();
-        }
-        $peopleModel = new People();
-        $column = [
-            'person_id',
-            'person_name',
-            'role_id',
-            'role_name',
-        ];
-
-        $peopleCount = $peopleModel->setConditionByProduct($newestProduct->product_unique_id)->count();
-
-        $this->totalCount = $peopleCount ?: 0;
-        if ($this->totalCount === 0) return null;
-
-        $people = $peopleModel->setConditionByProduct($newestProduct->product_unique_id)
-            ->select($column)
-            ->toCamel($ignoreColumn)
-            ->limit($this->limit)
-            ->offset($this->offset)
-            ->get($this->limit, $this->offset);
-        if (count($people) + $this->offset < $this->totalCount) {
-            $this->hasNext = true;
-        } else {
-            $this->hasNext = false;
-        }
-        $response = [
-            'hasNext' => $this->hasNext,
-            'totalCount' => $this->totalCount ,
-            'rows' => $people
-        ];
-
-
-        return $response;
+        return null;
     }
 
-    public function insert($productId,  $people)
-    {
-        $peopleModel = new People();
-        $peopleBase = $this->format($productId,  $people);
-        return $peopleModel->insert($peopleBase);
-    }
-
-    public function format($productId, $people)
-    {
-        $peopleBase = [];
-        $peopleBase['product_unique_id'] = $productId;
-        $peopleBase['person_id'] = $people['person_id'];
-        $peopleBase['person_name'] = $people['person_name'];
-        $peopleBase['role_id'] = $people['role_id'];
-        $peopleBase['role_name'] = $people['role_name'];
-
-        return $peopleBase;
-    }
-
-    /**
-     * GET newest people by $workId. If work_id not exists in system. Call workRepository.
-     *
-     * @param $workId
-     * @param null $saleType
-     * @param null $roleId
-     * @return $this
-     *
-     * @throws NoContentsException
+    /*
+     * ロールID順にキャストスタップを取得する。。
      */
-    public function getNewsPeople($workId, $saleType = null, $roleId = null) {
+    public function getPerson($roleIds, $productUniqueId)
+    {
         $people = new People();
-        $productRepository = new ProductRepository();
-        $newestProduct = $productRepository->getNewestProductByWorkId($workId, $saleType)->getOne();
-        if(!$newestProduct) {
-            throw new NoContentsException();
+        $person = null;
+        foreach ($roleIds as $roleId) {
+            $person = $people->setConditionByRoleId($productUniqueId, $roleId)->toCamel()->getOne();
+            if (!empty($person)) break;
         }
-        $peopleConditions = [
-            'product_unique_id'  => $newestProduct->product_unique_id
-        ];
-        if($roleId) {
-            $peopleConditions['role_id'] = $roleId;
-        }
-        return $people->getNewestPeople($peopleConditions);
+        return $person;
     }
 
+    /*
+     * ジャンルID別の作品一覧を取得する。
+     */
+    public function getGenreWorks($genreId)
+    {
+        $workRepository = new WorkRepository();
+        $workRepository->setSaleType($this->saleType);
+        $reponse = $workRepository->genre($genreId);
+        $this->hasNext = $workRepository->getHasNext();
+        $this->totalCount = $workRepository->getTotalCount();
+        return $reponse;
+    }
 
+    /*
+     * ジャンルID別の作品一覧を取得する。
+     */
+    public function getPeopleWorks($workId, Array $personIds)
+    {
+        $workRepository = new WorkRepository();
+        $productModel = new Product();
+
+        $product = $productModel->setConditionByWorkId($workId)->selectCamel(['product_unique_id'])->getOne();
+        $person = $this->getPerson([self::ROLE_ID_PERFORMER, self::ROLE_ID_DIRECTOR], $product->productUniqueId);
+        $workRepository->setSaleType($this->saleType);
+        $reponse = $workRepository->person($person->personId);
+        $this->hasNext = $workRepository->getHasNext();
+        $this->totalCount = $workRepository->getTotalCount();
+        return $reponse;
+    }
 
 }

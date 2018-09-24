@@ -148,9 +148,9 @@ class Work extends Model
         $selectSub = ',MIN(product_unique_id) AS product_unique_id ';
         $subQuery = DB::table('ts_products AS p1')->select(DB::raw($selectSubGrouping.$selectSub))
             ->whereRaw(DB::raw(' item_cd not like \'_1__\' '))
+            ->whereRaw(DB::raw(' service_id not in  (\'discas\', \'ec\', \'musico\')'))
             ->whereIn('work_id', $workIds)
             ->groupBy(DB::raw($selectSubGrouping));
-
         if($ignoreWorkId) {
             $subQuery->whereRaw(DB::raw("work_id <> '{$ignoreWorkId}'"));
         }
@@ -193,6 +193,7 @@ class Work extends Model
         $subQuery = DB::table('ts_products AS p1')->select(DB::raw($selectSubGrouping.$selectSub))
             ->join('ts_related_works as rw', 'rw.related_work_id', '=', 'p1.work_id')
             ->whereRaw(DB::raw(' item_cd not like \'_1__\' '))
+            ->whereRaw(DB::raw(' service_id not in  (\'discas\', \'ec\', \'musico\')'))
             ->whereRaw(DB::raw(" rw.work_id = '{$workId}'"))
             ->whereRaw(DB::raw(" rw.related_work_id <> '{$workId}'"))
             ->groupBy(DB::raw($selectSubGrouping));
