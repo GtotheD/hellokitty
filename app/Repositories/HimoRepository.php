@@ -328,12 +328,12 @@ class HimoRepository extends ApiRequesterRepository
         if (array_key_exists('saleType', $params)) {
             $productSellRentalFlg = null;
             if ($params['saleType'] == 'rental') {
-                $productSellRentalFlg = 2;
+                $this->queryParams['product_sell_rental_flg'] = 2;
             } elseif ($params['saleType'] == 'sell') {
-                $productSellRentalFlg = 1;
-            }
-            if (!empty($productSellRentalFlg)) {
-                $this->queryParams['product_sell_rental_flg'] = $productSellRentalFlg;
+                $this->queryParams['product_sell_rental_flg'] = 1;
+            } elseif ($params['saleType'] == 'theater') {
+                $this->queryParams['service_id'] = ['st'];
+                $this->queryParams['work_products_service_id'] = ['st'];
             }
         }
 

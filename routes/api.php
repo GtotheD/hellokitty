@@ -548,20 +548,21 @@ $router->group([
         $workRepository = new WorkRepository();
         $workRepository->setLimit($request->input('limit', 10));
         $workRepository->setOffset($request->input('offset', 0));
-        $workRepository->setSaleType($request->input('saleType', null));
-        $workRepository->setSort($request->input('sort'));
-        $workRepository->setAgeLimitCheck($request->input('ageLimitCheck', false));
-        $genreId = urldecode($genreId);
+        $saleType = $request->input('saleType', null);
         if(empty($saleType)) {
             throw new BadRequestHttpException;
         }
+        $workRepository->setSaleType($saleType);
+        $workRepository->setSort($request->input('sort'));
+        $workRepository->setAgeLimitCheck($request->input('ageLimitCheck', false));
+        $genreId = urldecode($genreId);
         $rows = $workRepository->genre($genreId);
         if (empty($rows)) {
             throw new NoContentsException;
         }
         $response = [
-            'hasNext' => $work->getHasNext(),
-            'totalCount' => $work->getTotalCount(),
+            'hasNext' => $workRepository->getHasNext(),
+            'totalCount' => $workRepository->getTotalCount(),
             'rows' => $rows
         ];
         return response()->json($response)->header('X-Accel-Expires', '86400');

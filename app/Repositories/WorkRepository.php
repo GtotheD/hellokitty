@@ -17,19 +17,9 @@ use DB;
  * Date: 2017/10/13
  * Time: 15:01
  */
-class WorkRepository
+class WorkRepository extends BaseRepository
 {
     private $work;
-
-    protected $sort;
-    protected $offset;
-    protected $limit;
-    protected $apiHost;
-    protected $apiKey;
-    protected $saleType;
-    protected $ageLimitCheck;
-    protected $hasNext;
-    protected $totalCount;
 
     const REQUEST_ITEM_TYPE_DVD = 'dvd';
     const REQUEST_ITEM_TYPE_CD = 'cd';
@@ -139,93 +129,8 @@ class WorkRepository
 
     public function __construct($sort = 'asc', $offset = 0, $limit = 10)
     {
-        $this->sort = $sort;
-        $this->offset = $offset;
-        $this->limit = $limit;
-
+        parent::__construct($sort, $offset, $limit);
         $this->work = new Work();
-
-    }
-
-
-    /**
-     * @return mixed
-     */
-    public function getHasNext()
-    {
-        return $this->hasNext;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getLimit()
-    {
-        return (int)$this->limit;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getOffset()
-    {
-        return (int)$this->offset;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getTotalCount()
-    {
-        return $this->totalCount;
-    }
-
-    /**
-     * @return Array
-     */
-    public function getRows()
-    {
-        return $this->rows;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPage()
-    {
-        return $this->page;
-    }
-
-    /**
-     * @param mixed $limit
-     */
-    public function setLimit($limit)
-    {
-        $this->limit = $limit;
-    }
-
-    /**
-     * @param mixed $offset
-     */
-    public function setOffset($offset)
-    {
-        $this->offset = $offset;
-    }
-
-    /**
-     * @param mixed $saleType
-     */
-    public function setSaleType($saleType)
-    {
-        $this->saleType = $saleType;
-    }
-
-    /**
-     * @param mixed $ageLimitCheck
-     */
-    public function setAgeLimitCheck($ageLimitCheck)
-    {
-        $this->ageLimitCheck = $ageLimitCheck;
     }
 
     public function getNarrowColumns($workId)
@@ -994,6 +899,7 @@ class WorkRepository
         foreach ($products as $product) {
             // VHSを除外
             if ($product['service_id'] === 'tol' || $product['service_id'] === 'st') {
+
                 if ($product['product_type_id'] === 1 ) { // VHSの条件を除外
                     // 最新の販売開始日を取得する。
                     if ($product['sale_start_date'] > $saleStartDateSell) {
