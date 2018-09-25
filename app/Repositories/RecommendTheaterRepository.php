@@ -88,10 +88,10 @@ class RecommendTheaterRepository extends BaseRepository
     {
         $workRepository = new WorkRepository();
         $workRepository->setSaleType($this->saleType);
-        $reponse = $workRepository->genre($genreId);
+        $response = $workRepository->genre($genreId);
         $this->hasNext = $workRepository->getHasNext();
         $this->totalCount = $workRepository->getTotalCount();
-        return $reponse;
+        return $response;
     }
 
     /*
@@ -105,10 +105,10 @@ class RecommendTheaterRepository extends BaseRepository
         $product = $productModel->setConditionByWorkId($workId)->selectCamel(['product_unique_id'])->getOne();
         $person = $this->getPerson($personIds, $product->productUniqueId);
         $workRepository->setSaleType($this->saleType);
-        $reponse = $workRepository->person($person->personId);
+        $response = $workRepository->person($person->personId);
         $this->hasNext = $workRepository->getHasNext();
         $this->totalCount = $workRepository->getTotalCount();
-        return $reponse;
+        return $response;
     }
 
 }
