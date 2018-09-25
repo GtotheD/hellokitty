@@ -28,7 +28,6 @@ use App\Repositories\RelateadWorkRepository;
 use App\Repositories\RecommendOtherRepository;
 use App\Repositories\HimoRepository;
 use App\Repositories\RecommendTheaterRepository;
-use App\Model\Product;
 use App\Repositories\ReleaseCalenderRepository;
 use App\Repositories\FavoriteRepository;
 use App\Repositories\CouponRepository;
@@ -168,14 +167,15 @@ $router->group([
         $ageLimitCheck = $request->input('ageLimitCheck', false);
         $work->setAgeLimitCheck($ageLimitCheck);
         $result = $work->get($workId);
+        if (empty($result)) {
+            throw new NoContentsException;
+        }
+
         // 映画リクエストでレスポンスがなかった場合
         if (empty(array_key_exists('makerCd', $result)) && $saleType === $work::SALE_TYPE_THEATER) {
             throw new ContentsException('202-002');
         }
 
-        if (empty($result) || array_key_exists('makerCd', $result) === false) {
-            throw new NoContentsException;
-        }
         $checkAgeLimit = checkAgeLimit(
             $ageLimitCheck,
             $result['ratingId'],

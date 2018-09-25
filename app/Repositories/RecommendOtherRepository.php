@@ -7,62 +7,19 @@ use App\Model\Recommend;
 use App\Model\Work;
 use App\Repositories\WorkRepository;
 
-class RecommendOtherRepository
+/*
+ * お薦め作品一覧取得API用（この作品を見た人はこんな作品も見ています）
+ * BK2からの情報を元に、リコメンドを作成する。
+ *
+ */
+class RecommendOtherRepository extends BaseRepository
 {
-
-    protected $sort;
-    protected $offset;
-    protected $limit;
-    protected $hasNext;
-    protected $totalCount;
-    protected $ageLimitCheck;
+    private $recommend;
 
     public function __construct($sort = 'asc', $offset = 0, $limit = 10)
     {
-        $this->sort = $sort;
-        $this->offset = $offset;
-        $this->limit = $limit;
+        parent::__construct($sort, $offset, $limit);
         $this->recommend = new Recommend();
-    }
-
-    /**
-     * @param mixed $limit
-     */
-    public function setLimit($limit)
-    {
-        $this->limit = $limit;
-    }
-
-    /**
-     * @param mixed $offset
-     */
-    public function setOffset($offset)
-    {
-        $this->offset = $offset;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getHasNext()
-    {
-        return $this->hasNext;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getTotalCount()
-    {
-        return $this->totalCount;
-    }
-
-    /**
-     * @param mixed $ageLimitCheck
-     */
-    public function setAgeLimitCheck($ageLimitCheck)
-    {
-        $this->ageLimitCheck = $ageLimitCheck;
     }
 
     public function getWorks($workId, $saleType = null)
@@ -130,6 +87,7 @@ class RecommendOtherRepository
             'work_type_id',
             'work_title',
             'work_format_id',
+            'scene_l', // 上映映画対応
             'rating_id',
             'big_genre_id',
             'medium_genre_id',

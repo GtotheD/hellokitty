@@ -1028,24 +1028,21 @@ class WorkRepository extends BaseRepository
 
     public function genre($genreId)
     {
+        $result = [];
         $himoRepository = new HimoRepository('asc', $this->offset, $this->limit);
-
         $params = [
             'genreId' => $genreId,
             'saleType' => $this->saleType,
             'api' => 'genre',//dummy data
             'id' => $genreId //dummy data
         ];
-
         $data = $himoRepository->searchCrossworks($params, $this->sort)->get();
-
         if (!empty($data['status']) && $data['status'] == '200') {
             if (count($data['results']['rows']) + $this->offset < $data['results']['total']) {
                 $this->hasNext = true;
             } else {
                 $this->hasNext = false;
             }
-
             $this->totalCount = $data['results']['total'];
             $displayImage = true;
             foreach ($data['results']['rows'] as $row) {

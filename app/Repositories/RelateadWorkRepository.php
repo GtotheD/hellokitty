@@ -7,98 +7,12 @@ use App\Model\Work;
 use App\Exceptions\NoContentsException;
 use DB;
 
-class RelateadWorkRepository
+class RelateadWorkRepository extends BaseRepository
 {
-
-    protected $sort;
-    protected $offset;
-    protected $limit;
-    protected $apiHost;
-    protected $apiKey;
-    protected $saleType;
-    protected $ageLimitCheck;
-    protected $totalCount;
-    protected $seriesId;
-    protected $hasNext;
-
 
     public function __construct($sort = 'asc', $offset = 0, $limit = 10)
     {
-        $this->sort = $sort;
-        $this->offset = $offset;
-        $this->limit = $limit;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getHasNext()
-    {
-        return $this->hasNext;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getLimit()
-    {
-        return (int)$this->limit;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getOffset()
-    {
-        return (int)$this->offset;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getTotalCount()
-    {
-        return $this->totalCount;
-    }
-
-    /**
-     * @return Array
-     */
-    public function getRows()
-    {
-        return $this->rows;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPage()
-    {
-        return $this->page;
-    }
-
-    /**
-     * @param mixed $limit
-     */
-    public function setLimit($limit)
-    {
-        $this->limit = $limit;
-    }
-
-    /**
-     * @param mixed $offset
-     */
-    public function setOffset($offset)
-    {
-        $this->offset = $offset;
-    }
-
-    /**
-     * @param mixed $ageLimitCheck
-     */
-    public function setAgeLimitCheck($ageLimitCheck)
-    {
-        $this->ageLimitCheck = $ageLimitCheck;
+        parent::__construct($sort, $offset, $limit);
     }
 
     public function getNarrow($workId)
@@ -199,6 +113,7 @@ class RelateadWorkRepository
             'work_type_id',
             'work_title',
             'work_format_id',
+            'scene_l', // 上映映画対応
             'rating_id',
             'big_genre_id',
             'medium_genre_id',

@@ -5,14 +5,8 @@ namespace App\Repositories;
 use App\Exceptions\NoContentsException;
 use App\Model\RelatedPeople;
 
-class RecommendArtistRepository extends ApiRequesterRepository
+class RecommendArtistRepository extends BaseRepository
 {
-
-    protected $sort;
-    protected $offset;
-    protected $limit;
-    protected $hasNext;
-    protected $totalCount;
     protected $relatedPeople;
     const ROLE_ID_ARTIST = 'EXT00000000D';
     const HIMO_DEFAULT_LIMIT = 50;
@@ -21,43 +15,8 @@ class RecommendArtistRepository extends ApiRequesterRepository
 
     public function __construct($sort = 'asc', $offset = 0, $limit = 10)
     {
-        parent::__construct();
-        $this->sort = $sort;
-        $this->offset = $offset;
-        $this->limit = $limit;
+        parent::__construct($sort, $offset, $limit);
         $this->relatedPeople = new RelatedPeople();
-    }
-
-    /**
-     * @param mixed $limit
-     */
-    public function setLimit($limit)
-    {
-        $this->limit = $limit;
-    }
-
-    /**
-     * @param mixed $offset
-     */
-    public function setOffset($offset)
-    {
-        $this->offset = $offset;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getHasNext()
-    {
-        return $this->hasNext;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getTotalCount()
-    {
-        return $this->totalCount;
     }
 
     /**

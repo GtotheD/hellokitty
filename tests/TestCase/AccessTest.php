@@ -1,11 +1,8 @@
 <?php
 
-use tests\TestData;
 
 class AccessTest extends TestCase
 {
-    private $apiPath;
-
     public function setUp()
     {
         parent::setUp();
@@ -14,7 +11,6 @@ class AccessTest extends TestCase
 
     public static function setUpBeforeClass()
     {
-        parent::setUpBeforeClass();
         $bk2Seeder = new TestDataBk2RecommendsSeeder;
         $bk2Seeder->run();
         $keywordSeeder = new TestDataKeywordSuggestSeeder();
@@ -49,7 +45,7 @@ class AccessTest extends TestCase
      */
     public function workAgeLimitNoAdult()
     {
-        $url = '/work/PTA0000R6VWD?saleType=sell';
+            $url = '/work/PTA0000RV0LG?saleType=sell';
         $response = $this->getJsonWithAuth( $url);
         $response->assertResponseStatus(200);
     }
@@ -63,6 +59,10 @@ class AccessTest extends TestCase
         $url = '/work/PTA0000V6J54';
         $response = $this->getJsonWithAuth( $url);
         $response->assertResponseStatus(202);
+        $response->seeJson([
+            "message" => "Age limit auth error",
+            "status" => "202-001"
+        ]);
     }
 
     /**
@@ -95,10 +95,9 @@ class AccessTest extends TestCase
     {
         $url = '/work/PTA0000G66F0';
         $this->getJsonWithAuth( $url);
-        $response = $this->getJsonWithAuth('/work/PTA0000G66F0/products');
+        $response = $this->getJsonWithAuth('/work/PTA0000G66F0/products?saleType=rental');
         $response->seeJson([
-            'totalCount' => 65,
-            'productName' => '進撃の巨人<限定版> DVD付き（26）',
+            'totalCount' => 26,
         ]);
     }
 
@@ -118,7 +117,7 @@ class AccessTest extends TestCase
     }
 
     /**
-     * 巻数が一巻のみの場合は巻数を付与しない場合のテスト
+     * VHS
      * @test
      */
     public function workProductIgnoreVHS()
@@ -126,7 +125,7 @@ class AccessTest extends TestCase
         $url = '/work/PTA00008M81I';
         $this->getJsonWithAuth( $url);
         $response = $this->getJsonWithAuth('/work/PTA00008M81I/products?saleType=rental');
-        $response->assertResponseStatus(204);
+        $response->assertResponseStatus(200);
     }
 
     /**
