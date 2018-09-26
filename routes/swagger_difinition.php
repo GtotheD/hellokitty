@@ -148,6 +148,11 @@
  *              description="音楽ダウンロード用のURL"
  *          ),
  *          @SWG\Property(
+ *              property="playTime",
+ *              type="boolean",
+ *              description="再生時間（上映映画の場合のみ返却）"
+ *          ),
+ *          @SWG\Property(
  *              property="saleTypeHas",
  *              type="object",
  *              @SWG\Property(
