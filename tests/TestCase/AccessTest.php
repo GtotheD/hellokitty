@@ -235,9 +235,9 @@ class AccessTest extends TestCase
      */
     public function workRelationWorks()
     {
-        $url = '/work/PTA0000SF309';
+        $url = '/work/EXT0000OJPVA';
         $this->getJsonWithAuth( $url);
-        $response = $this->getJsonWithAuth('/work/PTA0000SF309/relation/works');
+        $response = $this->getJsonWithAuth('/work/EXT0000OJPVA/relation/works');
         $response->assertResponseStatus(200);
     }
     /**
