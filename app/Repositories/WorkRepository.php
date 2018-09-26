@@ -562,30 +562,19 @@ class WorkRepository extends BaseRepository
         if ($response['workFormatId'] == self::WORK_FORMAT_ID_MUSICVIDEO) {
             $response['itemType'] = 'dvd';
         }
-        if ($addSaleTypeHas) {
-            if($response['workTypeId'] === self::WORK_TYPE_THEATER) {
-                $response['saleTypeHas'] = [
-                    'sell' => false,
-                    'rental' => false,
-                    'theater' => true,
-                ];
-                $response['jacketL'] = current(json_decode($response['sceneL']));
-            } else {
-                $response['saleTypeHas'] = [
-                    'sell' => ($productModel->setConditionByWorkIdSaleType($response['workId'], 'sell')->count() > 0) ? true : false,
-                    'rental' => ($productModel->setConditionByWorkIdSaleType($response['workId'], 'rental')->count() > 0) ? true : false,
-                    'theater' => false,
-                ];
-            }
-        }
         // docがセットできなかった場合はブランクにする。
         if ($isDocSet === false) {
             $response['docText'] = '';
         }
 
-        // 映画の場合は入れ替える
+        // 映画の場合の処理
+        // 再生時間を返却するが上映映画の時の為だけなのでここでは初期化のみ
+        $response['playTime'] = '';
         if($response['workTypeId'] === self::WORK_TYPE_THEATER) {
+            // 画像はsceneから取得する。
             $response['jacketL'] = current(json_decode($response['sceneL']));
+            // 再生時間を取得する。
+            $response['playTime'] = $product['playTime'];
         }
 
         // musicoリンク
@@ -594,6 +583,22 @@ class WorkRepository extends BaseRepository
         $musicoUrlData = $musicoUrl->setConditionByWorkId($response['workId'])->toCamel()->getOne();
         if (!empty($musicoUrlData)) {
             $response['musicDownloadUrl'] = env('MUSICO_URL') . $musicoUrlData->url;
+        }
+
+        if ($addSaleTypeHas) {
+            if($response['workTypeId'] === self::WORK_TYPE_THEATER) {
+                $response['saleTypeHas'] = [
+                    'sell' => false,
+                    'rental' => false,
+                    'theater' => true,
+                ];
+            } else {
+                $response['saleTypeHas'] = [
+                    'sell' => ($productModel->setConditionByWorkIdSaleType($response['workId'], 'sell')->count() > 0) ? true : false,
+                    'rental' => ($productModel->setConditionByWorkIdSaleType($response['workId'], 'rental')->count() > 0) ? true : false,
+                    'theater' => false,
+                ];
+            }
         }
 
         return $response;
