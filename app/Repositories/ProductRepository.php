@@ -12,18 +12,9 @@ use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
  * Date: 2017/10/13
  * Time: 15:01
  */
-class ProductRepository
+class ProductRepository extends BaseRepository
 {
     private $product;
-
-    protected $sort;
-    protected $offset;
-    protected $limit;
-    protected $apiHost;
-    protected $apiKey;
-    protected $saleType;
-    protected $totalCount;
-    protected $hasNext;
 
     const PRODUCT_TYPE_SELL = '1';
     const PRODUCT_TYPE_RENTAL = '2';
@@ -47,89 +38,8 @@ class ProductRepository
 
     public function __construct($sort = 'asc', $offset = 0, $limit = 10)
     {
-        $this->sort = $sort;
-        $this->offset = $offset;
-        $this->limit = $limit;
-
+        parent::__construct($sort, $offset, $limit);
         $this->product = new Product();
-    }
-
-
-    /**
-     * @return mixed
-     */
-    public function getHasNext()
-    {
-        return $this->hasNext;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getLimit()
-    {
-        return (int)$this->limit;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getOffset()
-    {
-        return (int)$this->offset;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getTotalCount()
-    {
-        return $this->totalCount;
-    }
-
-    /**
-     * @return Array
-     */
-    public function getRows()
-    {
-        return $this->rows;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPage()
-    {
-        return $this->page;
-    }
-
-    /**
-     * @param mixed $limit
-     */
-    public function setLimit($limit)
-    {
-        $this->limit = $limit;
-    }
-
-    /**
-     * @param mixed $offset
-     */
-    public function setOffset($offset)
-    {
-        $this->offset = $offset;
-    }
-
-    /**
-     * @param mixed $offset
-     */
-    public function setSaleType($saleType)
-    {
-        $this->saleType = $saleType;
-    }
-
-    public function setSort($sort)
-    {
-        $this->sort = $sort;
     }
 
     public function get($productUniqueId)

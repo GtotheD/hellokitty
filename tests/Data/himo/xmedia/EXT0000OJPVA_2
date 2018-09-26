@@ -1,0 +1,837 @@
+{
+  "status": 200,
+  "message": null,
+  "results": {
+    "total": 1,
+    "rows": [
+      {
+        "id": "EXT0000OJPVA",
+        "xmedia_relation_type_cd": "907",
+        "xmedia_relation_type_name": "原作・サウンドトラック",
+        "adult_flg": "0",
+        "kind": "1",
+        "relation_kind": "1",
+        "works": [
+          {
+            "work_id": "PTA00008VPSI",
+            "work_type_id": "1",
+            "msdb_item": "audio",
+            "work_format_id": 1,
+            "work_format_name": "アルバム",
+            "work_title": "男はつらいよ -寅さん名場面集 サウンド寅ック盤-",
+            "work_copyright": "",
+            "adult_flg": 0,
+            "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/09700/4988007260268_1S.jpg",
+            "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/09700/4988007260268_1M.jpg",
+            "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/09700/4988007260268_1L.jpg",
+            "disable_flg": 0,
+            "delete_flg": 0,
+            "ids": [
+              {
+                "id_type": "0103",
+                "id_value": "20686581"
+              },
+              {
+                "id_type": "0105",
+                "id_value": "20535585"
+              }
+            ],
+            "genres": [
+              {
+                "big_genre_id": "EXT0000000Q8",
+                "big_genre_name": "邦画サントラ",
+                "medium_genre_id": "EXT0000002V7",
+                "medium_genre_name": "邦画",
+                "small_genre_id": "",
+                "small_genre_name": "",
+                "shikiriban_id": "",
+                "shikiriban_name": ""
+              }
+            ],
+            "products": [],
+            "cinema_id": [],
+            "filmarks_id": [],
+            "dramarks_id": [],
+            "people": [
+              {
+                "person_id": "PPS0000002VO",
+                "person_name": "サントラ 邦画オリジナル",
+                "role_id": "EXT00000000D",
+                "role_name": "演奏者"
+              },
+              {
+                "person_id": "PPS00000176W",
+                "person_name": "渥美清",
+                "role_id": "EXT000019VYB",
+                "role_name": "出演"
+              }
+            ],
+            "need_age_auth_flg": 0
+          },
+          {
+            "work_id": "PTA00008VPKX",
+            "work_type_id": "1",
+            "msdb_item": "audio",
+            "work_format_id": 1,
+            "work_format_name": "アルバム",
+            "work_title": "男はつらいよ -寅さん名場面集第3集 サウンド寅ック盤-",
+            "work_copyright": "",
+            "adult_flg": 0,
+            "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/09700/4988007260282_1S.jpg",
+            "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/09700/4988007260282_1M.jpg",
+            "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/09700/4988007260282_1L.jpg",
+            "disable_flg": 0,
+            "delete_flg": 0,
+            "ids": [
+              {
+                "id_type": "0103",
+                "id_value": "20686580"
+              },
+              {
+                "id_type": "0105",
+                "id_value": "20535584"
+              }
+            ],
+            "genres": [
+              {
+                "big_genre_id": "EXT0000000Q8",
+                "big_genre_name": "邦画サントラ",
+                "medium_genre_id": "EXT0000002V7",
+                "medium_genre_name": "邦画",
+                "small_genre_id": "",
+                "small_genre_name": "",
+                "shikiriban_id": "",
+                "shikiriban_name": ""
+              }
+            ],
+            "products": [],
+            "cinema_id": [],
+            "filmarks_id": [],
+            "dramarks_id": [],
+            "people": [
+              {
+                "person_id": "PPS0000002VO",
+                "person_name": "サントラ 邦画オリジナル",
+                "role_id": "EXT00000000D",
+                "role_name": "演奏者"
+              },
+              {
+                "person_id": "PPS00000176W",
+                "person_name": "渥美清",
+                "role_id": "EXT000019VYB",
+                "role_name": "出演"
+              }
+            ],
+            "need_age_auth_flg": 0
+          },
+          {
+            "work_id": "PTA00008VPIK",
+            "work_type_id": "1",
+            "msdb_item": "audio",
+            "work_format_id": 1,
+            "work_format_name": "アルバム",
+            "work_title": "男はつらいよ -寅さん名場面集第2集 サウンド寅ック盤-",
+            "work_copyright": "",
+            "adult_flg": 0,
+            "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/09700/4988007260275_1S.jpg",
+            "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/09700/4988007260275_1M.jpg",
+            "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/09700/4988007260275_1L.jpg",
+            "disable_flg": 0,
+            "delete_flg": 0,
+            "ids": [
+              {
+                "id_type": "0103",
+                "id_value": "20686579"
+              },
+              {
+                "id_type": "0105",
+                "id_value": "20535583"
+              }
+            ],
+            "genres": [
+              {
+                "big_genre_id": "EXT0000000Q8",
+                "big_genre_name": "邦画サントラ",
+                "medium_genre_id": "EXT0000002V7",
+                "medium_genre_name": "邦画",
+                "small_genre_id": "",
+                "small_genre_name": "",
+                "shikiriban_id": "",
+                "shikiriban_name": ""
+              }
+            ],
+            "products": [],
+            "cinema_id": [],
+            "filmarks_id": [],
+            "dramarks_id": [],
+            "people": [
+              {
+                "person_id": "PPS0000002VO",
+                "person_name": "サントラ 邦画オリジナル",
+                "role_id": "EXT00000000D",
+                "role_name": "演奏者"
+              },
+              {
+                "person_id": "PPS00000176W",
+                "person_name": "渥美清",
+                "role_id": "EXT000019VYB",
+                "role_name": "出演"
+              }
+            ],
+            "need_age_auth_flg": 0
+          },
+          {
+            "work_id": "PTA00008VL4N",
+            "work_type_id": "1",
+            "msdb_item": "audio",
+            "work_format_id": 1,
+            "work_format_name": "アルバム",
+            "work_title": "男はつらいよ 寅次郎音楽旅～寅さんのことば～",
+            "work_copyright": "",
+            "adult_flg": 0,
+            "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/09472/4988005804167_1S.jpg",
+            "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/09472/4988005804167_1M.jpg",
+            "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/09472/4988005804167_1L.jpg",
+            "disable_flg": 0,
+            "delete_flg": 0,
+            "ids": [
+              {
+                "id_type": "0103",
+                "id_value": "20681666"
+              },
+              {
+                "id_type": "0105",
+                "id_value": "20530658"
+              }
+            ],
+            "genres": [
+              {
+                "big_genre_id": "EXT0000000Q8",
+                "big_genre_name": "邦画サントラ",
+                "medium_genre_id": "EXT0000002V7",
+                "medium_genre_name": "邦画",
+                "small_genre_id": "",
+                "small_genre_name": "",
+                "shikiriban_id": "",
+                "shikiriban_name": ""
+              }
+            ],
+            "products": [],
+            "cinema_id": [],
+            "filmarks_id": [],
+            "dramarks_id": [],
+            "people": [
+              {
+                "person_id": "PPS00000176W",
+                "person_name": "渥美清",
+                "role_id": "EXT000019VYB",
+                "role_name": "出演"
+              },
+              {
+                "person_id": "PPS000000X92",
+                "person_name": "吉岡秀隆",
+                "role_id": "EXT000019VYB",
+                "role_name": "出演"
+              },
+              {
+                "person_id": "PPS0000002VO",
+                "person_name": "サントラ 邦画オリジナル",
+                "role_id": "EXT00000000D",
+                "role_name": "演奏者"
+              }
+            ],
+            "need_age_auth_flg": 0
+          },
+          {
+            "work_id": "PTA00007YYUC",
+            "work_type_id": "1",
+            "msdb_item": "audio",
+            "work_format_id": 1,
+            "work_format_name": "アルバム",
+            "work_title": "男はつらいよ 寅次郎音楽旅～寅さんの”夢””旅””恋””粋”～",
+            "work_copyright": "",
+            "adult_flg": 0,
+            "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/00762/4988005531391_1S.jpg",
+            "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/00762/4988005531391_1M.jpg",
+            "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/00762/4988005531391_1L.jpg",
+            "disable_flg": 0,
+            "delete_flg": 0,
+            "ids": [
+              {
+                "id_type": "0103",
+                "id_value": "20368861"
+              },
+              {
+                "id_type": "0105",
+                "id_value": "20217942"
+              }
+            ],
+            "genres": [
+              {
+                "big_genre_id": "EXT0000000Q8",
+                "big_genre_name": "邦画サントラ",
+                "medium_genre_id": "EXT0000002V7",
+                "medium_genre_name": "邦画",
+                "small_genre_id": "",
+                "small_genre_name": "",
+                "shikiriban_id": "",
+                "shikiriban_name": ""
+              }
+            ],
+            "products": [],
+            "cinema_id": [],
+            "filmarks_id": [],
+            "dramarks_id": [],
+            "people": [
+              {
+                "person_id": "PPS00000176W",
+                "person_name": "渥美清",
+                "role_id": "EXT00001AMVW",
+                "role_name": "ナレータ"
+              },
+              {
+                "person_id": "PPS000017EUG",
+                "person_name": "シューマン",
+                "role_id": "EXT0000002JZ",
+                "role_name": "作曲"
+              },
+              {
+                "person_id": "PPS000001QDC",
+                "person_name": "山本直純",
+                "role_id": "EXT0000002JZ",
+                "role_name": "作曲"
+              }
+            ],
+            "need_age_auth_flg": 0
+          },
+          {
+            "work_id": "PTA00007YU14",
+            "work_type_id": "1",
+            "msdb_item": "audio",
+            "work_format_id": 1,
+            "work_format_name": "アルバム",
+            "work_title": "男はつらいよ～それを言っちゃぁおしまいよ",
+            "work_copyright": "",
+            "adult_flg": 0,
+            "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/00644/4988021811828_1S.jpg",
+            "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/00644/4988021811828_1M.jpg",
+            "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/00644/4988021811828_1L.jpg",
+            "disable_flg": 0,
+            "delete_flg": 0,
+            "ids": [
+              {
+                "id_type": "0103",
+                "id_value": "20121725"
+              },
+              {
+                "id_type": "0105",
+                "id_value": "20105488"
+              }
+            ],
+            "genres": [
+              {
+                "big_genre_id": "EXT0000000Q8",
+                "big_genre_name": "邦画サントラ",
+                "medium_genre_id": "EXT0000002V7",
+                "medium_genre_name": "邦画",
+                "small_genre_id": "",
+                "small_genre_name": "",
+                "shikiriban_id": "",
+                "shikiriban_name": ""
+              }
+            ],
+            "products": [],
+            "cinema_id": [],
+            "filmarks_id": [],
+            "dramarks_id": [],
+            "people": [
+              {
+                "person_id": "PPS0000002VO",
+                "person_name": "サントラ 邦画オリジナル",
+                "role_id": "EXT00000001N",
+                "role_name": "ボーカル"
+              },
+              {
+                "person_id": "PPS000001QDC",
+                "person_name": "山本直純",
+                "role_id": "EXT0000002JZ",
+                "role_name": "作曲"
+              }
+            ],
+            "need_age_auth_flg": 0
+          },
+          {
+            "work_id": "PTA00007YU00",
+            "work_type_id": "1",
+            "msdb_item": "audio",
+            "work_format_id": 1,
+            "work_format_name": "アルバム",
+            "work_title": "男はつらいよ～映画オリジナル原盤による歴代マドンナ名曲集",
+            "work_copyright": "",
+            "adult_flg": 0,
+            "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/00644/4988021811811_1S.jpg",
+            "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/00644/4988021811811_1M.jpg",
+            "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/00644/4988021811811_1L.jpg",
+            "disable_flg": 0,
+            "delete_flg": 0,
+            "ids": [
+              {
+                "id_type": "0103",
+                "id_value": "20121724"
+              },
+              {
+                "id_type": "0105",
+                "id_value": "20105487"
+              }
+            ],
+            "genres": [
+              {
+                "big_genre_id": "EXT0000000Q8",
+                "big_genre_name": "邦画サントラ",
+                "medium_genre_id": "EXT0000002V7",
+                "medium_genre_name": "邦画",
+                "small_genre_id": "",
+                "small_genre_name": "",
+                "shikiriban_id": "",
+                "shikiriban_name": ""
+              }
+            ],
+            "products": [],
+            "cinema_id": [],
+            "filmarks_id": [],
+            "dramarks_id": [],
+            "people": [
+              {
+                "person_id": "PPS0000002VO",
+                "person_name": "サントラ 邦画オリジナル",
+                "role_id": "EXT00001ATG4",
+                "role_name": ""
+              },
+              {
+                "person_id": "PPS000001QDC",
+                "person_name": "山本直純",
+                "role_id": "EXT0000197FX",
+                "role_name": "音楽"
+              },
+              {
+                "person_id": "PPS00000176W",
+                "person_name": "渥美清",
+                "role_id": "EXT0000176TD",
+                "role_name": "歌"
+              }
+            ],
+            "need_age_auth_flg": 0
+          },
+          {
+            "work_id": "PTA00007YTZ0",
+            "work_type_id": "1",
+            "msdb_item": "audio",
+            "work_format_id": 1,
+            "work_format_name": "アルバム",
+            "work_title": "男はつらいよ～リリーと寅次郎 紅の花",
+            "work_copyright": "",
+            "adult_flg": 0,
+            "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/00644/4988021811804_1S.jpg",
+            "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/00644/4988021811804_1M.jpg",
+            "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/00644/4988021811804_1L.jpg",
+            "disable_flg": 0,
+            "delete_flg": 0,
+            "ids": [
+              {
+                "id_type": "0103",
+                "id_value": "20121723"
+              },
+              {
+                "id_type": "0105",
+                "id_value": "20105486"
+              }
+            ],
+            "genres": [
+              {
+                "big_genre_id": "EXT0000000Q8",
+                "big_genre_name": "邦画サントラ",
+                "medium_genre_id": "EXT0000002V7",
+                "medium_genre_name": "邦画",
+                "small_genre_id": "",
+                "small_genre_name": "",
+                "shikiriban_id": "",
+                "shikiriban_name": ""
+              }
+            ],
+            "products": [],
+            "cinema_id": [],
+            "filmarks_id": [],
+            "dramarks_id": [],
+            "people": [
+              {
+                "person_id": "PPS0000002VO",
+                "person_name": "サントラ 邦画オリジナル",
+                "role_id": "EXT00000001N",
+                "role_name": "ボーカル"
+              },
+              {
+                "person_id": "PPS000001QDC",
+                "person_name": "山本直純",
+                "role_id": "EXT0000002JZ",
+                "role_name": "作曲"
+              }
+            ],
+            "need_age_auth_flg": 0
+          },
+          {
+            "work_id": "PTA0000821DQ",
+            "work_type_id": "1",
+            "msdb_item": "audio",
+            "work_format_id": 1,
+            "work_format_name": "アルバム",
+            "work_title": "男はつらいよ～名場面集",
+            "work_copyright": "",
+            "adult_flg": 0,
+            "jacket_s": "",
+            "jacket_m": "",
+            "jacket_l": "",
+            "disable_flg": 0,
+            "delete_flg": 0,
+            "ids": [
+              {
+                "id_type": "0103",
+                "id_value": "20419535"
+              },
+              {
+                "id_type": "0105",
+                "id_value": "20268620"
+              }
+            ],
+            "genres": [
+              {
+                "big_genre_id": "EXT0000000Q8",
+                "big_genre_name": "邦画サントラ",
+                "medium_genre_id": "EXT0000002V7",
+                "medium_genre_name": "邦画",
+                "small_genre_id": "",
+                "small_genre_name": "",
+                "shikiriban_id": "",
+                "shikiriban_name": ""
+              }
+            ],
+            "products": [],
+            "cinema_id": [],
+            "filmarks_id": [],
+            "dramarks_id": [],
+            "people": [],
+            "need_age_auth_flg": 0
+          },
+          {
+            "work_id": "PTA00007YT21",
+            "work_type_id": "1",
+            "msdb_item": "audio",
+            "work_format_id": 1,
+            "work_format_name": "アルバム",
+            "work_title": "男はつらいよ サウンドトラック・ヒストリー 4",
+            "work_copyright": "",
+            "adult_flg": 0,
+            "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/00644/4988021811330_1S.jpg",
+            "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/00644/4988021811330_1M.jpg",
+            "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/00644/4988021811330_1L.jpg",
+            "disable_flg": 0,
+            "delete_flg": 0,
+            "ids": [
+              {
+                "id_type": "0103",
+                "id_value": "20121687"
+              },
+              {
+                "id_type": "0105",
+                "id_value": "20105450"
+              }
+            ],
+            "genres": [
+              {
+                "big_genre_id": "EXT0000000Q8",
+                "big_genre_name": "邦画サントラ",
+                "medium_genre_id": "EXT0000002V7",
+                "medium_genre_name": "邦画",
+                "small_genre_id": "",
+                "small_genre_name": "",
+                "shikiriban_id": "",
+                "shikiriban_name": ""
+              }
+            ],
+            "products": [],
+            "cinema_id": [],
+            "filmarks_id": [],
+            "dramarks_id": [],
+            "people": [
+              {
+                "person_id": "PPS0000002VO",
+                "person_name": "サントラ 邦画オリジナル",
+                "role_id": "EXT00000001N",
+                "role_name": "ボーカル"
+              },
+              {
+                "person_id": "PPS000001QDC",
+                "person_name": "山本直純",
+                "role_id": "EXT0000002JZ",
+                "role_name": "作曲"
+              }
+            ],
+            "need_age_auth_flg": 0
+          },
+          {
+            "work_id": "PTA00007YT17",
+            "work_type_id": "1",
+            "msdb_item": "audio",
+            "work_format_id": 1,
+            "work_format_name": "アルバム",
+            "work_title": "男はつらいよ サウンドトラック・ヒストリー 3",
+            "work_copyright": "",
+            "adult_flg": 0,
+            "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/00644/4988021811323_1S.jpg",
+            "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/00644/4988021811323_1M.jpg",
+            "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/00644/4988021811323_1L.jpg",
+            "disable_flg": 0,
+            "delete_flg": 0,
+            "ids": [
+              {
+                "id_type": "0103",
+                "id_value": "20121686"
+              },
+              {
+                "id_type": "0105",
+                "id_value": "20105449"
+              }
+            ],
+            "genres": [
+              {
+                "big_genre_id": "EXT0000000Q8",
+                "big_genre_name": "邦画サントラ",
+                "medium_genre_id": "EXT0000002V7",
+                "medium_genre_name": "邦画",
+                "small_genre_id": "",
+                "small_genre_name": "",
+                "shikiriban_id": "",
+                "shikiriban_name": ""
+              }
+            ],
+            "products": [],
+            "cinema_id": [],
+            "filmarks_id": [],
+            "dramarks_id": [],
+            "people": [
+              {
+                "person_id": "PPS000001QDC",
+                "person_name": "山本直純",
+                "role_id": "EXT0000197FX",
+                "role_name": "音楽"
+              },
+              {
+                "person_id": "PPS0000002VO",
+                "person_name": "サントラ 邦画オリジナル",
+                "role_id": "EXT00001ATG4",
+                "role_name": ""
+              },
+              {
+                "person_id": "PPS00000176W",
+                "person_name": "渥美清",
+                "role_id": "EXT0000176TD",
+                "role_name": "歌"
+              }
+            ],
+            "need_age_auth_flg": 0
+          },
+          {
+            "work_id": "PTA00007YT0C",
+            "work_type_id": "1",
+            "msdb_item": "audio",
+            "work_format_id": 1,
+            "work_format_name": "アルバム",
+            "work_title": "男はつらいよ サウンドトラック・ヒストリー 2",
+            "work_copyright": "",
+            "adult_flg": 0,
+            "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/00644/4988021811316_1S.jpg",
+            "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/00644/4988021811316_1M.jpg",
+            "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/00644/4988021811316_1L.jpg",
+            "disable_flg": 0,
+            "delete_flg": 0,
+            "ids": [
+              {
+                "id_type": "0103",
+                "id_value": "20121685"
+              },
+              {
+                "id_type": "0105",
+                "id_value": "20105448"
+              }
+            ],
+            "genres": [
+              {
+                "big_genre_id": "EXT0000000Q8",
+                "big_genre_name": "邦画サントラ",
+                "medium_genre_id": "EXT0000002V7",
+                "medium_genre_name": "邦画",
+                "small_genre_id": "",
+                "small_genre_name": "",
+                "shikiriban_id": "",
+                "shikiriban_name": ""
+              }
+            ],
+            "products": [],
+            "cinema_id": [],
+            "filmarks_id": [],
+            "dramarks_id": [],
+            "people": [
+              {
+                "person_id": "PPS0000002VO",
+                "person_name": "サントラ 邦画オリジナル",
+                "role_id": "EXT00000001N",
+                "role_name": "ボーカル"
+              },
+              {
+                "person_id": "PPS000001QDC",
+                "person_name": "山本直純",
+                "role_id": "EXT0000002JZ",
+                "role_name": "作曲"
+              }
+            ],
+            "need_age_auth_flg": 0
+          },
+          {
+            "work_id": "PTA00007YSZ8",
+            "work_type_id": "1",
+            "msdb_item": "audio",
+            "work_format_id": 1,
+            "work_format_name": "アルバム",
+            "work_title": "男はつらいよ サウンドトラックヒスト 1",
+            "work_copyright": "",
+            "adult_flg": 0,
+            "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/00644/4988021811309_1S.jpg",
+            "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/00644/4988021811309_1M.jpg",
+            "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/00644/4988021811309_1L.jpg",
+            "disable_flg": 0,
+            "delete_flg": 0,
+            "ids": [
+              {
+                "id_type": "0103",
+                "id_value": "20121684"
+              },
+              {
+                "id_type": "0105",
+                "id_value": "20105447"
+              }
+            ],
+            "genres": [
+              {
+                "big_genre_id": "EXT0000000Q8",
+                "big_genre_name": "邦画サントラ",
+                "medium_genre_id": "EXT0000002V7",
+                "medium_genre_name": "邦画",
+                "small_genre_id": "",
+                "small_genre_name": "",
+                "shikiriban_id": "",
+                "shikiriban_name": ""
+              }
+            ],
+            "products": [],
+            "cinema_id": [],
+            "filmarks_id": [],
+            "dramarks_id": [],
+            "people": [
+              {
+                "person_id": "PPS0000002VO",
+                "person_name": "サントラ 邦画オリジナル",
+                "role_id": "EXT00000001N",
+                "role_name": "ボーカル"
+              },
+              {
+                "person_id": "PPS000001QDC",
+                "person_name": "山本直純",
+                "role_id": "EXT0000002JZ",
+                "role_name": "作曲"
+              }
+            ],
+            "need_age_auth_flg": 0
+          },
+          {
+            "work_id": "PTA00007Y7WR",
+            "work_type_id": "2",
+            "msdb_item": "video",
+            "work_format_id": null,
+            "work_format_name": "",
+            "work_title": "男はつらいよ",
+            "work_copyright": "(C)1969 松竹株式会社",
+            "adult_flg": 0,
+            "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/08536/9999203834186_1S.jpg",
+            "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/08536/9999203834186_1M.jpg",
+            "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/08536/9999203834186_1L.jpg",
+            "disable_flg": 0,
+            "delete_flg": 0,
+            "ids": [
+              {
+                "id_type": "0103",
+                "id_value": "10002530"
+              },
+              {
+                "id_type": "0105",
+                "id_value": "10002494"
+              },
+              {
+                "id_type": "0108",
+                "id_value": "25226"
+              },
+              {
+                "id_type": "0107",
+                "id_value": "142980"
+              },
+              {
+                "id_type": "0106",
+                "id_value": "100018650"
+              }
+            ],
+            "genres": [
+              {
+                "big_genre_id": "EXT00000014Q",
+                "big_genre_name": "邦画ドラマ",
+                "medium_genre_id": "EXT00000014S",
+                "medium_genre_name": "人情／喜劇",
+                "small_genre_id": "",
+                "small_genre_name": "",
+                "shikiriban_id": "",
+                "shikiriban_name": ""
+              }
+            ],
+            "products": [],
+            "cinema_id": [
+              "142980"
+            ],
+            "filmarks_id": [
+              "25226"
+            ],
+            "dramarks_id": [],
+            "people": [
+              {
+                "person_id": "PPS000001N7I",
+                "person_name": "山田洋次",
+                "role_id": "EXT0000000UH",
+                "role_name": "監督"
+              },
+              {
+                "person_id": "PPS00000176W",
+                "person_name": "渥美清",
+                "role_id": "EXT0000000UM",
+                "role_name": "出演者"
+              },
+              {
+                "person_id": "PPS000001N7I",
+                "person_name": "山田洋次",
+                "role_id": "EXT00000018Y",
+                "role_name": "脚本"
+              }
+            ],
+            "need_age_auth_flg": 0
+          }
+        ],
+        "small_serieses": []
+      }
+    ]
+  }
+}

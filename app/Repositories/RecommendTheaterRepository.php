@@ -5,7 +5,6 @@ namespace App\Repositories;
 use App\Model\People;
 use App\Model\Product;
 use App\Model\Work;
-use App\Repositories\WorkRepository;
 
 class RecommendTheaterRepository extends BaseRepository
 {
@@ -23,6 +22,11 @@ class RecommendTheaterRepository extends BaseRepository
     const BIG_GENRE_ID_JP_DRAMA = 'EXT00000014Q';
     const BIG_GENRE_ID_JP_SF = 'EXT0000000ZQ';
 
+    /*
+     * メインメソッド
+     * 該当のHimo作品IDのジャンルIDから、リコメンド情報を取得する。
+     * ジャンルによってリコメンドする情報が異なる。
+     */
     public function get($workId)
     {
         // レンタルのみ表示する。
@@ -63,7 +67,7 @@ class RecommendTheaterRepository extends BaseRepository
     }
 
     /*
-     * ロールID順にキャストスタップを取得する。。
+     * ロールID順にキャストスタップを取得する。
      */
     public function getPerson($roleIds, $productUniqueId)
     {
@@ -83,10 +87,10 @@ class RecommendTheaterRepository extends BaseRepository
     {
         $workRepository = new WorkRepository();
         $workRepository->setSaleType($this->saleType);
-        $reponse = $workRepository->genre($genreId);
+        $response = $workRepository->genre($genreId);
         $this->hasNext = $workRepository->getHasNext();
         $this->totalCount = $workRepository->getTotalCount();
-        return $reponse;
+        return $response;
     }
 
     /*
@@ -98,12 +102,12 @@ class RecommendTheaterRepository extends BaseRepository
         $productModel = new Product();
 
         $product = $productModel->setConditionByWorkId($workId)->selectCamel(['product_unique_id'])->getOne();
-        $person = $this->getPerson([self::ROLE_ID_PERFORMER, self::ROLE_ID_DIRECTOR], $product->productUniqueId);
+        $person = $this->getPerson($personIds, $product->productUniqueId);
         $workRepository->setSaleType($this->saleType);
-        $reponse = $workRepository->person($person->personId);
+        $response = $workRepository->person($person->personId);
         $this->hasNext = $workRepository->getHasNext();
         $this->totalCount = $workRepository->getTotalCount();
-        return $reponse;
+        return $response;
     }
 
 }

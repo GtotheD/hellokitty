@@ -28,7 +28,6 @@ use App\Repositories\RelateadWorkRepository;
 use App\Repositories\RecommendOtherRepository;
 use App\Repositories\HimoRepository;
 use App\Repositories\RecommendTheaterRepository;
-use App\Model\Product;
 use App\Repositories\ReleaseCalenderRepository;
 use App\Repositories\FavoriteRepository;
 use App\Repositories\CouponRepository;
@@ -168,14 +167,15 @@ $router->group([
         $ageLimitCheck = $request->input('ageLimitCheck', false);
         $work->setAgeLimitCheck($ageLimitCheck);
         $result = $work->get($workId);
+        if (empty($result)) {
+            throw new NoContentsException;
+        }
+
         // 映画リクエストでレスポンスがなかった場合
         if (empty(array_key_exists('makerCd', $result)) && $saleType === $work::SALE_TYPE_THEATER) {
             throw new ContentsException('202-002');
         }
 
-        if (empty($result) || array_key_exists('makerCd', $result) === false) {
-            throw new NoContentsException;
-        }
         $checkAgeLimit = checkAgeLimit(
             $ageLimitCheck,
             $result['ratingId'],
@@ -548,20 +548,21 @@ $router->group([
         $workRepository = new WorkRepository();
         $workRepository->setLimit($request->input('limit', 10));
         $workRepository->setOffset($request->input('offset', 0));
-        $workRepository->setSaleType($request->input('saleType', null));
-        $workRepository->setSort($request->input('sort'));
-        $workRepository->setAgeLimitCheck($request->input('ageLimitCheck', false));
-        $genreId = urldecode($genreId);
+        $saleType = $request->input('saleType', null);
         if(empty($saleType)) {
             throw new BadRequestHttpException;
         }
+        $workRepository->setSaleType($saleType);
+        $workRepository->setSort($request->input('sort'));
+        $workRepository->setAgeLimitCheck($request->input('ageLimitCheck', false));
+        $genreId = urldecode($genreId);
         $rows = $workRepository->genre($genreId);
         if (empty($rows)) {
             throw new NoContentsException;
         }
         $response = [
-            'hasNext' => $work->getHasNext(),
-            'totalCount' => $work->getTotalCount(),
+            'hasNext' => $workRepository->getHasNext(),
+            'totalCount' => $workRepository->getTotalCount(),
             'rows' => $rows
         ];
         return response()->json($response)->header('X-Accel-Expires', '86400');

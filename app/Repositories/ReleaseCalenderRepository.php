@@ -6,89 +6,22 @@ use DB;
 use Illuminate\Support\Carbon;
 use App\Model\HimoReleaseOrder;
 
-class ReleaseCalenderRepository
+class ReleaseCalenderRepository extends BaseRepository
 {
 
-    protected $sort;
-    protected $offset;
-    protected $limit;
-    protected $saleType;
-    protected $rows;
-    protected $totalCount;
-    protected $hasNext;
     protected $genreId;
     protected $month;
     protected $onlyReleased;
     protected $mediaFormat;
     protected $himoReleaseOrder;
-    protected $ageLimitCheck;
 
     const HIMO_TAP_RECOMMEND_KEYWORD = 'riricaleinfo';
     const HIMO_TAP_RECOMMEND = 'recommendation';
 
     public function __construct($sort = 'asc', $offset = 0, $limit = 10)
     {
-        $this->sort = $sort;
-        $this->offset = $offset;
-        $this->limit = $limit;
-
+        parent::__construct($sort, $offset, $limit);
         $this->himoReleaseOrder = New HimoReleaseOrder();
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getHasNext()
-    {
-        return $this->hasNext;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getLimit()
-    {
-        return (int)$this->limit;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getOffset()
-    {
-        return (int)$this->offset;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getTotalCount()
-    {
-        return $this->totalCount;
-    }
-
-    /**
-     * @return Array
-     */
-    public function getRows()
-    {
-        return $this->rows;
-    }
-
-    /**
-     * @param mixed $limit
-     */
-    public function setLimit($limit)
-    {
-        $this->limit = $limit;
-    }
-
-    /**
-     * @param mixed $offset
-     */
-    public function setOffset($offset)
-    {
-        $this->offset = $offset;
     }
 
     /**
@@ -117,28 +50,11 @@ class ReleaseCalenderRepository
     }
 
     /**
-     * @param string $sort
-     */
-    public function setSort($sort)
-    {
-        $this->sort = $sort;
-    }
-
-
-    /**
      * @param mixed $mediaFormat
      */
     public function setMediaFormat($mediaFormat)
     {
         $this->mediaFormat = $mediaFormat;
-    }
-
-    /**
-     * @param mixed $ageLimitCheck
-     */
-    public function setAgeLimitCheck($ageLimitCheck)
-    {
-        $this->ageLimitCheck = $ageLimitCheck;
     }
 
     /**
@@ -458,6 +374,7 @@ class ReleaseCalenderRepository
             'work_title',
             'work_type_id',
             'work_format_id',
+            'scene_l', // 上映映画対応
             'rating_id',
             'big_genre_id',
             'medium_genre_id',

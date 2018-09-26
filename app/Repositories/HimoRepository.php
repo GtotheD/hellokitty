@@ -328,12 +328,12 @@ class HimoRepository extends ApiRequesterRepository
         if (array_key_exists('saleType', $params)) {
             $productSellRentalFlg = null;
             if ($params['saleType'] == 'rental') {
-                $productSellRentalFlg = 2;
+                $this->queryParams['product_sell_rental_flg'] = 2;
             } elseif ($params['saleType'] == 'sell') {
-                $productSellRentalFlg = 1;
-            }
-            if (!empty($productSellRentalFlg)) {
-                $this->queryParams['product_sell_rental_flg'] = $productSellRentalFlg;
+                $this->queryParams['product_sell_rental_flg'] = 1;
+            } elseif ($params['saleType'] == 'theater') {
+                $this->queryParams['service_id'] = ['st'];
+                $this->queryParams['work_products_service_id'] = ['st'];
             }
         }
 
@@ -363,7 +363,8 @@ class HimoRepository extends ApiRequesterRepository
         $this->apiPath = $this->apiHost . '/search/people';
         $this->queryParams = [
             '_system' => 'TsutayaApp',
-            'service_id' => 'tol',
+            'service_id' => ['st'],
+            'work_products_service_id' => ['st'],
             'id_value' => implode(' || ', $queryId),
             'response_level' => $responseLevel,
             'offset' => $this->offset,
@@ -375,7 +376,6 @@ class HimoRepository extends ApiRequesterRepository
         if ($msdbItem) {
             $this->queryParams['msdb_item'] = $msdbItem;
         }
-        dd($this->queryParams);
         return $this;
     }
 
@@ -438,7 +438,7 @@ class HimoRepository extends ApiRequesterRepository
             $filename .= '_2';
             $apiName = 'xmedia';
         }
-        $path = base_path('tests/himo/');
+        $path = base_path('tests/Data/himo/');
         $path = $path . $apiName;
         if ($apiName === 'crossworks') {
             $list = glob($path . '/*/' . $filename);

@@ -13,7 +13,7 @@ use App\Repositories\WorkRepository;
 use App\Repositories\PeopleRepository;
 use App\Repositories\ProductRepository;
 
-class PeopleRelatedWorksRepository extends ApiRequesterRepository
+class PeopleRelatedWorksRepository extends BaseRepository
 {
 
     protected $sort;
@@ -229,6 +229,7 @@ class PeopleRelatedWorksRepository extends ApiRequesterRepository
             'work_type_id',
             'work_title',
             'work_format_id',
+            'scene_l', // 上映映画対応
             'rating_id',
             'big_genre_id',
             'medium_genre_id',

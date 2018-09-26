@@ -20,7 +20,7 @@ abstract class TestCase extends Laravel\Lumen\Testing\TestCase
         parent::setUpBeforeClass();
     }
 
-    public function setUp()
+    public function init()
     {
         parent::setUp();
         if(self::$isSetup === false){
