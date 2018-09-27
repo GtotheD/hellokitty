@@ -4,6 +4,7 @@ namespace tests;
 
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Artisan;
+use tests\TestData;
 
 class TestData
 {
@@ -11,7 +12,7 @@ class TestData
 
     public function __construct()
     {
-        $this->testDir = base_path('tests/fixture/');
+        $this->testDir = base_path('tests/Data/fixture/');
     }
 
     public function getTestDir()

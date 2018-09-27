@@ -101,7 +101,6 @@ class ProductRepository extends BaseRepository
             "t2.number_of_volume",
             "t2.sale_start_date",
             "t2.price_tax_out",
-            "t2.media_format_id",
         ];
         $isAudio = false;
         $products = $this->product->setConditionByWorkIdNewestProduct($workId)->select('msdb_item')->getOne();
@@ -201,6 +200,7 @@ class ProductRepository extends BaseRepository
         } else {
             $this->hasNext = false;
         }
+
         return $this->rentalGroupReformat($response);
     }
 
@@ -224,6 +224,7 @@ class ProductRepository extends BaseRepository
 
             $reformatResult[] = $product;
         }
+
         return $reformatResult;
 
     }
@@ -279,12 +280,7 @@ class ProductRepository extends BaseRepository
                 $product['playTime'] = $this->editPlayTimeFormat($product['playTime']);
             }
             $product['itemName'] = $this->convertItemCdToStr($product['itemCd']);
-            // シアターの場合は、saleTypeをtheaterに変更する。
-            if ( $product['mediaFormatId'] === self::MEDIA_FORMAT_ID_THEATER) {
-                $product['saleType'] = WorkRepository::SALE_TYPE_THEATER;
-            } else {
-                $product['saleType'] = $this->convertProductTypeToStr($product['productTypeId']);
-            }
+            $product['saleType'] = $this->convertProductTypeToStr($product['productTypeId']);
             $product['jacketL'] = trimImageTag($product['jacketL']);
             $product['newFlg'] = newFlg($product['saleStartDate']);
 

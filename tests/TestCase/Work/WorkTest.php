@@ -2,35 +2,44 @@
 
 use tests\TestData;
 
+/*
+ * Work（作品情報取得） APIテスト
+ *
+ */
 class WorkTest extends TestCase
 {
-    private $apiPath;
 
-    public function setUp()
+    public function workDataProvider()
     {
-        parent::setUp();
-        $this->baseUrl = env('APP_URL').'/'.env('URL_PATH_PREFIX').env('API_VERSION');
-    }
-
-    public static function setUpBeforeClass()
-    {
-        parent::setUpBeforeClass();
-        $bk2Seeder = new TestDataBk2RecommendsSeeder;
-        $bk2Seeder->run();
-        $keywordSeeder = new TestDataKeywordSuggestSeeder();
-        $keywordSeeder->run();
+        return [
+            ['PTA0000SF309', 'rental'], // DVD
+            ['PTA0000U62N9', 'rental'], // CD
+            ['PTA0000GD16P', 'rental'], // BOOK
+            ['PTA0000SF309', 'sell'], // DVD
+            ['PTA0000U62N9', 'sell'], // CD
+            ['PTA0000GD16P', 'sell'], // BOOK
+            ['PTA0000U8W8U', 'sell'], // GAME
+        ];
     }
 
     /**
      * @test
-     * 作品情報取得テスト
+     * @dataProvider workDataProvider
      */
-    public function Work()
+    public function セルレンタル区分別($workId, $saleType)
     {
-        $url = '/work/PTA0000SF309';
-        $response = $this->getJsonWithAuth( $url);
-        $response->assertResponseStatus(200);
+        $url = '/work/' . $workId . '?saleType=' . $saleType;
+        $response = $this->getWithAuth($url);
+        $actual = json_decode($response->getContent(), true);
+        $expected = json_decode(file_get_contents(__DIR__ . '/expected/' . $workId . '_' . $saleType), true);
+        unset($expected['data']['createdAt']);
+        unset($expected['data']['updatedAt']);
+        unset($actual['data']['createdAt']);
+        unset($actual['data']['updatedAt']);
+        $this->assertEquals($expected, $actual);
     }
+
+
     /**
      * @test
      * 作品情報取得テスト　ミュージコデータ
@@ -49,7 +58,7 @@ class WorkTest extends TestCase
      */
     public function workAgeLimitNoAdult()
     {
-        $url = '/work/PTA0000R6VWD?saleType=sell';
+        $url = '/work/PTA0000RV0LG?saleType=sell';
         $response = $this->getJsonWithAuth( $url);
         $response->assertResponseStatus(200);
     }
@@ -63,6 +72,10 @@ class WorkTest extends TestCase
         $url = '/work/PTA0000V6J54';
         $response = $this->getJsonWithAuth( $url);
         $response->assertResponseStatus(202);
+        $response->seeJson([
+            "message" => "Age limit auth error",
+            "status" => "202-001"
+        ]);
     }
 
     /**
@@ -77,4 +90,5 @@ class WorkTest extends TestCase
             'supplement' => '',
         ]);
     }
+
 }

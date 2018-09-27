@@ -127,6 +127,8 @@ class WorkRepository extends BaseRepository
     const MUSICO_LINK_ALBUM = '/album/view/%s?sc_ext=tsutaya_music_musbutton';
     const MUSICO_LINK_SINGLE = '/chakuuta/detail/%s?sc_ext=tsutaya_music_musbutton';
 
+    const ONLY_OTHER = '1';
+
     public function __construct($sort = 'asc', $offset = 0, $limit = 10)
     {
         parent::__construct($sort, $offset, $limit);
@@ -189,7 +191,7 @@ class WorkRepository extends BaseRepository
         }
 
         if (empty($selectColumns)) {
-            $response = (array)$this->work->toCamel(['id'])->getOne();
+            $response = (array)$this->work->toCamel(['id', 'created_at', 'updated_at', 'only_other'])->getOne();
         } else {
             $response = (array)$this->work->selectCamel($selectColumns)->getOne();
         }
@@ -499,7 +501,6 @@ class WorkRepository extends BaseRepository
                     $response['workFormatName'] = self::MSDB_ITEM_AUDIO_SINGLE_NAME;
                 }
             }
-
             if (empty($response['saleType'])) {
                 $response['saleType'] = $productRepository->convertProductTypeToStr($product['productTypeId']);
             }
@@ -517,8 +518,6 @@ class WorkRepository extends BaseRepository
                 $response['mediumGenreId'],
                 $response['smallGenreId'],
                 $product['makerCd']);
-            // ジャケ写の挿入
-            $response['jacketL'] = ($displayImage) ? $product['jacketL'] : '';
             // アダルト判定
             $isAdult = isAdult(
                 $response['ratingId'],
@@ -527,6 +526,18 @@ class WorkRepository extends BaseRepository
                 $response['smallGenreId'],
                 $product['makerCd']
             );
+
+            // ジャケ写の挿入
+            $response['jacketL'] = ($displayImage) ? $product['jacketL'] : '';
+            // 映画の場合の処理
+            // 再生時間を返却するが上映映画の時の為だけなのでここでは初期化のみ
+            $response['playTime'] = '';
+            if($response['workTypeId'] === self::WORK_TYPE_THEATER) {
+                // 画像はsceneから取得する。
+                $response['jacketL'] = current(json_decode($response['sceneL']));
+                // 再生時間を取得する。
+                $response['playTime'] = $product['playTime'];
+            }
 
             if (array_key_exists('docText', $response)) {
                 $docs = json_decode($response['docText'], true);
@@ -565,16 +576,6 @@ class WorkRepository extends BaseRepository
         // docがセットできなかった場合はブランクにする。
         if ($isDocSet === false) {
             $response['docText'] = '';
-        }
-
-        // 映画の場合の処理
-        // 再生時間を返却するが上映映画の時の為だけなのでここでは初期化のみ
-        $response['playTime'] = '';
-        if($response['workTypeId'] === self::WORK_TYPE_THEATER) {
-            // 画像はsceneから取得する。
-            $response['jacketL'] = current(json_decode($response['sceneL']));
-            // 再生時間を取得する。
-            $response['playTime'] = $product['playTime'];
         }
 
         // musicoリンク
@@ -647,12 +648,12 @@ class WorkRepository extends BaseRepository
             $musicoUrlInsertArray = [];
             $discasCCCprodctIdInsertArray = [];
             foreach ($himoResult['results']['rows'] as $row) {
-                $workData[] = $this->format($row);
                 $insertWorkId[] = $row['work_id'];
                 //$insertResult = $work->insert($base);
                 $musicoUrl = null;
                 $isMusicVideo = false;
                 $discasCCCprodctId = null;
+                $hasTol = false;
                 $deleteProduct = [];
                 foreach ($row['products'] as $product) {
                     // ダウンロード用のデータ生成
@@ -665,6 +666,8 @@ class WorkRepository extends BaseRepository
                         }
                     } else if ($product['service_id'] === 'discas') {
                         $discasCCCprodctId = $product['ccc_product_id'];
+                    } else if ($product['service_id'] === 'tol') {
+                        $hasTol = true;
                     }
 
                     // ミュジックビデオの場合はaudioからvideoに変換するために判定する。
@@ -681,6 +684,8 @@ class WorkRepository extends BaseRepository
                         }
                     }
                 }
+                $workData[] = $this->format($row, false, $hasTol);
+
                 if (!empty($musicoUrl)) {
                     $musicoUrlInsertArray[] = [
                         'work_id' => $row['work_id'],
@@ -1130,7 +1135,7 @@ class WorkRepository extends BaseRepository
         return $result;
     }
 
-    public function format($row, $isNarrow = false)
+    public function format($row, $isNarrow = false, $hasTol = false)
     {
         // Initial key value.
         $base = [
@@ -1194,6 +1199,11 @@ class WorkRepository extends BaseRepository
                 $base['itemType'] = 'game';
                 break;
         }
+        // TOLが存在していた場合
+        if ($hasTol === false) {
+            $base['only_other'] = self::ONLY_OTHER;
+        }
+
         return $base;
     }
 

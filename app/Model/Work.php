@@ -148,7 +148,7 @@ class Work extends Model
         $selectSub = ',MIN(product_unique_id) AS product_unique_id ';
         $subQuery = DB::table('ts_products AS p1')->select(DB::raw($selectSubGrouping.$selectSub))
             ->whereRaw(DB::raw(' item_cd not like \'_1__\' '))
-            ->whereRaw(DB::raw(' service_id not in  (\'discas\', \'ec\', \'musico\')'))
+            ->whereRaw(DB::raw(' service_id  in  (\'tol\', \'st\')'))
             ->whereIn('work_id', $workIds)
             ->groupBy(DB::raw($selectSubGrouping));
         if($ignoreWorkId) {
@@ -232,6 +232,7 @@ class Work extends Model
         }
         $this->dbObject = DB::table($this->table. ' AS t1')
                 ->whereRaw('t1.work_id IN ('.$productsSubQuery->toSql().')')
+                ->orWhereRaw('t1.only_other = \'1\'')
                 ->whereIn('t1.work_id', $workIds);
         return $this;
     }

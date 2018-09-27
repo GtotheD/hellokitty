@@ -9,6 +9,8 @@ class ImportTest extends TestCase
     public function setUp()
     {
         parent::setUp();
+        $testData = new TestData;
+        $testData->jsonInitialize();
     }
 
     /**

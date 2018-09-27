@@ -1,0 +1,23 @@
+{
+  "hasNext": false,
+  "totalCount": 1,
+  "rows": [
+    {
+      "productUniqueId": "PDT0000UBIT7",
+      "itemCd": "0001",
+      "itemName": "",
+      "productTypeId": "2",
+      "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/12468/4988003514358_1L.jpg",
+      "jan": "4988003514358",
+      "rentalProductCd": "005841479",
+      "numberOfVolume": "",
+      "saleStartDate": "2017-11-22 00:00:00",
+      "priceTaxOut": "",
+      "productName": "11月のアンクレット",
+      "productKey": "005841479",
+      "saleType": "rental",
+      "newFlg": false,
+      "message": "在庫状況はTSUTAYAサイトでご確認ください"
+    }
+  ]
+}

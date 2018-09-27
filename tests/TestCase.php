@@ -1,10 +1,16 @@
 <?php
 use Illuminate\Support\Facades\Artisan;
-use tests\TestData;
 
 abstract class TestCase extends Laravel\Lumen\Testing\TestCase
 {
     private static $isSetup = false;
+    var $basePath;
+
+    public function __construct(string $name = null, array $data = [], string $dataName = '')
+    {
+        parent::__construct($name, $data, $dataName);
+        $this->basePath = env('URL_PATH_PREFIX') . env('API_VERSION');
+    }
 
     /**
      * Creates the application.
@@ -20,13 +26,12 @@ abstract class TestCase extends Laravel\Lumen\Testing\TestCase
         parent::setUpBeforeClass();
     }
 
-    public function init()
+    public function setUp()
     {
         parent::setUp();
         if(self::$isSetup === false){
             Artisan::call('migrate');
-            $testData = new TestData;
-            $testData->jsonInitialize();
+            Artisan::call('truncateTable');
             self::$isSetup = true;
         }
     }
@@ -36,23 +41,44 @@ abstract class TestCase extends Laravel\Lumen\Testing\TestCase
         parent::tearDown();
     }
 
-    public function getWithAuth($apiPath, $param = [])
+    public function getWithAuth($uri, $param = [])
     {
         return $this->call('GET',
-            env('URL_PATH_PREFIX') . env('API_VERSION') . $apiPath,
-            $param, [], [], ['HTTP_Authorization' => 'k8AJR0NxM114Ogdl'], []
+            $this->basePath . $uri,
+            $param,
+            [],
+            [],
+            ['HTTP_Authorization' => 'k8AJR0NxM114Ogdl'],
+            []
         );
     }
 
+    public function postWithAuth($uri, $json)
+    {
+        return $this->call(
+            'POST',
+            $this->basePath . $uri,
+            [],
+            [],
+            [],
+            [
+                'HTTP_Authorization' => 'k8AJR0NxM114Ogdl',
+                'CONTENT_TYPE' => 'application/json'
+            ],
+            $json
+        );
+    }
     public function getJsonWithAuth($uri, $param = [])
     {
-        return $this->json('GET', $uri,
+        return $this->json('GET',
+            $this->basePath . $uri,
             $param, ['HTTP_Authorization' => 'k8AJR0NxM114Ogdl']);
     }
 
     public function postJsonWithAuth($uri, $param = [])
     {
-        return $this->json('POST', $uri,
+        return $this->json('POST',
+            $this->basePath . $uri,
             $param, ['HTTP_Authorization' => 'k8AJR0NxM114Ogdl']);
     }
 

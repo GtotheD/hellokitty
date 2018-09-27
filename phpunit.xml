@@ -10,8 +10,14 @@
          stopOnFailure="false"
          syntaxCheck="false">
     <testsuites>
-        <testsuite name="Application Test Suite">
-            <directory suffix="Test.php">./tests</directory>
+        <testsuite name="import">
+            <directory suffix="Test.php">./tests/TestCase/Import</directory>
+        </testsuite>
+        <testsuite name="work">
+            <directory suffix="Test.php">./tests/TestCase/Work</directory>
+            <directory suffix="Test.php">./tests/TestCase/WorkBulk</directory>
+            <directory suffix="Test.php">./tests/TestCase/WorkProducts</directory>
+            <directory suffix="Test.php">./tests/TestCase/WorkProductsRental</directory>
         </testsuite>
     </testsuites>
     <filter>
@@ -20,6 +26,7 @@
         </whitelist>
     </filter>
     <php>
+        <env name="APP_ENV" value="testing"/>
         <env name="CACHE_DRIVER" value="array"/>
         <env name="QUEUE_DRIVER" value="sync"/>
     </php>

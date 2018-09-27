@@ -1,56 +1,29 @@
 <?php
 
-use tests\TestData;
 
 class WorkProductsRentalTest extends TestCase
 {
-    private $apiPath;
-
-    public function setUp()
+    public function workDataProvider()
     {
-        parent::setUp();
-        $this->baseUrl = env('APP_URL').'/'.env('URL_PATH_PREFIX').env('API_VERSION');
-    }
-
-    public static function setUpBeforeClass()
-    {
-        parent::setUpBeforeClass();
-        $bk2Seeder = new TestDataBk2RecommendsSeeder;
-        $bk2Seeder->run();
-        $keywordSeeder = new TestDataKeywordSuggestSeeder();
-        $keywordSeeder->run();
+        return [
+            ['PTA0000SF309'], // DVDレンタルはproduct/rentalをコールするため不要
+        ];
     }
 
     /**
-     * @return array
-     */
-    public function dataProvider()
-    {
-        $path = base_path('tests/himo/crossworks/');
-        $audioList = glob($path.'/audio/*');
-        $videoList = glob($path.'/video/*');
-        $bookList = glob($path.'/book/*');
-        $gameList = glob($path.'/game/*');
-        $list = array_merge($audioList, $videoList, $bookList, $gameList);
-        foreach ($list as $row) {
-            $workIds[] = [
-                    basename($row),
-                    ''
-                ];
-        }
-        return $workIds;
-    }
-
-    /**
-     * All
-     * @dataProvider dataProvider
      * @test
+     * @dataProvider workDataProvider
      */
-    public function workProductRental($workId, $expected)
+    public function セルレンタル区分別($workId)
     {
-        $url = '/work/'.$workId;
-        $this->getJsonWithAuth( $url);
-        $response = $this->getJsonWithAuth('/work/'.$workId.'/products/rental');
-        $response->assertResponseStatus(200);
+        $url = '/work/' . $workId . '/products/rental';
+        $response = $this->getWithAuth($url);
+        $actual = json_decode($response->getContent(), true);
+        $expected = json_decode(file_get_contents(__DIR__ . '/expected/' . $workId), true);
+        unset($expected['data']['createdAt']);
+        unset($expected['data']['updatedAt']);
+        unset($actual['data']['createdAt']);
+        unset($actual['data']['updatedAt']);
+        $this->assertEquals($expected, $actual);
     }
 }
