@@ -232,6 +232,7 @@ class Work extends Model
         }
         $this->dbObject = DB::table($this->table. ' AS t1')
                 ->whereRaw('t1.work_id IN ('.$productsSubQuery->toSql().')')
+                ->orWhereRaw('t1.only_other = \'1\'')
                 ->whereIn('t1.work_id', $workIds);
         return $this;
     }

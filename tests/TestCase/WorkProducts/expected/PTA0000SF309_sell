@@ -1,0 +1,40 @@
+{
+  "hasNext": false,
+  "totalCount": 2,
+  "rows": [
+    {
+      "productName": "パイレーツ・オブ・カリビアン/最後の海賊 4K UHD MovieNEX",
+      "productUniqueId": "PDT0000U2DDV",
+      "itemCd": "1022",
+      "itemName": "bluray",
+      "productTypeId": "1",
+      "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/12434/4959241768810_1L.jpg",
+      "jan": "4959241768810",
+      "rentalProductCd": "",
+      "numberOfVolume": "",
+      "saleStartDate": "2017-11-08 00:00:00",
+      "priceTaxOut": "8000",
+      "productKey": "4959241768810",
+      "saleType": "sell",
+      "newFlg": false,
+      "message": "在庫状況はTSUTAYAサイトでご確認ください"
+    },
+    {
+      "productName": "パイレーツ・オブ・カリビアン/最後の海賊 MovieNEX(BD+DVD)",
+      "productUniqueId": "PDT0000U2DDU",
+      "itemCd": "1022",
+      "itemName": "bluray",
+      "productTypeId": "1",
+      "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/12434/4959241768698_1L.jpg",
+      "jan": "4959241768698",
+      "rentalProductCd": "",
+      "numberOfVolume": "",
+      "saleStartDate": "2017-11-08 00:00:00",
+      "priceTaxOut": "4200",
+      "productKey": "4959241768698",
+      "saleType": "sell",
+      "newFlg": false,
+      "message": "在庫状況はTSUTAYAサイトでご確認ください"
+    }
+  ]
+}

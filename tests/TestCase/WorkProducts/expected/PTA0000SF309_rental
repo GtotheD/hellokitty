@@ -1,0 +1,40 @@
+{
+  "hasNext": false,
+  "totalCount": 2,
+  "rows": [
+    {
+      "productName": "パイレーツ・オブ・カリビアン/最後の海賊",
+      "productUniqueId": "PDT0000U2COO",
+      "itemCd": "0021",
+      "itemName": "dvd",
+      "productTypeId": "2",
+      "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/12549/4959241768735_1L.jpg",
+      "jan": "4959241768735",
+      "rentalProductCd": "083834446",
+      "numberOfVolume": "",
+      "saleStartDate": "2017-11-08 00:00:00",
+      "priceTaxOut": "",
+      "productKey": "083834446",
+      "saleType": "rental",
+      "newFlg": false,
+      "message": "在庫状況はTSUTAYAサイトでご確認ください"
+    },
+    {
+      "productName": "パイレーツ・オブ・カリビアン/最後の海賊",
+      "productUniqueId": "PDT0000U2COC",
+      "itemCd": "0022",
+      "itemName": "bluray",
+      "productTypeId": "2",
+      "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/12550/9999205710963_1L.jpg",
+      "jan": "9999205710963",
+      "rentalProductCd": "060333100",
+      "numberOfVolume": "001",
+      "saleStartDate": "2017-11-08 00:00:00",
+      "priceTaxOut": "",
+      "productKey": "060333100",
+      "saleType": "rental",
+      "newFlg": false,
+      "message": "在庫状況はTSUTAYAサイトでご確認ください"
+    }
+  ]
+}

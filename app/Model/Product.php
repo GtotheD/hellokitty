@@ -46,7 +46,7 @@ class Product extends Model
     {
         $this->dbObject = DB::table($this->table)
             // TOL,ST以外を排他
-            ->whereRaw(DB::raw(' service_id  in  (\'tol\', \'st\')'))
+            ->whereRaw(DB::raw(' service_id  in  (\'tol\')'))
             ->where('work_id', $workId);
         return $this;
     }
@@ -58,6 +58,7 @@ class Product extends Model
             ->where('t2.work_id', $workId)
             ->where('is_dummy', '=', self::DUMMY_DATA_IS_NOT_DUMMY)
             ->where('product_type_id', '=', self::PRODUCT_TYPE_ID_RENTAL)
+            ->whereRaw(DB::raw(' service_id  in  (\'tol\')'))
             ->whereRaw(DB::raw(' item_cd not like \'_1__\' '))
 //            ->whereRaw(DB::raw(' jan not like \'9999_________\' '))
             ->orderBy('t2.ccc_product_id', 'desc') // 最古のものを一番上にもってきて取得する為
@@ -103,6 +104,8 @@ class Product extends Model
         }
         $this->dbObject->orderBy('ccc_family_cd', 'desc')
             ->orderBy('sale_start_date', 'desc')
+            // todo: この条件をいれないとccc_family_cdとsale_start_dateだけではかぶってしまう
+            // ->orderBy('jan', 'desc')
             ->limit(1);
         return $this;
     }
@@ -115,7 +118,7 @@ class Product extends Model
             ->select('jacket_l')
             ->whereRaw(DB::raw('t2.work_id = t1.work_id'))
             ->whereRaw(DB::raw('t2.product_type_id = t1.product_type_id'))
-            ->whereRaw(DB::raw('(jacket_l <> null OR jacket_l <> \'\')'))
+            ->whereRaw(DB::raw(' service_id  in  (\'tol\', \'st\')'))
             ->orderBy('ccc_family_cd', 'desc')
             ->orderBy('item_cd_right_2', 'asc')
             ->orderBy('sale_start_date', 'desc')
@@ -158,6 +161,7 @@ class Product extends Model
                 }
             })
             ->select(DB::raw('p2.*'))
+            ->whereRaw(DB::raw(' service_id  in  (\'tol\', \'st\')'))
             ->where([
                 ['p1.rental_product_cd', '=', $rentalProductCd],
                 ['p2.product_type_id', '=', self::PRODUCT_TYPE_ID_RENTAL]
@@ -170,6 +174,7 @@ class Product extends Model
         $this->dbObject = DB::table($this->table . ' AS p1')
             ->join($this->table . ' AS p2', 'p1.ccc_family_cd', '=', 'p2.ccc_family_cd')
             ->select(DB::raw('p1.*'))
+            ->whereRaw(DB::raw(' service_id  in  (\'tol\', \'st\')'))
             ->where([
                 ['p1.work_id', '=', 'p2.work_id'],
                 ['p1.jan', '=', $jan],
@@ -241,7 +246,8 @@ class Product extends Model
             .'MAX(CASE WHEN SUBSTRING(item_cd, 2, 1) = \'1\' THEN product_unique_id END) AS ppt ';
         $subQueryBase = DB::table($this->table)->select(DB::raw($selectSubGrouping.$selectSub))
             ->whereRaw(DB::raw(' work_id = \''.$workId .'\''))
-            ->whereRaw(DB::raw(' service_id not in  (\'discas\', \'ec\', \'musico\')'))
+            // プロダクトは上映映画の時は呼ばないのでtolのみで絞る
+            ->whereRaw(DB::raw(' service_id in  (\'tol\')'))
 //            ->whereRaw(DB::raw(' item_cd not like \'_1__\' '))
             //->whereRaw(DB::raw(' item_cd not like \'__20\' ')) // VHSも出力するように変更
 //            ->whereRaw(DB::raw(' jan not like \'9999_________\' '))
@@ -269,11 +275,15 @@ class Product extends Model
         if ($order === 'old') {
             $this->dbObject
                 ->orderBy('t2.sale_start_date', 'asc')
-                ->orderBy('t2.ccc_family_cd', 'asc');
+                ->orderBy('t2.ccc_family_cd', 'asc')
+                ->orderBy('t2.jan', 'asc')
+            ;
         } else {
             $this->dbObject
                 ->orderBy('t2.sale_start_date', 'desc')
-                ->orderBy('t2.ccc_family_cd', 'desc');
+                ->orderBy('t2.ccc_family_cd', 'desc')
+                ->orderBy('t2.jan', 'desc')
+            ;
         }
         return $this;
     }
@@ -292,7 +302,7 @@ class Product extends Model
         $subQuery = DB::table($this->table)->select(DB::raw($selectQuery))
             ->whereRaw(DB::raw('work_id = \''.$workId . '\''))
             ->whereRaw(DB::raw(' product_type_id = 2 '))
-            ->whereRaw(DB::raw(' service_id not in  (\'discas\', \'ec\', \'musico\')'))
+            ->whereRaw(DB::raw(' service_id in  (\'tol\')'))
 //            ->whereRaw(DB::raw(' jan not like \'9999_________\' '))
             ->groupBy(DB::raw($groupingColumn))
         ;
@@ -321,16 +331,16 @@ class Product extends Model
         $columns = 'MAX(ccc_product_id) as ccc_product_id';
         $selectQuery = $groupingColumn.','.$columns;
         $subQuery = DB::table($this->table)->select(DB::raw($selectQuery))
-            ->whereRaw(DB::raw('work_id = \''.$workId . '\''))
-            ->whereRaw(DB::raw('ccc_family_cd = \''.$cccFamilyCd . '\''))
-            ->whereRaw(DB::raw('sale_start_date = \''.$saleStartData . '\''))
-            ->whereRaw(DB::raw(' product_type_id = 2 '))
+            ->whereRaw(DB::raw(' work_id = \''.$workId . '\''))
+            ->whereRaw(DB::raw(' ccc_family_cd = \''.$cccFamilyCd . '\''))
+            ->whereRaw(DB::raw(' sale_start_date = \''.$saleStartData . '\''))
             ->groupBy(DB::raw($groupingColumn));
         $this->dbObject = DB::table(DB::raw("({$subQuery->toSql()}) as t1"))
             ->join($this->table.' as t2', function ($join) {
                 $join->on('t2.work_id', '=', 't1.work_id')
 //                    ->whereRaw(DB::raw(' jan not like \'9999_________\' '))
-                    ->whereRaw(DB::raw('t2.work_id = t1.work_id'))
+                    ->whereRaw(DB::raw(' product_type_id = 2 '))
+                    ->whereRaw(DB::raw(' service_id in  (\'tol\')'))
                     ->whereRaw(DB::raw('t2.ccc_family_cd = t1.ccc_family_cd'))
                     ->whereRaw(DB::raw('t2.sale_start_date = t1.sale_start_date'));
             });
