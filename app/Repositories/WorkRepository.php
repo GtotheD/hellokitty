@@ -517,8 +517,6 @@ class WorkRepository extends BaseRepository
                 $response['mediumGenreId'],
                 $response['smallGenreId'],
                 $product['makerCd']);
-            // ジャケ写の挿入
-            $response['jacketL'] = ($displayImage) ? $product['jacketL'] : '';
             // アダルト判定
             $isAdult = isAdult(
                 $response['ratingId'],
@@ -527,6 +525,18 @@ class WorkRepository extends BaseRepository
                 $response['smallGenreId'],
                 $product['makerCd']
             );
+
+            // ジャケ写の挿入
+            $response['jacketL'] = ($displayImage) ? $product['jacketL'] : '';
+            // 映画の場合の処理
+            // 再生時間を返却するが上映映画の時の為だけなのでここでは初期化のみ
+            $response['playTime'] = '';
+            if($response['workTypeId'] === self::WORK_TYPE_THEATER) {
+                // 画像はsceneから取得する。
+                $response['jacketL'] = current(json_decode($response['sceneL']));
+                // 再生時間を取得する。
+                $response['playTime'] = $product['playTime'];
+            }
 
             if (array_key_exists('docText', $response)) {
                 $docs = json_decode($response['docText'], true);
@@ -565,16 +575,6 @@ class WorkRepository extends BaseRepository
         // docがセットできなかった場合はブランクにする。
         if ($isDocSet === false) {
             $response['docText'] = '';
-        }
-
-        // 映画の場合の処理
-        // 再生時間を返却するが上映映画の時の為だけなのでここでは初期化のみ
-        $response['playTime'] = '';
-        if($response['workTypeId'] === self::WORK_TYPE_THEATER) {
-            // 画像はsceneから取得する。
-            $response['jacketL'] = current(json_decode($response['sceneL']));
-            // 再生時間を取得する。
-            $response['playTime'] = $product['playTime'];
         }
 
         // musicoリンク

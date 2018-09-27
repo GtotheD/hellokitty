@@ -45,6 +45,8 @@ class Product extends Model
     public function setConditionByWorkId($workId)
     {
         $this->dbObject = DB::table($this->table)
+            // TOL,ST以外を排他
+            ->whereRaw(DB::raw(' service_id  in  (\'tol\', \'st\')'))
             ->where('work_id', $workId);
         return $this;
     }
@@ -85,10 +87,10 @@ class Product extends Model
     public function setConditionByWorkIdNewestProduct($workId, $saleType = null, $isMovie = false)
     {
         $this->dbObject = DB::table($this->table . ' as t1')
+            ->whereRaw(DB::raw(' service_id  in  (\'tol\', \'st\')'))
             ->where([
                 'work_id' => $workId,
             ]);
-
         // Add sale type filter
         if ($saleType) {
             $this->dbObject->where([
