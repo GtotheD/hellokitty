@@ -25,8 +25,6 @@ abstract class TestCase extends Laravel\Lumen\Testing\TestCase
         parent::setUp();
         if(self::$isSetup === false){
             Artisan::call('migrate');
-            $testData = new TestData;
-            $testData->jsonInitialize();
             self::$isSetup = true;
         }
     }
