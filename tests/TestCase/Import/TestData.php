@@ -4,7 +4,6 @@ namespace tests;
 
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Artisan;
-use tests\TestData;
 
 class TestData
 {

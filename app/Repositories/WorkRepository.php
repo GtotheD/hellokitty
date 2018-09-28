@@ -504,10 +504,6 @@ class WorkRepository extends BaseRepository
             if (empty($response['saleType'])) {
                 $response['saleType'] = $productRepository->convertProductTypeToStr($product['productTypeId']);
             }
-            if ($response['workTypeId'] === self::WORK_TYPE_THEATER) {
-                // 映画作品の場合は固定でいれる
-                $response['saleType'] = self::SALE_TYPE_THEATER;
-            }
 
             // 年齢チェック表示チェック
             $displayImage = checkAgeLimit(
@@ -584,6 +580,11 @@ class WorkRepository extends BaseRepository
         $musicoUrlData = $musicoUrl->setConditionByWorkId($response['workId'])->toCamel()->getOne();
         if (!empty($musicoUrlData)) {
             $response['musicDownloadUrl'] = env('MUSICO_URL') . $musicoUrlData->url;
+        }
+
+        // 映画作品の場合は固定でいれる
+        if ($response['workTypeId'] === self::WORK_TYPE_THEATER) {
+            $response['saleType'] = self::SALE_TYPE_THEATER;
         }
 
         if ($addSaleTypeHas) {
