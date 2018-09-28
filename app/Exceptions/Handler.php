@@ -10,6 +10,7 @@ use Laravel\Lumen\Exceptions\Handler as ExceptionHandler;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use App\Exceptions\NoContentsException as NoContentsException;
+use App\Exceptions\ContentsException as ContentsException;
 use App\Exceptions\AgeLimitException as AgeLimitException;
 
 class Handler extends ExceptionHandler
@@ -25,7 +26,8 @@ class Handler extends ExceptionHandler
         ModelNotFoundException::class,
         ValidationException::class,
         NoContentsException::class,
-        AgeLimitException::class
+        AgeLimitException::class,
+        ContentsException::class
     ];
 
     /**
@@ -65,6 +67,8 @@ class Handler extends ExceptionHandler
             return response()->json(['status' => $e->getStatusCode()], $e->getStatusCode());
         } else if ($e instanceof AgeLimitException) {
             return response()->json(['message' => $e->getMessage(), 'status' => '202-001'], 202);
+        } else if ($e instanceof ContentsException) {
+            return $e->render();
         } else if ($e instanceof NoContentsException) {
             return response()->json(['status' => '204'], 204);
         } else if ($e instanceof BadRequestHttpException) {

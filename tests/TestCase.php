@@ -1,10 +1,12 @@
 <?php
+
 use Illuminate\Support\Facades\Artisan;
 
 abstract class TestCase extends Laravel\Lumen\Testing\TestCase
 {
     private static $isSetup = false;
     var $basePath;
+    var $testDir;
 
     public function __construct(string $name = null, array $data = [], string $dataName = '')
     {
@@ -21,6 +23,7 @@ abstract class TestCase extends Laravel\Lumen\Testing\TestCase
     {
         return require __DIR__ . '/../bootstrap/app.php';
     }
+
     public static function setUpBeforeClass()
     {
         parent::setUpBeforeClass();
@@ -29,7 +32,7 @@ abstract class TestCase extends Laravel\Lumen\Testing\TestCase
     public function setUp()
     {
         parent::setUp();
-        if(self::$isSetup === false){
+        if (self::$isSetup === false) {
             Artisan::call('migrate');
             Artisan::call('truncateTable');
             self::$isSetup = true;
@@ -68,6 +71,7 @@ abstract class TestCase extends Laravel\Lumen\Testing\TestCase
             $json
         );
     }
+
     public function getJsonWithAuth($uri, $param = [])
     {
         return $this->json('GET',
@@ -82,7 +86,29 @@ abstract class TestCase extends Laravel\Lumen\Testing\TestCase
             $param, ['HTTP_Authorization' => 'k8AJR0NxM114Ogdl']);
     }
 
-    public function setIsSetUp($isSetUp = true) {
-        self::$isSetup = true;
+    public function setIsSetUp($isSetUp = true)
+    {
+        self::$isSetup = $isSetUp;
+    }
+
+    /*
+     * 販売種別用テスト
+     * 200の時は期待値ファイルとの比較を行う。
+     * 200以外の場合はステータスコードの比較を行う。
+     */
+    public function saleTypeTestCase($workId, $saleType, $responseCode, $actualResponse)
+    {
+        if ($responseCode === 200) {
+            $actual = json_decode($actualResponse->getContent(), true);
+            $expected = json_decode(file_get_contents( $this->testDir . '/expected/' . $workId . '_' . $saleType), true);
+            unset($expected['data']['createdAt']);
+            unset($expected['data']['updatedAt']);
+            unset($actual['data']['createdAt']);
+            unset($actual['data']['updatedAt']);
+            $this->assertEquals($expected, $actual);
+        } else {
+            $actualStatusCode =$actualResponse->getStatusCode();
+            $this->assertEquals($responseCode, $actualStatusCode);
+        }
     }
 }

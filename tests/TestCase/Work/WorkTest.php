@@ -8,17 +8,30 @@ use tests\TestData;
  */
 class WorkTest extends TestCase
 {
+    public function __construct(string $name = null, array $data = [], string $dataName = '')
+    {
+        parent::__construct($name, $data, $dataName);
+        $this->testDir = __DIR__;
+    }
 
+    /*
+     * 販売種別テスト用テストケース
+     */
     public function workDataProvider()
     {
         return [
-            ['PTA0000SF309', 'rental'], // DVD
-            ['PTA0000U62N9', 'rental'], // CD
-            ['PTA0000GD16P', 'rental'], // BOOK
-            ['PTA0000SF309', 'sell'], // DVD
-            ['PTA0000U62N9', 'sell'], // CD
-            ['PTA0000GD16P', 'sell'], // BOOK
-            ['PTA0000U8W8U', 'sell'], // GAME
+            ['PTA0000SF309', 'rental', 200], // DVD
+            ['PTA0000U62N9', 'rental', 200], // CD
+            ['PTA0000GD16P', 'rental', 200], // BOOK
+            ['PTA0000SF309', 'sell', 200], // DVD
+            ['PTA0000U62N9', 'sell', 200], // CD
+            ['PTA0000GD16P', 'sell', 200], // BOOK
+            ['PTA0000U8W8U', 'sell', 200], // GAME
+            ['PTA0000SF309', 'theater', 202], // DVD
+            ['PTA0000U62N9', 'theater', 204], // CD
+            ['PTA0000GD16P', 'theater', 204], // BOOK
+            ['PTA0000U8W8U', 'theater', 204], // GAME
+            ['PTA0000WEKO0', 'theater', 200], // 上映映画
         ];
     }
 
@@ -26,17 +39,11 @@ class WorkTest extends TestCase
      * @test
      * @dataProvider workDataProvider
      */
-    public function セルレンタル区分別($workId, $saleType)
+    public function セルレンタル区分別($workId, $saleType, $responseCode)
     {
         $url = '/work/' . $workId . '?saleType=' . $saleType;
         $response = $this->getWithAuth($url);
-        $actual = json_decode($response->getContent(), true);
-        $expected = json_decode(file_get_contents(__DIR__ . '/expected/' . $workId . '_' . $saleType), true);
-        unset($expected['data']['createdAt']);
-        unset($expected['data']['updatedAt']);
-        unset($actual['data']['createdAt']);
-        unset($actual['data']['updatedAt']);
-        $this->assertEquals($expected, $actual);
+        $this->saleTypeTestCase($workId, $saleType, $responseCode, $response);
     }
 
 
@@ -73,7 +80,7 @@ class WorkTest extends TestCase
         $response = $this->getJsonWithAuth( $url);
         $response->assertResponseStatus(202);
         $response->seeJson([
-            "message" => "Age limit auth error",
+            "message" => "Age limit error.",
             "status" => "202-001"
         ]);
     }

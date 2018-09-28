@@ -189,7 +189,6 @@ class WorkRepository extends BaseRepository
                 $this->insertWorkData($himoResult, $this->work);
             }
         }
-
         if (empty($selectColumns)) {
             $response = (array)$this->work->toCamel(['id', 'created_at', 'updated_at', 'only_other'])->getOne();
         } else {
