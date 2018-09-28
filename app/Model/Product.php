@@ -46,7 +46,7 @@ class Product extends Model
     {
         $this->dbObject = DB::table($this->table)
             // TOL,ST以外を排他
-            ->whereRaw(DB::raw(' service_id  in  (\'tol\')'))
+            ->whereRaw(DB::raw(' service_id  in  (\'tol\', \'st\')'))
             ->where('work_id', $workId);
         return $this;
     }

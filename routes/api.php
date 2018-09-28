@@ -167,13 +167,17 @@ $router->group([
         $ageLimitCheck = $request->input('ageLimitCheck', false);
         $work->setAgeLimitCheck($ageLimitCheck);
         $result = $work->get($workId);
-        if (empty($result)) {
-            throw new NoContentsException;
+        // 映画リクエストでレスポンスがなかった場合
+        if (
+            $result['msdbItem'] === $work::MSDB_ITEM_VIDEO &&
+            $result['workTypeId'] !== $work::WORK_TYPE_THEATER &&
+            $saleType === $work::SALE_TYPE_THEATER
+        ) {
+            throw new ContentsException('202-002');
         }
 
-        // 映画リクエストでレスポンスがなかった場合
-        if (empty(array_key_exists('makerCd', $result)) && $saleType === $work::SALE_TYPE_THEATER) {
-            throw new ContentsException('202-002');
+        if (empty(array_key_exists('makerCd', $result)) || empty($result)) {
+            throw new NoContentsException;
         }
 
         $checkAgeLimit = checkAgeLimit(
@@ -186,7 +190,7 @@ $router->group([
             $result['makerCd']
         );
         if (!$checkAgeLimit) {
-            throw new AgeLimitException('Age limit auth error', 202);
+            throw new ContentsException('202-001');
         }
         $response = [
             'data' => $result
