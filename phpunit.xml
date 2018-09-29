@@ -18,6 +18,7 @@
             <directory suffix="Test.php">./tests/TestCase/WorkBulk</directory>
             <directory suffix="Test.php">./tests/TestCase/WorkProducts</directory>
             <directory suffix="Test.php">./tests/TestCase/WorkProductsRental</directory>
+            <directory suffix="Test.php">./tests/TestCase/WorkProductsHas</directory>
         </testsuite>
     </testsuites>
     <filter>

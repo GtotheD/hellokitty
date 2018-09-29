@@ -1,17 +1,15 @@
 <?php
 
-class WorkProductsTest extends TestCase
+class WorkProductsHasTest extends TestCase
 {
     public function workDataProvider()
     {
         return [
-             // DVDレンタルはproduct/rentalをコールするため不要
-            ['PTA0000U62N9', 'rental'], // CD
-            ['PTA0000GD16P', 'rental'], // BOOK
-            ['PTA0000SF309', 'sell'], // DVD
-            ['PTA0000U62N9', 'sell'], // CD
-            ['PTA0000GD16P', 'sell'], // BOOK
-            ['PTA0000U8W8U', 'sell'], // GAME
+            ['PTA0000SF309'], // 通常DVD
+            ['PTA0000WEKO0'], // 上映映画
+            ['PTA0000U62N9'], // CD
+            ['PTA0000GD16P'], // BOOK
+            ['PTA0000U8W8U'], // GAME
         ];
     }
 
@@ -19,12 +17,12 @@ class WorkProductsTest extends TestCase
      * @test
      * @dataProvider workDataProvider
      */
-    public function セルレンタル区分別($workId, $saleType)
+    public function セルレンタル区分別($workId)
     {
-        $url = '/work/' . $workId . '/products?saleType=' . $saleType;
+        $url = '/work/' . $workId . '/products/has';
         $response = $this->getWithAuth($url);
         $actual = json_decode($response->getContent(), true);
-        $expected = json_decode(file_get_contents(__DIR__ . '/expected/' . $workId . '_' . $saleType), true);
+        $expected = json_decode(file_get_contents(__DIR__ . '/expected/' . $workId), true);
         unset($expected['data']['createdAt']);
         unset($expected['data']['updatedAt']);
         unset($actual['data']['createdAt']);
@@ -32,19 +30,6 @@ class WorkProductsTest extends TestCase
         $this->assertEquals($expected, $actual);
     }
 
-
-//    /**
-//     * Sell
-//     * @dataProvider dataProvider
-//     * @test
-//     */
-//    public function workProductSell($workId, $expected)
-//    {
-//        $url = '/work/' . $workId;
-//        $this->getJsonWithAuth($url);
-//        $response = $this->getJsonWithAuth('/work/' . $workId . '/products?saleType=sell');
-//        $response->assertResponseStatus(200, 204);
-//    }
 /*
  * MOVIE
  */

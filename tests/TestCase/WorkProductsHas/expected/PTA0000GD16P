@@ -1,0 +1,37 @@
+{
+  "data": {
+    "workId": "PTA0000GD16P",
+    "workTypeId": "3",
+    "workFormatId": "",
+    "workTitle": "ベルセルク",
+    "sceneL": "[]",
+    "ratingId": "EXT000000008",
+    "bigGenreId": "EXT000073X10",
+    "mediumGenreId": "EXT000074181",
+    "smallGenreId": "EXT00007539N",
+    "urlCd": "40003142",
+    "cccWorkCd": "40005490",
+    "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/12263/9784592144397_1L.jpg",
+    "saleStartDate": "2017-07-26 00:00:00",
+    "adultFlg": false,
+    "msdbItem": "book",
+    "supplement": "三浦建太郎",
+    "productName": "ベルセルク（39）",
+    "priceTaxOut": "",
+    "personId": "PPS00000IZYA",
+    "makerCd": "EXT000077DF1",
+    "videoFlg": true,
+    "makerName": "白泉社",
+    "saleType": "rental",
+    "newFlg": false,
+    "itemType": "book",
+    "saleTypeHas": {
+      "sell": true,
+      "rental": true,
+      "theater": false
+    },
+    "docText": "",
+    "musicDownloadUrl": null,
+    "playTime": ""
+  }
+}

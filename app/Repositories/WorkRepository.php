@@ -142,6 +142,7 @@ class WorkRepository extends BaseRepository
             'work_type_id',
             'work_format_id',
             'work_title',
+            'scene_l',
             'rating_id',
             'big_genre_id',
             'medium_genre_id',
