@@ -993,7 +993,7 @@ class WorkRepository extends BaseRepository
         $himoRepository->setLimit(100);
         $data = $himoRepository->searchCrossworks($params, $sort)->get();
         if (empty($data['status']) || $data['status'] != '200' || empty($data['results']['total'])) {
-            throw new NoContentsException();
+            return null;
         }
         foreach ($data['results']['rows'] as $row) {
             $workList[] = $row['work_id'];
@@ -1020,8 +1020,6 @@ class WorkRepository extends BaseRepository
             }
             $workItems[] = $formatedItemSelectColumn;
         }
-
-
         return $workItems;
     }
 

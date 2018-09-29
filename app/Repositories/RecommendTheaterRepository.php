@@ -4,7 +4,6 @@ namespace App\Repositories;
 
 use App\Model\People;
 use App\Model\Product;
-use App\Model\Work;
 
 class RecommendTheaterRepository extends BaseRepository
 {
@@ -22,6 +21,11 @@ class RecommendTheaterRepository extends BaseRepository
     const BIG_GENRE_ID_JP_DRAMA = 'EXT00000014Q';
     const BIG_GENRE_ID_JP_SF = 'EXT0000000ZQ';
 
+    // ランキング出力時のTWS集約ランキングID
+    const RANKING_FOR_ANIME = 'D049';
+    const RANKING_FOR_JP_MOVIE = 'D047';
+    const RANKING_FOR_OTHER = 'D045';
+
     /*
      * メインメソッド
      * 該当のHimo作品IDのジャンルIDから、リコメンド情報を取得する。
@@ -29,15 +33,24 @@ class RecommendTheaterRepository extends BaseRepository
      */
     public function get($workId)
     {
+        $workRepository = new WorkRepository();
         // レンタルのみ表示する。
         $this->saleType = 'rental';
-        $workModel = new Work();
-
-        $work = $workModel->setConditionByWorkId($workId)->selectCamel(['big_genre_id'])->getOne();
+        $work = $workRepository->get($workId);
+        if (empty($work)) {
+            return null;
+        }
         // 該当のジャンルを取得
-        switch ($work->bigGenreId) {
+        switch ($work['bigGenreId']) {
             case self::BIG_GENRE_ID_ANIME:
-                return $this->getPeopleWorks($workId, [self::ROLE_ID_ORIGINAL_AUTHOR]);
+                $peopleWork = $this->getPeopleWorks($workId, [self::ROLE_ID_ORIGINAL_AUTHOR]);
+                // 上記でとれなかった場合は、ランキングを返却
+                if (!empty($peopleWork)) {
+                    return $peopleWork;
+                } else {
+                    // アニメのデイリーランキングを返却
+                    return $this->getRanking(self::RANKING_FOR_ANIME);
+                }
                 break;
             case self::BIG_GENRE_ID_ACTION:
                 $genreId = self::BIG_GENRE_ID_ACTION;
@@ -59,25 +72,30 @@ class RecommendTheaterRepository extends BaseRepository
             case self::BIG_GENRE_ID_JP_ACTION:
             case self::BIG_GENRE_ID_JP_DRAMA:
             case self::BIG_GENRE_ID_JP_SF:
-                return $this->getPeopleWorks($workId, [self::ROLE_ID_PERFORMER, self::ROLE_ID_DIRECTOR]);
+                // キャスト・スタッフ検索：出演者で取得、出演者がとれなかった場合は監督で取得
+                $peopleWork = $this->getPeopleWorks($workId, [self::ROLE_ID_PERFORMER, self::ROLE_ID_DIRECTOR]);
+                // 上記でとれなかった場合は、ランキングを返却
+                if (!empty($peopleWork)) {
+                    return $peopleWork;
+                } else {
+                    // 邦画のデイリーランキングを返却
+                    return $this->getRanking(self::RANKING_FOR_JP_MOVIE);
+                }
                 break;
-
+            default:
+                // 全ジャンルのデイリーランキングを返却
+                return $this->getRanking(self::RANKING_FOR_OTHER);
+                break;
         }
-        return null;
     }
 
-    /*
-     * ロールID順にキャストスタップを取得する。
-     */
-    public function getPerson($roleIds, $productUniqueId)
+    public function getRanking($twsAggregationId)
     {
-        $people = new People();
-        $person = null;
-        foreach ($roleIds as $roleId) {
-            $person = $people->setConditionByRoleId($productUniqueId, $roleId)->toCamel()->getOne();
-            if (!empty($person)) break;
-        }
-        return $person;
+        $sectionRepository = new SectionRepository();
+        $sectionRepository->ranking('agg', $twsAggregationId, null);
+        $this->hasNext = $sectionRepository->getHasNext();
+        $this->totalCount = $sectionRepository->getTotalCount();
+        return $sectionRepository->getRows();
     }
 
     /*
@@ -94,20 +112,36 @@ class RecommendTheaterRepository extends BaseRepository
     }
 
     /*
-     * ジャンルID別の作品一覧を取得する。
+     * 人物別の作品一覧を取得する。
      */
     public function getPeopleWorks($workId, Array $personIds)
     {
         $workRepository = new WorkRepository();
         $productModel = new Product();
-
         $product = $productModel->setConditionByWorkId($workId)->selectCamel(['product_unique_id'])->getOne();
         $person = $this->getPerson($personIds, $product->productUniqueId);
-        $workRepository->setSaleType($this->saleType);
-        $response = $workRepository->person($person->personId);
+        if(empty($person)) {
+            return null;
+        }
+        $workRepository->setSaleType('rental');
+        // ソート：お薦め、アイテム：DVD
+        $response = $workRepository->person($person->personId, '', 'dvd');
         $this->hasNext = $workRepository->getHasNext();
         $this->totalCount = $workRepository->getTotalCount();
         return $response;
     }
 
+    /*
+     * ロールID順にキャストスタップを取得する。
+     */
+    public function getPerson($roleIds, $productUniqueId)
+    {
+        $people = new People();
+        $person = null;
+        foreach ($roleIds as $roleId) {
+            $person = $people->setConditionByRoleId($productUniqueId, $roleId)->toCamel()->getOne();
+            if (!empty($person)) break;
+        }
+        return $person;
+    }
 }

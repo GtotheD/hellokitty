@@ -111,4 +111,18 @@ abstract class TestCase extends Laravel\Lumen\Testing\TestCase
             $this->assertEquals($responseCode, $actualStatusCode);
         }
     }
+    /*
+      * 結果比較テスト
+      * 期待値ファイルとの比較を行う。
+      */
+    public function actualDifference($workId ,$actualResponse)
+    {
+        $actual = json_decode($actualResponse->getContent(), true);
+        $expected = json_decode(file_get_contents( $this->testDir . '/expected/' . $workId), true);
+        unset($expected['data']['createdAt']);
+        unset($expected['data']['updatedAt']);
+        unset($actual['data']['createdAt']);
+        unset($actual['data']['updatedAt']);
+        $this->assertEquals($expected, $actual);
+    }
 }

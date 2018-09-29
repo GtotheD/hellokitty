@@ -1,0 +1,197 @@
+{
+   "entry" : [
+      {
+         "artistInfoList" : {
+            "artistInfo" : {
+               "artistName" : "宮崎駿",
+               "artistCd" : "00523781",
+               "order" : "1",
+               "roleName" : "監督"
+            }
+         },
+         "sakuhinCd" : "10018199",
+         "nextUpDate" : "2018-05-12T11:01:53",
+         "productImageCrosswise" : "0",
+         "productTitle" : "千と千尋の神隠し",
+         "order" : "1",
+         "upDate" : "2018-05-11T10:01:53",
+         "productImage" : {
+            "small" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/09478/4959241752949_1S.jpg",
+            "large" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/09478/4959241752949_1L.jpg",
+            "medium" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/09478/4959241752949_1M.jpg"
+         },
+         "link" : [
+            {
+               "rel" : "detail",
+               "href" : "http://stg.www.tsutaya.co.jp/works/10016937.html",
+               "type" : "text/html"
+            }
+         ],
+         "transition" : "4",
+         "productImageLengthwise" : "0",
+         "nextUpDateEpoch" : 1526090513,
+         "jacketFilmCopyright" : "(C)2001 二馬力・GNDDTM",
+         "sakuhinSearchType" : "1",
+         "productKey" : "081649831",
+         "rankNo" : "1",
+         "urlCd" : "10016937",
+         "lastRankNo" : "0",
+         "rankingConcentrationCd" : "D086",
+         "mediaFormatKbn" : "17"
+      },
+      {
+         "artistInfoList" : {
+            "artistInfo" : {
+               "artistName" : "宮崎駿",
+               "artistCd" : "00523781",
+               "order" : "1",
+               "roleName" : "監督"
+            }
+         },
+         "sakuhinCd" : "10018199",
+         "nextUpDate" : "2018-05-12T11:01:53",
+         "productImageCrosswise" : "0",
+         "productTitle" : "パイレーツ・オブ・カリビアン/最後の海賊",
+         "order" : "1",
+         "upDate" : "2018-05-11T10:01:53",
+         "productImage" : {
+            "small" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/09478/4959241752949_1S.jpg",
+            "large" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/09478/4959241752949_1L.jpg",
+            "medium" : "https://cdn.store-tsutaya.tsite.jp/images/jacket/09478/4959241752949_1M.jpg"
+         },
+         "link" : [
+            {
+               "rel" : "detail",
+               "href" : "http://stg.www.tsutaya.co.jp/works/10016937.html",
+               "type" : "text/html"
+            }
+         ],
+         "transition" : "4",
+         "productImageLengthwise" : "0",
+         "nextUpDateEpoch" : 1526090513,
+         "jacketFilmCopyright" : "(C)2001 二馬力・GNDDTM",
+         "sakuhinSearchType" : "1",
+         "productKey" : "083834435",
+         "rankNo" : "1",
+         "urlCd" : "10016937",
+         "lastRankNo" : "0",
+         "rankingConcentrationCd" : "D086",
+         "mediaFormatKbn" : "17"
+      }
+   ],
+   "rentalSalesSection" : "2",
+   "rankingTitle" : "DVDセルランキング",
+   "weeklyFlag" : "1",
+   "dvdCd" : "D075",
+   "finishSet" : "20",
+   "genreName" : "キッズ",
+   "startSet" : "1",
+   "categoryCd" : "01",
+   "upDate" : "2011-09-17T18:20:27",
+   "totalResults" : "16",
+   "totalingPeriod" : "2018年5月10日(木)",
+   "saleDVDList" : {
+      "genreInfo" : [
+         {
+            "selectedFlag" : "1",
+            "genreName" : "全ジャンル",
+            "typeName" : "総合",
+            "order" : "1",
+            "itemCd" : "1022",
+            "rankingConcentrationCd" : "D083",
+            "typeCode" : "0"
+         },
+         {
+            "selectedFlag" : "1",
+            "genreName" : "洋画",
+            "typeName" : "洋画",
+            "order" : "2",
+            "itemCd" : "1022",
+            "rankingConcentrationCd" : "D084",
+            "typeCode" : "3"
+         },
+         {
+            "selectedFlag" : "1",
+            "genreName" : "邦画",
+            "typeName" : "邦画",
+            "order" : "3",
+            "itemCd" : "1022",
+            "rankingConcentrationCd" : "D085",
+            "typeCode" : "4"
+         },
+         {
+            "selectedFlag" : "1",
+            "genreName" : "キッズ",
+            "typeName" : "その他",
+            "order" : "4",
+            "itemCd" : "1022",
+            "rankingConcentrationCd" : "D086",
+            "typeCode" : "5"
+         },
+         {
+            "selectedFlag" : "1",
+            "genreName" : "アニメ",
+            "typeName" : "その他",
+            "order" : "5",
+            "itemCd" : "1022",
+            "rankingConcentrationCd" : "D087",
+            "typeCode" : "5"
+         }
+      ]
+   },
+   "allCd" : "D053",
+   "query" : {
+      "dispPageNo" : "1",
+      "tolPlatformCode" : "00",
+      "dispNums" : "20",
+      "rankinglimit" : "20",
+      "rankingConcentrationCd" : "D086",
+      "secureflg" : "1"
+   },
+   "typeName" : "その他",
+   "dispPageNo" : "1",
+   "rankingType" : "2",
+   "nearrealFlag" : "1",
+   "rankingDispPCList" : {},
+   "rankingCalendarInfo" : {
+      "dailyDispLinkList" : {
+         "totalingPeriodInfo" : [
+            {
+               "totalingPeriodFrom" : "20180510",
+               "totalingPeriodDisp" : "2018年5月10日(木)"
+            },
+            {
+               "totalingPeriodFrom" : "20180509",
+               "totalingPeriodDisp" : "2018年5月9日(水)"
+            },
+            {
+               "totalingPeriodFrom" : "20180508",
+               "totalingPeriodDisp" : "2018年5月8日(火)"
+            },
+            {
+               "totalingPeriodFrom" : "20180507",
+               "totalingPeriodDisp" : "2018年5月7日(月)"
+            },
+            {
+               "totalingPeriodFrom" : "20180506",
+               "totalingPeriodDisp" : "2018年5月6日(日)"
+            },
+            {
+               "totalingPeriodFrom" : "20180505",
+               "totalingPeriodDisp" : "2018年5月5日(土)"
+            },
+            {
+               "totalingPeriodFrom" : "20180504",
+               "totalingPeriodDisp" : "2018年5月4日(金)"
+            }
+         ]
+      }
+   },
+   "startIndex" : 1,
+   "monthlyFlag" : "1",
+   "dailyFlag" : "1",
+   "itemsPerPage" : "16",
+   "rankingConcentrationCd" : "D086",
+   "mediaKbn" : "2",
+   "typeCode" : "5"
+}

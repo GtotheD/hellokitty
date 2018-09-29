@@ -161,7 +161,7 @@ class Product extends Model
                 }
             })
             ->select(DB::raw('p2.*'))
-            ->whereRaw(DB::raw(' service_id  in  (\'tol\', \'st\')'))
+            ->whereRaw(DB::raw(' p2.service_id  in  (\'tol\', \'st\')'))
             ->where([
                 ['p1.rental_product_cd', '=', $rentalProductCd],
                 ['p2.product_type_id', '=', self::PRODUCT_TYPE_ID_RENTAL]
@@ -174,7 +174,7 @@ class Product extends Model
         $this->dbObject = DB::table($this->table . ' AS p1')
             ->join($this->table . ' AS p2', 'p1.ccc_family_cd', '=', 'p2.ccc_family_cd')
             ->select(DB::raw('p1.*'))
-            ->whereRaw(DB::raw(' service_id  in  (\'tol\', \'st\')'))
+            ->whereRaw(DB::raw(' p1.service_id  in  (\'tol\', \'st\')'))
             ->where([
                 ['p1.work_id', '=', 'p2.work_id'],
                 ['p1.jan', '=', $jan],
