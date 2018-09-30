@@ -984,7 +984,7 @@ class WorkRepository extends BaseRepository
 
         $params = [
             'personId' => $personId,
-            'saleType' => $this->saleType,
+//            'saleType' => $this->saleType,
             'itemType' => $itemType,
             'responseLevel' => 1,
             'id' => $personId,//dummy data
@@ -1039,6 +1039,10 @@ class WorkRepository extends BaseRepository
     {
         $result = [];
         $himoRepository = new HimoRepository('asc', $this->offset, $this->limit);
+        // saleTypeで上映映画がきた場合は、dvdレンタル固定にする。
+        if ($this->saleType === self::SALE_TYPE_THEATER) {
+            $this->saleType = self::SALE_TYPE_RENTAL;
+        }
         $params = [
             'genreId' => $genreId,
             'saleType' => $this->saleType,
@@ -1313,6 +1317,7 @@ class WorkRepository extends BaseRepository
             'work_title',
             'work_format_id',
             'scene_l',
+            'play_time',
             'rating_id',
             'big_genre_id',
             'medium_genre_id',

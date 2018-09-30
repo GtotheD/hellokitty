@@ -212,7 +212,7 @@ class HimoRepository extends ApiRequesterRepository
         $this->apiPath = $this->apiHost . '/search/crossworks';
         $this->queryParams = [
             '_system' => 'TsutayaApp',
-            'service_id' => 'tol',
+            'service_id' => ['tol', 'st'],
             'scene_limit' => '20',
             'response_level' => '1',
             'id_value' => '0301:' . $personId,
@@ -220,8 +220,7 @@ class HimoRepository extends ApiRequesterRepository
             'item_cd' => '-1051 && -1054 && -1056',
             'offset' => $this->offset,
             'limit' => $this->limit,
-            'work_products_service_id' => ['tol'],
-            'msdb_item' => ['audio']
+            'work_products_service_id' => ['tol', 'st'],
         ];
         $this->queryParams['sort_by'] = 'auto:asc';
         if ($sort == 'old') {
@@ -331,9 +330,6 @@ class HimoRepository extends ApiRequesterRepository
                 $this->queryParams['product_sell_rental_flg'] = 2;
             } elseif ($params['saleType'] == 'sell') {
                 $this->queryParams['product_sell_rental_flg'] = 1;
-            } elseif ($params['saleType'] == 'theater') {
-                $this->queryParams['service_id'] = ['st'];
-                $this->queryParams['work_products_service_id'] = ['st'];
             }
         }
 
@@ -363,8 +359,7 @@ class HimoRepository extends ApiRequesterRepository
         $this->apiPath = $this->apiHost . '/search/people';
         $this->queryParams = [
             '_system' => 'TsutayaApp',
-            'service_id' => ['st'],
-            'work_products_service_id' => ['st'],
+            'service_id' => ['tol', 'st'],
             'id_value' => implode(' || ', $queryId),
             'response_level' => $responseLevel,
             'offset' => $this->offset,
