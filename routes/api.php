@@ -128,8 +128,19 @@ $router->group([
         $sectionRepository = new SectionRepository;
         $sectionRepository->setLimit(20);
         $sectionRepository->setSupplementVisible($request->input('supplementVisibleFlg', false));
-        $sectionData = $sectionRepository->ranking($codeType, $code, $period);
-        return response()->json($sectionData)->header('X-Accel-Expires', '86400');
+        $rows = $sectionRepository->ranking($codeType, $code, $period);
+        if (empty($rows)) {
+            throw new NoContentsException;
+        }
+        $response = [
+            'hasNext' => $sectionRepository->getHasNext(),
+            'totalCount' => $sectionRepository->getTotalCount(),
+            'rows' => $rows
+        ];
+        if(!empty($sectionRepository->getRankingTitle())) {
+            $response['title'] = $sectionRepository->getRankingTitle();
+        }
+        return response()->json($response)->header('X-Accel-Expires', '86400');
     });
 
     // レコメンドセクション取得API
@@ -611,11 +622,19 @@ $router->group([
         $sectionRepository->setLimit(30);
         $sectionRepository->setPage($request->input('page', 1));
         $sectionRepository->setSupplementVisible($request->input('supplementVisibleFlg', false));
-        $sectionData = $sectionRepository->ranking($codeType, $code, $period);
-        if (empty($sectionData)) {
+        $rows = $sectionRepository->ranking($codeType, $code, $period);
+        if (empty($rows)) {
             throw new NoContentsException;
         }
-        return response()->json($sectionData)->header('X-Accel-Expires', '86400');
+        $response = [
+            'hasNext' => $sectionRepository->getHasNext(),
+            'totalCount' => $sectionRepository->getTotalCount(),
+            'rows' => $rows
+        ];
+        if(!empty($sectionRepository->getRankingTitle())) {
+            $response['title'] = $sectionRepository->getRankingTitle();
+        }
+        return response()->json($response)->header('X-Accel-Expires', '86400');
     });
 
     // Favorite list

@@ -1,0 +1,554 @@
+{
+    "status": 200,
+    "message": null,
+    "results": {
+        "total": 1,
+        "rows": [
+            {
+                "work_id": "PTA0000UJMG6",
+                "work_type_id": "3",
+                "msdb_item": "book",
+                "work_format_id": null,
+                "work_format_name": "",
+                "work_title": "キングスマン ゴールデン・サークル",
+                "work_title_kana": "きんぐすまんごーるでんさーくる",
+                "work_title_en": "",
+                "work_title_orig": "",
+                "work_title_sub": "",
+                "work_comment": "",
+                "work_outline": "",
+                "work_copyright": "",
+                "rating_id": "EXT000000008",
+                "rating_name": "",
+                "adult_flg": 0,
+                "primary_product_source_id": "PDT0000UJRPO",
+                "primary_product_service_id": "ec",
+                "primary_product_type_id": 1,
+                "disp_start_date": "1900-01-01 00:00:00",
+                "disp_start_month": "1900-01",
+                "sale_start_date": "2017-12-20",
+                "sale_start_month": "2017-12",
+                "created_year_from": "",
+                "created_year_to": "",
+                "created_year": "2017",
+                "created_countries": "",
+                "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/12712/9784801913264_1S.jpg ",
+                "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/12712/9784801913264_1M.jpg ",
+                "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/12712/9784801913264_1L.jpg ",
+                "jacket_l4": "",
+                "scene_s": [
+
+                ],
+                "scene_m": [
+
+                ],
+                "scene_l": [
+
+                ],
+                "trailor_pc": [
+
+                ],
+                "season_name": "",
+                "season_number": null,
+                "book_series_name": "竹書房文庫",
+                "book_series_name_kana": "",
+                "feature_keywords": [
+
+                ],
+                "priv_keywords": [
+
+                ],
+                "work_tags": [
+
+                ],
+                "wakati_words": [
+
+                ],
+                "is_compilation": 0,
+                "series_completed": 0,
+                "disable_flg": 0,
+                "delete_flg": 0,
+                "ids": [
+                    {
+                        "id_type": "0103",
+                        "id_value": "42924808"
+                    },
+                    {
+                        "id_type": "0105",
+                        "id_value": "41683694"
+                    }
+                ],
+                "docs": [
+
+                ],
+                "awards": [
+
+                ],
+                "screens": [
+
+                ],
+                "onairs": [
+
+                ],
+                "magazines": [
+
+                ],
+                "genres": [
+                    {
+                        "big_genre_id": "EXT000073X16",
+                        "big_genre_name": "文庫",
+                        "medium_genre_id": "EXT0000741AV",
+                        "medium_genre_name": "その他一般文庫",
+                        "small_genre_id": "EXT0000753MH",
+                        "small_genre_name": "竹書房文庫",
+                        "shikiriban_id": "EXT000075DSS",
+                        "shikiriban_name": "海外小説"
+                    }
+                ],
+                "products": [
+                    {
+                        "id": "PDT0000UJLHP",
+                        "product_id": "PPD0000UJLHP",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "tol",
+                        "service_name": "tol",
+                        "msdb_item": "book",
+                        "item_cd": "1076",
+                        "item_name": "書籍",
+                        "product_name": "キングスマン ゴールデン・サークル",
+                        "product_kana": "きんぐすまんごーるでんさーくる",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2017-10-21 09:15:59",
+                        "disp_start_month": "2017-10",
+                        "disp_end_date": "2030-12-28 00:00:00",
+                        "disp_end_month": "2030-12",
+                        "sale_start_date": "2017-12-20",
+                        "sale_start_month": "2017-12",
+                        "sale_end_date": "2030-12-28",
+                        "sale_end_month": "2030-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000UJMG6"
+                        ],
+                        "tieup": "",
+                        "copyright": "",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "",
+                        "created_year_to": "",
+                        "created_year_str": "20171220",
+                        "created_countries": "",
+                        "maker_cd": "EXT000077EET",
+                        "maker_name": "竹書房",
+                        "maker_name_kana": "たけしよぼう",
+                        "maker_name_abbrev": "竹書房",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "42924808",
+                        "ccc_family_cd": "42924808001",
+                        "ccc_product_id": "205775943",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "9784801913264",
+                        "isbn_10": "4801913261",
+                        "isbn_13": "9784801913264",
+                        "magazine_cd": "",
+                        "product_code": "",
+                        "icpn": "",
+                        "media_category_cd": "23",
+                        "media_category_name": "販売書籍",
+                        "media_format_id": "EXT0000I9NM3",
+                        "media_format_name": "書籍",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "",
+                        "video_info": "",
+                        "number_of_volume": "",
+                        "number_of_set": "",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "376p",
+                        "book_size": "15",
+                        "book_release_month": "201712",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/12712/9784801913264_1S.jpg ",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/12712/9784801913264_1M.jpg ",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/12712/9784801913264_1L.jpg ",
+                        "jacket_l4": "",
+                        "scene_s": [
+
+                        ],
+                        "scene_m": [
+
+                        ],
+                        "scene_l": [
+
+                        ],
+                        "trailor_pc": [
+
+                        ],
+                        "book_series_name": "竹書房文庫",
+                        "book_series_name_kana": "たけしよぼうぶんこ",
+                        "feature_keywords": [
+
+                        ],
+                        "priv_keywords": [
+
+                        ],
+                        "package_tags": [
+
+                        ],
+                        "product_tags": [
+
+                        ],
+                        "price_tax_out": 830,
+                        "price_tax_in": 897,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+
+                        ],
+                        "devices": [
+
+                        ],
+                        "distribution_plans": [
+
+                        ],
+                        "awards": [
+
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT000073X16",
+                                "big_genre_name": "文庫",
+                                "medium_genre_id": "EXT0000741AV",
+                                "medium_genre_name": "その他一般文庫",
+                                "small_genre_id": "EXT0000753MH",
+                                "small_genre_name": "竹書房文庫",
+                                "shikiriban_id": "EXT000075DSS",
+                                "shikiriban_name": "海外小説"
+                            }
+                        ],
+                        "screens": [
+
+                        ],
+                        "onairs": [
+
+                        ],
+                        "magazines": [
+
+                        ],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [
+
+                        ],
+                        "filmarks_id": [
+
+                        ],
+                        "dramarks_id": [
+
+                        ],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS0000S0357",
+                                "person_name": "ティム・ワゴナー",
+                                "role_id": "EXT00000BWU9",
+                                "role_name": "著者"
+                            },
+                            {
+                                "person_id": "PPS0000V88MY",
+                                "person_name": "ジェーン・ゴールドマン",
+                                "role_id": "EXT00000BWU9",
+                                "role_name": "著者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT0000UJRPO",
+                        "product_id": "PPD0000UJLHP",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "ec",
+                        "service_name": "ec",
+                        "msdb_item": "book",
+                        "item_cd": "1076",
+                        "item_name": "書籍",
+                        "product_name": "キングスマン ゴールデン・サークル",
+                        "product_kana": "きんぐすまんごーるでんさーくる",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "1900-01-01 00:00:00",
+                        "disp_start_month": "1900-01",
+                        "disp_end_date": "2099-12-28 23:59:59",
+                        "disp_end_month": "2099-12",
+                        "sale_start_date": "2017-12-20",
+                        "sale_start_month": "2017-12",
+                        "sale_end_date": "2067-12-20",
+                        "sale_end_month": "2067-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000UJMG6"
+                        ],
+                        "tieup": "",
+                        "copyright": "",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "",
+                        "created_year_to": "",
+                        "created_year_str": "20171220",
+                        "created_countries": "",
+                        "maker_cd": "EXT000077EET",
+                        "maker_name": "竹書房",
+                        "maker_name_kana": "たけしよぼう",
+                        "maker_name_abbrev": "竹書房",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "42924808",
+                        "ccc_family_cd": "42924808001",
+                        "ccc_product_id": "205775943",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "9784801913264",
+                        "isbn_10": "4801913261",
+                        "isbn_13": "9784801913264",
+                        "magazine_cd": "",
+                        "product_code": "",
+                        "icpn": "",
+                        "media_category_cd": "23",
+                        "media_category_name": "販売書籍",
+                        "media_format_id": "EXT0000I9NM3",
+                        "media_format_name": "書籍",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "",
+                        "video_info": "",
+                        "number_of_volume": "",
+                        "number_of_set": "",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "376p",
+                        "book_size": "15",
+                        "book_release_month": "201712",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/12712/9784801913264_1S.jpg ",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/12712/9784801913264_1M.jpg ",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/12712/9784801913264_1L.jpg ",
+                        "jacket_l4": "",
+                        "scene_s": [
+
+                        ],
+                        "scene_m": [
+
+                        ],
+                        "scene_l": [
+
+                        ],
+                        "trailor_pc": [
+
+                        ],
+                        "book_series_name": "竹書房文庫",
+                        "book_series_name_kana": "たけしよぼうぶんこ",
+                        "feature_keywords": [
+
+                        ],
+                        "priv_keywords": [
+
+                        ],
+                        "package_tags": [
+
+                        ],
+                        "product_tags": [
+
+                        ],
+                        "price_tax_out": 830,
+                        "price_tax_in": 896,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+
+                        ],
+                        "devices": [
+
+                        ],
+                        "distribution_plans": [
+
+                        ],
+                        "awards": [
+
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT000073X16",
+                                "big_genre_name": "文庫",
+                                "medium_genre_id": "EXT0000741AV",
+                                "medium_genre_name": "その他一般文庫",
+                                "small_genre_id": "EXT0000753MH",
+                                "small_genre_name": "竹書房文庫",
+                                "shikiriban_id": "EXT000075DSS",
+                                "shikiriban_name": "海外小説"
+                            }
+                        ],
+                        "screens": [
+
+                        ],
+                        "onairs": [
+
+                        ],
+                        "magazines": [
+
+                        ],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [
+
+                        ],
+                        "filmarks_id": [
+
+                        ],
+                        "dramarks_id": [
+
+                        ],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS0000S0357",
+                                "person_name": "ティム・ワゴナー",
+                                "role_id": "EXT00000BWU9",
+                                "role_name": "著者"
+                            },
+                            {
+                                "person_id": "PPS0000V88MY",
+                                "person_name": "ジェーン・ゴールドマン",
+                                "role_id": "EXT00000BWU9",
+                                "role_name": "著者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    }
+                ],
+                "video_relations": [
+
+                ],
+                "discas_grade_point": null,
+                "discas_item": [
+
+                ],
+                "ttv_trailer_flg": 0,
+                "ttv_free_movie_flg": 0,
+                "ttv_sell_rental_flg": [
+
+                ],
+                "ttv_low_price": null,
+                "cinema_id": [
+
+                ],
+                "filmarks_id": [
+
+                ],
+                "dramarks_id": [
+
+                ],
+                "catch_copy": "",
+                "sale_start_date_sell": "2017-12-20",
+                "sale_start_date_rental": "",
+                "trailer_urls": [
+
+                ],
+                "scenes": [
+
+                ],
+                "filmarks_mark": 0,
+                "filmarks_clip": 0,
+                "filmarks_average": 0,
+                "people": [
+                    {
+                        "person_id": "PPS0000S0357",
+                        "person_name": "ティム・ワゴナー",
+                        "role_id": "EXT00000BWU9",
+                        "role_name": "著者"
+                    },
+                    {
+                        "person_id": "PPS0000V88MY",
+                        "person_name": "ジェーン・ゴールドマン",
+                        "role_id": "EXT00000BWU9",
+                        "role_name": "著者"
+                    }
+                ],
+                "tracks": [
+
+                ],
+                "merged_from": [
+
+                ],
+                "need_age_auth_flg": 0
+            }
+        ]
+    }
+}

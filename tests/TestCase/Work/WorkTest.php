@@ -20,18 +20,21 @@ class WorkTest extends TestCase
     public function workDataProvider()
     {
         return [
-            ['PTA0000SF309', 'rental', 200], // DVD
+            ['PTA0000SF309', 'rental', 200], // 通常DVD
+            ['PTA0000WEKO0', 'rental', 200], // 上映映画
             ['PTA0000U62N9', 'rental', 200], // CD
             ['PTA0000GD16P', 'rental', 200], // BOOK
-            ['PTA0000SF309', 'sell', 200], // DVD
+            ['PTA0000SF309', 'sell', 200], // 通常DVD
+            ['PTA0000WEKO0', 'sell', 200], // 上映映画
             ['PTA0000U62N9', 'sell', 200], // CD
             ['PTA0000GD16P', 'sell', 200], // BOOK
             ['PTA0000U8W8U', 'sell', 200], // GAME
-            ['PTA0000SF309', 'theater', 202], // DVD
+            ['PTA0000SF309', 'theater', 202], // 通常DVD
             ['PTA0000U62N9', 'theater', 204], // CD
             ['PTA0000GD16P', 'theater', 204], // BOOK
             ['PTA0000U8W8U', 'theater', 204], // GAME
             ['PTA0000WEKO0', 'theater', 200], // 上映映画
+            ['PTA0000V9KGR', 'theater', 202], // 配信オンリー
         ];
     }
 

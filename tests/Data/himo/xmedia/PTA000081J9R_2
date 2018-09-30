@@ -1,0 +1,582 @@
+{
+    "status": 200,
+    "message": null,
+    "results": {
+        "total": 3,
+        "rows": [
+            {
+                "id": "EXT0000OJPV4",
+                "xmedia_relation_type_cd": "901",
+                "xmedia_relation_type_name": "原作・映画",
+                "adult_flg": "0",
+                "kind": "1",
+                "relation_kind": "4",
+                "works": [
+                    {
+                        "work_id": "PTA000081J9R",
+                        "work_type_id": "2",
+                        "msdb_item": "video",
+                        "work_format_id": null,
+                        "work_format_name": "",
+                        "work_title": "パイレーツ・オブ・カリビアン/生命(いのち)の泉",
+                        "work_copyright": "(C)Disney",
+                        "adult_flg": 0,
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/07064/4959241025210_1S.jpg ",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/07064/4959241025210_1M.jpg ",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/07064/4959241025210_1L.jpg ",
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "ids": [
+                            {
+                                "id_type": "0103",
+                                "id_value": "10222241"
+                            },
+                            {
+                                "id_type": "0105",
+                                "id_value": "10215280"
+                            },
+                            {
+                                "id_type": "0107",
+                                "id_value": "338382"
+                            },
+                            {
+                                "id_type": "0108",
+                                "id_value": "1917"
+                            },
+                            {
+                                "id_type": "0106",
+                                "id_value": "101014120"
+                            }
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT00000018Q",
+                                "big_genre_name": "洋画アクション",
+                                "medium_genre_id": "EXT000000ABJ",
+                                "medium_genre_name": "アドベンチャー",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "products": [
+
+                        ],
+                        "cinema_id": [
+                            "338382"
+                        ],
+                        "filmarks_id": [
+                            "1917"
+                        ],
+                        "dramarks_id": [
+
+                        ],
+                        "people": [
+                            {
+                                "person_id": "PPS00000209G",
+                                "person_name": "ロブ・マーシャル",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS0000008DE",
+                                "person_name": "ジョニー・デップ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000003A2",
+                                "person_name": "ペネロペ・クルス",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    }
+                ],
+                "small_serieses": [
+                    {
+                        "id": "XMD0000SSR2C",
+                        "xmedia_type": "small_series",
+                        "ccc_small_series_cd": "S40017543",
+                        "small_series_name": "幻影の航海",
+                        "small_series_kana": "げんえいのこうかい",
+                        "delete_flg": 0,
+                        "adult_flg": 0,
+                        "create_date": "2017-04-11 16:34:19",
+                        "xmedia_item_type": "4",
+                        "works": [
+                            {
+                                "work_id": "PTA0000FSCXB",
+                                "work_type_id": "3",
+                                "msdb_item": "book",
+                                "work_format_id": null,
+                                "work_format_name": "",
+                                "work_title": "幻影の航海",
+                                "work_copyright": "",
+                                "adult_flg": 0,
+                                "jacket_s": "",
+                                "jacket_m": "",
+                                "jacket_l": "",
+                                "disable_flg": 0,
+                                "delete_flg": 0,
+                                "ids": [
+                                    {
+                                        "id_type": "0103",
+                                        "id_value": "41141411"
+                                    }
+                                ],
+                                "genres": [
+                                    {
+                                        "big_genre_id": "EXT000073X16",
+                                        "big_genre_name": "文庫",
+                                        "medium_genre_id": "EXT0000741AV",
+                                        "medium_genre_name": "その他一般文庫",
+                                        "small_genre_id": "EXT0000753LA",
+                                        "small_genre_name": "ハヤカワ文庫",
+                                        "shikiriban_id": "EXT000075DOK",
+                                        "shikiriban_name": "未分類"
+                                    }
+                                ],
+                                "products": [
+
+                                ],
+                                "cinema_id": [
+
+                                ],
+                                "filmarks_id": [
+
+                                ],
+                                "dramarks_id": [
+
+                                ],
+                                "people": [
+                                    {
+                                        "person_id": "PPS00007T6DJ",
+                                        "person_name": "ティム・パワーズ",
+                                        "role_id": "EXT00000BWU9",
+                                        "role_name": "著者"
+                                    }
+                                ],
+                                "need_age_auth_flg": 0
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "EXT0000OJPVA",
+                "xmedia_relation_type_cd": "907",
+                "xmedia_relation_type_name": "原作・サウンドトラック",
+                "adult_flg": "0",
+                "kind": "1",
+                "relation_kind": "1",
+                "works": [
+                    {
+                        "work_id": "PTA000081J9R",
+                        "work_type_id": "2",
+                        "msdb_item": "video",
+                        "work_format_id": null,
+                        "work_format_name": "",
+                        "work_title": "パイレーツ・オブ・カリビアン/生命(いのち)の泉",
+                        "work_copyright": "(C)Disney",
+                        "adult_flg": 0,
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/07064/4959241025210_1S.jpg ",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/07064/4959241025210_1M.jpg ",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/07064/4959241025210_1L.jpg ",
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "ids": [
+                            {
+                                "id_type": "0103",
+                                "id_value": "10222241"
+                            },
+                            {
+                                "id_type": "0105",
+                                "id_value": "10215280"
+                            },
+                            {
+                                "id_type": "0107",
+                                "id_value": "338382"
+                            },
+                            {
+                                "id_type": "0108",
+                                "id_value": "1917"
+                            },
+                            {
+                                "id_type": "0106",
+                                "id_value": "101014120"
+                            }
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT00000018Q",
+                                "big_genre_name": "洋画アクション",
+                                "medium_genre_id": "EXT000000ABJ",
+                                "medium_genre_name": "アドベンチャー",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "products": [
+
+                        ],
+                        "cinema_id": [
+                            "338382"
+                        ],
+                        "filmarks_id": [
+                            "1917"
+                        ],
+                        "dramarks_id": [
+
+                        ],
+                        "people": [
+                            {
+                                "person_id": "PPS00000209G",
+                                "person_name": "ロブ・マーシャル",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS0000008DE",
+                                "person_name": "ジョニー・デップ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000003A2",
+                                "person_name": "ペネロペ・クルス",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "work_id": "PTA000084A65",
+                        "work_type_id": "1",
+                        "msdb_item": "audio",
+                        "work_format_id": 1,
+                        "work_format_name": "アルバム",
+                        "work_title": "パイレーツ・オブ・カリビアン/生命の泉",
+                        "work_copyright": "",
+                        "adult_flg": 0,
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/06465/4988064128280_1S.jpg ",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/06465/4988064128280_1M.jpg ",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/06465/4988064128280_1L.jpg ",
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "ids": [
+                            {
+                                "id_type": "0103",
+                                "id_value": "20429972"
+                            },
+                            {
+                                "id_type": "0105",
+                                "id_value": "20279057"
+                            }
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT000000016",
+                                "big_genre_name": "洋画サントラ",
+                                "medium_genre_id": "EXT000000017",
+                                "medium_genre_name": "洋画サントラ",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "products": [
+
+                        ],
+                        "cinema_id": [
+
+                        ],
+                        "filmarks_id": [
+
+                        ],
+                        "dramarks_id": [
+
+                        ],
+                        "people": [
+                            {
+                                "person_id": "PPS000001LB0",
+                                "person_name": "ロドリーゴ・イ・ガブリエーラ",
+                                "role_id": "EXT00000000D",
+                                "role_name": "演奏者"
+                            },
+                            {
+                                "person_id": "PPS000000019",
+                                "person_name": "サントラ 洋画オリジナル",
+                                "role_id": "EXT00000000D",
+                                "role_name": "演奏者"
+                            },
+                            {
+                                "person_id": "PPS0000007CJ",
+                                "person_name": "ハンス・ジマー",
+                                "role_id": "EXT0000002JZ",
+                                "role_name": "作曲"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    }
+                ],
+                "small_serieses": [
+
+                ]
+            },
+            {
+                "id": "EXT0000OJPV8",
+                "xmedia_relation_type_cd": "905",
+                "xmedia_relation_type_name": "原作・小説化",
+                "adult_flg": "0",
+                "kind": "1",
+                "relation_kind": "1",
+                "works": [
+                    {
+                        "work_id": "PTA000081J9R",
+                        "work_type_id": "2",
+                        "msdb_item": "video",
+                        "work_format_id": null,
+                        "work_format_name": "",
+                        "work_title": "パイレーツ・オブ・カリビアン/生命(いのち)の泉",
+                        "work_copyright": "(C)Disney",
+                        "adult_flg": 0,
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/07064/4959241025210_1S.jpg ",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/07064/4959241025210_1M.jpg ",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/07064/4959241025210_1L.jpg ",
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "ids": [
+                            {
+                                "id_type": "0103",
+                                "id_value": "10222241"
+                            },
+                            {
+                                "id_type": "0105",
+                                "id_value": "10215280"
+                            },
+                            {
+                                "id_type": "0107",
+                                "id_value": "338382"
+                            },
+                            {
+                                "id_type": "0108",
+                                "id_value": "1917"
+                            },
+                            {
+                                "id_type": "0106",
+                                "id_value": "101014120"
+                            }
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT00000018Q",
+                                "big_genre_name": "洋画アクション",
+                                "medium_genre_id": "EXT000000ABJ",
+                                "medium_genre_name": "アドベンチャー",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "products": [
+
+                        ],
+                        "cinema_id": [
+                            "338382"
+                        ],
+                        "filmarks_id": [
+                            "1917"
+                        ],
+                        "dramarks_id": [
+
+                        ],
+                        "people": [
+                            {
+                                "person_id": "PPS00000209G",
+                                "person_name": "ロブ・マーシャル",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS0000008DE",
+                                "person_name": "ジョニー・デップ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000003A2",
+                                "person_name": "ペネロペ・クルス",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    }
+                ],
+                "small_serieses": [
+                    {
+                        "id": "XMD0000SSR2B",
+                        "xmedia_type": "small_series",
+                        "ccc_small_series_cd": "S40017541",
+                        "small_series_name": "パイレーツ・オブ・カリビアン　生命の泉",
+                        "small_series_kana": "ぱいれーつおぶかりびあんせいめいのいずみ",
+                        "delete_flg": 0,
+                        "adult_flg": 0,
+                        "create_date": "2017-04-11 16:34:19",
+                        "xmedia_item_type": "4",
+                        "works": [
+                            {
+                                "work_id": "PTA0000G23EP",
+                                "work_type_id": "3",
+                                "msdb_item": "book",
+                                "work_format_id": null,
+                                "work_format_name": "",
+                                "work_title": "パイレーツ・オブ・カリビアン 生命の泉",
+                                "work_copyright": "",
+                                "adult_flg": 0,
+                                "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/06685/9784037918705_1S.jpg ",
+                                "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/06685/9784037918705_1M.jpg ",
+                                "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/06685/9784037918705_1L.jpg ",
+                                "disable_flg": 0,
+                                "delete_flg": 0,
+                                "ids": [
+                                    {
+                                        "id_type": "0103",
+                                        "id_value": "42265807"
+                                    },
+                                    {
+                                        "id_type": "0105",
+                                        "id_value": "41015417"
+                                    }
+                                ],
+                                "genres": [
+                                    {
+                                        "big_genre_id": "EXT000073X1G",
+                                        "big_genre_name": "児童書",
+                                        "medium_genre_id": "EXT0000741DJ",
+                                        "medium_genre_name": "キャラクター絵本",
+                                        "small_genre_id": "EXT0000754Q2",
+                                        "small_genre_name": "キャラクター絵本",
+                                        "shikiriban_id": "EXT000075L7W",
+                                        "shikiriban_name": "ディズニー"
+                                    }
+                                ],
+                                "products": [
+
+                                ],
+                                "cinema_id": [
+
+                                ],
+                                "filmarks_id": [
+
+                                ],
+                                "dramarks_id": [
+
+                                ],
+                                "people": [
+                                    {
+                                        "person_id": "PPS0000B5C5Z",
+                                        "person_name": "ジェームズ ポンティ",
+                                        "role_id": "EXT00000BWU9",
+                                        "role_name": "著者"
+                                    },
+                                    {
+                                        "person_id": "PPS0000B5C5U",
+                                        "person_name": "ジェームズ・ポンティ",
+                                        "role_id": "EXT00000BWU9",
+                                        "role_name": "著者"
+                                    },
+                                    {
+                                        "person_id": "PPS00009OKBT",
+                                        "person_name": "橘高弓枝",
+                                        "role_id": "EXT0000757OB",
+                                        "role_name": "訳者"
+                                    }
+                                ],
+                                "need_age_auth_flg": 0
+                            },
+                            {
+                                "work_id": "PTA0000GBSAU",
+                                "work_type_id": "3",
+                                "msdb_item": "book",
+                                "work_format_id": null,
+                                "work_format_name": "",
+                                "work_title": "パイレーツ・オブ・カリビアン 生命-いのち-の泉",
+                                "work_copyright": "",
+                                "adult_flg": 0,
+                                "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/06625/9784812445600_1S.jpg ",
+                                "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/06625/9784812445600_1M.jpg ",
+                                "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/06625/9784812445600_1L.jpg ",
+                                "disable_flg": 0,
+                                "delete_flg": 0,
+                                "ids": [
+                                    {
+                                        "id_type": "0103",
+                                        "id_value": "42261965"
+                                    },
+                                    {
+                                        "id_type": "0105",
+                                        "id_value": "41011572"
+                                    }
+                                ],
+                                "genres": [
+                                    {
+                                        "big_genre_id": "EXT000073X16",
+                                        "big_genre_name": "文庫",
+                                        "medium_genre_id": "EXT0000741AV",
+                                        "medium_genre_name": "その他一般文庫",
+                                        "small_genre_id": "EXT0000753MH",
+                                        "small_genre_name": "竹書房文庫",
+                                        "shikiriban_id": "EXT000075DSS",
+                                        "shikiriban_name": "海外小説"
+                                    }
+                                ],
+                                "products": [
+
+                                ],
+                                "cinema_id": [
+
+                                ],
+                                "filmarks_id": [
+
+                                ],
+                                "dramarks_id": [
+
+                                ],
+                                "people": [
+                                    {
+                                        "person_id": "PPS000005X48",
+                                        "person_name": "テッド・エリオット",
+                                        "role_id": "EXT00002HEF0",
+                                        "role_name": "脚本"
+                                    },
+                                    {
+                                        "person_id": "PPS000005X48",
+                                        "person_name": "テッド・エリオット",
+                                        "role_id": "EXT00000BWU9",
+                                        "role_name": "著者"
+                                    },
+                                    {
+                                        "person_id": "PPS000005X4B",
+                                        "person_name": "テリー・ロッシオ",
+                                        "role_id": "EXT00000BWU9",
+                                        "role_name": "著者"
+                                    }
+                                ],
+                                "need_age_auth_flg": 0
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

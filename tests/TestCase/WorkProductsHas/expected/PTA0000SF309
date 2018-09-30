@@ -1,0 +1,35 @@
+{
+  "data": {
+    "workId": "PTA0000SF309",
+    "workTypeId": "2",
+    "workFormatId": "",
+    "workTitle": "パイレーツ・オブ・カリビアン/最後の海賊",
+    "sceneL": "[\"https://cdn.store-tsutaya.tsite.jp/images/extdata/04/00/00/35/98/01/359876_01_01.jpg\",\"https://cdn.store-tsutaya.tsite.jp/images/extdata/04/00/00/35/98/02/359876_01_02.jpg\",\"https://cdn.store-tsutaya.tsite.jp/images/extdata/04/00/00/35/98/03/359876_01_03.jpg\",\"https://cdn.store-tsutaya.tsite.jp/images/extdata/04/00/00/35/98/01/359876_02_01.jpg\"]",    "ratingId": "EXT000000008",
+    "bigGenreId": "EXT00000018Q",
+    "mediumGenreId": "EXT000000ABJ",
+    "smallGenreId": "",
+    "urlCd": "10573394",
+    "cccWorkCd": "10580354",
+    "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/12549/4959241768742_1L.jpg",
+    "saleStartDate": "2017-11-08 00:00:00",
+    "adultFlg": false,
+    "msdbItem": "video",
+    "supplement": "",
+    "priceTaxOut": "",
+    "personId": "",
+    "makerCd": "EXT000003SWJ",
+    "videoFlg": true,
+    "makerName": "ウォルト・ディズニー・ジャパン",
+    "saleType": "rental",
+    "newFlg": false,
+    "itemType": "dvd",
+    "saleTypeHas": {
+      "sell": true,
+      "rental": true,
+      "theater": false
+    },
+    "docText": "",
+    "musicDownloadUrl": null,
+    "playTime": ""
+   }
+}

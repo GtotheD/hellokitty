@@ -1,0 +1,366 @@
+{
+    "status": 200,
+    "message": null,
+    "results": {
+        "total": 1,
+        "rows": [
+            {
+                "work_id": "PTATEST00007",
+                "work_type_id": "7",
+                "msdb_item": "video",
+                "work_format_id": null,
+                "work_format_name": "",
+                "work_title": "上映映画- 洋画SF",
+                "work_title_kana": "",
+                "work_title_en": "",
+                "work_title_orig": "",
+                "work_title_sub": "",
+                "work_comment": "",
+                "work_outline": "",
+                "work_copyright": "テスト",
+                "rating_id": "EXT000000008",
+                "rating_name": "",
+                "adult_flg": 0,
+                "primary_product_source_id": "PDT0000V1BOP",
+                "primary_product_service_id": "st",
+                "primary_product_type_id": 1,
+                "disp_start_date": "2017-12-15 02:15:29",
+                "disp_start_month": "2017-12",
+                "sale_start_date": "2018-07-27",
+                "sale_start_month": "2018-07",
+                "created_year_from": "",
+                "created_year_to": "",
+                "created_year": "2018",
+                "created_countries": "日本",
+                "jacket_s": "",
+                "jacket_m": "",
+                "jacket_l": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/27/01/362742_01_01.jpg ",
+                "jacket_l4": "",
+                "scene_s": [
+
+                ],
+                "scene_m": [
+
+                ],
+                "scene_l": [
+
+                ],
+                "trailor_pc": [
+
+                ],
+                "season_name": "",
+                "season_number": null,
+                "book_series_name": "",
+                "book_series_name_kana": "",
+                "feature_keywords": [
+
+                ],
+                "priv_keywords": [
+
+                ],
+                "work_tags": [
+
+                ],
+                "wakati_words": [
+
+                ],
+                "is_compilation": 0,
+                "series_completed": 0,
+                "disable_flg": 0,
+                "delete_flg": 0,
+                "ids": [
+                    {
+                        "id_type": "0107",
+                        "id_value": "362742"
+                    },
+                    {
+                        "id_type": "0108",
+                        "id_value": "76162"
+                    }
+                ],
+                "docs": [
+                    {
+                        "doc_type_id": "15",
+                        "doc_source_id": "04",
+                        "doc_text": "テスト"
+                    }
+                ],
+                "awards": [
+
+                ],
+                "screens": [
+                    {
+                        "screen_open_date": "2018/07/27",
+                        "screen_end_date": "",
+                        "screen_runningtime": "127",
+                        "screen_info_url": "",
+                        "film_distributor": "テスト",
+                        "film_distributor_kana": ""
+                    }
+                ],
+                "onairs": [
+
+                ],
+                "magazines": [
+
+                ],
+                "genres": [
+                    {
+                        "big_genre_id": "EXT0000002GF",
+                        "big_genre_name": "洋画ＳＦ",
+                        "medium_genre_id": "EXT0000002S8",
+                        "medium_genre_name": "近未来",
+                        "small_genre_id": "",
+                        "small_genre_name": "",
+                        "shikiriban_id": "",
+                        "shikiriban_name": ""
+                    }
+                ],
+                "products": [
+                    {
+                        "id": "PDTTEST00007",
+                        "product_id": "PDTTEST0001",
+                        "product_type_id": null,
+                        "product_type_name": "",
+                        "service_id": "st",
+                        "service_name": "st",
+                        "msdb_item": "video",
+                        "item_cd": "",
+                        "item_name": "",
+                        "product_name": "上映映画- 洋画SF",
+                        "product_kana": "",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2017-12-15 02:15:29",
+                        "disp_start_month": "2017-12",
+                        "disp_end_date": "2030-12-28 00:00:00",
+                        "disp_end_month": "2030-12",
+                        "sale_start_date": "2018-07-27",
+                        "sale_start_month": "2018-07",
+                        "sale_end_date": "2030-12-28",
+                        "sale_end_month": "2030-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000V1EBP"
+                        ],
+                        "tieup": "",
+                        "copyright": "テスト",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "",
+                        "created_year_to": "",
+                        "created_year_str": "2018",
+                        "created_countries": "日本",
+                        "maker_cd": "",
+                        "maker_name": "",
+                        "maker_name_kana": "",
+                        "maker_name_abbrev": "",
+                        "label_name": "",
+                        "sell_rental_flag": 0,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "",
+                        "ccc_family_cd": "",
+                        "ccc_product_id": "",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "",
+                        "icpn": "",
+                        "media_category_cd": "",
+                        "media_category_name": "",
+                        "media_format_id": "EXT0000R2PS1",
+                        "media_format_name": "映画作品",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "127",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "",
+                        "video_info": "",
+                        "number_of_volume": "",
+                        "number_of_set": "",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "",
+                        "jacket_m": "",
+                        "jacket_l": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/27/01/362742_01_01.jpg ",
+                        "jacket_l4": "",
+                        "scene_s": [
+
+                        ],
+                        "scene_m": [
+
+                        ],
+                        "scene_l": [
+
+                        ],
+                        "trailor_pc": [
+
+                        ],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [
+
+                        ],
+                        "priv_keywords": [
+
+                        ],
+                        "package_tags": [
+
+                        ],
+                        "product_tags": [
+
+                        ],
+                        "price_tax_out": null,
+                        "price_tax_in": null,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "15",
+                                "doc_source_id": "04",
+                                "doc_text": "テスト"
+                            }
+                        ],
+                        "devices": [
+
+                        ],
+                        "distribution_plans": [
+
+                        ],
+                        "awards": [
+
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT00000014Q",
+                                "big_genre_name": "邦画ドラマ",
+                                "medium_genre_id": "EXT000073Y3S",
+                                "medium_genre_name": "邦画ドラマ",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [
+                            {
+                                "screen_open_date": "2018/07/27",
+                                "screen_end_date": "",
+                                "screen_runningtime": "127",
+                                "screen_info_url": "",
+                                "film_distributor": "東宝",
+                                "film_distributor_kana": ""
+                            }
+                        ],
+                        "onairs": [
+
+                        ],
+                        "magazines": [
+
+                        ],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [
+                            "362742"
+                        ],
+                        "filmarks_id": [
+                            "76162"
+                        ],
+                        "dramarks_id": [
+
+                        ],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPSTEST0002",
+                                "person_name": "テスト人物02",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    }
+                ],
+                "video_relations": [
+
+                ],
+                "discas_grade_point": null,
+                "discas_item": [
+
+                ],
+                "ttv_trailer_flg": 0,
+                "ttv_free_movie_flg": 0,
+                "ttv_sell_rental_flg": [
+
+                ],
+                "ttv_low_price": null,
+                "cinema_id": [
+                    "362742"
+                ],
+                "filmarks_id": [
+                    "76162"
+                ],
+                "dramarks_id": [
+
+                ],
+                "catch_copy": "",
+                "sale_start_date_sell": "",
+                "sale_start_date_rental": "",
+                "trailer_urls": [
+
+                ],
+                "scenes": [
+
+                ],
+                "filmarks_mark": 63,
+                "filmarks_clip": 7571,
+                "filmarks_average": 4.02381,
+                "people": [
+
+                ],
+                "tracks": [
+
+                ],
+                "merged_from": [
+
+                ],
+                "need_age_auth_flg": 0
+            }
+        ]
+    }
+}

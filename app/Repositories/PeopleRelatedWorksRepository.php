@@ -15,80 +15,12 @@ use App\Repositories\ProductRepository;
 
 class PeopleRelatedWorksRepository extends BaseRepository
 {
-
-    protected $sort;
-    protected $offset;
-    protected $limit;
-    protected $hasNext;
-    protected $totalCount;
-    protected $saleType;
-    protected $ageLimitCheck;
-
     private $peopleRelatedWork;
 
     public function __construct($sort = 'asc', $offset = 0, $limit = 10)
     {
-        parent::__construct();
-        $this->sort = $sort;
-        $this->offset = $offset;
-        $this->limit = $limit;
+        parent::__construct($sort = 'asc', $offset = 0, $limit = 10);
         $this->peopleRelatedWork = new PeopleRelatedWork();
-    }
-
-    /**
-     * @param mixed $limit
-     */
-    public function setLimit($limit)
-    {
-        $this->limit = $limit;
-    }
-
-    /**
-     * @param mixed $offset
-     */
-    public function setOffset($offset)
-    {
-        $this->offset = $offset;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getHasNext()
-    {
-        return $this->hasNext;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getTotalCount()
-    {
-        return $this->totalCount;
-    }
-
-    /**
-     * @param mixed $offset
-     */
-    public function setSaleType($saleType)
-    {
-        $this->saleType = $saleType;
-    }
-
-    /**
-     * @param mixed $sort
-     */
-    public function setSort($sort)
-    {
-        $this->sort = $sort;
-    }
-
-    /**
-     * @param mixed $ageLimitCheck
-     */
-    public function setAgeLimitCheck($ageLimitCheck)
-    {
-        $this->ageLimitCheck = $ageLimitCheck;
     }
 
     public function getWorks($workId)
@@ -107,8 +39,9 @@ class PeopleRelatedWorksRepository extends BaseRepository
             return null;
         }
         $this->totalCount = $this->peopleRelatedWork->setConditionById($people->person_id)->count();
-        $result = $this->peopleRelatedWork->toCamel(['id', 'person_id'])->get($this->limit, $this->offset);
+        $result = $this->peopleRelatedWork->toCamel(['id', 'person_id'])->get();
         if (empty(count($result))) {
+            $himoRepository->setLimit(100);
             $himoResult = $himoRepository->searchPeople([$people->person_id], '0301', ['book'])->get();
             if (empty($himoResult)) {
                 return null;
@@ -119,7 +52,7 @@ class PeopleRelatedWorksRepository extends BaseRepository
                 }
             }
             $this->peopleRelatedWork->insertBulk($insertData);
-            $result = $this->peopleRelatedWork->setConditionById($people->person_id)->toCamel(['id', 'person_id'])->get($this->limit, $this->offset);
+            $result = $this->peopleRelatedWork->setConditionById($people->person_id)->toCamel(['id', 'person_id'])->get();
         }
         foreach ($result as $resultItem) {
             $resultArray[] = $resultItem->workId;
@@ -142,7 +75,7 @@ class PeopleRelatedWorksRepository extends BaseRepository
         if (!$people) {
             throw new NoContentsException;
         }
-        $this->totalCount = $this->peopleRelatedWork->setConditionById($people->person_id)->count();
+        $this->peopleRelatedWork->setConditionById($people->person_id);
         $result = $this->peopleRelatedWork->selectCamel(['work_id'])->get();
         if (empty(count($result))) {
             // 取得件数を100件で絞る
@@ -230,6 +163,7 @@ class PeopleRelatedWorksRepository extends BaseRepository
             'work_title',
             'work_format_id',
             'scene_l', // 上映映画対応
+            'play_time', // 上映映画用
             'rating_id',
             'big_genre_id',
             'medium_genre_id',

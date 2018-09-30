@@ -22,87 +22,20 @@ use App\Exceptions\NoContentsException;
  * Date: 2017/10/13
  * Time: 15:02
  */
-class SectionRepository
+class SectionRepository extends BaseRepository
 {
 
     protected $section;
-    protected $limit;
-    protected $offset;
-    protected $hasNext;
-    protected $totalCount;
-    protected $page;
-    protected $rows;
     protected $supplementVisible;
+    protected $aggregationPeriod;
+    protected $rankingTitle;
 
     const PARAM_MOVIE_GENRE = [1,9,11,12,13];
 
     public function __construct()
     {
+        parent::__construct();
         $this->section = New Section;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getHasNext()
-    {
-        return $this->hasNext;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getLimit()
-    {
-        return (int)$this->limit;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getOffset()
-    {
-        return (int)$this->offset;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getTotalCount()
-    {
-        return $this->totalCount;
-    }
-
-    /**
-     * @return Array
-     */
-    public function getRows()
-    {
-        return $this->rows;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPage()
-    {
-        return $this->page;
-    }
-
-    /**
-     * @param mixed $limit
-     */
-    public function setLimit($limit)
-    {
-        $this->limit = $limit;
-    }
-
-    /**
-     * @param mixed $offset
-     */
-    public function setOffset($offset)
-    {
-        $this->offset = $offset;
     }
 
     /**
@@ -111,6 +44,22 @@ class SectionRepository
     public function setPage($page)
     {
         $this->page = $page;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAggregationPeriod()
+    {
+        return $this->aggregationPeriod;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRankingTitle()
+    {
+        return $this->rankingTitle;
     }
 
     /**
@@ -183,7 +132,7 @@ class SectionRepository
                 $rankingConcentrationCd = $genreMap[$genreCode]['AggregationCode'];
             } else {
                 Log::error('Genre code is not found');
-                throw new NoContentsException();
+                return null;
             }
             $title = $genreMap[$genreCode]['HimoBigGenreName'] . ':' . $genreMap[$genreCode]['HimoMiddleGenreName'];
         } else {
@@ -207,19 +156,18 @@ class SectionRepository
         $saleType = ($rows['rentalSalesSection'] == '1') ? 'rental' : 'sell';
 
         // TOL API でlimit/offset処理に問題があるため、一旦50件一括取得（hasnext=false固定）
-        $response = [
-            'hasNext' => false,
-            'totalCount' => $rows['totalResults'],
-            'aggregationPeriod' => $this->aggregationPeriodFormat($rows['totalingPeriod']),
-            'rows' => $this->convertFormatFromRanking($rows, $saleType),
-        ];
+        $this->aggregationPeriod = $this->aggregationPeriodFormat($rows['totalingPeriod']);
+        $this->totalCount = $rows['totalResults'];
+        $this->hasNext = false;
+        $this->rows = $this->convertFormatFromRanking($rows, $saleType);
+
         if ($title) {
-            $response['title'] = $title;
+            $this->rankingTitle = $title;
         }
-        if (empty($response['rows'])) {
+        if (empty($this->rows)) {
             return null;
         }
-        return $response;
+        return $this->rows;
     }
 
     public function aggregationPeriodFormat($totalingPeriod)

@@ -1,0 +1,35 @@
+{
+  "data": {
+    "workId": "PTA0000V402M",
+    "workTypeId": "1",
+    "workFormatId": "1",
+    "workTitle": "BIG YELL",
+    "ratingId": "EXT000000008",
+    "bigGenreId": "EXT0000000DY",
+    "mediumGenreId": "EXT0000000E0",
+    "smallGenreId": "",
+    "urlCd": "20619809",
+    "cccWorkCd": "20770715",
+    "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/12852/4537649869331_1L.jpg",
+    "saleStartDate": "2018-04-21 00:00:00",
+    "adultFlg": false,
+    "msdbItem": "audio",
+    "supplement": "ゆず",
+    "priceTaxOut": "",
+    "personId": "PPS000004QSJ",
+    "makerCd": "EXT000000HIU",
+    "videoFlg": true,
+    "makerName": "バップ",
+    "saleType": "rental",
+    "newFlg": false,
+    "itemType": "cd",
+    "saleTypeHas": {
+      "sell": true,
+      "rental": true,
+      "theater": false
+    },
+    "docText": "",
+    "musicDownloadUrl": null,
+    "playTime": ""
+  }
+}
