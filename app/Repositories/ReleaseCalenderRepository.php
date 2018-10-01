@@ -159,25 +159,15 @@ class ReleaseCalenderRepository
 
         // パラメーターを取得する　未指定の場合は当月
         if ($this->month === 'last') {
-//            $saleStartMonth = date('Y-m', strtotime('-1 months'));
+            // 前後の日付を取得する際に、Carbonだと月初の取得で日付がおかしくなるため、Carbonではなく下記で対応
             $saleStartMonth = date('Y-m', mktime(0, 0, 0, date('n') - 1, 1, date('Y')));
-            /*
-                        $saleStartDateFrom = Carbon::parse('last month')->startOfMonth();
-                        $saleStartDateTo = Carbon::parse('last month')->endOfMonth()->addMonth(6);
-                        $saleStartDateToForDB = Carbon::parse('last month')->endOfMonth();
-            */
             $saleStartDateFrom = Carbon::parse($saleStartMonth)->startOfMonth();
             $saleStartDateTo = Carbon::parse($saleStartMonth)->endOfMonth()->addMonth(6);
             $saleStartDateToForDB = Carbon::parse($saleStartMonth)->endOfMonth();
 
         } else if ($this->month === 'next') {
-//            $saleStartMonth = date('Y-m', strtotime('+1 months'));
+            // 前後の日付を取得する際に、Carbonだと月初の取得で日付がおかしくなるため、Carbonではなく下記で対応
             $saleStartMonth = date('Y-m', mktime(0, 0, 0, date('n') + 1, 1, date('Y')));
-            /*
-                        $saleStartDateFrom = Carbon::parse('next month')->startOfMonth();
-                        $saleStartDateTo = Carbon::parse('next month')->endOfMonth()->addMonth(6);
-                        $saleStartDateToForDB = Carbon::parse('next month')->endOfMonth();
-            */
             $saleStartDateFrom = Carbon::parse($saleStartMonth)->startOfMonth();
             $saleStartDateTo = Carbon::parse($saleStartMonth)->endOfMonth()->addMonth(6);
             $saleStartDateToForDB = Carbon::parse($saleStartMonth)->endOfMonth();
@@ -324,6 +314,7 @@ class ReleaseCalenderRepository
         // アダルト表示は常に許可しておく。
         $workRepository->setAgeLimitCheck($this->ageLimitCheck);
         foreach ($results as $result) {
+            $workRepository->setSaleType($productRepository->convertProductTypeToStr($result->productTypeId));
             $tmpData = $workRepository->formatAddOtherData((array)$result, false, (array)$result);
 
             // Change productName -> productTitle
