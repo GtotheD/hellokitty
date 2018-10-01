@@ -984,7 +984,6 @@ class WorkRepository extends BaseRepository
 
         $params = [
             'personId' => $personId,
-//            'saleType' => $this->saleType,
             'itemType' => $itemType,
             'responseLevel' => 1,
             'id' => $personId,//dummy data
