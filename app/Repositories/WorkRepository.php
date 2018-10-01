@@ -221,8 +221,9 @@ class WorkRepository extends BaseRepository
         foreach ($idsArray as $idElement) {
             if(substr($idElement, 0, strlen($defineWorkId)) !== $defineWorkId) {
                 // Convert urlCd to workId
-                $convertData = $this->getWorkByUrlCd($idElement,['work_id']);
-                if(count($convertData) > 0 && isset($convertData['workId'])) {
+                // Input idType = '0105' for himo search by urlCd
+                $convertData = $this->getWorkByUrlCd($idElement,['work_id'], '0105');
+                if(!empty($convertData) && isset($convertData['workId'])) {
                     $idElement = $convertData['workId'];
                     array_push($workIdsArray, $idElement);
                 }
@@ -276,14 +277,15 @@ class WorkRepository extends BaseRepository
      * Get work data by input urlcd
      * @param type $workId 
      * @param type|null $selectColumns 
+     * @param idType type off workId
      * @return response
      */
-    public function getWorkByUrlCd($workId, $selectColumns = null)
+    public function getWorkByUrlCd($workId, $selectColumns = null, $idType)
     {
         $product = new Product;
         $response = [];
         $productResult = null;
-        $productResult = (array)$this->work->setConditionByUrlCd($workId)->getOne();
+        $productResult = (array)$this->work->setConditionByUrlCd($workId, $this->saleType)->getOne();
         if ($productResult) {
             $workId = $productResult['work_id'];
         }
