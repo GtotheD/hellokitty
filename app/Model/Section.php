@@ -43,7 +43,7 @@ class Section extends Model
                 $join->on('ts_structure_id', '=', 'ts_structures.id')
                     ->where([
                         'goods_type' => $goodsType,
-                        'sale_type' => $saleType,
+                        'ts_structures.sale_type' => $saleType,
                         'section_file_name' => $sectionFileName
                     ]);
             })
@@ -64,6 +64,7 @@ class Section extends Model
         $this->dbObject = DB::table($this->table)
             ->select(['*'])
             ->where('ts_structure_id', '=' , $tsStructureId)
+            ->where('title', '<>', '')
             // add inoue
             ->whereRaw("(display_start_date <= ". DB::raw('now()') .
                 " or display_start_date = '0000-00-00 00:00:00')" )

@@ -511,14 +511,17 @@ class Import extends Command
         $section = new Section;
         $structureRepository = new StructureRepository();
         // 全件を対象
-        $sections = $section->conditionNoWorkIdActiveRow()->select(['t1.*', 'sale_type'])->getAll();
+        $sections = $section->conditionNoWorkIdActiveRow()->select(['t1.*', 't1.sale_type'])->getAll();
         foreach ($sections as $sectionRow) {
             $this->infoH2($sectionRow->id . ' : ' . $sectionRow->code);
             if (!empty($sectionRow->code)) {
                 try {
                     $length = strlen($sectionRow->code);
-                    // rental_product_cd
-                    if ($length === 9) {
+                    // Item
+                    if (preg_match('/^PTA/', $sectionRow->code)) {
+                        $codeType = '0102';
+                        // rental_product_cd
+                    } elseif ($length === 9) {
                         $codeType = '0206';
                     } elseif ($length === 13) {
                         $codeType = '0205';
@@ -531,11 +534,16 @@ class Import extends Command
                         'work_id' => $res['workId'],
                         'title' => $res['workTitle'],
                         'url_code' => $res['urlCd'],
+                        'sale_type' => $res['saleType'],
                         'updated_at' => date('Y-m-d H:i:s')
                     ];
                     $updateValues['image_url'] = $res['jacketL'];
                     $updateValues['sale_start_date'] = $res['saleStartDate'];
                     $updateValues['supplement'] = $res['supplement'];
+                    // work_idできたのに映画情報じゃなかったら入れない。
+                    if ($codeType == '0102' && $res['saleType'] != WorkRepository::SALE_TYPE_THEATER) {
+                        continue;
+                    }
                     $section->update($sectionRow->id, $updateValues);
                 } catch (NoContentsException $e) {
                     $this->infoMessage('Skip up date: No Contents');
