@@ -193,6 +193,7 @@ class ReleaseCalenderRepository extends BaseRepository
                     }
                     // データを取得する際は、常にお薦めで取得し、順序をDBに登録する。
                     // ここのリリカレモデルは入れ替えられるようにメンバ変数で保持
+
                     $this->himoReleaseOrder->insertBulk($himoReleaseOrderData);
                     $workRepository->getWorkList($insertWorkId);
                     if ($orderNum > $totalCount) {
