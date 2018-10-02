@@ -164,9 +164,11 @@ class Work extends Model
         }
 
         if ($saleType === 'sell') {
-            $this->dbObject->where('p2.product_type_id', '1');
+            $this->dbObject->where('p2.product_type_id', '1')
+                ->orWhereRaw(DB::raw(' p2.product_type_id = \'\' '));
         } elseif ($saleType === 'rental') {
-            $this->dbObject->where('p2.product_type_id', '2');
+            $this->dbObject->where('p2.product_type_id', '2')
+            ->orWhereRaw(DB::raw(' p2.product_type_id = \'\' '));
         }
         if ($order === 'old') {
             $this->dbObject
@@ -193,7 +195,7 @@ class Work extends Model
         $subQuery = DB::table('ts_products AS p1')->select(DB::raw($selectSubGrouping.$selectSub))
             ->join('ts_related_works as rw', 'rw.related_work_id', '=', 'p1.work_id')
             ->whereRaw(DB::raw(' item_cd not like \'_1__\' '))
-            ->whereRaw(DB::raw(' service_id not in  (\'discas\', \'ec\', \'musico\')'))
+            ->whereRaw(DB::raw(' service_id  in  (\'tol\', \'st\')'))
             ->whereRaw(DB::raw(" rw.work_id = '{$workId}'"))
             ->whereRaw(DB::raw(" rw.related_work_id <> '{$workId}'"))
             ->groupBy(DB::raw($selectSubGrouping));
@@ -201,9 +203,11 @@ class Work extends Model
             ->join('ts_products as t2', 't2.product_unique_id', '=', 't1.product_unique_id')
             ->join('ts_works as w1', 'w1.work_id', '=', 't1.work_id');
         if ($saleType === 'sell') {
-            $this->dbObject->where('t2.product_type_id', '1');
+            $this->dbObject->where('t2.product_type_id', '1')
+                ->orWhereRaw(DB::raw(' (p2.product_type_id = \'\' AND service_id = \'ST\' '));
         } elseif ($saleType === 'rental') {
-            $this->dbObject->where('t2.product_type_id', '2');
+            $this->dbObject->where('t2.product_type_id', '2')
+                ->orWhereRaw(DB::raw(' (p2.product_type_id = \'\' AND service_id = \'ST\' '));
         }
         if ($order === 'old') {
             $this->dbObject

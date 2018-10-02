@@ -85,9 +85,10 @@ class SectionRepository extends BaseRepository
         $structureRepository = new StructureRepository();
         $structure = new Structure();
         $goodsType = $structureRepository->convertGoodsTypeToId($goodsType);
+        $saleTypeRequest = $saleType;
         $saleType = $structureRepository->convertSaleTypeToId($saleType);
         $structureList = $structure->conditionFindFilenameWithDispTime($goodsType, $saleType, $sectionFileName)->getOne();
-        if (count($structureList) == 0) {
+        if (empty($structureList)) {
             $this->totalCount = 0;
         } else {
             $this->section->setConditionByTsStructureId($structureList->id);
@@ -100,6 +101,12 @@ class SectionRepository extends BaseRepository
             $this->hasNext = false;
         }
         foreach ($sections as $section) {
+            // saleTypeは基本リクエストのものをそのまま渡すが、
+            if($section->sale_type == WorkRepository::SALE_TYPE_THEATER) {
+                $saleTypeTmp = WorkRepository::SALE_TYPE_THEATER;
+            } else {
+                $saleTypeTmp = $saleTypeRequest;
+            }
             $row = [
                 // 'saleStartDate' => $this->dateFormat($section->sale_start_date),
                 'imageUrl' => $section->image_url,
@@ -107,7 +114,8 @@ class SectionRepository extends BaseRepository
                 'supplement' => $this->supplementVisible ? '' : $section->supplement, // アーティスト名、著者、機種等
                 'code' => $section->code,
                 'urlCd' => $section->url_code,
-                'workId' => $section->work_id
+                'workId' => $section->work_id,
+                'saleType' => $saleTypeTmp,
             ];
             if ($saleType == $structureRepository::RENTAL) {
                 $row['saleStartDate'] = $structureList->is_release_date == 1 ? $this->dateFormat($section->rental_start_date) : null;
