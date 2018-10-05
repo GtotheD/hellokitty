@@ -126,7 +126,7 @@ class Import extends Command
         }
 
         // updateのみ実行の場合
-        if ($updateOnly === true ) {
+        if ($updateOnly === true) {
             $this->updateSectionsDataFromHimo();
             return true;
         }
@@ -513,6 +513,7 @@ class Import extends Command
         // 全件を対象
         $sections = $section->conditionNoWorkIdActiveRow()->select(['t1.*', 't1.sale_type'])->getAll();
         foreach ($sections as $sectionRow) {
+            $codeType = null;
             $this->infoH2($sectionRow->id . ' : ' . $sectionRow->code);
             if (!empty($sectionRow->code)) {
                 try {
@@ -526,25 +527,30 @@ class Import extends Command
                     } elseif ($length === 13) {
                         $codeType = '0205';
                     }
+
                     $this->infoMessage('Id Type: ' . $codeType);
-                    // 作成する場合、
-                    $workRepository->setSaleType($structureRepository->convertSaleTypeToString($sectionRow->sale_type));
-                    $res = $workRepository->get($sectionRow->code, [], $codeType);
-                    $updateValues = [
-                        'work_id' => $res['workId'],
-                        'title' => $res['workTitle'],
-                        'url_code' => $res['urlCd'],
-                        'sale_type' => $res['saleType'],
-                        'updated_at' => date('Y-m-d H:i:s')
-                    ];
-                    $updateValues['image_url'] = $res['jacketL'];
-                    $updateValues['sale_start_date'] = $res['saleStartDate'];
-                    $updateValues['supplement'] = $res['supplement'];
-                    // work_idできたのに映画情報じゃなかったら入れない。
-                    if ($codeType == '0102' && $res['saleType'] != WorkRepository::SALE_TYPE_THEATER) {
-                        continue;
+                    if (!empty($codeType)) {
+                        // 作成する場合、
+                        $workRepository->setSaleType($structureRepository->convertSaleTypeToString($sectionRow->sale_type));
+                        $res = $workRepository->get($sectionRow->code, [], $codeType);
+                        if ($codeType == '0102') {
+                            $res['saleType'] = WorkRepository::SALE_TYPE_THEATER;
+                        }
+                        $updateValues = [
+                            'work_id' => $res['workId'],
+                            'title' => $res['workTitle'],
+                            'url_code' => $res['urlCd'],
+                            'sale_type' => $res['saleType'],
+                            'updated_at' => date('Y-m-d H:i:s')
+                        ];
+                        $updateValues['image_url'] = $res['jacketL'];
+                        $updateValues['sale_start_date'] = $res['saleStartDate'];
+                        $updateValues['supplement'] = $res['supplement'];
+                        // work_idできたのに映画情報じゃなかったら入れない。
+                        $section->update($sectionRow->id, $updateValues);
+                    } else {
+                        $this->infoMessage('The code type of this ID does not exist.');
                     }
-                    $section->update($sectionRow->id, $updateValues);
                 } catch (NoContentsException $e) {
                     $this->infoMessage('Skip up date: No Contents');
                 }
