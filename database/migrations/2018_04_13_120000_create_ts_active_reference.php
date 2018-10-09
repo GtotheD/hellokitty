@@ -18,6 +18,11 @@ class CreateTsActiveReference extends Migration
             $table->unsignedInteger('active_table');
             $table->timestamps();
         });
+
+        DB::table('ts_active_reference')->insert([
+            ['view' => 'ts_himo_keywords', 'active_table' => 0, 'created_at' => new DateTime(), 'updated_at' => new DateTime()],
+            ['view' => 'ts_bk2_recommends', 'active_table' => 0, 'created_at' => new DateTime(), 'updated_at' => new DateTime()]
+        ]);
     }
 
     /**
