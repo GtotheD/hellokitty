@@ -92,6 +92,7 @@ class RecommendTheaterRepository extends BaseRepository
     public function getRanking($twsAggregationId)
     {
         $sectionRepository = new SectionRepository();
+        $sectionRepository->setSort($this->sort);
         $sectionRepository->ranking('agg', $twsAggregationId, null);
         $this->hasNext = $sectionRepository->getHasNext();
         $this->totalCount = $sectionRepository->getTotalCount();
@@ -105,6 +106,7 @@ class RecommendTheaterRepository extends BaseRepository
     {
         $workRepository = new WorkRepository();
         $workRepository->setSaleType($this->saleType);
+        $workRepository->setSort($this->sort);
         $response = $workRepository->genre($genreId);
         $this->hasNext = $workRepository->getHasNext();
         $this->totalCount = $workRepository->getTotalCount();
@@ -125,6 +127,7 @@ class RecommendTheaterRepository extends BaseRepository
         }
         $workRepository->setSaleType('rental');
         // ソート：お薦め、アイテム：DVD
+        $workRepository->setSort($this->sort);
         $response = $workRepository->person($person->personId, '', 'dvd');
         $this->hasNext = $workRepository->getHasNext();
         $this->totalCount = $workRepository->getTotalCount();

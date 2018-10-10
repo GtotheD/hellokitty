@@ -1,6 +1,6 @@
 {
   "hasNext": false,
-  "totalCount": 2,
+  "totalCount": 3,
   "rows": [
     {
       "workId": "PTA0000VTVAN",
@@ -11,6 +11,18 @@
       "adultFlg": false,
       "supplement": "",
       "saleType": "rental",
+      "newFlg": true,
+      "itemType": "dvd"
+    },
+    {
+      "workId": "PTA0000WEKO0",
+      "workTitle": "ザ・プレデター",
+      "urlCd": "",
+      "cccWorkCd": "",
+      "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/extdata/04/00/00/36/45/01/364528_02_01.jpg",
+      "adultFlg": false,
+      "supplement": "",
+      "saleType": "theater",
       "newFlg": true,
       "itemType": "dvd"
     },
