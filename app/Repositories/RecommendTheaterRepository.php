@@ -127,8 +127,7 @@ class RecommendTheaterRepository extends BaseRepository
         }
         $workRepository->setSaleType('rental');
         // ソート：お薦め、アイテム：DVD
-        $workRepository->setSort($this->sort);
-        $response = $workRepository->person($person->personId, '', 'dvd');
+        $response = $workRepository->person($person->personId, $this->sort, 'dvd');
         $this->hasNext = $workRepository->getHasNext();
         $this->totalCount = $workRepository->getTotalCount();
         return $response;
