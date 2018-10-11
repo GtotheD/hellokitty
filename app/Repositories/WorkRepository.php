@@ -532,7 +532,7 @@ class WorkRepository extends BaseRepository
             $response['playTime'] = '';
             if($response['workTypeId'] === self::WORK_TYPE_THEATER) {
                 // 画像はsceneから取得する。
-                $response['jacketL'] = current(json_decode($response['sceneL']));
+                $response['jacketL'] = $this->theaterSceneFilter($response['sceneL']);
                 // 再生時間を取得する。
                 $response['playTime'] = $product['playTime'];
             }
@@ -831,11 +831,17 @@ class WorkRepository extends BaseRepository
                     $saleStartDateRental = ($row['sale_start_date']) ? date('Y-m-d 00:00:00', strtotime($saleTypeHas['saleStartDateRental'])) : '';
                 }
 
+
+                if($base['work_type_id'] == WorkRepository::WORK_TYPE_THEATER) {
+                    $base['jacket_l'] = $this->theaterSceneFilter($base['scene_l']);
+                }
+
                 $result['rows'][] = [
                     'workId' => $base['work_id'],
                     'urlCd' => $base['url_cd'],
                     'cccWorkCd' => $base['ccc_work_cd'],
                     'workTitle' => $base['work_title'],
+
                     'jacketL' => ($displayImage) ? $base['jacket_l'] : '',
                     'newFlg' => newFlg($base['sale_start_date']),
                     'adultFlg' => ($base['adult_flg'] === 1) ? true : $isAdult,
@@ -925,7 +931,8 @@ class WorkRepository extends BaseRepository
                         $saleStartDateRental = $product['sale_start_date'];
                     }
                     $rental = true;
-                } else if (empty($product['product_type_id']) && $product['service_id'] === 'st') { // VHSの条件を除外
+                // 上映映画
+                } else if (empty($product['product_type_id']) && $product['service_id'] === 'st') {
                     $thater = true;
                 }
                 if ($itemType === 'game') {
@@ -1292,6 +1299,17 @@ class WorkRepository extends BaseRepository
             return $row['filmarks_id'][0];
         }
         return null;
+    }
+
+    /**
+     * 上映映画シーン抽出
+     * @param string $scenes JSON文字列
+     * @return string $scene
+     */
+    private function theaterSceneFilter($scenes)
+    {
+        $scenes = json_decode($scenes);
+        return end($scenes);
     }
 
     private function outputColumn()
