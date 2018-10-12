@@ -93,10 +93,16 @@ class Product extends Model
                 'work_id' => $workId,
             ]);
         // Add sale type filter
-        if ($saleType) {
+        if ($saleType === 'theater') {
             $this->dbObject->where([
-                'product_type_id' => $this->convertSaleType($saleType),
+                'service_id' => 'st',
             ]);
+        } else {
+            if ($saleType) {
+                $this->dbObject->where([
+                    'product_type_id' => $this->convertSaleType($saleType),
+                ]);
+            }
         }
         if ($isMovie) {
             // PPTのみの場合も該当する
