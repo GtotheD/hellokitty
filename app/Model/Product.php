@@ -93,12 +93,12 @@ class Product extends Model
                 'work_id' => $workId,
             ]);
         // Add sale type filter
-        if ($saleType === 'theater') {
-            $this->dbObject->where([
-                'service_id' => 'st',
-            ]);
-        } else {
-            if ($saleType) {
+        if ($saleType) {
+            if ($saleType === 'theater') {
+                $this->dbObject->where([
+                    'service_id' => 'st',
+                ]);
+            } else {
                 $this->dbObject->where([
                     'product_type_id' => $this->convertSaleType($saleType),
                 ]);
