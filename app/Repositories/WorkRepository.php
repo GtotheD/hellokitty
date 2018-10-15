@@ -1309,7 +1309,11 @@ class WorkRepository extends BaseRepository
     private function theaterSceneFilter($scenes)
     {
         $scenes = json_decode($scenes);
-        return end($scenes);
+        $image = end($scenes);
+        if ($image === false) {
+            return '';
+        }
+        return $image;
     }
 
     private function outputColumn()
