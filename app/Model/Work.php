@@ -232,11 +232,11 @@ class Work extends Model
         $productsSubQuery = DB::table('ts_products AS tp')
                 ->select(DB::raw('tp.work_id'));
         if($saleType) {
-            $productsSubQuery->whereRaw($this->getClauseProductSaleType($saleType));
+            $productsSubQuery->whereRaw($this->getClauseProductSaleType($saleType))
+                ->orWhereRaw('t1.only_other = \'1\'');
         }
         $this->dbObject = DB::table($this->table. ' AS t1')
                 ->whereRaw('t1.work_id IN ('.$productsSubQuery->toSql().')')
-                ->orWhereRaw('t1.only_other = \'1\'')
                 ->whereIn('t1.work_id', $workIds);
         return $this;
     }
