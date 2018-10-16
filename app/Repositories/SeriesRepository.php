@@ -131,6 +131,10 @@ class SeriesRepository
                     ];
                 }
             }
+            // インサートデータがなかった場合は終了する。
+            if (empty($insertData)) {
+                throw new NoContentsException();
+            }
             $series->insertBulk($insertData);
             $workRepository->getWorkList($getWorkIds);
         }
