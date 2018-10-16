@@ -1148,7 +1148,7 @@
  *     @SWG\Parameter(
  *       name="saleType",
  *       in="query",
- *       description="販売タイプ（sell, rental)",
+ *       description="販売タイプ（sell, rental, theater)",
  *       type="string"
  *     ),
  *     @SWG\Parameter(ref="#/parameters/itemType"),
