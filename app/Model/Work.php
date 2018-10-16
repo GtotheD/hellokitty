@@ -169,6 +169,9 @@ class Work extends Model
         } elseif ($saleType === 'rental') {
             $this->dbObject->where('p2.product_type_id', '2')
             ->orWhereRaw(DB::raw(' p2.product_type_id = \'\' '));
+        } elseif ($saleType === 'theater') {
+            $this->dbObject->where('p2.product_type_id', '1')
+                ->orWhereRaw(DB::raw(' p2.product_type_id = \'\' '));
         }
         if ($order === 'old') {
             $this->dbObject
@@ -204,10 +207,13 @@ class Work extends Model
             ->join('ts_works as w1', 'w1.work_id', '=', 't1.work_id');
         if ($saleType === 'sell') {
             $this->dbObject->where('t2.product_type_id', '1')
-                ->orWhereRaw(DB::raw(' (p2.product_type_id = \'\' AND service_id = \'ST\' '));
+                ->orWhereRaw(DB::raw(' (p2.product_type_id = \'\' AND service_id = \'st\' '));
         } elseif ($saleType === 'rental') {
             $this->dbObject->where('t2.product_type_id', '2')
-                ->orWhereRaw(DB::raw(' (p2.product_type_id = \'\' AND service_id = \'ST\' '));
+                ->orWhereRaw(DB::raw(' (p2.product_type_id = \'\' AND service_id = \'st\' '));
+        } elseif ($saleType === 'theater') {
+            $this->dbObject->where('p2.product_type_id', '1')
+                ->orWhereRaw(DB::raw(' p2.product_type_id = \'\' '));
         }
         if ($order === 'old') {
             $this->dbObject
