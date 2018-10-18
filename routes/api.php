@@ -135,6 +135,7 @@ $router->group([
         $response = [
             'hasNext' => $sectionRepository->getHasNext(),
             'totalCount' => $sectionRepository->getTotalCount(),
+            'aggregationPeriod' => $sectionRepository->getAggregationPeriod(),
             'rows' => $rows
         ];
         if(!empty($sectionRepository->getRankingTitle())) {
@@ -629,6 +630,7 @@ $router->group([
         $response = [
             'hasNext' => $sectionRepository->getHasNext(),
             'totalCount' => $sectionRepository->getTotalCount(),
+            'aggregationPeriod' => $sectionRepository->getAggregationPeriod(),
             'rows' => $rows
         ];
         if(!empty($sectionRepository->getRankingTitle())) {
