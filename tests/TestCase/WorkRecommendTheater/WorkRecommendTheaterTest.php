@@ -6,7 +6,7 @@ use tests\TestData;
  * recommend/theater（上映映画ページ用リコメンド） APIテスト
  *
  */
-class RecommendTheaterTest extends TestCase
+class WorkRecommendTheaterTest extends TestCase
 {
     public function __construct(string $name = null, array $data = [], string $dataName = '')
     {
