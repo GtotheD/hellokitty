@@ -330,11 +330,11 @@ class WorkRepository extends BaseRepository
         $workIdsExistedArray = [];
         switch ($idType) {
             case '0105':
-                $workIdsExisted = $this->work->setConditionByUrlCd($workIds)->select('url_cd')->getAll();
+                $workIdsExisted = $this->work->setConditionByUrlCd($workIds, $saleType)->select('url_cd')->getAll();
                 $targetColumn = 'url_cd';
                 break;
             default:
-                $workIdsExisted = $this->work->getWorkBySaleType($workIds)->select('work_id')->getAll();
+                $workIdsExisted = $this->work->getWorkBySaleType($workIds, $saleType)->select('work_id')->getAll();
                 $targetColumn = 'work_id';
                 break;
         }
@@ -436,23 +436,24 @@ class WorkRepository extends BaseRepository
             } else {
                 $product = (array)$productModel->setConditionByWorkIdNewestProduct($response['workId'], $this->saleType)->toCamel()->getOne();
             }
-            // 上記で何も拾えなかった場合は、映像のみか確認する。
+            // 上記で何も拾えなかった場合は、映像のみ  か確認する。
             if ($productModel->isOnlyOtherItem($response['workId'])) {
-                $product = (array)$productModel->setConditionByWorkIdNewestProduct($response['workId'])->toCamel()->getOne();
+                $product = (array)$productModel->setConditionByWorkIdNewestProduct($response['workId'], null , false, true)->toCamel()->getOne();
                 // 映像のみの作品は固定で入れる
                 $response['saleType'] = self::SALE_TYPE_OTHER;
             }
+            // 映像の場合は、ジャケ写を最新刊のブルーレイ優先で取得する。
+//            if ($response['msdbItem'] === self::MSDB_ITEM_VIDEO) {
+//                // saleTypeの指定がない場合は関係なく出す。
+//                $jacket = (array)$productModel->setConditionSelectJacket($response['workId'], $this->saleType)->getOne();
+//                // ジャケットがある場合のみ差し替え
+//                if (count($jacket) > 0) {
+//                    $product['jacketL'] = $jacket['jacketL'];
+//                }
+//            }
         }
         if (!empty($product)) {
-            // 映像の場合は、ジャケ写を最新刊のブルーレイ優先で取得する。
-            if ($response['msdbItem'] === self::MSDB_ITEM_VIDEO) {
-                // saleTypeの指定がない場合は関係なく出す。
-                $jacket = (array)$productModel->setConditionSelectJacket($response['workId'], $this->saleType)->getOne();
-                // ジャケットがある場合のみ差し替え
-                if (count($jacket) > 0) {
-                    $product['jacketL'] = $jacket['jacketL'];
-                }
-            }
+
             if ((substr($product['itemCd'], -2) === '75' && !empty($product['numberOfVolume'])) ||
                 (substr($product['itemCd'], -2) === '76' && !empty($product['numberOfVolume']))) {
                 $response['productName'] = $product['productName'] . "（{$product['numberOfVolume']}）";
@@ -529,6 +530,7 @@ class WorkRepository extends BaseRepository
 
             // ジャケ写の挿入
             $response['jacketL'] = ($displayImage) ? $product['jacketL'] : '';
+
             // 映画の場合の処理
             // 再生時間を返却するが上映映画の時の為だけなのでここでは初期化のみ
             $response['playTime'] = '';
@@ -612,7 +614,6 @@ class WorkRepository extends BaseRepository
                 ];
             }
         }
-
         return $response;
     }
 
@@ -808,7 +809,7 @@ class WorkRepository extends BaseRepository
                     $base['big_genre_id'],
                     $base['medium_genre_id'],
                     $base['small_genre_id'],
-                    $saleTypeHas['maker_cd']);
+                    $saleTypeHas['pickupProduct']['maker_cd']);
                 $workFormatName = "";
                 if ($itemTypeVal === 'cd') {
                     if ($saleTypeHas['media_format_id'] === self::HIMO_MEDIA_FORMAT_ID) {
@@ -849,8 +850,7 @@ class WorkRepository extends BaseRepository
                     'urlCd' => $base['url_cd'],
                     'cccWorkCd' => $base['ccc_work_cd'],
                     'workTitle' => $base['work_title'],
-
-                    'jacketL' => ($displayImage) ? $base['jacket_l'] : '',
+                    'jacketL' => ($displayImage) ? $saleTypeHas['pickupProduct']['jacket_l'] : '',
                     'newFlg' => newFlg($base['sale_start_date']),
                     'adultFlg' => ($base['adult_flg'] === 1) ? true : $isAdult,
                     'itemType' => $itemTypeVal,
@@ -963,18 +963,33 @@ class WorkRepository extends BaseRepository
                     }
                 }
                 $mediaFormatId = $product['media_format_id'];
-                $makerCd = $product['maker_cd'];
+                $productsTmp[] = $product;
+
             }
         }
+        foreach ($productsTmp as $productsTmpKey => $productsTmpRow) {
+            $productsTmpKeyNumberOfVolume[$productsTmpKey] = $productsTmpRow['number_of_volume'];
+            $productsTmpKeySaleStartDate[$productsTmpKey] = $productsTmpRow['sale_start_date'];
+            $productsTmpKeyItemCd[$productsTmpKey] = $productsTmpRow['item_cd'];
+            $productsTmpKeyCccProductId[$productsTmpKey] = $productsTmpRow['ccc_product_id'];
+        }
+        array_multisort(
+            $productsTmpKeyNumberOfVolume, SORT_DESC, SORT_NUMERIC,
+            $productsTmpKeySaleStartDate, SORT_DESC,
+            $productsTmpKeyItemCd, SORT_ASC,
+            $productsTmpKeyCccProductId, SORT_ASC,
+            $productsTmp
+             );
+
         return [
             'sell' => $sell,
             'rental' => $rental,
             'theater' => $thater,
             'supplement' => $supplement,
             'media_format_id' => $mediaFormatId,
-            'maker_cd' => $makerCd,
             'saleStartDateSell' => $saleStartDateSell,
             'saleStartDateRental' => $saleStartDateRental,
+            'pickupProduct' => current($productsTmp),
         ];
 
     }
@@ -1050,7 +1065,7 @@ class WorkRepository extends BaseRepository
         $workItems = [];
         foreach ($works as $workItem) {
             $workItem = (array)$workItem;
-            $formatedItem = $this->formatAddOtherData($workItem, false, $workItem, true);
+            $formatedItem = $this->formatAddOtherData($workItem, false, null, true);
             foreach ($formatedItem as $key => $value) {
                 if (in_array($key, $this->outputColumn())) {
                     $formatedItemSelectColumn[$key] = $value;
@@ -1112,34 +1127,40 @@ class WorkRepository extends BaseRepository
                     $base['big_genre_id'],
                     $base['medium_genre_id'],
                     $base['small_genre_id'],
-                    $saleTypeHas['maker_cd']);
+                    $saleTypeHas['pickupProduct']['maker_cd']);
                 // アダルト判定
                 $isAdult = isAdult(
                     $base['rating_id'],
                     $base['big_genre_id'],
                     $base['medium_genre_id'],
                     $base['small_genre_id'],
-                    $saleTypeHas['maker_cd']
+                    $saleTypeHas['pickupProduct']['maker_cd']
                 );
                 $result[] = [
                     'workId' => $base['work_id'],
                     'urlCd' => $base['url_cd'],
                     'cccWorkCd' => $base['ccc_work_cd'],
                     'workTitle' => $base['work_title'],
-                    'jacketL' => ($displayImage) ? $base['jacket_l'] : '',
+                    // 最新巻及び最新日のものを取得する。
+                    'jacketL' => ($displayImage) ? trimImageTag($saleTypeHas['pickupProduct']['jacket_l']) : '',
                     'newFlg' => newFlg($base['sale_start_date']),
                     'adultFlg' => ($base['adult_flg'] === 1) ? true : $isAdult,
                     'itemType' => $itemType,
                     'saleType' => $this->saleType,
                     // DVDの場合は空にする。
                     'supplement' => ($itemType === 'dvd') ? '' : $saleTypeHas['supplement'],
-                    'saleStartDate' => ($row['sale_start_date']) ? date('Y-m-d 00:00:00', strtotime($row['sale_start_date'])) : '',
+                    'saleStartDate' => ($saleTypeHas['pickupProduct']['sale_start_date']) ? date('Y-m-d 00:00:00', strtotime($saleTypeHas['pickupProduct']['sale_start_date'])) : '',
                     'saleStartDateSell' => ($row['sale_start_date_sell']) ? date('Y-m-d 00:00:00', strtotime($row['sale_start_date_sell'])) : '',
                     'saleStartDateRental' => ($row['sale_start_date_rental']) ? date('Y-m-d 00:00:00', strtotime($row['sale_start_date_rental'])) : '',
                 ];
             }
-        }
+
+            if (count($result) > 0) {
         return $result;
+    }
+        }
+
+        return null;
     }
 
     public function convert($idType, $id)
@@ -1294,6 +1315,9 @@ class WorkRepository extends BaseRepository
             case self::WORK_TYPE_MUSIC_UNIT:
                 $itemType = 'audio';
                 break;
+            case self::WORK_TYPE_MOVIE:
+                $itemType = 'video';
+                break;
         }
         return $itemType;
     }
@@ -1371,27 +1395,15 @@ class WorkRepository extends BaseRepository
             'work_title',
             'work_format_id',
             'scene_l',
-            'play_time',
             'rating_id',
             'big_genre_id',
             'medium_genre_id',
             'small_genre_id',
             'url_cd',
             'ccc_work_cd',
-//            'w1.jacket_l',
-            'p2.jacket_l',
-            'p2.sale_start_date',
-            'p2.product_type_id',
-            'p2.product_unique_id',
-            'product_name',
-            'maker_name',
-            'game_model_name',
             'adult_flg',
-            'p2.msdb_item',
-            'media_format_id',
-            'number_of_volume',
-            'item_cd',
-            'maker_cd'
+            'msdb_item',
+            'product_type_id'
         ];
     }
 }

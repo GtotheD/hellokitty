@@ -1,6 +1,7 @@
 <?php
 
 use tests\TestData;
+use Illuminate\Support\Carbon;
 
 /*
  * Work（作品情報取得） APIテスト
@@ -12,6 +13,9 @@ class WorkTest extends TestCase
     {
         parent::__construct($name, $data, $dataName);
         $this->testDir = __DIR__;
+        // NewFlagが変更されるため、現在時刻を変更
+        Carbon::setTestNow(new Carbon('2018-10-01 00:00:00'));
+
     }
 
     /*
@@ -20,21 +24,21 @@ class WorkTest extends TestCase
     public function workDataProvider()
     {
         return [
-            ['PTA0000SF309', 'rental', 200], // 通常DVD
-            ['PTA0000WEKO0', 'rental', 200], // 上映映画
-            ['PTA0000U62N9', 'rental', 200], // CD
-            ['PTA0000GD16P', 'rental', 200], // BOOK
-            ['PTA0000SF309', 'sell', 200], // 通常DVD
-            ['PTA0000WEKO0', 'sell', 200], // 上映映画
-            ['PTA0000U62N9', 'sell', 200], // CD
-            ['PTA0000GD16P', 'sell', 200], // BOOK
-            ['PTA0000U8W8U', 'sell', 200], // GAME
-            ['PTA0000SF309', 'theater', 202], // 通常DVD
-            ['PTA0000U62N9', 'theater', 204], // CD
-            ['PTA0000GD16P', 'theater', 204], // BOOK
-            ['PTA0000U8W8U', 'theater', 204], // GAME
-            ['PTA0000WEKO0', 'theater', 200], // 上映映画
-            ['PTA0000V9KGR', 'theater', 202], // 配信オンリー
+            'レンタル 通常DVD ' => ['PTA0000SF309', 'rental', 200], // 通常DVD
+            'レンタル 上映映画作品' => ['PTA0000WEKO0', 'rental', 200], // 上映映画
+            'レンタル CD' => ['PTA0000U62N9', 'rental', 200], // CD
+            'レンタル DVD' => ['PTA0000GD16P', 'rental', 200], // BOOK
+            'レンタル GAME' => ['PTA0000U8W8U', 'rental', 204], // GAME
+            '' => ['PTA0000SF309', 'sell', 200], // 通常DVD
+            '' => ['PTA0000WEKO0', 'sell', 200], // 上映映画
+            '' => ['PTA0000U62N9', 'sell', 200], // CD
+            '' => ['PTA0000GD16P', 'sell', 200], // BOOK
+            '' => ['PTA0000SF309', 'theater', 202], // 通常DVD
+            '' => ['PTA0000U62N9', 'theater', 204], // CD
+            '' => ['PTA0000GD16P', 'theater', 204], // BOOK
+            '' => ['PTA0000U8W8U', 'theater', 204], // GAME
+            '' => ['PTA0000WEKO0', 'theater', 200], // 上映映画
+            '' => ['PTA0000V9KGR', 'theater', 202], // 配信オンリー
         ];
     }
 

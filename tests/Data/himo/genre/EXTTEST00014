@@ -1,0 +1,533 @@
+{
+    "status": 200,
+    "message": null,
+    "results": {
+        "total": 1,
+        "rows": [
+            {
+                "work_id": "PTA0000U8W8U",
+                "work_type_id": "4",
+                "msdb_item": "game",
+                "work_format_id": null,
+                "work_format_name": "",
+                "work_title": "モンスターハンター:ワールド",
+                "work_title_kana": "もんすたーはんたーわーるど",
+                "work_title_en": "",
+                "work_title_orig": "",
+                "work_title_sub": "",
+                "work_comment": "",
+                "work_outline": "",
+                "work_copyright": "",
+                "rating_id": "EXT00007975Y",
+                "rating_name": "15才以上対象",
+                "adult_flg": 0,
+                "primary_product_source_id": "PDT0000U8WVP",
+                "primary_product_service_id": "ec",
+                "primary_product_type_id": 1,
+                "disp_start_date": "1900-01-01 00:00:00",
+                "disp_start_month": "1900-01",
+                "sale_start_date": "2018-01-26",
+                "sale_start_month": "2018-01",
+                "created_year_from": "",
+                "created_year_to": "",
+                "created_year": "2018",
+                "created_countries": "",
+                "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/12737/4976219089999_1S.jpg ",
+                "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/12737/4976219089999_1M.jpg ",
+                "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/12737/4976219089999_1L.jpg ",
+                "jacket_l4": "",
+                "scene_s": [
+
+                ],
+                "scene_m": [
+
+                ],
+                "scene_l": [
+
+                ],
+                "trailor_pc": [
+
+                ],
+                "season_name": "",
+                "season_number": null,
+                "book_series_name": "",
+                "book_series_name_kana": "",
+                "feature_keywords": [
+
+                ],
+                "priv_keywords": [
+
+                ],
+                "work_tags": [
+
+                ],
+                "wakati_words": [
+
+                ],
+                "is_compilation": 0,
+                "series_completed": 0,
+                "disable_flg": 0,
+                "delete_flg": 0,
+                "ids": [
+                    {
+                        "id_type": "0103",
+                        "id_value": "30036465"
+                    },
+                    {
+                        "id_type": "0105",
+                        "id_value": "30032670"
+                    }
+                ],
+                "docs": [
+                    {
+                        "doc_type_id": "01",
+                        "doc_source_id": "01",
+                        "doc_text": "雄大な自然の中で巨大なモンスターに立ち向かえ。プレイヤーはハンターとなって、さまざまな環境に生息するモンスターを狩猟する、クエストを受注する。モンスターを狩猟して手に入る素材を用いて、より強い武器や防具を作り、さらに強力なモンスターに挑むことになる。本作では、新たに構築された多種多様な地形や生態系が息づく世界で、究極の狩猟生活が体験できる。ハンターは己が信じる武器と、身を守る防具を駆使してモンスターと渡り合う。"
+                    }
+                ],
+                "awards": [
+
+                ],
+                "screens": [
+
+                ],
+                "onairs": [
+
+                ],
+                "magazines": [
+
+                ],
+                "genres": [
+                    {
+                        "big_genre_id": "EXT000073WW2",
+                        "big_genre_name": "アクション",
+                        "medium_genre_id": "EXT000073YJH",
+                        "medium_genre_name": "アクション",
+                        "small_genre_id": "",
+                        "small_genre_name": "",
+                        "shikiriban_id": "",
+                        "shikiriban_name": ""
+                    }
+                ],
+                "products": [
+                    {
+                        "id": "PDT0000U8W5H",
+                        "product_id": "PPD0000U8W5H",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "tol",
+                        "service_name": "tol",
+                        "msdb_item": "game",
+                        "item_cd": "1040",
+                        "item_name": "ゲームソフト",
+                        "product_name": "モンスターハンター:ワールド",
+                        "product_kana": "もんすたーはんたーわーるど",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2017-09-20 11:14:30",
+                        "disp_start_month": "2017-09",
+                        "disp_end_date": "2030-12-28 00:00:00",
+                        "disp_end_month": "2030-12",
+                        "sale_start_date": "2018-01-26",
+                        "sale_start_month": "2018-01",
+                        "sale_end_date": "2030-12-28",
+                        "sale_end_month": "2030-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000U8W8U"
+                        ],
+                        "tieup": "",
+                        "copyright": "",
+                        "rating_id": "EXT00007975Y",
+                        "rating_name": "15才以上対象",
+                        "adult_flg": 0,
+                        "created_year_from": "2018",
+                        "created_year_to": "",
+                        "created_year_str": "2018",
+                        "created_countries": "",
+                        "maker_cd": "EXT00000L6C7",
+                        "maker_name": "カプコン",
+                        "maker_name_kana": "かぷこん",
+                        "maker_name_abbrev": "カプコン",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "30036465",
+                        "ccc_family_cd": "30036465001",
+                        "ccc_product_id": "205738056",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4976219091275",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "PLJM16110",
+                        "icpn": "",
+                        "media_category_cd": "24",
+                        "media_category_name": "販売ゲーム",
+                        "media_format_id": "EXT0000797CA",
+                        "media_format_name": "ディスク",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "EXT000077CJC",
+                        "game_model_name": "ＰｌａｙＳｔａｔｉｏｎ４",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "000000",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "",
+                        "video_info": "",
+                        "number_of_volume": "",
+                        "number_of_set": "0",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/12737/4976219091275_1S.jpg ",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/12737/4976219091275_1M.jpg ",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/12737/4976219091275_1L.jpg ",
+                        "jacket_l4": "",
+                        "scene_s": [
+
+                        ],
+                        "scene_m": [
+
+                        ],
+                        "scene_l": [
+
+                        ],
+                        "trailor_pc": [
+
+                        ],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [
+
+                        ],
+                        "priv_keywords": [
+
+                        ],
+                        "package_tags": [
+
+                        ],
+                        "product_tags": [
+
+                        ],
+                        "price_tax_out": 8980,
+                        "price_tax_in": 9698,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "01",
+                                "doc_source_id": "01",
+                                "doc_text": "雄大な自然の中で巨大なモンスターに立ち向かえ。プレイヤーはハンターとなって、さまざまな環境に生息するモンスターを狩猟する、クエストを受注する。モンスターを狩猟して手に入る素材を用いて、より強い武器や防具を作り、さらに強力なモンスターに挑むことになる。本作では、新たに構築された多種多様な地形や生態系が息づく世界で、究極の狩猟生活が体験できる。ハンターは己が信じる武器と、身を守る防具を駆使してモンスターと渡り合う。"
+                            }
+                        ],
+                        "devices": [
+
+                        ],
+                        "distribution_plans": [
+
+                        ],
+                        "awards": [
+
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT000073WW2",
+                                "big_genre_name": "アクション",
+                                "medium_genre_id": "EXT000073YJH",
+                                "medium_genre_name": "アクション",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [
+
+                        ],
+                        "onairs": [
+
+                        ],
+                        "magazines": [
+
+                        ],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [
+
+                        ],
+                        "filmarks_id": [
+
+                        ],
+                        "dramarks_id": [
+
+                        ],
+                        "catch_copy": "",
+                        "people": [
+
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT0000U8W5U",
+                        "product_id": "PPD0000U8W5U",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "tol",
+                        "service_name": "tol",
+                        "msdb_item": "game",
+                        "item_cd": "1040",
+                        "item_name": "ゲームソフト",
+                        "product_name": "モンスターハンター:ワールド ",
+                        "product_kana": "もんすたーはんたーわーるどこれくたーずえでいしよん",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2017-09-20 11:11:53",
+                        "disp_start_month": "2017-09",
+                        "disp_end_date": "2030-12-28 00:00:00",
+                        "disp_end_month": "2030-12",
+                        "sale_start_date": "2018-01-26",
+                        "sale_start_month": "2018-01",
+                        "sale_end_date": "2030-12-28",
+                        "sale_end_month": "2030-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000U8W8U"
+                        ],
+                        "tieup": "",
+                        "copyright": "",
+                        "rating_id": "EXT00007975Y",
+                        "rating_name": "15才以上対象",
+                        "adult_flg": 0,
+                        "created_year_from": "2018",
+                        "created_year_to": "",
+                        "created_year_str": "2018",
+                        "created_countries": "",
+                        "maker_cd": "EXT00000L6C7",
+                        "maker_name": "カプコン",
+                        "maker_name_kana": "かぷこん",
+                        "maker_name_abbrev": "カプコン",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 1,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "30036465",
+                        "ccc_family_cd": "30036465001",
+                        "ccc_product_id": "205738055",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4976219089999",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "CPCS01136",
+                        "icpn": "",
+                        "media_category_cd": "24",
+                        "media_category_name": "販売ゲーム",
+                        "media_format_id": "EXT0000797CA",
+                        "media_format_name": "ディスク",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "EXT000077CJC",
+                        "game_model_name": "ＰｌａｙＳｔａｔｉｏｎ４",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "000000",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "",
+                        "video_info": "",
+                        "number_of_volume": "",
+                        "number_of_set": "0",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/12737/4976219089999_1S.jpg ",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/12737/4976219089999_1M.jpg ",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/12737/4976219089999_1L.jpg ",
+                        "jacket_l4": "",
+                        "scene_s": [
+
+                        ],
+                        "scene_m": [
+
+                        ],
+                        "scene_l": [
+
+                        ],
+                        "trailor_pc": [
+
+                        ],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [
+
+                        ],
+                        "priv_keywords": [
+
+                        ],
+                        "package_tags": [
+
+                        ],
+                        "product_tags": [
+
+                        ],
+                        "price_tax_out": 15980,
+                        "price_tax_in": 17258,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "01",
+                                "doc_source_id": "01",
+                                "doc_text": "雄大な自然の中で巨大なモンスターに立ち向かえ。プレイヤーはハンターとなって、さまざまな環境に生息するモンスターを狩猟する、クエストを受注する。モンスターを狩猟して手に入る素材を用いて、より強い武器や防具を作り、さらに強力なモンスターに挑むことになる。本作では、新たに構築された多種多様な地形や生態系が息づく世界で、究極の狩猟生活が体験できる。ハンターは己が信じる武器と、身を守る防具を駆使してモンスターと渡り合う。"
+                            }
+                        ],
+                        "devices": [
+
+                        ],
+                        "distribution_plans": [
+
+                        ],
+                        "awards": [
+
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT000073WW2",
+                                "big_genre_name": "アクション",
+                                "medium_genre_id": "EXT000073YJH",
+                                "medium_genre_name": "アクション",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [
+
+                        ],
+                        "onairs": [
+
+                        ],
+                        "magazines": [
+
+                        ],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [
+
+                        ],
+                        "filmarks_id": [
+
+                        ],
+                        "dramarks_id": [
+
+                        ],
+                        "catch_copy": "",
+                        "people": [
+
+                        ],
+                        "need_age_auth_flg": 0
+                    }
+                ],
+                "video_relations": [
+
+                ],
+                "discas_grade_point": null,
+                "discas_item": [
+
+                ],
+                "ttv_trailer_flg": 0,
+                "ttv_free_movie_flg": 0,
+                "ttv_sell_rental_flg": [
+
+                ],
+                "ttv_low_price": null,
+                "cinema_id": [
+
+                ],
+                "filmarks_id": [
+
+                ],
+                "dramarks_id": [
+
+                ],
+                "catch_copy": "",
+                "sale_start_date_sell": "2018-01-26",
+                "sale_start_date_rental": "",
+                "trailer_urls": [
+
+                ],
+                "scenes": [
+
+                ],
+                "filmarks_mark": 0,
+                "filmarks_clip": 0,
+                "filmarks_average": 0,
+                "people": [
+
+                ],
+                "tracks": [
+
+                ],
+                "merged_from": [
+
+                ],
+                "need_age_auth_flg": 0
+            }
+        ]
+    }
+}

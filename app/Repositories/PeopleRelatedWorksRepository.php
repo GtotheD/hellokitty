@@ -39,7 +39,7 @@ class PeopleRelatedWorksRepository extends BaseRepository
             return null;
         }
         $this->totalCount = $this->peopleRelatedWork->setConditionById($people->person_id)->count();
-        $result = $this->peopleRelatedWork->toCamel(['id', 'person_id'])->get();
+        $result = $this->peopleRelatedWork->toCamel(['id', 'person_id'])->get($this->limit, $this->offset);
         if (empty(count($result))) {
             $himoRepository->setLimit(100);
             $himoResult = $himoRepository->searchPeople([$people->person_id], '0301', ['book'])->get();
@@ -48,16 +48,18 @@ class PeopleRelatedWorksRepository extends BaseRepository
             }
             foreach ($himoResult['results']['rows'] as $row) {
                 foreach ($row['works'] as $work) {
-                    $insertData[] = $this->format($people->person_id, $work);
+                    $insertData[] = [
+                        'person_id' => $people->person_id,
+                        'work_id' => $work['work_id']
+                    ];
                 }
             }
             $this->peopleRelatedWork->insertBulk($insertData);
-            $result = $this->peopleRelatedWork->setConditionById($people->person_id)->toCamel(['id', 'person_id'])->get();
+            $result = $this->peopleRelatedWork->setConditionById($people->person_id)->toCamel(['id', 'person_id'])->get($this->limit, $this->offset);
         }
         foreach ($result as $resultItem) {
             $resultArray[] = $resultItem->workId;
         }
-        $workModel->getWorkList($resultArray);
         return $this->getWorkWithProductIdsIn($resultArray, $workId);
     }
 
@@ -102,6 +104,7 @@ class PeopleRelatedWorksRepository extends BaseRepository
     public function getWorkWithProductIdsIn($data, $workId)
     {
         $workRepository = new WorkRepository();
+        $productRepository = new ProductRepository();
         $work = new Work();
         $workRepository->getWorkList($data);
         $work->getWorkWithProductIdsIn($data, $this->saleType, $workId, $this->sort);
@@ -118,7 +121,8 @@ class PeopleRelatedWorksRepository extends BaseRepository
         $workRepository->setAgeLimitCheck($this->ageLimitCheck);
         foreach ($workList as $workItem) {
             $workItem = (array)$workItem;
-            $formatedItem = $workRepository->formatAddOtherData($workItem, false, $workItem);
+            $workRepository->setSaleType($productRepository->convertProductTypeToStr($workItem['productTypeId']));
+            $formatedItem = $workRepository->formatAddOtherData($workItem, false);
             foreach ($formatedItem as $key => $value) {
                 if (in_array($key, $this->outputColumn())) {
                     $formatedItemSelectColumn[$key] = $value;
@@ -163,26 +167,16 @@ class PeopleRelatedWorksRepository extends BaseRepository
             'work_title',
             'work_format_id',
             'scene_l', // 上映映画対応
-            'play_time', // 上映映画用
+            'w1.jacket_l',
             'rating_id',
             'big_genre_id',
             'medium_genre_id',
             'small_genre_id',
             'url_cd',
             'ccc_work_cd',
-            'w1.jacket_l',
-            'p2.sale_start_date',
-            'p2.product_type_id',
-            'p2.product_unique_id',
-            'product_name',
-            'maker_name',
-            'game_model_name',
             'adult_flg',
-            'p2.msdb_item',
-            'media_format_id',
-            'number_of_volume',
-            'item_cd',
-            'maker_cd'
+            'msdb_item',
+            'product_type_id'
         ];
     }
 }
