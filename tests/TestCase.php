@@ -35,6 +35,7 @@ abstract class TestCase extends Laravel\Lumen\Testing\TestCase
         if (self::$isSetup === false) {
             Artisan::call('migrate');
             Artisan::call('truncateTable');
+            Artisan::call('db:seed', ['--class' => 'WorkRecommendOtherTestSeeder']);
             self::$isSetup = true;
         }
     }

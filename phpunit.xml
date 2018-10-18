@@ -20,6 +20,11 @@
             <directory suffix="Test.php">./tests/TestCase/WorkProductsRental</directory>
             <directory suffix="Test.php">./tests/TestCase/WorkProductsHas</directory>
             <directory suffix="Test.php">./tests/TestCase/RecommendTheater</directory>
+            <directory suffix="Test.php">./tests/TestCase/Genre</directory>
+            <directory suffix="Test.php">./tests/TestCase/WorkSeries</directory>
+            <directory suffix="Test.php">./tests/TestCase/WorkRelationWorks</directory>
+            <directory suffix="Test.php">./tests/TestCase/WorkRecommendOther</directory>
+            <directory suffix="Test.php">./tests/TestCase/WorkRecommendAuthor</directory>
         </testsuite>
     </testsuites>
     <filter>

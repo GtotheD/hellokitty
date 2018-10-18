@@ -430,8 +430,8 @@ class HimoRepository extends ApiRequesterRepository
             $filename .= '_1';
             $apiName = 'xmedia';
         } else if ($this->api === 'xmediaRelation') {
-            $filename .= '_2';
-            $apiName = 'xmedia';
+            $filename .= '_1';
+            $apiName = 'xmedia_2';
         }
         $path = base_path('tests/Data/himo/');
         $path = $path . $apiName;

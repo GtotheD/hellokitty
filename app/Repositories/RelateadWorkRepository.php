@@ -21,6 +21,7 @@ class RelateadWorkRepository extends BaseRepository
         $work = new Work();
         $himo = new HimoRepository();
         $workRepository = new  WorkRepository();
+        $productRepository = new ProductRepository();
         $relateadWork = new RelateadWork();
 
         // STEP 1: 関連作品テーブルからリストを取得。なければHimoから新規で取得。
@@ -61,7 +62,8 @@ class RelateadWorkRepository extends BaseRepository
         $workRepository->setAgeLimitCheck($this->ageLimitCheck);
         foreach ($workList as $workItem) {
             $workItem = (array)$workItem;
-            $formatedItem = $workRepository->formatAddOtherData($workItem, false, $workItem);
+            $workRepository->setSaleType($productRepository->convertProductTypeToStr($workItem['productTypeId']));
+            $formatedItem = $workRepository->formatAddOtherData($workItem, false, null);
             foreach ($formatedItem as $key => $value) {
                 if (in_array($key,$this->outputColumn())) {
                     $formatedItemSelectColumn[$key] = $value;
@@ -113,6 +115,7 @@ class RelateadWorkRepository extends BaseRepository
             'work_type_id',
             'work_title',
             'work_format_id',
+            'msdb_item',
             'scene_l', // 上映映画対応
             'rating_id',
             'big_genre_id',
@@ -120,19 +123,8 @@ class RelateadWorkRepository extends BaseRepository
             'small_genre_id',
             'url_cd',
             'ccc_work_cd',
-            'w1.jacket_l',
-            't2.sale_start_date',
-            't2.product_type_id',
-            't2.product_unique_id',
-            'product_name',
-            'maker_name',
-            'game_model_name',
             'adult_flg',
-            't2.msdb_item',
-            'media_format_id',
-            'number_of_volume',
-            'item_cd',
-            'maker_cd'
+            'product_type_id'
         ];
     }
 }
