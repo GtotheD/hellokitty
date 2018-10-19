@@ -179,6 +179,10 @@ $router->group([
         $ageLimitCheck = $request->input('ageLimitCheck', false);
         $work->setAgeLimitCheck($ageLimitCheck);
         $result = $work->get($workId);
+        if (empty($result)) {
+            throw new NoContentsException;
+        }
+
         // 映画リクエストでレスポンスがなかった場合
         if (
             $result['msdbItem'] === $work::MSDB_ITEM_VIDEO &&
