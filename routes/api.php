@@ -446,7 +446,6 @@ $router->group([
         $recommendTheaterRepository = new RecommendTheaterRepository();
         $recommendTheaterRepository->setOffset($request->input('offset', 0));
         $recommendTheaterRepository->setLimit($request->input('limit', 10));
-        $recommendTheaterRepository->setSort($request->input('sort', 'new'));
         $recommendTheaterRepository->setSaleType($request->input('saleType', 'new'));
         $recommendTheaterRepository->setAgeLimitCheck($request->input('ageLimitCheck', false));
         $rows = $recommendTheaterRepository->get($workId);
