@@ -39,6 +39,7 @@ class WorkTest extends TestCase
             '' => ['PTA0000U8W8U', 'theater', 204], // GAME
             '' => ['PTA0000WEKO0', 'theater', 200], // 上映映画
             '' => ['PTA0000V9KGR', 'theater', 202], // 配信オンリー
+            'IDが存在しない場合' => ['PTA00000000', 'theater', 204], //
         ];
     }
 

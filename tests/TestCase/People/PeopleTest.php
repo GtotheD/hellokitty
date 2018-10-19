@@ -47,7 +47,7 @@ class PeopleTest extends TestCase
      */
     public function 出力結果テスト($workId, $saleType, $responseCode)
     {
-        $url = '/work/' . $workId . '?saleType=' . $saleType;
+        $url = '/people/' . $workId . '?saleType=' . $saleType;
         $response = $this->getWithAuth($url);
         $this->saleTypeTestCase($workId, $saleType, $responseCode, $response);
     }
