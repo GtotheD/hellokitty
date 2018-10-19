@@ -1192,7 +1192,7 @@
  *     @SWG\Parameter(ref="#/parameters/ageLimitCheck"),
  *     @SWG\Parameter(
  *       name="sort",
- *       in="path",
+ *       in="query",
  *       description="並び順（お薦め(デフォルト)、新しい順 = new、 古い順 = old）",
  *       type="string"
  *     ),
