@@ -1016,6 +1016,19 @@ class WorkRepository extends BaseRepository
             $this->hasNext = false;
         }
 
+        // ソートがない場合は取得順で並べる。
+        if (empty($sort)) {
+            foreach ($works as $workItem) {
+                $workTmp[] = (array)$workItem;
+            }
+            usort($workTmp, function ($a, $b) use ($workList) {
+                $a_index = array_search($a['workId'], $workList);
+                $b_index = array_search($b['workId'], $workList);
+                return $a_index - $b_index;
+            });
+            $works = $workTmp;
+        }
+
         // STEP 7:フォーマットを変更して返却
         $workItems = [];
         foreach ($works as $workItem) {
