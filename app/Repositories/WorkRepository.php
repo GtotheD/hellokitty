@@ -538,8 +538,6 @@ class WorkRepository extends BaseRepository
                 // 再生時間を取得する。
                 if (!empty($product['playTime'])) {
                     $response['playTime'] = $product['playTime'] . self::THEATER_PLAY_TIME_SUFFIX;
-                } else {
-                    $response['playTime'];
                 }
             }
 
