@@ -987,7 +987,7 @@ class WorkRepository extends BaseRepository
      *
      * @throws NoContentsException
      */
-    public function person($personId, $sort = null, $itemType = null)
+    public function person($personId, $sort = null, $itemType = null, $serviceId = null)
     {
         $himoRepository = new HimoRepository();
 
@@ -997,6 +997,7 @@ class WorkRepository extends BaseRepository
             'responseLevel' => 1,
             'id' => $personId,//dummy data
             'api' => 'crossworks',//dummy data
+            'serviceId' => $serviceId
         ];
         $himoRepository->setLimit(100);
         $data = $himoRepository->searchCrossworks($params, $sort)->get();
@@ -1056,7 +1057,7 @@ class WorkRepository extends BaseRepository
      * @throws NoContentsException
      */
 
-    public function genre($genreId)
+    public function genre($genreId,  $serviceId = null)
     {
         $result = [];
         $himoRepository = new HimoRepository('asc', $this->offset, $this->limit);
@@ -1068,7 +1069,8 @@ class WorkRepository extends BaseRepository
             'genreId' => $genreId,
             'saleType' => $this->saleType,
             'api' => 'genre',//dummy data
-            'id' => $genreId //dummy data
+            'id' => $genreId, //dummy data
+            'serviceId' => $serviceId
         ];
         $data = $himoRepository->searchCrossworks($params, $this->sort)->get();
         if (!empty($data['status']) && $data['status'] == '200') {
