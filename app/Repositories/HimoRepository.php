@@ -258,7 +258,13 @@ class HimoRepository extends ApiRequesterRepository
         ];
 
         if (array_key_exists('responseLevel', $params)) {
-            $this->queryParams['responseLevel'] = $params['itemType'];
+            $this->queryParams['response_level'] = $params['responseLevel'];
+        }
+
+        if (array_key_exists('serviceId', $params)) {
+            if($params['serviceId'] !== null) {
+                $this->queryParams['service_id'] = $params['serviceId'];
+            }
         }
 
         //check itemType

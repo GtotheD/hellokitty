@@ -129,6 +129,8 @@ class WorkRepository extends BaseRepository
 
     const ONLY_OTHER = '1';
 
+    const THEATER_PLAY_TIME_SUFFIX = '分';
+
     public function __construct($sort = 'asc', $offset = 0, $limit = 10)
     {
         parent::__construct($sort, $offset, $limit);
@@ -534,7 +536,7 @@ class WorkRepository extends BaseRepository
                 // 画像はsceneから取得する。
                 $response['jacketL'] = $this->theaterSceneFilter($response['sceneL']);
                 // 再生時間を取得する。
-                $response['playTime'] = $product['playTime'];
+                $response['playTime'] = $product['playTime'] . self::THEATER_PLAY_TIME_SUFFIX;
             }
 
             if (array_key_exists('docText', $response)) {
@@ -987,7 +989,7 @@ class WorkRepository extends BaseRepository
      *
      * @throws NoContentsException
      */
-    public function person($personId, $sort = null, $itemType = null)
+    public function person($personId, $sort = null, $itemType = null, $serviceId = null)
     {
         $himoRepository = new HimoRepository();
 
@@ -997,6 +999,7 @@ class WorkRepository extends BaseRepository
             'responseLevel' => 1,
             'id' => $personId,//dummy data
             'api' => 'crossworks',//dummy data
+            'serviceId' => $serviceId
         ];
         $himoRepository->setLimit(100);
         $data = $himoRepository->searchCrossworks($params, $sort)->get();
@@ -1056,7 +1059,7 @@ class WorkRepository extends BaseRepository
      * @throws NoContentsException
      */
 
-    public function genre($genreId)
+    public function genre($genreId,  $serviceId = null)
     {
         $result = [];
         $himoRepository = new HimoRepository('asc', $this->offset, $this->limit);
@@ -1068,7 +1071,8 @@ class WorkRepository extends BaseRepository
             'genreId' => $genreId,
             'saleType' => $this->saleType,
             'api' => 'genre',//dummy data
-            'id' => $genreId //dummy data
+            'id' => $genreId, //dummy data
+            'serviceId' => $serviceId
         ];
         $data = $himoRepository->searchCrossworks($params, $this->sort)->get();
         if (!empty($data['status']) && $data['status'] == '200') {
