@@ -107,7 +107,8 @@ class RecommendTheaterRepository extends BaseRepository
     {
         $workRepository = new WorkRepository();
         $workRepository->setSaleType($this->saleType);
-        $workRepository->setSort($this->sort);
+        // お薦めにする為ソートをnull設定
+        $workRepository->setSort(null);
         $workRepository->setLimit($this->limit);
         $response = $workRepository->genre($genreId);
         $this->hasNext = $workRepository->getHasNext();
@@ -129,8 +130,8 @@ class RecommendTheaterRepository extends BaseRepository
         }
         $workRepository->setSaleType('rental');
         $workRepository->setLimit($this->limit);
-        // ソート：お薦め、アイテム：DVD
-        $response = $workRepository->person($person->personId, $this->sort, 'dvd');
+        // ソート：お薦め（nullを設定）、アイテム：DVD
+        $response = $workRepository->person($person->personId, null, 'dvd');
         $this->hasNext = $workRepository->getHasNext();
         $this->totalCount = $workRepository->getTotalCount();
         return $response;
