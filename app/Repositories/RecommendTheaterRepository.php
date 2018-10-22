@@ -106,8 +106,8 @@ class RecommendTheaterRepository extends BaseRepository
     {
         $workRepository = new WorkRepository();
         $workRepository->setSaleType($this->saleType);
-        // お薦めにする為ソートをnull設定
-        $workRepository->setSort(null);
+        $workRepository->setSort($this->sort);
+        $workRepository->setLimit($this->limit);
         $response = $workRepository->genre($genreId);
         $this->hasNext = $workRepository->getHasNext();
         $this->totalCount = $workRepository->getTotalCount();
