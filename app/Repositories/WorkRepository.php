@@ -129,6 +129,8 @@ class WorkRepository extends BaseRepository
 
     const ONLY_OTHER = '1';
 
+    const THEATER_PLAY_TIME_SUFFIX = '分';
+
     public function __construct($sort = 'asc', $offset = 0, $limit = 10)
     {
         parent::__construct($sort, $offset, $limit);
@@ -534,7 +536,7 @@ class WorkRepository extends BaseRepository
                 // 画像はsceneから取得する。
                 $response['jacketL'] = $this->theaterSceneFilter($response['sceneL']);
                 // 再生時間を取得する。
-                $response['playTime'] = $product['playTime'];
+                $response['playTime'] = $product['playTime'] . self::THEATER_PLAY_TIME_SUFFIX;
             }
 
             if (array_key_exists('docText', $response)) {
