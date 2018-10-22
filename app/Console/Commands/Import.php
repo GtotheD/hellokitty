@@ -533,6 +533,10 @@ class Import extends Command
                         // 作成する場合、
                         $workRepository->setSaleType($structureRepository->convertSaleTypeToString($sectionRow->sale_type));
                         $res = $workRepository->get($sectionRow->code, [], $codeType);
+                        // 取得できなかった場合は無視する。
+                        if (empty($res)) {
+                            continue;
+                        }
                         if ($codeType == '0102') {
                             $res['saleType'] = WorkRepository::SALE_TYPE_THEATER;
                         }
