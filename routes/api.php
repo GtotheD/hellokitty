@@ -135,6 +135,7 @@ $router->group([
         $response = [
             'hasNext' => $sectionRepository->getHasNext(),
             'totalCount' => $sectionRepository->getTotalCount(),
+            'aggregationPeriod' => $sectionRepository->getAggregationPeriod(),
             'rows' => $rows
         ];
         if(!empty($sectionRepository->getRankingTitle())) {
@@ -178,6 +179,10 @@ $router->group([
         $ageLimitCheck = $request->input('ageLimitCheck', false);
         $work->setAgeLimitCheck($ageLimitCheck);
         $result = $work->get($workId);
+        if (empty($result)) {
+            throw new NoContentsException;
+        }
+
         // 映画リクエストでレスポンスがなかった場合
         if (
             $result['msdbItem'] === $work::MSDB_ITEM_VIDEO &&
@@ -445,7 +450,6 @@ $router->group([
         $recommendTheaterRepository = new RecommendTheaterRepository();
         $recommendTheaterRepository->setOffset($request->input('offset', 0));
         $recommendTheaterRepository->setLimit($request->input('limit', 10));
-        $recommendTheaterRepository->setSort($request->input('sort', 'new'));
         $recommendTheaterRepository->setSaleType($request->input('saleType', 'new'));
         $recommendTheaterRepository->setAgeLimitCheck($request->input('ageLimitCheck', false));
         $rows = $recommendTheaterRepository->get($workId);
@@ -629,6 +633,7 @@ $router->group([
         $response = [
             'hasNext' => $sectionRepository->getHasNext(),
             'totalCount' => $sectionRepository->getTotalCount(),
+            'aggregationPeriod' => $sectionRepository->getAggregationPeriod(),
             'rows' => $rows
         ];
         if(!empty($sectionRepository->getRankingTitle())) {

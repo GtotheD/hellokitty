@@ -44,8 +44,8 @@ class People extends Model
             ->where([
                 'product_unique_id' => $productUniqueId,
             ])
-            ->orderBy('updated_at', 'desc');
-
+            ->orderBy('id', 'asc');
+        
         return $this;
     }
 

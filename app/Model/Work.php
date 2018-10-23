@@ -148,17 +148,22 @@ class Work extends Model
         $subQuery = DB::table('ts_products AS p1')->select(DB::raw($selectSubGrouping))
             ->whereRaw(DB::raw(' service_id  in  (\'tol\', \'st\')'))
             ->whereIn('work_id', $workIds);
-            if ($saleType === 'sell') {
-                $subQuery->where('p1.product_type_id', '1');
-            } elseif ($saleType === 'rental') {
-                $subQuery->where('p1.product_type_id', '2');
-            }
+        if ($saleType === 'sell') {
+            $subQuery->where('p2.product_type_id', '1')
+                ->orWhereRaw(DB::raw(' (p2.product_type_id = \'\' AND p2.service_id = \'st\') '));
+        } elseif ($saleType === 'rental') {
+            $subQuery->where('p2.product_type_id', '2')
+                ->orWhereRaw(DB::raw(' (p2.product_type_id = \'\' AND p2.service_id = \'st\') '));
+        } elseif ($saleType === 'theater') {
+            $subQuery->where('p2.product_type_id', '2')
+                ->orWhereRaw(DB::raw(' (p2.product_type_id = \'\' AND p2.service_id = \'st\') '));
+        }
         if ($order === 'old') {
-            $subQuery->orderBy('p1.sale_start_date', 'asc')
-                ->orderBy('p1.ccc_family_cd', 'asc');
+            $subQuery->orderBy('p2.sale_start_date', 'asc')
+                ->orderBy('p2.ccc_family_cd', 'asc');
         } else {
-            $subQuery->orderBy('p1.sale_start_date', 'desc')
-                ->orderBy('p1.ccc_family_cd', 'desc');
+            $subQuery->orderBy('p2.sale_start_date', 'desc')
+                ->orderBy('p2.ccc_family_cd', 'desc');
         }
             $subQuery->groupBy(DB::raw($selectSubGrouping));
         if($ignoreWorkId) {
@@ -192,11 +197,31 @@ class Work extends Model
         $this->dbObject = DB::table(DB::raw("({$subQuery->toSql()}) as t1"))
             ->join('ts_works as w1', 'w1.work_id', '=', 't1.work_id');
         if ($saleType === 'sell') {
+<<<<<<< HEAD
             $this->dbObject->where('p1.product_type_id', '1')
                 ->orWhereRaw(DB::raw(' (p1.product_type_id = \'\' AND service_id = \'ST\' '));
         } elseif ($saleType === 'rental') {
             $this->dbObject->where('p1.product_type_id', '2')
                 ->orWhereRaw(DB::raw(' (p1.product_type_id = \'\' AND service_id = \'ST\' '));
+=======
+            $this->dbObject->where('t2.product_type_id', '1')
+                ->orWhereRaw(DB::raw(' (p2.product_type_id = \'\' AND service_id = \'st\' '));
+        } elseif ($saleType === 'rental') {
+            $this->dbObject->where('t2.product_type_id', '2')
+                ->orWhereRaw(DB::raw(' (p2.product_type_id = \'\' AND service_id = \'st\' '));
+        } elseif ($saleType === 'theater') {
+            $this->dbObject->where('p2.product_type_id', '2')
+                ->orWhereRaw(DB::raw(' (p2.product_type_id = \'\' AND service_id = \'st\' '));
+        }
+        if ($order === 'old') {
+            $this->dbObject
+                ->orderBy('t2.sale_start_date', 'asc')
+                ->orderBy('t2.ccc_family_cd', 'asc');
+        } else {
+            $this->dbObject
+                ->orderBy('t2.sale_start_date', 'desc')
+                ->orderBy('t2.ccc_family_cd', 'desc');
+>>>>>>> develop_v3
         }
         return $this;
     }
@@ -212,11 +237,11 @@ class Work extends Model
         $productsSubQuery = DB::table('ts_products AS tp')
                 ->select(DB::raw('tp.work_id'));
         if($saleType) {
-            $productsSubQuery->whereRaw($this->getClauseProductSaleType($saleType));
+            $productsSubQuery->whereRaw($this->getClauseProductSaleType($saleType))
+                ->orWhereRaw('t1.only_other = \'1\'');
         }
         $this->dbObject = DB::table($this->table. ' AS t1')
                 ->whereRaw('t1.work_id IN ('.$productsSubQuery->toSql().')')
-                ->orWhereRaw('t1.only_other = \'1\'')
                 ->whereIn('t1.work_id', $workIds);
         return $this;
     }

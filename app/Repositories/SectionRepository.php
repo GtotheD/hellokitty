@@ -333,6 +333,10 @@ class SectionRepository extends BaseRepository
             }
         }
 
+        if (empty($formattedRows)) {
+            return null;
+        }
+
         foreach ((array) $formattedRows as $key => $value) {
             $sortSaleStartDate[$key] = $value['saleStartDate'];
             $sortSort[$key] = $value['sort'];

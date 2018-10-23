@@ -1148,7 +1148,7 @@
  *     @SWG\Parameter(
  *       name="saleType",
  *       in="query",
- *       description="販売タイプ（sell, rental)",
+ *       description="販売タイプ（sell, rental, theater)",
  *       type="string"
  *     ),
  *     @SWG\Parameter(ref="#/parameters/itemType"),
@@ -1192,7 +1192,7 @@
  *     @SWG\Parameter(ref="#/parameters/ageLimitCheck"),
  *     @SWG\Parameter(
  *       name="sort",
- *       in="path",
+ *       in="query",
  *       description="並び順（お薦め(デフォルト)、新しい順 = new、 古い順 = old）",
  *       type="string"
  *     ),
@@ -1318,7 +1318,6 @@
  *     @SWG\Parameter(ref="#/parameters/workId"),
  *     @SWG\Parameter(ref="#/parameters/limit"),
  *     @SWG\Parameter(ref="#/parameters/offset"),
- *     @SWG\Parameter(ref="#/parameters/sort"),
  *     @SWG\Parameter(ref="#/parameters/ageLimitCheck"),
  *     @SWG\Response(
  *          response=200,
