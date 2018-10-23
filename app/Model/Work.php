@@ -149,21 +149,21 @@ class Work extends Model
             ->whereRaw(DB::raw(' service_id  in  (\'tol\', \'st\')'))
             ->whereIn('work_id', $workIds);
         if ($saleType === 'sell') {
-            $subQuery->where('p2.product_type_id', '1')
-                ->orWhereRaw(DB::raw(' (p2.product_type_id = \'\' AND p2.service_id = \'st\') '));
+            $subQuery->where('p1.product_type_id', '1')
+                ->orWhereRaw(DB::raw(' (p1.product_type_id = \'\' AND p1.service_id = \'st\') '));
         } elseif ($saleType === 'rental') {
-            $subQuery->where('p2.product_type_id', '2')
-                ->orWhereRaw(DB::raw(' (p2.product_type_id = \'\' AND p2.service_id = \'st\') '));
+            $subQuery->where('p1.product_type_id', '2')
+                ->orWhereRaw(DB::raw(' (p1.product_type_id = \'\' AND p1.service_id = \'st\') '));
         } elseif ($saleType === 'theater') {
-            $subQuery->where('p2.product_type_id', '2')
-                ->orWhereRaw(DB::raw(' (p2.product_type_id = \'\' AND p2.service_id = \'st\') '));
+            $subQuery->where('p1.product_type_id', '2')
+                ->orWhereRaw(DB::raw(' (p1.product_type_id = \'\' AND p1.service_id = \'st\') '));
         }
         if ($order === 'old') {
-            $subQuery->orderBy('p2.sale_start_date', 'asc')
-                ->orderBy('p2.ccc_family_cd', 'asc');
+            $subQuery->orderBy('p1.sale_start_date', 'asc')
+                ->orderBy('p1.ccc_family_cd', 'asc');
         } else {
-            $subQuery->orderBy('p2.sale_start_date', 'desc')
-                ->orderBy('p2.ccc_family_cd', 'desc');
+            $subQuery->orderBy('p1.sale_start_date', 'desc')
+                ->orderBy('p1.ccc_family_cd', 'desc');
         }
             $subQuery->groupBy(DB::raw($selectSubGrouping));
         if($ignoreWorkId) {
@@ -194,27 +194,27 @@ class Work extends Model
             ->whereRaw(DB::raw(" rw.work_id = '{$workId}'"))
             ->whereRaw(DB::raw(" rw.related_work_id <> '{$workId}'"))
             ->groupBy(DB::raw($selectSubGrouping));
-        $this->dbObject = DB::table(DB::raw("({$subQuery->toSql()}) as t1"))
-            ->join('ts_works as w1', 'w1.work_id', '=', 't1.work_id');
         if ($saleType === 'sell') {
-            $this->dbObject->where('t2.product_type_id', '1')
-                ->orWhereRaw(DB::raw(' (p2.product_type_id = \'\' AND service_id = \'st\' '));
+            $subQuery->where('p1.product_type_id', '1')
+                ->orWhereRaw(DB::raw(' (p1.product_type_id = \'\' AND p1.service_id = \'st\' '));
         } elseif ($saleType === 'rental') {
-            $this->dbObject->where('t2.product_type_id', '2')
-                ->orWhereRaw(DB::raw(' (p2.product_type_id = \'\' AND service_id = \'st\' '));
+            $subQuery->where('p1.product_type_id', '2')
+                ->orWhereRaw(DB::raw(' (p1.product_type_id = \'\' AND p1.service_id = \'st\' '));
         } elseif ($saleType === 'theater') {
-            $this->dbObject->where('p2.product_type_id', '2')
-                ->orWhereRaw(DB::raw(' (p2.product_type_id = \'\' AND service_id = \'st\' '));
+            $subQuery->where('p1.product_type_id', '2')
+                ->orWhereRaw(DB::raw(' (p1.product_type_id = \'\' AND p1.service_id = \'st\' '));
         }
         if ($order === 'old') {
-            $this->dbObject
-                ->orderBy('t2.sale_start_date', 'asc')
-                ->orderBy('t2.ccc_family_cd', 'asc');
+            $subQuery
+                ->orderBy('p1.sale_start_date', 'asc')
+                ->orderBy('p1.ccc_family_cd', 'asc');
         } else {
-            $this->dbObject
-                ->orderBy('t2.sale_start_date', 'desc')
-                ->orderBy('t2.ccc_family_cd', 'desc');
+            $subQuery
+                ->orderBy('p1.sale_start_date', 'desc')
+                ->orderBy('p1.ccc_family_cd', 'desc');
         }
+        $this->dbObject = DB::table(DB::raw("({$subQuery->toSql()}) as t1"))
+            ->join('ts_works as w1', 'w1.work_id', '=', 't1.work_id');
         return $this;
     }
 
