@@ -540,13 +540,17 @@ class WorkRepository extends BaseRepository
                     $response['playTime'] = $product['playTime'] . self::THEATER_PLAY_TIME_SUFFIX;
                 }
             }
-
             if (array_key_exists('docText', $response)) {
                 $docs = json_decode($response['docText'], true);
                 if (!empty($docs)) {
 
                     if ($product['msdbItem'] === 'video') {
-                        $response['docText'] = getSummaryComment(DOC_TABLE_MOVIE['tol'], $docs);
+                        // 映画の場合は、doc_type_id = 15で取得する。
+                        if($response['workTypeId'] === self::WORK_TYPE_THEATER) {
+                            $response['docText'] = getProductContents(DOC_TABLE_MOVIE['tol'], DOC_TYPE_ID_STINGRAY, $docs);
+                        } else {
+                            $response['docText'] = getSummaryComment(DOC_TABLE_MOVIE['tol'], $docs);
+                        }
                         $isDocSet = true;
                     } else if ($product['msdbItem'] === 'book') {
                         $response['docText'] = getSummaryComment(DOC_TABLE_BOOK['tol'], $docs);

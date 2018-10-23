@@ -9,6 +9,7 @@ const DOC_TYPE_ID_SCENE = '03';
 const DOC_TYPE_ID_TITLE = '04';
 const DOC_TYPE_ID_BONUS = '06';
 const DOC_TYPE_ID_VIEW = '12';
+const DOC_TYPE_ID_STINGRAY = '15';
 
 const DOC_TABLE_MOVIE = [
     'tol' => ['08', '04', '03', '07', '06', '01'],
