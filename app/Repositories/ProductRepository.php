@@ -183,7 +183,10 @@ class ProductRepository extends BaseRepository
 //        } else {
             foreach ($results as $result) {
                 $tmp = $this->product->setConditionRentalGroupNewestCccProductId(
-                    $result->work_id, $result->ccc_family_cd, $result->sale_start_date
+                    $result->work_id,
+                    $result->ccc_family_cd,
+                    $result->sale_start_date,
+                    $result->product_name
                 )->select($columnOutput)->getOne();
                 $tmp->dvd = $result->dvd;
                 $tmp->bluray = $result->bluray;
