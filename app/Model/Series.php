@@ -23,25 +23,32 @@ class Series extends Model
         return $this;
     }
 
-    public function setConditionGetWorksByWorkId($workId, $saleTypeId = null)
+    public function setConditionGetWorksByWorkId($workId, $saleType = null)
     {
-        $this->dbObject = DB::table($this->table . ' AS s')
-            ->join('ts_works AS w', 'w.work_id', '=', 's.related_work_id')
-            ->where([
-                's.work_id' => $workId,
-            ]);
-        if ($saleTypeId) {
-            $this->dbObject->whereExists(function ($query) use ($saleTypeId) {
-                $query->select(DB::raw(1))
-                    ->from('ts_products AS p')
-                    ->whereRaw(DB::raw(' item_cd not like \'__20\' '))
-                    ->whereRaw('w.work_id = p.work_id AND product_type_id ='.$saleTypeId);
-            });
-        }
-        $this->dbObject->orderBy('sale_start_date', 'desc');
+        $selectSubGrouping =
+            'p.work_id,'
+            .'product_type_id';
+        $subQuery = DB::table('ts_products AS p')->select(DB::raw($selectSubGrouping))
+            ->where('s.work_id', $workId)
+            ->whereRaw(DB::raw(' item_cd not like \'_1__\' '))
+            ->whereRaw(DB::raw(' service_id  in  (\'tol\', \'st\')'))
+            ->join($this->table . ' AS s', 's.related_work_id', '=', 'p.work_id');
+            if ($saleType === 'sell') {
+                $subQuery->where('p.product_type_id', '1')
+                    ->orWhereRaw(DB::raw(' (p.product_type_id = \'\' AND p.service_id = \'st\') '));
+            } elseif ($saleType === 'rental') {
+                $subQuery->where('p.product_type_id', '2')
+                    ->orWhereRaw(DB::raw(' (p.product_type_id = \'\' AND p.service_id = \'st\') '));
+            } elseif ($saleType === 'theater') {
+                $subQuery->where('p.product_type_id', '2')
+                    ->orWhereRaw(DB::raw(' (p.product_type_id = \'\' AND p.service_id = \'st\') '));
+            }
+            $subQuery->groupBy(DB::raw($selectSubGrouping));
+        $this->dbObject = DB::table(DB::raw("({$subQuery->toSql()}) as t1"))
+            ->join('ts_works as w', 'w.work_id', '=', 't1.work_id')
+            ->mergeBindings($subQuery);
         return $this;
     }
-
 
     public function insert($insertData)
     {

@@ -536,7 +536,9 @@ class WorkRepository extends BaseRepository
                 // 画像はsceneから取得する。
                 $response['jacketL'] = $this->theaterSceneFilter($response['sceneL']);
                 // 再生時間を取得する。
-                $response['playTime'] = $product['playTime'] . self::THEATER_PLAY_TIME_SUFFIX;
+                if (!empty($product['playTime'])) {
+                    $response['playTime'] = $product['playTime'] . self::THEATER_PLAY_TIME_SUFFIX;
+                }
             }
 
             if (array_key_exists('docText', $response)) {

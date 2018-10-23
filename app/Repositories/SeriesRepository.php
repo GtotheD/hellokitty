@@ -7,107 +7,23 @@ use App\Model\Work;
 use App\Exceptions\NoContentsException;
 use DB;
 
-class SeriesRepository
+class SeriesRepository extends BaseRepository
 {
 
-    protected $sort;
-    protected $offset;
-    protected $limit;
-    protected $apiHost;
-    protected $apiKey;
-    protected $saleType;
-    protected $ageLimitCheck;
-    protected $totalCount;
     protected $seriesId;
-    protected $hasNext;
-
 
     public function __construct($sort = 'asc', $offset = 0, $limit = 10)
     {
-        $this->sort = $sort;
-        $this->offset = $offset;
-        $this->limit = $limit;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getHasNext()
-    {
-        return $this->hasNext;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getLimit()
-    {
-        return (int)$this->limit;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getOffset()
-    {
-        return (int)$this->offset;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getTotalCount()
-    {
-        return $this->totalCount;
-    }
-
-    /**
-     * @return Array
-     */
-    public function getRows()
-    {
-        return $this->rows;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPage()
-    {
-        return $this->page;
-    }
-
-    /**
-     * @param mixed $limit
-     */
-    public function setLimit($limit)
-    {
-        $this->limit = $limit;
-    }
-
-    /**
-     * @param mixed $offset
-     */
-    public function setOffset($offset)
-    {
-        $this->offset = $offset;
-    }
-
-    /**
-     * @param mixed $ageLimitCheck
-     */
-    public function setAgeLimitCheck($ageLimitCheck)
-    {
-        $this->ageLimitCheck = $ageLimitCheck;
+        parent::__construct($sort, $offset, $limit);
     }
 
     public function getNarrow($workId, $saleType)
     {
-        // TODO: Waiting to confirm $saleType option
         $this->saleType = $saleType;
         $work = new Work();
         $himo = new HimoRepository();
         $workRepository = new  WorkRepository();
+        $productRepository = new ProductRepository();
         $series = new Series();
         $workIdsInSeries = [];
 
@@ -141,13 +57,7 @@ class SeriesRepository
 
         // 再抽出
         $series = new Series();
-        $saleTypeId = null;
-        if ($saleType === 'sell') {
-            $saleTypeId = 1;
-        } else if ($saleType === 'rental') {
-            $saleTypeId = 2;
-        }
-        $seriesWorks = $series->setConditionGetWorksByWorkId($workId, $saleTypeId);
+        $seriesWorks = $series->setConditionGetWorksByWorkId($workId, $saleType);
         if (!$seriesWorks) {
             throw new NoContentsException();
         }
@@ -169,10 +79,11 @@ class SeriesRepository
 
         // Fetch workList and get response
         $rows = [];
-        $workRepository->setSaleType($this->saleType);
         $workRepository->setAgeLimitCheck($this->ageLimitCheck);
         foreach ($workList as $work) {
-            $base = $workRepository->formatAddOtherData((array)$work, null, null, true);
+            $work = (array)$work;
+            $workRepository->setSaleType($productRepository->convertProductTypeToStr($work['productTypeId']));
+            $base = $workRepository->formatAddOtherData($work, null, null, true);
             $rows[] = [
                 'workId' => $base['workId'],
                 'urlCd' => $base['urlCd'],
@@ -251,7 +162,8 @@ class SeriesRepository
             'jacket_l',
             'sale_start_date',
             'adult_flg',
-            'msdb_item'
+            'msdb_item',
+            'product_type_id'
         ];
     }
 }
