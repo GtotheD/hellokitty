@@ -197,13 +197,6 @@ class Work extends Model
         $this->dbObject = DB::table(DB::raw("({$subQuery->toSql()}) as t1"))
             ->join('ts_works as w1', 'w1.work_id', '=', 't1.work_id');
         if ($saleType === 'sell') {
-<<<<<<< HEAD
-            $this->dbObject->where('p1.product_type_id', '1')
-                ->orWhereRaw(DB::raw(' (p1.product_type_id = \'\' AND service_id = \'ST\' '));
-        } elseif ($saleType === 'rental') {
-            $this->dbObject->where('p1.product_type_id', '2')
-                ->orWhereRaw(DB::raw(' (p1.product_type_id = \'\' AND service_id = \'ST\' '));
-=======
             $this->dbObject->where('t2.product_type_id', '1')
                 ->orWhereRaw(DB::raw(' (p2.product_type_id = \'\' AND service_id = \'st\' '));
         } elseif ($saleType === 'rental') {
@@ -221,7 +214,6 @@ class Work extends Model
             $this->dbObject
                 ->orderBy('t2.sale_start_date', 'desc')
                 ->orderBy('t2.ccc_family_cd', 'desc');
->>>>>>> develop_v3
         }
         return $this;
     }
