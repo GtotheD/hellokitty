@@ -1054,6 +1054,7 @@ class WorkRepository extends BaseRepository
         foreach ($works as $workItem) {
             $workItem = (array)$workItem;
             $formatedItem = $this->formatAddOtherData($workItem, false, null, true);
+            dd($formatedItem);
             foreach ($formatedItem as $key => $value) {
                 if (in_array($key, $this->outputColumn())) {
                     $formatedItemSelectColumn[$key] = $value;

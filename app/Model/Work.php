@@ -149,21 +149,20 @@ class Work extends Model
             ->whereRaw(DB::raw(' service_id  in  (\'tol\', \'st\')'))
             ->whereIn('work_id', $workIds);
         if ($saleType === 'sell') {
-            $subQuery->where('p1.product_type_id', '1')
-                ->orWhereRaw(DB::raw(' (p1.product_type_id = \'\' AND p1.service_id = \'st\') '));
+            $subQuery->where(function($query) {
+                $query->where('p1.product_type_id', '1')
+                    ->orWhereRaw(DB::raw(' (p1.product_type_id = \'\' AND p1.service_id = \'st\') '));
+            });
         } elseif ($saleType === 'rental') {
-            $subQuery->where('p1.product_type_id', '2')
+            $subQuery->where(function($query) {
+                $query->where('p1.product_type_id', '2')
                 ->orWhereRaw(DB::raw(' (p1.product_type_id = \'\' AND p1.service_id = \'st\') '));
+            });
         } elseif ($saleType === 'theater') {
-            $subQuery->where('p1.product_type_id', '2')
+            $subQuery->where(function($query) {
+                $query->where('p1.product_type_id', '2')
                 ->orWhereRaw(DB::raw(' (p1.product_type_id = \'\' AND p1.service_id = \'st\') '));
-        }
-        if ($order === 'old') {
-            $subQuery->orderBy('p1.sale_start_date', 'asc')
-                ->orderBy('p1.ccc_family_cd', 'asc');
-        } else {
-            $subQuery->orderBy('p1.sale_start_date', 'desc')
-                ->orderBy('p1.ccc_family_cd', 'desc');
+            });
         }
             $subQuery->groupBy(DB::raw($selectSubGrouping));
         if($ignoreWorkId) {
@@ -175,7 +174,13 @@ class Work extends Model
         if (!empty($itemType)) {
             $this->dbObject->where('w1.work_type_id', $itemType);
         }
-
+        if ($order === 'old') {
+            $subQuery->orderBy('p1.sale_start_date', 'asc')
+                ->orderBy('p1.ccc_family_cd', 'asc');
+        } else {
+            $subQuery->orderBy('p1.sale_start_date', 'desc')
+                ->orderBy('p1.ccc_family_cd', 'desc');
+        }
         return $this;
     }
 

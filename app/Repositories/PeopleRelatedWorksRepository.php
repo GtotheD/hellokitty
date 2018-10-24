@@ -40,7 +40,6 @@ class PeopleRelatedWorksRepository extends BaseRepository
         }
         $this->totalCount = $this->peopleRelatedWork->setConditionById($people->person_id)->count();
         $result = $this->peopleRelatedWork->toCamel(['id', 'person_id'])->get($this->limit, $this->offset);
-        dd($people->person_id, $result);
         if (empty(count($result))) {
             $himoRepository->setLimit(100);
             $himoResult = $himoRepository->searchPeople([$people->person_id], '0301', ['book'])->get();

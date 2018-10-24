@@ -54,7 +54,7 @@ class WorkRecommendAuthorTest extends TestCase
             'BOOKレンタル　単巻' => ['PTA0000QQV3A', 'rental',
                 'レンタルBOOK単品（Productに複数刊あり）作品タイトル',
                 'https://cdn.book_test_single_product_02_size_l.jpg',
-                0
+                1
             ],
             'BOOKレンタル　複数巻' => ['PTA0000RWJMK', 'rental',
                 '進撃の巨人',
