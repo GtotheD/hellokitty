@@ -823,7 +823,7 @@ class WorkRepository extends BaseRepository
                     $base['big_genre_id'],
                     $base['medium_genre_id'],
                     $base['small_genre_id'],
-                    $saleTypeHas['maker_cd']
+                    $saleTypeHas['pickupProduct']['maker_cd']
                 );
 
                 $saleStartDateSell = "";
@@ -1054,7 +1054,6 @@ class WorkRepository extends BaseRepository
         foreach ($works as $workItem) {
             $workItem = (array)$workItem;
             $formatedItem = $this->formatAddOtherData($workItem, false, null, true);
-            dd($formatedItem);
             foreach ($formatedItem as $key => $value) {
                 if (in_array($key, $this->outputColumn())) {
                     $formatedItemSelectColumn[$key] = $value;
