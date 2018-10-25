@@ -1,0 +1,32 @@
+{
+  "hasNext": false,
+  "totalCount": 2,
+  "rows": [
+    {
+      "productName": "ザ・マスター Blu-ray",
+      "productUniqueId": "PDT00000J0B1",
+      "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/08930/4988104077370_1L.jpg",
+      "saleStartDate": "2013-09-06 00:00:00",
+      "cccFamilyCd": "10380238001",
+      "productKeys": {
+        "dvd": null,
+        "bluray": "060305794"
+      },
+      "newFlg": false,
+      "message": "在庫状況はTSUTAYAサイトでご確認ください"
+    },
+    {
+      "productName": "ザ・マスター DVD",
+      "productUniqueId": "PDT000004QYR",
+      "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/08930/4988104077387_1L.jpg",
+      "saleStartDate": "2013-09-06 00:00:00",
+      "cccFamilyCd": "10380238001",
+      "productKeys": {
+        "dvd": "082287391",
+        "bluray": null
+      },
+      "newFlg": false,
+      "message": "在庫状況はTSUTAYAサイトでご確認ください"
+    }
+  ]
+}
