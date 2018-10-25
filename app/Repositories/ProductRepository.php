@@ -502,7 +502,6 @@ class ProductRepository extends BaseRepository
                 } else {
                     $statusCode = 2;
                 }
-
                 if (array_key_exists('rentalPossibleDay', $stockInfo['entry']['stockInfo'][0])) {
                     $rentalPossibleDay = date('Y-m-d', strtotime($stockInfo['entry']['stockInfo'][0]['rentalPossibleDay']));
                 }
