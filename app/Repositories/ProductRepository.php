@@ -448,7 +448,6 @@ class ProductRepository extends BaseRepository
 
     public function stock($storeId, $productKey)
     {
-
         $message = null;
         $rentalPossibleDay = null;
         $lastUpdate = null;
@@ -511,7 +510,6 @@ class ProductRepository extends BaseRepository
                 if (array_key_exists('lastUpDate', $stockInfo['entry']['stockInfo'][0])) {
                     $lastUpdate = date('Y-m-d H:i:s', strtotime($stockInfo['entry']['stockInfo'][0]['lastUpDate']));
                 }
-
             }
         }
         return [
