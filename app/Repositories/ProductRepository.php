@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\Model\Product;
 use App\Model\Work;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
+use App\Exceptions\NoContentsException;
 
 /**
  * Created by PhpStorm.
@@ -447,7 +448,6 @@ class ProductRepository extends BaseRepository
 
     public function stock($storeId, $productKey)
     {
-
         $message = null;
         $rentalPossibleDay = null;
         $lastUpdate = null;
@@ -477,9 +477,15 @@ class ProductRepository extends BaseRepository
         }
         $twsRepository = new TWSRepository();
         foreach ($queryIdList as $queryId) {
-            $stockInfo = (array)$twsRepository->stock($storeId, $queryId)->get();
+            try {
+                $stockInfo = (array)$twsRepository->stock($storeId, $queryId)->get();
+            } catch (NoContentsException $e) {
+                // サーバーが204を返してきた時、NoContentsExceptionにて処理が終了してしまう為catchさせる。
+                continue;
+            }
             if ($stockInfo !== null) {
                 $stockStatus = $stockInfo['entry']['stockInfo'][0]['stockStatus'];
+                // 取得した結果在庫があれば後続を動かさず情報を更新させない。
                 if ($statusCode > $stockStatus['level']) {
                     continue;
                 }
