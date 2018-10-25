@@ -900,6 +900,10 @@ class WorkRepository extends BaseRepository
                         break;
                     case 'audio':
                         $result['counts']['cd'] = $value['count'];
+                        // ミュージックビデオだけの場合、DVDのロジックを通らない為追加
+                        if ($itemType === 'dvd') {
+                            $result['counts']['dvd'] = $dvdCount;
+                        }
                         break;
                     case 'book':
                         $result['counts']['book'] = $value['count'];
