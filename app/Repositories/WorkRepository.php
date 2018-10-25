@@ -442,15 +442,6 @@ class WorkRepository extends BaseRepository
                 // 映像のみの作品は固定で入れる
                 $response['saleType'] = self::SALE_TYPE_OTHER;
             }
-            // 映像の場合は、ジャケ写を最新刊のブルーレイ優先で取得する。
-//            if ($response['msdbItem'] === self::MSDB_ITEM_VIDEO) {
-//                // saleTypeの指定がない場合は関係なく出す。
-//                $jacket = (array)$productModel->setConditionSelectJacket($response['workId'], $this->saleType)->getOne();
-//                // ジャケットがある場合のみ差し替え
-//                if (count($jacket) > 0) {
-//                    $product['jacketL'] = $jacket['jacketL'];
-//                }
-//            }
         }
         if (!empty($product)) {
 
@@ -1009,6 +1000,8 @@ class WorkRepository extends BaseRepository
     public function person($personId, $sort = null, $itemType = null, $serviceId = null)
     {
         $himoRepository = new HimoRepository();
+        $workRepository = new WorkRepository();
+        $productRepository = new ProductRepository();
 
         $params = [
             'personId' => $personId,
@@ -1053,7 +1046,9 @@ class WorkRepository extends BaseRepository
         $workItems = [];
         foreach ($works as $workItem) {
             $workItem = (array)$workItem;
-            $formatedItem = $this->formatAddOtherData($workItem, false, null, true);
+            // 別インスタンスを作成
+            $workRepository->setSaleType($productRepository->convertProductTypeToStr($workItem['productTypeId']));
+            $formatedItem = $workRepository->formatAddOtherData($workItem, false, null, true);
             foreach ($formatedItem as $key => $value) {
                 if (in_array($key, $this->outputColumn())) {
                     $formatedItemSelectColumn[$key] = $value;
