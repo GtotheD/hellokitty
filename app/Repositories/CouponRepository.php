@@ -67,7 +67,9 @@ class CouponRepository
 
         // QR画像に埋め込む有効期限
         $validFrom = Carbon::now()->format('Ymd0000');
-        $validTo = Carbon::now()->addDay(30)->format('Ymd1000');
+
+        // #95443対応 2018/10/26
+        $validTo = Carbon::now()->addDay(31)->format('Ymd1000');
         Log::info('validFrom['.$validFrom.'] validTo['.$validTo.']');
 
         foreach($this->storeCds as $storeCd) {
