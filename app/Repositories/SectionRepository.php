@@ -246,6 +246,9 @@ class SectionRepository extends BaseRepository
             return null;
         }
         $formatRowData = $this->convertFormatFromHiMORelease($rows, $periodType);
+        if (empty($formatRowData)) {
+            $formatRowData = [];
+        }
         $response = [
             'hasNext' => false,
             'totalCount' => count($formatRowData),

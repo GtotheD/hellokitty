@@ -1,7 +1,6 @@
 <?php
 
 use tests\TestData;
-use Illuminate\Support\Carbon;
 
 /*
  * Work（作品情報取得） APIテスト
@@ -13,9 +12,6 @@ class WorkTest extends TestCase
     {
         parent::__construct($name, $data, $dataName);
         $this->testDir = __DIR__;
-        // NewFlagが変更されるため、現在時刻を変更
-        Carbon::setTestNow(new Carbon('2018-10-01 00:00:00'));
-
     }
 
     /*

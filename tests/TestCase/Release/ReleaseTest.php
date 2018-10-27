@@ -20,19 +20,48 @@ class ReleaseTest extends TestCase
     public function workDataProvider()
     {
         return [
-            'ランキング 販売　TWSで返却される該当の商品の画像が出力されること' =>
+//            'リリカレ 1 NEWEST レンタルDVD' =>
+//                [
+//                    'newest',
+//                    '1',
+//                    200
+//                ],
+            'リリカレ 9 NEWEST 販売DVD' =>
                 [
-                    'agg',
-                    'D045',
+                    'newest',
+                    '9',
                     200
                 ],
-            'ランキング レンタル　TWSで返却される該当の商品の画像が出力されること' =>
-                [
-                    'agg',
-                    'D045',
-                    200
-                ]
-
+//            'リリカレ 17 NEWEST レンタルCD' =>
+//                [
+//                    'newest',
+//                    '17',
+//                    200
+//                ],
+//            'リリカレ 22 NEWEST 販売CD' =>
+//                [
+//                    'newest',
+//                    '22',
+//                    200
+//                ],
+//            'リリカレ 28 NEWEST レンタル本' =>
+//                [
+//                    'newest',
+//                    '28',
+//                    200
+//                ],
+//            'リリカレ 39 NEWEST 販売本' =>
+//                [
+//                    'newest',
+//                    '39',
+//                    200
+//                ],
+//            'リリカレ 51 NEWEST 販売ゲーム' =>
+//                [
+//                    'newest',
+//                    '51',
+//                    200
+//                ],
         ];
     }
 
@@ -40,13 +69,11 @@ class ReleaseTest extends TestCase
      * @test
      * @dataProvider workDataProvider
      */
-    public function 出力結果テスト($codeType, $code, $responseCode)
+    public function 出力結果テスト($releaseDisplayType, $tapGenreId, $responseCode)
     {
-        $this->getWithAuth('/work/PTA00007Z7HS'); // 千と千尋
-        $this->getWithAuth('/work/PTA0000SF309'); // パイレーツ
-        $this->getWithAuth('/work/PTA0000G8N5G'); // 黒子
-        $url = sprintf('/section/ranking/%s/%s', $codeType, $code);
+        $url = sprintf('/section/release/himo/%s/%s', $releaseDisplayType, $tapGenreId);
         $response = $this->getWithAuth($url);
-        $this->actualDifference($code, $response);
+//        var_dump(json_encode(json_decode($response->getContent()),JSON_UNESCAPED_UNICODE));
+        $this->actualDifference($releaseDisplayType . '_' . $tapGenreId, $response);
     }
 }

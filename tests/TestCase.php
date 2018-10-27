@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Carbon;
 
 abstract class TestCase extends Laravel\Lumen\Testing\TestCase
 {
@@ -12,6 +13,8 @@ abstract class TestCase extends Laravel\Lumen\Testing\TestCase
     {
         parent::__construct($name, $data, $dataName);
         $this->basePath = env('URL_PATH_PREFIX') . env('API_VERSION');
+        // NewFlagが変更されるため、現在時刻を変更
+        Carbon::setTestNow(new Carbon('2018-10-01 00:00:00'));
     }
 
     /**
@@ -36,6 +39,7 @@ abstract class TestCase extends Laravel\Lumen\Testing\TestCase
             Artisan::call('migrate');
             Artisan::call('truncateTable');
             Artisan::call('db:seed', ['--class' => 'WorkRecommendOtherTestSeeder']);
+            Artisan::call('db:seed', ['--class' => 'ReleaseTestSeeder']);
             self::$isSetup = true;
         }
     }
