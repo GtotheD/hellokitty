@@ -169,7 +169,7 @@ class WorkRepository extends BaseRepository
                 $productResult = (array)$product->setConditionByUrlCd($workId, $this->saleType)->getOne();
                 break;
             case '0205':
-                $productResult = (array)$product->setConditionByJanFamilyGroup($workId)->getOne();
+                $productResult = (array)$product->setConditionByJan($workId)->getOne();
                 break;
             case '0206':
                 $productResult = (array)$product->setConditionByRentalProductCdFamilyGroup($workId)->getOne();

@@ -15,17 +15,18 @@
         </testsuite>
         <testsuite name="work">
             <directory suffix="Test.php">./tests/TestCase/Work</directory>
-            <directory suffix="Test.php">./tests/TestCase/WorkBulk</directory>
-            <directory suffix="Test.php">./tests/TestCase/WorkProducts</directory>
-            <directory suffix="Test.php">./tests/TestCase/WorkProductsRental</directory>
-            <directory suffix="Test.php">./tests/TestCase/WorkProductsHas</directory>
-            <directory suffix="Test.php">./tests/TestCase/WorkRecommendTheater</directory>
-            <directory suffix="Test.php">./tests/TestCase/Genre</directory>
-            <directory suffix="Test.php">./tests/TestCase/People</directory>
-            <directory suffix="Test.php">./tests/TestCase/WorkSeries</directory>
-            <directory suffix="Test.php">./tests/TestCase/WorkRelationWorks</directory>
-            <directory suffix="Test.php">./tests/TestCase/WorkRecommendOther</directory>
-            <directory suffix="Test.php">./tests/TestCase/WorkRecommendAuthor</directory>
+            <!--<directory suffix="Test.php">./tests/TestCase/WorkBulk</directory>-->
+            <!--<directory suffix="Test.php">./tests/TestCase/WorkProducts</directory>-->
+            <!--<directory suffix="Test.php">./tests/TestCase/WorkProductsRental</directory>-->
+            <!--<directory suffix="Test.php">./tests/TestCase/WorkProductsHas</directory>-->
+            <!--<directory suffix="Test.php">./tests/TestCase/WorkRecommendTheater</directory>-->
+            <!--<directory suffix="Test.php">./tests/TestCase/Genre</directory>-->
+            <!--<directory suffix="Test.php">./tests/TestCase/People</directory>-->
+            <!--<directory suffix="Test.php">./tests/TestCase/WorkSeries</directory>-->
+            <!--<directory suffix="Test.php">./tests/TestCase/WorkRelationWorks</directory>-->
+            <!--<directory suffix="Test.php">./tests/TestCase/WorkRecommendOther</directory>-->
+            <!--<directory suffix="Test.php">./tests/TestCase/WorkRecommendAuthor</directory>-->
+            <directory suffix="Test.php">./tests/TestCase/Ranking</directory>
         </testsuite>
     </testsuites>
     <filter>

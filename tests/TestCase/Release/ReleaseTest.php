@@ -3,10 +3,10 @@
 use tests\TestData;
 
 /*
- * Ranking（ランキング） APIテスト
+ * Release（リリカレ） APIテスト
  *
  */
-class RankingTest extends TestCase
+class ReleaseTest extends TestCase
 {
     public function __construct(string $name = null, array $data = [], string $dataName = '')
     {

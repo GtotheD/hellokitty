@@ -202,6 +202,16 @@ class Product extends Model
         return $this;
     }
 
+    public function setConditionByJan($jan)
+    {
+        $this->dbObject = DB::table($this->table . ' AS p1')
+            ->whereRaw(DB::raw(' p1.service_id  in  (\'tol\', \'st\')'))
+            ->where([
+                ['p1.jan', '=', $jan],
+            ]);
+        return $this;
+    }
+
     public function setConditionByRentalProductCd($rentalProductCd)
     {
         $this->dbObject = DB::table($this->table . ' AS p1')
