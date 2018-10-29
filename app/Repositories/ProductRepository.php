@@ -512,6 +512,11 @@ class ProductRepository extends BaseRepository
                 }
             }
         }
+        // メッセージ取得できなった時はnullで返す。
+        if ($statusCode === 0 && empty($message)) {
+            return null;
+        }
+
         return [
             'stockStatus' => $statusCode,
             'message' => $message,
