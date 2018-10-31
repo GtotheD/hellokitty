@@ -108,6 +108,7 @@ class SectionRepository extends BaseRepository
                 $saleTypeTmp = $saleTypeRequest;
             }
             $row = [
+                // 'saleStartDate' => $this->dateFormat($section->sale_start_date),
                 'imageUrl' => $section->image_url,
                 'title' => $section->title,
                 'supplement' => $this->supplementVisible ? '' : $section->supplement, // アーティスト名、著者、機種等
@@ -116,8 +117,12 @@ class SectionRepository extends BaseRepository
                 'workId' => $section->work_id,
                 'saleType' => $saleTypeTmp,
             ];
-            // Himoに切り替わって、saleType別にてsale_start_dateをアップデートしているのでsale_start_dateに統一
-            $row['saleStartDate'] = $structureList->is_release_date == 1 ? $this->dateFormat($section->sale_start_date) : null;
+            if ($saleType == $structureRepository::RENTAL) {
+                $row['saleStartDate'] = $structureList->is_release_date == 1 ? $this->dateFormat($section->rental_start_date) : null;
+            } else {
+                $row['saleStartDate'] = $structureList->is_release_date == 1 ? $this->dateFormat($section->sale_start_date) : null;
+            }
+
             $rows[] = $row;
         }
         $this->rows = $rows;
