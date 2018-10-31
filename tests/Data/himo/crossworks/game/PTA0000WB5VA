@@ -1,0 +1,533 @@
+{
+    "status": 200,
+    "message": null,
+    "results": {
+        "total": 1,
+        "rows": [
+            {
+                "work_id": "PTA0000WB5VA",
+                "work_type_id": "4",
+                "msdb_item": "game",
+                "work_format_id": null,
+                "work_format_name": "",
+                "work_title": "Battlefield V",
+                "work_title_kana": "ばとるふいーるど 5",
+                "work_title_en": "",
+                "work_title_orig": "",
+                "work_title_sub": "",
+                "work_comment": "",
+                "work_outline": "",
+                "work_copyright": "",
+                "rating_id": "EXT000000008",
+                "rating_name": "",
+                "adult_flg": 0,
+                "primary_product_source_id": "PDT0000WBV0X",
+                "primary_product_service_id": "ec",
+                "primary_product_type_id": 1,
+                "disp_start_date": "1900-01-01 00:00:00",
+                "disp_start_month": "1900-01",
+                "sale_start_date": "2018-10-19",
+                "sale_start_month": "2018-10",
+                "created_year_from": "",
+                "created_year_to": "",
+                "created_year": "2018",
+                "created_countries": "",
+                "jacket_s": "//store-tsutaya.tsite.jp/images/ecorg/493/88/33/02/29/4938833022950_S.jpg ",
+                "jacket_m": "//store-tsutaya.tsite.jp/images/ecorg/493/88/33/02/29/4938833022950_M.jpg ",
+                "jacket_l": "//store-tsutaya.tsite.jp/images/ecorg/493/88/33/02/29/4938833022950_L.jpg ",
+                "jacket_l4": "",
+                "scene_s": [
+
+                ],
+                "scene_m": [
+
+                ],
+                "scene_l": [
+
+                ],
+                "trailor_pc": [
+
+                ],
+                "season_name": "",
+                "season_number": null,
+                "book_series_name": "",
+                "book_series_name_kana": "",
+                "feature_keywords": [
+
+                ],
+                "priv_keywords": [
+
+                ],
+                "work_tags": [
+
+                ],
+                "wakati_words": [
+
+                ],
+                "is_compilation": 0,
+                "series_completed": 0,
+                "disable_flg": 0,
+                "delete_flg": 0,
+                "ids": [
+                    {
+                        "id_type": "0103",
+                        "id_value": "30037080"
+                    },
+                    {
+                        "id_type": "0105",
+                        "id_value": "30033285"
+                    }
+                ],
+                "docs": [
+                    {
+                        "doc_type_id": "01",
+                        "doc_source_id": "01",
+                        "doc_text": "人類史上最大の戦争を体験せよ。シリーズの原点に立ち返り、かつてない第二次世界大戦の世界が姿を現す。壮大な「グランド・オペレーション」や協力プレイ「コンバインド・アームズ」で分隊と共にリアルを極めたマルチプレイヤーの全面戦争に飛び込め。シングルプレイヤー「大戦の書」では大戦を駆け抜けた人々の究極のヒューマンドラマが待ち受ける。全世界を舞台に戦う中、かつてない臨場感をもって迫る最強のバトルフィールドで勝利を勝ち取れ。ゲーム、戦争の、バトルフィールドの歴史が変わる。"
+                    }
+                ],
+                "awards": [
+
+                ],
+                "screens": [
+
+                ],
+                "onairs": [
+
+                ],
+                "magazines": [
+
+                ],
+                "genres": [
+                    {
+                        "big_genre_id": "EXT000073WWC",
+                        "big_genre_name": "シューティング",
+                        "medium_genre_id": "EXT000073YLT",
+                        "medium_genre_name": "３Ｄシューティング",
+                        "small_genre_id": "",
+                        "small_genre_name": "",
+                        "shikiriban_id": "",
+                        "shikiriban_name": ""
+                    }
+                ],
+                "products": [
+                    {
+                        "id": "PDT0000WB5UA",
+                        "product_id": "PPD0000WB5UA",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "tol",
+                        "service_name": "tol",
+                        "msdb_item": "game",
+                        "item_cd": "1040",
+                        "item_name": "ゲームソフト",
+                        "product_name": "Battlefield V",
+                        "product_kana": "ばとるふいーるど 5",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2018-05-24 15:01:20",
+                        "disp_start_month": "2018-05",
+                        "disp_end_date": "2030-12-28 00:00:00",
+                        "disp_end_month": "2030-12",
+                        "sale_start_date": "2018-10-19",
+                        "sale_start_month": "2018-10",
+                        "sale_end_date": "2030-12-28",
+                        "sale_end_month": "2030-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000WB5VA"
+                        ],
+                        "tieup": "",
+                        "copyright": "",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "2018",
+                        "created_year_to": "",
+                        "created_year_str": "2018",
+                        "created_countries": "",
+                        "maker_cd": "EXT00000MHG7",
+                        "maker_name": "エレクトロニック・アーツ",
+                        "maker_name_kana": "えれくとろにつくあーつ",
+                        "maker_name_abbrev": "エレクトロニック・アーツ",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "30037080",
+                        "ccc_family_cd": "30037080001",
+                        "ccc_product_id": "206002674",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4938833022950",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "PLJM16258",
+                        "icpn": "",
+                        "media_category_cd": "24",
+                        "media_category_name": "販売ゲーム",
+                        "media_format_id": "EXT0000797CA",
+                        "media_format_name": "ディスク",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "EXT000077CJC",
+                        "game_model_name": "ＰｌａｙＳｔａｔｉｏｎ４",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "000000",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "",
+                        "video_info": "",
+                        "number_of_volume": "",
+                        "number_of_set": "0",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "",
+                        "jacket_m": "",
+                        "jacket_l": "",
+                        "jacket_l4": "",
+                        "scene_s": [
+
+                        ],
+                        "scene_m": [
+
+                        ],
+                        "scene_l": [
+
+                        ],
+                        "trailor_pc": [
+
+                        ],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [
+
+                        ],
+                        "priv_keywords": [
+
+                        ],
+                        "package_tags": [
+
+                        ],
+                        "product_tags": [
+
+                        ],
+                        "price_tax_out": 7800,
+                        "price_tax_in": 8424,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "01",
+                                "doc_source_id": "01",
+                                "doc_text": "人類史上最大の戦争を体験せよ。シリーズの原点に立ち返り、かつてない第二次世界大戦の世界が姿を現す。壮大な「グランド・オペレーション」や協力プレイ「コンバインド・アームズ」で分隊と共にリアルを極めたマルチプレイヤーの全面戦争に飛び込め。シングルプレイヤー「大戦の書」では大戦を駆け抜けた人々の究極のヒューマンドラマが待ち受ける。全世界を舞台に戦う中、かつてない臨場感をもって迫る最強のバトルフィールドで勝利を勝ち取れ。ゲーム、戦争の、バトルフィールドの歴史が変わる。"
+                            }
+                        ],
+                        "devices": [
+
+                        ],
+                        "distribution_plans": [
+
+                        ],
+                        "awards": [
+
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT000073WWC",
+                                "big_genre_name": "シューティング",
+                                "medium_genre_id": "EXT000073YLT",
+                                "medium_genre_name": "３Ｄシューティング",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [
+
+                        ],
+                        "onairs": [
+
+                        ],
+                        "magazines": [
+
+                        ],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [
+
+                        ],
+                        "filmarks_id": [
+
+                        ],
+                        "dramarks_id": [
+
+                        ],
+                        "catch_copy": "",
+                        "people": [
+
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT0000WBV0X",
+                        "product_id": "PPD0000WB5UA",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "ec",
+                        "service_name": "ec",
+                        "msdb_item": "game",
+                        "item_cd": "1040",
+                        "item_name": "ゲームソフト",
+                        "product_name": "Battlefield V",
+                        "product_kana": "ばとるふいーるど 5",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "1900-01-01 00:00:00",
+                        "disp_start_month": "1900-01",
+                        "disp_end_date": "2099-12-28 23:59:59",
+                        "disp_end_month": "2099-12",
+                        "sale_start_date": "2018-10-19",
+                        "sale_start_month": "2018-10",
+                        "sale_end_date": "2068-10-18",
+                        "sale_end_month": "2068-10",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000WB5VA"
+                        ],
+                        "tieup": "",
+                        "copyright": "",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "2018",
+                        "created_year_to": "",
+                        "created_year_str": "2018",
+                        "created_countries": "",
+                        "maker_cd": "EXT00000MHG7",
+                        "maker_name": "エレクトロニック・アーツ",
+                        "maker_name_kana": "えれくとろにつくあーつ",
+                        "maker_name_abbrev": "エレクトロニック・アーツ",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 1,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "30037080",
+                        "ccc_family_cd": "30037080001",
+                        "ccc_product_id": "206002674",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4938833022950",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "PLJM16258",
+                        "icpn": "",
+                        "media_category_cd": "24",
+                        "media_category_name": "販売ゲーム",
+                        "media_format_id": "EXT0000797CA",
+                        "media_format_name": "ディスク",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "EXT000077CJC",
+                        "game_model_name": "ＰｌａｙＳｔａｔｉｏｎ４",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "",
+                        "video_info": "",
+                        "number_of_volume": "",
+                        "number_of_set": "0",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/ecorg/493/88/33/02/29/4938833022950_S.jpg ",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/ecorg/493/88/33/02/29/4938833022950_M.jpg ",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/ecorg/493/88/33/02/29/4938833022950_L.jpg ",
+                        "jacket_l4": "",
+                        "scene_s": [
+
+                        ],
+                        "scene_m": [
+
+                        ],
+                        "scene_l": [
+
+                        ],
+                        "trailor_pc": [
+
+                        ],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [
+
+                        ],
+                        "priv_keywords": [
+
+                        ],
+                        "package_tags": [
+
+                        ],
+                        "product_tags": [
+
+                        ],
+                        "price_tax_out": 7800,
+                        "price_tax_in": 8424,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "01",
+                                "doc_source_id": "01",
+                                "doc_text": "人類史上最大の戦争を体験せよ。シリーズの原点に立ち返り、かつてない第二次世界大戦の世界が姿を現す。壮大な「グランド・オペレーション」や協力プレイ「コンバインド・アームズ」で分隊と共にリアルを極めたマルチプレイヤーの全面戦争に飛び込め。シングルプレイヤー「大戦の書」では大戦を駆け抜けた人々の究極のヒューマンドラマが待ち受ける。全世界を舞台に戦う中、かつてない臨場感をもって迫る最強のバトルフィールドで勝利を勝ち取れ。ゲーム、戦争の、バトルフィールドの歴史が変わる。"
+                            }
+                        ],
+                        "devices": [
+
+                        ],
+                        "distribution_plans": [
+
+                        ],
+                        "awards": [
+
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT000073WWC",
+                                "big_genre_name": "シューティング",
+                                "medium_genre_id": "EXT000073YLT",
+                                "medium_genre_name": "３Ｄシューティング",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [
+
+                        ],
+                        "onairs": [
+
+                        ],
+                        "magazines": [
+
+                        ],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [
+
+                        ],
+                        "filmarks_id": [
+
+                        ],
+                        "dramarks_id": [
+
+                        ],
+                        "catch_copy": "",
+                        "people": [
+
+                        ],
+                        "need_age_auth_flg": 0
+                    }
+                ],
+                "video_relations": [
+
+                ],
+                "discas_grade_point": null,
+                "discas_item": [
+
+                ],
+                "ttv_trailer_flg": 0,
+                "ttv_free_movie_flg": 0,
+                "ttv_sell_rental_flg": [
+
+                ],
+                "ttv_low_price": null,
+                "cinema_id": [
+
+                ],
+                "filmarks_id": [
+
+                ],
+                "dramarks_id": [
+
+                ],
+                "catch_copy": "",
+                "sale_start_date_sell": "2018-10-19",
+                "sale_start_date_rental": "",
+                "trailer_urls": [
+
+                ],
+                "scenes": [
+
+                ],
+                "filmarks_mark": 0,
+                "filmarks_clip": 0,
+                "filmarks_average": 0,
+                "people": [
+
+                ],
+                "tracks": [
+
+                ],
+                "merged_from": [
+
+                ],
+                "need_age_auth_flg": 0
+            }
+        ]
+    }
+}

@@ -241,6 +241,9 @@ class SectionRepository extends BaseRepository
             return null;
         }
         $formatRowData = $this->convertFormatFromHiMORelease($rows, $periodType);
+        if (empty($formatRowData)) {
+            $formatRowData = [];
+        }
         $response = [
             'hasNext' => false,
             'totalCount' => count($formatRowData),
@@ -449,6 +452,7 @@ class SectionRepository extends BaseRepository
         }
 
         // 作品/商品情報を取得する際の販売区分を指定する
+        // 作品を固定して取得する為、無視されることとなるが一応指定
         $workRepository->setSaleType($saleType);
 
         foreach ($rows['entry'] as $row) {

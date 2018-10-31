@@ -457,6 +457,7 @@ class ProductRepository extends BaseRepository
         $length = strlen($productKey);
         // レンタルの場合はPPT等複数媒体がある場合がある為、対象を複数取得する
         if ($length === 9) {
+
             // CDかどうか確認する為に対象媒体を一度検索
             $products =  $this->product->setConditionByRentalProductCd($productKey)->select('msdb_item')->getOne();
             if(empty($products)) {
@@ -475,6 +476,7 @@ class ProductRepository extends BaseRepository
         } else {
             throw new BadRequestHttpException();
         }
+
         $twsRepository = new TWSRepository();
         foreach ($queryIdList as $queryId) {
             try {

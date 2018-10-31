@@ -61,7 +61,10 @@ class Product extends Model
             ->whereRaw(DB::raw(' service_id  in  (\'tol\')'))
             ->whereRaw(DB::raw(' item_cd not like \'_1__\' '))
 //            ->whereRaw(DB::raw(' jan not like \'9999_________\' '))
-            ->orderBy('t2.ccc_product_id', 'desc') // 最古のものを一番上にもってきて取得する為
+            ->orderByRaw(DB::raw('cast(number_of_volume as UNSIGNED) desc'))
+            ->orderBy('t2.sale_start_date', 'desc')
+            ->orderBy('item_cd', 'asc') // PPTが上部にくることを抑止する為
+            ->orderBy('ccc_product_id', 'asc')
         ;
         return $this;
     }
@@ -85,11 +88,14 @@ class Product extends Model
     /*
      * Get Newest Product
      */
-    public function setConditionByWorkIdNewestProduct($workId, $saleType = null, $isMovie = false)
+    public function setConditionByWorkIdNewestProduct($workId, $saleType = null, $isMovie = false, $isOther = false)
     {
-        $this->dbObject = DB::table($this->table . ' as t1')
-            ->whereRaw(DB::raw(' service_id  in  (\'tol\', \'st\')'))
-            ->where([
+        $this->dbObject = DB::table($this->table . ' as t1');
+            // otherのデータを取得するときにとれない為オプションによってとれるとうに変更
+            if ($isOther === false) {
+                $this->dbObject->whereRaw(DB::raw(' service_id  in  (\'tol\', \'st\')'));
+            }
+            $this->dbObject->where([
                 'work_id' => $workId,
             ]);
         // Add sale type filter
@@ -108,10 +114,12 @@ class Product extends Model
             // PPTのみの場合も該当する
             $this->dbObject->whereRaw(DB::raw(' item_cd like \'__21\' '));
         }
-        $this->dbObject->orderBy('ccc_family_cd', 'desc')
+        $this->dbObject
+            ->orderByRaw(DB::raw('cast(number_of_volume as UNSIGNED) desc'))
             ->orderBy('sale_start_date', 'desc')
-            // todo: この条件をいれないとccc_family_cdとsale_start_dateだけではかぶってしまう
-            // ->orderBy('jan', 'desc')
+            ->orderBy('item_cd_right_2', 'asc')
+            ->orderBy('item_cd', 'asc') // PPTが上部にくることを抑止する為
+            ->orderBy('ccc_product_id', 'asc')
             ->limit(1);
         return $this;
     }
@@ -125,9 +133,11 @@ class Product extends Model
             ->whereRaw(DB::raw('t2.work_id = t1.work_id'))
             ->whereRaw(DB::raw('t2.product_type_id = t1.product_type_id'))
             ->whereRaw(DB::raw(' service_id  in  (\'tol\', \'st\')'))
-            ->orderBy('ccc_family_cd', 'desc')
-            ->orderBy('item_cd_right_2', 'asc')
+            ->orderByRaw(DB::raw('cast(number_of_volume as UNSIGNED) desc'))
             ->orderBy('sale_start_date', 'desc')
+            ->orderBy('item_cd_right_2', 'asc')
+            ->orderBy('item_cd', 'asc') // PPTが上部にくることを抑止する為
+            ->orderBy('ccc_product_id', 'asc')
             ->limit(1);
         $column[] = '('.$jacketSubQuery->toSql().') as jacketL';
         $this->selectCamel($column);
@@ -148,9 +158,12 @@ class Product extends Model
                 'product_type_id' => $this->convertSaleType($saleType),
             ]);
         }
-        $this->dbObject->orderBy('ccc_family_cd', 'desc')
-            ->orderBy('item_cd_right_2', 'asc')
+        $this->dbObject
+            ->orderByRaw(DB::raw('cast(number_of_volume as UNSIGNED) desc'))
             ->orderBy('sale_start_date', 'desc')
+            ->orderBy('item_cd_right_2', 'asc')
+            ->orderBy('item_cd', 'asc') // PPTが上部にくることを抑止する為
+            ->orderBy('ccc_product_id', 'asc')
             ->limit(1);
         return $this;
 
@@ -186,6 +199,16 @@ class Product extends Model
                 ['p1.work_id', '=', 'p2.work_id'],
                 ['p1.jan', '=', $jan],
                 ['p2.rental_product_cd', '<>', '']
+            ]);
+        return $this;
+    }
+
+    public function setConditionByJan($jan)
+    {
+        $this->dbObject = DB::table($this->table . ' AS p1')
+            ->whereRaw(DB::raw(' p1.service_id  in  (\'tol\', \'st\')'))
+            ->where([
+                ['p1.jan', '=', $jan],
             ]);
         return $this;
     }

@@ -1,0 +1,536 @@
+{
+    "status": 200,
+    "message": null,
+    "results": {
+        "total": 1,
+        "rows": [
+            {
+                "work_id": "PTA0000V6DXR",
+                "work_type_id": "1",
+                "msdb_item": "audio",
+                "work_format_id": 1,
+                "work_format_name": "アルバム",
+                "work_title": "夜空に輝く星(アイドル)とふたりきりで過ごすCD 「MARGINAL#4 Starry Lover」 Vol.8",
+                "work_title_kana": "まーじなるなんばー4すたーりーらばー 8よぞらにかがやくあいどるとふたりきりですごすしーでいー",
+                "work_title_en": "",
+                "work_title_orig": "",
+                "work_title_sub": "",
+                "work_comment": "",
+                "work_outline": "",
+                "work_copyright": "",
+                "rating_id": "EXT000000008",
+                "rating_name": "",
+                "adult_flg": 0,
+                "primary_product_source_id": "PDT0000V6E5R",
+                "primary_product_service_id": "ec",
+                "primary_product_type_id": 1,
+                "disp_start_date": "2018-01-07 00:00:00",
+                "disp_start_month": "2018-01",
+                "sale_start_date": "2018-10-17",
+                "sale_start_month": "2018-10",
+                "created_year_from": "",
+                "created_year_to": "",
+                "created_year": "",
+                "created_countries": "",
+                "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/12752/4580337524777_1S.jpg ",
+                "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/12752/4580337524777_1M.jpg ",
+                "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/12752/4580337524777_1L.jpg ",
+                "jacket_l4": "",
+                "scene_s": [
+
+                ],
+                "scene_m": [
+
+                ],
+                "scene_l": [
+
+                ],
+                "trailor_pc": [
+
+                ],
+                "season_name": "",
+                "season_number": null,
+                "book_series_name": "",
+                "book_series_name_kana": "",
+                "feature_keywords": [
+
+                ],
+                "priv_keywords": [
+
+                ],
+                "work_tags": [
+
+                ],
+                "wakati_words": [
+
+                ],
+                "is_compilation": 0,
+                "series_completed": 0,
+                "disable_flg": 0,
+                "delete_flg": 0,
+                "ids": [
+                    {
+                        "id_type": "0103",
+                        "id_value": "20771268"
+                    },
+                    {
+                        "id_type": "0105",
+                        "id_value": "20620362"
+                    }
+                ],
+                "docs": [
+
+                ],
+                "awards": [
+
+                ],
+                "screens": [
+
+                ],
+                "onairs": [
+
+                ],
+                "magazines": [
+
+                ],
+                "genres": [
+                    {
+                        "big_genre_id": "EXT0000000KL",
+                        "big_genre_name": "アニメ／ゲーム",
+                        "medium_genre_id": "EXT0000003XB",
+                        "medium_genre_name": "アニメ",
+                        "small_genre_id": "",
+                        "small_genre_name": "",
+                        "shikiriban_id": "",
+                        "shikiriban_name": ""
+                    }
+                ],
+                "products": [
+                    {
+                        "id": "PDT0000V6DTO",
+                        "product_id": "PPD0000V6DTO",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "tol",
+                        "service_name": "tol",
+                        "msdb_item": "audio",
+                        "item_cd": "1000",
+                        "item_name": "ＣＤ",
+                        "product_name": "夜空に輝く星(アイドル)とふたりきりで過ごすCD 「MARGINAL#4 Starry Lover」 Vol.8",
+                        "product_kana": "まーじなるなんばー4すたーりーらばー 8よぞらにかがやくあいどるとふたりきりですごすしーでいー",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2018-01-07 00:00:00",
+                        "disp_start_month": "2018-01",
+                        "disp_end_date": "2030-12-28 00:00:00",
+                        "disp_end_month": "2030-12",
+                        "sale_start_date": "2018-10-17",
+                        "sale_start_month": "2018-10",
+                        "sale_end_date": "2030-12-28",
+                        "sale_end_month": "2030-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000V6DXR"
+                        ],
+                        "tieup": "",
+                        "copyright": "",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "",
+                        "created_year_to": "",
+                        "created_year_str": "",
+                        "created_countries": "",
+                        "maker_cd": "EXT0000000J6",
+                        "maker_name": "タワーレコード",
+                        "maker_name_kana": "たわーれこーど",
+                        "maker_name_abbrev": "タワーレコード",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "20771268",
+                        "ccc_family_cd": "20771268001",
+                        "ccc_product_id": "205852941",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4580337524777",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "REC    781",
+                        "icpn": "",
+                        "media_category_cd": "21",
+                        "media_category_name": "販売CD",
+                        "media_format_id": "EXT000000007",
+                        "media_format_name": "CD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "1",
+                        "best_album_flg": 0,
+                        "play_time": "",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "",
+                        "video_info": "",
+                        "number_of_volume": "",
+                        "number_of_set": "0",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/12752/4580337524777_1S.jpg ",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/12752/4580337524777_1M.jpg ",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/12752/4580337524777_1L.jpg ",
+                        "jacket_l4": "",
+                        "scene_s": [
+
+                        ],
+                        "scene_m": [
+
+                        ],
+                        "scene_l": [
+
+                        ],
+                        "trailor_pc": [
+
+                        ],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [
+
+                        ],
+                        "priv_keywords": [
+
+                        ],
+                        "package_tags": [
+
+                        ],
+                        "product_tags": [
+
+                        ],
+                        "price_tax_out": 2200,
+                        "price_tax_in": 2376,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+
+                        ],
+                        "devices": [
+
+                        ],
+                        "distribution_plans": [
+
+                        ],
+                        "awards": [
+
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT0000000KL",
+                                "big_genre_name": "アニメ／ゲーム",
+                                "medium_genre_id": "EXT0000003XB",
+                                "medium_genre_name": "アニメ",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [
+
+                        ],
+                        "onairs": [
+
+                        ],
+                        "magazines": [
+
+                        ],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [
+
+                        ],
+                        "filmarks_id": [
+
+                        ],
+                        "dramarks_id": [
+
+                        ],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS0000V6E5U",
+                                "person_name": "MARGINAL#4/アルト(声優:沢城千春)",
+                                "role_id": "EXT00000000D",
+                                "role_name": "演奏者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT0000V6E5R",
+                        "product_id": "PPD0000V6DTO",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "ec",
+                        "service_name": "ec",
+                        "msdb_item": "audio",
+                        "item_cd": "1000",
+                        "item_name": "ＣＤ",
+                        "product_name": "夜空に輝く星(アイドル)とふたりきりで過ごすCD 「MARGINAL#4 Starry Lover」 Vol.8",
+                        "product_kana": "まーじなるなんばー4すたーりーらばー 8よぞらにかがやくあいどるとふたりきりですごすしーでいー",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2018-01-07 00:00:00",
+                        "disp_start_month": "2018-01",
+                        "disp_end_date": "2068-01-07 23:59:59",
+                        "disp_end_month": "2068-01",
+                        "sale_start_date": "2018-10-17",
+                        "sale_start_month": "2018-10",
+                        "sale_end_date": "2068-10-16",
+                        "sale_end_month": "2068-10",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000V6DXR"
+                        ],
+                        "tieup": "",
+                        "copyright": "",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "",
+                        "created_year_to": "",
+                        "created_year_str": "",
+                        "created_countries": "",
+                        "maker_cd": "EXT0000000J6",
+                        "maker_name": "タワーレコード",
+                        "maker_name_kana": "たわーれこーど",
+                        "maker_name_abbrev": "タワーレコード",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 1,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "20771268",
+                        "ccc_family_cd": "20771268001",
+                        "ccc_product_id": "205852941",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4580337524777",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "REC    781",
+                        "icpn": "",
+                        "media_category_cd": "21",
+                        "media_category_name": "販売CD",
+                        "media_format_id": "EXT000000007",
+                        "media_format_name": "CD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "1",
+                        "best_album_flg": 0,
+                        "play_time": "",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "",
+                        "video_info": "",
+                        "number_of_volume": "",
+                        "number_of_set": "0",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/12752/4580337524777_1S.jpg ",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/12752/4580337524777_1M.jpg ",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/12752/4580337524777_1L.jpg ",
+                        "jacket_l4": "",
+                        "scene_s": [
+
+                        ],
+                        "scene_m": [
+
+                        ],
+                        "scene_l": [
+
+                        ],
+                        "trailor_pc": [
+
+                        ],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [
+
+                        ],
+                        "priv_keywords": [
+
+                        ],
+                        "package_tags": [
+
+                        ],
+                        "product_tags": [
+
+                        ],
+                        "price_tax_out": 2200,
+                        "price_tax_in": 2376,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+
+                        ],
+                        "devices": [
+
+                        ],
+                        "distribution_plans": [
+
+                        ],
+                        "awards": [
+
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT0000000KL",
+                                "big_genre_name": "アニメ／ゲーム",
+                                "medium_genre_id": "EXT0000003XB",
+                                "medium_genre_name": "アニメ",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [
+
+                        ],
+                        "onairs": [
+
+                        ],
+                        "magazines": [
+
+                        ],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [
+
+                        ],
+                        "filmarks_id": [
+
+                        ],
+                        "dramarks_id": [
+
+                        ],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS0000V6E5U",
+                                "person_name": "MARGINAL#4/アルト(声優:沢城千春)",
+                                "role_id": "EXT00000000D",
+                                "role_name": "演奏者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    }
+                ],
+                "video_relations": [
+
+                ],
+                "discas_grade_point": null,
+                "discas_item": [
+
+                ],
+                "ttv_trailer_flg": 0,
+                "ttv_free_movie_flg": 0,
+                "ttv_sell_rental_flg": [
+
+                ],
+                "ttv_low_price": null,
+                "cinema_id": [
+
+                ],
+                "filmarks_id": [
+
+                ],
+                "dramarks_id": [
+
+                ],
+                "catch_copy": "",
+                "sale_start_date_sell": "2018-10-17",
+                "sale_start_date_rental": "",
+                "trailer_urls": [
+
+                ],
+                "scenes": [
+
+                ],
+                "filmarks_mark": 0,
+                "filmarks_clip": 0,
+                "filmarks_average": 0,
+                "people": [
+                    {
+                        "person_id": "PPS0000V6E5U",
+                        "person_name": "MARGINAL#4/アルト(声優:沢城千春)",
+                        "role_id": "EXT00000000D",
+                        "role_name": "演奏者"
+                    }
+                ],
+                "tracks": [
+
+                ],
+                "merged_from": [
+
+                ],
+                "need_age_auth_flg": 0
+            }
+        ]
+    }
+}
