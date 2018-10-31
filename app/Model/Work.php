@@ -252,11 +252,11 @@ class Work extends Model
     {
         // 全て
         if($saleType === 'sell') {
-            $existsWhere = 'product_type_id = 1 OR (product_type_id = \'\' AND service_id = \'st\')';
+            $existsWhere = '(product_type_id = 1 AND service_id = \'tol\') OR (product_type_id = \'\' AND service_id = \'st\')';
         } else if ($saleType === 'rental') {
-            $existsWhere = 'product_type_id = 2 OR (product_type_id = \'\' AND service_id = \'st\')';
+            $existsWhere = '(product_type_id = 2 AND service_id = \'tol\') OR (product_type_id = \'\' AND service_id = \'st\')';
         } else {
-            $existsWhere = 'product_type_id = 1 OR product_type_id = 2  OR (product_type_id = \'\' AND service_id = \'st\')';
+            $existsWhere = '(product_type_id = 2 AND service_id = \'tol\') OR (product_type_id = \'\' AND service_id = \'st\')';
         }
         return $existsWhere;
     }
