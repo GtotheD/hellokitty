@@ -148,11 +148,10 @@ class Product extends Model
     {
         $this->dbObject = DB::table($this->table)
             ->select('jacket_l as jacketL')
+            ->whereRaw(DB::raw(' service_id  in  (\'tol\', \'st\')'))
             ->where([
                 'work_id' => $workId,
-            ])
-            ->whereRaw(DB::raw(' service_id  in  (\'tol\', \'st\')'))
-        ;
+            ]);
         if ($saleType) {
             $this->dbObject->where([
                 'product_type_id' => $this->convertSaleType($saleType),
@@ -355,16 +354,15 @@ class Product extends Model
         return $this;
     }
 
-    public function setConditionRentalGroupNewestCccProductId($workId, $cccFamilyCd, $saleStartData, $productName)
+    public function setConditionRentalGroupNewestCccProductId($workId, $cccFamilyCd, $saleStartData)
     {
-        $groupingColumn = 'work_id, ccc_family_cd, sale_start_date, product_name';
+        $groupingColumn = 'work_id, ccc_family_cd, sale_start_date';
         $columns = 'MAX(ccc_product_id) as ccc_product_id';
         $selectQuery = $groupingColumn.','.$columns;
         $subQuery = DB::table($this->table)->select(DB::raw($selectQuery))
             ->whereRaw(DB::raw(' work_id = \''.$workId . '\''))
             ->whereRaw(DB::raw(' ccc_family_cd = \''.$cccFamilyCd . '\''))
             ->whereRaw(DB::raw(' sale_start_date = \''.$saleStartData . '\''))
-            ->whereRaw(DB::raw(' product_name = \''.$productName . '\''))
             ->groupBy(DB::raw($groupingColumn));
         $this->dbObject = DB::table(DB::raw("({$subQuery->toSql()}) as t1"))
             ->join($this->table.' as t2', function ($join) {
@@ -373,9 +371,7 @@ class Product extends Model
                     ->whereRaw(DB::raw(' product_type_id = 2 '))
                     ->whereRaw(DB::raw(' service_id in  (\'tol\')'))
                     ->whereRaw(DB::raw('t2.ccc_family_cd = t1.ccc_family_cd'))
-                    ->whereRaw(DB::raw('t2.sale_start_date = t1.sale_start_date'))
-                    ->whereRaw(DB::raw('t2.product_name = t1.product_name'))
-                ;
+                    ->whereRaw(DB::raw('t2.sale_start_date = t1.sale_start_date'));
             });
         return $this;
     }
