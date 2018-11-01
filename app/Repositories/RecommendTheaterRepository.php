@@ -43,7 +43,8 @@ class RecommendTheaterRepository extends BaseRepository
         // 該当のジャンルを取得
         switch ($work['bigGenreId']) {
             case self::BIG_GENRE_ID_ANIME:
-                $peopleWork = $this->getPeopleWorks($workId, [self::ROLE_ID_ORIGINAL_AUTHOR]);
+                // これだけソートがnew
+                $peopleWork = $this->getPeopleWorks($workId, [self::ROLE_ID_ORIGINAL_AUTHOR], 'new');
                 // 上記でとれなかった場合は、ランキングを返却
                 if (!empty($peopleWork)) {
                     return $peopleWork;
@@ -119,7 +120,7 @@ class RecommendTheaterRepository extends BaseRepository
     /*
      * 人物別の作品一覧を取得する。
      */
-    public function getPeopleWorks($workId, Array $personIds)
+    public function getPeopleWorks($workId, Array $personIds, $sort = null)
     {
         $workRepository = new WorkRepository();
         $productModel = new Product();
@@ -131,7 +132,7 @@ class RecommendTheaterRepository extends BaseRepository
         $workRepository->setSaleType('rental');
         $workRepository->setLimit($this->limit);
         // ソート：お薦め（nullを設定）、アイテム：DVD
-        $response = $workRepository->person($person->personId, null, 'dvd' , ['tol']);
+        $response = $workRepository->person($person->personId, $sort, 'dvd' , ['tol']);
         $this->hasNext = $workRepository->getHasNext();
         $this->totalCount = $workRepository->getTotalCount();
         return $response;
