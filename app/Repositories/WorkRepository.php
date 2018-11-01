@@ -1022,13 +1022,11 @@ class WorkRepository extends BaseRepository
         $this->getWorkList($workList);
         $this->work->getWorkWithProductIdsIn($workList, $this->saleType, null, $sort);
         $this->totalCount = $this->work->count();
-        $works = $this->work->selectCamel($this->selectColumn())->get($this->limit, $this->offset);
-        if (count($works) + $this->offset < $this->totalCount) {
-            $this->hasNext = true;
+        if(empty($sort)) {
+            $works = $this->work->selectCamel($this->selectColumn())->get(1000, 0);
         } else {
-            $this->hasNext = false;
+            $works = $this->work->selectCamel($this->selectColumn())->get($this->limit, $this->offset);
         }
-
         // ソートがない場合は取得順で並べる。
         if (empty($sort)) {
             foreach ($works as $workItem) {
@@ -1039,7 +1037,13 @@ class WorkRepository extends BaseRepository
                 $b_index = array_search($b['workId'], $workList);
                 return $a_index - $b_index;
             });
-            $works = $workTmp;
+            $works = array_slice($workTmp, $this->offset, $this->limit);
+        }
+
+        if (count($works) + $this->offset < $this->totalCount) {
+            $this->hasNext = true;
+        } else {
+            $this->hasNext = false;
         }
 
         // STEP 7:フォーマットを変更して返却

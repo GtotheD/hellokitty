@@ -1,0 +1,2727 @@
+{
+    "status": 200,
+    "message": null,
+    "results": {
+        "total": 1,
+        "rows": [
+            {
+                "work_id": "PTA0000U874A",
+                "work_type_id": "2",
+                "msdb_item": "video",
+                "work_format_id": null,
+                "work_format_name": "",
+                "work_title": "孤狼の血",
+                "work_title_kana": "ころうのち",
+                "work_title_en": "",
+                "work_title_orig": "",
+                "work_title_sub": "",
+                "work_comment": "",
+                "work_outline": "",
+                "work_copyright": "(C)2018「孤狼の血」製作委員会",
+                "rating_id": "EXT000000008",
+                "rating_name": "",
+                "adult_flg": 0,
+                "primary_product_source_id": "PDT0000WQWHC",
+                "primary_product_service_id": "ec",
+                "primary_product_type_id": 1,
+                "disp_start_date": "2018-08-08 00:00:00",
+                "disp_start_month": "2018-08",
+                "sale_start_date": "2018-11-02",
+                "sale_start_month": "2018-11",
+                "created_year_from": "2017",
+                "created_year_to": "2018",
+                "created_year": "2017",
+                "created_countries": "日本",
+                "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/13362/4988111854599_1S.jpg",
+                "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/13362/4988111854599_1M.jpg",
+                "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/13362/4988111854599_1L.jpg",
+                "jacket_l4": "",
+                "scene_s": [
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00236/4988101201976_B001S.jpg",
+                        "no": "001"
+                    },
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00236/4988101201976_B002S.jpg",
+                        "no": "002"
+                    },
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00236/4988101201976_B003S.jpg",
+                        "no": "003"
+                    }
+                ],
+                "scene_m": [
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00236/4988101201976_B001M.jpg",
+                        "no": "001"
+                    },
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00236/4988101201976_B002M.jpg",
+                        "no": "002"
+                    },
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00236/4988101201976_B003M.jpg",
+                        "no": "003"
+                    }
+                ],
+                "scene_l": [
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00236/4988101201976_B001L.jpg",
+                        "no": "001"
+                    },
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00236/4988101201976_B002L.jpg",
+                        "no": "002"
+                    },
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00236/4988101201976_B003L.jpg",
+                        "no": "003"
+                    }
+                ],
+                "trailor_pc": [],
+                "season_name": "",
+                "season_number": null,
+                "book_series_name": "",
+                "book_series_name_kana": "",
+                "feature_keywords": [],
+                "priv_keywords": [],
+                "work_tags": [
+                    "riricaleinfo201811r"
+                ],
+                "wakati_words": [],
+                "is_compilation": 0,
+                "series_completed": 0,
+                "disable_flg": 0,
+                "delete_flg": 0,
+                "ids": [
+                    {
+                        "id_type": "0107",
+                        "id_value": "361822"
+                    },
+                    {
+                        "id_type": "0108",
+                        "id_value": "72802"
+                    },
+                    {
+                        "id_type": "0103",
+                        "id_value": "10619132"
+                    },
+                    {
+                        "id_type": "0105",
+                        "id_value": "10612172"
+                    },
+                    {
+                        "id_type": "0106",
+                        "id_value": "101024118"
+                    }
+                ],
+                "docs": [
+                    {
+                        "doc_type_id": "01",
+                        "doc_source_id": "03",
+                        "doc_text": "柚月裕子の同名小説を役所広司、松坂桃李、江口洋介、真木よう子らの出演で映画化。暴力団対策法施行以前の広島県を舞台に、すさまじい抗争を起こしている暴力団と彼らを追う刑事たちのバトルを活写する。監督は『凶悪』『日本で一番悪い奴ら』の白石和彌。"
+                    },
+                    {
+                        "doc_type_id": "02",
+                        "doc_source_id": "04",
+                        "doc_text": "柚月裕子の同名ベストセラーを「凶悪」「日本で一番悪い奴ら」の白石和彌監督が主演の役所広司をはじめとする豪華キャストの共演で映画化した衝撃作。暴力団同士の抗争が激化する広島のとある地方都市を舞台に、暴力団が絡む事件の解決に乗り出したマル暴刑事が己の信念のみに従って進める法律無視の過激な捜査の行方を壮絶なバイオレンス描写とともに描き出す。昭和63年。広島の地方都市、呉原。そこでは地場の暴力団“尾谷組”と、広島の巨大組織“五十子会”をバックに進出してきた新興組織“加古村組”が一触即発の状態で睨み合っていた。そんな中、呉原東署に赴任した新米刑事の日岡秀一。赴任早々、暴力団絡みの事件が発生し、凄腕ながら黒い噂が絶えないマル暴のベテラン刑事・大上章吾の強引な捜査を目の当たりにするのだったが…。"
+                    }
+                ],
+                "awards": [],
+                "screens": [],
+                "onairs": [],
+                "magazines": [],
+                "genres": [
+                    {
+                        "big_genre_id": "EXT00000016A",
+                        "big_genre_name": "邦画アクション",
+                        "medium_genre_id": "EXT0000006ZU",
+                        "medium_genre_name": "仁侠",
+                        "small_genre_id": "",
+                        "small_genre_name": "",
+                        "shikiriban_id": "",
+                        "shikiriban_name": ""
+                    }
+                ],
+                "products": [
+                    {
+                        "id": "PDT0000XM3SW",
+                        "product_id": "PPD0000XM3SW",
+                        "product_type_id": 5,
+                        "product_type_name": "映像配信",
+                        "service_id": "discas",
+                        "service_name": "discas",
+                        "msdb_item": "video",
+                        "item_cd": "",
+                        "item_name": "",
+                        "product_name": "孤狼の血",
+                        "product_kana": "コロウノチ",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "物語の舞台は、昭和６３年、暴力団対策法成立直前の広島。所轄署に配属となった日岡秀一は、暴力団との癒着を噂される刑事・大上章吾とともに、金融会社社員失踪事件の捜査を担当する。常軌を逸した大上の捜査に戸惑う日岡。失踪事件を発端に、対立する暴力団組同士の抗争が激化し・・・",
+                        "disp_start_date": "2018-10-26 10:00:00",
+                        "disp_start_month": "2018-10",
+                        "disp_end_date": "2019-03-31 23:59:59",
+                        "disp_end_month": "2019-03",
+                        "sale_start_date": "2018-11-02",
+                        "sale_start_month": "2018-11",
+                        "sale_end_date": "2019-03-31",
+                        "sale_end_month": "2019-03",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000U874A"
+                        ],
+                        "tieup": "",
+                        "copyright": "(C)2018「孤狼の血」製作委員会",
+                        "rating_id": "EXT0000001AV",
+                        "rating_name": "R-15",
+                        "adult_flg": 0,
+                        "created_year_from": "2018",
+                        "created_year_to": "",
+                        "created_year_str": "2018",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT0000NUXY5",
+                        "maker_name": "マイシアターD.D.株式会社",
+                        "maker_name_kana": "",
+                        "maker_name_abbrev": "",
+                        "label_name": "",
+                        "sell_rental_flag": 3,
+                        "view_term": 0,
+                        "reservation_flg": 1,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10619132",
+                        "ccc_family_cd": "",
+                        "ccc_product_id": "8004939527",
+                        "rental_product_cd": "",
+                        "common_vod_code": "101091771",
+                        "vod_goods_cd": "101091771",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "",
+                        "icpn": "",
+                        "media_category_cd": "",
+                        "media_category_name": "",
+                        "media_format_id": "EXT00001MHIJ",
+                        "media_format_name": "SD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "02:06:07",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": 2,
+                        "subtitle": "",
+                        "sound_spec": "",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "",
+                        "video_info": "",
+                        "number_of_volume": "",
+                        "number_of_set": "",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "孤狼の血",
+                        "music_disp_artist": "監督：白石和彌　原作：柚月裕子（「孤狼の血」角川文庫刊）　出演：役所広司　松坂桃李　真木よう子　音尾琢真　駿河太郎　中村倫也　阿部純子　中村獅童　竹野内豊　滝藤賢一　矢島健一　田口トモロヲ　ピエール瀧　石橋蓮司　江口洋介",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//img.discas.net/img/jacket/ttv_jacket/101/091/771/101091771_24SX.jpg",
+                        "jacket_m": "//img.discas.net/img/jacket/ttv_jacket/101/091/771/101091771_24MX.jpg",
+                        "jacket_l": "//img.discas.net/img/jacket/ttv_jacket/101/091/771/101091771_24L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [],
+                        "scene_m": [],
+                        "scene_l": [],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": null,
+                        "price_tax_in": null,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "H1",
+                                "doc_text": "物語の舞台は、昭和６３年、暴力団対策法成立直前の広島。所轄署に配属となった日岡秀一は、暴力団との癒着を噂される刑事・大上章吾とともに、金融会社社員失踪事件の捜査を担当する。常軌を逸した大上の捜査に戸惑う日岡。失踪事件を発端に、対立する暴力団組同士の抗争が激化し・・・"
+                            }
+                        ],
+                        "devices": [
+                            {
+                                "device_id": "EXT0000HEZXI",
+                                "device_name": "tv"
+                            },
+                            {
+                                "device_id": "EXT0000HIZ8U",
+                                "device_name": "android"
+                            },
+                            {
+                                "device_id": "EXT0000M42VG",
+                                "device_name": "ios"
+                            },
+                            {
+                                "device_id": "EXT0000NV29A",
+                                "device_name": "smart"
+                            },
+                            {
+                                "device_id": "EXT0000TC38V",
+                                "device_name": "androidtv"
+                            },
+                            {
+                                "device_id": "EXT0000TC38W",
+                                "device_name": "smarttv"
+                            }
+                        ],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT00000016A",
+                                "big_genre_name": "邦画アクション",
+                                "medium_genre_id": "EXT0000006ZU",
+                                "medium_genre_name": "仁侠",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "TTV",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS000001SXN",
+                                "person_name": "駿河太郎",
+                                "role_id": "EXT00000000I",
+                                "role_name": "役割なし"
+                            },
+                            {
+                                "person_id": "PPS000003RWY",
+                                "person_name": "白石和彌",
+                                "role_id": "EXT00000000I",
+                                "role_name": "役割なし"
+                            },
+                            {
+                                "person_id": "PPS00001TX9I",
+                                "person_name": "音尾琢真",
+                                "role_id": "EXT00000000I",
+                                "role_name": "役割なし"
+                            },
+                            {
+                                "person_id": "PPS000001K19",
+                                "person_name": "真木よう子",
+                                "role_id": "EXT00000000I",
+                                "role_name": "役割なし"
+                            },
+                            {
+                                "person_id": "PPS0000007N3",
+                                "person_name": "役所広司",
+                                "role_id": "EXT00000000I",
+                                "role_name": "役割なし"
+                            },
+                            {
+                                "person_id": "PPS000004B73",
+                                "person_name": "松坂桃李",
+                                "role_id": "EXT00000000I",
+                                "role_name": "役割なし"
+                            }
+                        ],
+                        "need_age_auth_flg": 1
+                    },
+                    {
+                        "id": "PDT0000WVW13",
+                        "product_id": "PPD0000WVW13",
+                        "product_type_id": 2,
+                        "product_type_name": "レンタル",
+                        "service_id": "tol",
+                        "service_name": "tol",
+                        "msdb_item": "video",
+                        "item_cd": "0022",
+                        "item_name": "ブルーレイ",
+                        "product_name": "孤狼の血",
+                        "product_kana": "ころうのち",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2018-08-10 15:01:44",
+                        "disp_start_month": "2018-08",
+                        "disp_end_date": "2030-12-28 00:00:00",
+                        "disp_end_month": "2030-12",
+                        "sale_start_date": "2018-11-02",
+                        "sale_start_month": "2018-11",
+                        "sale_end_date": "2030-12-28",
+                        "sale_end_month": "2030-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000U874A"
+                        ],
+                        "tieup": "",
+                        "copyright": "(C)2018「孤狼の血」製作委員会",
+                        "rating_id": "EXT0000001AV",
+                        "rating_name": "R-15",
+                        "adult_flg": 0,
+                        "created_year_from": "2017",
+                        "created_year_to": "",
+                        "created_year_str": "2017",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT0000016W9",
+                        "maker_name": "KADOKAWA",
+                        "maker_name_kana": "かどかわ",
+                        "maker_name_abbrev": "KADOKAWA",
+                        "label_name": "",
+                        "sell_rental_flag": 2,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10619132",
+                        "ccc_family_cd": "10619132001",
+                        "ccc_product_id": "206083643",
+                        "rental_product_cd": "060337429",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4988111554598",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "DAXR5459",
+                        "icpn": "",
+                        "media_category_cd": "12",
+                        "media_category_name": "レンタルDVD",
+                        "media_format_id": "EXT0000001VI",
+                        "media_format_name": "Blu-ray",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "020600",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "",
+                        "video_info": "",
+                        "number_of_volume": "001",
+                        "number_of_set": "1",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/13362/4988111554598_1S.jpg",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/13362/4988111554598_1M.jpg",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/13362/4988111554598_1L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00236/4988101201976_B001S.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00236/4988101201976_B002S.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00236/4988101201976_B003S.jpg",
+                                "no": "003"
+                            }
+                        ],
+                        "scene_m": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00236/4988101201976_B001M.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00236/4988101201976_B002M.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00236/4988101201976_B003M.jpg",
+                                "no": "003"
+                            }
+                        ],
+                        "scene_l": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00236/4988101201976_B001L.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00236/4988101201976_B002L.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00236/4988101201976_B003L.jpg",
+                                "no": "003"
+                            }
+                        ],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": null,
+                        "price_tax_in": null,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "04",
+                                "doc_text": "柚月裕子の同名ベストセラーを「凶悪」「日本で一番悪い奴ら」の白石和彌監督が主演の役所広司をはじめとする豪華キャストの共演で映画化した衝撃作。暴力団同士の抗争が激化する広島のとある地方都市を舞台に、暴力団が絡む事件の解決に乗り出したマル暴刑事が己の信念のみに従って進める法律無視の過激な捜査の行方を壮絶なバイオレンス描写とともに描き出す。昭和63年。広島の地方都市、呉原。そこでは地場の暴力団“尾谷組”と、広島の巨大組織“五十子会”をバックに進出してきた新興組織“加古村組”が一触即発の状態で睨み合っていた。そんな中、呉原東署に赴任した新米刑事の日岡秀一。赴任早々、暴力団絡みの事件が発生し、凄腕ながら黒い噂が絶えないマル暴のベテラン刑事・大上章吾の強引な捜査を目の当たりにするのだったが…。"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT00000016A",
+                                "big_genre_name": "邦画アクション",
+                                "medium_genre_id": "EXT0000006ZU",
+                                "medium_genre_name": "仁侠",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [
+                            "361822"
+                        ],
+                        "filmarks_id": [
+                            "72802"
+                        ],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS000003RWY",
+                                "person_name": "白石和彌",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS0000007N3",
+                                "person_name": "役所広司",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000U86Z7",
+                                "person_name": "柚月裕子",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            },
+                            {
+                                "person_id": "PPS000004B73",
+                                "person_name": "松坂桃李",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001K19",
+                                "person_name": "真木よう子",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000092MV",
+                                "person_name": "音尾琢真",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001SXN",
+                                "person_name": "駿河太郎",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000008SEJ",
+                                "person_name": "中村倫也",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000R7WEQ",
+                                "person_name": "阿部純子[女優]",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001FYC",
+                                "person_name": "滝藤賢一",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000DIW",
+                                "person_name": "矢島健一",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000005VZ",
+                                "person_name": "田口トモロヲ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000004NT5",
+                                "person_name": "池上純哉",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS000000OL2",
+                                "person_name": "安川午朗",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            }
+                        ],
+                        "need_age_auth_flg": 1
+                    },
+                    {
+                        "id": "PDT0000WVW43",
+                        "product_id": "PPD0000U86YQ",
+                        "product_type_id": 2,
+                        "product_type_name": "レンタル",
+                        "service_id": "tol",
+                        "service_name": "tol",
+                        "msdb_item": "video",
+                        "item_cd": "0021",
+                        "item_name": "ＤＶＤ",
+                        "product_name": "孤狼の血",
+                        "product_kana": "ころうのち",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2018-08-10 15:01:19",
+                        "disp_start_month": "2018-08",
+                        "disp_end_date": "2030-12-28 00:00:00",
+                        "disp_end_month": "2030-12",
+                        "sale_start_date": "2018-11-02",
+                        "sale_start_month": "2018-11",
+                        "sale_end_date": "2030-12-28",
+                        "sale_end_month": "2030-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000U874A"
+                        ],
+                        "tieup": "",
+                        "copyright": "(C)2018「孤狼の血」製作委員会",
+                        "rating_id": "EXT0000001AV",
+                        "rating_name": "R-15",
+                        "adult_flg": 0,
+                        "created_year_from": "2017",
+                        "created_year_to": "",
+                        "created_year_str": "2017",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT0000016W9",
+                        "maker_name": "KADOKAWA",
+                        "maker_name_kana": "かどかわ",
+                        "maker_name_abbrev": "KADOKAWA",
+                        "label_name": "",
+                        "sell_rental_flag": 2,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10619132",
+                        "ccc_family_cd": "10619132001",
+                        "ccc_product_id": "206083237",
+                        "rental_product_cd": "084119050",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4988111854599",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "DABR5459",
+                        "icpn": "",
+                        "media_category_cd": "12",
+                        "media_category_name": "レンタルDVD",
+                        "media_format_id": "EXT000006GPK",
+                        "media_format_name": "DVD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "020600",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "",
+                        "video_info": "",
+                        "number_of_volume": "001",
+                        "number_of_set": "1",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/13362/4988111854599_1S.jpg",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/13362/4988111854599_1M.jpg",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/13362/4988111854599_1L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00236/4988101201976_B001S.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00236/4988101201976_B002S.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00236/4988101201976_B003S.jpg",
+                                "no": "003"
+                            }
+                        ],
+                        "scene_m": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00236/4988101201976_B001M.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00236/4988101201976_B002M.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00236/4988101201976_B003M.jpg",
+                                "no": "003"
+                            }
+                        ],
+                        "scene_l": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00236/4988101201976_B001L.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00236/4988101201976_B002L.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00236/4988101201976_B003L.jpg",
+                                "no": "003"
+                            }
+                        ],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [
+                            "riricaleinfo201811r"
+                        ],
+                        "price_tax_out": null,
+                        "price_tax_in": null,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "04",
+                                "doc_text": "柚月裕子の同名ベストセラーを「凶悪」「日本で一番悪い奴ら」の白石和彌監督が主演の役所広司をはじめとする豪華キャストの共演で映画化した衝撃作。暴力団同士の抗争が激化する広島のとある地方都市を舞台に、暴力団が絡む事件の解決に乗り出したマル暴刑事が己の信念のみに従って進める法律無視の過激な捜査の行方を壮絶なバイオレンス描写とともに描き出す。昭和63年。広島の地方都市、呉原。そこでは地場の暴力団“尾谷組”と、広島の巨大組織“五十子会”をバックに進出してきた新興組織“加古村組”が一触即発の状態で睨み合っていた。そんな中、呉原東署に赴任した新米刑事の日岡秀一。赴任早々、暴力団絡みの事件が発生し、凄腕ながら黒い噂が絶えないマル暴のベテラン刑事・大上章吾の強引な捜査を目の当たりにするのだったが…。"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT00000016A",
+                                "big_genre_name": "邦画アクション",
+                                "medium_genre_id": "EXT0000006ZU",
+                                "medium_genre_name": "仁侠",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [
+                            "361822"
+                        ],
+                        "filmarks_id": [
+                            "72802"
+                        ],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS000003RWY",
+                                "person_name": "白石和彌",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS0000007N3",
+                                "person_name": "役所広司",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000U86Z7",
+                                "person_name": "柚月裕子",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            },
+                            {
+                                "person_id": "PPS000004B73",
+                                "person_name": "松坂桃李",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001K19",
+                                "person_name": "真木よう子",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000092MV",
+                                "person_name": "音尾琢真",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001SXN",
+                                "person_name": "駿河太郎",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000008SEJ",
+                                "person_name": "中村倫也",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000R7WEQ",
+                                "person_name": "阿部純子[女優]",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001FYC",
+                                "person_name": "滝藤賢一",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000DIW",
+                                "person_name": "矢島健一",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000005VZ",
+                                "person_name": "田口トモロヲ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000004NT5",
+                                "person_name": "池上純哉",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS000000OL2",
+                                "person_name": "安川午朗",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            },
+                            {
+                                "person_id": "PPS0000XA5CV",
+                                "person_name": "柚月裕子",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            },
+                            {
+                                "person_id": "PPS000000T5X",
+                                "person_name": "江口洋介",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            }
+                        ],
+                        "need_age_auth_flg": 1
+                    },
+                    {
+                        "id": "PDT0000XA4G0",
+                        "product_id": "PPD0000WVW13",
+                        "product_type_id": 2,
+                        "product_type_name": "レンタル",
+                        "service_id": "discas",
+                        "service_name": "discas",
+                        "msdb_item": "video",
+                        "item_cd": "0022",
+                        "item_name": "ブルーレイ",
+                        "product_name": "孤狼の血",
+                        "product_kana": "コロウノチ",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2018-09-25 00:00:00",
+                        "disp_start_month": "2018-09",
+                        "disp_end_date": "2099-12-31 00:00:00",
+                        "disp_end_month": "2099-12",
+                        "sale_start_date": "2018-11-02",
+                        "sale_start_month": "2018-11",
+                        "sale_end_date": "2099-12-31",
+                        "sale_end_month": "2099-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000U874A"
+                        ],
+                        "tieup": "",
+                        "copyright": "(C)2018「孤狼の血」製作委員会",
+                        "rating_id": "EXT0000001AV",
+                        "rating_name": "R-15",
+                        "adult_flg": 0,
+                        "created_year_from": "2017",
+                        "created_year_to": "",
+                        "created_year_str": "2017",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT0000016W9",
+                        "maker_name": "KADOKAWA",
+                        "maker_name_kana": "かどかわ",
+                        "maker_name_abbrev": "KADOKAWA",
+                        "label_name": "",
+                        "sell_rental_flag": 2,
+                        "view_term": null,
+                        "reservation_flg": 1,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10619132",
+                        "ccc_family_cd": "10619132001",
+                        "ccc_product_id": "3829437397",
+                        "rental_product_cd": "060337429",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4988111554598",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "DAXR5459",
+                        "icpn": "",
+                        "media_category_cd": "12",
+                        "media_category_name": "レンタルDVD",
+                        "media_format_id": "EXT0000001VI",
+                        "media_format_name": "Blu-ray",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "020600",
+                        "product_spec": "この商品はブルーレイディスクです。※DVDプレイヤーでは再生できません。",
+                        "screen_size": "",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "",
+                        "video_info": "",
+                        "number_of_volume": "001",
+                        "number_of_set": "1",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//img.discas.net/img/jacket/core/201809/14/4988111554598_1SX.jpg",
+                        "jacket_m": "//img.discas.net/img/jacket/core/201809/14/4988111554598_1MX.jpg",
+                        "jacket_l": "//img.discas.net/img/jacket/core/201809/14/4988111554598_1L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [],
+                        "scene_m": [],
+                        "scene_l": [],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": null,
+                        "price_tax_in": null,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "04",
+                                "doc_text": "柚月裕子の同名ベストセラーを「凶悪」「日本で一番悪い奴ら」の白石和彌監督が主演の役所広司をはじめとする豪華キャストの共演で映画化した衝撃作。暴力団同士の抗争が激化する広島のとある地方都市を舞台に、暴力団が絡む事件の解決に乗り出したマル暴刑事が己の信念のみに従って進める法律無視の過激な捜査の行方を壮絶なバイオレンス描写とともに描き出す。昭和63年。広島の地方都市、呉原。そこでは地場の暴力団“尾谷組”と、広島の巨大組織“五十子会”をバックに進出してきた新興組織“加古村組”が一触即発の状態で睨み合っていた。そんな中、呉原東署に赴任した新米刑事の日岡秀一。赴任早々、暴力団絡みの事件が発生し、凄腕ながら黒い噂が絶えないマル暴のベテラン刑事・大上章吾の強引な捜査を目の当たりにするのだったが…。"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT00000016A",
+                                "big_genre_name": "邦画アクション",
+                                "medium_genre_id": "EXT0000006ZU",
+                                "medium_genre_name": "仁侠",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": 334,
+                        "discas_item": "DiscasMovie",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS000003RWY",
+                                "person_name": "白石和彌",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS0000007N3",
+                                "person_name": "役所広司",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000U86Z7",
+                                "person_name": "柚月裕子",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            },
+                            {
+                                "person_id": "PPS000004B73",
+                                "person_name": "松坂桃李",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001K19",
+                                "person_name": "真木よう子",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000092MV",
+                                "person_name": "音尾琢真",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001SXN",
+                                "person_name": "駿河太郎",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000008SEJ",
+                                "person_name": "中村倫也",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000R7WEQ",
+                                "person_name": "阿部純子[女優]",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001FYC",
+                                "person_name": "滝藤賢一",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000DIW",
+                                "person_name": "矢島健一",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000005VZ",
+                                "person_name": "田口トモロヲ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000004NT5",
+                                "person_name": "池上純哉",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS000000OL2",
+                                "person_name": "安川午朗",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            }
+                        ],
+                        "need_age_auth_flg": 1
+                    },
+                    {
+                        "id": "PDT0000XA5CJ",
+                        "product_id": "PPD0000U86YQ",
+                        "product_type_id": 2,
+                        "product_type_name": "レンタル",
+                        "service_id": "discas",
+                        "service_name": "discas",
+                        "msdb_item": "video",
+                        "item_cd": "0021",
+                        "item_name": "ＤＶＤ",
+                        "product_name": "孤狼の血",
+                        "product_kana": "コロウノチ",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2018-09-25 00:00:00",
+                        "disp_start_month": "2018-09",
+                        "disp_end_date": "2099-12-31 00:00:00",
+                        "disp_end_month": "2099-12",
+                        "sale_start_date": "2018-11-02",
+                        "sale_start_month": "2018-11",
+                        "sale_end_date": "2099-12-31",
+                        "sale_end_month": "2099-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000U874A"
+                        ],
+                        "tieup": "",
+                        "copyright": "(C)2018「孤狼の血」製作委員会",
+                        "rating_id": "EXT0000001AV",
+                        "rating_name": "R-15",
+                        "adult_flg": 0,
+                        "created_year_from": "2017",
+                        "created_year_to": "",
+                        "created_year_str": "2017",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT0000016W9",
+                        "maker_name": "KADOKAWA",
+                        "maker_name_kana": "かどかわ",
+                        "maker_name_abbrev": "KADOKAWA",
+                        "label_name": "",
+                        "sell_rental_flag": 2,
+                        "view_term": null,
+                        "reservation_flg": 1,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10619132",
+                        "ccc_family_cd": "10619132001",
+                        "ccc_product_id": "3834709750",
+                        "rental_product_cd": "084119050",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4988111854599",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "DABR5459",
+                        "icpn": "",
+                        "media_category_cd": "12",
+                        "media_category_name": "レンタルDVD",
+                        "media_format_id": "EXT000006GPK",
+                        "media_format_name": "DVD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "020600",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": null,
+                        "subtitle": "日（バリアフリー）",
+                        "sound_spec": "",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "",
+                        "video_info": "",
+                        "number_of_volume": "001",
+                        "number_of_set": "1",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//img.discas.net/img/jacket/core/201809/14/4988111854599_1SX.jpg",
+                        "jacket_m": "//img.discas.net/img/jacket/core/201809/14/4988111854599_1MX.jpg",
+                        "jacket_l": "//img.discas.net/img/jacket/core/201809/14/4988111854599_1L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [],
+                        "scene_m": [],
+                        "scene_l": [],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [
+                            "riricaleinfo201811r"
+                        ],
+                        "price_tax_out": null,
+                        "price_tax_in": null,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "04",
+                                "doc_text": "柚月裕子の同名ベストセラーを「凶悪」「日本で一番悪い奴ら」の白石和彌監督が主演の役所広司をはじめとする豪華キャストの共演で映画化した衝撃作。暴力団同士の抗争が激化する広島のとある地方都市を舞台に、暴力団が絡む事件の解決に乗り出したマル暴刑事が己の信念のみに従って進める法律無視の過激な捜査の行方を壮絶なバイオレンス描写とともに描き出す。昭和63年。広島の地方都市、呉原。そこでは地場の暴力団“尾谷組”と、広島の巨大組織“五十子会”をバックに進出してきた新興組織“加古村組”が一触即発の状態で睨み合っていた。そんな中、呉原東署に赴任した新米刑事の日岡秀一。赴任早々、暴力団絡みの事件が発生し、凄腕ながら黒い噂が絶えないマル暴のベテラン刑事・大上章吾の強引な捜査を目の当たりにするのだったが…。"
+                            },
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "H1",
+                                "doc_text": "柚月裕子のベストセラー小説を白石和彌監督が映画化した任侠ドラマ。暴力団対策法成立直前の広島の架空都市・呉原を舞台に、刑事、やくざ、そして女の生き残りを賭けた戦いを描く。役所広司、松坂桃李、真木よう子ら、豪華キャストが多数共演。※R15＋"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT00000016A",
+                                "big_genre_name": "邦画アクション",
+                                "medium_genre_id": "EXT0000006ZU",
+                                "medium_genre_name": "仁侠",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "DiscasMovie",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS000003RWY",
+                                "person_name": "白石和彌",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS0000007N3",
+                                "person_name": "役所広司",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000U86Z7",
+                                "person_name": "柚月裕子",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            },
+                            {
+                                "person_id": "PPS000004B73",
+                                "person_name": "松坂桃李",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001K19",
+                                "person_name": "真木よう子",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000092MV",
+                                "person_name": "音尾琢真",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001SXN",
+                                "person_name": "駿河太郎",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000008SEJ",
+                                "person_name": "中村倫也",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000R7WEQ",
+                                "person_name": "阿部純子[女優]",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001FYC",
+                                "person_name": "滝藤賢一",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000DIW",
+                                "person_name": "矢島健一",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000005VZ",
+                                "person_name": "田口トモロヲ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000004NT5",
+                                "person_name": "池上純哉",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS000000OL2",
+                                "person_name": "安川午朗",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            },
+                            {
+                                "person_id": "PPS0000XA5CV",
+                                "person_name": "柚月裕子",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            },
+                            {
+                                "person_id": "PPS000000T5X",
+                                "person_name": "江口洋介",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            }
+                        ],
+                        "need_age_auth_flg": 1
+                    },
+                    {
+                        "id": "PDT0000WQVSX",
+                        "product_id": "PPD0000WQVSX",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "tol",
+                        "service_name": "tol",
+                        "msdb_item": "video",
+                        "item_cd": "1022",
+                        "item_name": "ブルーレイ",
+                        "product_name": "孤狼の血",
+                        "product_kana": "ころうのち",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2018-08-08 00:00:00",
+                        "disp_start_month": "2018-08",
+                        "disp_end_date": "2030-12-28 00:00:00",
+                        "disp_end_month": "2030-12",
+                        "sale_start_date": "2018-11-02",
+                        "sale_start_month": "2018-11",
+                        "sale_end_date": "2030-12-28",
+                        "sale_end_month": "2030-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000U874A"
+                        ],
+                        "tieup": "",
+                        "copyright": "",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "2017",
+                        "created_year_to": "",
+                        "created_year_str": "2017",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT000001YXW",
+                        "maker_name": "東映ビデオ",
+                        "maker_name_kana": "とうえいびでお",
+                        "maker_name_abbrev": "東映ビデオ",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10619132",
+                        "ccc_family_cd": "10619132001",
+                        "ccc_product_id": "206063850",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4988101201983",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "BSTD20139",
+                        "icpn": "",
+                        "media_category_cd": "22",
+                        "media_category_name": "販売DVD",
+                        "media_format_id": "EXT0000001VI",
+                        "media_format_name": "Blu-ray",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "020600",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "カラー",
+                        "video_info": "",
+                        "number_of_volume": "",
+                        "number_of_set": "0",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/13253/4988101201983_1S.jpg",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/13253/4988101201983_1M.jpg",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/13253/4988101201983_1L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00236/4988101201976_B001S.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00236/4988101201976_B002S.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00236/4988101201976_B003S.jpg",
+                                "no": "003"
+                            }
+                        ],
+                        "scene_m": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00236/4988101201976_B001M.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00236/4988101201976_B002M.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00236/4988101201976_B003M.jpg",
+                                "no": "003"
+                            }
+                        ],
+                        "scene_l": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00236/4988101201976_B001L.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00236/4988101201976_B002L.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00236/4988101201976_B003L.jpg",
+                                "no": "003"
+                            }
+                        ],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": 4800,
+                        "price_tax_in": 5184,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "01",
+                                "doc_source_id": "03",
+                                "doc_text": "柚月裕子の同名小説を役所広司、松坂桃李、江口洋介、真木よう子らの出演で映画化。暴力団対策法施行以前の広島県を舞台に、すさまじい抗争を起こしている暴力団と彼らを追う刑事たちのバトルを活写する。監督は『凶悪』『日本で一番悪い奴ら』の白石和彌。"
+                            },
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "04",
+                                "doc_text": "柚月裕子の同名ベストセラーを「凶悪」「日本で一番悪い奴ら」の白石和彌監督が主演の役所広司をはじめとする豪華キャストの共演で映画化した衝撃作。暴力団同士の抗争が激化する広島のとある地方都市を舞台に、暴力団が絡む事件の解決に乗り出したマル暴刑事が己の信念のみに従って進める法律無視の過激な捜査の行方を壮絶なバイオレンス描写とともに描き出す。昭和63年。広島の地方都市、呉原。そこでは地場の暴力団“尾谷組”と、広島の巨大組織“五十子会”をバックに進出してきた新興組織“加古村組”が一触即発の状態で睨み合っていた。そんな中、呉原東署に赴任した新米刑事の日岡秀一。赴任早々、暴力団絡みの事件が発生し、凄腕ながら黒い噂が絶えないマル暴のベテラン刑事・大上章吾の強引な捜査を目の当たりにするのだったが…。"
+                            },
+                            {
+                                "doc_type_id": "11",
+                                "doc_source_id": "03",
+                                "doc_text": "メイキング オブ 孤狼の血/企画発表会見/キックオフイベント/完成披露舞台挨拶/初日舞台挨拶/広島レッドカーペットイベント/紀伊国屋書店宣伝イベント/スペシャルインタビュー(役所広司,松坂桃李,白石監督)"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT00000016A",
+                                "big_genre_name": "邦画アクション",
+                                "medium_genre_id": "EXT0000006ZU",
+                                "medium_genre_name": "仁侠",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS000003RWY",
+                                "person_name": "白石和彌",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS0000007N3",
+                                "person_name": "役所広司",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000U86Z7",
+                                "person_name": "柚月裕子",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            },
+                            {
+                                "person_id": "PPS000004B73",
+                                "person_name": "松坂桃李",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001K19",
+                                "person_name": "真木よう子",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000092MV",
+                                "person_name": "音尾琢真",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001SXN",
+                                "person_name": "駿河太郎",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000008SEJ",
+                                "person_name": "中村倫也",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000R7WEQ",
+                                "person_name": "阿部純子[女優]",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001FYC",
+                                "person_name": "滝藤賢一",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000DIW",
+                                "person_name": "矢島健一",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000005VZ",
+                                "person_name": "田口トモロヲ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000004NT5",
+                                "person_name": "池上純哉",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS000000OL2",
+                                "person_name": "安川午朗",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT0000WQVSZ",
+                        "product_id": "PPD0000WQVSZ",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "tol",
+                        "service_name": "tol",
+                        "msdb_item": "video",
+                        "item_cd": "1021",
+                        "item_name": "ＤＶＤ",
+                        "product_name": "孤狼の血",
+                        "product_kana": "ころうのち",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2018-08-08 00:00:00",
+                        "disp_start_month": "2018-08",
+                        "disp_end_date": "2030-12-28 00:00:00",
+                        "disp_end_month": "2030-12",
+                        "sale_start_date": "2018-11-02",
+                        "sale_start_month": "2018-11",
+                        "sale_end_date": "2030-12-28",
+                        "sale_end_month": "2030-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000U874A"
+                        ],
+                        "tieup": "",
+                        "copyright": "",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "2017",
+                        "created_year_to": "",
+                        "created_year_str": "2017",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT000001YXW",
+                        "maker_name": "東映ビデオ",
+                        "maker_name_kana": "とうえいびでお",
+                        "maker_name_abbrev": "東映ビデオ",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10619132",
+                        "ccc_family_cd": "10619132001",
+                        "ccc_product_id": "206063849",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4988101201976",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "DSTD20139",
+                        "icpn": "",
+                        "media_category_cd": "22",
+                        "media_category_name": "販売DVD",
+                        "media_format_id": "EXT000006GPK",
+                        "media_format_name": "DVD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "020600",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "",
+                        "region_info": "２",
+                        "disc_info": "",
+                        "color_spec": "カラー",
+                        "video_info": "",
+                        "number_of_volume": "",
+                        "number_of_set": "0",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/13253/4988101201976_1S.jpg",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/13253/4988101201976_1M.jpg",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/13253/4988101201976_1L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00236/4988101201976_B001S.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00236/4988101201976_B002S.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00236/4988101201976_B003S.jpg",
+                                "no": "003"
+                            }
+                        ],
+                        "scene_m": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00236/4988101201976_B001M.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00236/4988101201976_B002M.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00236/4988101201976_B003M.jpg",
+                                "no": "003"
+                            }
+                        ],
+                        "scene_l": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00236/4988101201976_B001L.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00236/4988101201976_B002L.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00236/4988101201976_B003L.jpg",
+                                "no": "003"
+                            }
+                        ],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": 3800,
+                        "price_tax_in": 4104,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "01",
+                                "doc_source_id": "03",
+                                "doc_text": "柚月裕子の同名小説を役所広司、松坂桃李、江口洋介、真木よう子らの出演で映画化。暴力団対策法施行以前の広島県を舞台に、すさまじい抗争を起こしている暴力団と彼らを追う刑事たちのバトルを活写する。監督は『凶悪』『日本で一番悪い奴ら』の白石和彌。"
+                            },
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "04",
+                                "doc_text": "柚月裕子の同名ベストセラーを「凶悪」「日本で一番悪い奴ら」の白石和彌監督が主演の役所広司をはじめとする豪華キャストの共演で映画化した衝撃作。暴力団同士の抗争が激化する広島のとある地方都市を舞台に、暴力団が絡む事件の解決に乗り出したマル暴刑事が己の信念のみに従って進める法律無視の過激な捜査の行方を壮絶なバイオレンス描写とともに描き出す。昭和63年。広島の地方都市、呉原。そこでは地場の暴力団“尾谷組”と、広島の巨大組織“五十子会”をバックに進出してきた新興組織“加古村組”が一触即発の状態で睨み合っていた。そんな中、呉原東署に赴任した新米刑事の日岡秀一。赴任早々、暴力団絡みの事件が発生し、凄腕ながら黒い噂が絶えないマル暴のベテラン刑事・大上章吾の強引な捜査を目の当たりにするのだったが…。"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT00000016A",
+                                "big_genre_name": "邦画アクション",
+                                "medium_genre_id": "EXT0000006ZU",
+                                "medium_genre_name": "仁侠",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS000003RWY",
+                                "person_name": "白石和彌",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS0000007N3",
+                                "person_name": "役所広司",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000U86Z7",
+                                "person_name": "柚月裕子",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            },
+                            {
+                                "person_id": "PPS000004B73",
+                                "person_name": "松坂桃李",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001K19",
+                                "person_name": "真木よう子",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000092MV",
+                                "person_name": "音尾琢真",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001SXN",
+                                "person_name": "駿河太郎",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000008SEJ",
+                                "person_name": "中村倫也",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000R7WEQ",
+                                "person_name": "阿部純子[女優]",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001FYC",
+                                "person_name": "滝藤賢一",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000DIW",
+                                "person_name": "矢島健一",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000005VZ",
+                                "person_name": "田口トモロヲ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000004NT5",
+                                "person_name": "池上純哉",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS000000OL2",
+                                "person_name": "安川午朗",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT0000WQWHC",
+                        "product_id": "PPD0000WQVSZ",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "ec",
+                        "service_name": "ec",
+                        "msdb_item": "video",
+                        "item_cd": "1021",
+                        "item_name": "ＤＶＤ",
+                        "product_name": "孤狼の血",
+                        "product_kana": "ころうのち",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2018-08-08 00:00:00",
+                        "disp_start_month": "2018-08",
+                        "disp_end_date": "2068-08-07 23:59:59",
+                        "disp_end_month": "2068-08",
+                        "sale_start_date": "2018-11-02",
+                        "sale_start_month": "2018-11",
+                        "sale_end_date": "2068-11-01",
+                        "sale_end_month": "2068-11",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000U874A"
+                        ],
+                        "tieup": "",
+                        "copyright": "",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "2017",
+                        "created_year_to": "",
+                        "created_year_str": "2017",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT000001YXW",
+                        "maker_name": "東映ビデオ",
+                        "maker_name_kana": "とうえいびでお",
+                        "maker_name_abbrev": "東映ビデオ",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10619132",
+                        "ccc_family_cd": "10619132001",
+                        "ccc_product_id": "206063849",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4988101201976",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "DSTD20139",
+                        "icpn": "",
+                        "media_category_cd": "22",
+                        "media_category_name": "販売DVD",
+                        "media_format_id": "EXT000006GPK",
+                        "media_format_name": "DVD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "020600",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "",
+                        "region_info": "２",
+                        "disc_info": "",
+                        "color_spec": "カラー",
+                        "video_info": "",
+                        "number_of_volume": "",
+                        "number_of_set": "0",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/13253/4988101201976_1S.jpg",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/13253/4988101201976_1M.jpg",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/13253/4988101201976_1L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [],
+                        "scene_m": [],
+                        "scene_l": [],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": 3800,
+                        "price_tax_in": 4104,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "01",
+                                "doc_source_id": "03",
+                                "doc_text": "柚月裕子の同名小説を役所広司、松坂桃李、江口洋介、真木よう子らの出演で映画化。暴力団対策法施行以前の広島県を舞台に、すさまじい抗争を起こしている暴力団と彼らを追う刑事たちのバトルを活写する。監督は『凶悪』『日本で一番悪い奴ら』の白石和彌。"
+                            },
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "04",
+                                "doc_text": "柚月裕子の同名ベストセラーを「凶悪」「日本で一番悪い奴ら」の白石和彌監督が主演の役所広司をはじめとする豪華キャストの共演で映画化した衝撃作。暴力団同士の抗争が激化する広島のとある地方都市を舞台に、暴力団が絡む事件の解決に乗り出したマル暴刑事が己の信念のみに従って進める法律無視の過激な捜査の行方を壮絶なバイオレンス描写とともに描き出す。昭和63年。広島の地方都市、呉原。そこでは地場の暴力団“尾谷組”と、広島の巨大組織“五十子会”をバックに進出してきた新興組織“加古村組”が一触即発の状態で睨み合っていた。そんな中、呉原東署に赴任した新米刑事の日岡秀一。赴任早々、暴力団絡みの事件が発生し、凄腕ながら黒い噂が絶えないマル暴のベテラン刑事・大上章吾の強引な捜査を目の当たりにするのだったが…。"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT00000016A",
+                                "big_genre_name": "邦画アクション",
+                                "medium_genre_id": "EXT0000006ZU",
+                                "medium_genre_name": "仁侠",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS000003RWY",
+                                "person_name": "白石和彌",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS0000007N3",
+                                "person_name": "役所広司",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000U86Z7",
+                                "person_name": "柚月裕子",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            },
+                            {
+                                "person_id": "PPS000004B73",
+                                "person_name": "松坂桃李",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001K19",
+                                "person_name": "真木よう子",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000092MV",
+                                "person_name": "音尾琢真",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001SXN",
+                                "person_name": "駿河太郎",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000008SEJ",
+                                "person_name": "中村倫也",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000R7WEQ",
+                                "person_name": "阿部純子[女優]",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001FYC",
+                                "person_name": "滝藤賢一",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000DIW",
+                                "person_name": "矢島健一",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000005VZ",
+                                "person_name": "田口トモロヲ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000004NT5",
+                                "person_name": "池上純哉",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS000000OL2",
+                                "person_name": "安川午朗",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT0000WQWHN",
+                        "product_id": "PPD0000WQVSX",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "ec",
+                        "service_name": "ec",
+                        "msdb_item": "video",
+                        "item_cd": "1022",
+                        "item_name": "ブルーレイ",
+                        "product_name": "孤狼の血",
+                        "product_kana": "ころうのち",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2018-08-08 00:00:00",
+                        "disp_start_month": "2018-08",
+                        "disp_end_date": "2068-08-07 23:59:59",
+                        "disp_end_month": "2068-08",
+                        "sale_start_date": "2018-11-02",
+                        "sale_start_month": "2018-11",
+                        "sale_end_date": "2068-11-01",
+                        "sale_end_month": "2068-11",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000U874A"
+                        ],
+                        "tieup": "",
+                        "copyright": "",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "2017",
+                        "created_year_to": "",
+                        "created_year_str": "2017",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT000001YXW",
+                        "maker_name": "東映ビデオ",
+                        "maker_name_kana": "とうえいびでお",
+                        "maker_name_abbrev": "東映ビデオ",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10619132",
+                        "ccc_family_cd": "10619132001",
+                        "ccc_product_id": "206063850",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4988101201983",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "BSTD20139",
+                        "icpn": "",
+                        "media_category_cd": "22",
+                        "media_category_name": "販売DVD",
+                        "media_format_id": "EXT0000001VI",
+                        "media_format_name": "Blu-ray",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "020600",
+                        "product_spec": "この商品はブルーレイディスクです。※DVDプレイヤーでは再生できません。",
+                        "screen_size": "",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "カラー",
+                        "video_info": "",
+                        "number_of_volume": "",
+                        "number_of_set": "0",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/13253/4988101201983_1S.jpg",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/13253/4988101201983_1M.jpg",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/13253/4988101201983_1L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [],
+                        "scene_m": [],
+                        "scene_l": [],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": 4800,
+                        "price_tax_in": 5184,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "01",
+                                "doc_source_id": "03",
+                                "doc_text": "柚月裕子の同名小説を役所広司、松坂桃李、江口洋介、真木よう子らの出演で映画化。暴力団対策法施行以前の広島県を舞台に、すさまじい抗争を起こしている暴力団と彼らを追う刑事たちのバトルを活写する。監督は『凶悪』『日本で一番悪い奴ら』の白石和彌。"
+                            },
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "04",
+                                "doc_text": "柚月裕子の同名ベストセラーを「凶悪」「日本で一番悪い奴ら」の白石和彌監督が主演の役所広司をはじめとする豪華キャストの共演で映画化した衝撃作。暴力団同士の抗争が激化する広島のとある地方都市を舞台に、暴力団が絡む事件の解決に乗り出したマル暴刑事が己の信念のみに従って進める法律無視の過激な捜査の行方を壮絶なバイオレンス描写とともに描き出す。昭和63年。広島の地方都市、呉原。そこでは地場の暴力団“尾谷組”と、広島の巨大組織“五十子会”をバックに進出してきた新興組織“加古村組”が一触即発の状態で睨み合っていた。そんな中、呉原東署に赴任した新米刑事の日岡秀一。赴任早々、暴力団絡みの事件が発生し、凄腕ながら黒い噂が絶えないマル暴のベテラン刑事・大上章吾の強引な捜査を目の当たりにするのだったが…。"
+                            },
+                            {
+                                "doc_type_id": "11",
+                                "doc_source_id": "03",
+                                "doc_text": "メイキング オブ 孤狼の血/企画発表会見/キックオフイベント/完成披露舞台挨拶/初日舞台挨拶/広島レッドカーペットイベント/紀伊国屋書店宣伝イベント/スペシャルインタビュー(役所広司,松坂桃李,白石監督)"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT00000016A",
+                                "big_genre_name": "邦画アクション",
+                                "medium_genre_id": "EXT0000006ZU",
+                                "medium_genre_name": "仁侠",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS000003RWY",
+                                "person_name": "白石和彌",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS0000007N3",
+                                "person_name": "役所広司",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000U86Z7",
+                                "person_name": "柚月裕子",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            },
+                            {
+                                "person_id": "PPS000004B73",
+                                "person_name": "松坂桃李",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001K19",
+                                "person_name": "真木よう子",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000092MV",
+                                "person_name": "音尾琢真",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001SXN",
+                                "person_name": "駿河太郎",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000008SEJ",
+                                "person_name": "中村倫也",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000R7WEQ",
+                                "person_name": "阿部純子[女優]",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001FYC",
+                                "person_name": "滝藤賢一",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000DIW",
+                                "person_name": "矢島健一",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000005VZ",
+                                "person_name": "田口トモロヲ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000004NT5",
+                                "person_name": "池上純哉",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS000000OL2",
+                                "person_name": "安川午朗",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    }
+                ],
+                "video_relations": [],
+                "discas_grade_point": 334,
+                "discas_item": [
+                    "DiscasMovie",
+                    "TTV"
+                ],
+                "ttv_trailer_flg": 0,
+                "ttv_free_movie_flg": 0,
+                "ttv_sell_rental_flg": [
+                    "3"
+                ],
+                "ttv_low_price": null,
+                "cinema_id": [
+                    "361822"
+                ],
+                "filmarks_id": [
+                    "72802"
+                ],
+                "dramarks_id": [],
+                "catch_copy": "",
+                "sale_start_date_sell": "2018-11-02",
+                "sale_start_date_rental": "2018-11-02",
+                "trailer_urls": [],
+                "scenes": [
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "361822_01_01",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/18/01/361822_01_01.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "361822_01_02",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/18/02/361822_01_02.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "361822_01_03",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/18/03/361822_01_03.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "361822_01_04",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/18/04/361822_01_04.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "361822_01_05",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/18/05/361822_01_05.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "361822_01_06",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/18/06/361822_01_06.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "361822_01_07",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/18/07/361822_01_07.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "361822_01_08",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/18/08/361822_01_08.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "361822_01_09",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/18/09/361822_01_09.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "361822_01_10",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/18/10/361822_01_10.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "361822_01_11",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/18/11/361822_01_11.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "361822_01_12",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/18/12/361822_01_12.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "361822_01_13",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/18/13/361822_01_13.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "361822_01_14",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/18/14/361822_01_14.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "361822_01_15",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/18/15/361822_01_15.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "361822_01_16",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/18/16/361822_01_16.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "361822_01_l",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/18/l/361822_01_l.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "2",
+                        "scene_id": "361822_01_m",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/18/m/361822_01_m.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "1",
+                        "scene_id": "361822_01_s",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/18/s/361822_01_s.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "361822_02_01",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/18/01/361822_02_01.jpg",
+                        "disable_flg": 0
+                    }
+                ],
+                "filmarks_mark": 3801,
+                "filmarks_clip": 8729,
+                "filmarks_average": 4.04419,
+                "people": [
+                    {
+                        "person_id": "PPS000003RWY",
+                        "person_name": "白石和彌",
+                        "role_id": "EXT0000000UH",
+                        "role_name": "監督"
+                    },
+                    {
+                        "person_id": "PPS0000007N3",
+                        "person_name": "役所広司",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS0000U86Z7",
+                        "person_name": "柚月裕子",
+                        "role_id": "EXT0000000UQ",
+                        "role_name": "原作者"
+                    },
+                    {
+                        "person_id": "PPS000004B73",
+                        "person_name": "松坂桃李",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS000001K19",
+                        "person_name": "真木よう子",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS0000092MV",
+                        "person_name": "音尾琢真",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS000001SXN",
+                        "person_name": "駿河太郎",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS000008SEJ",
+                        "person_name": "中村倫也",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS0000R7WEQ",
+                        "person_name": "阿部純子[女優]",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS000001FYC",
+                        "person_name": "滝藤賢一",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS000000DIW",
+                        "person_name": "矢島健一",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS0000005VZ",
+                        "person_name": "田口トモロヲ",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS000004NT5",
+                        "person_name": "池上純哉",
+                        "role_id": "EXT00000018Y",
+                        "role_name": "脚本"
+                    },
+                    {
+                        "person_id": "PPS000000OL2",
+                        "person_name": "安川午朗",
+                        "role_id": "EXT000000197",
+                        "role_name": "音楽"
+                    }
+                ],
+                "tracks": [],
+                "merged_from": [],
+                "need_age_auth_flg": 0
+            }
+        ]
+    }
+}
