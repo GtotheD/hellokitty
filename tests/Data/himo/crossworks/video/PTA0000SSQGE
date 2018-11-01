@@ -1,0 +1,2759 @@
+{
+    "status": 200,
+    "message": null,
+    "results": {
+        "total": 1,
+        "rows": [
+            {
+                "work_id": "PTA0000SSQGE",
+                "work_type_id": "2",
+                "msdb_item": "video",
+                "work_format_id": null,
+                "work_format_name": "",
+                "work_title": "ユリゴコロ",
+                "work_title_kana": "ゆりごころ",
+                "work_title_en": "",
+                "work_title_orig": "",
+                "work_title_sub": "",
+                "work_comment": "",
+                "work_outline": "",
+                "work_copyright": "",
+                "rating_id": "EXT0000003ZU",
+                "rating_name": "PG-12",
+                "adult_flg": 0,
+                "primary_product_source_id": "PDT0000V9D3H",
+                "primary_product_service_id": "ec",
+                "primary_product_type_id": 1,
+                "disp_start_date": "2018-01-11 15:17:36",
+                "disp_start_month": "2018-01",
+                "sale_start_date": "2018-04-04",
+                "sale_start_month": "2018-04",
+                "created_year_from": "",
+                "created_year_to": "",
+                "created_year": "2017",
+                "created_countries": "日本",
+                "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/12903/4988013082311_1S.jpg",
+                "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/12903/4988013082311_1M.jpg",
+                "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/12903/4988013082311_1L.jpg",
+                "jacket_l4": "",
+                "scene_s": [
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B001S.jpg",
+                        "no": "001"
+                    },
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B002S.jpg",
+                        "no": "002"
+                    },
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B003S.jpg",
+                        "no": "003"
+                    },
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B004S.jpg",
+                        "no": "004"
+                    },
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B005S.jpg",
+                        "no": "005"
+                    }
+                ],
+                "scene_m": [
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B001M.jpg",
+                        "no": "001"
+                    },
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B002M.jpg",
+                        "no": "002"
+                    },
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B003M.jpg",
+                        "no": "003"
+                    },
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B004M.jpg",
+                        "no": "004"
+                    },
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B005M.jpg",
+                        "no": "005"
+                    }
+                ],
+                "scene_l": [
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B001L.jpg",
+                        "no": "001"
+                    },
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B002L.jpg",
+                        "no": "002"
+                    },
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B003L.jpg",
+                        "no": "003"
+                    },
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B004L.jpg",
+                        "no": "004"
+                    },
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B005L.jpg",
+                        "no": "005"
+                    }
+                ],
+                "trailor_pc": [],
+                "season_name": "",
+                "season_number": null,
+                "book_series_name": "",
+                "book_series_name_kana": "",
+                "feature_keywords": [],
+                "priv_keywords": [],
+                "work_tags": [],
+                "wakati_words": [],
+                "is_compilation": 0,
+                "series_completed": 0,
+                "disable_flg": 0,
+                "delete_flg": 0,
+                "ids": [
+                    {
+                        "id_type": "0107",
+                        "id_value": "360354"
+                    },
+                    {
+                        "id_type": "0108",
+                        "id_value": "71237"
+                    },
+                    {
+                        "id_type": "0103",
+                        "id_value": "10597654"
+                    },
+                    {
+                        "id_type": "0105",
+                        "id_value": "10590694"
+                    },
+                    {
+                        "id_type": "0106",
+                        "id_value": "101019175"
+                    }
+                ],
+                "docs": [
+                    {
+                        "doc_type_id": "01",
+                        "doc_source_id": "03",
+                        "doc_text": "沼田まほかるの同名ミステリー小説の実写映画版。人間の死を心の拠りどころにして生きる悲しき殺人者の宿命と葛藤を、過去と現在を交錯させながら描く。ある日、亮介は余命わずかな父の書斎で一冊のノートを見つけるのだが……。"
+                    },
+                    {
+                        "doc_type_id": "02",
+                        "doc_source_id": "04",
+                        "doc_text": "沼田まほかるのベストセラー・ミステリーを吉高由里子主演で映画化。生まれながらに“人間の死”が拠りどころのヒロインのおぞましくも切ない半生と、その殺人履歴が綴られたノートを見つけた青年の運命が狂わされていくさまを描く。共演は松坂桃李、松山ケンイチ、木村多江。監督は「君に届け」の熊澤尚人。亮介はカフェを営み平穏な日々を送っていたが突然、男手一つで育ててくれた父が余命わずかと診断され、婚約者の千絵がこつ然と姿を消してしまう。そんな時、実家の押し入れで『ユリゴコロ』と書かれた一冊のノートを見つける。そこには、人を殺すことに心の拠りどころを感じてしまう美紗子と名乗る女が、自らの殺人の記録と、洋介との運命的な出会いによって救われたことなどの衝撃的な告白が綴られていたのだが…。"
+                    },
+                    {
+                        "doc_type_id": "04",
+                        "doc_source_id": "03",
+                        "doc_text": "【Disc-1】<BR>ユリゴコロ"
+                    },
+                    {
+                        "doc_type_id": "04",
+                        "doc_source_id": "04",
+                        "doc_text": "本編ディスク、特典ディスク"
+                    },
+                    {
+                        "doc_type_id": "06",
+                        "doc_source_id": "04",
+                        "doc_text": "アウターケース付属デジパック仕様<BR><BR><BR>＜映像特典＞<BR><BR>メイキング・オブ・『ユリゴコロ』 過去パート/現代パート<BR>3ショットインタビュー(吉高由里子×松坂桃李×松山ケンイチ)<BR>舞台挨拶映像集(キックオフ会見/レッドカーペット+完成披露試写会/初日舞台挨拶)<BR>予告編集<BR><BR><BR>＜封入特典＞<BR><BR>24ページブックレット"
+                    },
+                    {
+                        "doc_type_id": "10",
+                        "doc_source_id": "03",
+                        "doc_text": "［2］特典ディスク/アウターケース付属デジパック仕様/24ページブックレット"
+                    },
+                    {
+                        "doc_type_id": "11",
+                        "doc_source_id": "03",
+                        "doc_text": "［2］メイキング・オブ・『ユリゴコロ』 過去パート,現代パート/3ショットインタビュー(吉高由里子×松坂桃李×松山ケンイチ)/舞台挨拶映像集(キックオフ会見,レッドカーペット+完成披露試写会,初日舞台挨拶)/予告編集"
+                    }
+                ],
+                "awards": [],
+                "screens": [],
+                "onairs": [],
+                "magazines": [],
+                "genres": [
+                    {
+                        "big_genre_id": "EXT00000014Q",
+                        "big_genre_name": "邦画ドラマ",
+                        "medium_genre_id": "EXT0000005ZE",
+                        "medium_genre_name": "サスペンス／ミステリー",
+                        "small_genre_id": "",
+                        "small_genre_name": "",
+                        "shikiriban_id": "",
+                        "shikiriban_name": ""
+                    }
+                ],
+                "products": [
+                    {
+                        "id": "PDT0000V7A7S",
+                        "product_id": "PPD0000V7A7S",
+                        "product_type_id": 2,
+                        "product_type_name": "レンタル",
+                        "service_id": "tol",
+                        "service_name": "tol",
+                        "msdb_item": "video",
+                        "item_cd": "0021",
+                        "item_name": "ＤＶＤ",
+                        "product_name": "ユリゴコロ",
+                        "product_kana": "ゆりごころ",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2018-01-11 15:17:36",
+                        "disp_start_month": "2018-01",
+                        "disp_end_date": "2030-12-28 00:00:00",
+                        "disp_end_month": "2030-12",
+                        "sale_start_date": "2018-04-04",
+                        "sale_start_month": "2018-04",
+                        "sale_end_date": "2030-12-28",
+                        "sale_end_month": "2030-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000SSQGE"
+                        ],
+                        "tieup": "",
+                        "copyright": "",
+                        "rating_id": "EXT0000003ZU",
+                        "rating_name": "PG-12",
+                        "adult_flg": 0,
+                        "created_year_from": "2017",
+                        "created_year_to": "",
+                        "created_year_str": "2017",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT00000011L",
+                        "maker_name": "ポニーキャニオン",
+                        "maker_name_kana": "ぽにーきやにおん",
+                        "maker_name_abbrev": "ポニーキャニオン",
+                        "label_name": "",
+                        "sell_rental_flag": 2,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10597654",
+                        "ccc_family_cd": "10597654001",
+                        "ccc_product_id": "205858619",
+                        "rental_product_cd": "083950737",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4988013082311",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "PCBP73700",
+                        "icpn": "",
+                        "media_category_cd": "12",
+                        "media_category_name": "レンタルDVD",
+                        "media_format_id": "EXT000006GPK",
+                        "media_format_name": "DVD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "020800",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "",
+                        "video_info": "",
+                        "number_of_volume": "001",
+                        "number_of_set": "1",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/12903/4988013082311_1S.jpg",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/12903/4988013082311_1M.jpg",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/12903/4988013082311_1L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B001S.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B002S.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B003S.jpg",
+                                "no": "003"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B004S.jpg",
+                                "no": "004"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B005S.jpg",
+                                "no": "005"
+                            }
+                        ],
+                        "scene_m": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B001M.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B002M.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B003M.jpg",
+                                "no": "003"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B004M.jpg",
+                                "no": "004"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B005M.jpg",
+                                "no": "005"
+                            }
+                        ],
+                        "scene_l": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B001L.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B002L.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B003L.jpg",
+                                "no": "003"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B004L.jpg",
+                                "no": "004"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B005L.jpg",
+                                "no": "005"
+                            }
+                        ],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": null,
+                        "price_tax_in": null,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "04",
+                                "doc_text": "沼田まほかるのベストセラー・ミステリーを吉高由里子主演で映画化。生まれながらに“人間の死”が拠りどころのヒロインのおぞましくも切ない半生と、その殺人履歴が綴られたノートを見つけた青年の運命が狂わされていくさまを描く。共演は松坂桃李、松山ケンイチ、木村多江。監督は「君に届け」の熊澤尚人。亮介はカフェを営み平穏な日々を送っていたが突然、男手一つで育ててくれた父が余命わずかと診断され、婚約者の千絵がこつ然と姿を消してしまう。そんな時、実家の押し入れで『ユリゴコロ』と書かれた一冊のノートを見つける。そこには、人を殺すことに心の拠りどころを感じてしまう美紗子と名乗る女が、自らの殺人の記録と、洋介との運命的な出会いによって救われたことなどの衝撃的な告白が綴られていたのだが…。"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT00000014Q",
+                                "big_genre_name": "邦画ドラマ",
+                                "medium_genre_id": "EXT0000005ZE",
+                                "medium_genre_name": "サスペンス／ミステリー",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS0000SN4RZ",
+                                "person_name": "沼田まほかる",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            },
+                            {
+                                "person_id": "PPS000002KXF",
+                                "person_name": "熊澤尚人",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS000002YFC",
+                                "person_name": "吉高由里子",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000004B73",
+                                "person_name": "松坂桃李",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000CHW",
+                                "person_name": "松山ケンイチ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001SXO",
+                                "person_name": "佐津川愛美",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000NPCK0",
+                                "person_name": "清野菜名",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000R5SNO",
+                                "person_name": "清原果耶",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000BVJ",
+                                "person_name": "木村多江",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000OL2",
+                                "person_name": "安川午朗",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            },
+                            {
+                                "person_id": "PPS000002KXF",
+                                "person_name": "熊澤尚人",
+                                "role_id": "EXT0000IA59E",
+                                "role_name": "監督・脚本"
+                            },
+                            {
+                                "person_id": "PPS0000VK8HF",
+                                "person_name": "沼田まほかる",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            },
+                            {
+                                "person_id": "PPS00000F6IS",
+                                "person_name": "Rihwa",
+                                "role_id": "EXT0000IA5BF",
+                                "role_name": "主題歌"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT0000VK8GW",
+                        "product_id": "PPD0000V7A7S",
+                        "product_type_id": 2,
+                        "product_type_name": "レンタル",
+                        "service_id": "discas",
+                        "service_name": "discas",
+                        "msdb_item": "video",
+                        "item_cd": "0021",
+                        "item_name": "ＤＶＤ",
+                        "product_name": "ユリゴコロ",
+                        "product_kana": "ユリゴコロ",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2018-02-25 00:00:00",
+                        "disp_start_month": "2018-02",
+                        "disp_end_date": "2099-12-31 00:00:00",
+                        "disp_end_month": "2099-12",
+                        "sale_start_date": "2018-04-04",
+                        "sale_start_month": "2018-04",
+                        "sale_end_date": "2099-12-31",
+                        "sale_end_month": "2099-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000SSQGE"
+                        ],
+                        "tieup": "",
+                        "copyright": "",
+                        "rating_id": "EXT0000003ZU",
+                        "rating_name": "PG-12",
+                        "adult_flg": 0,
+                        "created_year_from": "2017",
+                        "created_year_to": "",
+                        "created_year_str": "2017",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT00000011L",
+                        "maker_name": "ポニーキャニオン",
+                        "maker_name_kana": "ぽにーきやにおん",
+                        "maker_name_abbrev": "ポニーキャニオン",
+                        "label_name": "",
+                        "sell_rental_flag": 2,
+                        "view_term": null,
+                        "reservation_flg": 1,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10597654",
+                        "ccc_family_cd": "10597654001",
+                        "ccc_product_id": "3614720752",
+                        "rental_product_cd": "083950737",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4988013082311",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "PCBP73700",
+                        "icpn": "",
+                        "media_category_cd": "12",
+                        "media_category_name": "レンタルDVD",
+                        "media_format_id": "EXT000006GPK",
+                        "media_format_name": "DVD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "020800",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "",
+                        "video_info": "",
+                        "number_of_volume": "001",
+                        "number_of_set": "1",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//img.discas.net/img/jacket/core/201803/16/4988013082311_1SX.jpg",
+                        "jacket_m": "//img.discas.net/img/jacket/core/201803/16/4988013082311_1MX.jpg",
+                        "jacket_l": "//img.discas.net/img/jacket/core/201803/16/4988013082311_1L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [],
+                        "scene_m": [],
+                        "scene_l": [],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": null,
+                        "price_tax_in": null,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "04",
+                                "doc_text": "沼田まほかるのベストセラー・ミステリーを吉高由里子主演で映画化。生まれながらに“人間の死”が拠りどころのヒロインのおぞましくも切ない半生と、その殺人履歴が綴られたノートを見つけた青年の運命が狂わされていくさまを描く。共演は松坂桃李、松山ケンイチ、木村多江。監督は「君に届け」の熊澤尚人。亮介はカフェを営み平穏な日々を送っていたが突然、男手一つで育ててくれた父が余命わずかと診断され、婚約者の千絵がこつ然と姿を消してしまう。そんな時、実家の押し入れで『ユリゴコロ』と書かれた一冊のノートを見つける。そこには、人を殺すことに心の拠りどころを感じてしまう美紗子と名乗る女が、自らの殺人の記録と、洋介との運命的な出会いによって救われたことなどの衝撃的な告白が綴られていたのだが…。"
+                            },
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "H1",
+                                "doc_text": "沼田まほかるの同名小説を吉高由里子、松坂桃李、松山ケンイチら豪華キャスト共演で映画化。父親が余命わずかと診断され、結婚を控えていた千絵が姿を消してしまった亮介。その出来事を受け止め切れない亮介は、実家で1冊のノートとめぐり合う。※PG12※一般告知解禁日：あり"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT00000014Q",
+                                "big_genre_name": "邦画ドラマ",
+                                "medium_genre_id": "EXT0000005ZE",
+                                "medium_genre_name": "サスペンス／ミステリー",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": 312,
+                        "discas_item": "DiscasMovie",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS0000SN4RZ",
+                                "person_name": "沼田まほかる",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            },
+                            {
+                                "person_id": "PPS000002KXF",
+                                "person_name": "熊澤尚人",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS000002YFC",
+                                "person_name": "吉高由里子",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000004B73",
+                                "person_name": "松坂桃李",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000CHW",
+                                "person_name": "松山ケンイチ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001SXO",
+                                "person_name": "佐津川愛美",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000NPCK0",
+                                "person_name": "清野菜名",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000R5SNO",
+                                "person_name": "清原果耶",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000BVJ",
+                                "person_name": "木村多江",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000OL2",
+                                "person_name": "安川午朗",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            },
+                            {
+                                "person_id": "PPS000002KXF",
+                                "person_name": "熊澤尚人",
+                                "role_id": "EXT0000IA59E",
+                                "role_name": "監督・脚本"
+                            },
+                            {
+                                "person_id": "PPS0000VK8HF",
+                                "person_name": "沼田まほかる",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            },
+                            {
+                                "person_id": "PPS00000F6IS",
+                                "person_name": "Rihwa",
+                                "role_id": "EXT0000IA5BF",
+                                "role_name": "主題歌"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT0000V9CEP",
+                        "product_id": "PPD0000V9CEP",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "tol",
+                        "service_name": "tol",
+                        "msdb_item": "video",
+                        "item_cd": "1021",
+                        "item_name": "ＤＶＤ",
+                        "product_name": "ユリゴコロ スタンダード・エディション",
+                        "product_kana": "ゆりごころすたんだーどえでいしよん",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2018-01-30 00:00:00",
+                        "disp_start_month": "2018-01",
+                        "disp_end_date": "2030-12-28 00:00:00",
+                        "disp_end_month": "2030-12",
+                        "sale_start_date": "2018-04-04",
+                        "sale_start_month": "2018-04",
+                        "sale_end_date": "2030-12-28",
+                        "sale_end_month": "2030-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000SSQGE"
+                        ],
+                        "tieup": "",
+                        "copyright": "(C)沼田まほかる/双葉社 (C)2017「ユリゴコロ」製作委員会",
+                        "rating_id": "EXT0000003ZU",
+                        "rating_name": "PG-12",
+                        "adult_flg": 0,
+                        "created_year_from": "2017",
+                        "created_year_to": "",
+                        "created_year_str": "2017",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT00000011L",
+                        "maker_name": "ポニーキャニオン",
+                        "maker_name_kana": "ぽにーきやにおん",
+                        "maker_name_abbrev": "ポニーキャニオン",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10597654",
+                        "ccc_family_cd": "10597654001",
+                        "ccc_product_id": "205864213",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4988013082212",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "PCBP53700",
+                        "icpn": "",
+                        "media_category_cd": "22",
+                        "media_category_name": "販売DVD",
+                        "media_format_id": "EXT000006GPK",
+                        "media_format_name": "DVD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "020800",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "１：ドルビーデジタル／５．１ｃｈサラウンド／日本語",
+                        "region_info": "２",
+                        "disc_info": "片面２層",
+                        "color_spec": "カラー",
+                        "video_info": "１６：９／ＬＢ",
+                        "number_of_volume": "",
+                        "number_of_set": "0",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/12785/4988013082212_1S.jpg",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/12785/4988013082212_1M.jpg",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/12785/4988013082212_1L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B001S.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B002S.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B003S.jpg",
+                                "no": "003"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B004S.jpg",
+                                "no": "004"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B005S.jpg",
+                                "no": "005"
+                            }
+                        ],
+                        "scene_m": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B001M.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B002M.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B003M.jpg",
+                                "no": "003"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B004M.jpg",
+                                "no": "004"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B005M.jpg",
+                                "no": "005"
+                            }
+                        ],
+                        "scene_l": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B001L.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B002L.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B003L.jpg",
+                                "no": "003"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B004L.jpg",
+                                "no": "004"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B005L.jpg",
+                                "no": "005"
+                            }
+                        ],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": 3800,
+                        "price_tax_in": 4104,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "01",
+                                "doc_source_id": "03",
+                                "doc_text": "沼田まほかるの同名ミステリー小説の実写映画版。人間の死を心の拠りどころにして生きる悲しき殺人者の宿命と葛藤を、過去と現在を交錯させながら描く。ある日、亮介は余命わずかな父の書斎で一冊のノートを見つけるのだが……。"
+                            },
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "04",
+                                "doc_text": "沼田まほかるのベストセラー・ミステリーを吉高由里子主演で映画化。生まれながらに“人間の死”が拠りどころのヒロインのおぞましくも切ない半生と、その殺人履歴が綴られたノートを見つけた青年の運命が狂わされていくさまを描く。共演は松坂桃李、松山ケンイチ、木村多江。監督は「君に届け」の熊澤尚人。亮介はカフェを営み平穏な日々を送っていたが突然、男手一つで育ててくれた父が余命わずかと診断され、婚約者の千絵がこつ然と姿を消してしまう。そんな時、実家の押し入れで『ユリゴコロ』と書かれた一冊のノートを見つける。そこには、人を殺すことに心の拠りどころを感じてしまう美紗子と名乗る女が、自らの殺人の記録と、洋介との運命的な出会いによって救われたことなどの衝撃的な告白が綴られていたのだが…。"
+                            },
+                            {
+                                "doc_type_id": "04",
+                                "doc_source_id": "03",
+                                "doc_text": "【Disc-1】<BR>ユリゴコロ"
+                            },
+                            {
+                                "doc_type_id": "06",
+                                "doc_source_id": "04",
+                                "doc_text": "＜映像特典＞<BR><BR>予告編集"
+                            },
+                            {
+                                "doc_type_id": "11",
+                                "doc_source_id": "03",
+                                "doc_text": "予告編集"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT00000014Q",
+                                "big_genre_name": "邦画ドラマ",
+                                "medium_genre_id": "EXT0000005ZE",
+                                "medium_genre_name": "サスペンス／ミステリー",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [
+                            "360354"
+                        ],
+                        "filmarks_id": [
+                            "71237"
+                        ],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS0000SN4RZ",
+                                "person_name": "沼田まほかる",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            },
+                            {
+                                "person_id": "PPS000002KXF",
+                                "person_name": "熊澤尚人",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS000002YFC",
+                                "person_name": "吉高由里子",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000002KXF",
+                                "person_name": "熊澤尚人",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS000004B73",
+                                "person_name": "松坂桃李",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000CHW",
+                                "person_name": "松山ケンイチ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001SXO",
+                                "person_name": "佐津川愛美",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000NPCK0",
+                                "person_name": "清野菜名",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000R5SNO",
+                                "person_name": "清原果耶",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000BVJ",
+                                "person_name": "木村多江",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001KG6",
+                                "person_name": "佐藤直樹",
+                                "role_id": "EXT0000001AC",
+                                "role_name": "製作総指揮"
+                            },
+                            {
+                                "person_id": "PPS000000OL2",
+                                "person_name": "安川午朗",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT0000V9D3M",
+                        "product_id": "PPD0000V9CEP",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "ec",
+                        "service_name": "ec",
+                        "msdb_item": "video",
+                        "item_cd": "1021",
+                        "item_name": "ＤＶＤ",
+                        "product_name": "ユリゴコロ スタンダード・エディション",
+                        "product_kana": "ゆりごころすたんだーどえでいしよん",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2018-01-30 00:00:00",
+                        "disp_start_month": "2018-01",
+                        "disp_end_date": "2068-01-30 23:59:59",
+                        "disp_end_month": "2068-01",
+                        "sale_start_date": "2018-04-04",
+                        "sale_start_month": "2018-04",
+                        "sale_end_date": "2068-04-03",
+                        "sale_end_month": "2068-04",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000SSQGE"
+                        ],
+                        "tieup": "",
+                        "copyright": "(C)沼田まほかる/双葉社 (C)2017「ユリゴコロ」製作委員会",
+                        "rating_id": "EXT0000003ZU",
+                        "rating_name": "PG-12",
+                        "adult_flg": 0,
+                        "created_year_from": "2017",
+                        "created_year_to": "",
+                        "created_year_str": "2017",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT00000011L",
+                        "maker_name": "ポニーキャニオン",
+                        "maker_name_kana": "ぽにーきやにおん",
+                        "maker_name_abbrev": "ポニーキャニオン",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10597654",
+                        "ccc_family_cd": "10597654001",
+                        "ccc_product_id": "205864213",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4988013082212",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "PCBP53700",
+                        "icpn": "",
+                        "media_category_cd": "22",
+                        "media_category_name": "販売DVD",
+                        "media_format_id": "EXT000006GPK",
+                        "media_format_name": "DVD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "020800",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "１：ドルビーデジタル／５．１ｃｈサラウンド／日本語",
+                        "region_info": "２",
+                        "disc_info": "片面２層",
+                        "color_spec": "カラー",
+                        "video_info": "１６：９／ＬＢ",
+                        "number_of_volume": "",
+                        "number_of_set": "0",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/12785/4988013082212_1S.jpg",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/12785/4988013082212_1M.jpg",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/12785/4988013082212_1L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [],
+                        "scene_m": [],
+                        "scene_l": [],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": 3800,
+                        "price_tax_in": 4104,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "01",
+                                "doc_source_id": "03",
+                                "doc_text": "沼田まほかるの同名ミステリー小説の実写映画版。人間の死を心の拠りどころにして生きる悲しき殺人者の宿命と葛藤を、過去と現在を交錯させながら描く。ある日、亮介は余命わずかな父の書斎で一冊のノートを見つけるのだが……。"
+                            },
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "04",
+                                "doc_text": "沼田まほかるのベストセラー・ミステリーを吉高由里子主演で映画化。生まれながらに“人間の死”が拠りどころのヒロインのおぞましくも切ない半生と、その殺人履歴が綴られたノートを見つけた青年の運命が狂わされていくさまを描く。共演は松坂桃李、松山ケンイチ、木村多江。監督は「君に届け」の熊澤尚人。亮介はカフェを営み平穏な日々を送っていたが突然、男手一つで育ててくれた父が余命わずかと診断され、婚約者の千絵がこつ然と姿を消してしまう。そんな時、実家の押し入れで『ユリゴコロ』と書かれた一冊のノートを見つける。そこには、人を殺すことに心の拠りどころを感じてしまう美紗子と名乗る女が、自らの殺人の記録と、洋介との運命的な出会いによって救われたことなどの衝撃的な告白が綴られていたのだが…。"
+                            },
+                            {
+                                "doc_type_id": "04",
+                                "doc_source_id": "03",
+                                "doc_text": "【Disc-1】<BR>ユリゴコロ"
+                            },
+                            {
+                                "doc_type_id": "06",
+                                "doc_source_id": "04",
+                                "doc_text": "＜映像特典＞<BR><BR>予告編集"
+                            },
+                            {
+                                "doc_type_id": "11",
+                                "doc_source_id": "03",
+                                "doc_text": "予告編集"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT00000014Q",
+                                "big_genre_name": "邦画ドラマ",
+                                "medium_genre_id": "EXT0000005ZE",
+                                "medium_genre_name": "サスペンス／ミステリー",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS0000SN4RZ",
+                                "person_name": "沼田まほかる",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            },
+                            {
+                                "person_id": "PPS000002KXF",
+                                "person_name": "熊澤尚人",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS000002YFC",
+                                "person_name": "吉高由里子",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000002KXF",
+                                "person_name": "熊澤尚人",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS000004B73",
+                                "person_name": "松坂桃李",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000CHW",
+                                "person_name": "松山ケンイチ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001SXO",
+                                "person_name": "佐津川愛美",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000NPCK0",
+                                "person_name": "清野菜名",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000R5SNO",
+                                "person_name": "清原果耶",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000BVJ",
+                                "person_name": "木村多江",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001KG6",
+                                "person_name": "佐藤直樹",
+                                "role_id": "EXT0000001AC",
+                                "role_name": "製作総指揮"
+                            },
+                            {
+                                "person_id": "PPS000000OL2",
+                                "person_name": "安川午朗",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT0000V9CET",
+                        "product_id": "PPD0000V9CET",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "tol",
+                        "service_name": "tol",
+                        "msdb_item": "video",
+                        "item_cd": "1021",
+                        "item_name": "ＤＶＤ",
+                        "product_name": "ユリゴコロ スペシャル・エディション",
+                        "product_kana": "ゆりごころすぺしやるえでいしよん",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2018-01-30 00:00:00",
+                        "disp_start_month": "2018-01",
+                        "disp_end_date": "2030-12-28 00:00:00",
+                        "disp_end_month": "2030-12",
+                        "sale_start_date": "2018-04-04",
+                        "sale_start_month": "2018-04",
+                        "sale_end_date": "2030-12-28",
+                        "sale_end_month": "2030-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000SSQGE"
+                        ],
+                        "tieup": "",
+                        "copyright": "(C)沼田まほかる/双葉社 (C)2017「ユリゴコロ」製作委員会",
+                        "rating_id": "EXT0000003ZU",
+                        "rating_name": "PG-12",
+                        "adult_flg": 0,
+                        "created_year_from": "2017",
+                        "created_year_to": "",
+                        "created_year_str": "2017",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT00000011L",
+                        "maker_name": "ポニーキャニオン",
+                        "maker_name_kana": "ぽにーきやにおん",
+                        "maker_name_abbrev": "ポニーキャニオン",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10597654",
+                        "ccc_family_cd": "10597654001",
+                        "ccc_product_id": "205864212",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4988013082113",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "PCBP53699",
+                        "icpn": "",
+                        "media_category_cd": "22",
+                        "media_category_name": "販売DVD",
+                        "media_format_id": "EXT000006GPK",
+                        "media_format_name": "DVD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "020800",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "１：ドルビーデジタル／５．１ｃｈサラウンド／日本語",
+                        "region_info": "２",
+                        "disc_info": "",
+                        "color_spec": "カラー",
+                        "video_info": "１６：９／ＬＢ",
+                        "number_of_volume": "",
+                        "number_of_set": "0",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/12785/4988013082113_1S.jpg",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/12785/4988013082113_1M.jpg",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/12785/4988013082113_1L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B001S.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B002S.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B003S.jpg",
+                                "no": "003"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B004S.jpg",
+                                "no": "004"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B005S.jpg",
+                                "no": "005"
+                            }
+                        ],
+                        "scene_m": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B001M.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B002M.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B003M.jpg",
+                                "no": "003"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B004M.jpg",
+                                "no": "004"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B005M.jpg",
+                                "no": "005"
+                            }
+                        ],
+                        "scene_l": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B001L.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B002L.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B003L.jpg",
+                                "no": "003"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B004L.jpg",
+                                "no": "004"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B005L.jpg",
+                                "no": "005"
+                            }
+                        ],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": 5800,
+                        "price_tax_in": 6264,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "01",
+                                "doc_source_id": "03",
+                                "doc_text": "沼田まほかるの同名ミステリー小説の実写映画版。人間の死を心の拠りどころにして生きる悲しき殺人者の宿命と葛藤を、過去と現在を交錯させながら描く。ある日、亮介は余命わずかな父の書斎で一冊のノートを見つけるのだが……。"
+                            },
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "04",
+                                "doc_text": "沼田まほかるのベストセラー・ミステリーを吉高由里子主演で映画化。生まれながらに“人間の死”が拠りどころのヒロインのおぞましくも切ない半生と、その殺人履歴が綴られたノートを見つけた青年の運命が狂わされていくさまを描く。共演は松坂桃李、松山ケンイチ、木村多江。監督は「君に届け」の熊澤尚人。亮介はカフェを営み平穏な日々を送っていたが突然、男手一つで育ててくれた父が余命わずかと診断され、婚約者の千絵がこつ然と姿を消してしまう。そんな時、実家の押し入れで『ユリゴコロ』と書かれた一冊のノートを見つける。そこには、人を殺すことに心の拠りどころを感じてしまう美紗子と名乗る女が、自らの殺人の記録と、洋介との運命的な出会いによって救われたことなどの衝撃的な告白が綴られていたのだが…。"
+                            },
+                            {
+                                "doc_type_id": "04",
+                                "doc_source_id": "03",
+                                "doc_text": "【Disc-1】<BR>ユリゴコロ"
+                            },
+                            {
+                                "doc_type_id": "04",
+                                "doc_source_id": "04",
+                                "doc_text": "本編ディスク、特典ディスク"
+                            },
+                            {
+                                "doc_type_id": "06",
+                                "doc_source_id": "04",
+                                "doc_text": "アウターケース付属デジパック仕様<BR><BR><BR>＜映像特典＞<BR><BR>メイキング・オブ・『ユリゴコロ』 過去パート/現代パート<BR>3ショットインタビュー(吉高由里子×松坂桃李×松山ケンイチ)<BR>舞台挨拶映像集(キックオフ会見/レッドカーペット+完成披露試写会/初日舞台挨拶)<BR>予告編集<BR><BR><BR>＜封入特典＞<BR><BR>24ページブックレット"
+                            },
+                            {
+                                "doc_type_id": "10",
+                                "doc_source_id": "03",
+                                "doc_text": "［2］特典ディスク/アウターケース付属デジパック仕様/24ページブックレット"
+                            },
+                            {
+                                "doc_type_id": "11",
+                                "doc_source_id": "03",
+                                "doc_text": "［2］メイキング・オブ・『ユリゴコロ』 過去パート,現代パート/3ショットインタビュー(吉高由里子×松坂桃李×松山ケンイチ)/舞台挨拶映像集(キックオフ会見,レッドカーペット+完成披露試写会,初日舞台挨拶)/予告編集"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT00000014Q",
+                                "big_genre_name": "邦画ドラマ",
+                                "medium_genre_id": "EXT0000005ZE",
+                                "medium_genre_name": "サスペンス／ミステリー",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [
+                            "360354"
+                        ],
+                        "filmarks_id": [
+                            "71237"
+                        ],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS0000SN4RZ",
+                                "person_name": "沼田まほかる",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            },
+                            {
+                                "person_id": "PPS000002KXF",
+                                "person_name": "熊澤尚人",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS000002YFC",
+                                "person_name": "吉高由里子",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000002KXF",
+                                "person_name": "熊澤尚人",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS000004B73",
+                                "person_name": "松坂桃李",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000CHW",
+                                "person_name": "松山ケンイチ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001SXO",
+                                "person_name": "佐津川愛美",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000NPCK0",
+                                "person_name": "清野菜名",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000R5SNO",
+                                "person_name": "清原果耶",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000BVJ",
+                                "person_name": "木村多江",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001KG6",
+                                "person_name": "佐藤直樹",
+                                "role_id": "EXT0000001AC",
+                                "role_name": "製作総指揮"
+                            },
+                            {
+                                "person_id": "PPS000000OL2",
+                                "person_name": "安川午朗",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT0000V9CEW",
+                        "product_id": "PPD0000SSPHO",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "tol",
+                        "service_name": "tol",
+                        "msdb_item": "video",
+                        "item_cd": "1022",
+                        "item_name": "ブルーレイ",
+                        "product_name": "ユリゴコロ スペシャル・エディション",
+                        "product_kana": "ゆりごころすぺしやるえでいしよん",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2018-01-30 00:00:00",
+                        "disp_start_month": "2018-01",
+                        "disp_end_date": "2030-12-28 00:00:00",
+                        "disp_end_month": "2030-12",
+                        "sale_start_date": "2018-04-04",
+                        "sale_start_month": "2018-04",
+                        "sale_end_date": "2030-12-28",
+                        "sale_end_month": "2030-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000SSQGE"
+                        ],
+                        "tieup": "",
+                        "copyright": "(C)沼田まほかる/双葉社 (C)2017「ユリゴコロ」製作委員会",
+                        "rating_id": "EXT0000003ZU",
+                        "rating_name": "PG-12",
+                        "adult_flg": 0,
+                        "created_year_from": "2017",
+                        "created_year_to": "",
+                        "created_year_str": "2017",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT00000011L",
+                        "maker_name": "ポニーキャニオン",
+                        "maker_name_kana": "ぽにーきやにおん",
+                        "maker_name_abbrev": "ポニーキャニオン",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10597654",
+                        "ccc_family_cd": "10597654001",
+                        "ccc_product_id": "205864211",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4988013082014",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "PCXP50567",
+                        "icpn": "",
+                        "media_category_cd": "22",
+                        "media_category_name": "販売DVD",
+                        "media_format_id": "EXT0000001VI",
+                        "media_format_name": "Blu-ray",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "020800",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "１：ＤＴＳ－ＨＤ　Ｍａｓｔｅｒ　Ａｕｄｉｏ／５．１ｃｈサラウンド／日本語",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "カラー",
+                        "video_info": "１６：９／ＬＢ",
+                        "number_of_volume": "",
+                        "number_of_set": "0",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/12785/4988013082014_1S.jpg",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/12785/4988013082014_1M.jpg",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/12785/4988013082014_1L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B001S.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B002S.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B003S.jpg",
+                                "no": "003"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B004S.jpg",
+                                "no": "004"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B005S.jpg",
+                                "no": "005"
+                            }
+                        ],
+                        "scene_m": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B001M.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B002M.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B003M.jpg",
+                                "no": "003"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B004M.jpg",
+                                "no": "004"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B005M.jpg",
+                                "no": "005"
+                            }
+                        ],
+                        "scene_l": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B001L.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B002L.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B003L.jpg",
+                                "no": "003"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B004L.jpg",
+                                "no": "004"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00228/4988013082014_B005L.jpg",
+                                "no": "005"
+                            }
+                        ],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": 6800,
+                        "price_tax_in": 7344,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "01",
+                                "doc_source_id": "03",
+                                "doc_text": "沼田まほかるの同名ミステリー小説の実写映画版。人間の死を心の拠りどころにして生きる悲しき殺人者の宿命と葛藤を、過去と現在を交錯させながら描く。ある日、亮介は余命わずかな父の書斎で一冊のノートを見つけるのだが……。"
+                            },
+                            {
+                                "doc_type_id": "04",
+                                "doc_source_id": "03",
+                                "doc_text": "【Disc-1】<BR>ユリゴコロ"
+                            },
+                            {
+                                "doc_type_id": "10",
+                                "doc_source_id": "03",
+                                "doc_text": "アウターケース付属デジパック仕様/24ページブックレット/［2］特典ディスク(DVD)"
+                            },
+                            {
+                                "doc_type_id": "11",
+                                "doc_source_id": "03",
+                                "doc_text": "［2］〈DVD〉メイキング・オブ・『ユリゴコロ』 過去パート,現代パート/3ショットインタビュー(吉高由里子×松坂桃李×松山ケンイチ)/予告編集/舞台挨拶映像集(キックオフ会見,レッドカーペット+完成披露試写会,初日舞台挨拶)"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT00000014Q",
+                                "big_genre_name": "邦画ドラマ",
+                                "medium_genre_id": "EXT0000005ZE",
+                                "medium_genre_name": "サスペンス／ミステリー",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [
+                            "360354"
+                        ],
+                        "filmarks_id": [
+                            "71237"
+                        ],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS0000SN4RZ",
+                                "person_name": "沼田まほかる",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            },
+                            {
+                                "person_id": "PPS000002KXF",
+                                "person_name": "熊澤尚人",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS000002YFC",
+                                "person_name": "吉高由里子",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000002KXF",
+                                "person_name": "熊澤尚人",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS000004B73",
+                                "person_name": "松坂桃李",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000CHW",
+                                "person_name": "松山ケンイチ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001SXO",
+                                "person_name": "佐津川愛美",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000NPCK0",
+                                "person_name": "清野菜名",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000R5SNO",
+                                "person_name": "清原果耶",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000BVJ",
+                                "person_name": "木村多江",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001KG6",
+                                "person_name": "佐藤直樹",
+                                "role_id": "EXT0000001AC",
+                                "role_name": "製作総指揮"
+                            },
+                            {
+                                "person_id": "PPS000000OL2",
+                                "person_name": "安川午朗",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT0000V9D3H",
+                        "product_id": "PPD0000V9CET",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "ec",
+                        "service_name": "ec",
+                        "msdb_item": "video",
+                        "item_cd": "1021",
+                        "item_name": "ＤＶＤ",
+                        "product_name": "ユリゴコロ スペシャル・エディション",
+                        "product_kana": "ゆりごころすぺしやるえでいしよん",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2018-01-30 00:00:00",
+                        "disp_start_month": "2018-01",
+                        "disp_end_date": "2068-01-30 23:59:59",
+                        "disp_end_month": "2068-01",
+                        "sale_start_date": "2018-04-04",
+                        "sale_start_month": "2018-04",
+                        "sale_end_date": "2068-04-03",
+                        "sale_end_month": "2068-04",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000SSQGE"
+                        ],
+                        "tieup": "",
+                        "copyright": "(C)沼田まほかる/双葉社 (C)2017「ユリゴコロ」製作委員会",
+                        "rating_id": "EXT0000003ZU",
+                        "rating_name": "PG-12",
+                        "adult_flg": 0,
+                        "created_year_from": "2017",
+                        "created_year_to": "",
+                        "created_year_str": "2017",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT00000011L",
+                        "maker_name": "ポニーキャニオン",
+                        "maker_name_kana": "ぽにーきやにおん",
+                        "maker_name_abbrev": "ポニーキャニオン",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10597654",
+                        "ccc_family_cd": "10597654001",
+                        "ccc_product_id": "205864212",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4988013082113",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "PCBP53699",
+                        "icpn": "",
+                        "media_category_cd": "22",
+                        "media_category_name": "販売DVD",
+                        "media_format_id": "EXT000006GPK",
+                        "media_format_name": "DVD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "020800",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "１：ドルビーデジタル／５．１ｃｈサラウンド／日本語",
+                        "region_info": "２",
+                        "disc_info": "",
+                        "color_spec": "カラー",
+                        "video_info": "１６：９／ＬＢ",
+                        "number_of_volume": "",
+                        "number_of_set": "0",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/12785/4988013082113_1S.jpg",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/12785/4988013082113_1M.jpg",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/12785/4988013082113_1L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [],
+                        "scene_m": [],
+                        "scene_l": [],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": 5800,
+                        "price_tax_in": 6264,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "01",
+                                "doc_source_id": "03",
+                                "doc_text": "沼田まほかるの同名ミステリー小説の実写映画版。人間の死を心の拠りどころにして生きる悲しき殺人者の宿命と葛藤を、過去と現在を交錯させながら描く。ある日、亮介は余命わずかな父の書斎で一冊のノートを見つけるのだが……。"
+                            },
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "04",
+                                "doc_text": "沼田まほかるのベストセラー・ミステリーを吉高由里子主演で映画化。生まれながらに“人間の死”が拠りどころのヒロインのおぞましくも切ない半生と、その殺人履歴が綴られたノートを見つけた青年の運命が狂わされていくさまを描く。共演は松坂桃李、松山ケンイチ、木村多江。監督は「君に届け」の熊澤尚人。亮介はカフェを営み平穏な日々を送っていたが突然、男手一つで育ててくれた父が余命わずかと診断され、婚約者の千絵がこつ然と姿を消してしまう。そんな時、実家の押し入れで『ユリゴコロ』と書かれた一冊のノートを見つける。そこには、人を殺すことに心の拠りどころを感じてしまう美紗子と名乗る女が、自らの殺人の記録と、洋介との運命的な出会いによって救われたことなどの衝撃的な告白が綴られていたのだが…。"
+                            },
+                            {
+                                "doc_type_id": "04",
+                                "doc_source_id": "03",
+                                "doc_text": "【Disc-1】<BR>ユリゴコロ"
+                            },
+                            {
+                                "doc_type_id": "04",
+                                "doc_source_id": "04",
+                                "doc_text": "本編ディスク、特典ディスク"
+                            },
+                            {
+                                "doc_type_id": "06",
+                                "doc_source_id": "04",
+                                "doc_text": "アウターケース付属デジパック仕様<BR><BR><BR>＜映像特典＞<BR><BR>メイキング・オブ・『ユリゴコロ』 過去パート/現代パート<BR>3ショットインタビュー(吉高由里子×松坂桃李×松山ケンイチ)<BR>舞台挨拶映像集(キックオフ会見/レッドカーペット+完成披露試写会/初日舞台挨拶)<BR>予告編集<BR><BR><BR>＜封入特典＞<BR><BR>24ページブックレット"
+                            },
+                            {
+                                "doc_type_id": "10",
+                                "doc_source_id": "03",
+                                "doc_text": "［2］特典ディスク/アウターケース付属デジパック仕様/24ページブックレット"
+                            },
+                            {
+                                "doc_type_id": "11",
+                                "doc_source_id": "03",
+                                "doc_text": "［2］メイキング・オブ・『ユリゴコロ』 過去パート,現代パート/3ショットインタビュー(吉高由里子×松坂桃李×松山ケンイチ)/舞台挨拶映像集(キックオフ会見,レッドカーペット+完成披露試写会,初日舞台挨拶)/予告編集"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT00000014Q",
+                                "big_genre_name": "邦画ドラマ",
+                                "medium_genre_id": "EXT0000005ZE",
+                                "medium_genre_name": "サスペンス／ミステリー",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS0000SN4RZ",
+                                "person_name": "沼田まほかる",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            },
+                            {
+                                "person_id": "PPS000002KXF",
+                                "person_name": "熊澤尚人",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS000002YFC",
+                                "person_name": "吉高由里子",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000002KXF",
+                                "person_name": "熊澤尚人",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS000004B73",
+                                "person_name": "松坂桃李",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000CHW",
+                                "person_name": "松山ケンイチ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001SXO",
+                                "person_name": "佐津川愛美",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000NPCK0",
+                                "person_name": "清野菜名",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000R5SNO",
+                                "person_name": "清原果耶",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000BVJ",
+                                "person_name": "木村多江",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001KG6",
+                                "person_name": "佐藤直樹",
+                                "role_id": "EXT0000001AC",
+                                "role_name": "製作総指揮"
+                            },
+                            {
+                                "person_id": "PPS000000OL2",
+                                "person_name": "安川午朗",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT0000V9D3L",
+                        "product_id": "PPD0000SSPHO",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "ec",
+                        "service_name": "ec",
+                        "msdb_item": "video",
+                        "item_cd": "1022",
+                        "item_name": "ブルーレイ",
+                        "product_name": "ユリゴコロ スペシャル・エディション",
+                        "product_kana": "ゆりごころすぺしやるえでいしよん",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2018-01-30 00:00:00",
+                        "disp_start_month": "2018-01",
+                        "disp_end_date": "2068-01-30 23:59:59",
+                        "disp_end_month": "2068-01",
+                        "sale_start_date": "2018-04-04",
+                        "sale_start_month": "2018-04",
+                        "sale_end_date": "2068-04-03",
+                        "sale_end_month": "2068-04",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000SSQGE"
+                        ],
+                        "tieup": "",
+                        "copyright": "(C)沼田まほかる/双葉社 (C)2017「ユリゴコロ」製作委員会",
+                        "rating_id": "EXT0000003ZU",
+                        "rating_name": "PG-12",
+                        "adult_flg": 0,
+                        "created_year_from": "2017",
+                        "created_year_to": "",
+                        "created_year_str": "2017",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT00000011L",
+                        "maker_name": "ポニーキャニオン",
+                        "maker_name_kana": "ぽにーきやにおん",
+                        "maker_name_abbrev": "ポニーキャニオン",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10597654",
+                        "ccc_family_cd": "10597654001",
+                        "ccc_product_id": "205864211",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4988013082014",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "PCXP50567",
+                        "icpn": "",
+                        "media_category_cd": "22",
+                        "media_category_name": "販売DVD",
+                        "media_format_id": "EXT0000001VI",
+                        "media_format_name": "Blu-ray",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "020800",
+                        "product_spec": "この商品はブルーレイディスクです。※DVDプレイヤーでは再生できません。",
+                        "screen_size": "",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "１：ＤＴＳ－ＨＤ　Ｍａｓｔｅｒ　Ａｕｄｉｏ／５．１ｃｈサラウンド／日本語",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "カラー",
+                        "video_info": "１６：９／ＬＢ",
+                        "number_of_volume": "",
+                        "number_of_set": "0",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/12785/4988013082014_1S.jpg",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/12785/4988013082014_1M.jpg",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/12785/4988013082014_1L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [],
+                        "scene_m": [],
+                        "scene_l": [],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": 6800,
+                        "price_tax_in": 7344,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "01",
+                                "doc_source_id": "03",
+                                "doc_text": "沼田まほかるの同名ミステリー小説の実写映画版。人間の死を心の拠りどころにして生きる悲しき殺人者の宿命と葛藤を、過去と現在を交錯させながら描く。ある日、亮介は余命わずかな父の書斎で一冊のノートを見つけるのだが……。"
+                            },
+                            {
+                                "doc_type_id": "04",
+                                "doc_source_id": "03",
+                                "doc_text": "【Disc-1】<BR>ユリゴコロ"
+                            },
+                            {
+                                "doc_type_id": "10",
+                                "doc_source_id": "03",
+                                "doc_text": "アウターケース付属デジパック仕様/24ページブックレット/［2］特典ディスク(DVD)"
+                            },
+                            {
+                                "doc_type_id": "11",
+                                "doc_source_id": "03",
+                                "doc_text": "［2］〈DVD〉メイキング・オブ・『ユリゴコロ』 過去パート,現代パート/3ショットインタビュー(吉高由里子×松坂桃李×松山ケンイチ)/予告編集/舞台挨拶映像集(キックオフ会見,レッドカーペット+完成披露試写会,初日舞台挨拶)"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT00000014Q",
+                                "big_genre_name": "邦画ドラマ",
+                                "medium_genre_id": "EXT0000005ZE",
+                                "medium_genre_name": "サスペンス／ミステリー",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS0000SN4RZ",
+                                "person_name": "沼田まほかる",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            },
+                            {
+                                "person_id": "PPS000002KXF",
+                                "person_name": "熊澤尚人",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS000002YFC",
+                                "person_name": "吉高由里子",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000002KXF",
+                                "person_name": "熊澤尚人",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS000004B73",
+                                "person_name": "松坂桃李",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000CHW",
+                                "person_name": "松山ケンイチ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001SXO",
+                                "person_name": "佐津川愛美",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000NPCK0",
+                                "person_name": "清野菜名",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000R5SNO",
+                                "person_name": "清原果耶",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000BVJ",
+                                "person_name": "木村多江",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001KG6",
+                                "person_name": "佐藤直樹",
+                                "role_id": "EXT0000001AC",
+                                "role_name": "製作総指揮"
+                            },
+                            {
+                                "person_id": "PPS000000OL2",
+                                "person_name": "安川午朗",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT0000VQKVK",
+                        "product_id": "PPD0000VQKVK",
+                        "product_type_id": 5,
+                        "product_type_name": "映像配信",
+                        "service_id": "discas",
+                        "service_name": "discas",
+                        "msdb_item": "video",
+                        "item_cd": "",
+                        "item_name": "",
+                        "product_name": "ユリゴコロ",
+                        "product_kana": "ユリゴコロ",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "カフェを営む亮介（松坂桃李）の日常はある日突然崩れ去った。男手ひとつで育ててくれた父親が余命わずかと診断され、結婚を控えていた千絵（清野菜名）はこつ然と姿を消してしまったのだ。新しい家族を作ろうとしていた矢先の出来事を受けとめきれない亮介は、実家の押し入れで一冊のノートと巡り会う。「ユリゴコロ」と書かれたそのノートに書かれていたのは、美紗子と名乗る女（吉高由里子）の手記。人を殺めることでしか自分の生きる世界と繋がることができない女性の衝撃的な告白だった。そんな美紗子もやがて洋介（松山ケンイチ）と運命的な出会いをし、「愛」というこれまで知る由もなかった感情に触れることとなる。しかしそれはさらなる悲劇の幕開けにすぎなかった。自らの失意の中、美紗子の人生の奥深くに触れていくにつれ、次第にその物語が創作だとは思えなくなる亮介。いったい誰が、何のためにこれを書いたのか。なぜ自分はこれほどまでにこの手記に惹かれるのか。そして機を待っていたかのように、千絵のかつての同僚だったという細谷（木村多江）が、千絵からの伝言を手に亮介の前に現れた・・・。",
+                        "disp_start_date": "2018-03-19 19:00:00",
+                        "disp_start_month": "2018-03",
+                        "disp_end_date": "2019-04-03 23:59:59",
+                        "disp_end_month": "2019-04",
+                        "sale_start_date": "2018-04-04",
+                        "sale_start_month": "2018-04",
+                        "sale_end_date": "2019-04-03",
+                        "sale_end_month": "2019-04",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000SSQGE"
+                        ],
+                        "tieup": "",
+                        "copyright": "(C)沼田まほかる/双葉社 (C)2017「ユリゴコロ」製作委員会",
+                        "rating_id": "EXT0000003ZU",
+                        "rating_name": "PG-12",
+                        "adult_flg": 0,
+                        "created_year_from": "2017",
+                        "created_year_to": "",
+                        "created_year_str": "2017",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT0000NUY26",
+                        "maker_name": "日活株式会社",
+                        "maker_name_kana": "",
+                        "maker_name_abbrev": "",
+                        "label_name": "",
+                        "sell_rental_flag": 3,
+                        "view_term": 0,
+                        "reservation_flg": 1,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10597654",
+                        "ccc_family_cd": "",
+                        "ccc_product_id": "8004676796",
+                        "rental_product_cd": "",
+                        "common_vod_code": "101074983",
+                        "vod_goods_cd": "101074983",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "",
+                        "icpn": "",
+                        "media_category_cd": "",
+                        "media_category_name": "",
+                        "media_format_id": "EXT00001MHIJ",
+                        "media_format_name": "SD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "02:07:59",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": 2,
+                        "subtitle": "",
+                        "sound_spec": "",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "",
+                        "video_info": "",
+                        "number_of_volume": "",
+                        "number_of_set": "",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "ユリゴコロ",
+                        "music_disp_artist": "監督：熊澤尚人　原作：沼田まほかる「ユリゴコロ」（双葉文庫）　出演：吉高由里子　松坂桃李　松山ケンイチ　佐津川愛美　清野菜名",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//img.discas.net/img/jacket/ttv_jacket/101/074/983/101074983_24SX.jpg",
+                        "jacket_m": "//img.discas.net/img/jacket/ttv_jacket/101/074/983/101074983_24MX.jpg",
+                        "jacket_l": "//img.discas.net/img/jacket/ttv_jacket/101/074/983/101074983_24L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [],
+                        "scene_m": [],
+                        "scene_l": [],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": 2500,
+                        "price_tax_in": 2700,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "H1",
+                                "doc_text": "カフェを営む亮介（松坂桃李）の日常はある日突然崩れ去った。男手ひとつで育ててくれた父親が余命わずかと診断され、結婚を控えていた千絵（清野菜名）はこつ然と姿を消してしまったのだ。新しい家族を作ろうとしていた矢先の出来事を受けとめきれない亮介は、実家の押し入れで一冊のノートと巡り会う。「ユリゴコロ」と書かれたそのノートに書かれていたのは、美紗子と名乗る女（吉高由里子）の手記。人を殺めることでしか自分の生きる世界と繋がることができない女性の衝撃的な告白だった。そんな美紗子もやがて洋介（松山ケンイチ）と運命的な出会いをし、「愛」というこれまで知る由もなかった感情に触れることとなる。しかしそれはさらなる悲劇の幕開けにすぎなかった。自らの失意の中、美紗子の人生の奥深くに触れていくにつれ、次第にその物語が創作だとは思えなくなる亮介。いったい誰が、何のためにこれを書いたのか。なぜ自分はこれほどまでにこの手記に惹かれるのか。そして機を待っていたかのように、千絵のかつての同僚だったという細谷（木村多江）が、千絵からの伝言を手に亮介の前に現れた・・・。"
+                            }
+                        ],
+                        "devices": [
+                            {
+                                "device_id": "EXT0000HEZXI",
+                                "device_name": "tv"
+                            },
+                            {
+                                "device_id": "EXT0000HIZ8U",
+                                "device_name": "android"
+                            },
+                            {
+                                "device_id": "EXT0000M42VG",
+                                "device_name": "ios"
+                            },
+                            {
+                                "device_id": "EXT0000NV29A",
+                                "device_name": "smart"
+                            },
+                            {
+                                "device_id": "EXT0000TC38V",
+                                "device_name": "androidtv"
+                            },
+                            {
+                                "device_id": "EXT0000TC38W",
+                                "device_name": "smarttv"
+                            }
+                        ],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT00000014Q",
+                                "big_genre_name": "邦画ドラマ",
+                                "medium_genre_id": "EXT0000005ZE",
+                                "medium_genre_name": "サスペンス／ミステリー",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": 300,
+                        "discas_item": "TTV",
+                        "ttv_trailer_flg": 1,
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS000002KXF",
+                                "person_name": "熊澤尚人",
+                                "role_id": "EXT00000000I",
+                                "role_name": "役割なし"
+                            },
+                            {
+                                "person_id": "PPS00000BRNZ",
+                                "person_name": "清野菜名",
+                                "role_id": "EXT00000000I",
+                                "role_name": "役割なし"
+                            },
+                            {
+                                "person_id": "PPS000001SXO",
+                                "person_name": "佐津川愛美",
+                                "role_id": "EXT00000000I",
+                                "role_name": "役割なし"
+                            },
+                            {
+                                "person_id": "PPS000002YFC",
+                                "person_name": "吉高由里子",
+                                "role_id": "EXT00000000I",
+                                "role_name": "役割なし"
+                            },
+                            {
+                                "person_id": "PPS000000CHW",
+                                "person_name": "松山ケンイチ",
+                                "role_id": "EXT00000000I",
+                                "role_name": "役割なし"
+                            },
+                            {
+                                "person_id": "PPS000004B73",
+                                "person_name": "松坂桃李",
+                                "role_id": "EXT00000000I",
+                                "role_name": "役割なし"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    }
+                ],
+                "video_relations": [],
+                "discas_grade_point": 312,
+                "discas_item": [
+                    "DiscasMovie",
+                    "TTV"
+                ],
+                "ttv_trailer_flg": 1,
+                "ttv_free_movie_flg": 0,
+                "ttv_sell_rental_flg": [
+                    "3"
+                ],
+                "ttv_low_price": 2700,
+                "cinema_id": [
+                    "360354"
+                ],
+                "filmarks_id": [
+                    "71237"
+                ],
+                "dramarks_id": [],
+                "catch_copy": "",
+                "sale_start_date_sell": "2018-04-04",
+                "sale_start_date_rental": "2018-04-04",
+                "trailer_urls": [],
+                "scenes": [
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "360354_01_01",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/03/01/360354_01_01.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "360354_01_02",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/03/02/360354_01_02.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "360354_01_03",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/03/03/360354_01_03.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "360354_01_04",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/03/04/360354_01_04.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "360354_01_05",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/03/05/360354_01_05.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "360354_01_06",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/03/06/360354_01_06.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "360354_02_01",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/03/01/360354_02_01.jpg",
+                        "disable_flg": 0
+                    }
+                ],
+                "filmarks_mark": 3351,
+                "filmarks_clip": 10129,
+                "filmarks_average": 3.64816,
+                "people": [
+                    {
+                        "person_id": "PPS0000SN4RZ",
+                        "person_name": "沼田まほかる",
+                        "role_id": "EXT0000000UQ",
+                        "role_name": "原作者"
+                    },
+                    {
+                        "person_id": "PPS000002KXF",
+                        "person_name": "熊澤尚人",
+                        "role_id": "EXT0000000UH",
+                        "role_name": "監督"
+                    },
+                    {
+                        "person_id": "PPS000002YFC",
+                        "person_name": "吉高由里子",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS000002KXF",
+                        "person_name": "熊澤尚人",
+                        "role_id": "EXT00000018Y",
+                        "role_name": "脚本"
+                    },
+                    {
+                        "person_id": "PPS000004B73",
+                        "person_name": "松坂桃李",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS000000CHW",
+                        "person_name": "松山ケンイチ",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS000001SXO",
+                        "person_name": "佐津川愛美",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS0000NPCK0",
+                        "person_name": "清野菜名",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS0000R5SNO",
+                        "person_name": "清原果耶",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS000000BVJ",
+                        "person_name": "木村多江",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS000001KG6",
+                        "person_name": "佐藤直樹",
+                        "role_id": "EXT0000001AC",
+                        "role_name": "製作総指揮"
+                    },
+                    {
+                        "person_id": "PPS000000OL2",
+                        "person_name": "安川午朗",
+                        "role_id": "EXT000000197",
+                        "role_name": "音楽"
+                    }
+                ],
+                "tracks": [],
+                "merged_from": [],
+                "need_age_auth_flg": 0
+            }
+        ]
+    }
+}

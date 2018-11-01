@@ -56,6 +56,7 @@ class HimoReleaseOrder extends Model
             })
             ->whereRaw(DB::raw(' item_cd not like \'_1__\' '))
             ->whereRaw(DB::raw(' item_cd not like \'__20\' '))
+            ->whereRaw(DB::raw(' service_id in  (\'tol\')'))
             ->groupBy(DB::raw($selectSubGroupingFinal));
         $this->dbObject = DB::table(DB::raw("({$subQueryFinal->toSql()}) as final"))
             ->mergeBindings($subQueryFinal)

@@ -1,0 +1,2929 @@
+{
+    "status": 200,
+    "message": null,
+    "results": {
+        "total": 1,
+        "rows": [
+            {
+                "work_id": "PTA0000MZIQV",
+                "work_type_id": "2",
+                "msdb_item": "video",
+                "work_format_id": null,
+                "work_format_name": "",
+                "work_title": "くるみ割り人形",
+                "work_title_kana": "くるみわりにんぎよう",
+                "work_title_en": "",
+                "work_title_orig": "",
+                "work_title_sub": "",
+                "work_comment": "",
+                "work_outline": "",
+                "work_copyright": "(C)2006 Sakura Production USA Hannnari Geisha Modern LLC All Rghts Reserved．",
+                "rating_id": "EXT000000008",
+                "rating_name": "",
+                "adult_flg": 0,
+                "primary_product_source_id": "PDT0000MZMJT",
+                "primary_product_service_id": "ec",
+                "primary_product_type_id": 1,
+                "disp_start_date": "1900-01-01 00:00:00",
+                "disp_start_month": "1900-01",
+                "sale_start_date": "2015-06-17",
+                "sale_start_month": "2015-06",
+                "created_year_from": "",
+                "created_year_to": "",
+                "created_year": "2014",
+                "created_countries": "日本",
+                "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/10465/4901610618721_1S.jpg",
+                "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/10465/4901610618721_1M.jpg",
+                "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/10465/4901610618721_1L.jpg",
+                "jacket_l4": "",
+                "scene_s": [
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00169/4901610618820_B001S.jpg",
+                        "no": "001"
+                    },
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00169/4901610618820_B002S.jpg",
+                        "no": "002"
+                    },
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00169/4901610618820_B003S.jpg",
+                        "no": "003"
+                    }
+                ],
+                "scene_m": [
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00169/4901610618820_B001M.jpg",
+                        "no": "001"
+                    },
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00169/4901610618820_B002M.jpg",
+                        "no": "002"
+                    },
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00169/4901610618820_B003M.jpg",
+                        "no": "003"
+                    }
+                ],
+                "scene_l": [
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00169/4901610618820_B001L.jpg",
+                        "no": "001"
+                    },
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00169/4901610618820_B002L.jpg",
+                        "no": "002"
+                    },
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00169/4901610618820_B003L.jpg",
+                        "no": "003"
+                    }
+                ],
+                "trailor_pc": [],
+                "season_name": "",
+                "season_number": null,
+                "book_series_name": "",
+                "book_series_name_kana": "",
+                "feature_keywords": [],
+                "priv_keywords": [],
+                "work_tags": [],
+                "wakati_words": [],
+                "is_compilation": 0,
+                "series_completed": 0,
+                "disable_flg": 0,
+                "delete_flg": 0,
+                "ids": [
+                    {
+                        "id_type": "0103",
+                        "id_value": "10467438"
+                    },
+                    {
+                        "id_type": "0105",
+                        "id_value": "10460477"
+                    },
+                    {
+                        "id_type": "0107",
+                        "id_value": "349897"
+                    },
+                    {
+                        "id_type": "0108",
+                        "id_value": "59214"
+                    }
+                ],
+                "docs": [
+                    {
+                        "doc_type_id": "02",
+                        "doc_source_id": "04",
+                        "doc_text": "サンリオがハローキティ40周年を記念して製作したミュージカル・ファンタジー・アニメーション。同社が1979年に手がけた人形アニメ映画「くるみ割り人形」を、監督に“kawaiiカルチャー”の第一人者・増田セバスチャンを迎えて大胆にリ・クリエイト。ヒロインのクララ役を務める有村架純のほか、松坂桃李、市村正親、広末涼子はじめ豪華キャストが声優として参加。ある夜、大切な“くるみ割り人形”をネズミの大群に奪われた少女クララ。ネズミを追って色鮮やかな“人形の国”に迷い込んでしまう。そこには、“ふたつ頭の白ネズミの女王”に呪いを掛けられ、眠ったままのお姫様がいた。やがて、邪悪な呪いを解こうとする人形たちとネズミの戦いに巻き込まれていくクララだったが…。"
+                    },
+                    {
+                        "doc_type_id": "04",
+                        "doc_source_id": "03",
+                        "doc_text": "【Disc-1】<BR>くるみ割り人形<BR><BR>【Disc-2】<BR>くるみ割り人形"
+                    },
+                    {
+                        "doc_type_id": "04",
+                        "doc_source_id": "04",
+                        "doc_text": "「くるみ割り人形」 3D版(Blu-ray)、「くるみ割り人形」 2D版(Blu-ray)、特典ディスク (DVD)"
+                    },
+                    {
+                        "doc_type_id": "06",
+                        "doc_source_id": "04",
+                        "doc_text": "＜音声特典(2D版)＞<BR><BR>オーディオコメンタリー(増田セバスチャン監督・三田邦彦3D＆CG監督、藤井隆による制作秘話の副音声)<BR><BR>＜映像特典＞<BR><BR>本編ディスク(2D版):<BR><BR>予告編、TVスポット映像<BR><BR>特典ディスク:<BR><BR>声の出演・豪華10大スター＆増田セバスチャン監督 インタビュー<BR>イベント映像集:<BR> 東京国際映画祭ワールドプレミア<BR> 高橋大輔・登場!スペシャルイベント<BR> 初日舞台挨拶(祝・4大割りイベント・声のキャストによる鏡割り、くすだま割り 他)"
+                    },
+                    {
+                        "doc_type_id": "10",
+                        "doc_source_id": "03",
+                        "doc_text": "特製【極彩色】アウタースリーブ/［3］特典ディスク(DVD)"
+                    },
+                    {
+                        "doc_type_id": "11",
+                        "doc_source_id": "03",
+                        "doc_text": "［1］3D版予告編/3D化パイロット版(フィルム修復,極彩色化,3D化への各メイキング工程)/［2］予告編,TVスポット/オーディオ・コメンタリー(監督:増田セバスチャン×出演:藤井隆×3D＆CG監督:三田邦彦)/［3］〈DVD〉豪華10大スター＆増田セバスチャン監督 インタビュー/イベント映像集(くるみが割れる,その時まで!):東京国際映画祭ワールドプレミア＆クロストーク,髙橋大輔・登場!スペシャル・イヴェント,初日舞台挨拶 祝 4大 割り!?"
+                    }
+                ],
+                "awards": [],
+                "screens": [],
+                "onairs": [],
+                "magazines": [],
+                "genres": [
+                    {
+                        "big_genre_id": "EXT0000000WP",
+                        "big_genre_name": "キッズ",
+                        "medium_genre_id": "EXT0000002TT",
+                        "medium_genre_name": "童話／絵本",
+                        "small_genre_id": "",
+                        "small_genre_name": "",
+                        "shikiriban_id": "",
+                        "shikiriban_name": ""
+                    }
+                ],
+                "products": [
+                    {
+                        "id": "PDT0000N182W",
+                        "product_id": "PPD0000N182W",
+                        "product_type_id": 2,
+                        "product_type_name": "レンタル",
+                        "service_id": "tol",
+                        "service_name": "tol",
+                        "msdb_item": "video",
+                        "item_cd": "0021",
+                        "item_name": "ＤＶＤ",
+                        "product_name": "くるみ割り人形",
+                        "product_kana": "くるみわりにんぎよう",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2015-04-15 11:05:22",
+                        "disp_start_month": "2015-04",
+                        "disp_end_date": "2030-12-28 00:00:00",
+                        "disp_end_month": "2030-12",
+                        "sale_start_date": "2015-06-17",
+                        "sale_start_month": "2015-06",
+                        "sale_end_date": "2030-12-28",
+                        "sale_end_month": "2030-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000MZIQV"
+                        ],
+                        "tieup": "",
+                        "copyright": "",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "2014",
+                        "created_year_to": "",
+                        "created_year_str": "2014",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT00000DFYJ",
+                        "maker_name": "サンリオ",
+                        "maker_name_kana": "さんりお",
+                        "maker_name_abbrev": "サンリオ",
+                        "label_name": "",
+                        "sell_rental_flag": 2,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10467438",
+                        "ccc_family_cd": "10467438001",
+                        "ccc_product_id": "204639502",
+                        "rental_product_cd": "082995476",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4901610618264",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "VR1526",
+                        "icpn": "",
+                        "media_category_cd": "12",
+                        "media_category_name": "レンタルDVD",
+                        "media_format_id": "EXT000006GPK",
+                        "media_format_name": "DVD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "012000",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "",
+                        "video_info": "",
+                        "number_of_volume": "001",
+                        "number_of_set": "1",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/10582/4901610618264_1S.jpg",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/10582/4901610618264_1M.jpg",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/10582/4901610618264_1L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00169/4901610618820_B001S.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00169/4901610618820_B002S.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00169/4901610618820_B003S.jpg",
+                                "no": "003"
+                            }
+                        ],
+                        "scene_m": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00169/4901610618820_B001M.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00169/4901610618820_B002M.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00169/4901610618820_B003M.jpg",
+                                "no": "003"
+                            }
+                        ],
+                        "scene_l": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00169/4901610618820_B001L.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00169/4901610618820_B002L.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00169/4901610618820_B003L.jpg",
+                                "no": "003"
+                            }
+                        ],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": null,
+                        "price_tax_in": null,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "04",
+                                "doc_text": "サンリオがハローキティ40周年を記念して製作したミュージカル・ファンタジー・アニメーション。同社が1979年に手がけた人形アニメ映画「くるみ割り人形」を、監督に“kawaiiカルチャー”の第一人者・増田セバスチャンを迎えて大胆にリ・クリエイト。ヒロインのクララ役を務める有村架純のほか、松坂桃李、市村正親、広末涼子はじめ豪華キャストが声優として参加。ある夜、大切な“くるみ割り人形”をネズミの大群に奪われた少女クララ。ネズミを追って色鮮やかな“人形の国”に迷い込んでしまう。そこには、“ふたつ頭の白ネズミの女王”に呪いを掛けられ、眠ったままのお姫様がいた。やがて、邪悪な呪いを解こうとする人形たちとネズミの戦いに巻き込まれていくクララだったが…。"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT0000000WP",
+                                "big_genre_name": "キッズ",
+                                "medium_genre_id": "EXT0000002TT",
+                                "medium_genre_name": "童話／絵本",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [],
+                        "filmarks_id": [
+                            "59214"
+                        ],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS0000N3KJ0",
+                                "person_name": "増田セバスチャン",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS000004GD9",
+                                "person_name": "有村架純",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS000004B73",
+                                "person_name": "松坂桃李",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS00000DCXA",
+                                "person_name": "辻信太郎",
+                                "role_id": "EXT0000001AC",
+                                "role_name": "製作総指揮"
+                            },
+                            {
+                                "person_id": "PPS000000GHJ",
+                                "person_name": "市村正親",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS0000019Z7",
+                                "person_name": "広末涼子",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS0000004VD",
+                                "person_name": "藤井隆",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS0000017JU",
+                                "person_name": "大野拓朗",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS00000E6CR",
+                                "person_name": "安蘭けい",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS00001Y6WH",
+                                "person_name": "吉田鋼太郎",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS000003HBR",
+                                "person_name": "板野友美",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS000002V6V",
+                                "person_name": "由紀さおり",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS00007KT4L",
+                                "person_name": "E・T・A・ホフマン",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            },
+                            {
+                                "person_id": "PPS0000MZE3G",
+                                "person_name": "P.I.チャイコフスキー",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            },
+                            {
+                                "person_id": "PPS0000116CH",
+                                "person_name": "松本淳一",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            },
+                            {
+                                "person_id": "PPS00009J2BV",
+                                "person_name": "増田セバスチャン",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS00009J2BV",
+                                "person_name": "増田セバスチャン",
+                                "role_id": "EXT00001GAW6",
+                                "role_name": "脚色"
+                            },
+                            {
+                                "person_id": "PPS00000DCXA",
+                                "person_name": "辻信太郎",
+                                "role_id": "EXT0000006K9",
+                                "role_name": "原案"
+                            },
+                            {
+                                "person_id": "PPS00000GERX",
+                                "person_name": "きゃりーぱみゅぱみゅ",
+                                "role_id": "EXT0000IA5M3",
+                                "role_name": "テーマ曲"
+                            },
+                            {
+                                "person_id": "PPS0000AC7H5",
+                                "person_name": "三田邦彦",
+                                "role_id": "EXT0000IA84B",
+                                "role_name": "3D監督"
+                            },
+                            {
+                                "person_id": "PPS00001FQYQ",
+                                "person_name": "有村架純",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT0000NBRG5",
+                        "product_id": "PPD0000N182W",
+                        "product_type_id": 2,
+                        "product_type_name": "レンタル",
+                        "service_id": "discas",
+                        "service_name": "discas",
+                        "msdb_item": "video",
+                        "item_cd": "0021",
+                        "item_name": "ＤＶＤ",
+                        "product_name": "くるみ割り人形",
+                        "product_kana": "クルミワリニンギヨウ",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2015-05-25 00:00:00",
+                        "disp_start_month": "2015-05",
+                        "disp_end_date": "2099-12-31 00:00:00",
+                        "disp_end_month": "2099-12",
+                        "sale_start_date": "2015-06-17",
+                        "sale_start_month": "2015-06",
+                        "sale_end_date": "2099-12-31",
+                        "sale_end_month": "2099-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000MZIQV"
+                        ],
+                        "tieup": "",
+                        "copyright": "",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "2014",
+                        "created_year_to": "",
+                        "created_year_str": "2014",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT00000DFYJ",
+                        "maker_name": "サンリオ",
+                        "maker_name_kana": "さんりお",
+                        "maker_name_abbrev": "サンリオ",
+                        "label_name": "",
+                        "sell_rental_flag": 2,
+                        "view_term": null,
+                        "reservation_flg": 1,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10467438",
+                        "ccc_family_cd": "10467438001",
+                        "ccc_product_id": "2653928506",
+                        "rental_product_cd": "082995476",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4901610618264",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "VR1526",
+                        "icpn": "",
+                        "media_category_cd": "12",
+                        "media_category_name": "レンタルDVD",
+                        "media_format_id": "EXT000006GPK",
+                        "media_format_name": "DVD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "012000",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": null,
+                        "subtitle": "日",
+                        "sound_spec": "",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "",
+                        "video_info": "",
+                        "number_of_volume": "001",
+                        "number_of_set": "1",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//img.discas.net/img/jacket/core/201506/03/4901610618721_1SX.jpg",
+                        "jacket_m": "//img.discas.net/img/jacket/core/201506/03/4901610618721_1MX.jpg",
+                        "jacket_l": "//img.discas.net/img/jacket/core/201506/03/4901610618721_1L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [],
+                        "scene_m": [],
+                        "scene_l": [],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": null,
+                        "price_tax_in": null,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "04",
+                                "doc_text": "サンリオがハローキティ40周年を記念して製作したミュージカル・ファンタジー・アニメーション。同社が1979年に手がけた人形アニメ映画「くるみ割り人形」を、監督に“kawaiiカルチャー”の第一人者・増田セバスチャンを迎えて大胆にリ・クリエイト。ヒロインのクララ役を務める有村架純のほか、松坂桃李、市村正親、広末涼子はじめ豪華キャストが声優として参加。ある夜、大切な“くるみ割り人形”をネズミの大群に奪われた少女クララ。ネズミを追って色鮮やかな“人形の国”に迷い込んでしまう。そこには、“ふたつ頭の白ネズミの女王”に呪いを掛けられ、眠ったままのお姫様がいた。やがて、邪悪な呪いを解こうとする人形たちとネズミの戦いに巻き込まれていくクララだったが…。"
+                            },
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "H1",
+                                "doc_text": "ハローキティ40周年を記念して贈るミュージカルファンタジー。大切なくるみ割り人形をネズミに奪われた14歳の少女・クララは、ネズミを追って人形の国に迷い込む。そこには、ふたつ頭の白ネズミの女王に呪いをかけられ、眠ったままのお姫様がおり…。"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT0000000WP",
+                                "big_genre_name": "キッズ",
+                                "medium_genre_id": "EXT0000002TT",
+                                "medium_genre_name": "童話／絵本",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": 247,
+                        "discas_item": "DiscasMovie",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [],
+                        "filmarks_id": [
+                            "59214"
+                        ],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS0000N3KJ0",
+                                "person_name": "増田セバスチャン",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS000004GD9",
+                                "person_name": "有村架純",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS000004B73",
+                                "person_name": "松坂桃李",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS00000DCXA",
+                                "person_name": "辻信太郎",
+                                "role_id": "EXT0000001AC",
+                                "role_name": "製作総指揮"
+                            },
+                            {
+                                "person_id": "PPS000000GHJ",
+                                "person_name": "市村正親",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS0000019Z7",
+                                "person_name": "広末涼子",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS0000004VD",
+                                "person_name": "藤井隆",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS0000017JU",
+                                "person_name": "大野拓朗",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS00000E6CR",
+                                "person_name": "安蘭けい",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS00001Y6WH",
+                                "person_name": "吉田鋼太郎",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS000003HBR",
+                                "person_name": "板野友美",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS000002V6V",
+                                "person_name": "由紀さおり",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS00007KT4L",
+                                "person_name": "E・T・A・ホフマン",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            },
+                            {
+                                "person_id": "PPS0000MZE3G",
+                                "person_name": "P.I.チャイコフスキー",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            },
+                            {
+                                "person_id": "PPS0000116CH",
+                                "person_name": "松本淳一",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            },
+                            {
+                                "person_id": "PPS00009J2BV",
+                                "person_name": "増田セバスチャン",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS00009J2BV",
+                                "person_name": "増田セバスチャン",
+                                "role_id": "EXT00001GAW6",
+                                "role_name": "脚色"
+                            },
+                            {
+                                "person_id": "PPS00000DCXA",
+                                "person_name": "辻信太郎",
+                                "role_id": "EXT0000006K9",
+                                "role_name": "原案"
+                            },
+                            {
+                                "person_id": "PPS00000GERX",
+                                "person_name": "きゃりーぱみゅぱみゅ",
+                                "role_id": "EXT0000IA5M3",
+                                "role_name": "テーマ曲"
+                            },
+                            {
+                                "person_id": "PPS0000AC7H5",
+                                "person_name": "三田邦彦",
+                                "role_id": "EXT0000IA84B",
+                                "role_name": "3D監督"
+                            },
+                            {
+                                "person_id": "PPS00001FQYQ",
+                                "person_name": "有村架純",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT0000MZE3D",
+                        "product_id": "PPD0000MZE3D",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "tol",
+                        "service_name": "tol",
+                        "msdb_item": "video",
+                        "item_cd": "1021",
+                        "item_name": "ＤＶＤ",
+                        "product_name": "くるみ割り人形",
+                        "product_kana": "くるみわりにんぎよう",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2015-04-08 16:05:45",
+                        "disp_start_month": "2015-04",
+                        "disp_end_date": "2030-12-28 00:00:00",
+                        "disp_end_month": "2030-12",
+                        "sale_start_date": "2015-06-17",
+                        "sale_start_month": "2015-06",
+                        "sale_end_date": "2030-12-28",
+                        "sale_end_month": "2030-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000MZIQV"
+                        ],
+                        "tieup": "",
+                        "copyright": "(C)1979,2014 SANRIO CO.,LTD.TOKYO,JAPAN",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "2014",
+                        "created_year_to": "",
+                        "created_year_str": "2014",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT00000DFYJ",
+                        "maker_name": "サンリオ",
+                        "maker_name_kana": "さんりお",
+                        "maker_name_abbrev": "サンリオ",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10467438",
+                        "ccc_family_cd": "10467438001",
+                        "ccc_product_id": "204628747",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4901610618035",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "V01526",
+                        "icpn": "",
+                        "media_category_cd": "22",
+                        "media_category_name": "販売DVD",
+                        "media_format_id": "EXT000006GPK",
+                        "media_format_name": "DVD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "012000",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": null,
+                        "subtitle": "日本語",
+                        "sound_spec": "１：ドルビーデジタル／５．１ｃｈサラウンド／日本語",
+                        "region_info": "２",
+                        "disc_info": "２枚組",
+                        "color_spec": "カラー",
+                        "video_info": "１６：９／ＬＢ",
+                        "number_of_volume": "",
+                        "number_of_set": "0",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/10504/4901610618035_1S.jpg",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/10504/4901610618035_1M.jpg",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/10504/4901610618035_1L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00169/4901610618820_B001S.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00169/4901610618820_B002S.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00169/4901610618820_B003S.jpg",
+                                "no": "003"
+                            }
+                        ],
+                        "scene_m": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00169/4901610618820_B001M.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00169/4901610618820_B002M.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00169/4901610618820_B003M.jpg",
+                                "no": "003"
+                            }
+                        ],
+                        "scene_l": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00169/4901610618820_B001L.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00169/4901610618820_B002L.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00169/4901610618820_B003L.jpg",
+                                "no": "003"
+                            }
+                        ],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": 2800,
+                        "price_tax_in": 3024,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "04",
+                                "doc_text": "サンリオがハローキティ40周年を記念して製作したミュージカル・ファンタジー・アニメーション。同社が1979年に手がけた人形アニメ映画「くるみ割り人形」を、監督に“kawaiiカルチャー”の第一人者・増田セバスチャンを迎えて大胆にリ・クリエイト。ヒロインのクララ役を務める有村架純のほか、松坂桃李、市村正親、広末涼子はじめ豪華キャストが声優として参加。ある夜、大切な“くるみ割り人形”をネズミの大群に奪われた少女クララ。ネズミを追って色鮮やかな“人形の国”に迷い込んでしまう。そこには、“ふたつ頭の白ネズミの女王”に呪いを掛けられ、眠ったままのお姫様がいた。やがて、邪悪な呪いを解こうとする人形たちとネズミの戦いに巻き込まれていくクララだったが…。"
+                            },
+                            {
+                                "doc_type_id": "04",
+                                "doc_source_id": "04",
+                                "doc_text": "本編ディスク、特典ディスク"
+                            },
+                            {
+                                "doc_type_id": "06",
+                                "doc_source_id": "04",
+                                "doc_text": "＜音声特典＞<BR><BR>オーディオコメンタリー(増田セバスチャン監督・三田邦彦3D＆CG監督、藤井隆による制作秘話の副音声)<BR><BR>＜映像特典＞<BR><BR>本編ディスク:<BR><BR>予告編、TVスポット映像<BR><BR>特典ディスク:<BR><BR>声の出演・豪華10大スター＆増田セバスチャン監督 インタビュー<BR>イベント映像集:<BR> 東京国際映画祭ワールドプレミア<BR> 高橋大輔・登場!スペシャルイベント<BR> 初日舞台挨拶(祝・4大割りイベント・声のキャストによる鏡割り、くすだま割り 他)"
+                            },
+                            {
+                                "doc_type_id": "10",
+                                "doc_source_id": "03",
+                                "doc_text": "［2］特典ディスク"
+                            },
+                            {
+                                "doc_type_id": "11",
+                                "doc_source_id": "03",
+                                "doc_text": "［1］予告編,TVスポット/オーディオ・コメンタリー(監督:増田セバスチャン×出演:藤井隆×3D＆CG監督:三田邦彦)/［2］豪華10大スター＆増田セバスチャン監督 インタビュー/イベント映像集(くるみが割れる,その時まで!):東京国際映画祭ワールドプレミア＆クロストーク,髙橋大輔・登場!スペシャル・イヴェント,初日舞台挨拶 祝 4大 割り!?"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT0000000WP",
+                                "big_genre_name": "キッズ",
+                                "medium_genre_id": "EXT0000002TT",
+                                "medium_genre_name": "童話／絵本",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [
+                            "349897"
+                        ],
+                        "filmarks_id": [
+                            "59214"
+                        ],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS0000N3KJ0",
+                                "person_name": "増田セバスチャン",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS00007KT4L",
+                                "person_name": "E・T・A・ホフマン",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            },
+                            {
+                                "person_id": "PPS000004GD9",
+                                "person_name": "有村架純",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS0000MZE3G",
+                                "person_name": "P.I.チャイコフスキー",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            },
+                            {
+                                "person_id": "PPS000004B73",
+                                "person_name": "松坂桃李",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS00000DCXA",
+                                "person_name": "辻信太郎",
+                                "role_id": "EXT0000001AC",
+                                "role_name": "製作総指揮"
+                            },
+                            {
+                                "person_id": "PPS000000GHJ",
+                                "person_name": "市村正親",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS0000019Z7",
+                                "person_name": "広末涼子",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS0000004VD",
+                                "person_name": "藤井隆",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS0000017JU",
+                                "person_name": "大野拓朗",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS00000E6CR",
+                                "person_name": "安蘭けい",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS00001Y6WH",
+                                "person_name": "吉田鋼太郎",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS000003HBR",
+                                "person_name": "板野友美",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS000002V6V",
+                                "person_name": "由紀さおり",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS0000116CH",
+                                "person_name": "松本淳一",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT0000MZE3I",
+                        "product_id": "PPD0000MZE3I",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "tol",
+                        "service_name": "tol",
+                        "msdb_item": "video",
+                        "item_cd": "1022",
+                        "item_name": "ブルーレイ",
+                        "product_name": "くるみ割り人形",
+                        "product_kana": "くるみわりにんぎよう",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2015-04-08 14:46:57",
+                        "disp_start_month": "2015-04",
+                        "disp_end_date": "2030-12-28 00:00:00",
+                        "disp_end_month": "2030-12",
+                        "sale_start_date": "2015-06-17",
+                        "sale_start_month": "2015-06",
+                        "sale_end_date": "2030-12-28",
+                        "sale_end_month": "2030-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000MZIQV"
+                        ],
+                        "tieup": "",
+                        "copyright": "(C)1979,2014 SANRIO CO.,LTD.TOKYO,JAPAN",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "2014",
+                        "created_year_to": "",
+                        "created_year_str": "2014",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT00000DFYJ",
+                        "maker_name": "サンリオ",
+                        "maker_name_kana": "さんりお",
+                        "maker_name_abbrev": "サンリオ",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10467438",
+                        "ccc_family_cd": "10467438001",
+                        "ccc_product_id": "204628727",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4901610618776",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "V1556",
+                        "icpn": "",
+                        "media_category_cd": "22",
+                        "media_category_name": "販売DVD",
+                        "media_format_id": "EXT0000001VI",
+                        "media_format_name": "Blu-ray",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "012000",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": null,
+                        "subtitle": "日本語",
+                        "sound_spec": "１：ＤＴＳ－ＨＤ　Ｍａｓｔｅｒ　Ａｕｄｉｏ／５．１ｃｈサラウンド／日本語",
+                        "region_info": "",
+                        "disc_info": "２枚組",
+                        "color_spec": "カラー",
+                        "video_info": "１６：９／ＬＢ",
+                        "number_of_volume": "",
+                        "number_of_set": "0",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/10504/4901610618776_1S.jpg",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/10504/4901610618776_1M.jpg",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/10504/4901610618776_1L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00169/4901610618820_B001S.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00169/4901610618820_B002S.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00169/4901610618820_B003S.jpg",
+                                "no": "003"
+                            }
+                        ],
+                        "scene_m": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00169/4901610618820_B001M.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00169/4901610618820_B002M.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00169/4901610618820_B003M.jpg",
+                                "no": "003"
+                            }
+                        ],
+                        "scene_l": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00169/4901610618820_B001L.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00169/4901610618820_B002L.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00169/4901610618820_B003L.jpg",
+                                "no": "003"
+                            }
+                        ],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": 3800,
+                        "price_tax_in": 4104,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "04",
+                                "doc_text": "サンリオがハローキティ40周年を記念して製作したミュージカル・ファンタジー・アニメーション。同社が1979年に手がけた人形アニメ映画「くるみ割り人形」を、監督に“kawaiiカルチャー”の第一人者・増田セバスチャンを迎えて大胆にリ・クリエイト。ヒロインのクララ役を務める有村架純のほか、松坂桃李、市村正親、広末涼子はじめ豪華キャストが声優として参加。ある夜、大切な“くるみ割り人形”をネズミの大群に奪われた少女クララ。ネズミを追って色鮮やかな“人形の国”に迷い込んでしまう。そこには、“ふたつ頭の白ネズミの女王”に呪いを掛けられ、眠ったままのお姫様がいた。やがて、邪悪な呪いを解こうとする人形たちとネズミの戦いに巻き込まれていくクララだったが…。"
+                            },
+                            {
+                                "doc_type_id": "04",
+                                "doc_source_id": "04",
+                                "doc_text": "本編ディスク (Blu-ray)、特典ディスク (DVD)"
+                            },
+                            {
+                                "doc_type_id": "06",
+                                "doc_source_id": "04",
+                                "doc_text": "＜音声特典＞<BR><BR>オーディオコメンタリー(増田セバスチャン監督・三田邦彦3D＆CG監督、藤井隆による制作秘話の副音声)<BR><BR>＜映像特典＞<BR><BR>本編ディスク:<BR><BR>予告編、TVスポット映像<BR><BR>特典ディスク:<BR><BR>声の出演・豪華10大スター＆増田セバスチャン監督 インタビュー<BR>イベント映像集:<BR> 東京国際映画祭ワールドプレミア<BR> 高橋大輔・登場!スペシャルイベント<BR> 初日舞台挨拶(祝・4大割りイベント・声のキャストによる鏡割り、くすだま割り 他)"
+                            },
+                            {
+                                "doc_type_id": "10",
+                                "doc_source_id": "03",
+                                "doc_text": "［2］特典ディスク(DVD)"
+                            },
+                            {
+                                "doc_type_id": "11",
+                                "doc_source_id": "03",
+                                "doc_text": "［1］予告編,TVスポット/オーディオ・コメンタリー(監督:増田セバスチャン×出演:藤井隆×3D＆CG監督:三田邦彦)/［2］〈DVD〉豪華10大スター＆増田セバスチャン監督 インタビュー/イベント映像集(くるみが割れる,その時まで!):東京国際映画祭ワールドプレミア＆クロストーク,髙橋大輔・登場!スペシャル・イヴェント,初日舞台挨拶 祝 4大 割り!?"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT0000000WP",
+                                "big_genre_name": "キッズ",
+                                "medium_genre_id": "EXT0000002TT",
+                                "medium_genre_name": "童話／絵本",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [
+                            "349897"
+                        ],
+                        "filmarks_id": [
+                            "59214"
+                        ],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS0000N3KJ0",
+                                "person_name": "増田セバスチャン",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS00007KT4L",
+                                "person_name": "E・T・A・ホフマン",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            },
+                            {
+                                "person_id": "PPS000004GD9",
+                                "person_name": "有村架純",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS0000MZE3G",
+                                "person_name": "P.I.チャイコフスキー",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            },
+                            {
+                                "person_id": "PPS000004B73",
+                                "person_name": "松坂桃李",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS00000DCXA",
+                                "person_name": "辻信太郎",
+                                "role_id": "EXT0000001AC",
+                                "role_name": "製作総指揮"
+                            },
+                            {
+                                "person_id": "PPS000000GHJ",
+                                "person_name": "市村正親",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS0000019Z7",
+                                "person_name": "広末涼子",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS0000004VD",
+                                "person_name": "藤井隆",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS0000017JU",
+                                "person_name": "大野拓朗",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS00000E6CR",
+                                "person_name": "安蘭けい",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS00001Y6WH",
+                                "person_name": "吉田鋼太郎",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS000003HBR",
+                                "person_name": "板野友美",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS000002V6V",
+                                "person_name": "由紀さおり",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS0000116CH",
+                                "person_name": "松本淳一",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT0000MZMJI",
+                        "product_id": "PPD0000MZE3D",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "ec",
+                        "service_name": "ec",
+                        "msdb_item": "video",
+                        "item_cd": "1021",
+                        "item_name": "ＤＶＤ",
+                        "product_name": "くるみ割り人形",
+                        "product_kana": "くるみわりにんぎよう",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "1900-01-01 00:00:00",
+                        "disp_start_month": "1900-01",
+                        "disp_end_date": "2099-12-28 23:59:59",
+                        "disp_end_month": "2099-12",
+                        "sale_start_date": "2015-06-17",
+                        "sale_start_month": "2015-06",
+                        "sale_end_date": "2065-06-16",
+                        "sale_end_month": "2065-06",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000MZIQV"
+                        ],
+                        "tieup": "",
+                        "copyright": "(C)1979,2014 SANRIO CO.,LTD.TOKYO,JAPAN",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "2014",
+                        "created_year_to": "",
+                        "created_year_str": "2014",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT00000DFYJ",
+                        "maker_name": "サンリオ",
+                        "maker_name_kana": "さんりお",
+                        "maker_name_abbrev": "サンリオ",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10467438",
+                        "ccc_family_cd": "10467438001",
+                        "ccc_product_id": "204628747",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4901610618035",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "V1526",
+                        "icpn": "",
+                        "media_category_cd": "22",
+                        "media_category_name": "販売DVD",
+                        "media_format_id": "EXT000006GPK",
+                        "media_format_name": "DVD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "012000",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "１：ドルビーデジタル／５．１ｃｈサラウンド／日本語",
+                        "region_info": "２",
+                        "disc_info": "２枚組",
+                        "color_spec": "カラー",
+                        "video_info": "１６：９／ＬＢ",
+                        "number_of_volume": "",
+                        "number_of_set": "0",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/10504/4901610618035_1S.jpg",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/10504/4901610618035_1M.jpg",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/10504/4901610618035_1L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [],
+                        "scene_m": [],
+                        "scene_l": [],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": 2800,
+                        "price_tax_in": 3024,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "04",
+                                "doc_text": "サンリオがハローキティ40周年を記念して製作したミュージカル・ファンタジー・アニメーション。同社が1979年に手がけた人形アニメ映画「くるみ割り人形」を、監督に“kawaiiカルチャー”の第一人者・増田セバスチャンを迎えて大胆にリ・クリエイト。ヒロインのクララ役を務める有村架純のほか、松坂桃李、市村正親、広末涼子はじめ豪華キャストが声優として参加。ある夜、大切な“くるみ割り人形”をネズミの大群に奪われた少女クララ。ネズミを追って色鮮やかな“人形の国”に迷い込んでしまう。そこには、“ふたつ頭の白ネズミの女王”に呪いを掛けられ、眠ったままのお姫様がいた。やがて、邪悪な呪いを解こうとする人形たちとネズミの戦いに巻き込まれていくクララだったが…。"
+                            },
+                            {
+                                "doc_type_id": "04",
+                                "doc_source_id": "04",
+                                "doc_text": "本編ディスク、特典ディスク"
+                            },
+                            {
+                                "doc_type_id": "06",
+                                "doc_source_id": "04",
+                                "doc_text": "＜音声特典＞<BR><BR>オーディオコメンタリー(増田セバスチャン監督・三田邦彦3D＆CG監督、藤井隆による制作秘話の副音声)<BR><BR>＜映像特典＞<BR><BR>本編ディスク:<BR><BR>予告編、TVスポット映像<BR><BR>特典ディスク:<BR><BR>声の出演・豪華10大スター＆増田セバスチャン監督 インタビュー<BR>イベント映像集:<BR> 東京国際映画祭ワールドプレミア<BR> 高橋大輔・登場!スペシャルイベント<BR> 初日舞台挨拶(祝・4大割りイベント・声のキャストによる鏡割り、くすだま割り 他)"
+                            },
+                            {
+                                "doc_type_id": "10",
+                                "doc_source_id": "03",
+                                "doc_text": "［2］特典ディスク"
+                            },
+                            {
+                                "doc_type_id": "11",
+                                "doc_source_id": "03",
+                                "doc_text": "［1］予告編,TVスポット/オーディオ・コメンタリー(監督:増田セバスチャン×出演:藤井隆×3D＆CG監督:三田邦彦)/［2］豪華10大スター＆増田セバスチャン監督 インタビュー/イベント映像集(くるみが割れる,その時まで!):東京国際映画祭ワールドプレミア＆クロストーク,髙橋大輔・登場!スペシャル・イヴェント,初日舞台挨拶 祝 4大 割り!?"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT0000000WP",
+                                "big_genre_name": "キッズ",
+                                "medium_genre_id": "EXT0000002TT",
+                                "medium_genre_name": "童話／絵本",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [],
+                        "filmarks_id": [
+                            "59214"
+                        ],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS0000N3KJ0",
+                                "person_name": "増田セバスチャン",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS00007KT4L",
+                                "person_name": "E・T・A・ホフマン",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            },
+                            {
+                                "person_id": "PPS000004GD9",
+                                "person_name": "有村架純",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS0000MZE3G",
+                                "person_name": "P.I.チャイコフスキー",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            },
+                            {
+                                "person_id": "PPS000004B73",
+                                "person_name": "松坂桃李",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS00000DCXA",
+                                "person_name": "辻信太郎",
+                                "role_id": "EXT0000001AC",
+                                "role_name": "製作総指揮"
+                            },
+                            {
+                                "person_id": "PPS000000GHJ",
+                                "person_name": "市村正親",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS0000019Z7",
+                                "person_name": "広末涼子",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS0000004VD",
+                                "person_name": "藤井隆",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS0000017JU",
+                                "person_name": "大野拓朗",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS00000E6CR",
+                                "person_name": "安蘭けい",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS00001Y6WH",
+                                "person_name": "吉田鋼太郎",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS000003HBR",
+                                "person_name": "板野友美",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS000002V6V",
+                                "person_name": "由紀さおり",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS0000116CH",
+                                "person_name": "松本淳一",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT0000MZMJN",
+                        "product_id": "PPD0000MZE3I",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "ec",
+                        "service_name": "ec",
+                        "msdb_item": "video",
+                        "item_cd": "1022",
+                        "item_name": "ブルーレイ",
+                        "product_name": "くるみ割り人形",
+                        "product_kana": "くるみわりにんぎよう",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "1900-01-01 00:00:00",
+                        "disp_start_month": "1900-01",
+                        "disp_end_date": "2099-12-28 23:59:59",
+                        "disp_end_month": "2099-12",
+                        "sale_start_date": "2015-06-17",
+                        "sale_start_month": "2015-06",
+                        "sale_end_date": "2065-06-16",
+                        "sale_end_month": "2065-06",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000MZIQV"
+                        ],
+                        "tieup": "",
+                        "copyright": "(C)1979,2014 SANRIO CO.,LTD.TOKYO,JAPAN",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "2014",
+                        "created_year_to": "",
+                        "created_year_str": "2014",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT00000DFYJ",
+                        "maker_name": "サンリオ",
+                        "maker_name_kana": "さんりお",
+                        "maker_name_abbrev": "サンリオ",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10467438",
+                        "ccc_family_cd": "10467438001",
+                        "ccc_product_id": "204628727",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4901610618776",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "V1556",
+                        "icpn": "",
+                        "media_category_cd": "22",
+                        "media_category_name": "販売DVD",
+                        "media_format_id": "EXT0000001VI",
+                        "media_format_name": "Blu-ray",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "012000",
+                        "product_spec": "この商品はブルーレイディスクです。※DVDプレイヤーでは再生できません。",
+                        "screen_size": "",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "１：ＤＴＳ－ＨＤ　Ｍａｓｔｅｒ　Ａｕｄｉｏ／５．１ｃｈサラウンド／日本語",
+                        "region_info": "",
+                        "disc_info": "２枚組",
+                        "color_spec": "カラー",
+                        "video_info": "１６：９／ＬＢ",
+                        "number_of_volume": "",
+                        "number_of_set": "0",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/10504/4901610618776_1S.jpg",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/10504/4901610618776_1M.jpg",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/10504/4901610618776_1L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [],
+                        "scene_m": [],
+                        "scene_l": [],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": 3800,
+                        "price_tax_in": 4104,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "04",
+                                "doc_text": "サンリオがハローキティ40周年を記念して製作したミュージカル・ファンタジー・アニメーション。同社が1979年に手がけた人形アニメ映画「くるみ割り人形」を、監督に“kawaiiカルチャー”の第一人者・増田セバスチャンを迎えて大胆にリ・クリエイト。ヒロインのクララ役を務める有村架純のほか、松坂桃李、市村正親、広末涼子はじめ豪華キャストが声優として参加。ある夜、大切な“くるみ割り人形”をネズミの大群に奪われた少女クララ。ネズミを追って色鮮やかな“人形の国”に迷い込んでしまう。そこには、“ふたつ頭の白ネズミの女王”に呪いを掛けられ、眠ったままのお姫様がいた。やがて、邪悪な呪いを解こうとする人形たちとネズミの戦いに巻き込まれていくクララだったが…。"
+                            },
+                            {
+                                "doc_type_id": "04",
+                                "doc_source_id": "04",
+                                "doc_text": "本編ディスク (Blu-ray)、特典ディスク (DVD)"
+                            },
+                            {
+                                "doc_type_id": "06",
+                                "doc_source_id": "04",
+                                "doc_text": "＜音声特典＞<BR><BR>オーディオコメンタリー(増田セバスチャン監督・三田邦彦3D＆CG監督、藤井隆による制作秘話の副音声)<BR><BR>＜映像特典＞<BR><BR>本編ディスク:<BR><BR>予告編、TVスポット映像<BR><BR>特典ディスク:<BR><BR>声の出演・豪華10大スター＆増田セバスチャン監督 インタビュー<BR>イベント映像集:<BR> 東京国際映画祭ワールドプレミア<BR> 高橋大輔・登場!スペシャルイベント<BR> 初日舞台挨拶(祝・4大割りイベント・声のキャストによる鏡割り、くすだま割り 他)"
+                            },
+                            {
+                                "doc_type_id": "10",
+                                "doc_source_id": "03",
+                                "doc_text": "［2］特典ディスク(DVD)"
+                            },
+                            {
+                                "doc_type_id": "11",
+                                "doc_source_id": "03",
+                                "doc_text": "［1］予告編,TVスポット/オーディオ・コメンタリー(監督:増田セバスチャン×出演:藤井隆×3D＆CG監督:三田邦彦)/［2］〈DVD〉豪華10大スター＆増田セバスチャン監督 インタビュー/イベント映像集(くるみが割れる,その時まで!):東京国際映画祭ワールドプレミア＆クロストーク,髙橋大輔・登場!スペシャル・イヴェント,初日舞台挨拶 祝 4大 割り!?"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT0000000WP",
+                                "big_genre_name": "キッズ",
+                                "medium_genre_id": "EXT0000002TT",
+                                "medium_genre_name": "童話／絵本",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [],
+                        "filmarks_id": [
+                            "59214"
+                        ],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS0000N3KJ0",
+                                "person_name": "増田セバスチャン",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS00007KT4L",
+                                "person_name": "E・T・A・ホフマン",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            },
+                            {
+                                "person_id": "PPS000004GD9",
+                                "person_name": "有村架純",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS0000MZE3G",
+                                "person_name": "P.I.チャイコフスキー",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            },
+                            {
+                                "person_id": "PPS000004B73",
+                                "person_name": "松坂桃李",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS00000DCXA",
+                                "person_name": "辻信太郎",
+                                "role_id": "EXT0000001AC",
+                                "role_name": "製作総指揮"
+                            },
+                            {
+                                "person_id": "PPS000000GHJ",
+                                "person_name": "市村正親",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS0000019Z7",
+                                "person_name": "広末涼子",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS0000004VD",
+                                "person_name": "藤井隆",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS0000017JU",
+                                "person_name": "大野拓朗",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS00000E6CR",
+                                "person_name": "安蘭けい",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS00001Y6WH",
+                                "person_name": "吉田鋼太郎",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS000003HBR",
+                                "person_name": "板野友美",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS000002V6V",
+                                "person_name": "由紀さおり",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS0000116CH",
+                                "person_name": "松本淳一",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT0000N1U9Y",
+                        "product_id": "PPD0000N1U9Y",
+                        "product_type_id": 2,
+                        "product_type_name": "レンタル",
+                        "service_id": "tol",
+                        "service_name": "tol",
+                        "msdb_item": "video",
+                        "item_cd": "0121",
+                        "item_name": "ＤＶＤ－ＰＰＴ",
+                        "product_name": "くるみ割り人形",
+                        "product_kana": "くるみわりにんぎよう",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2015-04-20 14:24:39",
+                        "disp_start_month": "2015-04",
+                        "disp_end_date": "2030-12-28 00:00:00",
+                        "disp_end_month": "2030-12",
+                        "sale_start_date": "2015-06-17",
+                        "sale_start_month": "2015-06",
+                        "sale_end_date": "2030-12-28",
+                        "sale_end_month": "2030-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000MZIQV"
+                        ],
+                        "tieup": "",
+                        "copyright": "(C)2006 Sakura Production USA Hannnari Geisha Modern LLC All Rghts Reserved.",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "2014",
+                        "created_year_to": "",
+                        "created_year_str": "2014",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT00000DFYJ",
+                        "maker_name": "サンリオ",
+                        "maker_name_kana": "さんりお",
+                        "maker_name_abbrev": "サンリオ",
+                        "label_name": "",
+                        "sell_rental_flag": 2,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10467438",
+                        "ccc_family_cd": "10467438001",
+                        "ccc_product_id": "204644792",
+                        "rental_product_cd": "162995476",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4901610618721",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "VRP1526",
+                        "icpn": "",
+                        "media_category_cd": "12",
+                        "media_category_name": "レンタルDVD",
+                        "media_format_id": "EXT000006GPK",
+                        "media_format_name": "DVD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "012000",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "",
+                        "video_info": "",
+                        "number_of_volume": "",
+                        "number_of_set": "0",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/10465/4901610618721_1S.jpg",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/10465/4901610618721_1M.jpg",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/10465/4901610618721_1L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00169/4901610618820_B001S.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00169/4901610618820_B002S.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00169/4901610618820_B003S.jpg",
+                                "no": "003"
+                            }
+                        ],
+                        "scene_m": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00169/4901610618820_B001M.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00169/4901610618820_B002M.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00169/4901610618820_B003M.jpg",
+                                "no": "003"
+                            }
+                        ],
+                        "scene_l": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00169/4901610618820_B001L.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00169/4901610618820_B002L.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00169/4901610618820_B003L.jpg",
+                                "no": "003"
+                            }
+                        ],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": null,
+                        "price_tax_in": null,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "04",
+                                "doc_text": "サンリオがハローキティ40周年を記念して製作したミュージカル・ファンタジー・アニメーション。同社が1979年に手がけた人形アニメ映画「くるみ割り人形」を、監督に“kawaiiカルチャー”の第一人者・増田セバスチャンを迎えて大胆にリ・クリエイト。ヒロインのクララ役を務める有村架純のほか、松坂桃李、市村正親、広末涼子はじめ豪華キャストが声優として参加。ある夜、大切な“くるみ割り人形”をネズミの大群に奪われた少女クララ。ネズミを追って色鮮やかな“人形の国”に迷い込んでしまう。そこには、“ふたつ頭の白ネズミの女王”に呪いを掛けられ、眠ったままのお姫様がいた。やがて、邪悪な呪いを解こうとする人形たちとネズミの戦いに巻き込まれていくクララだったが…。"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT0000000WP",
+                                "big_genre_name": "キッズ",
+                                "medium_genre_id": "EXT0000002TT",
+                                "medium_genre_name": "童話／絵本",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [],
+                        "filmarks_id": [
+                            "59214"
+                        ],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS0000N3KJ0",
+                                "person_name": "増田セバスチャン",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS000004GD9",
+                                "person_name": "有村架純",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS000004B73",
+                                "person_name": "松坂桃李",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS00000DCXA",
+                                "person_name": "辻信太郎",
+                                "role_id": "EXT0000001AC",
+                                "role_name": "製作総指揮"
+                            },
+                            {
+                                "person_id": "PPS000000GHJ",
+                                "person_name": "市村正親",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS0000019Z7",
+                                "person_name": "広末涼子",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS0000004VD",
+                                "person_name": "藤井隆",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS0000017JU",
+                                "person_name": "大野拓朗",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS00000E6CR",
+                                "person_name": "安蘭けい",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS00001Y6WH",
+                                "person_name": "吉田鋼太郎",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS000003HBR",
+                                "person_name": "板野友美",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS000002V6V",
+                                "person_name": "由紀さおり",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS00007KT4L",
+                                "person_name": "E・T・A・ホフマン",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            },
+                            {
+                                "person_id": "PPS0000MZE3G",
+                                "person_name": "P.I.チャイコフスキー",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            },
+                            {
+                                "person_id": "PPS0000116CH",
+                                "person_name": "松本淳一",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT0000MZE3L",
+                        "product_id": "PPD0000MZE3L",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "tol",
+                        "service_name": "tol",
+                        "msdb_item": "video",
+                        "item_cd": "1022",
+                        "item_name": "ブルーレイ",
+                        "product_name": "くるみ割り人形 豪華版",
+                        "product_kana": "くるみわりにんぎようごうかばん*BOX*",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2015-04-08 14:45:29",
+                        "disp_start_month": "2015-04",
+                        "disp_end_date": "2030-12-28 00:00:00",
+                        "disp_end_month": "2030-12",
+                        "sale_start_date": "2015-06-17",
+                        "sale_start_month": "2015-06",
+                        "sale_end_date": "2030-12-28",
+                        "sale_end_month": "2030-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000MZIQV"
+                        ],
+                        "tieup": "",
+                        "copyright": "(C)1979,2014 SANRIO CO.,LTD.TOKYO,JAPAN",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "2014",
+                        "created_year_to": "",
+                        "created_year_str": "2014",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT00000DFYJ",
+                        "maker_name": "サンリオ",
+                        "maker_name_kana": "さんりお",
+                        "maker_name_abbrev": "サンリオ",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10467438",
+                        "ccc_family_cd": "10467438001",
+                        "ccc_product_id": "204628725",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4901610618820",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "V1557",
+                        "icpn": "",
+                        "media_category_cd": "22",
+                        "media_category_name": "販売DVD",
+                        "media_format_id": "EXT0000001VI",
+                        "media_format_name": "Blu-ray",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "012000",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": null,
+                        "subtitle": "日本語",
+                        "sound_spec": "１：ＤＴＳ－ＨＤ　Ｍａｓｔｅｒ　Ａｕｄｉｏ／５．１ｃｈサラウンド／日本語",
+                        "region_info": "",
+                        "disc_info": "３枚組",
+                        "color_spec": "カラー",
+                        "video_info": "１６：９／ＬＢ",
+                        "number_of_volume": "",
+                        "number_of_set": "2",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 1,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/10504/4901610618820_1S.jpg",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/10504/4901610618820_1M.jpg",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/10504/4901610618820_1L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00169/4901610618820_B001S.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00169/4901610618820_B002S.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00169/4901610618820_B003S.jpg",
+                                "no": "003"
+                            }
+                        ],
+                        "scene_m": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00169/4901610618820_B001M.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00169/4901610618820_B002M.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00169/4901610618820_B003M.jpg",
+                                "no": "003"
+                            }
+                        ],
+                        "scene_l": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00169/4901610618820_B001L.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00169/4901610618820_B002L.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00169/4901610618820_B003L.jpg",
+                                "no": "003"
+                            }
+                        ],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": 5800,
+                        "price_tax_in": 6264,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "04",
+                                "doc_text": "サンリオがハローキティ40周年を記念して製作したミュージカル・ファンタジー・アニメーション。同社が1979年に手がけた人形アニメ映画「くるみ割り人形」を、監督に“kawaiiカルチャー”の第一人者・増田セバスチャンを迎えて大胆にリ・クリエイト。ヒロインのクララ役を務める有村架純のほか、松坂桃李、市村正親、広末涼子はじめ豪華キャストが声優として参加。ある夜、大切な“くるみ割り人形”をネズミの大群に奪われた少女クララ。ネズミを追って色鮮やかな“人形の国”に迷い込んでしまう。そこには、“ふたつ頭の白ネズミの女王”に呪いを掛けられ、眠ったままのお姫様がいた。やがて、邪悪な呪いを解こうとする人形たちとネズミの戦いに巻き込まれていくクララだったが…。"
+                            },
+                            {
+                                "doc_type_id": "04",
+                                "doc_source_id": "03",
+                                "doc_text": "【Disc-1】<BR>くるみ割り人形<BR><BR>【Disc-2】<BR>くるみ割り人形"
+                            },
+                            {
+                                "doc_type_id": "04",
+                                "doc_source_id": "04",
+                                "doc_text": "「くるみ割り人形」 3D版(Blu-ray)、「くるみ割り人形」 2D版(Blu-ray)、特典ディスク (DVD)"
+                            },
+                            {
+                                "doc_type_id": "06",
+                                "doc_source_id": "04",
+                                "doc_text": "＜音声特典(2D版)＞<BR><BR>オーディオコメンタリー(増田セバスチャン監督・三田邦彦3D＆CG監督、藤井隆による制作秘話の副音声)<BR><BR>＜映像特典＞<BR><BR>本編ディスク(2D版):<BR><BR>予告編、TVスポット映像<BR><BR>特典ディスク:<BR><BR>声の出演・豪華10大スター＆増田セバスチャン監督 インタビュー<BR>イベント映像集:<BR> 東京国際映画祭ワールドプレミア<BR> 高橋大輔・登場!スペシャルイベント<BR> 初日舞台挨拶(祝・4大割りイベント・声のキャストによる鏡割り、くすだま割り 他)"
+                            },
+                            {
+                                "doc_type_id": "10",
+                                "doc_source_id": "03",
+                                "doc_text": "特製【極彩色】アウタースリーブ/［3］特典ディスク(DVD)"
+                            },
+                            {
+                                "doc_type_id": "11",
+                                "doc_source_id": "03",
+                                "doc_text": "［1］3D版予告編/3D化パイロット版(フィルム修復,極彩色化,3D化への各メイキング工程)/［2］予告編,TVスポット/オーディオ・コメンタリー(監督:増田セバスチャン×出演:藤井隆×3D＆CG監督:三田邦彦)/［3］〈DVD〉豪華10大スター＆増田セバスチャン監督 インタビュー/イベント映像集(くるみが割れる,その時まで!):東京国際映画祭ワールドプレミア＆クロストーク,髙橋大輔・登場!スペシャル・イヴェント,初日舞台挨拶 祝 4大 割り!?"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT0000000WP",
+                                "big_genre_name": "キッズ",
+                                "medium_genre_id": "EXT0000002TT",
+                                "medium_genre_name": "童話／絵本",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [
+                            "349897"
+                        ],
+                        "filmarks_id": [
+                            "59214"
+                        ],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS0000N3KJ0",
+                                "person_name": "増田セバスチャン",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS00007KT4L",
+                                "person_name": "E・T・A・ホフマン",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            },
+                            {
+                                "person_id": "PPS000004GD9",
+                                "person_name": "有村架純",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS0000MZE3G",
+                                "person_name": "P.I.チャイコフスキー",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            },
+                            {
+                                "person_id": "PPS000004B73",
+                                "person_name": "松坂桃李",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS00000DCXA",
+                                "person_name": "辻信太郎",
+                                "role_id": "EXT0000001AC",
+                                "role_name": "製作総指揮"
+                            },
+                            {
+                                "person_id": "PPS000000GHJ",
+                                "person_name": "市村正親",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS0000019Z7",
+                                "person_name": "広末涼子",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS0000004VD",
+                                "person_name": "藤井隆",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS0000017JU",
+                                "person_name": "大野拓朗",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS00000E6CR",
+                                "person_name": "安蘭けい",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS00001Y6WH",
+                                "person_name": "吉田鋼太郎",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS000003HBR",
+                                "person_name": "板野友美",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS000002V6V",
+                                "person_name": "由紀さおり",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS0000116CH",
+                                "person_name": "松本淳一",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT0000MZMJT",
+                        "product_id": "PPD0000MZE3L",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "ec",
+                        "service_name": "ec",
+                        "msdb_item": "video",
+                        "item_cd": "1022",
+                        "item_name": "ブルーレイ",
+                        "product_name": "くるみ割り人形 豪華版",
+                        "product_kana": "くるみわりにんぎようごうかばん*BOX*",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "1900-01-01 00:00:00",
+                        "disp_start_month": "1900-01",
+                        "disp_end_date": "2099-12-28 23:59:59",
+                        "disp_end_month": "2099-12",
+                        "sale_start_date": "2015-06-17",
+                        "sale_start_month": "2015-06",
+                        "sale_end_date": "2065-06-16",
+                        "sale_end_month": "2065-06",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000MZIQV"
+                        ],
+                        "tieup": "",
+                        "copyright": "(C)1979,2014 SANRIO CO.,LTD.TOKYO,JAPAN",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "2014",
+                        "created_year_to": "",
+                        "created_year_str": "2014",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT00000DFYJ",
+                        "maker_name": "サンリオ",
+                        "maker_name_kana": "さんりお",
+                        "maker_name_abbrev": "サンリオ",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10467438",
+                        "ccc_family_cd": "10467438001",
+                        "ccc_product_id": "204628725",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4901610618820",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "V1557",
+                        "icpn": "",
+                        "media_category_cd": "22",
+                        "media_category_name": "販売DVD",
+                        "media_format_id": "EXT0000001VI",
+                        "media_format_name": "Blu-ray",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "012000",
+                        "product_spec": "この商品はブルーレイディスクです。※DVDプレイヤーでは再生できません。(002枚組)",
+                        "screen_size": "",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "１：ＤＴＳ－ＨＤ　Ｍａｓｔｅｒ　Ａｕｄｉｏ／５．１ｃｈサラウンド／日本語",
+                        "region_info": "",
+                        "disc_info": "３枚組",
+                        "color_spec": "カラー",
+                        "video_info": "１６：９／ＬＢ",
+                        "number_of_volume": "",
+                        "number_of_set": "2",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 1,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/10504/4901610618820_1S.jpg",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/10504/4901610618820_1M.jpg",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/10504/4901610618820_1L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [],
+                        "scene_m": [],
+                        "scene_l": [],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": 5800,
+                        "price_tax_in": 6264,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "04",
+                                "doc_text": "サンリオがハローキティ40周年を記念して製作したミュージカル・ファンタジー・アニメーション。同社が1979年に手がけた人形アニメ映画「くるみ割り人形」を、監督に“kawaiiカルチャー”の第一人者・増田セバスチャンを迎えて大胆にリ・クリエイト。ヒロインのクララ役を務める有村架純のほか、松坂桃李、市村正親、広末涼子はじめ豪華キャストが声優として参加。ある夜、大切な“くるみ割り人形”をネズミの大群に奪われた少女クララ。ネズミを追って色鮮やかな“人形の国”に迷い込んでしまう。そこには、“ふたつ頭の白ネズミの女王”に呪いを掛けられ、眠ったままのお姫様がいた。やがて、邪悪な呪いを解こうとする人形たちとネズミの戦いに巻き込まれていくクララだったが…。"
+                            },
+                            {
+                                "doc_type_id": "04",
+                                "doc_source_id": "03",
+                                "doc_text": "【Disc-1】<BR>くるみ割り人形<BR><BR>【Disc-2】<BR>くるみ割り人形"
+                            },
+                            {
+                                "doc_type_id": "04",
+                                "doc_source_id": "04",
+                                "doc_text": "「くるみ割り人形」 3D版(Blu-ray)、「くるみ割り人形」 2D版(Blu-ray)、特典ディスク (DVD)"
+                            },
+                            {
+                                "doc_type_id": "06",
+                                "doc_source_id": "04",
+                                "doc_text": "＜音声特典(2D版)＞<BR><BR>オーディオコメンタリー(増田セバスチャン監督・三田邦彦3D＆CG監督、藤井隆による制作秘話の副音声)<BR><BR>＜映像特典＞<BR><BR>本編ディスク(2D版):<BR><BR>予告編、TVスポット映像<BR><BR>特典ディスク:<BR><BR>声の出演・豪華10大スター＆増田セバスチャン監督 インタビュー<BR>イベント映像集:<BR> 東京国際映画祭ワールドプレミア<BR> 高橋大輔・登場!スペシャルイベント<BR> 初日舞台挨拶(祝・4大割りイベント・声のキャストによる鏡割り、くすだま割り 他)"
+                            },
+                            {
+                                "doc_type_id": "10",
+                                "doc_source_id": "03",
+                                "doc_text": "特製【極彩色】アウタースリーブ/［3］特典ディスク(DVD)"
+                            },
+                            {
+                                "doc_type_id": "11",
+                                "doc_source_id": "03",
+                                "doc_text": "［1］3D版予告編/3D化パイロット版(フィルム修復,極彩色化,3D化への各メイキング工程)/［2］予告編,TVスポット/オーディオ・コメンタリー(監督:増田セバスチャン×出演:藤井隆×3D＆CG監督:三田邦彦)/［3］〈DVD〉豪華10大スター＆増田セバスチャン監督 インタビュー/イベント映像集(くるみが割れる,その時まで!):東京国際映画祭ワールドプレミア＆クロストーク,髙橋大輔・登場!スペシャル・イヴェント,初日舞台挨拶 祝 4大 割り!?"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT0000000WP",
+                                "big_genre_name": "キッズ",
+                                "medium_genre_id": "EXT0000002TT",
+                                "medium_genre_name": "童話／絵本",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [],
+                        "filmarks_id": [
+                            "59214"
+                        ],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS0000N3KJ0",
+                                "person_name": "増田セバスチャン",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS00007KT4L",
+                                "person_name": "E・T・A・ホフマン",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            },
+                            {
+                                "person_id": "PPS000004GD9",
+                                "person_name": "有村架純",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS0000MZE3G",
+                                "person_name": "P.I.チャイコフスキー",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            },
+                            {
+                                "person_id": "PPS000004B73",
+                                "person_name": "松坂桃李",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS00000DCXA",
+                                "person_name": "辻信太郎",
+                                "role_id": "EXT0000001AC",
+                                "role_name": "製作総指揮"
+                            },
+                            {
+                                "person_id": "PPS000000GHJ",
+                                "person_name": "市村正親",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS0000019Z7",
+                                "person_name": "広末涼子",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS0000004VD",
+                                "person_name": "藤井隆",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS0000017JU",
+                                "person_name": "大野拓朗",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS00000E6CR",
+                                "person_name": "安蘭けい",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS00001Y6WH",
+                                "person_name": "吉田鋼太郎",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS000003HBR",
+                                "person_name": "板野友美",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS000002V6V",
+                                "person_name": "由紀さおり",
+                                "role_id": "EXT000000209",
+                                "role_name": "声の出演"
+                            },
+                            {
+                                "person_id": "PPS0000116CH",
+                                "person_name": "松本淳一",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    }
+                ],
+                "video_relations": [],
+                "discas_grade_point": 247,
+                "discas_item": [
+                    "DiscasMovie"
+                ],
+                "ttv_trailer_flg": 0,
+                "ttv_free_movie_flg": 0,
+                "ttv_sell_rental_flg": [],
+                "ttv_low_price": null,
+                "cinema_id": [
+                    "349897"
+                ],
+                "filmarks_id": [
+                    "59214"
+                ],
+                "dramarks_id": [],
+                "catch_copy": "",
+                "sale_start_date_sell": "2015-06-17",
+                "sale_start_date_rental": "2015-06-17",
+                "trailer_urls": [],
+                "scenes": [
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "349897_01_01",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/34/98/01/349897_01_01.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "349897_01_02",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/34/98/02/349897_01_02.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "349897_01_03",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/34/98/03/349897_01_03.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "349897_01_04",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/34/98/04/349897_01_04.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "349897_01_05",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/34/98/05/349897_01_05.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "349897_01_06",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/34/98/06/349897_01_06.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "349897_02_01",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/34/98/01/349897_02_01.jpg",
+                        "disable_flg": 0
+                    }
+                ],
+                "filmarks_mark": 177,
+                "filmarks_clip": 316,
+                "filmarks_average": 2.55,
+                "people": [
+                    {
+                        "person_id": "PPS0000N3KJ0",
+                        "person_name": "増田セバスチャン",
+                        "role_id": "EXT0000000UH",
+                        "role_name": "監督"
+                    },
+                    {
+                        "person_id": "PPS00007KT4L",
+                        "person_name": "E・T・A・ホフマン",
+                        "role_id": "EXT0000000UQ",
+                        "role_name": "原作者"
+                    },
+                    {
+                        "person_id": "PPS000004GD9",
+                        "person_name": "有村架純",
+                        "role_id": "EXT000000209",
+                        "role_name": "声の出演"
+                    },
+                    {
+                        "person_id": "PPS0000MZE3G",
+                        "person_name": "P.I.チャイコフスキー",
+                        "role_id": "EXT0000000UQ",
+                        "role_name": "原作者"
+                    },
+                    {
+                        "person_id": "PPS000004B73",
+                        "person_name": "松坂桃李",
+                        "role_id": "EXT000000209",
+                        "role_name": "声の出演"
+                    },
+                    {
+                        "person_id": "PPS00000DCXA",
+                        "person_name": "辻信太郎",
+                        "role_id": "EXT0000001AC",
+                        "role_name": "製作総指揮"
+                    },
+                    {
+                        "person_id": "PPS000000GHJ",
+                        "person_name": "市村正親",
+                        "role_id": "EXT000000209",
+                        "role_name": "声の出演"
+                    },
+                    {
+                        "person_id": "PPS0000019Z7",
+                        "person_name": "広末涼子",
+                        "role_id": "EXT000000209",
+                        "role_name": "声の出演"
+                    },
+                    {
+                        "person_id": "PPS0000004VD",
+                        "person_name": "藤井隆",
+                        "role_id": "EXT000000209",
+                        "role_name": "声の出演"
+                    },
+                    {
+                        "person_id": "PPS0000017JU",
+                        "person_name": "大野拓朗",
+                        "role_id": "EXT000000209",
+                        "role_name": "声の出演"
+                    },
+                    {
+                        "person_id": "PPS00000E6CR",
+                        "person_name": "安蘭けい",
+                        "role_id": "EXT000000209",
+                        "role_name": "声の出演"
+                    },
+                    {
+                        "person_id": "PPS00001Y6WH",
+                        "person_name": "吉田鋼太郎",
+                        "role_id": "EXT000000209",
+                        "role_name": "声の出演"
+                    },
+                    {
+                        "person_id": "PPS000003HBR",
+                        "person_name": "板野友美",
+                        "role_id": "EXT000000209",
+                        "role_name": "声の出演"
+                    },
+                    {
+                        "person_id": "PPS000002V6V",
+                        "person_name": "由紀さおり",
+                        "role_id": "EXT000000209",
+                        "role_name": "声の出演"
+                    },
+                    {
+                        "person_id": "PPS0000116CH",
+                        "person_name": "松本淳一",
+                        "role_id": "EXT000000197",
+                        "role_name": "音楽"
+                    }
+                ],
+                "tracks": [],
+                "merged_from": [],
+                "need_age_auth_flg": 0
+            }
+        ]
+    }
+}

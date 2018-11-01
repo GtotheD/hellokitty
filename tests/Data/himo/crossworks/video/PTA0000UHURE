@@ -1,0 +1,3539 @@
+{
+    "status": 200,
+    "message": null,
+    "results": {
+        "total": 1,
+        "rows": [
+            {
+                "work_id": "PTA0000UHURE",
+                "work_type_id": "2",
+                "msdb_item": "video",
+                "work_format_id": null,
+                "work_format_name": "",
+                "work_title": "パシフィック・リム:アップライジング",
+                "work_title_kana": "ぱしふいつくりむあつぷらいじんぐ",
+                "work_title_en": "",
+                "work_title_orig": "PACIFIC RIM UPRISING",
+                "work_title_sub": "",
+                "work_comment": "",
+                "work_outline": "",
+                "work_copyright": "(C) 2018 LEGENDARY AND UNIVERSAL STUDIOS． ALL RIGHTS RESERVED．",
+                "rating_id": "EXT000000008",
+                "rating_name": "",
+                "adult_flg": 0,
+                "primary_product_source_id": "PDT0000WLIWC",
+                "primary_product_service_id": "ec",
+                "primary_product_type_id": 1,
+                "disp_start_date": "2018-07-20 00:00:00",
+                "disp_start_month": "2018-07",
+                "sale_start_date": "2018-09-27",
+                "sale_start_month": "2018-09",
+                "created_year_from": "",
+                "created_year_to": "",
+                "created_year": "2018",
+                "created_countries": "アメリカ",
+                "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/13235/4988102692568_1S.jpg",
+                "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/13235/4988102692568_1M.jpg",
+                "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/13235/4988102692568_1L.jpg",
+                "jacket_l4": "",
+                "scene_s": [
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B001S.jpg",
+                        "no": "001"
+                    },
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B002S.jpg",
+                        "no": "002"
+                    },
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B003S.jpg",
+                        "no": "003"
+                    }
+                ],
+                "scene_m": [
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B001M.jpg",
+                        "no": "001"
+                    },
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B002M.jpg",
+                        "no": "002"
+                    },
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B003M.jpg",
+                        "no": "003"
+                    }
+                ],
+                "scene_l": [
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B001L.jpg",
+                        "no": "001"
+                    },
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B002L.jpg",
+                        "no": "002"
+                    },
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B003L.jpg",
+                        "no": "003"
+                    }
+                ],
+                "trailor_pc": [],
+                "season_name": "",
+                "season_number": null,
+                "book_series_name": "",
+                "book_series_name_kana": "",
+                "feature_keywords": [
+                    "３Ｄ"
+                ],
+                "priv_keywords": [],
+                "work_tags": [
+                    "riricaleinfo",
+                    "riricaleinfo201810s",
+                    "riricaleinfo201810r"
+                ],
+                "wakati_words": [],
+                "is_compilation": 0,
+                "series_completed": 0,
+                "disable_flg": 0,
+                "delete_flg": 0,
+                "ids": [
+                    {
+                        "id_type": "0107",
+                        "id_value": "362179"
+                    },
+                    {
+                        "id_type": "0108",
+                        "id_value": "58834"
+                    },
+                    {
+                        "id_type": "0103",
+                        "id_value": "10616215"
+                    },
+                    {
+                        "id_type": "0105",
+                        "id_value": "10609255"
+                    },
+                    {
+                        "id_type": "0106",
+                        "id_value": "101022439"
+                    }
+                ],
+                "docs": [
+                    {
+                        "doc_type_id": "01",
+                        "doc_source_id": "03",
+                        "doc_text": "2013年公開の映画『パシフィック・リム』の続編にして、人類が乗り込む兵器“イェーガー”と巨大生命体“KAIJU”の壮絶なバトルを描くSFアクション。監督はスティーヴン・S．デナイト。出演はジョン・ボイエガ、新田真剣佑、菊地凛子ほか。"
+                    },
+                    {
+                        "doc_type_id": "04",
+                        "doc_source_id": "03",
+                        "doc_text": "【Disc-1】<BR>パシフィック・リム:アップライジング(原題:PACIFIC RIM:UPRISING)<BR><BR>【Disc-2】<BR>パシフィック・リム:アップライジング(原題:PACIFIC RIM:UPRISING)"
+                    },
+                    {
+                        "doc_type_id": "11",
+                        "doc_source_id": "03",
+                        "doc_text": "［2］未公開シーン/ヒーローたち/前作からの架け橋/荒廃した世界から生まれた英雄たち/訓練生/意外な悪役/新世代イェーガー/スクラッパー/メガ怪獣/シャオの秘密/帰ってきたマコ/監督スティーヴン・S・デナイトによる本編音声解説"
+                    }
+                ],
+                "awards": [],
+                "screens": [],
+                "onairs": [],
+                "magazines": [],
+                "genres": [
+                    {
+                        "big_genre_id": "EXT0000002GF",
+                        "big_genre_name": "洋画ＳＦ",
+                        "medium_genre_id": "EXT000000AW4",
+                        "medium_genre_name": "アドベンチャー",
+                        "small_genre_id": "",
+                        "small_genre_name": "",
+                        "shikiriban_id": "",
+                        "shikiriban_name": ""
+                    }
+                ],
+                "products": [
+                    {
+                        "id": "PDT0000WNORY",
+                        "product_id": "PPD0000WNORY",
+                        "product_type_id": 2,
+                        "product_type_name": "レンタル",
+                        "service_id": "tol",
+                        "service_name": "tol",
+                        "msdb_item": "video",
+                        "item_cd": "0022",
+                        "item_name": "ブルーレイ",
+                        "product_name": "パシフィック・リム:アップライジング",
+                        "product_kana": "ぱしふいつくりむあつぷらいじんぐ",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "PACIFIC RIM UPRISING",
+                        "track_testimonials": "",
+                        "disp_start_date": "2018-07-20 00:00:00",
+                        "disp_start_month": "2018-07",
+                        "disp_end_date": "2030-12-28 00:00:00",
+                        "disp_end_month": "2030-12",
+                        "sale_start_date": "2018-10-11",
+                        "sale_start_month": "2018-10",
+                        "sale_end_date": "2030-12-28",
+                        "sale_end_month": "2030-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000UHURE"
+                        ],
+                        "tieup": "",
+                        "copyright": "(C) 2018 LEGENDARY AND UNIVERSAL STUDIOS. ALL RIGHTS RESERVED.",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "2018",
+                        "created_year_to": "",
+                        "created_year_str": "2018",
+                        "created_countries": "アメリカ",
+                        "maker_cd": "EXT0000000SX",
+                        "maker_name": "NBCユニバーサル・エンターテイメントジャパン",
+                        "maker_name_kana": "えぬびーしーゆにばーさるえんたーていめんとじやぱん",
+                        "maker_name_abbrev": "NBCユニバーサル・エンターテイメント",
+                        "label_name": "",
+                        "sell_rental_flag": 2,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10616215",
+                        "ccc_family_cd": "10616215001",
+                        "ccc_product_id": "206052799",
+                        "rental_product_cd": "060337014",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4988102705008",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "GNXR1315",
+                        "icpn": "",
+                        "media_category_cd": "12",
+                        "media_category_name": "レンタルDVD",
+                        "media_format_id": "EXT0000001VI",
+                        "media_format_name": "Blu-ray",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "015100",
+                        "product_spec": "",
+                        "screen_size": "シネスコ",
+                        "subtitle_flg": null,
+                        "subtitle": "日本語・英語",
+                        "sound_spec": "",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "カラー",
+                        "video_info": "１６：９／ＬＢ",
+                        "number_of_volume": "001",
+                        "number_of_set": "1",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/13235/4988102705008_1S.jpg",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/13235/4988102705008_1M.jpg",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/13235/4988102705008_1L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B001S.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B002S.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B003S.jpg",
+                                "no": "003"
+                            }
+                        ],
+                        "scene_m": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B001M.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B002M.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B003M.jpg",
+                                "no": "003"
+                            }
+                        ],
+                        "scene_l": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B001L.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B002L.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B003L.jpg",
+                                "no": "003"
+                            }
+                        ],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": null,
+                        "price_tax_in": null,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "04",
+                                "doc_text": "ギレルモ・デル・トロ監督による大ヒットSFアクションの続編。前作から10年後を舞台に、再び出現した“KAIJU”に立ち向かうべく新世代の巨大ロボット“イェーガー”を操縦する若きパイロットたちの戦いを描く。主演はジョン・ボイエガ、共演にスコット・イーストウッド。ギレルモ・デル・トロは製作に回り、監督は新たにスティーヴン・S・デナイトが務める。人類が謎の巨大生命体“KAIJU”との死闘を辛うじて制してから10年。地球は平穏を保っていたが、環太平洋防衛軍(PPDC)では将来の脅威に備えるべく新世代イェーガーの製造と若いパイロット候補生たちの訓練を続けていた。そんな中、英雄スタッカー・ペントコスト司令官の息子ジェイクは、周囲の期待に応えられないままPPDCを去り、違法行為に手を染めていたが…。"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT0000002GF",
+                                "big_genre_name": "洋画ＳＦ",
+                                "medium_genre_id": "EXT000000AW4",
+                                "medium_genre_name": "アドベンチャー",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [
+                            "362179"
+                        ],
+                        "filmarks_id": [
+                            "58834"
+                        ],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS0000UHRMV",
+                                "person_name": "スティーヴン・S・デナイト",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS0000R49HM",
+                                "person_name": "ジョン・ボイエガ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000OXDK5",
+                                "person_name": "スコット・イーストウッド",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000UHRMW",
+                                "person_name": "ケイリー・スピーニー",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001FJT",
+                                "person_name": "菊地凛子",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000QIEVP",
+                                "person_name": "ジン・ティエン",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000ZA1",
+                                "person_name": "バーン・ゴーマン",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000S9ADH",
+                                "person_name": "アドリア・アルホナ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000R3BQZ",
+                                "person_name": "チャーリー・デイ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000IGH5",
+                                "person_name": "マックス・チャン",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000GITU",
+                                "person_name": "カラン・ブラル",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000VVKVX",
+                                "person_name": "エミリー・カーマイケル",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS00000RBRL",
+                                "person_name": "キーラ・スナイダー",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS0000UHRMV",
+                                "person_name": "スティーヴン・S・デナイト",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS0000NROQF",
+                                "person_name": "T・S・ノーリン",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS00000IY6J",
+                                "person_name": "ローン・バルフェ",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT0000WNOZ3",
+                        "product_id": "PPD0000WNOZ3",
+                        "product_type_id": 2,
+                        "product_type_name": "レンタル",
+                        "service_id": "tol",
+                        "service_name": "tol",
+                        "msdb_item": "video",
+                        "item_cd": "0021",
+                        "item_name": "ＤＶＤ",
+                        "product_name": "パシフィック・リム:アップライジング",
+                        "product_kana": "ぱしふいつくりむあつぷらいじんぐ",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "PACIFIC RIM UPRISING",
+                        "track_testimonials": "",
+                        "disp_start_date": "2018-07-20 00:00:00",
+                        "disp_start_month": "2018-07",
+                        "disp_end_date": "2030-12-28 00:00:00",
+                        "disp_end_month": "2030-12",
+                        "sale_start_date": "2018-10-11",
+                        "sale_start_month": "2018-10",
+                        "sale_end_date": "2030-12-28",
+                        "sale_end_month": "2030-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000UHURE"
+                        ],
+                        "tieup": "",
+                        "copyright": "(C) 2018 LEGENDARY AND UNIVERSAL STUDIOS. ALL RIGHTS RESERVED.",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "2018",
+                        "created_year_to": "",
+                        "created_year_str": "2018",
+                        "created_countries": "アメリカ",
+                        "maker_cd": "EXT0000000SX",
+                        "maker_name": "NBCユニバーサル・エンターテイメントジャパン",
+                        "maker_name_kana": "えぬびーしーゆにばーさるえんたーていめんとじやぱん",
+                        "maker_name_abbrev": "NBCユニバーサル・エンターテイメント",
+                        "label_name": "",
+                        "sell_rental_flag": 2,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10616215",
+                        "ccc_family_cd": "10616215001",
+                        "ccc_product_id": "206052796",
+                        "rental_product_cd": "084095143",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4988102692568",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "GNBR4270",
+                        "icpn": "",
+                        "media_category_cd": "12",
+                        "media_category_name": "レンタルDVD",
+                        "media_format_id": "EXT000006GPK",
+                        "media_format_name": "DVD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "015100",
+                        "product_spec": "",
+                        "screen_size": "シネスコ",
+                        "subtitle_flg": null,
+                        "subtitle": "日本語・英語",
+                        "sound_spec": "",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "カラー",
+                        "video_info": "１６：９／ＬＢ",
+                        "number_of_volume": "001",
+                        "number_of_set": "1",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/13235/4988102692568_1S.jpg",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/13235/4988102692568_1M.jpg",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/13235/4988102692568_1L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B001S.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B002S.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B003S.jpg",
+                                "no": "003"
+                            }
+                        ],
+                        "scene_m": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B001M.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B002M.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B003M.jpg",
+                                "no": "003"
+                            }
+                        ],
+                        "scene_l": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B001L.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B002L.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B003L.jpg",
+                                "no": "003"
+                            }
+                        ],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [
+                            "riricaleinfo",
+                            "riricaleinfo201810r"
+                        ],
+                        "price_tax_out": null,
+                        "price_tax_in": null,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "04",
+                                "doc_text": "ギレルモ・デル・トロ監督による大ヒットSFアクションの続編。前作から10年後を舞台に、再び出現した“KAIJU”に立ち向かうべく新世代の巨大ロボット“イェーガー”を操縦する若きパイロットたちの戦いを描く。主演はジョン・ボイエガ、共演にスコット・イーストウッド。ギレルモ・デル・トロは製作に回り、監督は新たにスティーヴン・S・デナイトが務める。人類が謎の巨大生命体“KAIJU”との死闘を辛うじて制してから10年。地球は平穏を保っていたが、環太平洋防衛軍(PPDC)では将来の脅威に備えるべく新世代イェーガーの製造と若いパイロット候補生たちの訓練を続けていた。そんな中、英雄スタッカー・ペントコスト司令官の息子ジェイクは、周囲の期待に応えられないままPPDCを去り、違法行為に手を染めていたが…。"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT0000002GF",
+                                "big_genre_name": "洋画ＳＦ",
+                                "medium_genre_id": "EXT000000AW4",
+                                "medium_genre_name": "アドベンチャー",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [
+                            "362179"
+                        ],
+                        "filmarks_id": [
+                            "58834"
+                        ],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS0000UHRMV",
+                                "person_name": "スティーヴン・S・デナイト",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS0000R49HM",
+                                "person_name": "ジョン・ボイエガ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000OXDK5",
+                                "person_name": "スコット・イーストウッド",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000UHRMW",
+                                "person_name": "ケイリー・スピーニー",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001FJT",
+                                "person_name": "菊地凛子",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000QIEVP",
+                                "person_name": "ジン・ティエン",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000ZA1",
+                                "person_name": "バーン・ゴーマン",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000S9ADH",
+                                "person_name": "アドリア・アルホナ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000R3BQZ",
+                                "person_name": "チャーリー・デイ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000IGH5",
+                                "person_name": "マックス・チャン",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000GITU",
+                                "person_name": "カラン・ブラル",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000VVKVX",
+                                "person_name": "エミリー・カーマイケル",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS00000RBRL",
+                                "person_name": "キーラ・スナイダー",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS0000UHRMV",
+                                "person_name": "スティーヴン・S・デナイト",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS0000NROQF",
+                                "person_name": "T・S・ノーリン",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS00000IY6J",
+                                "person_name": "ローン・バルフェ",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            },
+                            {
+                                "person_id": "PPS00001G6DO",
+                                "person_name": "スティーヴン・S・デナイト",
+                                "role_id": "EXT0000IA59E",
+                                "role_name": "監督・脚本"
+                            },
+                            {
+                                "person_id": "PPS00001AJCK",
+                                "person_name": "ギレルモ・デル・トロ",
+                                "role_id": "EXT0000001W3",
+                                "role_name": "製作"
+                            },
+                            {
+                                "person_id": "PPS00000NIOG",
+                                "person_name": "エリック・マクレオド",
+                                "role_id": "EXT0000001AC",
+                                "role_name": "製作総指揮"
+                            },
+                            {
+                                "person_id": "PPS0000WSHPK",
+                                "person_name": "エミリー・カーマイケル",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS00001TEAE",
+                                "person_name": "ジョン・ボイエガ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000W6U",
+                                "person_name": "スコット・イーストウッド",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000TPQ0H",
+                                "person_name": "新田真剣佑",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT0000WSHO2",
+                        "product_id": "PPD0000WNORY",
+                        "product_type_id": 2,
+                        "product_type_name": "レンタル",
+                        "service_id": "discas",
+                        "service_name": "discas",
+                        "msdb_item": "video",
+                        "item_cd": "0022",
+                        "item_name": "ブルーレイ",
+                        "product_name": "パシフィック・リム:アップライジング",
+                        "product_kana": "パシフイツクリムアツプライジング",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "PACIFIC RIM UPRISING",
+                        "track_testimonials": "",
+                        "disp_start_date": "2018-07-20 00:00:00",
+                        "disp_start_month": "2018-07",
+                        "disp_end_date": "2099-12-31 00:00:00",
+                        "disp_end_month": "2099-12",
+                        "sale_start_date": "2018-10-11",
+                        "sale_start_month": "2018-10",
+                        "sale_end_date": "2099-12-31",
+                        "sale_end_month": "2099-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000UHURE"
+                        ],
+                        "tieup": "",
+                        "copyright": "(C) 2018 LEGENDARY AND UNIVERSAL STUDIOS. ALL RIGHTS RESERVED.",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "2018",
+                        "created_year_to": "",
+                        "created_year_str": "2018",
+                        "created_countries": "アメリカ",
+                        "maker_cd": "EXT0000000SX",
+                        "maker_name": "NBCユニバーサル・エンターテイメントジャパン",
+                        "maker_name_kana": "えぬびーしーゆにばーさるえんたーていめんとじやぱん",
+                        "maker_name_abbrev": "NBCユニバーサル・エンターテイメント",
+                        "label_name": "",
+                        "sell_rental_flag": 2,
+                        "view_term": null,
+                        "reservation_flg": 1,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10616215",
+                        "ccc_family_cd": "10616215001",
+                        "ccc_product_id": "3797856827",
+                        "rental_product_cd": "060337014",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4988102705008",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "GNXR1315",
+                        "icpn": "",
+                        "media_category_cd": "12",
+                        "media_category_name": "レンタルDVD",
+                        "media_format_id": "EXT0000001VI",
+                        "media_format_name": "Blu-ray",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "015100",
+                        "product_spec": "この商品はブルーレイディスクです。※DVDプレイヤーでは再生できません。",
+                        "screen_size": "シネスコ",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "カラー",
+                        "video_info": "１６：９／ＬＢ",
+                        "number_of_volume": "001",
+                        "number_of_set": "1",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//img.discas.net/img/jacket/core/201808/02/4988102705008_1SX.jpg",
+                        "jacket_m": "//img.discas.net/img/jacket/core/201808/02/4988102705008_1MX.jpg",
+                        "jacket_l": "//img.discas.net/img/jacket/core/201808/02/4988102705008_1L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [],
+                        "scene_m": [],
+                        "scene_l": [],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": null,
+                        "price_tax_in": null,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "04",
+                                "doc_text": "ギレルモ・デル・トロ監督による大ヒットSFアクションの続編。前作から10年後を舞台に、再び出現した“KAIJU”に立ち向かうべく新世代の巨大ロボット“イェーガー”を操縦する若きパイロットたちの戦いを描く。主演はジョン・ボイエガ、共演にスコット・イーストウッド。ギレルモ・デル・トロは製作に回り、監督は新たにスティーヴン・S・デナイトが務める。人類が謎の巨大生命体“KAIJU”との死闘を辛うじて制してから10年。地球は平穏を保っていたが、環太平洋防衛軍(PPDC)では将来の脅威に備えるべく新世代イェーガーの製造と若いパイロット候補生たちの訓練を続けていた。そんな中、英雄スタッカー・ペントコスト司令官の息子ジェイクは、周囲の期待に応えられないままPPDCを去り、違法行為に手を染めていたが…。"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT0000002GF",
+                                "big_genre_name": "洋画ＳＦ",
+                                "medium_genre_id": "EXT000000AW4",
+                                "medium_genre_name": "アドベンチャー",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": 299,
+                        "discas_item": "DiscasMovie",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS0000UHRMV",
+                                "person_name": "スティーヴン・S・デナイト",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS0000R49HM",
+                                "person_name": "ジョン・ボイエガ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000OXDK5",
+                                "person_name": "スコット・イーストウッド",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000UHRMW",
+                                "person_name": "ケイリー・スピーニー",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001FJT",
+                                "person_name": "菊地凛子",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000QIEVP",
+                                "person_name": "ジン・ティエン",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000ZA1",
+                                "person_name": "バーン・ゴーマン",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000S9ADH",
+                                "person_name": "アドリア・アルホナ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000R3BQZ",
+                                "person_name": "チャーリー・デイ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000IGH5",
+                                "person_name": "マックス・チャン",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000GITU",
+                                "person_name": "カラン・ブラル",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000VVKVX",
+                                "person_name": "エミリー・カーマイケル",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS00000RBRL",
+                                "person_name": "キーラ・スナイダー",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS0000UHRMV",
+                                "person_name": "スティーヴン・S・デナイト",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS0000NROQF",
+                                "person_name": "T・S・ノーリン",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS00000IY6J",
+                                "person_name": "ローン・バルフェ",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT0000WSHPI",
+                        "product_id": "PPD0000WNOZ3",
+                        "product_type_id": 2,
+                        "product_type_name": "レンタル",
+                        "service_id": "discas",
+                        "service_name": "discas",
+                        "msdb_item": "video",
+                        "item_cd": "0021",
+                        "item_name": "ＤＶＤ",
+                        "product_name": "パシフィック・リム:アップライジング",
+                        "product_kana": "パシフイツクリムアツプライジング",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "PACIFIC RIM UPRISING",
+                        "track_testimonials": "",
+                        "disp_start_date": "2018-07-20 00:00:00",
+                        "disp_start_month": "2018-07",
+                        "disp_end_date": "2099-12-31 00:00:00",
+                        "disp_end_month": "2099-12",
+                        "sale_start_date": "2018-10-11",
+                        "sale_start_month": "2018-10",
+                        "sale_end_date": "2099-12-31",
+                        "sale_end_month": "2099-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000UHURE"
+                        ],
+                        "tieup": "",
+                        "copyright": "(C) 2018 LEGENDARY AND UNIVERSAL STUDIOS. ALL RIGHTS RESERVED.",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "2018",
+                        "created_year_to": "",
+                        "created_year_str": "2018",
+                        "created_countries": "アメリカ",
+                        "maker_cd": "EXT0000000SX",
+                        "maker_name": "NBCユニバーサル・エンターテイメントジャパン",
+                        "maker_name_kana": "えぬびーしーゆにばーさるえんたーていめんとじやぱん",
+                        "maker_name_abbrev": "NBCユニバーサル・エンターテイメント",
+                        "label_name": "",
+                        "sell_rental_flag": 2,
+                        "view_term": null,
+                        "reservation_flg": 1,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10616215",
+                        "ccc_family_cd": "10616215001",
+                        "ccc_product_id": "3804165400",
+                        "rental_product_cd": "084095143",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4988102692568",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "GNBR4270",
+                        "icpn": "",
+                        "media_category_cd": "12",
+                        "media_category_name": "レンタルDVD",
+                        "media_format_id": "EXT000006GPK",
+                        "media_format_name": "DVD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "015100",
+                        "product_spec": "",
+                        "screen_size": "シネスコ",
+                        "subtitle_flg": null,
+                        "subtitle": "日･英",
+                        "sound_spec": "",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "カラー",
+                        "video_info": "１６：９／ＬＢ",
+                        "number_of_volume": "001",
+                        "number_of_set": "1",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//img.discas.net/img/jacket/core/201808/02/4988102692568_1SX.jpg",
+                        "jacket_m": "//img.discas.net/img/jacket/core/201808/02/4988102692568_1MX.jpg",
+                        "jacket_l": "//img.discas.net/img/jacket/core/201808/02/4988102692568_1L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [],
+                        "scene_m": [],
+                        "scene_l": [],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [
+                            "riricaleinfo",
+                            "riricaleinfo201810r"
+                        ],
+                        "price_tax_out": null,
+                        "price_tax_in": null,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "04",
+                                "doc_text": "ギレルモ・デル・トロ監督による大ヒットSFアクションの続編。前作から10年後を舞台に、再び出現した“KAIJU”に立ち向かうべく新世代の巨大ロボット“イェーガー”を操縦する若きパイロットたちの戦いを描く。主演はジョン・ボイエガ、共演にスコット・イーストウッド。ギレルモ・デル・トロは製作に回り、監督は新たにスティーヴン・S・デナイトが務める。人類が謎の巨大生命体“KAIJU”との死闘を辛うじて制してから10年。地球は平穏を保っていたが、環太平洋防衛軍(PPDC)では将来の脅威に備えるべく新世代イェーガーの製造と若いパイロット候補生たちの訓練を続けていた。そんな中、英雄スタッカー・ペントコスト司令官の息子ジェイクは、周囲の期待に応えられないままPPDCを去り、違法行為に手を染めていたが…。"
+                            },
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "H1",
+                                "doc_text": "ギレルモ・デル・トロが手掛けたSFアクションの続編。“KAIJU”群と巨大人型兵器・イェーガーの戦争から10年。世界が平和を取り戻しつつある中で“KAIJU”群は富士山を襲撃しようとし、防衛線が張られた東京を舞台に最後の戦いが幕を開ける。※一般告知解禁日：7月20日"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT0000002GF",
+                                "big_genre_name": "洋画ＳＦ",
+                                "medium_genre_id": "EXT000000AW4",
+                                "medium_genre_name": "アドベンチャー",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "DiscasMovie",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS0000UHRMV",
+                                "person_name": "スティーヴン・S・デナイト",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS0000R49HM",
+                                "person_name": "ジョン・ボイエガ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000OXDK5",
+                                "person_name": "スコット・イーストウッド",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000UHRMW",
+                                "person_name": "ケイリー・スピーニー",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001FJT",
+                                "person_name": "菊地凛子",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000QIEVP",
+                                "person_name": "ジン・ティエン",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000ZA1",
+                                "person_name": "バーン・ゴーマン",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000S9ADH",
+                                "person_name": "アドリア・アルホナ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000R3BQZ",
+                                "person_name": "チャーリー・デイ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000IGH5",
+                                "person_name": "マックス・チャン",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000GITU",
+                                "person_name": "カラン・ブラル",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000VVKVX",
+                                "person_name": "エミリー・カーマイケル",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS00000RBRL",
+                                "person_name": "キーラ・スナイダー",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS0000UHRMV",
+                                "person_name": "スティーヴン・S・デナイト",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS0000NROQF",
+                                "person_name": "T・S・ノーリン",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS00000IY6J",
+                                "person_name": "ローン・バルフェ",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            },
+                            {
+                                "person_id": "PPS00001G6DO",
+                                "person_name": "スティーヴン・S・デナイト",
+                                "role_id": "EXT0000IA59E",
+                                "role_name": "監督・脚本"
+                            },
+                            {
+                                "person_id": "PPS00001AJCK",
+                                "person_name": "ギレルモ・デル・トロ",
+                                "role_id": "EXT0000001W3",
+                                "role_name": "製作"
+                            },
+                            {
+                                "person_id": "PPS00000NIOG",
+                                "person_name": "エリック・マクレオド",
+                                "role_id": "EXT0000001AC",
+                                "role_name": "製作総指揮"
+                            },
+                            {
+                                "person_id": "PPS0000WSHPK",
+                                "person_name": "エミリー・カーマイケル",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS00001TEAE",
+                                "person_name": "ジョン・ボイエガ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000W6U",
+                                "person_name": "スコット・イーストウッド",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000TPQ0H",
+                                "person_name": "新田真剣佑",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT0000WLARD",
+                        "product_id": "PPD0000WLARD",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "tol",
+                        "service_name": "tol",
+                        "msdb_item": "video",
+                        "item_cd": "1022",
+                        "item_name": "ブルーレイ",
+                        "product_name": "【日本オリジナル】パシフィック・リム:アップライジング アルティメット・コレクターズ・エディション -シベリア対決セット-【3000セット限定】",
+                        "product_kana": "ぱしふいつくりむあつぷらいじんぐあるていめつとこれくたーずえでいしよんしべりあたいけつせつと",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "PACIFIC RIM UPRISING",
+                        "track_testimonials": "",
+                        "disp_start_date": "2018-07-20 00:00:00",
+                        "disp_start_month": "2018-07",
+                        "disp_end_date": "2030-12-28 00:00:00",
+                        "disp_end_month": "2030-12",
+                        "sale_start_date": "2018-10-11",
+                        "sale_start_month": "2018-10",
+                        "sale_end_date": "2030-12-28",
+                        "sale_end_month": "2030-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000UHURE"
+                        ],
+                        "tieup": "",
+                        "copyright": "(C) 2018 LEGENDARY AND UNIVERSAL STUDIOS. ALL RIGHTS RESERVED.",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "2018",
+                        "created_year_to": "",
+                        "created_year_str": "2018",
+                        "created_countries": "アメリカ",
+                        "maker_cd": "EXT0000000SX",
+                        "maker_name": "NBCユニバーサル・エンターテイメントジャパン",
+                        "maker_name_kana": "えぬびーしーゆにばーさるえんたーていめんとじやぱん",
+                        "maker_name_abbrev": "NBCユニバーサル・エンターテイメント",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10616215",
+                        "ccc_family_cd": "10616215001",
+                        "ccc_product_id": "206043509",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4988102704896",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "GNXF2363",
+                        "icpn": "",
+                        "media_category_cd": "22",
+                        "media_category_name": "販売DVD",
+                        "media_format_id": "EXT0000001VI",
+                        "media_format_name": "Blu-ray",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "015100",
+                        "product_spec": "",
+                        "screen_size": "シネスコ",
+                        "subtitle_flg": null,
+                        "subtitle": "日本語・英語",
+                        "sound_spec": "１：ＤＯＬＢＹ　ＡＴＭＯＳ／／英語２：ドルビーデジタル／５．１ｃｈサラウンド／日本語",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "カラー",
+                        "video_info": "１６：９／ＬＢ",
+                        "number_of_volume": "",
+                        "number_of_set": "3",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 1,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/13185/4988102704896_1S.jpg",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/13185/4988102704896_1M.jpg",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/13185/4988102704896_1L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B001S.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B002S.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B003S.jpg",
+                                "no": "003"
+                            }
+                        ],
+                        "scene_m": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B001M.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B002M.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B003M.jpg",
+                                "no": "003"
+                            }
+                        ],
+                        "scene_l": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B001L.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B002L.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B003L.jpg",
+                                "no": "003"
+                            }
+                        ],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": 19990,
+                        "price_tax_in": 21589,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "01",
+                                "doc_source_id": "03",
+                                "doc_text": "2013年公開の映画『パシフィック・リム』の続編にして、人類が乗り込む兵器“イェーガー”と巨大生命体“KAIJU”の壮絶なバトルを描くSFアクション。監督はスティーヴン・S．デナイト。出演はジョン・ボイエガ、新田真剣佑、菊地凛子ほか。"
+                            },
+                            {
+                                "doc_type_id": "04",
+                                "doc_source_id": "03",
+                                "doc_text": "【Disc-1】<BR>パシフィック・リム:アップライジング(原題:PACIFIC RIM:UPRISING)<BR><BR>【Disc-2】<BR>パシフィック・リム:アップライジング(原題:PACIFIC RIM:UPRISING)<BR><BR>【Disc-3】<BR>パシフィック・リム:アップライジング(原題:PACIFIC RIM:UPRISING)"
+                            },
+                            {
+                                "doc_type_id": "10",
+                                "doc_source_id": "03",
+                                "doc_text": "Comic-con International San Diegoで販売されたBANDAI SPIRITS社“ROBOT魂”＜SIDE JAEGER＞シベリア対決セット(ジプシー・アベンジャー×オブシディアン・フューリーフィギュア 計2体)/サイドストーリーを描いたオリジナル・アメコミ(52P)/日本オリジナルアートカード2種(245mm×173mm,205mm×245mm)(ダイナミック・プロ＆大張正己氏)"
+                            },
+                            {
+                                "doc_type_id": "11",
+                                "doc_source_id": "03",
+                                "doc_text": "［3］未公開シーン/ヒーローたち/前作からの架け橋/荒廃した世界から生まれた英雄たち/訓練生/意外な悪役/新世代イェーガー/スクラッパー/メガ怪獣/シャオの秘密/帰ってきたマコ/監督スティーヴン・S・デナイトによる本編音声解説"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT0000002GF",
+                                "big_genre_name": "洋画ＳＦ",
+                                "medium_genre_id": "EXT000000AW4",
+                                "medium_genre_name": "アドベンチャー",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [
+                            "362179"
+                        ],
+                        "filmarks_id": [
+                            "58834"
+                        ],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS0000UHRMV",
+                                "person_name": "スティーヴン・S・デナイト",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS0000R49HM",
+                                "person_name": "ジョン・ボイエガ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000OXDK5",
+                                "person_name": "スコット・イーストウッド",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000UHRMW",
+                                "person_name": "ケイリー・スピーニー",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001FJT",
+                                "person_name": "菊地凛子",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000QIEVP",
+                                "person_name": "ジン・ティエン",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000ZA1",
+                                "person_name": "バーン・ゴーマン",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000S9ADH",
+                                "person_name": "アドリア・アルホナ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000R3BQZ",
+                                "person_name": "チャーリー・デイ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000IGH5",
+                                "person_name": "マックス・チャン",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000GITU",
+                                "person_name": "カラン・ブラル",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000VVKVX",
+                                "person_name": "エミリー・カーマイケル",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS00000RBRL",
+                                "person_name": "キーラ・スナイダー",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS0000UHRMV",
+                                "person_name": "スティーヴン・S・デナイト",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS0000NROQF",
+                                "person_name": "T・S・ノーリン",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS00000IY6J",
+                                "person_name": "ローン・バルフェ",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT0000WLAR4",
+                        "product_id": "PPD0000WLAR4",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "tol",
+                        "service_name": "tol",
+                        "msdb_item": "video",
+                        "item_cd": "1022",
+                        "item_name": "ブルーレイ",
+                        "product_name": "パシフィック・リム:アップライジング スチール・ブック仕様 ブルーレイ+DVDセット【日本限定4000セット】",
+                        "product_kana": "ぱしふいつくりむあつぷらいじんぐすちーるぶつくしようぶるーれいぷらすでいーぶいでいーせつと",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "PACIFIC RIM UPRISING",
+                        "track_testimonials": "",
+                        "disp_start_date": "2018-07-20 00:00:00",
+                        "disp_start_month": "2018-07",
+                        "disp_end_date": "2030-12-28 00:00:00",
+                        "disp_end_month": "2030-12",
+                        "sale_start_date": "2018-10-11",
+                        "sale_start_month": "2018-10",
+                        "sale_end_date": "2030-12-28",
+                        "sale_end_month": "2030-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000UHURE"
+                        ],
+                        "tieup": "",
+                        "copyright": "(C) 2018 LEGENDARY AND UNIVERSAL STUDIOS. ALL RIGHTS RESERVED.",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "2018",
+                        "created_year_to": "",
+                        "created_year_str": "2018",
+                        "created_countries": "アメリカ",
+                        "maker_cd": "EXT0000000SX",
+                        "maker_name": "NBCユニバーサル・エンターテイメントジャパン",
+                        "maker_name_kana": "えぬびーしーゆにばーさるえんたーていめんとじやぱん",
+                        "maker_name_abbrev": "NBCユニバーサル・エンターテイメント",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10616215",
+                        "ccc_family_cd": "10616215001",
+                        "ccc_product_id": "206043511",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4988102704902",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "GNXF2364",
+                        "icpn": "",
+                        "media_category_cd": "22",
+                        "media_category_name": "販売DVD",
+                        "media_format_id": "EXT0000001VI",
+                        "media_format_name": "Blu-ray",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "015100",
+                        "product_spec": "",
+                        "screen_size": "シネスコ",
+                        "subtitle_flg": null,
+                        "subtitle": "日本語・英語",
+                        "sound_spec": "１：ＤＯＬＢＹ　ＡＴＭＯＳ／／英語２：ドルビーデジタル／５．１ｃｈサラウンド／日本語",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "カラー",
+                        "video_info": "１６：９／ＬＢ",
+                        "number_of_volume": "",
+                        "number_of_set": "2",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 1,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/13185/4988102704902_1S.jpg",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/13185/4988102704902_1M.jpg",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/13185/4988102704902_1L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B001S.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B002S.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B003S.jpg",
+                                "no": "003"
+                            }
+                        ],
+                        "scene_m": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B001M.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B002M.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B003M.jpg",
+                                "no": "003"
+                            }
+                        ],
+                        "scene_l": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B001L.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B002L.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B003L.jpg",
+                                "no": "003"
+                            }
+                        ],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": 4990,
+                        "price_tax_in": 5389,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "01",
+                                "doc_source_id": "03",
+                                "doc_text": "2013年公開の映画『パシフィック・リム』の続編にして、人類が乗り込む兵器“イェーガー”と巨大生命体“KAIJU”の壮絶なバトルを描くSFアクション。監督はスティーヴン・S．デナイト。出演はジョン・ボイエガ、新田真剣佑、菊地凛子ほか。"
+                            },
+                            {
+                                "doc_type_id": "04",
+                                "doc_source_id": "03",
+                                "doc_text": "【Disc-1】<BR>パシフィック・リム:アップライジング(原題:PACIFIC RIM:UPRISING)<BR><BR>【Disc-2】<BR>パシフィック・リム:アップライジング(原題:PACIFIC RIM:UPRISING)"
+                            },
+                            {
+                                "doc_type_id": "10",
+                                "doc_source_id": "03",
+                                "doc_text": "スチール・ブック仕様(日本オリジナルデザイン)"
+                            },
+                            {
+                                "doc_type_id": "11",
+                                "doc_source_id": "03",
+                                "doc_text": "未公開シーン/ヒーローたち/前作からの架け橋/荒廃した世界から生まれた英雄たち/訓練生/意外な悪役/新世代イェーガー/スクラッパー/メガ怪獣/シャオの秘密/帰ってきたマコ/監督スティーヴン・S・デナイトによる本編音声解説"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT0000002GF",
+                                "big_genre_name": "洋画ＳＦ",
+                                "medium_genre_id": "EXT000000AW4",
+                                "medium_genre_name": "アドベンチャー",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [
+                            "362179"
+                        ],
+                        "filmarks_id": [
+                            "58834"
+                        ],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS0000UHRMV",
+                                "person_name": "スティーヴン・S・デナイト",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS0000R49HM",
+                                "person_name": "ジョン・ボイエガ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000OXDK5",
+                                "person_name": "スコット・イーストウッド",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000UHRMW",
+                                "person_name": "ケイリー・スピーニー",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001FJT",
+                                "person_name": "菊地凛子",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000QIEVP",
+                                "person_name": "ジン・ティエン",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000ZA1",
+                                "person_name": "バーン・ゴーマン",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000S9ADH",
+                                "person_name": "アドリア・アルホナ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000R3BQZ",
+                                "person_name": "チャーリー・デイ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000IGH5",
+                                "person_name": "マックス・チャン",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000GITU",
+                                "person_name": "カラン・ブラル",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000VVKVX",
+                                "person_name": "エミリー・カーマイケル",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS00000RBRL",
+                                "person_name": "キーラ・スナイダー",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS0000UHRMV",
+                                "person_name": "スティーヴン・S・デナイト",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS0000NROQF",
+                                "person_name": "T・S・ノーリン",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS00000IY6J",
+                                "person_name": "ローン・バルフェ",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT0000WLARS",
+                        "product_id": "PPD0000UHRMU",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "tol",
+                        "service_name": "tol",
+                        "msdb_item": "video",
+                        "item_cd": "1022",
+                        "item_name": "ブルーレイ",
+                        "product_name": "パシフィック・リム:アップライジング ブルーレイ+DVDセット",
+                        "product_kana": "ぱしふいつくりむあつぷらいじんぐぶるーれいぷらすでいーぶいでいーせつと",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "PACIFIC RIM UPRISING",
+                        "track_testimonials": "",
+                        "disp_start_date": "2018-07-20 00:00:00",
+                        "disp_start_month": "2018-07",
+                        "disp_end_date": "2030-12-28 00:00:00",
+                        "disp_end_month": "2030-12",
+                        "sale_start_date": "2018-10-11",
+                        "sale_start_month": "2018-10",
+                        "sale_end_date": "2030-12-28",
+                        "sale_end_month": "2030-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000UHURE"
+                        ],
+                        "tieup": "",
+                        "copyright": "(C) 2018 LEGENDARY AND UNIVERSAL STUDIOS. ALL RIGHTS RESERVED.",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "2018",
+                        "created_year_to": "",
+                        "created_year_str": "2018",
+                        "created_countries": "アメリカ",
+                        "maker_cd": "EXT0000000SX",
+                        "maker_name": "NBCユニバーサル・エンターテイメントジャパン",
+                        "maker_name_kana": "えぬびーしーゆにばーさるえんたーていめんとじやぱん",
+                        "maker_name_abbrev": "NBCユニバーサル・エンターテイメント",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10616215",
+                        "ccc_family_cd": "10616215001",
+                        "ccc_product_id": "206043488",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4988102704872",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "GNXF2361",
+                        "icpn": "",
+                        "media_category_cd": "22",
+                        "media_category_name": "販売DVD",
+                        "media_format_id": "EXT0000001VI",
+                        "media_format_name": "Blu-ray",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "015100",
+                        "product_spec": "",
+                        "screen_size": "シネスコ",
+                        "subtitle_flg": null,
+                        "subtitle": "日本語・英語",
+                        "sound_spec": "１：ＤＯＬＢＹ　ＡＴＭＯＳ／／英語２：ドルビーデジタル／５．１ｃｈサラウンド／日本語",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "カラー",
+                        "video_info": "１６：９／ＬＢ",
+                        "number_of_volume": "",
+                        "number_of_set": "2",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 1,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/13185/4988102704872_1S.jpg",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/13185/4988102704872_1M.jpg",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/13185/4988102704872_1L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B001S.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B002S.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B003S.jpg",
+                                "no": "003"
+                            }
+                        ],
+                        "scene_m": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B001M.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B002M.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B003M.jpg",
+                                "no": "003"
+                            }
+                        ],
+                        "scene_l": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B001L.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B002L.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B003L.jpg",
+                                "no": "003"
+                            }
+                        ],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [
+                            "riricaleinfo",
+                            "riricaleinfo201810s"
+                        ],
+                        "price_tax_out": 3990,
+                        "price_tax_in": 4309,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "01",
+                                "doc_source_id": "03",
+                                "doc_text": "2013年公開の映画『パシフィック・リム』の続編にして、人類が乗り込む兵器“イェーガー”と巨大生命体“KAIJU”の壮絶なバトルを描くSFアクション。監督はスティーヴン・S．デナイト。出演はジョン・ボイエガ、新田真剣佑、菊地凛子ほか。"
+                            },
+                            {
+                                "doc_type_id": "04",
+                                "doc_source_id": "03",
+                                "doc_text": "【Disc-1】<BR>パシフィック・リム:アップライジング(原題:PACIFIC RIM:UPRISING)<BR><BR>【Disc-2】<BR>パシフィック・リム:アップライジング(原題:PACIFIC RIM:UPRISING)"
+                            },
+                            {
+                                "doc_type_id": "11",
+                                "doc_source_id": "03",
+                                "doc_text": "未公開シーン/ヒーローたち/前作からの架け橋/荒廃した世界から生まれた英雄たち/訓練生/意外な悪役/新世代イェーガー/スクラッパー/メガ怪獣/シャオの秘密/帰ってきたマコ/監督スティーヴン・S・デナイトによる本編音声解説"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT0000002GF",
+                                "big_genre_name": "洋画ＳＦ",
+                                "medium_genre_id": "EXT000000AW4",
+                                "medium_genre_name": "アドベンチャー",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [
+                            "362179"
+                        ],
+                        "filmarks_id": [
+                            "58834"
+                        ],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS0000UHRMV",
+                                "person_name": "スティーヴン・S・デナイト",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS0000R49HM",
+                                "person_name": "ジョン・ボイエガ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000OXDK5",
+                                "person_name": "スコット・イーストウッド",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000UHRMW",
+                                "person_name": "ケイリー・スピーニー",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001FJT",
+                                "person_name": "菊地凛子",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000QIEVP",
+                                "person_name": "ジン・ティエン",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000ZA1",
+                                "person_name": "バーン・ゴーマン",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000S9ADH",
+                                "person_name": "アドリア・アルホナ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000R3BQZ",
+                                "person_name": "チャーリー・デイ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000IGH5",
+                                "person_name": "マックス・チャン",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000GITU",
+                                "person_name": "カラン・ブラル",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000VVKVX",
+                                "person_name": "エミリー・カーマイケル",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS00000RBRL",
+                                "person_name": "キーラ・スナイダー",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS0000UHRMV",
+                                "person_name": "スティーヴン・S・デナイト",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS0000NROQF",
+                                "person_name": "T・S・ノーリン",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS00000IY6J",
+                                "person_name": "ローン・バルフェ",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT0000WLARI",
+                        "product_id": "PPD0000WLARI",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "tol",
+                        "service_name": "tol",
+                        "msdb_item": "video",
+                        "item_cd": "1022",
+                        "item_name": "ブルーレイ",
+                        "product_name": "パシフィック・リム:アップライジング 3Dブルーレイ+ブルーレイセット",
+                        "product_kana": "ぱしふいつくりむあつぷらいじんぐ3でいーぶるーれいぷらすぶるーれいせつと",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "PACIFIC RIM UPRISING",
+                        "track_testimonials": "",
+                        "disp_start_date": "2018-07-20 00:00:00",
+                        "disp_start_month": "2018-07",
+                        "disp_end_date": "2030-12-28 00:00:00",
+                        "disp_end_month": "2030-12",
+                        "sale_start_date": "2018-10-11",
+                        "sale_start_month": "2018-10",
+                        "sale_end_date": "2030-12-28",
+                        "sale_end_month": "2030-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000UHURE"
+                        ],
+                        "tieup": "",
+                        "copyright": "(C) 2018 LEGENDARY AND UNIVERSAL STUDIOS. ALL RIGHTS RESERVED.",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "2018",
+                        "created_year_to": "",
+                        "created_year_str": "2018",
+                        "created_countries": "アメリカ",
+                        "maker_cd": "EXT0000000SX",
+                        "maker_name": "NBCユニバーサル・エンターテイメントジャパン",
+                        "maker_name_kana": "えぬびーしーゆにばーさるえんたーていめんとじやぱん",
+                        "maker_name_abbrev": "NBCユニバーサル・エンターテイメント",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10616215",
+                        "ccc_family_cd": "10616215001",
+                        "ccc_product_id": "206043508",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4988102704889",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "GNXF2362",
+                        "icpn": "",
+                        "media_category_cd": "22",
+                        "media_category_name": "販売DVD",
+                        "media_format_id": "EXT0000001VI",
+                        "media_format_name": "Blu-ray",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "015100",
+                        "product_spec": "",
+                        "screen_size": "シネスコ",
+                        "subtitle_flg": null,
+                        "subtitle": "日本語・英語",
+                        "sound_spec": "１：ＤＯＬＢＹ　ＡＴＭＯＳ／／英語２：ドルビーデジタル／５．１ｃｈサラウンド／日本語",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "カラー",
+                        "video_info": "１６：９／ＬＢ",
+                        "number_of_volume": "",
+                        "number_of_set": "2",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 1,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/13185/4988102704889_1S.jpg",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/13185/4988102704889_1M.jpg",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/13185/4988102704889_1L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B001S.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B002S.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B003S.jpg",
+                                "no": "003"
+                            }
+                        ],
+                        "scene_m": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B001M.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B002M.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B003M.jpg",
+                                "no": "003"
+                            }
+                        ],
+                        "scene_l": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B001L.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B002L.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B003L.jpg",
+                                "no": "003"
+                            }
+                        ],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [
+                            "３Ｄ",
+                            "３Ｄ"
+                        ],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": 5990,
+                        "price_tax_in": 6469,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "01",
+                                "doc_source_id": "03",
+                                "doc_text": "2013年公開の映画『パシフィック・リム』の続編にして、人類が乗り込む兵器“イェーガー”と巨大生命体“KAIJU”の壮絶なバトルを描くSFアクション。監督はスティーヴン・S．デナイト。出演はジョン・ボイエガ、新田真剣佑、菊地凛子ほか。"
+                            },
+                            {
+                                "doc_type_id": "04",
+                                "doc_source_id": "03",
+                                "doc_text": "【Disc-1】<BR>パシフィック・リム:アップライジング(原題:PACIFIC RIM:UPRISING)<BR><BR>【Disc-2】<BR>パシフィック・リム:アップライジング(原題:PACIFIC RIM:UPRISING)"
+                            },
+                            {
+                                "doc_type_id": "11",
+                                "doc_source_id": "03",
+                                "doc_text": "［2］未公開シーン/ヒーローたち/前作からの架け橋/荒廃した世界から生まれた英雄たち/訓練生/意外な悪役/新世代イェーガー/スクラッパー/メガ怪獣/シャオの秘密/帰ってきたマコ/監督スティーヴン・S・デナイトによる本編音声解説"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT0000002GF",
+                                "big_genre_name": "洋画ＳＦ",
+                                "medium_genre_id": "EXT000000AW4",
+                                "medium_genre_name": "アドベンチャー",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [
+                            "362179"
+                        ],
+                        "filmarks_id": [
+                            "58834"
+                        ],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS0000UHRMV",
+                                "person_name": "スティーヴン・S・デナイト",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS0000R49HM",
+                                "person_name": "ジョン・ボイエガ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000OXDK5",
+                                "person_name": "スコット・イーストウッド",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000UHRMW",
+                                "person_name": "ケイリー・スピーニー",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001FJT",
+                                "person_name": "菊地凛子",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000QIEVP",
+                                "person_name": "ジン・ティエン",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000ZA1",
+                                "person_name": "バーン・ゴーマン",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000S9ADH",
+                                "person_name": "アドリア・アルホナ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000R3BQZ",
+                                "person_name": "チャーリー・デイ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000IGH5",
+                                "person_name": "マックス・チャン",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000GITU",
+                                "person_name": "カラン・ブラル",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000VVKVX",
+                                "person_name": "エミリー・カーマイケル",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS00000RBRL",
+                                "person_name": "キーラ・スナイダー",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS0000UHRMV",
+                                "person_name": "スティーヴン・S・デナイト",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS0000NROQF",
+                                "person_name": "T・S・ノーリン",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS00000IY6J",
+                                "person_name": "ローン・バルフェ",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT0000WLAR1",
+                        "product_id": "PPD0000WLAR1",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "tol",
+                        "service_name": "tol",
+                        "msdb_item": "video",
+                        "item_cd": "1022",
+                        "item_name": "ブルーレイ",
+                        "product_name": "パシフィック・リム:アップライジング [4K ULTRA HD + Blu-rayセット]",
+                        "product_kana": "ぱしふいつくりむあつぷらいじんぐ4けーうるとらえいちでいーぷらすぶるーれいせつと",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "PACIFIC RIM UPRISING",
+                        "track_testimonials": "",
+                        "disp_start_date": "2018-07-20 00:00:00",
+                        "disp_start_month": "2018-07",
+                        "disp_end_date": "2030-12-28 00:00:00",
+                        "disp_end_month": "2030-12",
+                        "sale_start_date": "2018-10-11",
+                        "sale_start_month": "2018-10",
+                        "sale_end_date": "2030-12-28",
+                        "sale_end_month": "2030-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000UHURE"
+                        ],
+                        "tieup": "",
+                        "copyright": "(C) 2018 LEGENDARY AND UNIVERSAL STUDIOS. ALL RIGHTS RESERVED.",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "2018",
+                        "created_year_to": "",
+                        "created_year_str": "2018",
+                        "created_countries": "アメリカ",
+                        "maker_cd": "EXT0000000SX",
+                        "maker_name": "NBCユニバーサル・エンターテイメントジャパン",
+                        "maker_name_kana": "えぬびーしーゆにばーさるえんたーていめんとじやぱん",
+                        "maker_name_abbrev": "NBCユニバーサル・エンターテイメント",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10616215",
+                        "ccc_family_cd": "10616215001",
+                        "ccc_product_id": "206043513",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4988102704964",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "GNXF2365",
+                        "icpn": "",
+                        "media_category_cd": "22",
+                        "media_category_name": "販売DVD",
+                        "media_format_id": "EXT0000001VI",
+                        "media_format_name": "Blu-ray",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "015100",
+                        "product_spec": "",
+                        "screen_size": "シネスコ",
+                        "subtitle_flg": null,
+                        "subtitle": "日本語・英語",
+                        "sound_spec": "１：ＤＯＬＢＹ　ＡＴＭＯＳ／／英語２：ドルビーデジタル／５．１ｃｈサラウンド／日本語",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "カラー",
+                        "video_info": "１６：９／ＬＢ",
+                        "number_of_volume": "",
+                        "number_of_set": "2",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 1,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/13185/4988102704964_1S.jpg",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/13185/4988102704964_1M.jpg",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/13185/4988102704964_1L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B001S.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B002S.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B003S.jpg",
+                                "no": "003"
+                            }
+                        ],
+                        "scene_m": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B001M.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B002M.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B003M.jpg",
+                                "no": "003"
+                            }
+                        ],
+                        "scene_l": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B001L.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B002L.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00235/4988102692568_B003L.jpg",
+                                "no": "003"
+                            }
+                        ],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": 5990,
+                        "price_tax_in": 6469,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "01",
+                                "doc_source_id": "03",
+                                "doc_text": "2013年公開の映画『パシフィック・リム』の続編にして、人類が乗り込む兵器“イェーガー”と巨大生命体“KAIJU”の壮絶なバトルを描くSFアクション。監督はスティーヴン・S．デナイト。出演はジョン・ボイエガ、新田真剣佑、菊地凛子ほか。"
+                            },
+                            {
+                                "doc_type_id": "04",
+                                "doc_source_id": "03",
+                                "doc_text": "【Disc-1】<BR>パシフィック・リム:アップライジング(原題:PACIFIC RIM:UPRISING)<BR><BR>【Disc-2】<BR>パシフィック・リム:アップライジング(原題:PACIFIC RIM:UPRISING)"
+                            },
+                            {
+                                "doc_type_id": "11",
+                                "doc_source_id": "03",
+                                "doc_text": "［2］未公開シーン/ヒーローたち/前作からの架け橋/荒廃した世界から生まれた英雄たち/訓練生/意外な悪役/新世代イェーガー/スクラッパー/メガ怪獣/シャオの秘密/帰ってきたマコ/監督スティーヴン・S・デナイトによる本編音声解説"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT0000002GF",
+                                "big_genre_name": "洋画ＳＦ",
+                                "medium_genre_id": "EXT000000AW4",
+                                "medium_genre_name": "アドベンチャー",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [
+                            "362179"
+                        ],
+                        "filmarks_id": [
+                            "58834"
+                        ],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS0000UHRMV",
+                                "person_name": "スティーヴン・S・デナイト",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS0000R49HM",
+                                "person_name": "ジョン・ボイエガ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000OXDK5",
+                                "person_name": "スコット・イーストウッド",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000UHRMW",
+                                "person_name": "ケイリー・スピーニー",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001FJT",
+                                "person_name": "菊地凛子",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000QIEVP",
+                                "person_name": "ジン・ティエン",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000ZA1",
+                                "person_name": "バーン・ゴーマン",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000S9ADH",
+                                "person_name": "アドリア・アルホナ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000R3BQZ",
+                                "person_name": "チャーリー・デイ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000IGH5",
+                                "person_name": "マックス・チャン",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000GITU",
+                                "person_name": "カラン・ブラル",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000VVKVX",
+                                "person_name": "エミリー・カーマイケル",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS00000RBRL",
+                                "person_name": "キーラ・スナイダー",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS0000UHRMV",
+                                "person_name": "スティーヴン・S・デナイト",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS0000NROQF",
+                                "person_name": "T・S・ノーリン",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS00000IY6J",
+                                "person_name": "ローン・バルフェ",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT0000X11CO",
+                        "product_id": "PPD0000X11CO",
+                        "product_type_id": 6,
+                        "product_type_name": "映像配信パック",
+                        "service_id": "discas",
+                        "service_name": "discas",
+                        "msdb_item": "video",
+                        "item_cd": "",
+                        "item_name": "",
+                        "product_name": "【購入:特典映像付き】パシフィック・リム:アップライジング<字幕/吹替パック>",
+                        "product_kana": "パシフィックリムアップライジング",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "“ＫＡＩＪＵ”群と巨大兵器“イェーガー”の戦争から１０年、世界は混沌としながらも、平和を取り戻そうとしていた。ある日、ＰＰＤＣ（環太平洋防衛軍）の会議が開催されようとしているところに、正体不明の“イェーガー”が襲撃をかける。それが新たなる戦争の始まりだった・・・。",
+                        "disp_start_date": "2018-08-30 10:00:00",
+                        "disp_start_month": "2018-08",
+                        "disp_end_date": "2019-09-26 23:59:59",
+                        "disp_end_month": "2019-09",
+                        "sale_start_date": "2018-09-27",
+                        "sale_start_month": "2018-09",
+                        "sale_end_date": "2019-09-26",
+                        "sale_end_month": "2019-09",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000UHURE"
+                        ],
+                        "tieup": "",
+                        "copyright": "(C) 2018 Universal Studios. All Rights Reserved.",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "2018",
+                        "created_year_to": "",
+                        "created_year_str": "2018",
+                        "created_countries": "アメリカ",
+                        "maker_cd": "EXT0000NUXWF",
+                        "maker_name": "NBC Universal Television Japan Ltd",
+                        "maker_name_kana": "",
+                        "maker_name_abbrev": "",
+                        "label_name": "",
+                        "sell_rental_flag": 3,
+                        "view_term": 0,
+                        "reservation_flg": 1,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10616215",
+                        "ccc_family_cd": "",
+                        "ccc_product_id": "8004844745",
+                        "rental_product_cd": "",
+                        "common_vod_code": "101086179",
+                        "vod_goods_cd": "101086179",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "",
+                        "icpn": "",
+                        "media_category_cd": "",
+                        "media_category_name": "",
+                        "media_format_id": "EXT00001MHIJ",
+                        "media_format_name": "SD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": 2,
+                        "subtitle": "",
+                        "sound_spec": "",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "",
+                        "video_info": "",
+                        "number_of_volume": "",
+                        "number_of_set": "",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "【購入：特典映像付き】パシフィック・リム：アップライジング＜字幕／吹替パック＞",
+                        "music_disp_artist": "監督：スティーブン・Ｓ・デナイト　出演：ジョン・ボイエガ　スコット・イーストウッド　菊地凛子　新田真剣佑　チャーリー・デイ　ジン・ティエン　ケイリー・スピーニー",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//img.discas.net/img/jacket/ttv_jacket/101/086/179/101086179_24SX.jpg",
+                        "jacket_m": "//img.discas.net/img/jacket/ttv_jacket/101/086/179/101086179_24MX.jpg",
+                        "jacket_l": "//img.discas.net/img/jacket/ttv_jacket/101/086/179/101086179_24L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [],
+                        "scene_m": [],
+                        "scene_l": [],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": 400,
+                        "price_tax_in": 432,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "H1",
+                                "doc_text": "“ＫＡＩＪＵ”群と巨大兵器“イェーガー”の戦争から１０年、世界は混沌としながらも、平和を取り戻そうとしていた。ある日、ＰＰＤＣ（環太平洋防衛軍）の会議が開催されようとしているところに、正体不明の“イェーガー”が襲撃をかける。それが新たなる戦争の始まりだった・・・。"
+                            }
+                        ],
+                        "devices": [
+                            {
+                                "device_id": "EXT0000HEZXI",
+                                "device_name": "tv"
+                            },
+                            {
+                                "device_id": "EXT0000HIZ8U",
+                                "device_name": "android"
+                            },
+                            {
+                                "device_id": "EXT0000M42VG",
+                                "device_name": "ios"
+                            },
+                            {
+                                "device_id": "EXT0000NV29A",
+                                "device_name": "smart"
+                            },
+                            {
+                                "device_id": "EXT0000TC38V",
+                                "device_name": "androidtv"
+                            },
+                            {
+                                "device_id": "EXT0000TC38W",
+                                "device_name": "smarttv"
+                            }
+                        ],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT0000002GF",
+                                "big_genre_name": "洋画ＳＦ",
+                                "medium_genre_id": "EXT000000AW4",
+                                "medium_genre_name": "アドベンチャー",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": 300,
+                        "discas_item": "TTV",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS0000V6OUN",
+                                "person_name": "ジョン・ボイエガ",
+                                "role_id": "EXT00000000I",
+                                "role_name": "役割なし"
+                            },
+                            {
+                                "person_id": "PPS0000X11CR",
+                                "person_name": "スティーブン・S・デナイト",
+                                "role_id": "EXT00000000I",
+                                "role_name": "役割なし"
+                            },
+                            {
+                                "person_id": "PPS0000TPQ0H",
+                                "person_name": "新田真剣佑",
+                                "role_id": "EXT00000000I",
+                                "role_name": "役割なし"
+                            },
+                            {
+                                "person_id": "PPS0000OXDK5",
+                                "person_name": "スコット・イーストウッド",
+                                "role_id": "EXT00000000I",
+                                "role_name": "役割なし"
+                            },
+                            {
+                                "person_id": "PPS0000HI001",
+                                "person_name": "チャーリー・デイ",
+                                "role_id": "EXT00000000I",
+                                "role_name": "役割なし"
+                            },
+                            {
+                                "person_id": "PPS000001FJT",
+                                "person_name": "菊地凛子",
+                                "role_id": "EXT00000000I",
+                                "role_name": "役割なし"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT0000XEY5K",
+                        "product_id": "PPD0000XEY5K",
+                        "product_type_id": 6,
+                        "product_type_name": "映像配信パック",
+                        "service_id": "discas",
+                        "service_name": "discas",
+                        "msdb_item": "video",
+                        "item_cd": "",
+                        "item_name": "",
+                        "product_name": "【レンタル:特典映像付き】パシフィック・リム:アップライジング<字幕/吹替パック>",
+                        "product_kana": "パシフィックリムアップライジング",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "“ＫＡＩＪＵ”群と巨大兵器“イェーガー”の戦争から１０年、世界は混沌としながらも、平和を取り戻そうとしていた。ある日、ＰＰＤＣ（環太平洋防衛軍）の会議が開催されようとしているところに、正体不明の“イェーガー”が襲撃をかける。それが新たなる戦争の始まりだった・・・。",
+                        "disp_start_date": "2018-10-11 00:00:00",
+                        "disp_start_month": "2018-10",
+                        "disp_end_date": "2019-06-10 23:59:59",
+                        "disp_end_month": "2019-06",
+                        "sale_start_date": "2018-10-11",
+                        "sale_start_month": "2018-10",
+                        "sale_end_date": "2019-06-10",
+                        "sale_end_month": "2019-06",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000UHURE"
+                        ],
+                        "tieup": "",
+                        "copyright": "(C) 2018 Universal Studios. All Rights Reserved.",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "2018",
+                        "created_year_to": "",
+                        "created_year_str": "2018",
+                        "created_countries": "アメリカ",
+                        "maker_cd": "EXT0000NUXWF",
+                        "maker_name": "NBC Universal Television Japan Ltd",
+                        "maker_name_kana": "",
+                        "maker_name_abbrev": "",
+                        "label_name": "",
+                        "sell_rental_flag": 2,
+                        "view_term": 0,
+                        "reservation_flg": 1,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10616215",
+                        "ccc_family_cd": "",
+                        "ccc_product_id": "8004912389",
+                        "rental_product_cd": "",
+                        "common_vod_code": "101088450",
+                        "vod_goods_cd": "101088450",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "",
+                        "icpn": "",
+                        "media_category_cd": "",
+                        "media_category_name": "",
+                        "media_format_id": "EXT00001MHIJ",
+                        "media_format_name": "SD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": 2,
+                        "subtitle": "",
+                        "sound_spec": "",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "",
+                        "video_info": "",
+                        "number_of_volume": "",
+                        "number_of_set": "",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "【レンタル：特典映像付き】パシフィック・リム：アップライジング＜字幕／吹替パック＞",
+                        "music_disp_artist": "監督：スティーブン・Ｓ・デナイト　出演：ジョン・ボイエガ　スコット・イーストウッド　菊地凛子　新田真剣佑　チャーリー・デイ　ジン・ティエン　ケイリー・スピーニー",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//img.discas.net/img/jacket/ttv_jacket/101/088/450/101088450_24SX.jpg",
+                        "jacket_m": "//img.discas.net/img/jacket/ttv_jacket/101/088/450/101088450_24MX.jpg",
+                        "jacket_l": "//img.discas.net/img/jacket/ttv_jacket/101/088/450/101088450_24L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [],
+                        "scene_m": [],
+                        "scene_l": [],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": 400,
+                        "price_tax_in": 432,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "H1",
+                                "doc_text": "“ＫＡＩＪＵ”群と巨大兵器“イェーガー”の戦争から１０年、世界は混沌としながらも、平和を取り戻そうとしていた。ある日、ＰＰＤＣ（環太平洋防衛軍）の会議が開催されようとしているところに、正体不明の“イェーガー”が襲撃をかける。それが新たなる戦争の始まりだった・・・。"
+                            }
+                        ],
+                        "devices": [
+                            {
+                                "device_id": "EXT0000HEZXI",
+                                "device_name": "tv"
+                            },
+                            {
+                                "device_id": "EXT0000HIZ8U",
+                                "device_name": "android"
+                            },
+                            {
+                                "device_id": "EXT0000M42VG",
+                                "device_name": "ios"
+                            },
+                            {
+                                "device_id": "EXT0000NV29A",
+                                "device_name": "smart"
+                            },
+                            {
+                                "device_id": "EXT0000TC38V",
+                                "device_name": "androidtv"
+                            },
+                            {
+                                "device_id": "EXT0000TC38W",
+                                "device_name": "smarttv"
+                            }
+                        ],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT0000002GF",
+                                "big_genre_name": "洋画ＳＦ",
+                                "medium_genre_id": "EXT000000AW4",
+                                "medium_genre_name": "アドベンチャー",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": 300,
+                        "discas_item": "TTV",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS0000V6OUN",
+                                "person_name": "ジョン・ボイエガ",
+                                "role_id": "EXT00000000I",
+                                "role_name": "役割なし"
+                            },
+                            {
+                                "person_id": "PPS0000X11CR",
+                                "person_name": "スティーブン・S・デナイト",
+                                "role_id": "EXT00000000I",
+                                "role_name": "役割なし"
+                            },
+                            {
+                                "person_id": "PPS0000TPQ0H",
+                                "person_name": "新田真剣佑",
+                                "role_id": "EXT00000000I",
+                                "role_name": "役割なし"
+                            },
+                            {
+                                "person_id": "PPS0000OXDK5",
+                                "person_name": "スコット・イーストウッド",
+                                "role_id": "EXT00000000I",
+                                "role_name": "役割なし"
+                            },
+                            {
+                                "person_id": "PPS0000HI001",
+                                "person_name": "チャーリー・デイ",
+                                "role_id": "EXT00000000I",
+                                "role_name": "役割なし"
+                            },
+                            {
+                                "person_id": "PPS000001FJT",
+                                "person_name": "菊地凛子",
+                                "role_id": "EXT00000000I",
+                                "role_name": "役割なし"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    }
+                ],
+                "video_relations": [],
+                "discas_grade_point": 299,
+                "discas_item": [
+                    "DiscasMovie",
+                    "TTV"
+                ],
+                "ttv_trailer_flg": 0,
+                "ttv_free_movie_flg": 0,
+                "ttv_sell_rental_flg": [
+                    "3",
+                    "2"
+                ],
+                "ttv_low_price": 432,
+                "cinema_id": [
+                    "362179"
+                ],
+                "filmarks_id": [
+                    "58834"
+                ],
+                "dramarks_id": [],
+                "catch_copy": "",
+                "sale_start_date_sell": "2018-10-11",
+                "sale_start_date_rental": "2018-10-11",
+                "trailer_urls": [],
+                "scenes": [
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "362179_01_01",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/21/01/362179_01_01.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "362179_01_02",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/21/02/362179_01_02.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "362179_01_03",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/21/03/362179_01_03.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "362179_01_04",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/21/04/362179_01_04.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "362179_01_05",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/21/05/362179_01_05.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "362179_01_06",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/21/06/362179_01_06.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "362179_01_07",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/21/07/362179_01_07.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "362179_01_08",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/21/08/362179_01_08.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "362179_01_09",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/21/09/362179_01_09.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "362179_01_10",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/21/10/362179_01_10.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "362179_01_11",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/21/11/362179_01_11.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "362179_01_12",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/21/12/362179_01_12.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "362179_01_13",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/21/13/362179_01_13.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "362179_01_14",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/21/14/362179_01_14.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "362179_01_15",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/21/15/362179_01_15.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "362179_01_16",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/21/16/362179_01_16.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "362179_02_01",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/21/01/362179_02_01.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "362179_02_03",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/21/03/362179_02_03.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "362179_02_04",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/21/04/362179_02_04.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "362179_02_05",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/21/05/362179_02_05.jpg",
+                        "disable_flg": 0
+                    }
+                ],
+                "filmarks_mark": 7837,
+                "filmarks_clip": 12737,
+                "filmarks_average": 3.54769,
+                "people": [
+                    {
+                        "person_id": "PPS0000UHRMV",
+                        "person_name": "スティーヴン・S・デナイト",
+                        "role_id": "EXT0000000UH",
+                        "role_name": "監督"
+                    },
+                    {
+                        "person_id": "PPS0000R49HM",
+                        "person_name": "ジョン・ボイエガ",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS0000OXDK5",
+                        "person_name": "スコット・イーストウッド",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS0000UHRMW",
+                        "person_name": "ケイリー・スピーニー",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS000001FJT",
+                        "person_name": "菊地凛子",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS0000QIEVP",
+                        "person_name": "ジン・ティエン",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS000000ZA1",
+                        "person_name": "バーン・ゴーマン",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS0000S9ADH",
+                        "person_name": "アドリア・アルホナ",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS0000R3BQZ",
+                        "person_name": "チャーリー・デイ",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS00000IGH5",
+                        "person_name": "マックス・チャン",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS00000GITU",
+                        "person_name": "カラン・ブラル",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS0000VVKVX",
+                        "person_name": "エミリー・カーマイケル",
+                        "role_id": "EXT00000018Y",
+                        "role_name": "脚本"
+                    },
+                    {
+                        "person_id": "PPS00000RBRL",
+                        "person_name": "キーラ・スナイダー",
+                        "role_id": "EXT00000018Y",
+                        "role_name": "脚本"
+                    },
+                    {
+                        "person_id": "PPS0000UHRMV",
+                        "person_name": "スティーヴン・S・デナイト",
+                        "role_id": "EXT00000018Y",
+                        "role_name": "脚本"
+                    },
+                    {
+                        "person_id": "PPS0000NROQF",
+                        "person_name": "T・S・ノーリン",
+                        "role_id": "EXT00000018Y",
+                        "role_name": "脚本"
+                    },
+                    {
+                        "person_id": "PPS00000IY6J",
+                        "person_name": "ローン・バルフェ",
+                        "role_id": "EXT000000197",
+                        "role_name": "音楽"
+                    }
+                ],
+                "tracks": [],
+                "merged_from": [],
+                "need_age_auth_flg": 0
+            }
+        ]
+    }
+}

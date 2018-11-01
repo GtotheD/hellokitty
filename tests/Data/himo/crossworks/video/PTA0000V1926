@@ -1,0 +1,3934 @@
+{
+    "status": 200,
+    "message": null,
+    "results": {
+        "total": 1,
+        "rows": [
+            {
+                "work_id": "PTA0000V1926",
+                "work_type_id": "2",
+                "msdb_item": "video",
+                "work_format_id": null,
+                "work_format_name": "",
+                "work_title": "娼年",
+                "work_title_kana": "しようねん",
+                "work_title_en": "",
+                "work_title_orig": "",
+                "work_title_sub": "",
+                "work_comment": "",
+                "work_outline": "",
+                "work_copyright": "(C)石田衣良/集英社 2017映画『娼年』製作委員会",
+                "rating_id": "EXT0000000YB",
+                "rating_name": "R-18",
+                "adult_flg": 0,
+                "primary_product_source_id": "PDT0000W9BNL",
+                "primary_product_service_id": "ec",
+                "primary_product_type_id": 1,
+                "disp_start_date": "2018-06-15 00:00:00",
+                "disp_start_month": "2018-06",
+                "sale_start_date": "2018-09-14",
+                "sale_start_month": "2018-09",
+                "created_year_from": "",
+                "created_year_to": "",
+                "created_year": "2017",
+                "created_countries": "日本",
+                "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/13181/4907953210080_1S.jpg",
+                "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/13181/4907953210080_1M.jpg",
+                "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/13181/4907953210080_1L.jpg",
+                "jacket_l4": "",
+                "scene_s": [
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B001S.jpg",
+                        "no": "001"
+                    },
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B002S.jpg",
+                        "no": "002"
+                    },
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B003S.jpg",
+                        "no": "003"
+                    },
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B004S.jpg",
+                        "no": "004"
+                    }
+                ],
+                "scene_m": [
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B001M.jpg",
+                        "no": "001"
+                    },
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B002M.jpg",
+                        "no": "002"
+                    },
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B003M.jpg",
+                        "no": "003"
+                    },
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B004M.jpg",
+                        "no": "004"
+                    }
+                ],
+                "scene_l": [
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B001L.jpg",
+                        "no": "001"
+                    },
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B002L.jpg",
+                        "no": "002"
+                    },
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B003L.jpg",
+                        "no": "003"
+                    },
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B004L.jpg",
+                        "no": "004"
+                    }
+                ],
+                "trailor_pc": [],
+                "season_name": "",
+                "season_number": null,
+                "book_series_name": "",
+                "book_series_name_kana": "",
+                "feature_keywords": [],
+                "priv_keywords": [],
+                "work_tags": [
+                    "riricaleinfo201809r"
+                ],
+                "wakati_words": [],
+                "is_compilation": 0,
+                "series_completed": 0,
+                "disable_flg": 0,
+                "delete_flg": 0,
+                "ids": [
+                    {
+                        "id_type": "0107",
+                        "id_value": "362721"
+                    },
+                    {
+                        "id_type": "0108",
+                        "id_value": "76811"
+                    },
+                    {
+                        "id_type": "0103",
+                        "id_value": "10612005"
+                    },
+                    {
+                        "id_type": "0105",
+                        "id_value": "10605045"
+                    },
+                    {
+                        "id_type": "0106",
+                        "id_value": "101022236"
+                    }
+                ],
+                "docs": [
+                    {
+                        "doc_type_id": "01",
+                        "doc_source_id": "03",
+                        "doc_text": "石田衣良の同名小説を松坂桃李主演で忠実に映画化した愛のドラマ。名門大学に通いながら無気力な日々を送っている若者が、ふとしたきっかけから“娼夫”となり、生と性の奥深さを知っていく。共演に真飛聖ほか。"
+                    },
+                    {
+                        "doc_type_id": "02",
+                        "doc_source_id": "04",
+                        "doc_text": "劇団「ポツドール」を主宰するかたわら「愛の渦」「何者」など映画監督としても活躍する三浦大輔が、2016年に手がけた石田衣良原作、松坂桃李主演の舞台を、再び松坂桃李を主演に迎えて映画化した衝撃作。ふとしたことから女性専用コールクラブで働き始めた青年が、様々な女性と体を重ねていく中で彼女たちの悩みや欲望を受け止めていくとともに、自らも成長していく姿を、妥協のない性愛描写を通して描き出していく。名門大学に通う森中領は、恋愛や女性に興味が持てずに無気力な毎日を送っていた。そんなある日、会員制ボーイズクラブ“Le Club Passion”のオーナー御堂静香と出会い、入店の試験を受けることに。こうして戸惑いつつも娼夫リョウとして働き始め、様々な女性たちの心の奥底の欲望と向き合っていく領だったが…。"
+                    },
+                    {
+                        "doc_type_id": "04",
+                        "doc_source_id": "03",
+                        "doc_text": "【Disc-1】<BR>娼年"
+                    },
+                    {
+                        "doc_type_id": "04",
+                        "doc_source_id": "04",
+                        "doc_text": "本編ディスク、特典ディスク"
+                    },
+                    {
+                        "doc_type_id": "06",
+                        "doc_source_id": "04",
+                        "doc_text": "豪華三方背ボックス＆デジパック仕様<BR><BR><BR>＜封入特典＞<BR><BR>特製ブックレット<BR>特製フォトブック<BR><BR><BR>＜映像特典＞<BR><BR>メイキング映像<BR>イベント映像集"
+                    },
+                    {
+                        "doc_type_id": "10",
+                        "doc_source_id": "03",
+                        "doc_text": "豪華三方背ボックス＆デジパック仕様/特製ブックレット/特製フォトブック/［2］特典ディスク"
+                    },
+                    {
+                        "doc_type_id": "11",
+                        "doc_source_id": "03",
+                        "doc_text": "［2］メイキング映像/イベント映像集"
+                    }
+                ],
+                "awards": [],
+                "screens": [],
+                "onairs": [],
+                "magazines": [],
+                "genres": [
+                    {
+                        "big_genre_id": "EXT00000014Q",
+                        "big_genre_name": "邦画ドラマ",
+                        "medium_genre_id": "EXT000000566",
+                        "medium_genre_name": "エロティック",
+                        "small_genre_id": "",
+                        "small_genre_name": "",
+                        "shikiriban_id": "",
+                        "shikiriban_name": ""
+                    }
+                ],
+                "products": [
+                    {
+                        "id": "PDT0000WFQV9",
+                        "product_id": "PPD0000WFQV9",
+                        "product_type_id": 2,
+                        "product_type_name": "レンタル",
+                        "service_id": "tol",
+                        "service_name": "tol",
+                        "msdb_item": "video",
+                        "item_cd": "0022",
+                        "item_name": "ブルーレイ",
+                        "product_name": "娼年",
+                        "product_kana": "しようねん",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2018-06-19 00:00:01",
+                        "disp_start_month": "2018-06",
+                        "disp_end_date": "2030-12-28 00:00:00",
+                        "disp_end_month": "2030-12",
+                        "sale_start_date": "2018-09-14",
+                        "sale_start_month": "2018-09",
+                        "sale_end_date": "2030-12-28",
+                        "sale_end_month": "2030-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000V1926"
+                        ],
+                        "tieup": "",
+                        "copyright": "(C)石田衣良/集英社 2017映画『娼年』製作委員会",
+                        "rating_id": "EXT0000000YB",
+                        "rating_name": "R-18",
+                        "adult_flg": 0,
+                        "created_year_from": "2017",
+                        "created_year_to": "",
+                        "created_year_str": "2017",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT00000021V",
+                        "maker_name": "ハピネット",
+                        "maker_name_kana": "はぴねつと",
+                        "maker_name_abbrev": "ハピネット",
+                        "label_name": "",
+                        "sell_rental_flag": 2,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10612005",
+                        "ccc_family_cd": "10612005001",
+                        "ccc_product_id": "206020035",
+                        "rental_product_cd": "060336574",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4907953210097",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "80XRJ20104",
+                        "icpn": "",
+                        "media_category_cd": "12",
+                        "media_category_name": "レンタルDVD",
+                        "media_format_id": "EXT0000001VI",
+                        "media_format_name": "Blu-ray",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "015900",
+                        "product_spec": "",
+                        "screen_size": "シネスコ",
+                        "subtitle_flg": null,
+                        "subtitle": "日本語ガイド字幕",
+                        "sound_spec": "１：ＤＴＳ－ＨＤ　Ｍａｓｔｅｒ　Ａｕｄｉｏ／５．１ｃｈサラウンド／日本語",
+                        "region_info": "",
+                        "disc_info": "２層（５０ＧＢ）",
+                        "color_spec": "カラー",
+                        "video_info": "１６：９／ＬＢ",
+                        "number_of_volume": "001",
+                        "number_of_set": "1",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/13181/4907953210097_1S.jpg",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/13181/4907953210097_1M.jpg",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/13181/4907953210097_1L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B001S.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B002S.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B003S.jpg",
+                                "no": "003"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B004S.jpg",
+                                "no": "004"
+                            }
+                        ],
+                        "scene_m": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B001M.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B002M.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B003M.jpg",
+                                "no": "003"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B004M.jpg",
+                                "no": "004"
+                            }
+                        ],
+                        "scene_l": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B001L.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B002L.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B003L.jpg",
+                                "no": "003"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B004L.jpg",
+                                "no": "004"
+                            }
+                        ],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": null,
+                        "price_tax_in": null,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "04",
+                                "doc_text": "劇団「ポツドール」を主宰するかたわら「愛の渦」「何者」など映画監督としても活躍する三浦大輔が、2016年に手がけた石田衣良原作、松坂桃李主演の舞台を、再び松坂桃李を主演に迎えて映画化した衝撃作。ふとしたことから女性専用コールクラブで働き始めた青年が、様々な女性と体を重ねていく中で彼女たちの悩みや欲望を受け止めていくとともに、自らも成長していく姿を、妥協のない性愛描写を通して描き出していく。名門大学に通う森中領は、恋愛や女性に興味が持てずに無気力な毎日を送っていた。そんなある日、会員制ボーイズクラブ“Le Club Passion”のオーナー御堂静香と出会い、入店の試験を受けることに。こうして戸惑いつつも娼夫リョウとして働き始め、様々な女性たちの心の奥底の欲望と向き合っていく領だったが…。"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT00000014Q",
+                                "big_genre_name": "邦画ドラマ",
+                                "medium_genre_id": "EXT000000566",
+                                "medium_genre_name": "エロティック",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [
+                            "362721"
+                        ],
+                        "filmarks_id": [
+                            "76811"
+                        ],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS00000ILRG",
+                                "person_name": "三浦大輔",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS000005SAP",
+                                "person_name": "石田衣良",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            },
+                            {
+                                "person_id": "PPS000004B73",
+                                "person_name": "松坂桃李",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000ILRG",
+                                "person_name": "三浦大輔",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS000001HZE",
+                                "person_name": "真飛聖",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000QEUS",
+                                "person_name": "冨手麻妙",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000IQHE",
+                                "person_name": "猪塚健太",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000R4WIA",
+                                "person_name": "桜井ユキ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000007G81",
+                                "person_name": "小柳友",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000006T0B",
+                                "person_name": "馬渕英里何",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000HUJB8",
+                                "person_name": "荻野友里",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000DCUQ",
+                                "person_name": "佐々木心音",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000R2TH6",
+                                "person_name": "大谷麻衣",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000093C",
+                                "person_name": "半野喜弘",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            }
+                        ],
+                        "need_age_auth_flg": 1
+                    },
+                    {
+                        "id": "PDT0000WFQXR",
+                        "product_id": "PPD0000WFQXR",
+                        "product_type_id": 2,
+                        "product_type_name": "レンタル",
+                        "service_id": "tol",
+                        "service_name": "tol",
+                        "msdb_item": "video",
+                        "item_cd": "0021",
+                        "item_name": "ＤＶＤ",
+                        "product_name": "娼年",
+                        "product_kana": "しようねん",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2018-06-19 00:00:01",
+                        "disp_start_month": "2018-06",
+                        "disp_end_date": "2030-12-28 00:00:00",
+                        "disp_end_month": "2030-12",
+                        "sale_start_date": "2018-09-14",
+                        "sale_start_month": "2018-09",
+                        "sale_end_date": "2030-12-28",
+                        "sale_end_month": "2030-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000V1926"
+                        ],
+                        "tieup": "",
+                        "copyright": "(C)石田衣良/集英社 2017映画『娼年』製作委員会",
+                        "rating_id": "EXT0000000YB",
+                        "rating_name": "R-18",
+                        "adult_flg": 0,
+                        "created_year_from": "2017",
+                        "created_year_to": "",
+                        "created_year_str": "2017",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT00000021V",
+                        "maker_name": "ハピネット",
+                        "maker_name_kana": "はぴねつと",
+                        "maker_name_abbrev": "ハピネット",
+                        "label_name": "",
+                        "sell_rental_flag": 2,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10612005",
+                        "ccc_family_cd": "10612005001",
+                        "ccc_product_id": "206020034",
+                        "rental_product_cd": "084069649",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4907953210080",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "80DRJ30404",
+                        "icpn": "",
+                        "media_category_cd": "12",
+                        "media_category_name": "レンタルDVD",
+                        "media_format_id": "EXT000006GPK",
+                        "media_format_name": "DVD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "015900",
+                        "product_spec": "",
+                        "screen_size": "シネスコ",
+                        "subtitle_flg": null,
+                        "subtitle": "日本語ガイド字幕",
+                        "sound_spec": "１：ドルビーデジタル／５．１ｃｈサラウンド／日本語",
+                        "region_info": "２",
+                        "disc_info": "片面２層",
+                        "color_spec": "カラー",
+                        "video_info": "１６：９／ＬＢ",
+                        "number_of_volume": "001",
+                        "number_of_set": "1",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/13181/4907953210080_1S.jpg",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/13181/4907953210080_1M.jpg",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/13181/4907953210080_1L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B001S.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B002S.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B003S.jpg",
+                                "no": "003"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B004S.jpg",
+                                "no": "004"
+                            }
+                        ],
+                        "scene_m": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B001M.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B002M.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B003M.jpg",
+                                "no": "003"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B004M.jpg",
+                                "no": "004"
+                            }
+                        ],
+                        "scene_l": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B001L.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B002L.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B003L.jpg",
+                                "no": "003"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B004L.jpg",
+                                "no": "004"
+                            }
+                        ],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [
+                            "riricaleinfo201809r"
+                        ],
+                        "price_tax_out": null,
+                        "price_tax_in": null,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "04",
+                                "doc_text": "劇団「ポツドール」を主宰するかたわら「愛の渦」「何者」など映画監督としても活躍する三浦大輔が、2016年に手がけた石田衣良原作、松坂桃李主演の舞台を、再び松坂桃李を主演に迎えて映画化した衝撃作。ふとしたことから女性専用コールクラブで働き始めた青年が、様々な女性と体を重ねていく中で彼女たちの悩みや欲望を受け止めていくとともに、自らも成長していく姿を、妥協のない性愛描写を通して描き出していく。名門大学に通う森中領は、恋愛や女性に興味が持てずに無気力な毎日を送っていた。そんなある日、会員制ボーイズクラブ“Le Club Passion”のオーナー御堂静香と出会い、入店の試験を受けることに。こうして戸惑いつつも娼夫リョウとして働き始め、様々な女性たちの心の奥底の欲望と向き合っていく領だったが…。"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT00000014Q",
+                                "big_genre_name": "邦画ドラマ",
+                                "medium_genre_id": "EXT000000566",
+                                "medium_genre_name": "エロティック",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [
+                            "362721"
+                        ],
+                        "filmarks_id": [
+                            "76811"
+                        ],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS00000ILRG",
+                                "person_name": "三浦大輔",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS000005SAP",
+                                "person_name": "石田衣良",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            },
+                            {
+                                "person_id": "PPS000004B73",
+                                "person_name": "松坂桃李",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000ILRG",
+                                "person_name": "三浦大輔",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS000001HZE",
+                                "person_name": "真飛聖",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000QEUS",
+                                "person_name": "冨手麻妙",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000IQHE",
+                                "person_name": "猪塚健太",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000R4WIA",
+                                "person_name": "桜井ユキ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000007G81",
+                                "person_name": "小柳友",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000006T0B",
+                                "person_name": "馬渕英里何",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000HUJB8",
+                                "person_name": "荻野友里",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000DCUQ",
+                                "person_name": "佐々木心音",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000R2TH6",
+                                "person_name": "大谷麻衣",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000093C",
+                                "person_name": "半野喜弘",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            },
+                            {
+                                "person_id": "PPS000039J3C",
+                                "person_name": "三浦大輔",
+                                "role_id": "EXT0000IA59E",
+                                "role_name": "監督・脚本"
+                            },
+                            {
+                                "person_id": "PPS0000WK13J",
+                                "person_name": "Jam",
+                                "role_id": "EXT000000196",
+                                "role_name": "撮影"
+                            },
+                            {
+                                "person_id": "PPS00001Q9XG",
+                                "person_name": "真飛聖",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            }
+                        ],
+                        "need_age_auth_flg": 1
+                    },
+                    {
+                        "id": "PDT0000WK13I",
+                        "product_id": "PPD0000WFQXR",
+                        "product_type_id": 2,
+                        "product_type_name": "レンタル",
+                        "service_id": "discas",
+                        "service_name": "discas",
+                        "msdb_item": "video",
+                        "item_cd": "0021",
+                        "item_name": "ＤＶＤ",
+                        "product_name": "娼年",
+                        "product_kana": "シヨウネン",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2018-06-19 00:00:00",
+                        "disp_start_month": "2018-06",
+                        "disp_end_date": "2099-12-31 00:00:00",
+                        "disp_end_month": "2099-12",
+                        "sale_start_date": "2018-09-14",
+                        "sale_start_month": "2018-09",
+                        "sale_end_date": "2099-12-31",
+                        "sale_end_month": "2099-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000V1926"
+                        ],
+                        "tieup": "",
+                        "copyright": "(C)石田衣良/集英社 2017映画『娼年』製作委員会",
+                        "rating_id": "EXT0000000YB",
+                        "rating_name": "R-18",
+                        "adult_flg": 0,
+                        "created_year_from": "2017",
+                        "created_year_to": "",
+                        "created_year_str": "2017",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT00000021V",
+                        "maker_name": "ハピネット",
+                        "maker_name_kana": "はぴねつと",
+                        "maker_name_abbrev": "ハピネット",
+                        "label_name": "",
+                        "sell_rental_flag": 2,
+                        "view_term": null,
+                        "reservation_flg": 1,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10612005",
+                        "ccc_family_cd": "10612005001",
+                        "ccc_product_id": "3769533716",
+                        "rental_product_cd": "084069649",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4907953210080",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "80DRJ30404",
+                        "icpn": "",
+                        "media_category_cd": "12",
+                        "media_category_name": "レンタルDVD",
+                        "media_format_id": "EXT000006GPK",
+                        "media_format_name": "DVD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "015900",
+                        "product_spec": "",
+                        "screen_size": "シネスコ",
+                        "subtitle_flg": null,
+                        "subtitle": "日（ガイド）",
+                        "sound_spec": "１：ドルビーデジタル／５．１ｃｈサラウンド／日本語",
+                        "region_info": "２",
+                        "disc_info": "片面２層",
+                        "color_spec": "カラー",
+                        "video_info": "１６：９／ＬＢ",
+                        "number_of_volume": "001",
+                        "number_of_set": "1",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//img.discas.net/img/jacket/core/201807/12/4907953210080_1SX.jpg",
+                        "jacket_m": "//img.discas.net/img/jacket/core/201807/12/4907953210080_1MX.jpg",
+                        "jacket_l": "//img.discas.net/img/jacket/core/201807/12/4907953210080_1L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [],
+                        "scene_m": [],
+                        "scene_l": [],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [
+                            "riricaleinfo201809r"
+                        ],
+                        "price_tax_out": null,
+                        "price_tax_in": null,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "04",
+                                "doc_text": "劇団「ポツドール」を主宰するかたわら「愛の渦」「何者」など映画監督としても活躍する三浦大輔が、2016年に手がけた石田衣良原作、松坂桃李主演の舞台を、再び松坂桃李を主演に迎えて映画化した衝撃作。ふとしたことから女性専用コールクラブで働き始めた青年が、様々な女性と体を重ねていく中で彼女たちの悩みや欲望を受け止めていくとともに、自らも成長していく姿を、妥協のない性愛描写を通して描き出していく。名門大学に通う森中領は、恋愛や女性に興味が持てずに無気力な毎日を送っていた。そんなある日、会員制ボーイズクラブ“Le Club Passion”のオーナー御堂静香と出会い、入店の試験を受けることに。こうして戸惑いつつも娼夫リョウとして働き始め、様々な女性たちの心の奥底の欲望と向き合っていく領だったが…。"
+                            },
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "H1",
+                                "doc_text": "石田衣良の原作小説を松坂桃李主演で映画化した愛のドラマ。名門大学に通う森中領は日々の生活に退屈し、バイトに明け暮れる日々を送っていた。ある日、領は女性専用コールクラブを手掛ける御堂静香と出会い、“情熱の試験”を受けることに…。※R18＋"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT00000014Q",
+                                "big_genre_name": "邦画ドラマ",
+                                "medium_genre_id": "EXT000000566",
+                                "medium_genre_name": "エロティック",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "DiscasMovie",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS00000ILRG",
+                                "person_name": "三浦大輔",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS000005SAP",
+                                "person_name": "石田衣良",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            },
+                            {
+                                "person_id": "PPS000004B73",
+                                "person_name": "松坂桃李",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000ILRG",
+                                "person_name": "三浦大輔",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS000001HZE",
+                                "person_name": "真飛聖",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000QEUS",
+                                "person_name": "冨手麻妙",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000IQHE",
+                                "person_name": "猪塚健太",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000R4WIA",
+                                "person_name": "桜井ユキ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000007G81",
+                                "person_name": "小柳友",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000006T0B",
+                                "person_name": "馬渕英里何",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000HUJB8",
+                                "person_name": "荻野友里",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000DCUQ",
+                                "person_name": "佐々木心音",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000R2TH6",
+                                "person_name": "大谷麻衣",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000093C",
+                                "person_name": "半野喜弘",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            },
+                            {
+                                "person_id": "PPS000039J3C",
+                                "person_name": "三浦大輔",
+                                "role_id": "EXT0000IA59E",
+                                "role_name": "監督・脚本"
+                            },
+                            {
+                                "person_id": "PPS0000WK13J",
+                                "person_name": "Jam",
+                                "role_id": "EXT000000196",
+                                "role_name": "撮影"
+                            },
+                            {
+                                "person_id": "PPS00001Q9XG",
+                                "person_name": "真飛聖",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            }
+                        ],
+                        "need_age_auth_flg": 1
+                    },
+                    {
+                        "id": "PDT0000WK14R",
+                        "product_id": "PPD0000WFQV9",
+                        "product_type_id": 2,
+                        "product_type_name": "レンタル",
+                        "service_id": "discas",
+                        "service_name": "discas",
+                        "msdb_item": "video",
+                        "item_cd": "0022",
+                        "item_name": "ブルーレイ",
+                        "product_name": "娼年",
+                        "product_kana": "シヨウネン",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2018-06-19 00:00:00",
+                        "disp_start_month": "2018-06",
+                        "disp_end_date": "2099-12-31 00:00:00",
+                        "disp_end_month": "2099-12",
+                        "sale_start_date": "2018-09-14",
+                        "sale_start_month": "2018-09",
+                        "sale_end_date": "2099-12-31",
+                        "sale_end_month": "2099-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000V1926"
+                        ],
+                        "tieup": "",
+                        "copyright": "(C)石田衣良/集英社 2017映画『娼年』製作委員会",
+                        "rating_id": "EXT0000000YB",
+                        "rating_name": "R-18",
+                        "adult_flg": 0,
+                        "created_year_from": "2017",
+                        "created_year_to": "",
+                        "created_year_str": "2017",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT00000021V",
+                        "maker_name": "ハピネット",
+                        "maker_name_kana": "はぴねつと",
+                        "maker_name_abbrev": "ハピネット",
+                        "label_name": "",
+                        "sell_rental_flag": 2,
+                        "view_term": null,
+                        "reservation_flg": 1,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10612005",
+                        "ccc_family_cd": "10612005001",
+                        "ccc_product_id": "3766391835",
+                        "rental_product_cd": "060336574",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4907953210097",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "80XRJ20104",
+                        "icpn": "",
+                        "media_category_cd": "12",
+                        "media_category_name": "レンタルDVD",
+                        "media_format_id": "EXT0000001VI",
+                        "media_format_name": "Blu-ray",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "015900",
+                        "product_spec": "この商品はブルーレイディスクです。※DVDプレイヤーでは再生できません。",
+                        "screen_size": "シネスコ",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "１：ＤＴＳ－ＨＤ　Ｍａｓｔｅｒ　Ａｕｄｉｏ／５．１ｃｈサラウンド／日本語",
+                        "region_info": "",
+                        "disc_info": "２層（５０ＧＢ）",
+                        "color_spec": "カラー",
+                        "video_info": "１６：９／ＬＢ",
+                        "number_of_volume": "001",
+                        "number_of_set": "1",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//img.discas.net/img/jacket/core/201807/12/4907953210097_1SX.jpg",
+                        "jacket_m": "//img.discas.net/img/jacket/core/201807/12/4907953210097_1MX.jpg",
+                        "jacket_l": "//img.discas.net/img/jacket/core/201807/12/4907953210097_1L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [],
+                        "scene_m": [],
+                        "scene_l": [],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": null,
+                        "price_tax_in": null,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "04",
+                                "doc_text": "劇団「ポツドール」を主宰するかたわら「愛の渦」「何者」など映画監督としても活躍する三浦大輔が、2016年に手がけた石田衣良原作、松坂桃李主演の舞台を、再び松坂桃李を主演に迎えて映画化した衝撃作。ふとしたことから女性専用コールクラブで働き始めた青年が、様々な女性と体を重ねていく中で彼女たちの悩みや欲望を受け止めていくとともに、自らも成長していく姿を、妥協のない性愛描写を通して描き出していく。名門大学に通う森中領は、恋愛や女性に興味が持てずに無気力な毎日を送っていた。そんなある日、会員制ボーイズクラブ“Le Club Passion”のオーナー御堂静香と出会い、入店の試験を受けることに。こうして戸惑いつつも娼夫リョウとして働き始め、様々な女性たちの心の奥底の欲望と向き合っていく領だったが…。"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT00000014Q",
+                                "big_genre_name": "邦画ドラマ",
+                                "medium_genre_id": "EXT000000566",
+                                "medium_genre_name": "エロティック",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": 324,
+                        "discas_item": "DiscasMovie",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS00000ILRG",
+                                "person_name": "三浦大輔",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS000005SAP",
+                                "person_name": "石田衣良",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            },
+                            {
+                                "person_id": "PPS000004B73",
+                                "person_name": "松坂桃李",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000ILRG",
+                                "person_name": "三浦大輔",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS000001HZE",
+                                "person_name": "真飛聖",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000QEUS",
+                                "person_name": "冨手麻妙",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000IQHE",
+                                "person_name": "猪塚健太",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000R4WIA",
+                                "person_name": "桜井ユキ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000007G81",
+                                "person_name": "小柳友",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000006T0B",
+                                "person_name": "馬渕英里何",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000HUJB8",
+                                "person_name": "荻野友里",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000DCUQ",
+                                "person_name": "佐々木心音",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000R2TH6",
+                                "person_name": "大谷麻衣",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000093C",
+                                "person_name": "半野喜弘",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            }
+                        ],
+                        "need_age_auth_flg": 1
+                    },
+                    {
+                        "id": "PDT0000W95UP",
+                        "product_id": "PPD0000V15WS",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "tol",
+                        "service_name": "tol",
+                        "msdb_item": "video",
+                        "item_cd": "1021",
+                        "item_name": "ＤＶＤ",
+                        "product_name": "娼年",
+                        "product_kana": "しようねん",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2018-06-15 00:00:00",
+                        "disp_start_month": "2018-06",
+                        "disp_end_date": "2030-12-28 00:00:00",
+                        "disp_end_month": "2030-12",
+                        "sale_start_date": "2018-09-14",
+                        "sale_start_month": "2018-09",
+                        "sale_end_date": "2030-12-28",
+                        "sale_end_month": "2030-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000V1926"
+                        ],
+                        "tieup": "",
+                        "copyright": "(C)石田衣良/集英社 2017映画『娼年』製作委員会",
+                        "rating_id": "EXT0000000YB",
+                        "rating_name": "R-18",
+                        "adult_flg": 0,
+                        "created_year_from": "2017",
+                        "created_year_to": "",
+                        "created_year_str": "2017",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT00000021V",
+                        "maker_name": "ハピネット",
+                        "maker_name_kana": "はぴねつと",
+                        "maker_name_abbrev": "ハピネット",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10612005",
+                        "ccc_family_cd": "10612005001",
+                        "ccc_product_id": "205993835",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4907953210172",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "BIBJ3268",
+                        "icpn": "",
+                        "media_category_cd": "22",
+                        "media_category_name": "販売DVD",
+                        "media_format_id": "EXT000006GPK",
+                        "media_format_name": "DVD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "015900",
+                        "product_spec": "",
+                        "screen_size": "シネスコ",
+                        "subtitle_flg": null,
+                        "subtitle": "日本語ガイド字幕",
+                        "sound_spec": "１：ドルビーデジタル／５．１ｃｈサラウンド／日本語",
+                        "region_info": "２",
+                        "disc_info": "片面２層",
+                        "color_spec": "カラー",
+                        "video_info": "１６：９／ＬＢ",
+                        "number_of_volume": "",
+                        "number_of_set": "0",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/13085/4907953210172_1S.jpg",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/13085/4907953210172_1M.jpg",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/13085/4907953210172_1L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B001S.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B002S.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B003S.jpg",
+                                "no": "003"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B004S.jpg",
+                                "no": "004"
+                            }
+                        ],
+                        "scene_m": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B001M.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B002M.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B003M.jpg",
+                                "no": "003"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B004M.jpg",
+                                "no": "004"
+                            }
+                        ],
+                        "scene_l": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B001L.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B002L.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B003L.jpg",
+                                "no": "003"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B004L.jpg",
+                                "no": "004"
+                            }
+                        ],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": 3900,
+                        "price_tax_in": 4212,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "01",
+                                "doc_source_id": "03",
+                                "doc_text": "石田衣良の同名小説を松坂桃李主演で忠実に映画化した愛のドラマ。名門大学に通いながら無気力な日々を送っている若者が、ふとしたきっかけから“娼夫”となり、生と性の奥深さを知っていく。共演に真飛聖ほか。"
+                            },
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "04",
+                                "doc_text": "劇団「ポツドール」を主宰するかたわら「愛の渦」「何者」など映画監督としても活躍する三浦大輔が、2016年に手がけた石田衣良原作、松坂桃李主演の舞台を、再び松坂桃李を主演に迎えて映画化した衝撃作。ふとしたことから女性専用コールクラブで働き始めた青年が、様々な女性と体を重ねていく中で彼女たちの悩みや欲望を受け止めていくとともに、自らも成長していく姿を、妥協のない性愛描写を通して描き出していく。名門大学に通う森中領は、恋愛や女性に興味が持てずに無気力な毎日を送っていた。そんなある日、会員制ボーイズクラブ“Le Club Passion”のオーナー御堂静香と出会い、入店の試験を受けることに。こうして戸惑いつつも娼夫リョウとして働き始め、様々な女性たちの心の奥底の欲望と向き合っていく領だったが…。"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT00000014Q",
+                                "big_genre_name": "邦画ドラマ",
+                                "medium_genre_id": "EXT000000566",
+                                "medium_genre_name": "エロティック",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [
+                            "362721"
+                        ],
+                        "filmarks_id": [
+                            "76811"
+                        ],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS00000ILRG",
+                                "person_name": "三浦大輔",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS000005SAP",
+                                "person_name": "石田衣良",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            },
+                            {
+                                "person_id": "PPS000004B73",
+                                "person_name": "松坂桃李",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000ILRG",
+                                "person_name": "三浦大輔",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS000001HZE",
+                                "person_name": "真飛聖",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000QEUS",
+                                "person_name": "冨手麻妙",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000IQHE",
+                                "person_name": "猪塚健太",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000R4WIA",
+                                "person_name": "桜井ユキ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000007G81",
+                                "person_name": "小柳友",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000006T0B",
+                                "person_name": "馬渕英里何",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000HUJB8",
+                                "person_name": "荻野友里",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000DCUQ",
+                                "person_name": "佐々木心音",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000R2TH6",
+                                "person_name": "大谷麻衣",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000093C",
+                                "person_name": "半野喜弘",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            }
+                        ],
+                        "need_age_auth_flg": 1
+                    },
+                    {
+                        "id": "PDT0000W95V2",
+                        "product_id": "PPD0000W95V2",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "tol",
+                        "service_name": "tol",
+                        "msdb_item": "video",
+                        "item_cd": "1022",
+                        "item_name": "ブルーレイ",
+                        "product_name": "娼年",
+                        "product_kana": "しようねん",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2018-06-15 00:00:00",
+                        "disp_start_month": "2018-06",
+                        "disp_end_date": "2030-12-28 00:00:00",
+                        "disp_end_month": "2030-12",
+                        "sale_start_date": "2018-09-14",
+                        "sale_start_month": "2018-09",
+                        "sale_end_date": "2030-12-28",
+                        "sale_end_month": "2030-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000V1926"
+                        ],
+                        "tieup": "",
+                        "copyright": "(C)石田衣良/集英社 2017映画『娼年』製作委員会",
+                        "rating_id": "EXT0000000YB",
+                        "rating_name": "R-18",
+                        "adult_flg": 0,
+                        "created_year_from": "2017",
+                        "created_year_to": "",
+                        "created_year_str": "2017",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT00000021V",
+                        "maker_name": "ハピネット",
+                        "maker_name_kana": "はぴねつと",
+                        "maker_name_abbrev": "ハピネット",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10612005",
+                        "ccc_family_cd": "10612005001",
+                        "ccc_product_id": "205993836",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4907953210189",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "BIXJ268",
+                        "icpn": "",
+                        "media_category_cd": "22",
+                        "media_category_name": "販売DVD",
+                        "media_format_id": "EXT0000001VI",
+                        "media_format_name": "Blu-ray",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "015900",
+                        "product_spec": "",
+                        "screen_size": "シネスコ",
+                        "subtitle_flg": null,
+                        "subtitle": "日本語ガイド字幕",
+                        "sound_spec": "１：ＤＴＳ－ＨＤ　Ｍａｓｔｅｒ　Ａｕｄｉｏ／５．１ｃｈサラウンド／日本語",
+                        "region_info": "",
+                        "disc_info": "２層（５０ＧＢ）",
+                        "color_spec": "カラー",
+                        "video_info": "１６：９／ＬＢ",
+                        "number_of_volume": "",
+                        "number_of_set": "0",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/13085/4907953210189_1S.jpg",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/13085/4907953210189_1M.jpg",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/13085/4907953210189_1L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B001S.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B002S.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B003S.jpg",
+                                "no": "003"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B004S.jpg",
+                                "no": "004"
+                            }
+                        ],
+                        "scene_m": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B001M.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B002M.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B003M.jpg",
+                                "no": "003"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B004M.jpg",
+                                "no": "004"
+                            }
+                        ],
+                        "scene_l": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B001L.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B002L.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B003L.jpg",
+                                "no": "003"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B004L.jpg",
+                                "no": "004"
+                            }
+                        ],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": 4800,
+                        "price_tax_in": 5184,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "01",
+                                "doc_source_id": "03",
+                                "doc_text": "石田衣良の同名小説を松坂桃李主演で忠実に映画化した愛のドラマ。名門大学に通いながら無気力な日々を送っている若者が、ふとしたきっかけから“娼夫”となり、生と性の奥深さを知っていく。共演に真飛聖ほか。"
+                            },
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "04",
+                                "doc_text": "劇団「ポツドール」を主宰するかたわら「愛の渦」「何者」など映画監督としても活躍する三浦大輔が、2016年に手がけた石田衣良原作、松坂桃李主演の舞台を、再び松坂桃李を主演に迎えて映画化した衝撃作。ふとしたことから女性専用コールクラブで働き始めた青年が、様々な女性と体を重ねていく中で彼女たちの悩みや欲望を受け止めていくとともに、自らも成長していく姿を、妥協のない性愛描写を通して描き出していく。名門大学に通う森中領は、恋愛や女性に興味が持てずに無気力な毎日を送っていた。そんなある日、会員制ボーイズクラブ“Le Club Passion”のオーナー御堂静香と出会い、入店の試験を受けることに。こうして戸惑いつつも娼夫リョウとして働き始め、様々な女性たちの心の奥底の欲望と向き合っていく領だったが…。"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT00000014Q",
+                                "big_genre_name": "邦画ドラマ",
+                                "medium_genre_id": "EXT000000566",
+                                "medium_genre_name": "エロティック",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [
+                            "362721"
+                        ],
+                        "filmarks_id": [
+                            "76811"
+                        ],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS00000ILRG",
+                                "person_name": "三浦大輔",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS000005SAP",
+                                "person_name": "石田衣良",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            },
+                            {
+                                "person_id": "PPS000004B73",
+                                "person_name": "松坂桃李",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000ILRG",
+                                "person_name": "三浦大輔",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS000001HZE",
+                                "person_name": "真飛聖",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000QEUS",
+                                "person_name": "冨手麻妙",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000IQHE",
+                                "person_name": "猪塚健太",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000R4WIA",
+                                "person_name": "桜井ユキ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000007G81",
+                                "person_name": "小柳友",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000006T0B",
+                                "person_name": "馬渕英里何",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000HUJB8",
+                                "person_name": "荻野友里",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000DCUQ",
+                                "person_name": "佐々木心音",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000R2TH6",
+                                "person_name": "大谷麻衣",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000093C",
+                                "person_name": "半野喜弘",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            }
+                        ],
+                        "need_age_auth_flg": 1
+                    },
+                    {
+                        "id": "PDT0000W9BNO",
+                        "product_id": "PPD0000V15WS",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "ec",
+                        "service_name": "ec",
+                        "msdb_item": "video",
+                        "item_cd": "1021",
+                        "item_name": "ＤＶＤ",
+                        "product_name": "娼年",
+                        "product_kana": "しようねん",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2018-06-15 00:00:00",
+                        "disp_start_month": "2018-06",
+                        "disp_end_date": "2068-06-14 23:59:59",
+                        "disp_end_month": "2068-06",
+                        "sale_start_date": "2018-09-14",
+                        "sale_start_month": "2018-09",
+                        "sale_end_date": "2068-09-13",
+                        "sale_end_month": "2068-09",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000V1926"
+                        ],
+                        "tieup": "",
+                        "copyright": "(C)石田衣良/集英社 2017映画『娼年』製作委員会",
+                        "rating_id": "EXT0000000YB",
+                        "rating_name": "R-18",
+                        "adult_flg": 0,
+                        "created_year_from": "2017",
+                        "created_year_to": "",
+                        "created_year_str": "2017",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT00000021V",
+                        "maker_name": "ハピネット",
+                        "maker_name_kana": "はぴねつと",
+                        "maker_name_abbrev": "ハピネット",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10612005",
+                        "ccc_family_cd": "10612005001",
+                        "ccc_product_id": "205993835",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4907953210172",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "BIBJ3268",
+                        "icpn": "",
+                        "media_category_cd": "22",
+                        "media_category_name": "販売DVD",
+                        "media_format_id": "EXT000006GPK",
+                        "media_format_name": "DVD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "015900",
+                        "product_spec": "",
+                        "screen_size": "シネスコ",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "１：ドルビーデジタル／５．１ｃｈサラウンド／日本語",
+                        "region_info": "２",
+                        "disc_info": "片面２層",
+                        "color_spec": "カラー",
+                        "video_info": "１６：９／ＬＢ",
+                        "number_of_volume": "",
+                        "number_of_set": "0",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/13085/4907953210172_1S.jpg",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/13085/4907953210172_1M.jpg",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/13085/4907953210172_1L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [],
+                        "scene_m": [],
+                        "scene_l": [],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": 3900,
+                        "price_tax_in": 4212,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "01",
+                                "doc_source_id": "03",
+                                "doc_text": "石田衣良の同名小説を松坂桃李主演で忠実に映画化した愛のドラマ。名門大学に通いながら無気力な日々を送っている若者が、ふとしたきっかけから“娼夫”となり、生と性の奥深さを知っていく。共演に真飛聖ほか。"
+                            },
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "04",
+                                "doc_text": "劇団「ポツドール」を主宰するかたわら「愛の渦」「何者」など映画監督としても活躍する三浦大輔が、2016年に手がけた石田衣良原作、松坂桃李主演の舞台を、再び松坂桃李を主演に迎えて映画化した衝撃作。ふとしたことから女性専用コールクラブで働き始めた青年が、様々な女性と体を重ねていく中で彼女たちの悩みや欲望を受け止めていくとともに、自らも成長していく姿を、妥協のない性愛描写を通して描き出していく。名門大学に通う森中領は、恋愛や女性に興味が持てずに無気力な毎日を送っていた。そんなある日、会員制ボーイズクラブ“Le Club Passion”のオーナー御堂静香と出会い、入店の試験を受けることに。こうして戸惑いつつも娼夫リョウとして働き始め、様々な女性たちの心の奥底の欲望と向き合っていく領だったが…。"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT00000014Q",
+                                "big_genre_name": "邦画ドラマ",
+                                "medium_genre_id": "EXT000000566",
+                                "medium_genre_name": "エロティック",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS00000ILRG",
+                                "person_name": "三浦大輔",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS000005SAP",
+                                "person_name": "石田衣良",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            },
+                            {
+                                "person_id": "PPS000004B73",
+                                "person_name": "松坂桃李",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000ILRG",
+                                "person_name": "三浦大輔",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS000001HZE",
+                                "person_name": "真飛聖",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000QEUS",
+                                "person_name": "冨手麻妙",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000IQHE",
+                                "person_name": "猪塚健太",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000R4WIA",
+                                "person_name": "桜井ユキ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000007G81",
+                                "person_name": "小柳友",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000006T0B",
+                                "person_name": "馬渕英里何",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000HUJB8",
+                                "person_name": "荻野友里",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000DCUQ",
+                                "person_name": "佐々木心音",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000R2TH6",
+                                "person_name": "大谷麻衣",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000093C",
+                                "person_name": "半野喜弘",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            }
+                        ],
+                        "need_age_auth_flg": 1
+                    },
+                    {
+                        "id": "PDT0000W9BNP",
+                        "product_id": "PPD0000W95V2",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "ec",
+                        "service_name": "ec",
+                        "msdb_item": "video",
+                        "item_cd": "1022",
+                        "item_name": "ブルーレイ",
+                        "product_name": "娼年",
+                        "product_kana": "しようねん",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2018-06-15 00:00:00",
+                        "disp_start_month": "2018-06",
+                        "disp_end_date": "2068-06-14 23:59:59",
+                        "disp_end_month": "2068-06",
+                        "sale_start_date": "2018-09-14",
+                        "sale_start_month": "2018-09",
+                        "sale_end_date": "2068-09-13",
+                        "sale_end_month": "2068-09",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000V1926"
+                        ],
+                        "tieup": "",
+                        "copyright": "(C)石田衣良/集英社 2017映画『娼年』製作委員会",
+                        "rating_id": "EXT0000000YB",
+                        "rating_name": "R-18",
+                        "adult_flg": 0,
+                        "created_year_from": "2017",
+                        "created_year_to": "",
+                        "created_year_str": "2017",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT00000021V",
+                        "maker_name": "ハピネット",
+                        "maker_name_kana": "はぴねつと",
+                        "maker_name_abbrev": "ハピネット",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10612005",
+                        "ccc_family_cd": "10612005001",
+                        "ccc_product_id": "205993836",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4907953210189",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "BIXJ268",
+                        "icpn": "",
+                        "media_category_cd": "22",
+                        "media_category_name": "販売DVD",
+                        "media_format_id": "EXT0000001VI",
+                        "media_format_name": "Blu-ray",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "015900",
+                        "product_spec": "この商品はブルーレイディスクです。※DVDプレイヤーでは再生できません。",
+                        "screen_size": "シネスコ",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "１：ＤＴＳ－ＨＤ　Ｍａｓｔｅｒ　Ａｕｄｉｏ／５．１ｃｈサラウンド／日本語",
+                        "region_info": "",
+                        "disc_info": "２層（５０ＧＢ）",
+                        "color_spec": "カラー",
+                        "video_info": "１６：９／ＬＢ",
+                        "number_of_volume": "",
+                        "number_of_set": "0",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/13085/4907953210189_1S.jpg",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/13085/4907953210189_1M.jpg",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/13085/4907953210189_1L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [],
+                        "scene_m": [],
+                        "scene_l": [],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": 4800,
+                        "price_tax_in": 5184,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "01",
+                                "doc_source_id": "03",
+                                "doc_text": "石田衣良の同名小説を松坂桃李主演で忠実に映画化した愛のドラマ。名門大学に通いながら無気力な日々を送っている若者が、ふとしたきっかけから“娼夫”となり、生と性の奥深さを知っていく。共演に真飛聖ほか。"
+                            },
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "04",
+                                "doc_text": "劇団「ポツドール」を主宰するかたわら「愛の渦」「何者」など映画監督としても活躍する三浦大輔が、2016年に手がけた石田衣良原作、松坂桃李主演の舞台を、再び松坂桃李を主演に迎えて映画化した衝撃作。ふとしたことから女性専用コールクラブで働き始めた青年が、様々な女性と体を重ねていく中で彼女たちの悩みや欲望を受け止めていくとともに、自らも成長していく姿を、妥協のない性愛描写を通して描き出していく。名門大学に通う森中領は、恋愛や女性に興味が持てずに無気力な毎日を送っていた。そんなある日、会員制ボーイズクラブ“Le Club Passion”のオーナー御堂静香と出会い、入店の試験を受けることに。こうして戸惑いつつも娼夫リョウとして働き始め、様々な女性たちの心の奥底の欲望と向き合っていく領だったが…。"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT00000014Q",
+                                "big_genre_name": "邦画ドラマ",
+                                "medium_genre_id": "EXT000000566",
+                                "medium_genre_name": "エロティック",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS00000ILRG",
+                                "person_name": "三浦大輔",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS000005SAP",
+                                "person_name": "石田衣良",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            },
+                            {
+                                "person_id": "PPS000004B73",
+                                "person_name": "松坂桃李",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000ILRG",
+                                "person_name": "三浦大輔",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS000001HZE",
+                                "person_name": "真飛聖",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000QEUS",
+                                "person_name": "冨手麻妙",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000IQHE",
+                                "person_name": "猪塚健太",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000R4WIA",
+                                "person_name": "桜井ユキ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000007G81",
+                                "person_name": "小柳友",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000006T0B",
+                                "person_name": "馬渕英里何",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000HUJB8",
+                                "person_name": "荻野友里",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000DCUQ",
+                                "person_name": "佐々木心音",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000R2TH6",
+                                "person_name": "大谷麻衣",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000093C",
+                                "person_name": "半野喜弘",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            }
+                        ],
+                        "need_age_auth_flg": 1
+                    },
+                    {
+                        "id": "PDT0000W95US",
+                        "product_id": "PPD0000W95US",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "tol",
+                        "service_name": "tol",
+                        "msdb_item": "video",
+                        "item_cd": "1022",
+                        "item_name": "ブルーレイ",
+                        "product_name": "娼年(豪華版)",
+                        "product_kana": "しようねんごうかばん",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2018-06-15 00:00:00",
+                        "disp_start_month": "2018-06",
+                        "disp_end_date": "2030-12-28 00:00:00",
+                        "disp_end_month": "2030-12",
+                        "sale_start_date": "2018-09-14",
+                        "sale_start_month": "2018-09",
+                        "sale_end_date": "2030-12-28",
+                        "sale_end_month": "2030-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000V1926"
+                        ],
+                        "tieup": "",
+                        "copyright": "(C)石田衣良/集英社 2017映画『娼年』製作委員会",
+                        "rating_id": "EXT0000000YB",
+                        "rating_name": "R-18",
+                        "adult_flg": 0,
+                        "created_year_from": "2017",
+                        "created_year_to": "",
+                        "created_year_str": "2017",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT00000021V",
+                        "maker_name": "ハピネット",
+                        "maker_name_kana": "はぴねつと",
+                        "maker_name_abbrev": "ハピネット",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10612005",
+                        "ccc_family_cd": "10612005001",
+                        "ccc_product_id": "205993838",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4907953211360",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "BIXJ269",
+                        "icpn": "",
+                        "media_category_cd": "22",
+                        "media_category_name": "販売DVD",
+                        "media_format_id": "EXT0000001VI",
+                        "media_format_name": "Blu-ray",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "015900",
+                        "product_spec": "",
+                        "screen_size": "シネスコ",
+                        "subtitle_flg": null,
+                        "subtitle": "日本語ガイド字幕",
+                        "sound_spec": "１：ＤＴＳ－ＨＤ　Ｍａｓｔｅｒ　Ａｕｄｉｏ／５．１ｃｈサラウンド／日本語",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "カラー",
+                        "video_info": "１６：９／ＬＢ",
+                        "number_of_volume": "",
+                        "number_of_set": "0",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/13086/4907953211360_1S.jpg",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/13086/4907953211360_1M.jpg",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/13086/4907953211360_1L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B001S.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B002S.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B003S.jpg",
+                                "no": "003"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B004S.jpg",
+                                "no": "004"
+                            }
+                        ],
+                        "scene_m": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B001M.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B002M.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B003M.jpg",
+                                "no": "003"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B004M.jpg",
+                                "no": "004"
+                            }
+                        ],
+                        "scene_l": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B001L.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B002L.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B003L.jpg",
+                                "no": "003"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B004L.jpg",
+                                "no": "004"
+                            }
+                        ],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": 6800,
+                        "price_tax_in": 7344,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "01",
+                                "doc_source_id": "03",
+                                "doc_text": "石田衣良の同名小説を松坂桃李主演で忠実に映画化した愛のドラマ。名門大学に通いながら無気力な日々を送っている若者が、ふとしたきっかけから“娼夫”となり、生と性の奥深さを知っていく。共演に真飛聖ほか。"
+                            },
+                            {
+                                "doc_type_id": "04",
+                                "doc_source_id": "03",
+                                "doc_text": "【Disc-1】<BR>娼年"
+                            },
+                            {
+                                "doc_type_id": "10",
+                                "doc_source_id": "03",
+                                "doc_text": "豪華三方背ボックス＆デジパック仕様/特製ブックレット/特製フォトブック/［2］特典ディスク"
+                            },
+                            {
+                                "doc_type_id": "11",
+                                "doc_source_id": "03",
+                                "doc_text": "［2］メイキング映像/イベント映像集"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT00000014Q",
+                                "big_genre_name": "邦画ドラマ",
+                                "medium_genre_id": "EXT000000566",
+                                "medium_genre_name": "エロティック",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [
+                            "362721"
+                        ],
+                        "filmarks_id": [
+                            "76811"
+                        ],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS00000ILRG",
+                                "person_name": "三浦大輔",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS000005SAP",
+                                "person_name": "石田衣良",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            },
+                            {
+                                "person_id": "PPS000004B73",
+                                "person_name": "松坂桃李",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000ILRG",
+                                "person_name": "三浦大輔",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS000001HZE",
+                                "person_name": "真飛聖",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000QEUS",
+                                "person_name": "冨手麻妙",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000IQHE",
+                                "person_name": "猪塚健太",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000R4WIA",
+                                "person_name": "桜井ユキ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000007G81",
+                                "person_name": "小柳友",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000006T0B",
+                                "person_name": "馬渕英里何",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000HUJB8",
+                                "person_name": "荻野友里",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000DCUQ",
+                                "person_name": "佐々木心音",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000R2TH6",
+                                "person_name": "大谷麻衣",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000093C",
+                                "person_name": "半野喜弘",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            }
+                        ],
+                        "need_age_auth_flg": 1
+                    },
+                    {
+                        "id": "PDT0000W95W0",
+                        "product_id": "PPD0000W95W0",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "tol",
+                        "service_name": "tol",
+                        "msdb_item": "video",
+                        "item_cd": "1021",
+                        "item_name": "ＤＶＤ",
+                        "product_name": "娼年(豪華版)",
+                        "product_kana": "しようねんごうかばん",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2018-06-15 00:00:00",
+                        "disp_start_month": "2018-06",
+                        "disp_end_date": "2030-12-28 00:00:00",
+                        "disp_end_month": "2030-12",
+                        "sale_start_date": "2018-09-14",
+                        "sale_start_month": "2018-09",
+                        "sale_end_date": "2030-12-28",
+                        "sale_end_month": "2030-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000V1926"
+                        ],
+                        "tieup": "",
+                        "copyright": "(C)石田衣良/集英社 2017映画『娼年』製作委員会",
+                        "rating_id": "EXT0000000YB",
+                        "rating_name": "R-18",
+                        "adult_flg": 0,
+                        "created_year_from": "2017",
+                        "created_year_to": "",
+                        "created_year_str": "2017",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT00000021V",
+                        "maker_name": "ハピネット",
+                        "maker_name_kana": "はぴねつと",
+                        "maker_name_abbrev": "ハピネット",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10612005",
+                        "ccc_family_cd": "10612005001",
+                        "ccc_product_id": "205993837",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4907953211353",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "BIBJ3269",
+                        "icpn": "",
+                        "media_category_cd": "22",
+                        "media_category_name": "販売DVD",
+                        "media_format_id": "EXT000006GPK",
+                        "media_format_name": "DVD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "015900",
+                        "product_spec": "",
+                        "screen_size": "シネスコ",
+                        "subtitle_flg": null,
+                        "subtitle": "日本語ガイド字幕",
+                        "sound_spec": "１：ドルビーデジタル／５．１ｃｈサラウンド／日本語",
+                        "region_info": "２",
+                        "disc_info": "",
+                        "color_spec": "カラー",
+                        "video_info": "１６：９／ＬＢ",
+                        "number_of_volume": "",
+                        "number_of_set": "0",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/13086/4907953211353_1S.jpg",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/13086/4907953211353_1M.jpg",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/13086/4907953211353_1L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B001S.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B002S.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B003S.jpg",
+                                "no": "003"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B004S.jpg",
+                                "no": "004"
+                            }
+                        ],
+                        "scene_m": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B001M.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B002M.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B003M.jpg",
+                                "no": "003"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B004M.jpg",
+                                "no": "004"
+                            }
+                        ],
+                        "scene_l": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B001L.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B002L.jpg",
+                                "no": "002"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B003L.jpg",
+                                "no": "003"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00233/4907953210172_B004L.jpg",
+                                "no": "004"
+                            }
+                        ],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": 5800,
+                        "price_tax_in": 6264,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "01",
+                                "doc_source_id": "03",
+                                "doc_text": "石田衣良の同名小説を松坂桃李主演で忠実に映画化した愛のドラマ。名門大学に通いながら無気力な日々を送っている若者が、ふとしたきっかけから“娼夫”となり、生と性の奥深さを知っていく。共演に真飛聖ほか。"
+                            },
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "04",
+                                "doc_text": "劇団「ポツドール」を主宰するかたわら「愛の渦」「何者」など映画監督としても活躍する三浦大輔が、2016年に手がけた石田衣良原作、松坂桃李主演の舞台を、再び松坂桃李を主演に迎えて映画化した衝撃作。ふとしたことから女性専用コールクラブで働き始めた青年が、様々な女性と体を重ねていく中で彼女たちの悩みや欲望を受け止めていくとともに、自らも成長していく姿を、妥協のない性愛描写を通して描き出していく。名門大学に通う森中領は、恋愛や女性に興味が持てずに無気力な毎日を送っていた。そんなある日、会員制ボーイズクラブ“Le Club Passion”のオーナー御堂静香と出会い、入店の試験を受けることに。こうして戸惑いつつも娼夫リョウとして働き始め、様々な女性たちの心の奥底の欲望と向き合っていく領だったが…。"
+                            },
+                            {
+                                "doc_type_id": "04",
+                                "doc_source_id": "03",
+                                "doc_text": "【Disc-1】<BR>娼年"
+                            },
+                            {
+                                "doc_type_id": "04",
+                                "doc_source_id": "04",
+                                "doc_text": "本編ディスク、特典ディスク"
+                            },
+                            {
+                                "doc_type_id": "06",
+                                "doc_source_id": "04",
+                                "doc_text": "豪華三方背ボックス＆デジパック仕様<BR><BR><BR>＜封入特典＞<BR><BR>特製ブックレット<BR>特製フォトブック<BR><BR><BR>＜映像特典＞<BR><BR>メイキング映像<BR>イベント映像集"
+                            },
+                            {
+                                "doc_type_id": "10",
+                                "doc_source_id": "03",
+                                "doc_text": "豪華三方背ボックス＆デジパック仕様/特製ブックレット/特製フォトブック/［2］特典ディスク"
+                            },
+                            {
+                                "doc_type_id": "11",
+                                "doc_source_id": "03",
+                                "doc_text": "［2］メイキング映像/イベント映像集"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT00000014Q",
+                                "big_genre_name": "邦画ドラマ",
+                                "medium_genre_id": "EXT000000566",
+                                "medium_genre_name": "エロティック",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [
+                            "362721"
+                        ],
+                        "filmarks_id": [
+                            "76811"
+                        ],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS00000ILRG",
+                                "person_name": "三浦大輔",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS000005SAP",
+                                "person_name": "石田衣良",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            },
+                            {
+                                "person_id": "PPS000004B73",
+                                "person_name": "松坂桃李",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000ILRG",
+                                "person_name": "三浦大輔",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS000001HZE",
+                                "person_name": "真飛聖",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000QEUS",
+                                "person_name": "冨手麻妙",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000IQHE",
+                                "person_name": "猪塚健太",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000R4WIA",
+                                "person_name": "桜井ユキ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000007G81",
+                                "person_name": "小柳友",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000006T0B",
+                                "person_name": "馬渕英里何",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000HUJB8",
+                                "person_name": "荻野友里",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000DCUQ",
+                                "person_name": "佐々木心音",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000R2TH6",
+                                "person_name": "大谷麻衣",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000093C",
+                                "person_name": "半野喜弘",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            }
+                        ],
+                        "need_age_auth_flg": 1
+                    },
+                    {
+                        "id": "PDT0000W9BNL",
+                        "product_id": "PPD0000W95W0",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "ec",
+                        "service_name": "ec",
+                        "msdb_item": "video",
+                        "item_cd": "1021",
+                        "item_name": "ＤＶＤ",
+                        "product_name": "娼年(豪華版)",
+                        "product_kana": "しようねんごうかばん",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2018-06-15 00:00:00",
+                        "disp_start_month": "2018-06",
+                        "disp_end_date": "2068-06-14 23:59:59",
+                        "disp_end_month": "2068-06",
+                        "sale_start_date": "2018-09-14",
+                        "sale_start_month": "2018-09",
+                        "sale_end_date": "2068-09-13",
+                        "sale_end_month": "2068-09",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000V1926"
+                        ],
+                        "tieup": "",
+                        "copyright": "(C)石田衣良/集英社 2017映画『娼年』製作委員会",
+                        "rating_id": "EXT0000000YB",
+                        "rating_name": "R-18",
+                        "adult_flg": 0,
+                        "created_year_from": "2017",
+                        "created_year_to": "",
+                        "created_year_str": "2017",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT00000021V",
+                        "maker_name": "ハピネット",
+                        "maker_name_kana": "はぴねつと",
+                        "maker_name_abbrev": "ハピネット",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10612005",
+                        "ccc_family_cd": "10612005001",
+                        "ccc_product_id": "205993837",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4907953211353",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "BIBJ3269",
+                        "icpn": "",
+                        "media_category_cd": "22",
+                        "media_category_name": "販売DVD",
+                        "media_format_id": "EXT000006GPK",
+                        "media_format_name": "DVD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "015900",
+                        "product_spec": "",
+                        "screen_size": "シネスコ",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "１：ドルビーデジタル／５．１ｃｈサラウンド／日本語",
+                        "region_info": "２",
+                        "disc_info": "",
+                        "color_spec": "カラー",
+                        "video_info": "１６：９／ＬＢ",
+                        "number_of_volume": "",
+                        "number_of_set": "0",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/13086/4907953211353_1S.jpg",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/13086/4907953211353_1M.jpg",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/13086/4907953211353_1L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [],
+                        "scene_m": [],
+                        "scene_l": [],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": 5800,
+                        "price_tax_in": 6264,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "01",
+                                "doc_source_id": "03",
+                                "doc_text": "石田衣良の同名小説を松坂桃李主演で忠実に映画化した愛のドラマ。名門大学に通いながら無気力な日々を送っている若者が、ふとしたきっかけから“娼夫”となり、生と性の奥深さを知っていく。共演に真飛聖ほか。"
+                            },
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "04",
+                                "doc_text": "劇団「ポツドール」を主宰するかたわら「愛の渦」「何者」など映画監督としても活躍する三浦大輔が、2016年に手がけた石田衣良原作、松坂桃李主演の舞台を、再び松坂桃李を主演に迎えて映画化した衝撃作。ふとしたことから女性専用コールクラブで働き始めた青年が、様々な女性と体を重ねていく中で彼女たちの悩みや欲望を受け止めていくとともに、自らも成長していく姿を、妥協のない性愛描写を通して描き出していく。名門大学に通う森中領は、恋愛や女性に興味が持てずに無気力な毎日を送っていた。そんなある日、会員制ボーイズクラブ“Le Club Passion”のオーナー御堂静香と出会い、入店の試験を受けることに。こうして戸惑いつつも娼夫リョウとして働き始め、様々な女性たちの心の奥底の欲望と向き合っていく領だったが…。"
+                            },
+                            {
+                                "doc_type_id": "04",
+                                "doc_source_id": "03",
+                                "doc_text": "【Disc-1】<BR>娼年"
+                            },
+                            {
+                                "doc_type_id": "04",
+                                "doc_source_id": "04",
+                                "doc_text": "本編ディスク、特典ディスク"
+                            },
+                            {
+                                "doc_type_id": "06",
+                                "doc_source_id": "04",
+                                "doc_text": "豪華三方背ボックス＆デジパック仕様<BR><BR><BR>＜封入特典＞<BR><BR>特製ブックレット<BR>特製フォトブック<BR><BR><BR>＜映像特典＞<BR><BR>メイキング映像<BR>イベント映像集"
+                            },
+                            {
+                                "doc_type_id": "10",
+                                "doc_source_id": "03",
+                                "doc_text": "豪華三方背ボックス＆デジパック仕様/特製ブックレット/特製フォトブック/［2］特典ディスク"
+                            },
+                            {
+                                "doc_type_id": "11",
+                                "doc_source_id": "03",
+                                "doc_text": "［2］メイキング映像/イベント映像集"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT00000014Q",
+                                "big_genre_name": "邦画ドラマ",
+                                "medium_genre_id": "EXT000000566",
+                                "medium_genre_name": "エロティック",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS00000ILRG",
+                                "person_name": "三浦大輔",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS000005SAP",
+                                "person_name": "石田衣良",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            },
+                            {
+                                "person_id": "PPS000004B73",
+                                "person_name": "松坂桃李",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000ILRG",
+                                "person_name": "三浦大輔",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS000001HZE",
+                                "person_name": "真飛聖",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000QEUS",
+                                "person_name": "冨手麻妙",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000IQHE",
+                                "person_name": "猪塚健太",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000R4WIA",
+                                "person_name": "桜井ユキ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000007G81",
+                                "person_name": "小柳友",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000006T0B",
+                                "person_name": "馬渕英里何",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000HUJB8",
+                                "person_name": "荻野友里",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000DCUQ",
+                                "person_name": "佐々木心音",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000R2TH6",
+                                "person_name": "大谷麻衣",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000093C",
+                                "person_name": "半野喜弘",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            }
+                        ],
+                        "need_age_auth_flg": 1
+                    },
+                    {
+                        "id": "PDT0000W9BNM",
+                        "product_id": "PPD0000W95US",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "ec",
+                        "service_name": "ec",
+                        "msdb_item": "video",
+                        "item_cd": "1022",
+                        "item_name": "ブルーレイ",
+                        "product_name": "娼年(豪華版)",
+                        "product_kana": "しようねんごうかばん",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2018-06-15 00:00:00",
+                        "disp_start_month": "2018-06",
+                        "disp_end_date": "2068-06-14 23:59:59",
+                        "disp_end_month": "2068-06",
+                        "sale_start_date": "2018-09-14",
+                        "sale_start_month": "2018-09",
+                        "sale_end_date": "2068-09-13",
+                        "sale_end_month": "2068-09",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000V1926"
+                        ],
+                        "tieup": "",
+                        "copyright": "(C)石田衣良/集英社 2017映画『娼年』製作委員会",
+                        "rating_id": "EXT0000000YB",
+                        "rating_name": "R-18",
+                        "adult_flg": 0,
+                        "created_year_from": "2017",
+                        "created_year_to": "",
+                        "created_year_str": "2017",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT00000021V",
+                        "maker_name": "ハピネット",
+                        "maker_name_kana": "はぴねつと",
+                        "maker_name_abbrev": "ハピネット",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10612005",
+                        "ccc_family_cd": "10612005001",
+                        "ccc_product_id": "205993838",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4907953211360",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "BIXJ269",
+                        "icpn": "",
+                        "media_category_cd": "22",
+                        "media_category_name": "販売DVD",
+                        "media_format_id": "EXT0000001VI",
+                        "media_format_name": "Blu-ray",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "015900",
+                        "product_spec": "この商品はブルーレイディスクです。※DVDプレイヤーでは再生できません。",
+                        "screen_size": "シネスコ",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "１：ＤＴＳ－ＨＤ　Ｍａｓｔｅｒ　Ａｕｄｉｏ／５．１ｃｈサラウンド／日本語",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "カラー",
+                        "video_info": "１６：９／ＬＢ",
+                        "number_of_volume": "",
+                        "number_of_set": "0",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/13086/4907953211360_1S.jpg",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/13086/4907953211360_1M.jpg",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/13086/4907953211360_1L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [],
+                        "scene_m": [],
+                        "scene_l": [],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": 6800,
+                        "price_tax_in": 7344,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "01",
+                                "doc_source_id": "03",
+                                "doc_text": "石田衣良の同名小説を松坂桃李主演で忠実に映画化した愛のドラマ。名門大学に通いながら無気力な日々を送っている若者が、ふとしたきっかけから“娼夫”となり、生と性の奥深さを知っていく。共演に真飛聖ほか。"
+                            },
+                            {
+                                "doc_type_id": "04",
+                                "doc_source_id": "03",
+                                "doc_text": "【Disc-1】<BR>娼年"
+                            },
+                            {
+                                "doc_type_id": "10",
+                                "doc_source_id": "03",
+                                "doc_text": "豪華三方背ボックス＆デジパック仕様/特製ブックレット/特製フォトブック/［2］特典ディスク"
+                            },
+                            {
+                                "doc_type_id": "11",
+                                "doc_source_id": "03",
+                                "doc_text": "［2］メイキング映像/イベント映像集"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT00000014Q",
+                                "big_genre_name": "邦画ドラマ",
+                                "medium_genre_id": "EXT000000566",
+                                "medium_genre_name": "エロティック",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS00000ILRG",
+                                "person_name": "三浦大輔",
+                                "role_id": "EXT0000000UH",
+                                "role_name": "監督"
+                            },
+                            {
+                                "person_id": "PPS000005SAP",
+                                "person_name": "石田衣良",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            },
+                            {
+                                "person_id": "PPS000004B73",
+                                "person_name": "松坂桃李",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000ILRG",
+                                "person_name": "三浦大輔",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS000001HZE",
+                                "person_name": "真飛聖",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000QEUS",
+                                "person_name": "冨手麻妙",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000IQHE",
+                                "person_name": "猪塚健太",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000R4WIA",
+                                "person_name": "桜井ユキ",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000007G81",
+                                "person_name": "小柳友",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000006T0B",
+                                "person_name": "馬渕英里何",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000HUJB8",
+                                "person_name": "荻野友里",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000DCUQ",
+                                "person_name": "佐々木心音",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000R2TH6",
+                                "person_name": "大谷麻衣",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000093C",
+                                "person_name": "半野喜弘",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            }
+                        ],
+                        "need_age_auth_flg": 1
+                    },
+                    {
+                        "id": "PDT0000WY2YE",
+                        "product_id": "PPD0000WY2YE",
+                        "product_type_id": 5,
+                        "product_type_name": "映像配信",
+                        "service_id": "discas",
+                        "service_name": "discas",
+                        "msdb_item": "video",
+                        "item_cd": "",
+                        "item_name": "",
+                        "product_name": "娼年",
+                        "product_kana": "ショウネン",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "娼夫リョウが見つめた、生と性の深奥−　そして僕は、娼夫になった−　主人公の森中領（もりなかりょう）は東京の名門大学生。日々の生活や女性との関係に退屈し、バーでのバイトに明け暮れる無気力な生活を送っている。ある日、領の中学校の同級生でホストクラブに勤める田嶋進也（たじましんや）が、美しい女性をバーに連れてきた。女性の名前は御堂静香（みどうしずか）。「女なんてつまんないよ」という領に静香は“情熱の試験“を受けさせる。それは、静香が手がける女性専用コールクラブ、「Ｌｅ　Ｃｌｕｂ　Ｐａｓｓｉｏｎ」に入るための試験であった。入店を決意した領は、その翌日に静香の元を訪れ、娼夫「リョウ」として仕事を始める。最初こそ戸惑ったが、娼夫として仕事をしていくなかで、女性ひとりひとりの中に隠されている欲望の不思議さや奥深さに気づき、心惹かれ、やりがいを見つけていく。",
+                        "disp_start_date": "2018-08-21 10:00:00",
+                        "disp_start_month": "2018-08",
+                        "disp_end_date": "2019-09-13 23:59:59",
+                        "disp_end_month": "2019-09",
+                        "sale_start_date": "2018-09-14",
+                        "sale_start_month": "2018-09",
+                        "sale_end_date": "2019-09-13",
+                        "sale_end_month": "2019-09",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000V1926"
+                        ],
+                        "tieup": "",
+                        "copyright": "(C)石田衣良/集英社 2017映画『娼年』製作委員会",
+                        "rating_id": "EXT0000000YB",
+                        "rating_name": "R-18",
+                        "adult_flg": 0,
+                        "created_year_from": "2017",
+                        "created_year_to": "",
+                        "created_year_str": "2017",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT0000NUY0I",
+                        "maker_name": "株式会社ハピネット",
+                        "maker_name_kana": "",
+                        "maker_name_abbrev": "",
+                        "label_name": "",
+                        "sell_rental_flag": 3,
+                        "view_term": 0,
+                        "reservation_flg": 1,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10612005",
+                        "ccc_family_cd": "",
+                        "ccc_product_id": "8004832079",
+                        "rental_product_cd": "",
+                        "common_vod_code": "101085222",
+                        "vod_goods_cd": "101085222",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "",
+                        "icpn": "",
+                        "media_category_cd": "",
+                        "media_category_name": "",
+                        "media_format_id": "EXT00001MHOA",
+                        "media_format_name": "HD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "01:58:53",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": 2,
+                        "subtitle": "",
+                        "sound_spec": "",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "",
+                        "video_info": "",
+                        "number_of_volume": "",
+                        "number_of_set": "",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "娼年",
+                        "music_disp_artist": "原作：石田衣良「娼年」（集英社文庫刊）　脚本／監督：三浦大輔　出演：松坂桃李　真飛聖　冨手麻妙　猪塚健太　桜井ユキ　小柳友　馬渕英里何　荻野友里　佐々木心音　大谷麻衣　階戸瑠李　西岡徳馬／江波杏子",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//img.discas.net/img/jacket/ttv_jacket/101/085/222/101085222_24SX.jpg",
+                        "jacket_m": "//img.discas.net/img/jacket/ttv_jacket/101/085/222/101085222_24MX.jpg",
+                        "jacket_l": "//img.discas.net/img/jacket/ttv_jacket/101/085/222/101085222_24L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [],
+                        "scene_m": [],
+                        "scene_l": [],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": 2500,
+                        "price_tax_in": 2700,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "H1",
+                                "doc_text": "娼夫リョウが見つめた、生と性の深奥−　そして僕は、娼夫になった−　主人公の森中領（もりなかりょう）は東京の名門大学生。日々の生活や女性との関係に退屈し、バーでのバイトに明け暮れる無気力な生活を送っている。ある日、領の中学校の同級生でホストクラブに勤める田嶋進也（たじましんや）が、美しい女性をバーに連れてきた。女性の名前は御堂静香（みどうしずか）。「女なんてつまんないよ」という領に静香は“情熱の試験“を受けさせる。それは、静香が手がける女性専用コールクラブ、「Ｌｅ　Ｃｌｕｂ　Ｐａｓｓｉｏｎ」に入るための試験であった。入店を決意した領は、その翌日に静香の元を訪れ、娼夫「リョウ」として仕事を始める。最初こそ戸惑ったが、娼夫として仕事をしていくなかで、女性ひとりひとりの中に隠されている欲望の不思議さや奥深さに気づき、心惹かれ、やりがいを見つけていく。"
+                            }
+                        ],
+                        "devices": [
+                            {
+                                "device_id": "EXT0000HEZXI",
+                                "device_name": "tv"
+                            },
+                            {
+                                "device_id": "EXT0000HIZ8U",
+                                "device_name": "android"
+                            },
+                            {
+                                "device_id": "EXT0000M42VG",
+                                "device_name": "ios"
+                            },
+                            {
+                                "device_id": "EXT0000NV29A",
+                                "device_name": "smart"
+                            },
+                            {
+                                "device_id": "EXT0000TC38V",
+                                "device_name": "androidtv"
+                            },
+                            {
+                                "device_id": "EXT0000TC38W",
+                                "device_name": "smarttv"
+                            }
+                        ],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT00000014Q",
+                                "big_genre_name": "邦画ドラマ",
+                                "medium_genre_id": "EXT000000566",
+                                "medium_genre_name": "エロティック",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": 300,
+                        "discas_item": "TTV",
+                        "ttv_trailer_flg": 1,
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS00001Q9XG",
+                                "person_name": "真飛聖",
+                                "role_id": "EXT00000000I",
+                                "role_name": "役割なし"
+                            },
+                            {
+                                "person_id": "PPS00000IQHE",
+                                "person_name": "猪塚健太",
+                                "role_id": "EXT00000000I",
+                                "role_name": "役割なし"
+                            },
+                            {
+                                "person_id": "PPS00000R166",
+                                "person_name": "桜井ユキ",
+                                "role_id": "EXT00000000I",
+                                "role_name": "役割なし"
+                            },
+                            {
+                                "person_id": "PPS00000QEUS",
+                                "person_name": "冨手麻妙",
+                                "role_id": "EXT00000000I",
+                                "role_name": "役割なし"
+                            },
+                            {
+                                "person_id": "PPS000005SAP",
+                                "person_name": "石田衣良",
+                                "role_id": "EXT00000000I",
+                                "role_name": "役割なし"
+                            },
+                            {
+                                "person_id": "PPS000004B73",
+                                "person_name": "松坂桃李",
+                                "role_id": "EXT00000000I",
+                                "role_name": "役割なし"
+                            }
+                        ],
+                        "need_age_auth_flg": 1
+                    }
+                ],
+                "video_relations": [],
+                "discas_grade_point": 324,
+                "discas_item": [
+                    "DiscasMovie",
+                    "TTV"
+                ],
+                "ttv_trailer_flg": 1,
+                "ttv_free_movie_flg": 0,
+                "ttv_sell_rental_flg": [
+                    "3"
+                ],
+                "ttv_low_price": 2700,
+                "cinema_id": [
+                    "362721"
+                ],
+                "filmarks_id": [
+                    "76811"
+                ],
+                "dramarks_id": [],
+                "catch_copy": "",
+                "sale_start_date_sell": "2018-09-14",
+                "sale_start_date_rental": "2018-09-14",
+                "trailer_urls": [],
+                "scenes": [
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "362721_01_01",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/27/01/362721_01_01.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "362721_01_02",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/27/02/362721_01_02.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "362721_01_03",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/27/03/362721_01_03.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "362721_01_05",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/27/05/362721_01_05.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "362721_01_06",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/27/06/362721_01_06.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "362721_01_07",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/27/07/362721_01_07.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "362721_01_08",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/27/08/362721_01_08.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "362721_01_09",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/27/09/362721_01_09.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "362721_01_12",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/27/12/362721_01_12.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "362721_01_13",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/27/13/362721_01_13.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "362721_01_14",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/27/14/362721_01_14.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "362721_01_15",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/27/15/362721_01_15.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "362721_02_01",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/27/01/362721_02_01.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "362721_02_02",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/27/02/362721_02_02.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "362721_02_03",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/27/03/362721_02_03.jpg",
+                        "disable_flg": 0
+                    },
+                    {
+                        "provider": "2",
+                        "size": "3",
+                        "scene_id": "362721_02_04",
+                        "url": "//www.tsutaya.co.jp/images/extdata/04/00/00/36/27/04/362721_02_04.jpg",
+                        "disable_flg": 0
+                    }
+                ],
+                "filmarks_mark": 5362,
+                "filmarks_clip": 14069,
+                "filmarks_average": 3.34977,
+                "people": [
+                    {
+                        "person_id": "PPS00000ILRG",
+                        "person_name": "三浦大輔",
+                        "role_id": "EXT0000000UH",
+                        "role_name": "監督"
+                    },
+                    {
+                        "person_id": "PPS000005SAP",
+                        "person_name": "石田衣良",
+                        "role_id": "EXT0000000UQ",
+                        "role_name": "原作者"
+                    },
+                    {
+                        "person_id": "PPS000004B73",
+                        "person_name": "松坂桃李",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS00000ILRG",
+                        "person_name": "三浦大輔",
+                        "role_id": "EXT00000018Y",
+                        "role_name": "脚本"
+                    },
+                    {
+                        "person_id": "PPS000001HZE",
+                        "person_name": "真飛聖",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS00000QEUS",
+                        "person_name": "冨手麻妙",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS00000IQHE",
+                        "person_name": "猪塚健太",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS0000R4WIA",
+                        "person_name": "桜井ユキ",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS000007G81",
+                        "person_name": "小柳友",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS000006T0B",
+                        "person_name": "馬渕英里何",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS0000HUJB8",
+                        "person_name": "荻野友里",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS00000DCUQ",
+                        "person_name": "佐々木心音",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS0000R2TH6",
+                        "person_name": "大谷麻衣",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS00000093C",
+                        "person_name": "半野喜弘",
+                        "role_id": "EXT000000197",
+                        "role_name": "音楽"
+                    }
+                ],
+                "tracks": [],
+                "merged_from": [],
+                "need_age_auth_flg": 1
+            }
+        ]
+    }
+}
