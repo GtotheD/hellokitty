@@ -837,7 +837,7 @@ class WorkRepository extends BaseRepository
                     'urlCd' => $base['url_cd'],
                     'cccWorkCd' => $base['ccc_work_cd'],
                     'workTitle' => $base['work_title'],
-                    'jacketL' => ($displayImage) ? $saleTypeHas['pickupProduct']['jacket_l'] : '',
+                    'jacketL' => ($displayImage) ? trimImageTag($saleTypeHas['pickupProduct']['jacket_l']) : '',
                     'newFlg' => newFlg($base['sale_start_date']),
                     'adultFlg' => ($base['adult_flg'] === 1) ? true : $isAdult,
                     'itemType' => $itemTypeVal,
