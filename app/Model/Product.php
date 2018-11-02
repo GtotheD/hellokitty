@@ -138,10 +138,11 @@ class Product extends Model
     {
         $this->dbObject = DB::table($this->table)
             ->select('jacket_l as jacketL')
-            ->whereRaw(DB::raw('(jacket_l <> null OR jacket_l <> \'\')'))
             ->where([
                 'work_id' => $workId,
-            ]);
+            ])
+            ->whereRaw(DB::raw(' service_id  in  (\'tol\', \'st\')'))
+        ;
         if ($saleType) {
             $this->dbObject->where([
                 'product_type_id' => $this->convertSaleType($saleType),

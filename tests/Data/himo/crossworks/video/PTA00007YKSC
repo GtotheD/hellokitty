@@ -1,0 +1,1925 @@
+{
+    "status": 200,
+    "message": null,
+    "results": {
+        "total": 1,
+        "rows": [
+            {
+                "work_id": "PTA00007YKSC",
+                "work_type_id": "2",
+                "msdb_item": "video",
+                "work_format_id": null,
+                "work_format_name": "",
+                "work_title": "リバース ～警視庁捜査一課チームZ～",
+                "work_title_kana": "りばーすけいしちようそうさ1かちーむぜつと",
+                "work_title_en": "",
+                "work_title_orig": "",
+                "work_title_sub": "",
+                "work_comment": "",
+                "work_outline": "",
+                "work_copyright": "(C) NTV",
+                "rating_id": "EXT000000008",
+                "rating_name": "",
+                "adult_flg": 0,
+                "primary_product_source_id": "PDT000046HL1",
+                "primary_product_service_id": "ec",
+                "primary_product_type_id": 1,
+                "disp_start_date": "2013-04-05 00:00:00",
+                "disp_start_month": "2013-04",
+                "sale_start_date": "2013-04-10",
+                "sale_start_month": "2013-04",
+                "created_year_from": "",
+                "created_year_to": "",
+                "created_year": "2013",
+                "created_countries": "日本",
+                "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/08823/4988021214872_1S.jpg",
+                "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/08823/4988021214872_1M.jpg",
+                "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/08823/4988021214872_1L.jpg",
+                "jacket_l4": "",
+                "scene_s": [],
+                "scene_m": [],
+                "scene_l": [],
+                "trailor_pc": [],
+                "season_name": "",
+                "season_number": null,
+                "book_series_name": "",
+                "book_series_name_kana": "",
+                "feature_keywords": [],
+                "priv_keywords": [],
+                "work_tags": [],
+                "wakati_words": [],
+                "is_compilation": 0,
+                "series_completed": 0,
+                "disable_flg": 0,
+                "delete_flg": 0,
+                "ids": [
+                    {
+                        "id_type": "0103",
+                        "id_value": "10359888"
+                    },
+                    {
+                        "id_type": "0105",
+                        "id_value": "10352927"
+                    },
+                    {
+                        "id_type": "0106",
+                        "id_value": "100012168"
+                    }
+                ],
+                "docs": [
+                    {
+                        "doc_type_id": "01",
+                        "doc_source_id": "03",
+                        "doc_text": "日本テレビ系“金曜ロードSHOW!”枠で放送された、松坂桃李と杏のW主演によるスペシャル・ドラマ。特殊な能力を持った変わり者ばかりが集められた特殊捜査課・チームZの面々が、謎の連続爆破事件の真相に挑む。"
+                    },
+                    {
+                        "doc_type_id": "06",
+                        "doc_source_id": "04",
+                        "doc_text": "＜封入特典＞<BR><BR>スペシャルブックレット<BR><BR>＜映像特典＞<BR><BR>松坂桃李＆杏 スペシャルインタビュー<BR>PRスポット集"
+                    },
+                    {
+                        "doc_type_id": "10",
+                        "doc_source_id": "03",
+                        "doc_text": "4Pスペシャルブックレット"
+                    },
+                    {
+                        "doc_type_id": "11",
+                        "doc_source_id": "03",
+                        "doc_text": "松坂桃李＆杏 スペシャルインタビュー/PRスポット集"
+                    }
+                ],
+                "awards": [],
+                "screens": [],
+                "onairs": [],
+                "magazines": [],
+                "genres": [
+                    {
+                        "big_genre_id": "EXT0000000U9",
+                        "big_genre_name": "邦画ＴＶドラマ",
+                        "medium_genre_id": "EXT0000000UA",
+                        "medium_genre_name": "ＴＶドラマ",
+                        "small_genre_id": "",
+                        "small_genre_name": "",
+                        "shikiriban_id": "",
+                        "shikiriban_name": ""
+                    }
+                ],
+                "products": [
+                    {
+                        "id": "PDT00001107O",
+                        "product_id": "PPD00001107O",
+                        "product_type_id": 2,
+                        "product_type_name": "レンタル",
+                        "service_id": "tol",
+                        "service_name": "tol",
+                        "msdb_item": "video",
+                        "item_cd": "0021",
+                        "item_name": "ＤＶＤ",
+                        "product_name": "リバース～警視庁捜査一課チームZ～",
+                        "product_kana": "りばーすけいしちようそうさいつかちーむぜつと",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2013-05-21 18:12:52",
+                        "disp_start_month": "2013-05",
+                        "disp_end_date": "2030-12-28 00:00:00",
+                        "disp_end_month": "2030-12",
+                        "sale_start_date": "2013-07-24",
+                        "sale_start_month": "2013-07",
+                        "sale_end_date": "2030-12-28",
+                        "sale_end_month": "2030-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA00007YKSC"
+                        ],
+                        "tieup": "",
+                        "copyright": "(C) NTV",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "2013",
+                        "created_year_to": "",
+                        "created_year_str": "2013",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT000000HIU",
+                        "maker_name": "バップ",
+                        "maker_name_kana": "ばつぷ",
+                        "maker_name_abbrev": "バップ",
+                        "label_name": "",
+                        "sell_rental_flag": 2,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10359888",
+                        "ccc_family_cd": "10359888001",
+                        "ccc_product_id": "203912557",
+                        "rental_product_cd": "082232885",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4988021214872",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "VPBX21487",
+                        "icpn": "",
+                        "media_category_cd": "12",
+                        "media_category_name": "レンタルDVD",
+                        "media_format_id": "EXT000006GPK",
+                        "media_format_name": "DVD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "014000",
+                        "product_spec": "",
+                        "screen_size": "ビスタ",
+                        "subtitle_flg": null,
+                        "subtitle": "日本語",
+                        "sound_spec": "１：ドルビーデジタル／ステレオ／日本語",
+                        "region_info": "",
+                        "disc_info": "片面１層",
+                        "color_spec": "カラー",
+                        "video_info": "１６：９／ＬＢ",
+                        "number_of_volume": "001",
+                        "number_of_set": "1",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/08823/4988021214872_1S.jpg",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/08823/4988021214872_1M.jpg",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/08823/4988021214872_1L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [],
+                        "scene_m": [],
+                        "scene_l": [],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": null,
+                        "price_tax_in": null,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "06",
+                                "doc_source_id": "04",
+                                "doc_text": "PRスポット"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT0000000U9",
+                                "big_genre_name": "邦画ＴＶドラマ",
+                                "medium_genre_id": "EXT0000000UA",
+                                "medium_genre_name": "ＴＶドラマ",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS000004B73",
+                                "person_name": "松坂桃李",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000004QTX",
+                                "person_name": "杏",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000168X",
+                                "person_name": "六平直政",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000002KBI",
+                                "person_name": "笛木優子",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000IFVG",
+                                "person_name": "満島真之介",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001NJR",
+                                "person_name": "原田夏希",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00001PXAX",
+                                "person_name": "鈴木浩介",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001TWF",
+                                "person_name": "相島一之",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000UGM",
+                                "person_name": "鶴見辰吾",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000004B7I",
+                                "person_name": "竹富聖花",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000BP44",
+                                "person_name": "酒井直行",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS0000036GO",
+                                "person_name": "吉川清之",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            },
+                            {
+                                "person_id": "PPS00001FNKU",
+                                "person_name": "笛木優子",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00001US1E",
+                                "person_name": "満島真之介",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00001AK5W",
+                                "person_name": "吉川清之",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            },
+                            {
+                                "person_id": "PPS000001DWP",
+                                "person_name": "岩本仁志",
+                                "role_id": "EXT0000009KL",
+                                "role_name": "演出"
+                            },
+                            {
+                                "person_id": "PPS000024HK7",
+                                "person_name": "神蔵克",
+                                "role_id": "EXT0000IA5A3",
+                                "role_name": "チーフプロデューサー"
+                            },
+                            {
+                                "person_id": "PPS00001D0FO",
+                                "person_name": "杏",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000QJZ",
+                                "person_name": "池内博之",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000002CI",
+                                "person_name": "世良公則",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT0000269BJ",
+                        "product_id": "PPD00001107O",
+                        "product_type_id": 2,
+                        "product_type_name": "レンタル",
+                        "service_id": "discas",
+                        "service_name": "discas",
+                        "msdb_item": "video",
+                        "item_cd": "0021",
+                        "item_name": "ＤＶＤ",
+                        "product_name": "リバース～警視庁捜査一課チームZ～",
+                        "product_kana": "リバースケイシチヨウソウサイツカチームゼツト",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2013-06-26 00:00:00",
+                        "disp_start_month": "2013-06",
+                        "disp_end_date": "2099-12-31 00:00:00",
+                        "disp_end_month": "2099-12",
+                        "sale_start_date": "2013-07-24",
+                        "sale_start_month": "2013-07",
+                        "sale_end_date": "2099-12-31",
+                        "sale_end_month": "2099-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA00007YKSC"
+                        ],
+                        "tieup": "",
+                        "copyright": "(C) NTV",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "2013",
+                        "created_year_to": "",
+                        "created_year_str": "2013",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT000000HIU",
+                        "maker_name": "バップ",
+                        "maker_name_kana": "ばつぷ",
+                        "maker_name_abbrev": "バップ",
+                        "label_name": "",
+                        "sell_rental_flag": 2,
+                        "view_term": null,
+                        "reservation_flg": 1,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10359888",
+                        "ccc_family_cd": "10359888001",
+                        "ccc_product_id": "2087794531",
+                        "rental_product_cd": "082232885",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4988021214872",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "VPBX21487",
+                        "icpn": "",
+                        "media_category_cd": "12",
+                        "media_category_name": "レンタルDVD",
+                        "media_format_id": "EXT000006GPK",
+                        "media_format_name": "DVD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "014000",
+                        "product_spec": "",
+                        "screen_size": "ビスタ",
+                        "subtitle_flg": null,
+                        "subtitle": "日本語",
+                        "sound_spec": "１：ドルビーデジタル／ステレオ／日本語",
+                        "region_info": "",
+                        "disc_info": "片面１層",
+                        "color_spec": "カラー",
+                        "video_info": "１６：９／ＬＢ",
+                        "number_of_volume": "001",
+                        "number_of_set": "1",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//img.discas.net/img/jacket/core/201307/13/4988021214872_1SX.jpg",
+                        "jacket_m": "//img.discas.net/img/jacket/core/201307/13/4988021214872_1MX.jpg",
+                        "jacket_l": "//img.discas.net/img/jacket/core/201307/13/4988021214872_1L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [],
+                        "scene_m": [],
+                        "scene_l": [],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": null,
+                        "price_tax_in": null,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "H1",
+                                "doc_text": "松坂桃李主演によるタイムサスペンス。増加する一方の未解決事件をゼロにすることを目標に、警視庁捜査一課に新設されたチームZ。個性派の刑事ばかりが集まるチームZに配属された新人刑事・江上亨は、そこで幼馴染みの希と10年ぶりに再会する。"
+                            },
+                            {
+                                "doc_type_id": "06",
+                                "doc_source_id": "04",
+                                "doc_text": "PRスポット"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT0000000U9",
+                                "big_genre_name": "邦画ＴＶドラマ",
+                                "medium_genre_id": "EXT0000000UA",
+                                "medium_genre_name": "ＴＶドラマ",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": 274,
+                        "discas_item": "DiscasMovie",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS000004B73",
+                                "person_name": "松坂桃李",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000004QTX",
+                                "person_name": "杏",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000168X",
+                                "person_name": "六平直政",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000002KBI",
+                                "person_name": "笛木優子",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000IFVG",
+                                "person_name": "満島真之介",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001NJR",
+                                "person_name": "原田夏希",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00001PXAX",
+                                "person_name": "鈴木浩介",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001TWF",
+                                "person_name": "相島一之",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000UGM",
+                                "person_name": "鶴見辰吾",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000004B7I",
+                                "person_name": "竹富聖花",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000BP44",
+                                "person_name": "酒井直行",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS0000036GO",
+                                "person_name": "吉川清之",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            },
+                            {
+                                "person_id": "PPS00001FNKU",
+                                "person_name": "笛木優子",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00001US1E",
+                                "person_name": "満島真之介",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00001AK5W",
+                                "person_name": "吉川清之",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            },
+                            {
+                                "person_id": "PPS000001DWP",
+                                "person_name": "岩本仁志",
+                                "role_id": "EXT0000009KL",
+                                "role_name": "演出"
+                            },
+                            {
+                                "person_id": "PPS000024HK7",
+                                "person_name": "神蔵克",
+                                "role_id": "EXT0000IA5A3",
+                                "role_name": "チーフプロデューサー"
+                            },
+                            {
+                                "person_id": "PPS00001D0FO",
+                                "person_name": "杏",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000QJZ",
+                                "person_name": "池内博之",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS0000002CI",
+                                "person_name": "世良公則",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT000046HL1",
+                        "product_id": "PPD000046HL1",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "ec",
+                        "service_name": "ec",
+                        "msdb_item": "video",
+                        "item_cd": "1021",
+                        "item_name": "ＤＶＤ",
+                        "product_name": "リバース ～警視庁捜査一課チームZ～",
+                        "product_kana": "りばーすけいしちようそうさ1かちーむぜつと",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2013-04-05 00:00:00",
+                        "disp_start_month": "2013-04",
+                        "disp_end_date": "2063-04-05 23:59:59",
+                        "disp_end_month": "2063-04",
+                        "sale_start_date": "2013-07-24",
+                        "sale_start_month": "2013-07",
+                        "sale_end_date": "2063-07-24",
+                        "sale_end_month": "2063-07",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA00007YKSC"
+                        ],
+                        "tieup": "",
+                        "copyright": "(C)NTV",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "2013",
+                        "created_year_to": "",
+                        "created_year_str": "2013",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT000000HIU",
+                        "maker_name": "バップ",
+                        "maker_name_kana": "ばつぷ",
+                        "maker_name_abbrev": "バップ",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10359888",
+                        "ccc_family_cd": "10359888001",
+                        "ccc_product_id": "203794250",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4988021137584",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "VPBX13758",
+                        "icpn": "",
+                        "media_category_cd": "22",
+                        "media_category_name": "販売DVD",
+                        "media_format_id": "EXT000006GPK",
+                        "media_format_name": "DVD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "014000",
+                        "product_spec": "",
+                        "screen_size": "ビスタ",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "１：ドルビーデジタル／ステレオ／日本語",
+                        "region_info": "２",
+                        "disc_info": "片面１層",
+                        "color_spec": "カラー",
+                        "video_info": "１６：９／ＬＢ",
+                        "number_of_volume": "",
+                        "number_of_set": "",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/08358/4988021137584_1S.jpg",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/08358/4988021137584_1M.jpg",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/08358/4988021137584_1L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [],
+                        "scene_m": [],
+                        "scene_l": [],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": 3800,
+                        "price_tax_in": 4104,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "01",
+                                "doc_source_id": "03",
+                                "doc_text": "日本テレビ系“金曜ロードSHOW!”枠で放送された、松坂桃李と杏のW主演によるスペシャル・ドラマ。特殊な能力を持った変わり者ばかりが集められた特殊捜査課・チームZの面々が、謎の連続爆破事件の真相に挑む。"
+                            },
+                            {
+                                "doc_type_id": "06",
+                                "doc_source_id": "04",
+                                "doc_text": "＜封入特典＞<BR><BR>スペシャルブックレット<BR><BR>＜映像特典＞<BR><BR>松坂桃李＆杏 スペシャルインタビュー<BR>PRスポット集"
+                            },
+                            {
+                                "doc_type_id": "10",
+                                "doc_source_id": "03",
+                                "doc_text": "4Pスペシャルブックレット"
+                            },
+                            {
+                                "doc_type_id": "11",
+                                "doc_source_id": "03",
+                                "doc_text": "松坂桃李＆杏 スペシャルインタビュー/PRスポット集"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT0000000U9",
+                                "big_genre_name": "邦画ＴＶドラマ",
+                                "medium_genre_id": "EXT0000000UA",
+                                "medium_genre_name": "ＴＶドラマ",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS000004B73",
+                                "person_name": "松坂桃李",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000004QTX",
+                                "person_name": "杏",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000168X",
+                                "person_name": "六平直政",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000002KBI",
+                                "person_name": "笛木優子",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000IFVG",
+                                "person_name": "満島真之介",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001NJR",
+                                "person_name": "原田夏希",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00001PXAX",
+                                "person_name": "鈴木浩介",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001TWF",
+                                "person_name": "相島一之",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000UGM",
+                                "person_name": "鶴見辰吾",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000004B7I",
+                                "person_name": "竹富聖花",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000BP44",
+                                "person_name": "酒井直行",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS0000036GO",
+                                "person_name": "吉川清之",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT00005ZHM4",
+                        "product_id": "PPD000046HL1",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "tol",
+                        "service_name": "tol",
+                        "msdb_item": "video",
+                        "item_cd": "1021",
+                        "item_name": "ＤＶＤ",
+                        "product_name": "リバース ～警視庁捜査一課チームZ～",
+                        "product_kana": "りばーすけいしちようそうさ1かちーむぜつと",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2013-04-05 00:00:00",
+                        "disp_start_month": "2013-04",
+                        "disp_end_date": "2030-12-28 00:00:00",
+                        "disp_end_month": "2030-12",
+                        "sale_start_date": "2013-07-24",
+                        "sale_start_month": "2013-07",
+                        "sale_end_date": "2030-12-28",
+                        "sale_end_month": "2030-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA00007YKSC"
+                        ],
+                        "tieup": "",
+                        "copyright": "(C)NTV",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "2013",
+                        "created_year_to": "",
+                        "created_year_str": "2013",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT000000HIU",
+                        "maker_name": "バップ",
+                        "maker_name_kana": "ばつぷ",
+                        "maker_name_abbrev": "バップ",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10359888",
+                        "ccc_family_cd": "10359888001",
+                        "ccc_product_id": "203794250",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4988021137584",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "VPBX13758",
+                        "icpn": "",
+                        "media_category_cd": "22",
+                        "media_category_name": "販売DVD",
+                        "media_format_id": "EXT000006GPK",
+                        "media_format_name": "DVD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "014000",
+                        "product_spec": "",
+                        "screen_size": "ビスタ",
+                        "subtitle_flg": null,
+                        "subtitle": "日本語",
+                        "sound_spec": "１：ドルビーデジタル／ステレオ／日本語",
+                        "region_info": "２",
+                        "disc_info": "片面１層",
+                        "color_spec": "カラー",
+                        "video_info": "１６：９／ＬＢ",
+                        "number_of_volume": "",
+                        "number_of_set": "",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/08358/4988021137584_1S.jpg",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/08358/4988021137584_1M.jpg",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/08358/4988021137584_1L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [],
+                        "scene_m": [],
+                        "scene_l": [],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": 3800,
+                        "price_tax_in": 4104,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "01",
+                                "doc_source_id": "03",
+                                "doc_text": "日本テレビ系“金曜ロードSHOW!”枠で放送された、松坂桃李と杏のW主演によるスペシャル・ドラマ。特殊な能力を持った変わり者ばかりが集められた特殊捜査課・チームZの面々が、謎の連続爆破事件の真相に挑む。"
+                            },
+                            {
+                                "doc_type_id": "06",
+                                "doc_source_id": "04",
+                                "doc_text": "＜封入特典＞<BR><BR>スペシャルブックレット<BR><BR>＜映像特典＞<BR><BR>松坂桃李＆杏 スペシャルインタビュー<BR>PRスポット集"
+                            },
+                            {
+                                "doc_type_id": "10",
+                                "doc_source_id": "03",
+                                "doc_text": "4Pスペシャルブックレット"
+                            },
+                            {
+                                "doc_type_id": "11",
+                                "doc_source_id": "03",
+                                "doc_text": "松坂桃李＆杏 スペシャルインタビュー/PRスポット集"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT0000000U9",
+                                "big_genre_name": "邦画ＴＶドラマ",
+                                "medium_genre_id": "EXT0000000UA",
+                                "medium_genre_name": "ＴＶドラマ",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS000004B73",
+                                "person_name": "松坂桃李",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000004QTX",
+                                "person_name": "杏",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000168X",
+                                "person_name": "六平直政",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000002KBI",
+                                "person_name": "笛木優子",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000IFVG",
+                                "person_name": "満島真之介",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001NJR",
+                                "person_name": "原田夏希",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00001PXAX",
+                                "person_name": "鈴木浩介",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001TWF",
+                                "person_name": "相島一之",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000UGM",
+                                "person_name": "鶴見辰吾",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000004B7I",
+                                "person_name": "竹富聖花",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000BP44",
+                                "person_name": "酒井直行",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS0000036GO",
+                                "person_name": "吉川清之",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT0000615LY",
+                        "product_id": "PPD0000615LY",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "tol",
+                        "service_name": "tol",
+                        "msdb_item": "video",
+                        "item_cd": "1022",
+                        "item_name": "ブルーレイ",
+                        "product_name": "リバース ～警視庁捜査一課チームZ～",
+                        "product_kana": "りばーすけいしちようそうさ1かちーむぜつと",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2013-04-05 00:00:00",
+                        "disp_start_month": "2013-04",
+                        "disp_end_date": "2030-12-28 00:00:00",
+                        "disp_end_month": "2030-12",
+                        "sale_start_date": "2013-07-24",
+                        "sale_start_month": "2013-07",
+                        "sale_end_date": "2030-12-28",
+                        "sale_end_month": "2030-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA00007YKSC"
+                        ],
+                        "tieup": "",
+                        "copyright": "(C)NTV",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "2013",
+                        "created_year_to": "",
+                        "created_year_str": "2013",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT000000HIU",
+                        "maker_name": "バップ",
+                        "maker_name_kana": "ばつぷ",
+                        "maker_name_abbrev": "バップ",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10359888",
+                        "ccc_family_cd": "10359888001",
+                        "ccc_product_id": "203794251",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4988021712569",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "VPXX71256",
+                        "icpn": "",
+                        "media_category_cd": "22",
+                        "media_category_name": "販売DVD",
+                        "media_format_id": "EXT0000001VI",
+                        "media_format_name": "Blu-ray",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "014000",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": null,
+                        "subtitle": "日本語",
+                        "sound_spec": "１：リニアＰＣＭ／ステレオ／日本語",
+                        "region_info": "",
+                        "disc_info": "１層（２５ＧＢ）",
+                        "color_spec": "カラー",
+                        "video_info": "１６：９／ＬＢ",
+                        "number_of_volume": "",
+                        "number_of_set": "",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/08358/4988021712569_1S.jpg",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/08358/4988021712569_1M.jpg",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/08358/4988021712569_1L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [],
+                        "scene_m": [],
+                        "scene_l": [],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": 4800,
+                        "price_tax_in": 5184,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "01",
+                                "doc_source_id": "03",
+                                "doc_text": "日本テレビ系“金曜ロードSHOW!”枠で放送された、松坂桃李と杏のW主演によるスペシャル・ドラマ。特殊な能力を持った変わり者ばかりが集められた特殊捜査課・チームZの面々が、謎の連続爆破事件の真相に挑む。"
+                            },
+                            {
+                                "doc_type_id": "06",
+                                "doc_source_id": "04",
+                                "doc_text": "＜封入特典＞<BR><BR>スペシャルブックレット<BR><BR>＜映像特典＞<BR><BR>松坂桃李＆杏 スペシャルインタビュー<BR>PRスポット集"
+                            },
+                            {
+                                "doc_type_id": "10",
+                                "doc_source_id": "03",
+                                "doc_text": "4Pスペシャルブックレット"
+                            },
+                            {
+                                "doc_type_id": "11",
+                                "doc_source_id": "03",
+                                "doc_text": "松坂桃李＆杏 スペシャルインタビュー/PRスポット集"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT0000000U9",
+                                "big_genre_name": "邦画ＴＶドラマ",
+                                "medium_genre_id": "EXT0000000UA",
+                                "medium_genre_name": "ＴＶドラマ",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS000004B73",
+                                "person_name": "松坂桃李",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000004QTX",
+                                "person_name": "杏",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000168X",
+                                "person_name": "六平直政",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000002KBI",
+                                "person_name": "笛木優子",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000IFVG",
+                                "person_name": "満島真之介",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001NJR",
+                                "person_name": "原田夏希",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00001PXAX",
+                                "person_name": "鈴木浩介",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001TWF",
+                                "person_name": "相島一之",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000UGM",
+                                "person_name": "鶴見辰吾",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000004B7I",
+                                "person_name": "竹富聖花",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000BP44",
+                                "person_name": "酒井直行",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS0000036GO",
+                                "person_name": "吉川清之",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT000078TOQ",
+                        "product_id": "PPD0000615LY",
+                        "product_type_id": 1,
+                        "product_type_name": "セル",
+                        "service_id": "ec",
+                        "service_name": "ec",
+                        "msdb_item": "video",
+                        "item_cd": "1022",
+                        "item_name": "ブルーレイ",
+                        "product_name": "リバース ～警視庁捜査一課チームZ～",
+                        "product_kana": "りばーすけいしちようそうさ1かちーむぜつと",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "disp_start_date": "2013-04-05 00:00:00",
+                        "disp_start_month": "2013-04",
+                        "disp_end_date": "2063-04-05 23:59:59",
+                        "disp_end_month": "2063-04",
+                        "sale_start_date": "2013-07-24",
+                        "sale_start_month": "2013-07",
+                        "sale_end_date": "2063-07-24",
+                        "sale_end_month": "2063-07",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA00007YKSC"
+                        ],
+                        "tieup": "",
+                        "copyright": "(C)NTV",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "2013",
+                        "created_year_to": "",
+                        "created_year_str": "2013",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT000000HIU",
+                        "maker_name": "バップ",
+                        "maker_name_kana": "ばつぷ",
+                        "maker_name_abbrev": "バップ",
+                        "label_name": "",
+                        "sell_rental_flag": 1,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10359888",
+                        "ccc_family_cd": "10359888001",
+                        "ccc_product_id": "203794251",
+                        "rental_product_cd": "",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4988021712569",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "VPXX71256",
+                        "icpn": "",
+                        "media_category_cd": "22",
+                        "media_category_name": "販売DVD",
+                        "media_format_id": "EXT0000001VI",
+                        "media_format_name": "Blu-ray",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "014000",
+                        "product_spec": "この商品はブルーレイディスクです。※DVDプレイヤーでは再生できません。",
+                        "screen_size": "",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "１：リニアＰＣＭ／ステレオ／日本語",
+                        "region_info": "",
+                        "disc_info": "１層（２５ＧＢ）",
+                        "color_spec": "カラー",
+                        "video_info": "１６：９／ＬＢ",
+                        "number_of_volume": "",
+                        "number_of_set": "",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/08358/4988021712569_1S.jpg",
+                        "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/08358/4988021712569_1M.jpg",
+                        "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/08358/4988021712569_1L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [],
+                        "scene_m": [],
+                        "scene_l": [],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": 4800,
+                        "price_tax_in": 5184,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "01",
+                                "doc_source_id": "03",
+                                "doc_text": "日本テレビ系“金曜ロードSHOW!”枠で放送された、松坂桃李と杏のW主演によるスペシャル・ドラマ。特殊な能力を持った変わり者ばかりが集められた特殊捜査課・チームZの面々が、謎の連続爆破事件の真相に挑む。"
+                            },
+                            {
+                                "doc_type_id": "06",
+                                "doc_source_id": "04",
+                                "doc_text": "＜封入特典＞<BR><BR>スペシャルブックレット<BR><BR>＜映像特典＞<BR><BR>松坂桃李＆杏 スペシャルインタビュー<BR>PRスポット集"
+                            },
+                            {
+                                "doc_type_id": "10",
+                                "doc_source_id": "03",
+                                "doc_text": "4Pスペシャルブックレット"
+                            },
+                            {
+                                "doc_type_id": "11",
+                                "doc_source_id": "03",
+                                "doc_text": "松坂桃李＆杏 スペシャルインタビュー/PRスポット集"
+                            }
+                        ],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT0000000U9",
+                                "big_genre_name": "邦画ＴＶドラマ",
+                                "medium_genre_id": "EXT0000000UA",
+                                "medium_genre_name": "ＴＶドラマ",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS000004B73",
+                                "person_name": "松坂桃李",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000004QTX",
+                                "person_name": "杏",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000168X",
+                                "person_name": "六平直政",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000002KBI",
+                                "person_name": "笛木優子",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000IFVG",
+                                "person_name": "満島真之介",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001NJR",
+                                "person_name": "原田夏希",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00001PXAX",
+                                "person_name": "鈴木浩介",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000001TWF",
+                                "person_name": "相島一之",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000000UGM",
+                                "person_name": "鶴見辰吾",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS000004B7I",
+                                "person_name": "竹富聖花",
+                                "role_id": "EXT0000000UM",
+                                "role_name": "出演者"
+                            },
+                            {
+                                "person_id": "PPS00000BP44",
+                                "person_name": "酒井直行",
+                                "role_id": "EXT00000018Y",
+                                "role_name": "脚本"
+                            },
+                            {
+                                "person_id": "PPS0000036GO",
+                                "person_name": "吉川清之",
+                                "role_id": "EXT000000197",
+                                "role_name": "音楽"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT00001Y0DQ",
+                        "product_id": "PPD00001Y0DQ",
+                        "product_type_id": 5,
+                        "product_type_name": "映像配信",
+                        "service_id": "discas",
+                        "service_name": "discas",
+                        "msdb_item": "video",
+                        "item_cd": "",
+                        "item_name": "",
+                        "product_name": "リバース～警視庁捜査一課チームZ",
+                        "product_kana": "リバースケイシチョウソウサイッカチームゼット",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "警視庁捜査一課。それは言わずと知れた刑事の中の刑事たちのエリート集団。彼ら“選ばれし刑事たち”は、胸に着けた襟章の地色が赤色であることから、敬意と憧れをもって　赤バッジ　とも呼ばれる。そんな捜査一課に、今、新たなチームが誕生する。ネットを利用した犯罪、増加する愉快犯的犯罪、グローバル犯罪の急増などに対応するため、警視庁が秘密裏に作り上げたのが、「チームＺ」。チームＺは、警視庁捜査一課の独立別動部隊として、そこに所属する刑事たちは人事部と捜査一課長が仕切る他の捜査一課人事とは異なり、キャリア・ノンキャリアの別なく刑事部長がトップダウンでその権限において選抜任命する。「刑事ドラマ？そんなの一杯あるじゃないか！」　　…本当にそうだろうか？本企画『リバース』は、かって制作されたあらゆる刑事ドラマを過去へと押しやる可能性を秘めている。",
+                        "disp_start_date": "2013-04-10 19:00:00",
+                        "disp_start_month": "2013-04",
+                        "disp_end_date": "2030-12-31 23:59:59",
+                        "disp_end_month": "2030-12",
+                        "sale_start_date": "2013-04-10",
+                        "sale_start_month": "2013-04",
+                        "sale_end_date": "2030-12-31",
+                        "sale_end_month": "2030-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA00007YKSC"
+                        ],
+                        "tieup": "",
+                        "copyright": "(C)NTV",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "2013",
+                        "created_year_to": "",
+                        "created_year_str": "2013",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT0000NUY0Q",
+                        "maker_name": "株式会社バップ",
+                        "maker_name_kana": "",
+                        "maker_name_abbrev": "",
+                        "label_name": "",
+                        "sell_rental_flag": 2,
+                        "view_term": 0,
+                        "reservation_flg": 1,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10359888",
+                        "ccc_family_cd": "",
+                        "ccc_product_id": "8000130221",
+                        "rental_product_cd": "",
+                        "common_vod_code": "100004077",
+                        "vod_goods_cd": "100004077",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "",
+                        "icpn": "",
+                        "media_category_cd": "",
+                        "media_category_name": "",
+                        "media_format_id": "EXT00001MHIJ",
+                        "media_format_name": "SD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "01:34:31",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": 1,
+                        "subtitle": "",
+                        "sound_spec": "",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "",
+                        "video_info": "",
+                        "number_of_volume": "",
+                        "number_of_set": "",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "リバース～警視庁捜査一課チームＺ",
+                        "music_disp_artist": "チーフプロデューサー：神蔵克、宮崎啓子　脚本：酒井直行　出演：松坂桃李　杏　池内博之　笛木優子　六平直政　満島真之介　鈴木浩介　鶴見辰吾　笹野高史　原田夏希　竹富聖花　相島一之　神尾佑　世良公則",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//img.discas.net/img/jacket/ttv_jacket/100/004/077/100004077_24SX.jpg",
+                        "jacket_m": "//img.discas.net/img/jacket/ttv_jacket/100/004/077/100004077_24MX.jpg",
+                        "jacket_l": "//img.discas.net/img/jacket/ttv_jacket/100/004/077/100004077_24L.jpg",
+                        "jacket_l4": "",
+                        "scene_s": [],
+                        "scene_m": [],
+                        "scene_l": [],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": 400,
+                        "price_tax_in": 432,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+                            {
+                                "doc_type_id": "02",
+                                "doc_source_id": "H1",
+                                "doc_text": "警視庁捜査一課。それは言わずと知れた刑事の中の刑事たちのエリート集団。彼ら“選ばれし刑事たち”は、胸に着けた襟章の地色が赤色であることから、敬意と憧れをもって　赤バッジ　とも呼ばれる。そんな捜査一課に、今、新たなチームが誕生する。ネットを利用した犯罪、増加する愉快犯的犯罪、グローバル犯罪の急増などに対応するため、警視庁が秘密裏に作り上げたのが、「チームＺ」。チームＺは、警視庁捜査一課の独立別動部隊として、そこに所属する刑事たちは人事部と捜査一課長が仕切る他の捜査一課人事とは異なり、キャリア・ノンキャリアの別なく刑事部長がトップダウンでその権限において選抜任命する。「刑事ドラマ？そんなの一杯あるじゃないか！」　　…本当にそうだろうか？本企画『リバース』は、かって制作されたあらゆる刑事ドラマを過去へと押しやる可能性を秘めている。"
+                            }
+                        ],
+                        "devices": [
+                            {
+                                "device_id": "EXT0000HEZXI",
+                                "device_name": "tv"
+                            },
+                            {
+                                "device_id": "EXT0000HEZXM",
+                                "device_name": "stick"
+                            },
+                            {
+                                "device_id": "EXT0000HIZ8U",
+                                "device_name": "android"
+                            },
+                            {
+                                "device_id": "EXT0000HOPQZ",
+                                "device_name": "pc"
+                            },
+                            {
+                                "device_id": "EXT0000M42VG",
+                                "device_name": "ios"
+                            },
+                            {
+                                "device_id": "EXT0000NV29A",
+                                "device_name": "smart"
+                            },
+                            {
+                                "device_id": "EXT0000TC38V",
+                                "device_name": "androidtv"
+                            },
+                            {
+                                "device_id": "EXT0000TC38W",
+                                "device_name": "smarttv"
+                            }
+                        ],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT00000014Q",
+                                "big_genre_name": "邦画ドラマ",
+                                "medium_genre_id": "EXT0000006DB",
+                                "medium_genre_name": "その他",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": 300,
+                        "discas_item": "TTV",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS000024HK7",
+                                "person_name": "神蔵克",
+                                "role_id": "EXT00000000I",
+                                "role_name": "役割なし"
+                            },
+                            {
+                                "person_id": "PPS00001FNKU",
+                                "person_name": "笛木優子",
+                                "role_id": "EXT00000000I",
+                                "role_name": "役割なし"
+                            },
+                            {
+                                "person_id": "PPS0000O1X1V",
+                                "person_name": "杏",
+                                "role_id": "EXT00000000I",
+                                "role_name": "役割なし"
+                            },
+                            {
+                                "person_id": "PPS000004B73",
+                                "person_name": "松坂桃李",
+                                "role_id": "EXT00000000I",
+                                "role_name": "役割なし"
+                            },
+                            {
+                                "person_id": "PPS000000QJZ",
+                                "person_name": "池内博之",
+                                "role_id": "EXT00000000I",
+                                "role_name": "役割なし"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    }
+                ],
+                "video_relations": [],
+                "discas_grade_point": 274,
+                "discas_item": [
+                    "TTV",
+                    "DiscasMovie"
+                ],
+                "ttv_trailer_flg": 0,
+                "ttv_free_movie_flg": 0,
+                "ttv_sell_rental_flg": [
+                    "2"
+                ],
+                "ttv_low_price": 432,
+                "cinema_id": [],
+                "filmarks_id": [],
+                "dramarks_id": [],
+                "catch_copy": "",
+                "sale_start_date_sell": "2013-07-24",
+                "sale_start_date_rental": "2013-07-24",
+                "trailer_urls": [],
+                "scenes": [],
+                "filmarks_mark": 0,
+                "filmarks_clip": 0,
+                "filmarks_average": 0,
+                "people": [
+                    {
+                        "person_id": "PPS000004B73",
+                        "person_name": "松坂桃李",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS000004QTX",
+                        "person_name": "杏",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS00000168X",
+                        "person_name": "六平直政",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS000002KBI",
+                        "person_name": "笛木優子",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS00000IFVG",
+                        "person_name": "満島真之介",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS000001NJR",
+                        "person_name": "原田夏希",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS00001PXAX",
+                        "person_name": "鈴木浩介",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS000001TWF",
+                        "person_name": "相島一之",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS000000UGM",
+                        "person_name": "鶴見辰吾",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS000004B7I",
+                        "person_name": "竹富聖花",
+                        "role_id": "EXT0000000UM",
+                        "role_name": "出演者"
+                    },
+                    {
+                        "person_id": "PPS00000BP44",
+                        "person_name": "酒井直行",
+                        "role_id": "EXT00000018Y",
+                        "role_name": "脚本"
+                    },
+                    {
+                        "person_id": "PPS0000036GO",
+                        "person_name": "吉川清之",
+                        "role_id": "EXT000000197",
+                        "role_name": "音楽"
+                    }
+                ],
+                "tracks": [],
+                "merged_from": [],
+                "need_age_auth_flg": 0
+            }
+        ]
+    }
+}
