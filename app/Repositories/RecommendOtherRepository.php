@@ -102,8 +102,8 @@ class RecommendOtherRepository extends BaseRepository
             'ccc_work_cd',
             'w1.jacket_l',
             'adult_flg',
-            'msdb_item',
-            'product_type_id'
+            'w1.msdb_item',
+            't1.product_type_id'
         ];
     }
 }

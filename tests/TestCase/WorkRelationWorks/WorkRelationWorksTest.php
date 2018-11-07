@@ -47,11 +47,11 @@ class WorkRelationWorksTest extends TestCase
             'CDレンタル　複数巻' => ['PTATESTAU012', 'rental',
                 '11月のアンクレット',
                 'https://cdn.store-tsutaya.tsite.jp/images/jacket/12468/4988003514310_1L.jpg',
-                1
+                0
             ],
             'BOOKレンタル　単巻' => ['PTATESTBK011', 'rental',
                 'レンタルBOOK単品（Productに複数刊あり）作品タイトル',
-                'https://cdn.book_test_single_product_02_size_l.jpg',
+                'https://cdn.book_test_single_product_04_size_l.jpg',
                 0
             ],
             'BOOKレンタル　複数巻' => ['PTATESTBK012', 'rental',
@@ -76,13 +76,13 @@ class WorkRelationWorksTest extends TestCase
             ],
             'CDセル　複数巻' => ['PTATESTAU022', 'sell',
                 '11月のアンクレット',
-                'https://cdn.store-tsutaya.tsite.jp/images/jacket/12468/4988003514365_1L.jpg',
+                'https://cdn.store-tsutaya.tsite.jp/images/jacket/12468/4988003514310_1L.jpg',
                 0
             ],
             'BOOKセル 単巻' => ['PTATESTBK021', 'sell',
                 'レンタルBOOK単品（Productに複数刊あり）作品タイトル',
                 'https://cdn.book_test_single_product_04_size_l.jpg',
-                1
+                0
             ],
             'BOOKセル 複数巻' => ['PTATESTBK022', 'sell',
                 '進撃の巨人',

@@ -175,8 +175,8 @@ class PeopleRelatedWorksRepository extends BaseRepository
             'url_cd',
             'ccc_work_cd',
             'adult_flg',
-            'msdb_item',
-            'product_type_id'
+            'w1.msdb_item',
+            't1.product_type_id'
         ];
     }
 }
