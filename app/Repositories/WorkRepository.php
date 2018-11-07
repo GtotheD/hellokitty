@@ -169,7 +169,7 @@ class WorkRepository extends BaseRepository
                 $productResult = (array)$product->setConditionByUrlCd($workId, $this->saleType)->getOne();
                 break;
             case '0205':
-                $productResult = (array)$product->setConditionByJanFamilyGroup($workId)->getOne();
+                $productResult = (array)$product->setConditionByJan($workId)->getOne();
                 break;
             case '0206':
                 $productResult = (array)$product->setConditionByRentalProductCdFamilyGroup($workId)->getOne();
@@ -542,17 +542,13 @@ class WorkRepository extends BaseRepository
                     $response['playTime'] = $product['playTime'] . self::THEATER_PLAY_TIME_SUFFIX;
                 }
             }
+
             if (array_key_exists('docText', $response)) {
                 $docs = json_decode($response['docText'], true);
                 if (!empty($docs)) {
 
                     if ($product['msdbItem'] === 'video') {
-                        // 映画の場合は、doc_type_id = 15で取得する。
-                        if($response['workTypeId'] === self::WORK_TYPE_THEATER) {
-                            $response['docText'] = getProductContents(DOC_TABLE_MOVIE['tol'], DOC_TYPE_ID_STINGRAY, $docs);
-                        } else {
-                            $response['docText'] = getSummaryComment(DOC_TABLE_MOVIE['tol'], $docs);
-                        }
+                        $response['docText'] = getSummaryComment(DOC_TABLE_MOVIE['tol'], $docs);
                         $isDocSet = true;
                     } else if ($product['msdbItem'] === 'book') {
                         $response['docText'] = getSummaryComment(DOC_TABLE_BOOK['tol'], $docs);
@@ -827,7 +823,7 @@ class WorkRepository extends BaseRepository
                     $base['big_genre_id'],
                     $base['medium_genre_id'],
                     $base['small_genre_id'],
-                    $saleTypeHas['maker_cd']
+                    $saleTypeHas['pickupProduct']['maker_cd']
                 );
 
                 $saleStartDateSell = "";
@@ -850,7 +846,7 @@ class WorkRepository extends BaseRepository
                     'urlCd' => $base['url_cd'],
                     'cccWorkCd' => $base['ccc_work_cd'],
                     'workTitle' => $base['work_title'],
-                    'jacketL' => ($displayImage) ? $saleTypeHas['pickupProduct']['jacket_l'] : '',
+                    'jacketL' => ($displayImage) ? trimImageTag($saleTypeHas['pickupProduct']['jacket_l']) : '',
                     'newFlg' => newFlg($base['sale_start_date']),
                     'adultFlg' => ($base['adult_flg'] === 1) ? true : $isAdult,
                     'itemType' => $itemTypeVal,
@@ -900,10 +896,6 @@ class WorkRepository extends BaseRepository
                         break;
                     case 'audio':
                         $result['counts']['cd'] = $value['count'];
-                        // ミュージックビデオだけの場合、DVDのロジックを通らない為追加
-                        if ($itemType === 'dvd') {
-                            $result['counts']['dvd'] = $dvdCount;
-                        }
                         break;
                     case 'book':
                         $result['counts']['book'] = $value['count'];
@@ -1017,6 +1009,8 @@ class WorkRepository extends BaseRepository
     public function person($personId, $sort = null, $itemType = null, $serviceId = null)
     {
         $himoRepository = new HimoRepository();
+        $workRepository = new WorkRepository();
+        $productRepository = new ProductRepository();
 
         $params = [
             'personId' => $personId,
@@ -1065,7 +1059,9 @@ class WorkRepository extends BaseRepository
         $workItems = [];
         foreach ($works as $workItem) {
             $workItem = (array)$workItem;
-            $formatedItem = $this->formatAddOtherData($workItem, false, null, true);
+            // 別インスタンスを作成
+            $workRepository->setSaleType($productRepository->convertProductTypeToStr($workItem['productTypeId']));
+            $formatedItem = $workRepository->formatAddOtherData($workItem, false, null, true);
             foreach ($formatedItem as $key => $value) {
                 if (in_array($key, $this->outputColumn())) {
                     $formatedItemSelectColumn[$key] = $value;

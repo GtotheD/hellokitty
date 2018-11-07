@@ -168,6 +168,9 @@ $router->group([
         $sectionRepository = new SectionRepository;
         $sectionRepository->setSupplementVisible($request->input('supplementVisibleFlg', false));
         $sectionData = $sectionRepository->releaseHimo($periodType, $genreId);
+        if (empty($sectionData)) {
+            throw new NoContentsException;
+        }
         return response()->json($sectionData)->header('X-Accel-Expires', '86400');
     });
 

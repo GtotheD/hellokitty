@@ -108,6 +108,7 @@ class SectionRepository extends BaseRepository
                 $saleTypeTmp = $saleTypeRequest;
             }
             $row = [
+                // 'saleStartDate' => $this->dateFormat($section->sale_start_date),
                 'imageUrl' => $section->image_url,
                 'title' => $section->title,
                 'supplement' => $this->supplementVisible ? '' : $section->supplement, // アーティスト名、著者、機種等
@@ -116,8 +117,12 @@ class SectionRepository extends BaseRepository
                 'workId' => $section->work_id,
                 'saleType' => $saleTypeTmp,
             ];
-            // Himoに切り替わって、saleType別にてsale_start_dateをアップデートしているのでsale_start_dateに統一
-            $row['saleStartDate'] = $structureList->is_release_date == 1 ? $this->dateFormat($section->sale_start_date) : null;
+            if ($saleType == $structureRepository::RENTAL) {
+                $row['saleStartDate'] = $structureList->is_release_date == 1 ? $this->dateFormat($section->rental_start_date) : null;
+            } else {
+                $row['saleStartDate'] = $structureList->is_release_date == 1 ? $this->dateFormat($section->sale_start_date) : null;
+            }
+
             $rows[] = $row;
         }
         $this->rows = $rows;
@@ -241,6 +246,9 @@ class SectionRepository extends BaseRepository
             return null;
         }
         $formatRowData = $this->convertFormatFromHiMORelease($rows, $periodType);
+        if (empty($formatRowData)) {
+            $formatRowData = [];
+        }
         $response = [
             'hasNext' => false,
             'totalCount' => count($formatRowData),
@@ -449,6 +457,7 @@ class SectionRepository extends BaseRepository
         }
 
         // 作品/商品情報を取得する際の販売区分を指定する
+        // 作品を固定して取得する為、無視されることとなるが一応指定
         $workRepository->setSaleType($saleType);
 
         foreach ($rows['entry'] as $row) {

@@ -5,7 +5,6 @@ namespace App\Repositories;
 use App\Model\Product;
 use App\Model\Work;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
-use App\Exceptions\NoContentsException;
 
 /**
  * Created by PhpStorm.
@@ -184,10 +183,7 @@ class ProductRepository extends BaseRepository
 //        } else {
             foreach ($results as $result) {
                 $tmp = $this->product->setConditionRentalGroupNewestCccProductId(
-                    $result->work_id,
-                    $result->ccc_family_cd,
-                    $result->sale_start_date,
-                    $result->product_name
+                    $result->work_id, $result->ccc_family_cd, $result->sale_start_date
                 )->select($columnOutput)->getOne();
                 $tmp->dvd = $result->dvd;
                 $tmp->bluray = $result->bluray;
@@ -457,6 +453,7 @@ class ProductRepository extends BaseRepository
         $length = strlen($productKey);
         // レンタルの場合はPPT等複数媒体がある場合がある為、対象を複数取得する
         if ($length === 9) {
+
             // CDかどうか確認する為に対象媒体を一度検索
             $products =  $this->product->setConditionByRentalProductCd($productKey)->select('msdb_item')->getOne();
             if(empty($products)) {
@@ -475,17 +472,12 @@ class ProductRepository extends BaseRepository
         } else {
             throw new BadRequestHttpException();
         }
+
         $twsRepository = new TWSRepository();
         foreach ($queryIdList as $queryId) {
-            try {
-                $stockInfo = (array)$twsRepository->stock($storeId, $queryId)->get();
-            } catch (NoContentsException $e) {
-                // サーバーが204を返してきた時、NoContentsExceptionにて処理が終了してしまう為catchさせる。
-                continue;
-            }
+            $stockInfo = (array)$twsRepository->stock($storeId, $queryId)->get();
             if ($stockInfo !== null) {
                 $stockStatus = $stockInfo['entry']['stockInfo'][0]['stockStatus'];
-                // 取得した結果在庫があれば後続を動かさず情報を更新させない。
                 if ($statusCode > $stockStatus['level']) {
                     continue;
                 }
@@ -512,11 +504,6 @@ class ProductRepository extends BaseRepository
                 }
             }
         }
-        // メッセージ取得できなった時はnullで返す。
-        if ($statusCode === 0 && empty($message)) {
-            return null;
-        }
-
         return [
             'stockStatus' => $statusCode,
             'message' => $message,
