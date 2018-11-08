@@ -442,15 +442,6 @@ class WorkRepository extends BaseRepository
                 // 映像のみの作品は固定で入れる
                 $response['saleType'] = self::SALE_TYPE_OTHER;
             }
-            // 映像の場合は、ジャケ写を最新刊のブルーレイ優先で取得する。
-//            if ($response['msdbItem'] === self::MSDB_ITEM_VIDEO) {
-//                // saleTypeの指定がない場合は関係なく出す。
-//                $jacket = (array)$productModel->setConditionSelectJacket($response['workId'], $this->saleType)->getOne();
-//                // ジャケットがある場合のみ差し替え
-//                if (count($jacket) > 0) {
-//                    $product['jacketL'] = $jacket['jacketL'];
-//                }
-//            }
         }
         if (!empty($product)) {
 
@@ -530,7 +521,6 @@ class WorkRepository extends BaseRepository
 
             // ジャケ写の挿入
             $response['jacketL'] = ($displayImage) ? $product['jacketL'] : '';
-
             // 映画の場合の処理
             // 再生時間を返却するが上映映画の時の為だけなのでここでは初期化のみ
             $response['playTime'] = '';
@@ -542,13 +532,17 @@ class WorkRepository extends BaseRepository
                     $response['playTime'] = $product['playTime'] . self::THEATER_PLAY_TIME_SUFFIX;
                 }
             }
-
             if (array_key_exists('docText', $response)) {
                 $docs = json_decode($response['docText'], true);
                 if (!empty($docs)) {
 
                     if ($product['msdbItem'] === 'video') {
+                        // 映画の場合は、doc_type_id = 15で取得する。
+                        if($response['workTypeId'] === self::WORK_TYPE_THEATER) {
+                            $response['docText'] = getProductContents(DOC_TABLE_MOVIE['tol'], DOC_TYPE_ID_STINGRAY, $docs);
+                        } else {
                         $response['docText'] = getSummaryComment(DOC_TABLE_MOVIE['tol'], $docs);
+                        }
                         $isDocSet = true;
                     } else if ($product['msdbItem'] === 'book') {
                         $response['docText'] = getSummaryComment(DOC_TABLE_BOOK['tol'], $docs);
@@ -896,6 +890,10 @@ class WorkRepository extends BaseRepository
                         break;
                     case 'audio':
                         $result['counts']['cd'] = $value['count'];
+                        // ミュージックビデオだけの場合、DVDのロジックを通らない為追加
+                        if ($itemType === 'dvd') {
+                            $result['counts']['dvd'] = $dvdCount;
+                        }
                         break;
                     case 'book':
                         $result['counts']['book'] = $value['count'];
@@ -1152,8 +1150,8 @@ class WorkRepository extends BaseRepository
             }
 
             if (count($result) > 0) {
-        return $result;
-    }
+                return $result;
+            }
         }
 
         return null;

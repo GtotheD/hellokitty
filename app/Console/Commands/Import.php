@@ -511,7 +511,13 @@ class Import extends Command
         $section = new Section;
         $structureRepository = new StructureRepository();
         // 全件を対象
-        $sections = $section->conditionNoWorkIdActiveRow()->select(['t1.*', 't1.sale_type'])->getAll();
+        $sections = $section->conditionNoWorkIdActiveRow()->select(
+            [
+                't1.id',
+                't1.code',
+                't1.image_url',
+                't2.sale_type'
+            ])->getAll();
         foreach ($sections as $sectionRow) {
             $codeType = null;
             $this->infoH2($sectionRow->id . ' : ' . $sectionRow->code);
@@ -547,7 +553,10 @@ class Import extends Command
                             'sale_type' => $res['saleType'],
                             'updated_at' => date('Y-m-d H:i:s')
                         ];
-                        $updateValues['image_url'] = $res['jacketL'];
+                        // 既存イメージがある場合は更新対象としない
+                        if (empty($sectionRow->image_url)) {
+                            $updateValues['image_url'] = $res['jacketL'];
+                        }
                         $updateValues['sale_start_date'] = $res['saleStartDate'];
                         $updateValues['supplement'] = $res['supplement'];
                         // work_idできたのに映画情報じゃなかったら入れない。
