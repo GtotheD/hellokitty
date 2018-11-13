@@ -148,7 +148,8 @@ class FavoriteRepository extends ApiRequesterRepository
             return false;
         }
         $workIds = [];
-        foreach ($ids as $id) {
+        $mergedIds = [];
+        foreach ($ids['works'] as $id) {
             $workIds[] = [
                 'workId' => $id['id'],
                 'msdbItem' => $id['msdbItem'],
@@ -156,10 +157,16 @@ class FavoriteRepository extends ApiRequesterRepository
                 'appCreatedAt' => $id['appCreatedAt']
             ];
         }
+        foreach ($ids['mergedIds'] as $mergedId) {
+            $mergedIds[] = [
+                'workId' => $mergedId,
+            ];
+        }
         $request = [
             'tlsc' => $this->tlsc,
             'systemId' => $this->systemId,
-            'rows' => $workIds
+            'rows' => $workIds,
+            'mergedId' => $mergedIds,
         ];
         $this->apiPath = $this->apiHost . '/api/v1/favorite/add?force=true';
         $this->queryParams = json_encode($request);
@@ -187,8 +194,14 @@ class FavoriteRepository extends ApiRequesterRepository
         if (empty($ids)) {
             return false;
         }
-        foreach ($ids as $id) {
+        // 通常の削除対象
+        foreach ($ids['works'] as $id) {
             $workIds[] = ['workId' => $id['id']];
+        }
+        // 作品IDがつけ変わった場合、新作品IDで削除に行くために
+        // 旧IDでも削除させる。
+        foreach ($ids['mergedIds'] as $mergedId) {
+            $workIds[] = ['workId' => $mergedId];
         }
         $request = [
             'tlsc' => $this->tlsc,
@@ -257,13 +270,15 @@ class FavoriteRepository extends ApiRequesterRepository
         return $responseFormat;
     }
 
-    public function convertUrlCdToWorkId($ids) {
-
+    public function convertUrlCdToWorkId($ids)
+    {
         $workRepository = new WorkRepository;
         $urlCd = [];
         $workIds =[];
         $newIds = [];
         $works = [];
+        $acquireWorkId = [];
+        $unacquireWorkId = [];
         foreach ($ids as $id) {
             // PTAがあった場合はworkId
             if (!preg_match('/^PTA/', $id['id'])) {
@@ -274,17 +289,49 @@ class FavoriteRepository extends ApiRequesterRepository
         }
         if (!empty($urlCd)) {
             $works = $workRepository->getWorkList($urlCd, ['work_id', 'url_cd', 'msdb_item', 'work_format_id'], '0105', true)['rows'];
-    	}
-    	// UrlCdで検索後workが存在していた場合はマージ
+        }
+        // UrlCdで検索後workが存在していた場合はマージ
         if (!empty($works)) {
             $workIdWorks = $workRepository->getWorkList($workIds, ['work_id', 'url_cd', 'msdb_item', 'work_format_id'], null, true)['rows'];
             // workが取れた時にマージする。
             if (!empty($workIdWorks)) {
                 $works = array_merge($works, $workIdWorks);
             }
-        // workが存在していない場合はマージなしで通常取得
+            // workが存在していない場合はマージなしで通常取得
         } else {
             $works = $workRepository->getWorkList($workIds, ['work_id', 'url_cd', 'msdb_item', 'work_format_id'], null, true)['rows'];
+        }
+        // work_id取得できなかったもので付け替えのものがあるかもしれないので再チャレンジ。
+        // 単体問い合わせする。
+        // urlCdの場合は付け替えは考慮しないで対象外のため、$workIdsとの比較を行う。
+        // 取得できた場合はwork_idのみ抽出
+        if (!empty($works)) {
+            foreach ($works as $work) {
+                $acquireWorkId[] = $work['workId'];
+            }
+            $unacquireWorkId = array_diff($workIds, $acquireWorkId);
+            //１件も取得できなかった場合全部対象にする。
+        } else {
+            $unacquireWorkId = $workIds;
+        }
+        $mergedIds = [];
+        foreach ($unacquireWorkId as $unacquireWorkIdRow) {
+            $workTmp = $workRepository->get($unacquireWorkIdRow);
+            // array_searchで検索する為、idのみ抽出
+            foreach ($ids as $id) {
+                $idsTmp[] = $id['id'];
+            }
+            // 対象ID位置の検索
+            $idsIndex = array_search($unacquireWorkIdRow, $idsTmp);
+            // IDの差し替え
+            $mergedIds[] = $ids[$idsIndex]['id'];
+            $ids[$idsIndex]['id'] = $workTmp['workId'];
+            $works[] = [
+                'workId' => $workTmp['workId'],
+                'urlCd' => $workTmp['urlCd'],
+                'msdbItem' => $workTmp['msdbItem'],
+                'workFormatId' => $workTmp['workFormatId'],
+            ];
         }
         // 検索がヒットしなかった場合はfalseを返却
         if (empty($works)) {
@@ -304,6 +351,9 @@ class FavoriteRepository extends ApiRequesterRepository
                 }
             }
         }
-        return $newIds;
+        return [
+            'works' => $newIds,
+            'mergedIds' => $mergedIds
+        ];
     }
 }
