@@ -48,34 +48,6 @@ class ProductRepository extends BaseRepository
         if (empty($product)) {
             return null;
         }
-        // CDレンタルだった場合
-        if ($product->msdbItem === 'audio' && $product->productTypeId == $this->product::PRODUCT_TYPE_ID_RENTAL) {
-            $rentalProducts = $this->product->setConditionByWorkIdForRentalCd($product->workId)->toCamel(['id','base_product_code','is_dummy'], 't2.')->get();
-            if (empty($rentalProducts)) {
-                return null;
-            }
-            if (count($rentalProducts) === 1) {
-                return $this->productReformat([$product])[0];
-            }
-            $baseRentalProduct = [];
-            foreach ($rentalProducts as $rentalProduct) {
-                $rentalProduct = (array)$rentalProduct;
-                // ベースとなるプロダクトを設定
-                if (empty($baseRentalProduct)) {
-                    $baseRentalProduct = $rentalProduct;
-                    $work = new Work();
-                    $workData =  $work->setConditionByWorkId($product->workId)->toCamel()->getOne();
-                    $baseRentalProduct['productName'] = $workData->workTitle;
-                    $baseRentalProduct['contents'] = "■" . $rentalProduct['productName'] . "\n" . $rentalProduct['contents'];
-                } else {
-                // コンテンツのマージ
-                $baseRentalProduct['productCode'] = $baseRentalProduct['productCode'] . ', '.$rentalProduct['productCode'];
-                // コンテンツのマージ
-                    $baseRentalProduct['contents'] = $baseRentalProduct['contents'] . "\n" . "■" . $rentalProduct['productName'] . "\n" . $rentalProduct['contents'];
-                }
-            }
-            return $this->productReformat([$baseRentalProduct])[0];
-        }
         return $this->productReformat([$product])[0];
     }
 
@@ -109,20 +81,7 @@ class ProductRepository extends BaseRepository
         }
         // レンタルCDだった場合
         if ($products->msdb_item === 'audio' && $this->saleType === 'rental') {
-            $isAudio = true;
-            $rentalProducts = $this->product->setConditionByWorkIdForRentalCd($workId)->get();
-            // 複数ある場合
-            if (count($rentalProducts) > 1) {
-                // Productをworkのタイトルに書き換える対応
-                // 結果を１件にセット
-                $column = array_diff($column, ['t2.product_name']);
-                // カラムを入れ替えるために追加
-                $column[] = 't1.work_title AS productName';
-                $this->totalCount = 1;
-                $this->hasNext = false;
-                $results = $this->product->selectCamel($column)->get(1, 0);
-                return $this->productReformat($results);
-            }
+            // todo
         }
         $this->totalCount = $this->product->setConditionProductGroupingByWorkIdSaleType($workId, $this->saleType, $this->sort, $isAudio)->count();
         $results = $this->product->selectCamel($column)->get($this->limit, $this->offset);
@@ -160,44 +119,20 @@ class ProductRepository extends BaseRepository
         }
         $this->totalCount = $this->product->setConditionRentalGroup($workId, $sort, $ignoreFlag)->count();
         $results = $this->product->get($this->limit, $this->offset);
-        // 2018/9/6 別ccc_family_cdの場合は全巻だすために単体集約はしない
-        // otherだった場合は商品をまとめる
-//        if($itemCount->dvd === 0 && $itemCount->other > 0) {
-//            // 配列に変換
-//            $otherProductTemp = [];
-//            foreach ($results as $resultRow) {
-//                $otherProductTemp[] = (array)$resultRow;
-//            }
-//            // ソートをして最新刊を抽出
-//            foreach ($otherProductTemp as $val) $keys[] = $val['ccc_family_cd'];
-//            array_multisort($keys, SORT_DESC, $otherProductTemp);
-//            $otherProductTemp = $otherProductTemp[0];
-//            $tmp = $this->product->setConditionRentalGroupNewestCccProductId(
-//                $otherProductTemp['work_id'], $otherProductTemp['ccc_family_cd'], $otherProductTemp['sale_start_date']
-//            )->select($columnOutput)->getOne();
-//            $tmp->dvd = null;
-//            $tmp->bluray = null;
-//            $response[] = $tmp;
-//            // カウントを1に設定
-//            $this->totalCount = 1;
-//        } else {
-            foreach ($results as $result) {
-                $tmp = $this->product->setConditionRentalGroupNewestCccProductId(
-                    $result->work_id,
-                    $result->ccc_family_cd,
-                    $result->sale_start_date,
-                    $result->product_name
-                )->select($columnOutput)->getOne();
-                $tmp->dvd = $result->dvd;
-                $tmp->bluray = $result->bluray;
-                $response[] = $tmp;
-            }
-            if (empty($response)) {
-                return null;
-            }
-//        }
-
-        //
+        foreach ($results as $result) {
+            $tmp = $this->product->setConditionRentalGroupNewestCccProductId(
+                $result->work_id,
+                $result->ccc_family_cd,
+                $result->sale_start_date,
+                $result->product_name
+            )->select($columnOutput)->getOne();
+            $tmp->dvd = $result->dvd;
+            $tmp->bluray = $result->bluray;
+            $response[] = $tmp;
+        }
+        if (empty($response)) {
+            return null;
+        }
         if (count($results) + $this->offset < $this->totalCount) {
             $this->hasNext = true;
         } else {
@@ -445,6 +380,15 @@ class ProductRepository extends BaseRepository
         return $productBase;
     }
 
+    /*
+     * 在庫検索
+     * TWSの在庫検索を利用
+     * TWS側にはファミリー集約をしないように変更した為
+     * 本APIにて在庫問い合わせの為の集約を行う。
+     * CDはJANベースでバラす為にPPTのみの集約
+     * DVDはタイトル集約を行っている為
+     * タイトルで集約した結果をまとめて問い合わせを行う
+     */
     public function stock($storeId, $productKey)
     {
         $message = null;
@@ -473,7 +417,6 @@ class ProductRepository extends BaseRepository
         } elseif ($length === 13) {
             $queryIdList[] = $productKey;
         } else {
-            throw new BadRequestHttpException();
         }
 
         $twsRepository = new TWSRepository();
