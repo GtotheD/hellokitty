@@ -194,8 +194,14 @@ class FavoriteRepository extends ApiRequesterRepository
         if (empty($ids)) {
             return false;
         }
+        // 通常の削除対象
         foreach ($ids['works'] as $id) {
             $workIds[] = ['workId' => $id['id']];
+        }
+        // 作品IDがつけ変わった場合、新作品IDで削除に行くために
+        // 旧IDでも削除させる。
+        foreach ($ids['mergedIds'] as $mergedId) {
+            $workIds[] = ['workId' => $mergedId];
         }
         $request = [
             'tlsc' => $this->tlsc,
