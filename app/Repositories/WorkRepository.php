@@ -832,15 +832,16 @@ class WorkRepository extends BaseRepository
 
 
                 if($base['work_type_id'] == WorkRepository::WORK_TYPE_THEATER) {
-                    $base['jacket_l'] = $this->theaterSceneFilter($base['scene_l']);
+                    $jacket = trimImageTag($this->theaterSceneFilter($base['scene_l']), true);
+                } else {
+                    $jacket = trimImageTag($saleTypeHas['pickupProduct']['jacket_l']);
                 }
-
                 $result['rows'][] = [
                     'workId' => $base['work_id'],
                     'urlCd' => $base['url_cd'],
                     'cccWorkCd' => $base['ccc_work_cd'],
                     'workTitle' => $base['work_title'],
-                    'jacketL' => ($displayImage) ? trimImageTag($saleTypeHas['pickupProduct']['jacket_l']) : '',
+                    'jacketL' => ($displayImage) ? $jacket : '',
                     'newFlg' => newFlg($base['sale_start_date']),
                     'adultFlg' => ($base['adult_flg'] === 1) ? true : $isAdult,
                     'itemType' => $itemTypeVal,
@@ -912,7 +913,7 @@ class WorkRepository extends BaseRepository
     {
         $sell = false;
         $rental = false;
-        $thater = false;
+        $theater = false;
         $supplement = '';
         $mediaFormatId = '';
         $saleStartDateSell = null;
@@ -935,7 +936,7 @@ class WorkRepository extends BaseRepository
                     $rental = true;
                 // 上映映画
                 } else if (empty($product['product_type_id']) && $product['service_id'] === 'st') {
-                    $thater = true;
+                    $theater = true;
                 }
                 if ($itemType === 'game') {
                     $supplement = $product['game_model_name'];
@@ -957,24 +958,44 @@ class WorkRepository extends BaseRepository
 
             }
         }
+
         foreach ($productsTmp as $productsTmpKey => $productsTmpRow) {
-            $productsTmpKeyNumberOfVolume[$productsTmpKey] = $productsTmpRow['number_of_volume'];
+            $productsTmpKeyNumberOfVolume[$productsTmpKey] = (int)$productsTmpRow['number_of_volume'];
             $productsTmpKeySaleStartDate[$productsTmpKey] = $productsTmpRow['sale_start_date'];
             $productsTmpKeyItemCd[$productsTmpKey] = $productsTmpRow['item_cd'];
+            $productsTmpKeyProductTypeId[$productsTmpKey] = $productsTmpRow['product_type_id'];
             $productsTmpKeyCccProductId[$productsTmpKey] = $productsTmpRow['ccc_product_id'];
         }
+        // CDは販売を先に出す
+        if ($itemType === 'book') {
+            $productsTmpKeyProductTypeIdOrder = SORT_ASC;
+        } else {
+            $productsTmpKeyProductTypeIdOrder = SORT_DESC;
+        }
         array_multisort(
+            $productsTmpKeyProductTypeId, $productsTmpKeyProductTypeIdOrder,
             $productsTmpKeyNumberOfVolume, SORT_DESC, SORT_NUMERIC,
             $productsTmpKeySaleStartDate, SORT_DESC,
             $productsTmpKeyItemCd, SORT_ASC,
             $productsTmpKeyCccProductId, SORT_ASC,
             $productsTmp
              );
-
+        // for Debug
+//        foreach ($productsTmp as $productsTmpValue) {
+//            echo "product_name：". $productsTmpValue['product_name']."\n";
+//            echo "product_type_id：". $productsTmpValue['product_type_id']."\n";
+//            echo "ccc_family_cd：". $productsTmpValue['ccc_family_cd']."\n";
+//            echo "number_of_volume：". $productsTmpValue['number_of_volume']."\n";
+//            echo "sale_start_date：". $productsTmpValue['sale_start_date']."\n";
+//            echo "item_cd：". $productsTmpValue['item_cd']."\n";
+//            echo "ccc_product_id：". $productsTmpValue['ccc_product_id']."\n";
+//            echo "ーーーーーーーーーーーーーーーーーーーーー\n";
+//        }
+//        dd();
         return [
             'sell' => $sell,
             'rental' => $rental,
-            'theater' => $thater,
+            'theater' => $theater,
             'supplement' => $supplement,
             'media_format_id' => $mediaFormatId,
             'saleStartDateSell' => $saleStartDateSell,
