@@ -454,4 +454,35 @@ class Product extends Model
         $count = $this->dbObject->count();
         return ($count == 0);
     }
+
+    /*
+     * 商品一覧 CD用の条件
+     *
+     */
+    public function setConditionForCd($workId, $saleType, $order)
+    {
+        $this->dbObject = DB::table($this->table)
+            ->where('work_id', $workId)
+            ->where('service_id', 'tol')
+            ->where('product_type_id', $this->convertSaleType($saleType));
+
+        ;
+        //  ソート
+        if ($order === 'old') {
+            $this->dbObject
+                ->orderBy('t2.sale_start_date', 'asc')
+                ->orderBy('t2.ccc_family_cd', 'asc')
+                ->orderBy('t2.jan', 'asc')
+            ;
+        } else {
+            $this->dbObject
+                ->orderBy('t2.sale_start_date', 'desc')
+                ->orderBy('t2.ccc_family_cd', 'desc')
+                ->orderBy('t2.jan', 'desc')
+            ;
+        }
+        return $this;
+
+    }
+
 }

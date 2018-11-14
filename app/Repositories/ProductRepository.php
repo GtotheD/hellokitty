@@ -82,9 +82,12 @@ class ProductRepository extends BaseRepository
         // レンタルCDだった場合
         if ($products->msdb_item === 'audio' && $this->saleType === 'rental') {
             // todo
+            $this->totalCount = $this->product->setConditionForCd($workId, $this->saleType, $this->sort)->count();
+            $results = $this->product->toCamel()->get($this->limit, $this->offset);
+        } else {
+            $this->totalCount = $this->product->setConditionProductGroupingByWorkIdSaleType($workId, $this->saleType, $this->sort, $isAudio)->count();
+            $results = $this->product->selectCamel($column)->get($this->limit, $this->offset);
         }
-        $this->totalCount = $this->product->setConditionProductGroupingByWorkIdSaleType($workId, $this->saleType, $this->sort, $isAudio)->count();
-        $results = $this->product->selectCamel($column)->get($this->limit, $this->offset);
         if (count($results) === 0) {
             return null;
         }
