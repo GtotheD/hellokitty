@@ -428,7 +428,6 @@ class ProductRepository extends BaseRepository
         } else {
             throw new BadRequestHttpException();
         }
-        dd($queryIdList);
         $twsRepository = new TWSRepository();
         foreach ($queryIdList as $queryId) {
             try {
