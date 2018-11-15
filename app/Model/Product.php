@@ -176,6 +176,23 @@ class Product extends Model
         return $this;
     }
 
+    public function setConditionByRentalProductCdFamilyGroupForBook($rentalProductCd)
+    {
+        $this->dbObject = DB::table($this->table . ' AS p1')
+            ->join($this->table . ' AS p2', function($join) {
+                $join->on('p1.ccc_family_cd','=','p2.ccc_family_cd')
+                    ->on('p1.product_type_id','=','p2.product_type_id')
+                    ->on('p1.item_cd_right_2', '=', 'p2.item_cd_right_2');
+            })
+            ->select(DB::raw('p2.*'))
+            ->whereRaw(DB::raw(' p2.service_id  in  (\'tol\', \'st\')'))
+            ->where([
+                ['p1.rental_product_cd', '=', $rentalProductCd],
+                ['p2.product_type_id', '=', self::PRODUCT_TYPE_ID_RENTAL]
+            ]);
+        return $this;
+    }
+
     public function setConditionByJanFamilyGroup($jan)
     {
         $this->dbObject = DB::table($this->table . ' AS p1')

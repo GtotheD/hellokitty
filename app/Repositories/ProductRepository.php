@@ -404,6 +404,7 @@ class ProductRepository extends BaseRepository
         $length = strlen($productKey);
         // レンタルの場合はPPT等複数媒体がある場合がある為、対象を複数取得する
         if ($length === 9) {
+
             // CDかどうか確認する為に対象媒体を一度検索
             $products =  $this->product->setConditionByRentalProductCd($productKey)->select('msdb_item')->getOne();
             if(empty($products)) {
@@ -412,10 +413,16 @@ class ProductRepository extends BaseRepository
             if ($products->msdb_item === 'audio') {
                 $isAudio = true;
             }
+            // 既存の処理と変えないようにする。
+            if ($products->msdb_item === 'book') {
+                $res = $this->product->setConditionByRentalProductCdFamilyGroupForBook($productKey)->get();
+            } else {
             $res = $this->product->setConditionByRentalProductCdFamilyGroup($productKey, $isAudio)->get();
+            }
             foreach ($res as $item) {
                 $queryIdList[] = $item->rental_product_cd;
             }
+
         // JANで渡ってきた場合は、販売商品の為単一検索
         } elseif ($length === 13) {
             $queryIdList[] = $productKey;
