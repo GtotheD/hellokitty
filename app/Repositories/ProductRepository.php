@@ -412,7 +412,12 @@ class ProductRepository extends BaseRepository
             if ($products->msdb_item === 'audio') {
                 $isAudio = true;
             }
-            $res = $this->product->setConditionByRentalProductCdFamilyGroup($productKey, $isAudio)->get();
+            // 既存の処理と変えないようにする。
+            if ($products->msdb_item === 'book') {
+                $res = $this->product->setConditionByRentalProductCdFamilyGroupForBook($productKey)->get();
+            } else {
+                $res = $this->product->setConditionByRentalProductCdFamilyGroup($productKey, $isAudio)->get();
+            }
             foreach ($res as $item) {
                 $queryIdList[] = $item->rental_product_cd;
             }
@@ -420,7 +425,10 @@ class ProductRepository extends BaseRepository
         // JANで渡ってきた場合は、販売商品の為単一検索
         } elseif ($length === 13) {
             $queryIdList[] = $productKey;
+        } else {
+            throw new BadRequestHttpException();
         }
+        dd($queryIdList);
         $twsRepository = new TWSRepository();
         foreach ($queryIdList as $queryId) {
             try {
