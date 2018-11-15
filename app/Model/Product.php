@@ -160,11 +160,11 @@ class Product extends Model
     {
         $this->dbObject = DB::table($this->table . ' AS p1')
             ->join($this->table . ' AS p2', function($join) use($isAudio){
-                $join->on('p1.ccc_family_cd','=','p2.ccc_family_cd')
+                $join->on('p1.product_name','=','p2.product_name')
                     ->on('p1.product_type_id','=','p2.product_type_id')
                     ->on('p1.item_cd_right_2', '=', 'p2.item_cd_right_2');
                 if ($isAudio) {
-                    $join->on('p1.base_product_code','=','p2.base_product_code');
+                    $join->on('p1.rental_product_cd','=','p2.rental_product_cd');
                 }
             })
             ->select(DB::raw('p2.*'))
@@ -432,4 +432,59 @@ class Product extends Model
         $count = $this->dbObject->count();
         return ($count == 0);
     }
+
+    /*
+     * 商品一覧 CD用の条件
+     * pptも含める
+     * ダミー品番は完全除外
+     * 発売日が被った場合は
+     */
+    public function setConditionForCd($workId, $saleType, $order)
+    {
+        $selectSubGrouping = 'item_cd_right_2,'
+            .'rental_product_cd,'
+            .'product_type_id,'
+            .'ccc_family_cd ';
+        $selectSub = ',MAX(CASE WHEN SUBSTRING(item_cd, 2, 1) = \'0\' THEN product_unique_id END) AS no_ppt,'
+            .'MAX(CASE WHEN SUBSTRING(item_cd, 2, 1) = \'1\' THEN product_unique_id END) AS ppt ';
+        $subQueryBase = DB::table($this->table)->select(DB::raw($selectSubGrouping.$selectSub))
+            ->whereRaw(DB::raw(' work_id = \''.$workId .'\''))
+            // プロダクトは上映映画の時は呼ばないのでtolのみで絞る
+            ->whereRaw(DB::raw(' service_id in  (\'tol\')'))
+            ->groupBy(DB::raw($selectSubGrouping));
+        if ($saleType === 'rental') {
+            $subQueryBase->whereRaw(DB::raw(' is_dummy = 0 '));
+        }
+        $subQuerySelect = 'item_cd_right_2,'
+            .'product_type_id,'
+            .'ccc_family_cd,'
+            .'no_ppt,'
+            .'ppt,'
+            .'CASE WHEN no_ppt is not null THEN no_ppt ELSE ppt END AS product_unique_id';
+        $subQuery = DB::table(DB::raw("({$subQueryBase->toSql()}) as t1"))
+            ->select(DB::raw($subQuerySelect));
+        $this->dbObject = DB::table(DB::raw("({$subQuery->toSql()}) as t1"))
+            ->join($this->table.' as t2', 't2.product_unique_id', '=', 't1.product_unique_id')
+            ->where('work_id','=',$workId);
+        if ($saleType === 'sell') {
+            $this->dbObject->where('t2.product_type_id', '1');
+        } elseif ($saleType === 'rental') {
+            $this->dbObject->where('t2.product_type_id', '2');
+        }
+        if ($order === 'old') {
+            $this->dbObject
+                ->orderBy('t2.sale_start_date', 'asc')
+                ->orderBy('t2.ccc_family_cd', 'asc')
+                ->orderBy('t2.ccc_product_id', 'asc')
+            ;
+        } else {
+            $this->dbObject
+                ->orderBy('t2.sale_start_date', 'desc')
+                ->orderBy('t2.ccc_family_cd', 'desc')
+                ->orderBy('t2.ccc_product_id', 'desc')
+            ;
+        }
+        return $this;
+    }
+
 }
