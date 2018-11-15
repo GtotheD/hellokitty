@@ -40,6 +40,7 @@ abstract class TestCase extends Laravel\Lumen\Testing\TestCase
             Artisan::call('truncateTable');
             Artisan::call('db:seed', ['--class' => 'WorkRecommendOtherTestSeeder']);
             Artisan::call('db:seed', ['--class' => 'ReleaseTestSeeder']);
+            $this->importAllData();
             self::$isSetup = true;
         }
     }
@@ -130,4 +131,24 @@ abstract class TestCase extends Laravel\Lumen\Testing\TestCase
         unset($actual['data']['updatedAt']);
         $this->assertEquals($expected, $actual);
     }
+
+    /**
+     * 全データのインポートを行う。
+     */
+    public function importAllData()
+    {
+        $path = base_path('tests/Data/himo/crossworks/');
+        $audioList = glob($path . '/audio/*');
+        $videoList = glob($path . '/video/*');
+        $bookList = glob($path . '/book/*');
+        $gameList = glob($path . '/game/*');
+        $list = array_merge($audioList, $videoList, $bookList, $gameList);
+        foreach ($list as $row) {
+            $workId = basename($row);
+            echo $workId . "\n";
+            $url = '/work/' . $workId;
+            $this->getWithAuth($url);
+        }
+    }
+
 }

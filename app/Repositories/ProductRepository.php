@@ -61,6 +61,12 @@ class ProductRepository extends BaseRepository
     public function getNarrow($workId)
     {
         $order = null;
+
+        $isAudio = false;
+        $products = $this->product->setConditionByWorkIdNewestProduct($workId)->select('msdb_item')->getOne();
+        if(empty($products)) {
+            return null;
+        }
         $column = [
             "t2.product_name",
             "t2.product_unique_id",
@@ -74,16 +80,10 @@ class ProductRepository extends BaseRepository
             "t2.sale_start_date",
             "t2.price_tax_out",
         ];
-        $isAudio = false;
-        $products = $this->product->setConditionByWorkIdNewestProduct($workId)->select('msdb_item')->getOne();
-        if(empty($products)) {
-            return null;
-        }
         // レンタルCDだった場合
         if ($products->msdb_item === 'audio' && $this->saleType === 'rental') {
-            // todo
             $this->totalCount = $this->product->setConditionForCd($workId, $this->saleType, $this->sort)->count();
-            $results = $this->product->toCamel()->get($this->limit, $this->offset);
+            $results = $this->product->selectCamel($column)->get($this->limit, $this->offset);
         } else {
             $this->totalCount = $this->product->setConditionProductGroupingByWorkIdSaleType($workId, $this->saleType, $this->sort, $isAudio)->count();
             $results = $this->product->selectCamel($column)->get($this->limit, $this->offset);
@@ -416,12 +416,11 @@ class ProductRepository extends BaseRepository
             foreach ($res as $item) {
                 $queryIdList[] = $item->rental_product_cd;
             }
+
         // JANで渡ってきた場合は、販売商品の為単一検索
         } elseif ($length === 13) {
             $queryIdList[] = $productKey;
-        } else {
         }
-
         $twsRepository = new TWSRepository();
         foreach ($queryIdList as $queryId) {
             try {

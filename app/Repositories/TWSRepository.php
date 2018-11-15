@@ -90,7 +90,8 @@ class TWSRepository extends ApiRequesterRepository
             'fieldSet' => 'stock',
             'storeId' => $storeId,
             'adultAuthOK' => '1',
-            'tolPlatformCode' => '00'
+            'tolPlatformCode' => '00',
+            'syf' => '1' // 集約解除フラグ1=集約しない
         ];
         return $this;
     }
