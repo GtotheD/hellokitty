@@ -124,6 +124,31 @@ class Product extends Model
         return $this;
     }
 
+    /**
+     * リリカレ用商品情報取得。
+     * 通常は日付はみてない為、リリカレの日付に対応。
+     */
+    public function setConditionByWorkIdNewestProductWithSaleStartDate($workId, $cccFamilyCd, $productTypeId, $saleStartDate)
+    {
+        $this->dbObject = DB::table($this->table . ' as t1')
+        // otherのデータを取得するときにとれない為オプションによってとれるとうに変更
+        ->whereRaw(DB::raw(' service_id = \'tol\''))
+        ->where([
+            'work_id' => $workId,
+            'ccc_family_cd' => $cccFamilyCd,
+            'product_type_id' => $productTypeId,
+            'sale_start_date' => $saleStartDate,
+        ]);
+        $this->dbObject
+            ->orderByRaw(DB::raw('cast(number_of_volume as UNSIGNED) desc'))
+            ->orderBy('sale_start_date', 'desc')
+            ->orderBy('item_cd_right_2', 'asc')
+            ->orderBy('item_cd', 'asc') // PPTが上部にくることを抑止する為
+            ->orderBy('ccc_product_id', 'asc')
+            ->limit(1);
+        return $this;
+    }
+
     public function selectWithDvdJacketL()
     {
         $column = $this->getColumn();

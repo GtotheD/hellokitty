@@ -145,7 +145,6 @@ abstract class TestCase extends Laravel\Lumen\Testing\TestCase
         $list = array_merge($audioList, $videoList, $bookList, $gameList);
         foreach ($list as $row) {
             $workId = basename($row);
-            echo $workId . "\n";
             $url = '/work/' . $workId;
             $this->getWithAuth($url);
         }

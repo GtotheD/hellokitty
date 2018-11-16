@@ -28,6 +28,7 @@
             <directory suffix="Test.php">./tests/TestCase/WorkRecommendAuthor</directory>
             <directory suffix="Test.php">./tests/TestCase/Ranking</directory>
             <directory suffix="Test.php">./tests/TestCase/Release</directory>
+            <directory suffix="Test.php">./tests/TestCase/ReleaseCalender</directory>
             <directory suffix="Test.php">./tests/TestCase/Search</directory>
         </testsuite>
     </testsuites>
