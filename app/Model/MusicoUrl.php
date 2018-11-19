@@ -31,7 +31,7 @@ class MusicoUrl extends Model
             $insertData[$key]['updated_at'] = date('Y-m-d H:i:s');
             foreach ($columns as $column) {
                 if (!in_array($column, $ignoreColumn)) {
-                    $insertData[$key][$column] = array_get($row, $column) ?: '';
+                    $insertData[$key][$column] = array_get($row, $column, '');
                 }
             }
             $insertData[$key]['created_at'] = date('Y-m-d H:i:s');
