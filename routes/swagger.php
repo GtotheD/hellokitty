@@ -2054,7 +2054,7 @@
  *                     @SWG\Property(
  *                         property="membershipType",
  *                         type="string",
- *                         description="会員種別（？？）"
+ *                         description="会員種別（1:レンタル会員, 2:物販会員）"
  *                      ),
  *                     @SWG\Property(
  *                         property="point",
@@ -2069,7 +2069,7 @@
  *                     @SWG\Property(
  *                         property="fixedPointMinLimitTime",
  *                         type="string",
- *                         format="dateTime",
+ *                         example="2018-01-01 00:00:00",
  *                         description="期間固定情報：期間固定ポイント最短有効期限"
  *                     )
  *                 )
