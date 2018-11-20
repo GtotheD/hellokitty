@@ -2007,3 +2007,78 @@
  * )
  */
 
+/**
+ * @SWG\Post(
+ *     path="/point",
+ *     description="期間固定Tポイント情報取得",
+ *     produces={"application/json"},
+ *     tags={"Point"},
+ *     security={{"api_key":{}}},
+ *     @SWG\Parameter(
+ *       name="body",
+ *       in="body",
+ *       description="",
+ *       type="array",
+ *       @SWG\Schema(
+ *         @SWG\Property(
+ *             property="tlsc",
+ *             type="string",
+ *             description="ユーザー識別番号(TLSC)",
+ *         ),
+ *         @SWG\Property(
+ *             property="refreshFlg",
+ *             type="boolean",
+ *             description="リフレッシュフラグ（true:リフレッシュ、falseまたは未指定：キャッシュ参照）",
+ *         )
+ *       )
+ *     ),
+ *     @SWG\Response(
+ *         response=200,
+ *         description="success",
+ *         @SWG\Schema(
+ *             @SWG\Property(
+ *                 property="code",
+ *                 type="string",
+ *                 description="結果コード",
+ *             ),
+ *             @SWG\Property(
+ *                 property="message",
+ *                 type="string",
+ *                 description="メッセージ",
+ *             ),
+ *             @SWG\Property(
+ *                 property="rows",
+ *                 type="array",
+ *                 description="結果",
+ *                 @SWG\Items(
+ *                     @SWG\Property(
+ *                         property="membershipType",
+ *                         type="string",
+ *                         description="会員種別（？？）"
+ *                      ),
+ *                     @SWG\Property(
+ *                         property="point",
+ *                         type="integer",
+ *                         description="ポイント"
+ *                     ),
+ *                     @SWG\Property(
+ *                         property="fixedPointTotal",
+ *                         type="integer",
+ *                         description="期間固定情報：期間固定ポイント数合計"
+ *                     ),
+ *                     @SWG\Property(
+ *                         property="fixedPointMinLimitTime",
+ *                         type="string",
+ *                         format="dateTime",
+ *                         description="期間固定情報：期間固定ポイント最短有効期限"
+ *                     )
+ *                 )
+ *             ),
+ *         )
+ *     ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
