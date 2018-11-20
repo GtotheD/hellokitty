@@ -297,6 +297,7 @@ class SectionRepository extends BaseRepository
             // 商品情報の取得
             $productModel = new Product();
             $product = $productModel->setConditionByWorkIdSaleTypeSaleStartDate($row->work_id, $saleType, $from, $to)->getOne();
+//            dd($product);
             if (!empty($product)) {
 
                 $productName = $product->product_name;
@@ -349,18 +350,6 @@ class SectionRepository extends BaseRepository
             $index++;
         }
 
-        // todo ProductのFormatは共通化できそうだったらする。
-        foreach ($formattedRows as $formattedRowKey => $formattedRow) {
-            // 映像の場合は、ジャケ写を最新刊のブルーレイ優先で取得する。
-            if ($formattedRow['msdbItem'] === $workRepository::MSDB_ITEM_VIDEO) {
-                // saleTypeの指定がない場合は関係なく出す。
-                $jacket = (array)$productModel->setConditionSelectJacket($formattedRow['workId'], $saleType)->getOne();
-                // ジャケットがある場合のみ差し替え
-                if (count($jacket) > 0) {
-                    $formattedRows[$formattedRowKey]['imageUrl'] = $jacket['jacketL'];
-                }
-            }
-        }
         return $formattedRows;
     }
 
