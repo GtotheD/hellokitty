@@ -26,6 +26,14 @@ class ReleaseTestSeeder extends Seeder
             ],
             [
                 'month' => '2018-10-01',
+                'tap_genre_id' => '1', // レンタルDVD
+                'sort' => '2',
+                'work_id' => 'PTA0000WLAWH',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'month' => '2018-10-01',
                 'tap_genre_id' => '9', // 販売DVD
                 'sort' => '1',
                 'work_id' => 'PTA0000RUU8P',

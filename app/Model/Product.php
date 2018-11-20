@@ -290,7 +290,11 @@ class Product extends Model
         if($saleType) {
             $this->dbObject->where('product_type_id', $this->convertSaleType($saleType));
         }
-        $this->dbObject->orderBy('number_of_volume', 'desc');
+        $this->dbObject->orderByRaw(DB::raw('cast(number_of_volume as UNSIGNED) desc'))
+        ->orderBy('sale_start_date', 'desc')
+        ->orderBy('item_cd_right_2', 'asc')
+        ->orderBy('item_cd', 'asc') // PPTが上部にくることを抑止する為
+        ->orderBy('ccc_product_id', 'asc');
         if($saleStartDateFrom) {
             $this->dbObject->where('sale_start_date', '>=', $saleStartDateFrom);
         }
