@@ -21,7 +21,7 @@ class PointRepository
     private $fixedPointCacheLimitMinute;
     private $updatedAt;
 
-    // 分指定
+    // 3時間をデフォルトにする
     const DEFAULT_LIMIT_MINUTE = 180;
 
     /**
@@ -32,7 +32,7 @@ class PointRepository
     public function __construct($tlsc, $refreshFlg)
     {
         // envからキャッシュ有効期限を取得する。
-        // 取得できなかった場合はデフォルトで6を設定する。
+        // 取得できなかった場合はデフォルトで180分を設定する。
         $this->fixedPointCacheLimitMinute = env('FIXED_POINT_CACHE_LIMIT_MINUTE', self::DEFAULT_LIMIT_MINUTE);
         $this->tlsc = $tlsc;
         // TLSCを変換してSTの変数にセットする。
