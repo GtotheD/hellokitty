@@ -42,7 +42,7 @@ class PointDetails extends Model
             ->where([
                 'mem_id' => $memId,
             ])->update(
-
+                $param
             );
         return $this;
     }

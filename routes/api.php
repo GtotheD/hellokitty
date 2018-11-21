@@ -826,7 +826,6 @@ $router->group([
             throw new BadRequestHttpException;
         }
         $pointRepository = new PointRepository($systemId, $memId, $refreshFlg);
-
         // todo システムIDを受けって、そのシステムIDに応じてレスポンスを切り分ける
         $response = [
             'membershipType' => $pointRepository->getMembershipType(),
