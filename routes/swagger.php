@@ -2021,13 +2021,21 @@
  *       type="array",
  *       @SWG\Schema(
  *         @SWG\Property(
+ *             property="systemId",
+ *             type="string",
+ *             example="TAP",
+ *             description="システムID（当該APIでIDは指定）",
+ *         ),
+ *         @SWG\Property(
  *             property="tlsc",
  *             type="string",
+ *             example="TLSC0000000000000001",
  *             description="ユーザー識別番号(TLSC)",
  *         ),
  *         @SWG\Property(
  *             property="refreshFlg",
  *             type="boolean",
+ *             example=false,
  *             description="リフレッシュフラグ（true:リフレッシュ、falseまたは未指定：キャッシュ参照）",
  *         )
  *       )
@@ -2037,43 +2045,29 @@
  *         description="success",
  *         @SWG\Schema(
  *             @SWG\Property(
- *                 property="code",
+ *                 property="membershipType",
  *                 type="string",
- *                 description="結果コード",
+ *                 example="1",
+ *                 description="会員種別（1:レンタル会員, 2:物販会員）"
+ *              ),
+ *             @SWG\Property(
+ *                 property="point",
+ *                 type="integer",
+ *                 example="9999999999",
+ *                 description="ポイント"
  *             ),
  *             @SWG\Property(
- *                 property="message",
- *                 type="string",
- *                 description="メッセージ",
+ *                 property="fixedPointTotal",
+ *                 type="integer",
+ *                 example="9999999999",
+ *                 description="期間固定情報：期間固定ポイント数合計"
  *             ),
  *             @SWG\Property(
- *                 property="rows",
- *                 type="array",
- *                 description="結果",
- *                 @SWG\Items(
- *                     @SWG\Property(
- *                         property="membershipType",
- *                         type="string",
- *                         description="会員種別（1:レンタル会員, 2:物販会員）"
- *                      ),
- *                     @SWG\Property(
- *                         property="point",
- *                         type="integer",
- *                         description="ポイント"
- *                     ),
- *                     @SWG\Property(
- *                         property="fixedPointTotal",
- *                         type="integer",
- *                         description="期間固定情報：期間固定ポイント数合計"
- *                     ),
- *                     @SWG\Property(
- *                         property="fixedPointMinLimitTime",
- *                         type="string",
- *                         example="2018-01-01 00:00:00",
- *                         description="期間固定情報：期間固定ポイント最短有効期限"
- *                     )
- *                 )
- *             ),
+ *                 property="fixedPointMinLimitTime",
+ *                 type="string",
+ *                 example="2018-01-01 00:00:00",
+ *                 description="期間固定情報：期間固定ポイント最短有効期限"
+ *             )
  *         )
  *     ),
  *     @SWG\Response(response=204, description="Contents not found"),

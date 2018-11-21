@@ -31,6 +31,7 @@ use App\Repositories\RecommendTheaterRepository;
 use App\Repositories\ReleaseCalenderRepository;
 use App\Repositories\FavoriteRepository;
 use App\Repositories\CouponRepository;
+use App\Repositories\PointRepository;
 use App\Exceptions\AgeLimitException;
 use App\Exceptions\ContentsException;
 use App\Exceptions\NoContentsException;
@@ -815,7 +816,31 @@ $router->group([
         return response()->json($response)->header('X-Accel-Expires', '0');
     });
 
-    // 検証環境まで有効にするテスト要
+    // 期間固定Tポイント
+    $router->post('point', function (Request $request) {
+        $bodyObj = json_decode($request->getContent(), true);
+        $tlsc = isset($bodyObj['tlsc']) ? $bodyObj['tlsc'] : '';
+        $refreshFlg = isset($bodyObj['refreshFlg']) ? $bodyObj['refreshFlg'] : false;
+        if(empty($tlsc)) {
+            throw new BadRequestHttpException;
+        }
+        $pointRepository = new PointRepository($tlsc, $refreshFlg);
+
+        // STが取得できなかった場合はNoContents
+        if (empty($pointRepository->getSt())) {
+            throw new NoContentsException;
+        }
+        // todo システムIDを受けって、そのシステムIDに応じてレスポンスを切り分ける
+        $response = [
+            'membershipType' => $pointRepository->getMembershipType(),
+            'point' => $pointRepository->getPoint(),
+            'fixedPointTotal' => $pointRepository->getFixedPointTotal(),
+            'fixedPointMinLimitTime' => $pointRepository->getFixedPointMinLimitTime(),
+        ];
+        return response()->json($response)->header('X-Accel-Expires', '0');
+    });
+
+    // 検証環境まで有効にするテスト用
     if (env('APP_ENV') === 'local' || env('APP_ENV') === 'develop' || env('APP_ENV') === 'staging') {
         $router->get('himo/{workId}', function (Request $request, $workId) {
             $himo = new HimoRepository();
