@@ -455,14 +455,13 @@ class ProductRepository extends BaseRepository
             if(empty($products)) {
                 return null;
             }
-            if ($products->msdb_item === 'audio') {
-                $isAudio = true;
-            }
             // 既存の処理と変えないようにする。
             if ($products->msdb_item === 'book') {
                 $res = $this->product->setConditionByRentalProductCdFamilyGroupForBook($productKey)->get();
+            } else if ($products->msdb_item === 'audio') {
+                $res = $this->product->setConditionByRentalProductCdFamilyGroupForCd($productKey)->get();
             } else {
-            $res = $this->product->setConditionByRentalProductCdFamilyGroup($productKey, $isAudio)->get();
+                $res = $this->product->setConditionByRentalProductCdFamilyGroup($productKey)->get();
             }
             foreach ($res as $item) {
                 $queryIdList[] = $item->rental_product_cd;
