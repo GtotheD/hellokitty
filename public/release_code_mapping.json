@@ -1,0 +1,504 @@
+[
+	{
+		"adultId": "rental_dvd_adult",
+		"name": "レンタルDVD",
+		"itemType": "dvd",
+		"id": "rels_dvdrental",
+		"genres": [
+			{
+				"id": "1",
+				"name": "TSUTAYA イチオシ",
+				"default": true
+			},
+			{
+				"id": "2",
+				"name": "洋画",
+				"default": false
+			},
+			{
+				"id": "3",
+				"name": "邦画",
+				"default": false
+			},
+			{
+				"id": "4",
+				"name": "アニメ／キッズ",
+				"default": false
+			},
+			{
+				"id": "5",
+				"name": "アジアTVドラマ",
+				"default": false
+			},
+			{
+				"id": "6",
+				"name": "海外TVドラマ",
+				"default": false
+			},
+			{
+				"id": "7",
+				"name": "バラエティ",
+				"default": false
+			},
+			{
+				"id": "82",
+				"name": "邦画ホラー",
+				"default": false
+			},
+			{
+				"id": "83",
+				"name": "邦画エロティック",
+				"default": false
+			}
+		],
+		"saleType": "rental",
+		"adult": false
+	},
+	{
+		"saleType": "sell",
+		"name": "販売DVD",
+		"itemType": "dvd",
+		"id": "rels_dvdsell",
+		"genres": [
+			{
+				"id": "9",
+				"name": "TSUTAYA イチオシ",
+				"default": true
+			},
+			{
+				"id": "10",
+				"name": "音楽",
+				"default": false
+			},
+			{
+				"id": "11",
+				"name": "邦画",
+				"default": false
+			},
+			{
+				"id": "12",
+				"name": "洋画",
+				"default": false
+			},
+			{
+				"id": "13",
+				"name": "アニメ／キッズ",
+				"default": false
+			},
+			{
+				"id": "14",
+				"name": "海外TVドラマ",
+				"default": false
+			},
+			{
+				"id": "15",
+				"name": "アジアTVドラマ",
+				"default": false
+			},
+			{
+				"id": "16",
+				"name": "お笑い",
+				"default": false
+			}
+		],
+		"adult": false
+	},
+	{
+		"saleType": "rental",
+		"name": "レンタルコミック",
+		"itemType": "book",
+		"id": "rels_comicrental",
+		"genres": [
+			{
+				"id": "28",
+				"name": "TSUTAYA イチオシ",
+				"default": true
+			},
+			{
+				"id": "29",
+				"name": "少女コミック",
+				"default": false
+			},
+			{
+				"id": "30",
+				"name": "少年コミック",
+				"default": false
+			},
+			{
+				"id": "31",
+				"name": "青年コミック",
+				"default": false
+			},
+			{
+				"id": "32",
+				"name": "レディースコミック",
+				"default": false
+			},
+			{
+				"id": "33",
+				"name": "ボーイズラブコミック",
+				"default": false
+			},
+			{
+				"id": "34",
+				"name": "キッズコミック",
+				"default": false
+			},
+			{
+				"id": "35",
+				"name": "サブカルコミック",
+				"default": false
+			},
+			{
+				"id": "36",
+				"name": "コミックエッセイ",
+				"default": false
+			},
+			{
+				"id": "37",
+				"name": "四コマコミック",
+				"default": false
+			},
+			{
+				"id": "38",
+				"name": "コミック文庫",
+				"default": false
+			}
+		],
+		"adult": false
+	},
+	{
+		"adultId": "sell_comic_adult",
+		"name": "販売コミック",
+		"itemType": "book",
+		"id": "rels_comicsell",
+		"genres": [
+			{
+				"id": "39",
+				"name": "TSUTAYAイチオシ",
+				"default": true
+			},
+			{
+				"id": "40",
+				"name": "少年コミック",
+				"default": false
+			},
+			{
+				"id": "41",
+				"name": "青年コミック",
+				"default": false
+			},
+			{
+				"id": "42",
+				"name": "少女コミック",
+				"default": false
+			},
+			{
+				"id": "43",
+				"name": "レディースコミック",
+				"default": false
+			},
+			{
+				"id": "44",
+				"name": "ボーイズラブコミック",
+				"default": false
+			},
+			{
+				"id": "45",
+				"name": "その他",
+				"default": false
+			}
+		],
+		"saleType": "sell",
+		"adult": false
+	},
+	{
+		"saleType": "sell",
+		"name": "販売本",
+		"itemType": "book",
+		"id": "rels_booksell",
+		"genres": [
+			{
+				"id": "46",
+				"name": "文庫",
+				"default": true
+			},
+			{
+				"id": "47",
+				"name": "文芸書",
+				"default": false
+			},
+			{
+				"id": "48",
+				"name": "タレント写真集",
+				"default": false
+			},
+			{
+				"id": "49",
+				"name": "ビジネス",
+				"default": false
+			},
+			{
+				"id": "50",
+				"name": "新書",
+				"default": false
+			}
+		],
+		"adult": false
+	},
+	{
+		"saleType": "rental",
+		"name": "レンタルCD",
+		"itemType": "cd",
+		"id": "rels_cdrental",
+		"genres": [
+			{
+				"id": "17",
+				"name": "TSUTAYA イチオシ",
+				"default": true
+			},
+			{
+				"id": "18",
+				"name": "邦楽",
+				"default": false
+			},
+			{
+				"id": "19",
+				"name": "洋楽",
+				"default": false
+			},
+			{
+				"id": "20",
+				"name": "アニメ",
+				"default": false
+			},
+			{
+				"id": "21",
+				"name": "その他",
+				"default": false
+			}
+		],
+		"adult": false
+	},
+	{
+		"saleType": "sell",
+		"name": "販売CD",
+		"itemType": "cd",
+		"id": "rels_cdsell",
+		"genres": [
+			{
+				"id": "22",
+				"name": "TSUTAYA イチオシ",
+				"default": true
+			},
+			{
+				"id": "23",
+				"name": "邦楽",
+				"default": false
+			},
+			{
+				"id": "24",
+				"name": "洋楽",
+				"default": false
+			},
+			{
+				"id": "25",
+				"name": "アニメ",
+				"default": false
+			},
+			{
+				"id": "26",
+				"name": "演歌",
+				"default": false
+			},
+			{
+				"id": "27",
+				"name": "その他",
+				"default": false
+			}
+		],
+		"adult": false
+	},
+	{
+		"saleType": "sell",
+		"name": "販売ゲーム",
+		"itemType": "game",
+		"id": "rels_gamesell",
+		"genres": [
+			{
+				"id": "51",
+				"name": "TSUTAYA イチオシ",
+				"default": true
+			},
+			{
+				"id": "52",
+				"name": "プレイステーション4",
+				"default": false
+			},
+			{
+				"id": "53",
+				"name": "Nintendo Switch",
+				"default": false
+			},
+			{
+				"id": "54",
+				"name": "ニンテンドー3DS",
+				"default": false
+			},
+			{
+				"id": "55",
+				"name": "PS Vita",
+				"default": false
+			}
+		],
+		"adult": false
+	},
+	{
+		"saleType": "rental",
+		"name": "レンタルDVD",
+		"itemType": "dvd",
+		"id": "rental_dvd_adult",
+		"genres": [
+			{
+				"id": "56",
+				"name": "フレッシュギャルズ",
+				"default": true
+			},
+			{
+				"id": "57",
+				"name": "バラエティー",
+				"default": false
+			},
+			{
+				"id": "58",
+				"name": "人妻／ドキュメント",
+				"default": false
+			},
+			{
+				"id": "59",
+				"name": "ドラマ",
+				"default": false
+			},
+			{
+				"id": "60",
+				"name": "熟女／ドキュメント",
+				"default": false
+			},
+			{
+				"id": "61",
+				"name": "素人",
+				"default": false
+			},
+			{
+				"id": "62",
+				"name": "ナンパ",
+				"default": false
+			},
+			{
+				"id": "63",
+				"name": "陵辱（痴漢／レイプ）",
+				"default": false
+			},
+			{
+				"id": "64",
+				"name": "マニアック／フェチ",
+				"default": false
+			},
+			{
+				"id": "65",
+				"name": "学園",
+				"default": false
+			},
+			{
+				"id": "66",
+				"name": "女子大生",
+				"default": false
+			},
+			{
+				"id": "67",
+				"name": "ＯＬ",
+				"default": false
+			},
+			{
+				"id": "68",
+				"name": "働く女",
+				"default": false
+			},
+			{
+				"id": "69",
+				"name": "看護婦",
+				"default": false
+			},
+			{
+				"id": "70",
+				"name": "性風俗",
+				"default": false
+			},
+			{
+				"id": "71",
+				"name": "総集編・オムニバス",
+				"default": false
+			},
+			{
+				"id": "72",
+				"name": "SM",
+				"default": false
+			},
+			{
+				"id": "73",
+				"name": "オナニー",
+				"default": false
+			},
+			{
+				"id": "74",
+				"name": "レズビアン",
+				"default": false
+			},
+			{
+				"id": "75",
+				"name": "コスプレ",
+				"default": false
+			},
+			{
+				"id": "76",
+				"name": "投稿",
+				"default": false
+			},
+			{
+				"id": "77",
+				"name": "盗撮",
+				"default": false
+			},
+			{
+				"id": "78",
+				"name": "その他",
+				"default": false
+			},
+			{
+				"id": "79",
+				"name": "アダルト映画",
+				"default": false
+			},
+			{
+				"id": "80",
+				"name": "アダルトアニメ",
+				"default": false
+			}
+		],
+		"adult": true
+	},
+	{
+		"saleType": "sell",
+		"name": "販売コミック",
+		"itemType": "book",
+		"id": "sell_comic_adult",
+		"genres": [
+			{
+				"id": "81",
+				"name": "アダルトコミック",
+				"default": true
+			}
+		],
+		"adult": true
+	}
+]
