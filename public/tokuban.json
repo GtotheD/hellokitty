@@ -1,51 +1,57 @@
 [
 	{
-		"tokuban": 111,
-		"itemName": "レンタル全品",
-		"bannerImage": "https://stg.www.tsutaya.co.jp/tsearch/cl/img/onetime/img/1%E6%9E%9A%E7%84%A1%E6%96%99.png",
-		"detailImage": "https://stg.www.tsutaya.co.jp/tsearch/cl/img/onetime/img/1%E6%9E%9A%E7%84%A1%E6%96%99.png",
+		"tokuban": 719,
+		"itemName": "レンタル全品（新作含む）",
+		"bannerImageLoggedIn": "https://www.tsutaya.co.jp/tsearch/cl/img/onetime/img/bannerImageLoggedIn719.png",
+		"bannerImageNotLoggedIn": "https://www.tsutaya.co.jp/tsearch/cl/img/onetime/img/bannerImageNotLoggedIn719.png",
+		"bannerImageV2": "https://www.tsutaya.co.jp/tsearch/cl/img/onetime/img/v2/bannerImageV2_719.png",
+		"bannerImageV2AltText": "1枚無料",
+		"detailImage": "https://www.tsutaya.co.jp/tsearch/cl/img/onetime/img/detailImage719.png",
 		"loginInductionAnnotation": "クーポン有効期間：ログイン後30日間",
-		"attentionMessage": "https://stg.www.tsutaya.co.jp/tsearch/cl/img/onetime/caution/842.html"
+		"attentionMessage": "https://www.tsutaya.co.jp/tsearch/cl/img/onetime/caution/719.html"
 	},
 	{
-		"tokuban": 222,
-		"itemName": "レンタル全品",
-		"bannerImage": "https://stg.www.tsutaya.co.jp/tsearch/cl/img/onetime/img/1%E6%9E%9A%E7%84%A1%E6%96%99.png",
-		"detailImage": "https://stg.www.tsutaya.co.jp/tsearch/cl/img/onetime/img/1%E6%9E%9A%E7%84%A1%E6%96%99.png",
+		"tokuban": 721,
+		"itemName": "レンタル全品（新作含む）",
+		"bannerImageLoggedIn": "https://www.tsutaya.co.jp/tsearch/cl/img/onetime/img/bannerImageLoggedIn721.png",
+		"bannerImageNotLoggedIn": "https://www.tsutaya.co.jp/tsearch/cl/img/onetime/img/bannerImageNotLoggedIn721.png",
+		"detailImage": "https://www.tsutaya.co.jp/tsearch/cl/img/onetime/img/detailImage721.png",
+		"bannerImageV2": "https://www.tsutaya.co.jp/tsearch/cl/img/onetime/img/v2/bannerImageV2_721.png",
+		"bannerImageV2AltText": "2枚まで無料",
 		"loginInductionAnnotation": "クーポン有効期間：ログイン後30日間",
-		"attentionMessage": "https://stg.www.tsutaya.co.jp/tsearch/cl/img/onetime/caution/842.html"
+		"attentionMessage": "https://www.tsutaya.co.jp/tsearch/cl/img/onetime/caution/721.html"
 	},
 	{
-		"tokuban": 333,
-		"itemName": "レンタル全品",
-		"bannerImage": "https://stg.www.tsutaya.co.jp/tsearch/cl/img/onetime/img/1%E6%9E%9A%E7%84%A1%E6%96%99.png",
-		"detailImage": "https://stg.www.tsutaya.co.jp/tsearch/cl/img/onetime/img/1%E6%9E%9A%E7%84%A1%E6%96%99.png",
+		"tokuban": 723,
+		"itemName": "レンタル全品（新作含む）",
+		"bannerImageLoggedIn": "https://www.tsutaya.co.jp/tsearch/cl/img/onetime/img/bannerImageLoggedIn723.png",
+		"bannerImageNotLoggedIn": "https://www.tsutaya.co.jp/tsearch/cl/img/onetime/img/bannerImageNotLoggedIn723.png",
+		"detailImage": "https://www.tsutaya.co.jp/tsearch/cl/img/onetime/img/detailImage723.png",
+		"bannerImageV2": "https://www.tsutaya.co.jp/tsearch/cl/img/onetime/img/v2/bannerImageV2_723.png",
+		"bannerImageV2AltText": "半額",
 		"loginInductionAnnotation": "クーポン有効期間：ログイン後30日間",
-		"attentionMessage": "https://stg.www.tsutaya.co.jp/tsearch/cl/img/onetime/caution/842.html"
+		"attentionMessage": "https://www.tsutaya.co.jp/tsearch/cl/img/onetime/caution/723.html"
 	},
 	{
-		"tokuban": 444,
-		"itemName": "レンタル全品",
-		"bannerImage": "https://stg.www.tsutaya.co.jp/tsearch/cl/img/onetime/img/1%E6%9E%9A%E7%84%A1%E6%96%99.png",
-		"detailImage": "https://stg.www.tsutaya.co.jp/tsearch/cl/img/onetime/img/1%E6%9E%9A%E7%84%A1%E6%96%99.png",
+		"tokuban": 739,
+		"itemName": "クーポン対象：当店でTポイントが貯まる商品",
+		"bannerImageLoggedIn": "https://www.tsutaya.co.jp/tsearch/cl/img/onetime/img/bannerImageLoggedIn739.png",
+		"bannerImageNotLoggedIn": "https://www.tsutaya.co.jp/tsearch/cl/img/onetime/img/bannerImageNotLoggedIn739.png",
+		"detailImage": "https://www.tsutaya.co.jp/tsearch/cl/img/onetime/img/detailImage739.png",
+		"bannerImageV2": "https://www.tsutaya.co.jp/tsearch/cl/img/onetime/img/v2/bannerImageV2_739.png",
+		"bannerImageV2AltText": "Tポイント20倍",
 		"loginInductionAnnotation": "クーポン有効期間：ログイン後30日間",
-		"attentionMessage": "https://stg.www.tsutaya.co.jp/tsearch/cl/img/onetime/caution/842.html"
+		"attentionMessage": "https://www.tsutaya.co.jp/tsearch/cl/img/onetime/caution/739.html"
 	},
 	{
-		"tokuban": 555,
-		"itemName": "全品",
-		"bannerImage": "https://stg.www.tsutaya.co.jp/tsearch/cl/img/onetime/img/1%E6%9E%9A%E7%84%A1%E6%96%99.png",
-		"detailImage": "https://stg.www.tsutaya.co.jp/tsearch/cl/img/onetime/img/1%E6%9E%9A%E7%84%A1%E6%96%99.png",
+		"tokuban": 740,
+		"itemName": "クーポン対象：当店でTポイントが貯まる商品",
+		"bannerImageLoggedIn": "https://www.tsutaya.co.jp/tsearch/cl/img/onetime/img/bannerImageLoggedIn740.png",
+		"bannerImageNotLoggedIn": "https://www.tsutaya.co.jp/tsearch/cl/img/onetime/img/bannerImageNotLoggedIn740.png",
+		"detailImage": "https://www.tsutaya.co.jp/tsearch/cl/img/onetime/img/detailImage740.png",
+		"bannerImageV2": "https://www.tsutaya.co.jp/tsearch/cl/img/onetime/img/v2/bannerImageV2_740.png",
+		"bannerImageV2AltText": "Tポイント10倍",
 		"loginInductionAnnotation": "クーポン有効期間：ログイン後30日間",
-		"attentionMessage": "https://stg.www.tsutaya.co.jp/tsearch/cl/img/onetime/caution/842.html"
-	},
-	{
-		"tokuban": 666,
-		"itemName": "全品",
-		"bannerImage": "https://stg.www.tsutaya.co.jp/tsearch/cl/img/onetime/img/1%E6%9E%9A%E7%84%A1%E6%96%99.png",
-		"detailImage": "https://stg.www.tsutaya.co.jp/tsearch/cl/img/onetime/img/1%E6%9E%9A%E7%84%A1%E6%96%99.png",
-		"loginInductionAnnotation": "クーポン有効期間：ログイン後30日間",
-		"attentionMessage": "https://stg.www.tsutaya.co.jp/tsearch/cl/img/onetime/caution/842.html"
+		"attentionMessage": "https://www.tsutaya.co.jp/tsearch/cl/img/onetime/caution/740.html"
 	}
-
 ]
