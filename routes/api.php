@@ -767,6 +767,11 @@ $router->group([
         if($response['status'] == 'error') {
             throw new Exception;
         }
+
+        // アプリで利用しない為versionの返却はしないように変更
+        // 8.3でAndroidが利用しているため、APIで制御をかける
+        $response['version'] = '';
+
         return response()->json($response);
     });
 
