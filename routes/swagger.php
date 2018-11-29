@@ -2007,3 +2007,46 @@
  * )
  */
 
+/**
+ * @SWG\Post(
+ *     path="/member/status/rental",
+ *     description="レンタル利用登録(モバT画面出し分け用)",
+ *     produces={"application/json"},
+ *     tags={"Member"},
+ *     security={{"api_key":{}}},
+ *     @SWG\Parameter(
+ *       name="body",
+ *       in="body",
+ *       description="",
+ *       type="array",
+ *       @SWG\Schema(
+ *         @SWG\Property(
+ *             property="tlsc",
+ *             type="string",
+ *             description="ユーザー識別番号(TLSC)",
+ *         )
+ *       )
+ *     ),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="itemNumber",
+ *                  type="integer",
+ *                  description="処理項番 項番1~17の内の一つを返す",
+ *              ),
+ *              @SWG\Property(
+ *                  property="rentalExpirationDate",
+ *                  type="string",
+ *                  description="有効期限 (yyyy-mm-dd 00:00:00) / ユーザーごとのレンタル利用登録の有効期限を返す",
+ *              )
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=400, description="Bad Request"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
