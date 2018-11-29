@@ -31,7 +31,7 @@ use App\Repositories\RecommendTheaterRepository;
 use App\Repositories\ReleaseCalenderRepository;
 use App\Repositories\FavoriteRepository;
 use App\Repositories\CouponRepository;
-use App\Exceptions\AgeLimitException;
+use App\Repositories\RentalUseRegistrationRepository;
 use App\Exceptions\ContentsException;
 use App\Exceptions\NoContentsException;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
@@ -819,6 +819,28 @@ $router->group([
         ];
         return response()->json($response)->header('X-Accel-Expires', '0');
     });
+
+    // メンバー利用登録　
+    $router->post('member/status/rental', function (Request $request) {
+        $bodyObj = json_decode($request->getContent(), true);
+        $tlsc = isset($bodyObj['tlsc']) ? $bodyObj['tlsc'] : '';
+        if(empty($tlsc)) {
+            throw new BadRequestHttpException;
+        }
+        $rentalUseRegistrationRepository = new RentalUseRegistrationRepository();
+        $rentalUseRegistrationRepository->get();
+//
+//        $rows = $couponRepository->get();
+//        if (empty($rows)) {
+//            throw new NoContentsException;
+//        }
+//        $response = [
+//            'requestDate' => date('YmdHis'),
+//            'rows' => $rows
+//        ];
+//        return response()->json($response)->header('X-Accel-Expires', '0');
+    });
+
 
     // 検証環境まで有効にするテスト要
     if (env('APP_ENV') === 'local' || env('APP_ENV') === 'develop' || env('APP_ENV') === 'staging') {

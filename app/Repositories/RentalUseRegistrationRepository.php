@@ -10,7 +10,11 @@ class RentalUseRegistrationRepository extends BaseRepository
     public function get()
     {
         $mintMemberDetail = new MintMemberDetail;
-        dd($mintMemberDetail->getClient());
+        $mintMemberDetailCollection = $mintMemberDetail->getCollection();
+        foreach ($mintMemberDetailCollection as $item) {
+            var_dump($item['kanaFullName']);
+        }
+        dd();
     }
 
 }
