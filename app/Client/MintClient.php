@@ -21,7 +21,10 @@ class MintClient extends BaseClient
 
     public function getCMemberList ()
     {
-        //
+        // todo stub
+        $path = base_path('tests/Data/tol/');
+        $csv = file_get_contents($path . 'mmc208.csv');
+        return $csv;
     }
 
 }

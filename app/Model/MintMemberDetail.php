@@ -8,10 +8,9 @@
 
 namespace App\Model;
 
-use League\Csv\Reader;
 use App\Client\MintClient;
 
-class MintMemberDetail
+class MintMemberDetail extends BaseCsvModel
 {
     private $header = [
         'messageClass', // 伝文区分
@@ -64,16 +63,10 @@ class MintMemberDetail
         'optoutFlag', // オプトアウトフラグ
     ];
 
-    // CSVを受け取ってコレクション配列を返す
-    public function getCollection()
-    {
+    public function getDetail() {
         $mintClient = new MintClient();
         $csv = $mintClient->getMemberDetail();
-        $reader = Reader::createFromString($csv);
-        $results = $reader->getRecords($this->header);
-        foreach ($results as $row) {
-            $csvArray[] = $row;
-        }
-        return collect($csvArray);
+        // todo XMLから抽出する処理を記述
+        return $this->getCollection($this->header, $csv);
     }
 }
