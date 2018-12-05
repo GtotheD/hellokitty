@@ -8,9 +8,15 @@
 
 namespace App\Model;
 
-use App\Client\MintClient;
+use App\Clients\TolClient;
 
-class MintMemberDetail extends BaseCsvModel
+/**
+ * MMC200
+ * Class MintMemberDetail
+ * @package App\Model
+ *
+ */
+class TolMemberDetail extends BaseCsvModel
 {
     private $header = [
         'messageClass', // 伝文区分
@@ -42,7 +48,7 @@ class MintMemberDetail extends BaseCsvModel
         'processingDate', // 処理日付
         'processingTime', // 処理時刻
         'dmStopClassification', // DM停止区分
-        'MemberType', // 会員種別
+        'memberType', // 会員種別
         'wCardFlag', // Wカードフラグ
         'rentalAddedStoreCode', // レンタル付与店舗コード
         'rentalGrantDate', // レンタル付与日付
@@ -56,7 +62,7 @@ class MintMemberDetail extends BaseCsvModel
         'headquartersRegistrationProcessingDate', // 本部登録処理日付
         'headquartersRegistrationProcessingTime', // 本部登録処理時刻
         'applicantStoreCode', // 申請店コード
-        'applicationDatetime', // 申請日時
+        'applicationDatetime', // 申請日時z
         'cMemberRemarks1', // C会員備考1
         'cmemberRemarks2', // C会員備考2
         'freeRentalRegistrationControlFlag', // 無料レンタル登録制御フラグ
@@ -64,9 +70,14 @@ class MintMemberDetail extends BaseCsvModel
     ];
 
     public function getDetail() {
-        $mintClient = new MintClient();
-        $csv = $mintClient->getMemberDetail();
-        // todo XMLから抽出する処理を記述
-        return $this->getCollection($this->header, $csv);
+        $mintClient = new TolClient();
+        $xml = $mintClient->getMemberDetail();
+        $memberDetailXml = simplexml_load_string($xml);
+        // レスポンスステータスが0でなかった場合はエラーとしてfalseを返却
+        if (current($memberDetailXml->status) !== '0') {
+            return false;
+        }
+        $csv = current($memberDetailXml->responseData);
+        return $this->getCollectionFromCSV($this->header, $csv);
     }
 }

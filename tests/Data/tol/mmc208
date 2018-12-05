@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+   <status>0</status>
+   <requestParam1>denbunkbn=xxxx</requestParam1>
+   <requestParam2>ver=xxxxx</requestParam2>
+   <requestParam3>kigyocd=xxxxx</requestParam3>
+   <requestParam4>miseno=xxxxx</requestParam4>
+   <requestParam5>wsno=xxxxx</requestParam5>
+   <requestParam6>atsukaicd=xxxxx</requestParam6>
+   <requestParam7>requestdate=xxxxx</requestParam7>
+   <requestParam8>requesttime=xxxxx</requestParam8>
+   <requestParam9>syokaikukbn=xxxxx</requestParam9>
+   <requestParam10>sinseimisekbn=xxxxx</requestParam10>
+   <requestParam11>kaino=xxxxx</requestParam11>
+   <responseData>
+      209,1.0.0,0000,9999,0001,0001,20160202,114500,00,100,,,,,,,,,
+   </responseData>
+</root>

@@ -13,7 +13,8 @@
         "league/csv": "^9.0",
         "doctrine/dbal": "^2.5",
         "goodby/csv": "*",
-        "ext-json": "*"
+        "ext-json": "*",
+        "ext-SimpleXML": "*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

@@ -8,9 +8,9 @@
 
 namespace App\Model;
 
-use App\Client\MintClient;
+use App\Clients\TolClient;
 
-class MintCMemberDetail extends BaseCsvModel
+class TolCMemberDetail extends BaseCsvModel
 {
     private $header = [
         'messageClass', // 伝文区分
@@ -36,9 +36,14 @@ class MintCMemberDetail extends BaseCsvModel
     ];
 
     public function getDetail() {
-        $mintClient = new MintClient();
-        $csv = $mintClient->getCMemberList();
-        // todo XMLから抽出する処理を記述
-        return $this->getCollection($this->header, $csv);
+        $mintClient = new TolClient();
+        $xml = $mintClient->getCMemberList();
+        $memberDetailXml = simplexml_load_string($xml);
+        // レスポンスステータスが0でなかった場合はエラーとしてfalseを返却
+        if (current($memberDetailXml->status) !== '0') {
+            return false;
+        }
+        $csv = current($memberDetailXml->responseData);
+        return $this->getCollectionFromCSV($this->header, $csv);
     }
 }

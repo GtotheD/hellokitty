@@ -6,7 +6,7 @@
  * Time: 15:53
  */
 
-namespace App\Client;
+namespace App\Clients;
 
 
 class BaseClient
