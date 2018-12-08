@@ -21,6 +21,10 @@ class ApiRequesterRepository
     protected $method;
     protected $headers = [];
 
+    // for stub api
+    protected $api;
+    protected $id;
+
     public function __construct()
     {
         $this->method = 'GET';

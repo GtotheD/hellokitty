@@ -83,6 +83,11 @@ class TWSRepository extends ApiRequesterRepository
     public function stock($storeId, $productKey)
     {
         $this->apiPath = $this->apiHost . '/store/v0/products/detail.json';
+        if (env('APP_ENV') === 'local') {
+            $this->api = 'stock';
+            $this->id = $productKey;
+            return $this;
+        }
 
         $this->queryParams = [
             'api_key' => $this->apiKey,

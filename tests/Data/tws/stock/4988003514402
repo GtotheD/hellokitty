@@ -1,0 +1,14 @@
+{
+    "entry" : {
+        "stockInfo" : [
+            {
+                "rentalPossibleDay" : "2018-02-01 00:00:00",
+                "lastUpDate" : "2018-01-15 00:00:00",
+                "stockStatus" : {
+                    "level" : 0,
+                    "message" : "現在問い合わせができません。"
+                }
+            }
+        ]
+    }
+}
