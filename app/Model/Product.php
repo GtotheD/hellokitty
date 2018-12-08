@@ -587,11 +587,13 @@ class Product extends Model
         if ($order === 'old') {
             $this->dbObject
                 ->orderBy('sale_start_date', 'asc')
+                ->orderBy('jan', 'asc')
                 ->orderBy('ccc_product_id', 'asc')
             ;
         } else {
             $this->dbObject
                 ->orderBy('sale_start_date', 'desc')
+                ->orderBy('jan', 'desc')
                 ->orderBy('ccc_product_id', 'desc')
             ;
         }
