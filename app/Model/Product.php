@@ -213,6 +213,26 @@ class Product extends Model
         return $this;
     }
 
+    public function setConditionWorkGroupByJan($jan)
+    {
+        $this->dbObject = DB::table($this->table . ' AS p1')
+            ->join($this->table . ' AS p2', function($join) {
+                $join->on('p1.product_name','=','p2.product_name')
+                    ->on('p1.product_type_id','=','p2.product_type_id')
+                    ->on('p1.ccc_family_cd','=','p2.ccc_family_cd')
+                    ->on('p1.item_cd_right_2', '=', 'p2.item_cd_right_2')
+                    ->where('p2.service_id','tol')
+                    ->whereRaw(DB::raw(' p1.service_id  =  \'tol\''));
+            })
+            ->select(DB::raw('p2.*'))
+            ->where('p1.service_id','tol')
+            ->where([
+                ['p1.jan', '=', $jan],
+                ['p2.product_type_id', '=', self::PRODUCT_TYPE_ID_SELL]
+            ]);
+        return $this;
+    }
+
     public function setConditionByRentalProductCdFamilyGroupForBook($rentalProductCd)
     {
         $this->dbObject = DB::table($this->table . ' AS p1')
@@ -323,9 +343,6 @@ class Product extends Model
             ->whereRaw(DB::raw(' work_id = \''.$workId .'\''))
             // プロダクトは上映映画の時は呼ばないのでtolのみで絞る
             ->whereRaw(DB::raw(' service_id in  (\'tol\')'))
-//            ->whereRaw(DB::raw(' item_cd not like \'_1__\' '))
-            //->whereRaw(DB::raw(' item_cd not like \'__20\' ')) // VHSも出力するように変更
-//            ->whereRaw(DB::raw(' jan not like \'9999_________\' '))
             ->groupBy(DB::raw($selectSubGrouping));
         if ($isAudio && $saleType === 'rental') {
             $subQueryBase->whereRaw(DB::raw(' is_dummy = 0 '));
@@ -549,6 +566,35 @@ class Product extends Model
                 ->orderBy('t2.sale_start_date', 'desc')
                 ->orderBy('t2.ccc_family_cd', 'desc')
                 ->orderBy('t2.ccc_product_id', 'desc')
+            ;
+        }
+        return $this;
+    }
+
+    /**
+     * 販売CD商品一覧
+     * @param $workId
+     * @param $order
+     * @return $this
+     */
+    public function setConditionForSellCd($workId, $order)
+    {
+        $this->dbObject = DB::table($this->table)
+            ->where('work_id', $workId)
+            ->where('product_type_id', self::PRODUCT_TYPE_ID_SELL)
+            ->where('service_id', 'tol')
+        ;
+        if ($order === 'old') {
+            $this->dbObject
+                ->orderBy('sale_start_date', 'asc')
+                ->orderBy('jan', 'asc')
+                ->orderBy('ccc_product_id', 'asc')
+            ;
+        } else {
+            $this->dbObject
+                ->orderBy('sale_start_date', 'desc')
+                ->orderBy('jan', 'desc')
+                ->orderBy('ccc_product_id', 'desc')
             ;
         }
         return $this;

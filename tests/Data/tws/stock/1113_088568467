@@ -1,0 +1,13 @@
+{
+    "entry" : {
+        "stockInfo" : [
+            {
+                "lastUpDate" : "2018-01-15 00:00:00",
+                "stockStatus" : {
+                    "level" : 1,
+                    "message" : "在庫がありません。"
+                }
+            }
+        ]
+    }
+}
