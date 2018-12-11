@@ -2,8 +2,7 @@
 
 namespace App\Repositories;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Exception\ClientException;
+use App\Exceptions\NoContentsException;
 
 /**
  * Created by PhpStorm.
@@ -83,11 +82,8 @@ class TWSRepository extends ApiRequesterRepository
     public function stock($storeId, $productKey)
     {
         $this->apiPath = $this->apiHost . '/store/v0/products/detail.json';
-        if (env('APP_ENV') === 'local') {
-            $this->api = 'stock';
-            $this->id = $productKey;
-            return $this;
-        }
+        $this->api = 'stock';
+        $this->id = $storeId . '_' . $productKey;
 
         $this->queryParams = [
             'api_key' => $this->apiKey,
@@ -239,6 +235,10 @@ class TWSRepository extends ApiRequesterRepository
             return null;
         }
         $file = file_get_contents($path . '/' . $filename);
+        //　存在しなかった場合はTWS同様に擬似的に204をかえす
+        if (empty($file)) {
+            throw new NoContentsException('tws no contents exception');
+        }
         // Remove new line character
         return \GuzzleHttp\json_decode(str_replace(["\n","\r\n","\r", PHP_EOL], '', $file), true);
         // return json_decode($file, TRUE);

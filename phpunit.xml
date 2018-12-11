@@ -30,6 +30,7 @@
             <directory suffix="Test.php">./tests/TestCase/Release</directory>
             <directory suffix="Test.php">./tests/TestCase/ReleaseCalender</directory>
             <directory suffix="Test.php">./tests/TestCase/Search</directory>
+            <directory suffix="Test.php">./tests/TestCase/ProductStock</directory>
         </testsuite>
     </testsuites>
     <filter>
@@ -38,7 +39,7 @@
         </whitelist>
     </filter>
     <php>
-        <env name="APP_ENV" value="testing"/>
+        <env name="APP_ENV" value="local"/>
         <env name="CACHE_DRIVER" value="array"/>
         <env name="QUEUE_DRIVER" value="sync"/>
     </php>
