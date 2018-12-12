@@ -40,10 +40,10 @@ class HimoReleaseOrder extends Model
             ->where('month', $month)
             ->groupBy(DB::raw($selectSubGrouping));
         $selectSubGroupingFinal =
-              'p2.sort,'
-             .'p3.work_id,'
-             .'p3.ccc_family_cd,'
-             .'p3.sale_start_date';
+            'p2.sort,'
+            .'p3.work_id,'
+            .'p3.ccc_family_cd,'
+            .'p3.sale_start_date';
         $selectSubFinal = ',MAX(p3.product_unique_id) AS product_unique_id ';
         $subQueryFinal = DB::table(DB::raw("({$subQuery->toSql()}) as p2"))
             ->mergeBindings($subQuery)
@@ -54,8 +54,6 @@ class HimoReleaseOrder extends Model
                     ->on('p3.product_type_id', '=', 'p2.product_type_id')
                     ->on('p3.work_id', '=', 'p2.work_id');
             })
-            ->whereRaw(DB::raw(' item_cd not like \'_1__\' '))
-            ->whereRaw(DB::raw(' item_cd not like \'__20\' '))
             ->whereRaw(DB::raw(' service_id in  (\'tol\')'))
             ->groupBy(DB::raw($selectSubGroupingFinal));
         $this->dbObject = DB::table(DB::raw("({$subQueryFinal->toSql()}) as final"))
@@ -89,7 +87,7 @@ class HimoReleaseOrder extends Model
             $this->dbObject
                 ->orderBy('p4.sale_start_date', 'asc')
                 ->orderBy('p4.product_unique_id', 'asc')
-                ;
+            ;
         } else {
             $this->dbObject
                 ->orderBy('sort', 'asc');

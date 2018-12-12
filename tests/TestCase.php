@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Carbon;
 
 abstract class TestCase extends Laravel\Lumen\Testing\TestCase
 {
@@ -12,6 +13,8 @@ abstract class TestCase extends Laravel\Lumen\Testing\TestCase
     {
         parent::__construct($name, $data, $dataName);
         $this->basePath = env('URL_PATH_PREFIX') . env('API_VERSION');
+        // NewFlagが変更されるため、現在時刻を変更
+        Carbon::setTestNow(new Carbon('2018-10-01 00:00:00'));
     }
 
     /**
@@ -35,6 +38,8 @@ abstract class TestCase extends Laravel\Lumen\Testing\TestCase
         if (self::$isSetup === false) {
             Artisan::call('migrate');
             Artisan::call('truncateTable');
+            Artisan::call('db:seed', ['--class' => 'WorkRecommendOtherTestSeeder']);
+            Artisan::call('db:seed', ['--class' => 'ReleaseTestSeeder']);
             self::$isSetup = true;
         }
     }
@@ -125,4 +130,23 @@ abstract class TestCase extends Laravel\Lumen\Testing\TestCase
         unset($actual['data']['updatedAt']);
         $this->assertEquals($expected, $actual);
     }
+
+    /**
+     * 全データのインポートを行う。
+     */
+    public function importAllData()
+    {
+        $path = base_path('tests/Data/himo/crossworks/');
+        $audioList = glob($path . '/audio/*');
+        $videoList = glob($path . '/video/*');
+        $bookList = glob($path . '/book/*');
+        $gameList = glob($path . '/game/*');
+        $list = array_merge($audioList, $videoList, $bookList, $gameList);
+        foreach ($list as $row) {
+            $workId = basename($row);
+            $url = '/work/' . $workId;
+            $this->getWithAuth($url);
+        }
+    }
+
 }

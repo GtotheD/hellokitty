@@ -1,0 +1,626 @@
+{
+    "status": 200,
+    "message": null,
+    "results": {
+        "total": 1,
+        "rows": [
+            {
+                "work_id": "PTA0000WHPCK",
+                "work_type_id": "1",
+                "msdb_item": "audio",
+                "work_format_id": 1,
+                "work_format_name": "アルバム",
+                "work_title": "佐々木新一 全曲集 2019",
+                "work_title_kana": "ささきしんいちぜんきよくしゆう2019",
+                "work_title_en": "",
+                "work_title_orig": "SASAKI SHINICHI ZENKYOKU SHUU 2019",
+                "work_title_sub": "",
+                "work_comment": "",
+                "work_outline": "",
+                "work_copyright": "",
+                "rating_id": "EXT000000008",
+                "rating_name": "",
+                "adult_flg": 0,
+                "primary_product_source_id": "PDT0000WHUWC",
+                "primary_product_service_id": "ec",
+                "primary_product_type_id": 1,
+                "disp_start_date": "2018-06-20 00:00:00",
+                "disp_start_month": "2018-06",
+                "sale_start_date": "2018-10-10",
+                "sale_start_month": "2018-10",
+                "created_year_from": "",
+                "created_year_to": "",
+                "created_year": "",
+                "created_countries": "",
+                "jacket_s": "",
+                "jacket_m": "",
+                "jacket_l": "",
+                "jacket_l4": "",
+                "scene_s": [
+
+                ],
+                "scene_m": [
+
+                ],
+                "scene_l": [
+
+                ],
+                "trailor_pc": [
+
+                ],
+                "season_name": "",
+                "season_number": null,
+                "book_series_name": "",
+                "book_series_name_kana": "",
+                "feature_keywords": [
+
+                ],
+                "priv_keywords": [
+
+                ],
+                "work_tags": [
+
+                ],
+                "wakati_words": [
+
+                ],
+                "is_compilation": 0,
+                "series_completed": 0,
+                "disable_flg": 0,
+                "delete_flg": 0,
+                "ids": [
+                    {
+                        "id_type": "0103",
+                        "id_value": "20779788"
+                    },
+                    {
+                        "id_type": "0105",
+                        "id_value": "20628882"
+                    }
+                ],
+                "docs": [
+
+                ],
+                "awards": [
+
+                ],
+                "screens": [
+
+                ],
+                "onairs": [
+
+                ],
+                "magazines": [
+
+                ],
+                "genres": [
+                    {
+                        "big_genre_id": "EXT0000000H5",
+                        "big_genre_name": "演歌／民謡",
+                        "medium_genre_id": "EXT0000000H6",
+                        "medium_genre_name": "演歌",
+                        "small_genre_id": "",
+                        "small_genre_name": "",
+                        "shikiriban_id": "",
+                        "shikiriban_name": ""
+                    }
+                ],
+                "products": [
+                    {
+                        "id": "PDT0000WK6OU",
+                        "product_id": "PPD0000WHP6F",
+                        "product_type_id": 2,
+                        "product_type_name": "レンタル",
+                        "service_id": "tol",
+                        "service_name": "tol",
+                        "msdb_item": "audio",
+                        "item_cd": "0000",
+                        "item_name": "ＣＤ",
+                        "product_name": "佐々木新一 全曲集 2019",
+                        "product_kana": "ささきしんいちぜんきよくしゆう2019",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "SASAKI SHINICHI ZENKYOKU SHUU 2019",
+                        "track_testimonials": "",
+                        "disp_start_date": "2018-06-20 00:00:00",
+                        "disp_start_month": "2018-06",
+                        "disp_end_date": "2030-12-28 00:00:00",
+                        "disp_end_month": "2030-12",
+                        "sale_start_date": "2018-10-27",
+                        "sale_start_month": "2018-10",
+                        "sale_end_date": "2030-12-28",
+                        "sale_end_month": "2030-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000WHPCK"
+                        ],
+                        "tieup": "",
+                        "copyright": "",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "",
+                        "created_year_to": "",
+                        "created_year_str": "",
+                        "created_countries": "",
+                        "maker_cd": "EXT000000047",
+                        "maker_name": "キングレコード",
+                        "maker_name_kana": "きんぐれこーど",
+                        "maker_name_abbrev": "キング",
+                        "label_name": "",
+                        "sell_rental_flag": 2,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "20779788",
+                        "ccc_family_cd": "20779788001",
+                        "ccc_product_id": "206026368",
+                        "rental_product_cd": "005951662",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4988003528317",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "KICX  4964",
+                        "icpn": "",
+                        "media_category_cd": "11",
+                        "media_category_name": "レンタルCD",
+                        "media_format_id": "EXT000000007",
+                        "media_format_name": "CD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 1,
+                        "play_time": "",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "",
+                        "video_info": "",
+                        "number_of_volume": "",
+                        "number_of_set": "1",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "",
+                        "jacket_m": "",
+                        "jacket_l": "",
+                        "jacket_l4": "",
+                        "scene_s": [
+
+                        ],
+                        "scene_m": [
+
+                        ],
+                        "scene_l": [
+
+                        ],
+                        "trailor_pc": [
+
+                        ],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [
+
+                        ],
+                        "priv_keywords": [
+
+                        ],
+                        "package_tags": [
+
+                        ],
+                        "product_tags": [
+
+                        ],
+                        "price_tax_out": null,
+                        "price_tax_in": null,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+
+                        ],
+                        "devices": [
+
+                        ],
+                        "distribution_plans": [
+
+                        ],
+                        "awards": [
+
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT0000000H5",
+                                "big_genre_name": "演歌／民謡",
+                                "medium_genre_id": "EXT0000000H6",
+                                "medium_genre_name": "演歌",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [
+
+                        ],
+                        "onairs": [
+
+                        ],
+                        "magazines": [
+
+                        ],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [
+
+                        ],
+                        "filmarks_id": [
+
+                        ],
+                        "dramarks_id": [
+
+                        ],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS000009WHP",
+                                "person_name": "佐々木新一",
+                                "role_id": "EXT00000000D",
+                                "role_name": "演奏者"
+                            },
+                            {
+                                "person_id": "PPS000009WHP",
+                                "person_name": "佐々木新一",
+                                "role_id": "EXT0000176TD",
+                                "role_name": "歌"
+                            },
+                            {
+                                "person_id": "PPS0000UJSGJ",
+                                "person_name": "川上左池子",
+                                "role_id": "EXT0000000G5",
+                                "role_name": "作詞"
+                            },
+                            {
+                                "person_id": "PPS00001EBF0",
+                                "person_name": "コーロ・ステルラ",
+                                "role_id": "EXT0000176TD",
+                                "role_name": "歌"
+                            },
+                            {
+                                "person_id": "PPS00000W8P1",
+                                "person_name": "水森英夫",
+                                "role_id": "EXT0000002JZ",
+                                "role_name": "作曲"
+                            },
+                            {
+                                "person_id": "PPS00000LO2U",
+                                "person_name": "南郷達也",
+                                "role_id": "EXT000002WCE",
+                                "role_name": "編曲"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    },
+                    {
+                        "id": "PDT0000WRMJV",
+                        "product_id": "PPD0000WHP6F",
+                        "product_type_id": 2,
+                        "product_type_name": "レンタル",
+                        "service_id": "discas",
+                        "service_name": "discas",
+                        "msdb_item": "audio",
+                        "item_cd": "0000",
+                        "item_name": "ＣＤ",
+                        "product_name": "佐々木新一 全曲集 2019",
+                        "product_kana": "ササキシンイチゼンキヨクシユウ2019",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "SASAKI SHINICHI ZENKYOKU SHUU 2019",
+                        "track_testimonials": "",
+                        "disp_start_date": "2018-06-20 00:00:00",
+                        "disp_start_month": "2018-06",
+                        "disp_end_date": "2099-12-31 00:00:00",
+                        "disp_end_month": "2099-12",
+                        "sale_start_date": "2018-10-27",
+                        "sale_start_month": "2018-10",
+                        "sale_end_date": "2099-12-31",
+                        "sale_end_month": "2099-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000WHPCK"
+                        ],
+                        "tieup": "",
+                        "copyright": "",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "",
+                        "created_year_to": "",
+                        "created_year_str": "",
+                        "created_countries": "",
+                        "maker_cd": "EXT000000047",
+                        "maker_name": "キングレコード",
+                        "maker_name_kana": "きんぐれこーど",
+                        "maker_name_abbrev": "キング",
+                        "label_name": "",
+                        "sell_rental_flag": 2,
+                        "view_term": null,
+                        "reservation_flg": 1,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "20779788",
+                        "ccc_family_cd": "20779788001",
+                        "ccc_product_id": "3783158633",
+                        "rental_product_cd": "005951662",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4988003528317",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "KICX4964",
+                        "icpn": "",
+                        "media_category_cd": "11",
+                        "media_category_name": "レンタルCD",
+                        "media_format_id": "EXT000000007",
+                        "media_format_name": "CD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 1,
+                        "play_time": "",
+                        "product_spec": "ベスト盤",
+                        "screen_size": "",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "",
+                        "video_info": "",
+                        "number_of_volume": "",
+                        "number_of_set": "1",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "//img.discas.net/img/jacket/no_image_cd_s.png ",
+                        "jacket_m": "//img.discas.net/img/jacket/no_image_cd_m.png ",
+                        "jacket_l": "",
+                        "jacket_l4": "",
+                        "scene_s": [
+
+                        ],
+                        "scene_m": [
+
+                        ],
+                        "scene_l": [
+
+                        ],
+                        "trailor_pc": [
+
+                        ],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [
+
+                        ],
+                        "priv_keywords": [
+
+                        ],
+                        "package_tags": [
+
+                        ],
+                        "product_tags": [
+
+                        ],
+                        "price_tax_out": null,
+                        "price_tax_in": null,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [
+
+                        ],
+                        "devices": [
+
+                        ],
+                        "distribution_plans": [
+
+                        ],
+                        "awards": [
+
+                        ],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT0000000H5",
+                                "big_genre_name": "演歌／民謡",
+                                "medium_genre_id": "EXT0000000H6",
+                                "medium_genre_name": "演歌",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [
+
+                        ],
+                        "onairs": [
+
+                        ],
+                        "magazines": [
+
+                        ],
+                        "discas_grade_point": null,
+                        "discas_item": "DiscasMusic",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [
+
+                        ],
+                        "filmarks_id": [
+
+                        ],
+                        "dramarks_id": [
+
+                        ],
+                        "catch_copy": "",
+                        "people": [
+                            {
+                                "person_id": "PPS000009WHP",
+                                "person_name": "佐々木新一",
+                                "role_id": "EXT00000000D",
+                                "role_name": "演奏者"
+                            },
+                            {
+                                "person_id": "PPS000009WHP",
+                                "person_name": "佐々木新一",
+                                "role_id": "EXT0000176TD",
+                                "role_name": "歌"
+                            },
+                            {
+                                "person_id": "PPS0000UJSGJ",
+                                "person_name": "川上左池子",
+                                "role_id": "EXT0000000G5",
+                                "role_name": "作詞"
+                            },
+                            {
+                                "person_id": "PPS00001EBF0",
+                                "person_name": "コーロ・ステルラ",
+                                "role_id": "EXT0000176TD",
+                                "role_name": "歌"
+                            },
+                            {
+                                "person_id": "PPS00000W8P1",
+                                "person_name": "水森英夫",
+                                "role_id": "EXT0000002JZ",
+                                "role_name": "作曲"
+                            },
+                            {
+                                "person_id": "PPS00000LO2U",
+                                "person_name": "南郷達也",
+                                "role_id": "EXT000002WCE",
+                                "role_name": "編曲"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    }
+                ],
+                "video_relations": [
+
+                ],
+                "discas_grade_point": null,
+                "discas_item": [
+                    "DiscasMusic"
+                ],
+                "ttv_trailer_flg": 0,
+                "ttv_free_movie_flg": 0,
+                "ttv_sell_rental_flg": [
+
+                ],
+                "ttv_low_price": null,
+                "cinema_id": [
+
+                ],
+                "filmarks_id": [
+
+                ],
+                "dramarks_id": [
+
+                ],
+                "catch_copy": "",
+                "sale_start_date_sell": "2018-10-10",
+                "sale_start_date_rental": "2018-10-27",
+                "trailer_urls": [
+
+                ],
+                "scenes": [
+
+                ],
+                "filmarks_mark": 0,
+                "filmarks_clip": 0,
+                "filmarks_average": 0,
+                "people": [
+                    {
+                        "person_id": "PPS000009WHP",
+                        "person_name": "佐々木新一",
+                        "role_id": "EXT00000000D",
+                        "role_name": "演奏者"
+                    },
+                    {
+                        "person_id": "PPS000009WHP",
+                        "person_name": "佐々木新一",
+                        "role_id": "EXT0000176TD",
+                        "role_name": "歌"
+                    },
+                    {
+                        "person_id": "PPS0000UJSGJ",
+                        "person_name": "川上左池子",
+                        "role_id": "EXT0000000G5",
+                        "role_name": "作詞"
+                    },
+                    {
+                        "person_id": "PPS00001EBF0",
+                        "person_name": "コーロ・ステルラ",
+                        "role_id": "EXT0000176TD",
+                        "role_name": "歌"
+                    },
+                    {
+                        "person_id": "PPS00000W8P1",
+                        "person_name": "水森英夫",
+                        "role_id": "EXT0000002JZ",
+                        "role_name": "作曲"
+                    },
+                    {
+                        "person_id": "PPS00000LO2U",
+                        "person_name": "南郷達也",
+                        "role_id": "EXT000002WCE",
+                        "role_name": "編曲"
+                    }
+                ],
+                "tracks": [
+
+                ],
+                "merged_from": [
+
+                ],
+                "need_age_auth_flg": 0
+            }
+        ]
+    }
+}

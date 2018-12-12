@@ -1,0 +1,42 @@
+{
+  "hasNext": false,
+  "totalCount": 3,
+  "rows": [
+    {
+      "workId": "PTA0000VTVAN",
+      "workTitle": "スマート・チェイス",
+      "urlCd": "10611254",
+      "cccWorkCd": "10618214",
+      "adultFlg": false,
+      "supplement": "",
+      "saleType": "sell",
+      "jacketL": "",
+      "newFlg": true,
+      "itemType": "dvd"
+    },
+    {
+      "workId": "PTA0000SF309",
+      "workTitle": "パイレーツ・オブ・カリビアン/最後の海賊",
+      "urlCd": "10573394",
+      "cccWorkCd": "10580354",
+      "adultFlg": false,
+      "supplement": "",
+      "saleType": "sell",
+      "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/jacket/12434/4959241768698_1L.jpg",
+      "newFlg": false,
+      "itemType": "dvd"
+    },
+    {
+      "workId": "PTA0000WEKO0",
+      "workTitle": "ザ・プレデター",
+      "urlCd": "",
+      "cccWorkCd": "",
+      "adultFlg": false,
+      "supplement": "",
+      "saleType": "theater",
+      "jacketL": "https://cdn.store-tsutaya.tsite.jp/images/extdata/04/00/00/36/45/01/364528_02_01.jpg",
+      "newFlg": true,
+      "itemType": "dvd"
+    }
+  ]
+}

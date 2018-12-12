@@ -1,0 +1,18 @@
+{
+  "hasNext": false,
+  "totalCount": 1,
+  "rows": [
+    {
+      "imageUrl": "https://cdn.book_test_single_product_03_size_l.jpg",
+      "title": "レンタルBOOK単品（Productに複数刊あり）商品タイトル",
+      "workTitle": "レンタルBOOK単品（Productに複数刊あり）作品タイトル",
+      "workId": "PTATESTBK02",
+      "code": "PPD0000WBV7S",
+      "urlCd": "41741667",
+      "sort": 1,
+      "msdbItem": "book",
+      "saleStartDate": "2018-10-15",
+      "supplement": "池井戸潤"
+    }
+  ]
+}

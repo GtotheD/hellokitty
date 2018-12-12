@@ -37,6 +37,11 @@ class ProductRepository extends BaseRepository
     const ITEM_CD_BLURAY_SELL_NAME = 'ブルーレイ';
     const ITEM_CD_THEATER_DUMMY = '0000';
 
+    const STOCK_RENTAL_PRODUCT_CODE_MAPPING_CD = ['00', '19'];
+    const STOCK_RENTAL_PRODUCT_CODE_MAPPING_DVD = ['08', '16'];
+    const STOCK_RENTAL_PRODUCT_CODE_MAPPING_BR = ['06', '23'];
+    const STOCK_RENTAL_PRODUCT_CODE_MAPPING_BOOK = ['10', '22'];
+
     public function __construct($sort = 'asc', $offset = 0, $limit = 10)
     {
         parent::__construct($sort, $offset, $limit);
@@ -48,35 +53,6 @@ class ProductRepository extends BaseRepository
         $product = $this->product->setConditionByProductUniqueId($productUniqueId)->toCamel(['id','base_product_code','is_dummy'])->getOne();
         if (empty($product)) {
             return null;
-        }
-        // CDレンタルだった場合
-        // 集約解除をCDのみ一旦もとに戻す
-        if ($product->msdbItem === 'audio' && $product->productTypeId == $this->product::PRODUCT_TYPE_ID_RENTAL) {
-            $rentalProducts = $this->product->setConditionByWorkIdForRentalCd($product->workId)->toCamel(['id','base_product_code','is_dummy'], 't2.')->get();
-            if (empty($rentalProducts)) {
-                return null;
-            }
-            if (count($rentalProducts) === 1) {
-                return $this->productReformat([$product])[0];
-            }
-            $baseRentalProduct = [];
-            foreach ($rentalProducts as $rentalProduct) {
-                $rentalProduct = (array)$rentalProduct;
-                // ベースとなるプロダクトを設定
-                if (empty($baseRentalProduct)) {
-                    $baseRentalProduct = $rentalProduct;
-                    $work = new Work();
-                    $workData =  $work->setConditionByWorkId($product->workId)->toCamel()->getOne();
-                    $baseRentalProduct['productName'] = $workData->workTitle;
-                    $baseRentalProduct['contents'] = "■" . $rentalProduct['productName'] . "\n" . $rentalProduct['contents'];
-                } else {
-                    // コンテンツのマージ
-                    $baseRentalProduct['productCode'] = $baseRentalProduct['productCode'] . ', '.$rentalProduct['productCode'];
-                    // コンテンツのマージ
-                    $baseRentalProduct['contents'] = $baseRentalProduct['contents'] . "\n" . "■" . $rentalProduct['productName'] . "\n" . $rentalProduct['contents'];
-                }
-            }
-            return $this->productReformat([$baseRentalProduct])[0];
         }
         return $this->productReformat([$product])[0];
     }
@@ -112,28 +88,28 @@ class ProductRepository extends BaseRepository
         ];
         // レンタルCDだった場合
         if ($products->msdb_item === 'audio' && $this->saleType === 'rental') {
-            // 集約解除をCDのみ一旦もとに戻す
-//            $this->totalCount = $this->product->setConditionForCd($workId, $this->saleType, $this->sort)->count();
-//            $results = $this->product->selectCamel($column)->get($this->limit, $this->offset);
-            $isAudio = true;
-            $rentalProducts = $this->product->setConditionByWorkIdForRentalCd($workId)->get();
-            // 複数ある場合
-            if (count($rentalProducts) > 1) {
-                // Productをworkのタイトルに書き換える対応
-                // 結果を１件にセット
-                $column = array_diff($column, ['t2.product_name']);
-                // カラムを入れ替えるために追加
-                $column[] = 't1.work_title AS productName';
-                $this->totalCount = 1;
-                $this->hasNext = false;
-                $results = $this->product->selectCamel($column)->get(1, 0);
-                return $this->productReformat($results);
-            }
-//        } else {
-        }
+            $this->totalCount = $this->product->setConditionForCd($workId, $this->saleType, $this->sort)->count();
+            $results = $this->product->selectCamel($column)->get($this->limit, $this->offset);
+        } else if ($products->msdb_item === 'audio' && $this->saleType === 'sell') {
+            $column = [
+                "product_name",
+                "product_unique_id",
+                "item_cd",
+                "item_name",
+                "product_type_id",
+                "jacket_l",
+                "jan",
+                "rental_product_cd",
+                "number_of_volume",
+                "sale_start_date",
+                "price_tax_out",
+            ];
+            $this->totalCount = $this->product->setConditionForSellCd($workId, $this->sort)->count();
+            $results = $this->product->selectCamel($column)->get($this->limit, $this->offset);
+        } else {
             $this->totalCount = $this->product->setConditionProductGroupingByWorkIdSaleType($workId, $this->saleType, $this->sort, $isAudio)->count();
             $results = $this->product->selectCamel($column)->get($this->limit, $this->offset);
-//        }
+        }
         if (count($results) === 0) {
             return null;
         }
@@ -447,6 +423,8 @@ class ProductRepository extends BaseRepository
         $statusCode = 0;
         $isAudio = false;
         $length = strlen($productKey);
+        $queryIdList = [];
+
         // レンタルの場合はPPT等複数媒体がある場合がある為、対象を複数取得する
         if ($length === 9) {
 
@@ -455,21 +433,60 @@ class ProductRepository extends BaseRepository
             if(empty($products)) {
                 return null;
             }
+            if ($products->msdb_item === 'audio') {
+                $isAudio = true;
+            }
             // 既存の処理と変えないようにする。
             if ($products->msdb_item === 'book') {
                 $res = $this->product->setConditionByRentalProductCdFamilyGroupForBook($productKey)->get();
-            } else if ($products->msdb_item === 'audio') {
-                $res = $this->product->setConditionByRentalProductCdFamilyGroupForCd($productKey)->get();
             } else {
-                $res = $this->product->setConditionByRentalProductCdFamilyGroup($productKey)->get();
+                $res = $this->product->setConditionByRentalProductCdFamilyGroup($productKey, $isAudio)->get();
             }
             foreach ($res as $item) {
-                $queryIdList[] = $item->rental_product_cd;
+                // 頭二桁
+                $rentalProductCodePrefix = substr($item->rental_product_cd, 0,2);
+                // 頭二桁以降
+                $rentalProductCodeNoPrefix = substr($item->rental_product_cd, 2);
+
+                $searchItemCodes = [
+                    self::STOCK_RENTAL_PRODUCT_CODE_MAPPING_CD,
+                    self::STOCK_RENTAL_PRODUCT_CODE_MAPPING_DVD,
+                    self::STOCK_RENTAL_PRODUCT_CODE_MAPPING_BR,
+                    self::STOCK_RENTAL_PRODUCT_CODE_MAPPING_BOOK,
+                ];
+                // リストの配列から検索
+                foreach ($searchItemCodes as $searchItemCode) {
+                    // いずれかの配列にあった場合はループを終了
+                    if (array_search($rentalProductCodePrefix, $searchItemCode) !== false) {
+                        break;
+                    }
+                }
+                // 頭2桁と後ろのコードを結合させてコードを生成する
+                foreach($searchItemCode as $rentalProductCodePrefixNew) {
+                    $createdRentalProductCode = $rentalProductCodePrefixNew . $rentalProductCodeNoPrefix;
+                    // 存在しなければ入れる
+                    if (array_search($createdRentalProductCode, $queryIdList) === false) {
+                        $queryIdList[] = $createdRentalProductCode;
+                    }
+                }
             }
 
         // JANで渡ってきた場合は、販売商品の為単一検索
         } elseif ($length === 13) {
-            $queryIdList[] = $productKey;
+            // videoの場合
+            $products =  $this->product->setConditionByJan($productKey)->select('msdb_item')->getOne();
+            if(empty($products)) {
+                return null;
+            }
+            // CDのみjanでばらされているので、それ以外は通常集約
+            if ($products->msdb_item !== 'audio') {
+                $res = $this->product->setConditionWorkGroupByJan($productKey)->select('p2.jan')->get();
+                foreach ($res as $item) {
+                    $queryIdList[] = $item->jan;
+                }
+            } else {
+                $queryIdList[] = $productKey;
+            }
         } else {
             throw new BadRequestHttpException();
         }
@@ -481,7 +498,7 @@ class ProductRepository extends BaseRepository
                 // サーバーが204を返してきた時、NoContentsExceptionにて処理が終了してしまう為catchさせる。
                 continue;
             }
-            if ($stockInfo !== null) {
+            if (!empty($stockInfo)) {
                 $stockStatus = $stockInfo['entry']['stockInfo'][0]['stockStatus'];
                 // 取得した結果在庫があれば後続を動かさず情報を更新させない。
                 if ($statusCode > $stockStatus['level']) {

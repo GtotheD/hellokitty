@@ -27,6 +27,7 @@ class RecommendOtherRepository extends BaseRepository
 
         $work = new Work;
         $workRepository = new WorkRepository;
+        $productRepository = new ProductRepository();
         $bk2Recoomend =  $this->recommend->setConditionByWorkId($workId)->getOne();
         if(empty($bk2Recoomend)) {
             return null;
@@ -36,6 +37,10 @@ class RecommendOtherRepository extends BaseRepository
         $workRepository->getWorkList($workIdList);
         // 自分自身のアイテム種別を取得
         $baseWork = $work->setConditionByWorkId($workId)->getOne();
+        // ベースの作品がなかったらnullを返却
+        if(empty($baseWork)) {
+            return null;
+        }
         if ($baseWork->work_format_id == $workRepository::WORK_FORMAT_ID_MUSICVIDEO) {
             $baseWork->work_type_id = $workRepository::WORK_TYPE_DVD;
         }
@@ -53,7 +58,8 @@ class RecommendOtherRepository extends BaseRepository
         $workRepository->setAgeLimitCheck($this->ageLimitCheck);
         foreach ($workList as $workItem) {
             $workItem = (array)$workItem;
-            $formatedItem = $workRepository->formatAddOtherData($workItem, false, $workItem);
+            $workRepository->setSaleType($productRepository->convertProductTypeToStr($workItem['productTypeId']));
+            $formatedItem = $workRepository->formatAddOtherData($workItem, false);
             foreach ($formatedItem as $key => $value) {
                 if (in_array($key,$this->outputColumn())) {
                     $formatedItemSelectColumn[$key] = $value;
@@ -95,18 +101,9 @@ class RecommendOtherRepository extends BaseRepository
             'url_cd',
             'ccc_work_cd',
             'w1.jacket_l',
-            'p2.sale_start_date',
-            'p2.product_type_id',
-            'p2.product_unique_id',
-            'product_name',
-            'maker_name',
-            'game_model_name',
             'adult_flg',
-            'p2.msdb_item',
-            'media_format_id',
-            'number_of_volume',
-            'item_cd',
-            'maker_cd'
+            'w1.msdb_item',
+            't1.product_type_id'
         ];
     }
 }

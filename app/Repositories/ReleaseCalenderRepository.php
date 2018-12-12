@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Model\Product;
 use DB;
 use Illuminate\Support\Carbon;
 use App\Model\HimoReleaseOrder;
@@ -72,6 +73,7 @@ class ReleaseCalenderRepository extends BaseRepository
         $workRepository = new WorkRepository();
         $productRepository = new ProductRepository();
         $himoReleaseOrder = new HimoReleaseOrder();
+        $productModel = new Product();
 
         // パラメーターを取得する　未指定の場合は当月
         if ($this->month === 'last') {
@@ -232,7 +234,15 @@ class ReleaseCalenderRepository extends BaseRepository
         $workRepository->setAgeLimitCheck($this->ageLimitCheck);
         foreach ($results as $result) {
             $workRepository->setSaleType($productRepository->convertProductTypeToStr($result->productTypeId));
-            $tmpData = $workRepository->formatAddOtherData((array)$result, false, (array)$result);
+            // SQL一発は困難な為、個別にとってくるように変更
+            $product = (array)$productModel->setConditionByWorkIdNewestProductWithSaleStartDate(
+                $result->workId,
+                $result->cccFamilyCd,
+                $result->productTypeId,
+                $result->saleStartDate
+            )->toCamel()->getOne();
+            // 個別でとってきたものを商品情報にセット
+            $tmpData = $workRepository->formatAddOtherData((array)$result, false, $product);
 
             // Change productName -> productTitle
             $formatedData[] = arrayChangeKey($tmpData, 'productName', 'productTitle');
@@ -366,6 +376,7 @@ class ReleaseCalenderRepository extends BaseRepository
             'work_title',
             'work_type_id',
             'work_format_id',
+            'final.ccc_family_cd',
             'scene_l', // 上映映画対応
             'rating_id',
             'big_genre_id',
@@ -384,7 +395,7 @@ class ReleaseCalenderRepository extends BaseRepository
             'media_format_id',
             'game_model_name',
             'number_of_volume',
-            'item_cd',
+            'p4.item_cd',
             'maker_cd'
         ];
     }
