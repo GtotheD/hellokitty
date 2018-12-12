@@ -6,8 +6,7 @@ class WorkProductsRentalTest extends TestCase
     public function workDataProvider()
     {
         return [
-            '商品が一個の場合' => ['PTA0000SF309'],
-            '商品が二個の場合' => ['PTA00007YKJ7'],
+            ['PTA0000SF309'], // DVDレンタルはproduct/rentalをコールするため不要
         ];
     }
 

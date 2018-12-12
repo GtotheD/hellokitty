@@ -61,7 +61,10 @@ class Product extends Model
             ->whereRaw(DB::raw(' service_id  in  (\'tol\')'))
             ->whereRaw(DB::raw(' item_cd not like \'_1__\' '))
 //            ->whereRaw(DB::raw(' jan not like \'9999_________\' '))
-            ->orderBy('t2.ccc_product_id', 'desc') // 最古のものを一番上にもってきて取得する為
+            ->orderByRaw(DB::raw('cast(number_of_volume as UNSIGNED) desc'))
+            ->orderBy('t2.sale_start_date', 'desc')
+            ->orderBy('item_cd', 'asc') // PPTが上部にくることを抑止する為
+            ->orderBy('ccc_product_id', 'asc')
         ;
         return $this;
     }
@@ -85,11 +88,14 @@ class Product extends Model
     /*
      * Get Newest Product
      */
-    public function setConditionByWorkIdNewestProduct($workId, $saleType = null, $isMovie = false)
+    public function setConditionByWorkIdNewestProduct($workId, $saleType = null, $isMovie = false, $isOther = false)
     {
-        $this->dbObject = DB::table($this->table . ' as t1')
-            ->whereRaw(DB::raw(' service_id  in  (\'tol\', \'st\')'))
-            ->where([
+        $this->dbObject = DB::table($this->table . ' as t1');
+            // otherのデータを取得するときにとれない為オプションによってとれるとうに変更
+            if ($isOther === false) {
+                $this->dbObject->whereRaw(DB::raw(' service_id  in  (\'tol\', \'st\')'));
+            }
+            $this->dbObject->where([
                 'work_id' => $workId,
             ]);
         // Add sale type filter
@@ -108,10 +114,37 @@ class Product extends Model
             // PPTのみの場合も該当する
             $this->dbObject->whereRaw(DB::raw(' item_cd like \'__21\' '));
         }
-        $this->dbObject->orderBy('ccc_family_cd', 'desc')
+        $this->dbObject
+            ->orderByRaw(DB::raw('cast(number_of_volume as UNSIGNED) desc'))
             ->orderBy('sale_start_date', 'desc')
-            // todo: この条件をいれないとccc_family_cdとsale_start_dateだけではかぶってしまう
-            // ->orderBy('jan', 'desc')
+            ->orderBy('item_cd_right_2', 'asc')
+            ->orderBy('item_cd', 'asc') // PPTが上部にくることを抑止する為
+            ->orderBy('ccc_product_id', 'asc')
+            ->limit(1);
+        return $this;
+    }
+
+    /**
+     * リリカレ用商品情報取得。
+     * 通常は日付はみてない為、リリカレの日付に対応。
+     */
+    public function setConditionByWorkIdNewestProductWithSaleStartDate($workId, $cccFamilyCd, $productTypeId, $saleStartDate)
+    {
+        $this->dbObject = DB::table($this->table . ' as t1')
+        // otherのデータを取得するときにとれない為オプションによってとれるとうに変更
+        ->whereRaw(DB::raw(' service_id = \'tol\''))
+        ->where([
+            'work_id' => $workId,
+            'ccc_family_cd' => $cccFamilyCd,
+            'product_type_id' => $productTypeId,
+            'sale_start_date' => $saleStartDate,
+        ]);
+        $this->dbObject
+            ->orderByRaw(DB::raw('cast(number_of_volume as UNSIGNED) desc'))
+            ->orderBy('sale_start_date', 'desc')
+            ->orderBy('item_cd_right_2', 'asc')
+            ->orderBy('item_cd', 'asc') // PPTが上部にくることを抑止する為
+            ->orderBy('ccc_product_id', 'asc')
             ->limit(1);
         return $this;
     }
@@ -125,9 +158,11 @@ class Product extends Model
             ->whereRaw(DB::raw('t2.work_id = t1.work_id'))
             ->whereRaw(DB::raw('t2.product_type_id = t1.product_type_id'))
             ->whereRaw(DB::raw(' service_id  in  (\'tol\', \'st\')'))
-            ->orderBy('ccc_family_cd', 'desc')
-            ->orderBy('item_cd_right_2', 'asc')
+            ->orderByRaw(DB::raw('cast(number_of_volume as UNSIGNED) desc'))
             ->orderBy('sale_start_date', 'desc')
+            ->orderBy('item_cd_right_2', 'asc')
+            ->orderBy('item_cd', 'asc') // PPTが上部にくることを抑止する為
+            ->orderBy('ccc_product_id', 'asc')
             ->limit(1);
         $column[] = '('.$jacketSubQuery->toSql().') as jacketL';
         $this->selectCamel($column);
@@ -138,59 +173,67 @@ class Product extends Model
     {
         $this->dbObject = DB::table($this->table)
             ->select('jacket_l as jacketL')
+            ->whereRaw(DB::raw(' service_id  in  (\'tol\', \'st\')'))
             ->where([
                 'work_id' => $workId,
-            ])
-            ->whereRaw(DB::raw(' service_id  in  (\'tol\', \'st\')'))
-        ;
+            ]);
         if ($saleType) {
             $this->dbObject->where([
                 'product_type_id' => $this->convertSaleType($saleType),
             ]);
         }
-        $this->dbObject->orderBy('ccc_family_cd', 'desc')
-            ->orderBy('item_cd_right_2', 'asc')
+        $this->dbObject
+            ->orderByRaw(DB::raw('cast(number_of_volume as UNSIGNED) desc'))
             ->orderBy('sale_start_date', 'desc')
+            ->orderBy('item_cd_right_2', 'asc')
+            ->orderBy('item_cd', 'asc') // PPTが上部にくることを抑止する為
+            ->orderBy('ccc_product_id', 'asc')
             ->limit(1);
         return $this;
 
     }
 
-    public function setConditionByRentalProductCdFamilyGroup($rentalProductCd)
+    public function setConditionByRentalProductCdFamilyGroup($rentalProductCd, $isAudio = false)
+    {
+        $this->dbObject = DB::table($this->table . ' AS p1')
+            ->join($this->table . ' AS p2', function($join) use($isAudio){
+                $join->on('p1.product_name','=','p2.product_name')
+                    ->on('p1.product_type_id','=','p2.product_type_id')
+                    ->on('p1.item_cd_right_2', '=', 'p2.item_cd_right_2');
+                if ($isAudio) {
+                    $join->on('p1.rental_product_cd','=','p2.rental_product_cd');
+                }
+            })
+            ->select(DB::raw('p2.*'))
+            ->whereRaw(DB::raw(' p2.service_id  in  (\'tol\', \'st\')'))
+            ->where([
+                ['p1.rental_product_cd', '=', $rentalProductCd],
+                ['p2.product_type_id', '=', self::PRODUCT_TYPE_ID_RENTAL]
+            ]);
+        return $this;
+    }
+
+    public function setConditionWorkGroupByJan($jan)
     {
         $this->dbObject = DB::table($this->table . ' AS p1')
             ->join($this->table . ' AS p2', function($join) {
                 $join->on('p1.product_name','=','p2.product_name')
                     ->on('p1.product_type_id','=','p2.product_type_id')
-                    ->on('p1.item_cd_right_2', '=', 'p2.item_cd_right_2');
+                    ->on('p1.ccc_family_cd','=','p2.ccc_family_cd')
+                    ->on('p1.item_cd_right_2', '=', 'p2.item_cd_right_2')
+                    ->where('p2.service_id','tol')
+                    ->whereRaw(DB::raw(' p1.service_id  =  \'tol\''));
             })
             ->select(DB::raw('p2.*'))
-            ->whereRaw(DB::raw(' p2.service_id  in  (\'tol\', \'st\')'))
+            ->where('p1.service_id','tol')
             ->where([
-                ['p1.rental_product_cd', '=', $rentalProductCd],
-                ['p2.product_type_id', '=', self::PRODUCT_TYPE_ID_RENTAL]
+                ['p1.jan', '=', $jan],
+                ['p2.product_type_id', '=', self::PRODUCT_TYPE_ID_SELL]
             ]);
         return $this;
     }
 
     public function setConditionByRentalProductCdFamilyGroupForBook($rentalProductCd)
-    {
-        $this->dbObject = DB::table($this->table . ' AS p1')
-            ->join($this->table . ' AS p2', function($join) {
-                $join->on('p1.ccc_family_cd','=','p2.ccc_family_cd')
-                    ->on('p1.product_type_id','=','p2.product_type_id')
-                    ->on('p1.item_cd_right_2', '=', 'p2.item_cd_right_2');
-            })
-            ->select(DB::raw('p2.*'))
-            ->whereRaw(DB::raw(' p2.service_id  in  (\'tol\', \'st\')'))
-            ->where([
-                ['p1.rental_product_cd', '=', $rentalProductCd],
-                ['p2.product_type_id', '=', self::PRODUCT_TYPE_ID_RENTAL]
-            ]);
-        return $this;
-    }
-
-    public function setConditionByRentalProductCdFamilyGroupForCd($rentalProductCd)
     {
         $this->dbObject = DB::table($this->table . ' AS p1')
             ->join($this->table . ' AS p2', function($join) {
@@ -217,6 +260,16 @@ class Product extends Model
                 ['p1.work_id', '=', 'p2.work_id'],
                 ['p1.jan', '=', $jan],
                 ['p2.rental_product_cd', '<>', '']
+            ]);
+        return $this;
+    }
+
+    public function setConditionByJan($jan)
+    {
+        $this->dbObject = DB::table($this->table . ' AS p1')
+            ->whereRaw(DB::raw(' p1.service_id  in  (\'tol\', \'st\')'))
+            ->where([
+                ['p1.jan', '=', $jan],
             ]);
         return $this;
     }
@@ -257,7 +310,11 @@ class Product extends Model
         if($saleType) {
             $this->dbObject->where('product_type_id', $this->convertSaleType($saleType));
         }
-        $this->dbObject->orderBy('number_of_volume', 'desc');
+        $this->dbObject->orderByRaw(DB::raw('cast(number_of_volume as UNSIGNED) desc'))
+        ->orderBy('sale_start_date', 'desc')
+        ->orderBy('item_cd_right_2', 'asc')
+        ->orderBy('item_cd', 'asc') // PPTが上部にくることを抑止する為
+        ->orderBy('ccc_product_id', 'asc');
         if($saleStartDateFrom) {
             $this->dbObject->where('sale_start_date', '>=', $saleStartDateFrom);
         }
@@ -286,9 +343,6 @@ class Product extends Model
             ->whereRaw(DB::raw(' work_id = \''.$workId .'\''))
             // プロダクトは上映映画の時は呼ばないのでtolのみで絞る
             ->whereRaw(DB::raw(' service_id in  (\'tol\')'))
-//            ->whereRaw(DB::raw(' item_cd not like \'_1__\' '))
-            //->whereRaw(DB::raw(' item_cd not like \'__20\' ')) // VHSも出力するように変更
-//            ->whereRaw(DB::raw(' jan not like \'9999_________\' '))
             ->groupBy(DB::raw($selectSubGrouping));
         if ($isAudio && $saleType === 'rental') {
             $subQueryBase->whereRaw(DB::raw(' is_dummy = 0 '));
@@ -433,7 +487,6 @@ class Product extends Model
             foreach ($columns as $column) {
                 if (!in_array($column, $ignoreColumn)) {
                     $insertData[$key][$column] = array_get($row, $column, '');
-
                 }
             }
             $insertData[$key]['created_at'] = date('Y-m-d H:i:s');
@@ -518,4 +571,32 @@ class Product extends Model
         return $this;
     }
 
+    /**
+     * 販売CD商品一覧
+     * @param $workId
+     * @param $order
+     * @return $this
+     */
+    public function setConditionForSellCd($workId, $order)
+    {
+        $this->dbObject = DB::table($this->table)
+            ->where('work_id', $workId)
+            ->where('product_type_id', self::PRODUCT_TYPE_ID_SELL)
+            ->where('service_id', 'tol')
+        ;
+        if ($order === 'old') {
+            $this->dbObject
+                ->orderBy('sale_start_date', 'asc')
+                ->orderBy('jan', 'asc')
+                ->orderBy('ccc_product_id', 'asc')
+            ;
+        } else {
+            $this->dbObject
+                ->orderBy('sale_start_date', 'desc')
+                ->orderBy('jan', 'desc')
+                ->orderBy('ccc_product_id', 'desc')
+            ;
+        }
+        return $this;
+    }
 }

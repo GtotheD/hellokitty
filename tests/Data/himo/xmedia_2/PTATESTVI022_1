@@ -1,0 +1,22 @@
+{
+    "status": 200,
+    "message": null,
+    "results": {
+        "total": 1,
+        "rows": [
+            {
+                "works": [
+                    {
+                        "work_id": "PTA00007XPBZ"
+                    }
+                ],
+                 "small_serieses": [
+                     {
+                         "works": [
+                         ]
+                     }
+                 ]
+            }
+        ]
+    }
+}
