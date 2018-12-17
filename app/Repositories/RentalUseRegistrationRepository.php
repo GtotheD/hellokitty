@@ -102,7 +102,7 @@ class RentalUseRegistrationRepository extends BaseRepository
                         'rentalExpirationDate' => $tolRentalApplication['expirationDate']
                     ];
                 }
-                // 更新期間に入っている(レンタル利用可)
+            // 更新期間に入っている(レンタル利用可)
             } elseif ($prevMonth1st <= $nowDatetime && $nowDatetime <= $tolMemberDetail['expirationDate']) {
                 // 「レンタル登録済み」：Wカード or プレミアム会員
                 if (($tolMemberDetail['wCardFlag'] != '00') || ($tolFlatRentalOperation['responseStatus1'] == '00')) {
@@ -116,6 +116,21 @@ class RentalUseRegistrationRepository extends BaseRepository
                     } else {
                         return [
                             'itemNumber' => 15,
+                            'rentalExpirationDate' => $tolRentalApplication['expirationDate']
+                        ];
+                    }
+                    // レンタル更新処理中
+                } elseif ($tolRentalApplication['rentalUpdateApplicationStatus'] === 1) {
+                    // 本人確認不要(64)-13
+                    if ($tolRentalApplication['identificationConfirmationNecessityFlag'] === 0) {
+                        return [
+                            'itemNumber' => 13,
+                            'rentalExpirationDate' => $tolRentalApplication['expirationDate']
+                        ];
+                        // 本人確認必要(65)-14
+                    } else {
+                        return [
+                            'itemNumber' => 14,
                             'rentalExpirationDate' => $tolRentalApplication['expirationDate']
                         ];
                     }
@@ -136,22 +151,6 @@ class RentalUseRegistrationRepository extends BaseRepository
                     }
                 }
 
-                // レンタル更新処理中
-                if ($tolRentalApplication['rentalUpdateApplicationStatus'] === 1) {
-                    // 本人確認不要(64)-13
-                    if ($tolRentalApplication['identificationConfirmationNecessityFlag'] === 0) {
-                        return [
-                            'itemNumber' => 13,
-                            'rentalExpirationDate' => $tolRentalApplication['expirationDate']
-                        ];
-                        // 本人確認必要(65)-14
-                    } else {
-                        return [
-                            'itemNumber' => 14,
-                            'rentalExpirationDate' => $tolRentalApplication['expirationDate']
-                        ];
-                    }
-                }
             }
             // レンタル会員だけどどこにも入らなかった場合は空でOK?
             return $statusDeails;
