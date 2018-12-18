@@ -153,6 +153,8 @@ class PointRepository
      */
     private function getPointDetails()
     {
+        $shopCode = '';
+
         // memidを利用
         $this->memId;
         // NTだった場合のみ指定。それ以外はすべてTAPとして処理。
@@ -161,7 +163,7 @@ class PointRepository
         } else {
             $shopCode = self::SHOP_CODE_TAP;
         }
-        
+
         // todo スタブデータ
         return [
             'membershipType' => 1,
