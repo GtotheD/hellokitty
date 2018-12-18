@@ -153,11 +153,11 @@ class RentalUseRegistrationRepository extends BaseRepository
 
             }
             // レンタル会員だけどどこにも入らなかった場合は空でOK?
-            return $statusDeails;
+            return $statusDetails;
         }
 
         /**
-         * レンタル会員
+         * 物販
          */
         if (($prevMonth1st > $nowDatetime) ||
             ($prevMonth1st <= $nowDatetime && $nowDatetime <= $tolMemberDetail['expirationDate'])) {
