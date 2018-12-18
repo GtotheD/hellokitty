@@ -14,13 +14,13 @@ class AddTableTsPointDetails extends Migration
     public function up()
     {
         Schema::create('ts_point_details', function (Blueprint $table) {
-            $table->string('st', 16);
+            $table->integer('mem_id');
             $table->unsignedSmallInteger('membership_type');
             $table->unsignedInteger('point');
             $table->unsignedInteger('fixed_point_total');
             $table->dateTime('fixed_point_min_limit_time');
             $table->timestamps();
-            $table->primary('st');
+            $table->primary('mem_id');
         });
     }
 

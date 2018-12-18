@@ -819,17 +819,14 @@ $router->group([
     // 期間固定Tポイント
     $router->post('point', function (Request $request) {
         $bodyObj = json_decode($request->getContent(), true);
-        $tlsc = isset($bodyObj['tlsc']) ? $bodyObj['tlsc'] : '';
+        $memId = isset($bodyObj['memId']) ? $bodyObj['memId'] : '';
+        $systemId = isset($bodyObj['systemId']) ? $bodyObj['systemId'] : '';
         $refreshFlg = isset($bodyObj['refreshFlg']) ? $bodyObj['refreshFlg'] : false;
-        if(empty($tlsc)) {
+        if(empty($memId) || empty($systemId)) {
             throw new BadRequestHttpException;
         }
-        $pointRepository = new PointRepository($tlsc, $refreshFlg);
+        $pointRepository = new PointRepository($systemId, $memId, $refreshFlg);
 
-        // STが取得できなかった場合はNoContents
-        if (empty($pointRepository->getSt())) {
-            throw new NoContentsException;
-        }
         // todo システムIDを受けって、そのシステムIDに応じてレスポンスを切り分ける
         $response = [
             'membershipType' => $pointRepository->getMembershipType(),

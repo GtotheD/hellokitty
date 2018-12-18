@@ -11,9 +11,8 @@ use Illuminate\Support\Carbon;
  */
 class PointRepository
 {
-    private $tlsc;
-    private $st;
-    private $memid;
+    private $systemId;
+    private $memId;
     private $membershipType;
     private $point;
     private $fixedPointTotal;
@@ -24,21 +23,26 @@ class PointRepository
     // 3時間をデフォルトにする
     const DEFAULT_LIMIT_MINUTE = 180;
 
+    // アプリから渡ってくるシステムID
+    const SYSTEM_ID_TAP = 'TAP';
+    const SYSTEM_ID_NT = 'NT';
+
+    // TOL-APIにリクエストする時に渡すショップコード
+    const SHOP_CODE_TAP = '8998';
+    const SHOP_CODE_NT = '8999';
+
     /**
      * PointRepository constructor.
      * TLSCは必須の為コンストラクタで取得し、DBから取得する
      * @param $tlsc
      */
-    public function __construct($tlsc, $refreshFlg)
+    public function __construct($systemId, $memId, $refreshFlg)
     {
         // envからキャッシュ有効期限を取得する。
         // 取得できなかった場合はデフォルトで180分を設定する。
         $this->fixedPointCacheLimitMinute = env('FIXED_POINT_CACHE_LIMIT_MINUTE', self::DEFAULT_LIMIT_MINUTE);
-        $this->tlsc = $tlsc;
-        // TLSCを変換してSTの変数にセットする。
-        $this->convertTlscToSt();
-        // STを変換してMEMの変数にセットする。
-        $this->convertStToMemid();
+        $this->memId = $memId;
+        $this->systemId = $systemId;
 
         // STをもとにDBから値を取得してセットする。
         $isSet = $this->setPointDetail();
@@ -53,15 +57,6 @@ class PointRepository
             $this->setPointDetail();
         }
 
-    }
-
-    /**
-     * ST内部管理番号取得
-     * @return mixed
-     */
-    public function getSt()
-    {
-        return $this->st;
     }
 
     /**
@@ -110,28 +105,6 @@ class PointRepository
     }
 
     /**
-     * TLSCからSTに変換する
-     */
-    public function convertTlscToSt()
-    {
-        // 変換ロジックを別で管理。
-        // ここでは呼び出すだけ。
-        $st = '0000000000000001';
-        $this->st = $st;
-    }
-
-    /**
-     * STからMEM_IDに変換する。
-     */
-    public function convertStToMemid()
-    {
-        // 変換ロジックを別で管理。
-        // ここでは呼び出すだけ。
-        $memid = '';
-        $this->memid = $memid;
-    }
-
-    /**
      * Private
      * DBから取得し書くパラメーターにセットする
      * @return mixed
@@ -139,7 +112,7 @@ class PointRepository
     private function setPointDetail()
     {
         $pointDetailsModel = new PointDetails();
-        $result = $pointDetailsModel->setConditionBySt($this->st)->getOne();
+        $result = $pointDetailsModel->setConditionBySt($this->memId)->getOne();
         if (empty($result)) {
             return false;
         }
@@ -160,10 +133,10 @@ class PointRepository
     {
         $pointDetailsModel = new PointDetails();
         // Marsからポイント詳細情報を取得する
-        $pointDetail = $this->getPointDetailsFromMars();
+        $pointDetail = $this->getPointDetails();
         $updateParam = [
                 [
-                    'st' => $this->st,
+                    'mem_id' => $this->memId,
                     'membership_type' => $pointDetail['membershipType'],
                     'point' => $pointDetail['point'],
                     'fixed_point_total' => $pointDetail['fixedPointTotal'],
@@ -178,10 +151,17 @@ class PointRepository
      * Private
      * Marsからポイント詳細情報を取得する
      */
-    private function getPointDetailsFromMars()
+    private function getPointDetails()
     {
         // memidを利用
-        $this->memid;
+        $this->memId;
+        // NTだった場合のみ指定。それ以外はすべてTAPとして処理。
+        if ($this->systemId === self::SYSTEM_ID_NT) {
+            $shopCode = self::SHOP_CODE_NT;
+        } else {
+            $shopCode = self::SHOP_CODE_TAP;
+        }
+        
         // todo スタブデータ
         return [
             'membershipType' => 1,

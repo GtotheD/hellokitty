@@ -22,11 +22,11 @@ class PointDetails extends Model
     /**
      * ST内部管理番号に応じたポイント情報を取得する
      */
-    public function setConditionBySt($st)
+    public function setConditionBySt($memId)
     {
         $this->dbObject = DB::table($this->table)
             ->where([
-                'st' => $st,
+                'mem_id' => $memId,
             ]);
         return $this;
     }
@@ -36,11 +36,11 @@ class PointDetails extends Model
      * @param $param
      * @return $this
      */
-    public function update($st, $param)
+    public function update($memId, $param)
     {
         $this->dbObject = DB::table($this->table)
             ->where([
-                'st' => $st,
+                'mem_id' => $memId,
             ])->update(
 
             );

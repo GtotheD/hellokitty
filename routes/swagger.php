@@ -2024,13 +2024,13 @@
  *             property="systemId",
  *             type="string",
  *             example="TAP",
- *             description="システムID（当該APIでIDは指定）",
+ *             description="システムID（NTにて利用する為に、システムIDを指定）",
  *         ),
  *         @SWG\Property(
- *             property="tlsc",
- *             type="string",
- *             example="TLSC0000000000000001",
- *             description="ユーザー識別番号(TLSC)",
+ *             property="memId",
+ *             type="integer",
+ *             example="1234567890",
+ *             description="ユーザー識別番号(Mem ID)",
  *         ),
  *         @SWG\Property(
  *             property="refreshFlg",
