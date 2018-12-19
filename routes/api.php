@@ -32,6 +32,8 @@ use App\Repositories\ReleaseCalenderRepository;
 use App\Repositories\FavoriteRepository;
 use App\Repositories\CouponRepository;
 use App\Repositories\RentalUseRegistrationRepository;
+use App\Repositories\PointRepository;
+use App\Exceptions\AgeLimitException;
 use App\Exceptions\ContentsException;
 use App\Exceptions\NoContentsException;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
@@ -823,7 +825,7 @@ $router->group([
     // メンバー利用登録　
     $router->post('member/status/rental', function (Request $request) {
         $bodyObj = json_decode($request->getContent(), true);
-        $tlsc = isset($bodyObj['tlsc']) ? $bodyObj['tlsc'] : '';
+        $tlsc = isset($bodyObj['tolId']) ? $bodyObj['tolId'] : '';
         if(empty($tlsc)) {
             throw new BadRequestHttpException;
         }
@@ -842,7 +844,28 @@ $router->group([
     });
 
 
-    // 検証環境まで有効にするテスト要
+    // 期間固定Tポイント
+    $router->post('point', function (Request $request) {
+        $bodyObj = json_decode($request->getContent(), true);
+        $memId = isset($bodyObj['tolId']) ? $bodyObj['tolId'] : '';
+        $systemId = isset($bodyObj['systemId']) ? $bodyObj['systemId'] : '';
+        $refreshFlg = isset($bodyObj['refreshFlg']) ? $bodyObj['refreshFlg'] : false;
+        if(empty($memId) || empty($systemId)) {
+            throw new BadRequestHttpException;
+        }
+        $pointRepository = new PointRepository($systemId, $memId, $refreshFlg);
+
+        // todo システムIDを受けって、そのシステムIDに応じてレスポンスを切り分ける
+        $response = [
+            'membershipType' => $pointRepository->getMembershipType(),
+            'point' => $pointRepository->getPoint(),
+            'fixedPointTotal' => $pointRepository->getFixedPointTotal(),
+            'fixedPointMinLimitTime' => $pointRepository->getFixedPointMinLimitTime(),
+        ];
+        return response()->json($response)->header('X-Accel-Expires', '0');
+    });
+
+    // 検証環境まで有効にするテスト用
     if (env('APP_ENV') === 'local' || env('APP_ENV') === 'develop' || env('APP_ENV') === 'staging') {
         $router->get('himo/{workId}', function (Request $request, $workId) {
             $himo = new HimoRepository();
