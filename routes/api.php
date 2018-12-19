@@ -825,22 +825,18 @@ $router->group([
     // メンバー利用登録　
     $router->post('member/status/rental', function (Request $request) {
         $bodyObj = json_decode($request->getContent(), true);
-        $tlsc = isset($bodyObj['tolId']) ? $bodyObj['tolId'] : '';
-        if(empty($tlsc)) {
+        $tolId = isset($bodyObj['tolId']) ? $bodyObj['tolId'] : '';
+        if(empty($tolId)) {
             throw new BadRequestHttpException;
         }
-        $rentalUseRegistrationRepository = new RentalUseRegistrationRepository();
-        $rentalUseRegistrationRepository->get();
-//
-//        $rows = $couponRepository->get();
-//        if (empty($rows)) {
-//            throw new NoContentsException;
-//        }
-//        $response = [
-//            'requestDate' => date('YmdHis'),
-//            'rows' => $rows
-//        ];
-//        return response()->json($response)->header('X-Accel-Expires', '0');
+        $rentalUseRegistrationRepository = new RentalUseRegistrationRepository($tolId);
+        $result = $rentalUseRegistrationRepository->get();
+        $response = [
+            'itemNumber' => $result['itemNumber'],
+            'rentalExpirationDate' => $result['rentalExpirationDate']
+        ];
+
+        return response()->json($response)->header('X-Accel-Expires', '0');
     });
 
 
@@ -854,8 +850,6 @@ $router->group([
             throw new BadRequestHttpException;
         }
         $pointRepository = new PointRepository($systemId, $memId, $refreshFlg);
-
-        // todo システムIDを受けって、そのシステムIDに応じてレスポンスを切り分ける
         $response = [
             'membershipType' => $pointRepository->getMembershipType(),
             'point' => $pointRepository->getPoint(),

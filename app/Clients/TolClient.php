@@ -11,6 +11,14 @@ namespace App\Clients;
 
 class TolClient extends BaseClient
 {
+    protected $memId;
+
+    public function __construct($memId)
+    {
+        parent::__construct();
+        $this->memId = $memId;
+    }
+
     public function getMemberDetail()
     {
         // todo stub

@@ -15,7 +15,7 @@ use App\Clients\TolClient;
  * Class FlatRentalOperation
  * @package App\Model
  */
-class TolRentalApplication extends BaseCsvModel
+class TolRentalApplication extends TolBaseModel
 {
     private $header = [
         'messageClass', // 伝文区分
@@ -61,8 +61,7 @@ class TolRentalApplication extends BaseCsvModel
     ];
 
     public function getDetail() {
-        $mintClient = new TolClient();
-        $xml = $mintClient->getRentalApplication();
+        $xml = $this->tolClient->getRentalApplication();
         $memberDetailXml = simplexml_load_string($xml);
         // レスポンスステータスが0でなかった場合はエラーとしてfalseを返却
         if (current($memberDetailXml->status) !== '0') {

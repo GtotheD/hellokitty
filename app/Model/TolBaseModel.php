@@ -2,9 +2,17 @@
 namespace App\Model;
 
 use League\Csv\Reader;
+use App\Clients\TolClient;
 
-class BaseCsvModel
+class TolBaseModel
 {
+    public $tolClient;
+
+    function __construct($memId)
+    {
+        $this->tolClient = new TolClient($memId);
+    }
+
     /**
      * CSVを受け取ってコレクション配列を返す
      * @param $header

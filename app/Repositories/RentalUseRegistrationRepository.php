@@ -11,32 +11,39 @@ use Illuminate\Support\Carbon;
 
 class RentalUseRegistrationRepository extends BaseRepository
 {
+    private $memId;
+
+    public function __construct($memId, string $sort = 'asc', int $offset = 0, int $limit = 10)
+    {
+        $this->memId = $memId;
+        parent::__construct($sort, $offset, $limit);
+    }
 
     public function get()
     {
         // 会員照会API mmc200
-        $tolMemberDetailModel = new TolMemberDetail();
+        $tolMemberDetailModel = new TolMemberDetail($this->memId);
         $tolMemberDetailCollection = $tolMemberDetailModel->getDetail();
         $tolMemberDetail = current($tolMemberDetailCollection->all());
 
 
         // C会員リスト検索 mmc208
-        $tolCMemberDetailModel = new TolCMemberDetail();
+        $tolCMemberDetailModel = new TolCMemberDetail($this->memId);
         $tolCMemberDetailCollection = $tolCMemberDetailModel->getDetail();
         $tolCMemberDetail = current($tolCMemberDetailCollection);
 
         // 定額レンタル操作 mfr001
-        $tolFlatRentalOperationModel = new TolFlatRentalOperation();
+        $tolFlatRentalOperationModel = new TolFlatRentalOperation($this->memId);
         $tolFlatRentalOperationCollection = $tolFlatRentalOperationModel->getDetail();
         $tolFlatRentalOperation = current($tolFlatRentalOperationCollection);
 
         // レンタル関連申請API mre001
-        $tolRentalApplicationModel = new TolRentalApplication();
+        $tolRentalApplicationModel = new TolRentalApplication($this->memId);
         $tolRentalApplicationCollection = $tolRentalApplicationModel->getDetail();
         $tolRentalApplication = current($tolRentalApplicationCollection);
 
         // TOL会員状態取得
-        $tolMembershipStatusModel = new TolMembershipStatus();
+        $tolMembershipStatusModel = new TolMembershipStatus($this->memId);
         $tolMembershipStatusCollection = $tolMembershipStatusModel->getDetail();
         $tolMembershipStatus = current($tolMembershipStatusCollection);
 

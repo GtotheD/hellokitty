@@ -15,12 +15,11 @@ use App\Clients\TolClient;
  * Class FlatRentalOperation
  * @package App\Model
  */
-class TolMembershipStatus extends BaseCsvModel
+class TolMembershipStatus extends TolBaseModel
 {
 
     public function getDetail() {
-        $mintClient = new TolClient();
-        $xml = $mintClient->getMembershipStatus();
+        $xml = $this->tolClient->getMembershipStatus();
         $memberDetailXml = simplexml_load_string($xml);
         // レスポンスステータスが0でなかった場合はエラーとしてfalseを返却
         if (current($memberDetailXml->status) !== 'SUCCESS') {

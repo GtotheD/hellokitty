@@ -10,7 +10,7 @@ namespace App\Model;
 
 use App\Clients\TolClient;
 
-class TolCMemberDetail extends BaseCsvModel
+class TolCMemberDetail extends TolBaseModel
 {
     private $header = [
         'messageClass', // 伝文区分
@@ -36,8 +36,7 @@ class TolCMemberDetail extends BaseCsvModel
     ];
 
     public function getDetail() {
-        $mintClient = new TolClient();
-        $xml = $mintClient->getCMemberList();
+        $xml = $this->tolClient->getCMemberList();
         $memberDetailXml = simplexml_load_string($xml);
         // レスポンスステータスが0でなかった場合はエラーとしてfalseを返却
         if (current($memberDetailXml->status) !== '0') {
