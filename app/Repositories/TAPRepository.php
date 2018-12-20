@@ -120,13 +120,53 @@ class TAPRepository extends ApiRequesterRepository
         return $this->get();
     }
 
+    /**
+     * TOL会員状態取得
+     * @return mixed|string
+     * @throws \App\Exceptions\NoContentsException
+     */
+    public function getMemberStatus($tolid)
+    {
+        $this->api = 'tm/memberStatus';
+        $this->id = $tolid;
+        $this->apiPath ='/tsutayaappapi/tm/memberStatus';
+        $this->apiPath = $this->apiHost . $this->apiPath;
+        $this->queryParams = [
+            'api_key' => $this->apiKey,
+            'tolid' => $tolid,
+        ];
+        return $this->get();
+    }
+
+    /**
+     * @param bool $jsonResponse
+     * @return mixed|null|string
+     * @throws \App\Exceptions\NoContentsException
+     */
+    public function get($jsonResponse = true)
+    {
+        if(env('APP_ENV') !== 'local' && env('APP_ENV') !== 'testing' ){
+            return parent::get($jsonResponse);
+        }
+        return $this->stub($this->api, $this->id);
+    }
+
+    /**
+     * @param $apiName
+     * @param $filename
+     * @return mixed|null
+     */
     private function stub($apiName, $filename)
     {
-
-        $path = base_path('tests/');
+        $path = base_path('tests/Data/tap/');
         $path = $path . $apiName;
-        $path = str_replace('/', DIRECTORY_SEPARATOR, $path);
-        $file = file_get_contents($path . DIRECTORY_SEPARATOR . $filename);
-        return json_decode($file, TRUE);
+        if(!realpath($path . '/' . $filename)) {
+            return null;
+        }
+        $file = file_get_contents($path . '/' . $filename);
+        // Remove new line character
+        return \GuzzleHttp\json_decode(str_replace(["\n","\r\n","\r", PHP_EOL], '', $file), true);
+        // return json_decode($file, TRUE);
     }
+
 }

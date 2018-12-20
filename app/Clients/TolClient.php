@@ -8,55 +8,100 @@
 
 namespace App\Clients;
 
-
+/**
+ * Class TolClient
+ * @package App\Clients
+ */
 class TolClient extends BaseClient
 {
     protected $memId;
+    protected $tolApiHost;
+    protected $testTolApiPath;
 
+    const TEST_API_PATH = 'tests/Data/tol';
+    const MMC200 = '/ms/resources/ap09mmc200';
+    const MMC208 = '/ms/resources/ap08mmc208';
+    const MFR001 = '/ms/resources/ap10mfr001';
+    const MRE001 = '/ms/resources/ap07mre001';
+
+    /**
+     * TolClient constructor.
+     * @param $memId
+     */
     public function __construct($memId)
     {
         parent::__construct();
         $this->memId = $memId;
+        $this->tolApiHost = env('TOL_API_HOST');
+        $this->testTolApiPath = base_path(self::TEST_API_PATH);
     }
 
+    /**
+     * @return mixed|string
+     * @throws \App\Exceptions\NoContentsException
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
     public function getMemberDetail()
     {
-        // todo stub
-        $path = base_path('tests/Data/tol/');
-        $csv = file_get_contents($path . 'mmc200');
-        return $csv;
+        $this->apiPath = $this->createPath(self::MMC200);
+        $this->queryParams = [
+            'memId' => $this->memId
+        ];
+        return $this->get(false);
     }
 
+    /**
+     * @return mixed|string
+     * @throws \App\Exceptions\NoContentsException
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
     public function getCMemberList()
     {
-        // todo stub
-        $path = base_path('tests/Data/tol/');
-        $csv = file_get_contents($path . 'mmc208');
-        return $csv;
+        $this->apiPath = $this->createPath(self::MMC208);
+        $this->queryParams = [
+            'memId' => $this->memId
+        ];
+        return $this->get(false);
     }
 
+    /**
+     * @return mixed|string
+     * @throws \App\Exceptions\NoContentsException
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
     public function getFlatRentalOperation()
     {
-        // todo stub
-        $path = base_path('tests/Data/tol/');
-        $csv = file_get_contents($path . 'mfr001');
-        return $csv;
+        $this->apiPath = $this->createPath(self::MFR001);
+        $this->queryParams = [
+            'memId' => $this->memId
+        ];
+        return $this->get(false);
     }
 
+    /**
+     * @return mixed|string
+     * @throws \App\Exceptions\NoContentsException
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
     public function getRentalApplication()
     {
-        // todo stub
-        $path = base_path('tests/Data/tol/');
-        $csv = file_get_contents($path . 'mre001');
-        return $csv;
+        $this->apiPath = $this->createPath(self::MRE001);
+        $this->queryParams = [
+            'memId' => $this->memId
+        ];
+        return $this->get(false);
     }
 
-    public function getMembershipStatus()
+    /**
+     * @param $api
+     * @return string
+     */
+    private function createPath($api)
     {
-        // todo stub
-        $path = base_path('tests/Data/tol/');
-        $csv = file_get_contents($path . 'membershipStatus');
-        return $csv;
+        if (env('APP_ENV') === 'local' && env('APP_ENV') === 'testing') {
+            return $this->tolApiHost . $api;
+        } else {
+            return $this->testTolApiPath . $api . DIRECTORY_SEPARATOR . $this->memId;
+        }
     }
-
 }

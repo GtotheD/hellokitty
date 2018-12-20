@@ -7,6 +7,7 @@ use App\Model\TolMemberDetail;
 use App\Model\TolCMemberDetail;
 use App\Model\TolMembershipStatus;
 use App\Model\TolRentalApplication;
+use App\Repositories\TAPRepository;
 use Illuminate\Support\Carbon;
 
 class RentalUseRegistrationRepository extends BaseRepository
@@ -24,28 +25,29 @@ class RentalUseRegistrationRepository extends BaseRepository
         // 会員照会API mmc200
         $tolMemberDetailModel = new TolMemberDetail($this->memId);
         $tolMemberDetailCollection = $tolMemberDetailModel->getDetail();
+        if (empty($tolMemberDetailCollection)) {
+            return false;
+        }
         $tolMemberDetail = current($tolMemberDetailCollection->all());
-
 
         // C会員リスト検索 mmc208
         $tolCMemberDetailModel = new TolCMemberDetail($this->memId);
         $tolCMemberDetailCollection = $tolCMemberDetailModel->getDetail();
-        $tolCMemberDetail = current($tolCMemberDetailCollection);
+        $tolCMemberDetail = current($tolCMemberDetailCollection->all());
 
         // 定額レンタル操作 mfr001
         $tolFlatRentalOperationModel = new TolFlatRentalOperation($this->memId);
         $tolFlatRentalOperationCollection = $tolFlatRentalOperationModel->getDetail();
-        $tolFlatRentalOperation = current($tolFlatRentalOperationCollection);
+        $tolFlatRentalOperation = current($tolFlatRentalOperationCollection->all());
 
         // レンタル関連申請API mre001
         $tolRentalApplicationModel = new TolRentalApplication($this->memId);
         $tolRentalApplicationCollection = $tolRentalApplicationModel->getDetail();
-        $tolRentalApplication = current($tolRentalApplicationCollection);
+        $tolRentalApplication = current($tolRentalApplicationCollection->all());
 
         // TOL会員状態取得
-        $tolMembershipStatusModel = new TolMembershipStatus($this->memId);
-        $tolMembershipStatusCollection = $tolMembershipStatusModel->getDetail();
-        $tolMembershipStatus = current($tolMembershipStatusCollection);
+        $tapRepository = new TAPRepository;
+        $tolMembershipStatus = $tapRepository->getMemberStatus($this->memId);
 
         // 当日
         $nowDatetime = Carbon::now();
