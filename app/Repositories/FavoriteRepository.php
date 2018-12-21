@@ -325,13 +325,16 @@ class FavoriteRepository extends ApiRequesterRepository
             $idsIndex = array_search($unacquireWorkIdRow, $idsTmp);
             // IDの差し替え
             $mergedIds[] = $ids[$idsIndex]['id'];
-            $ids[$idsIndex]['id'] = $workTmp['workId'];
-            $works[] = [
-                'workId' => $workTmp['workId'],
-                'urlCd' => $workTmp['urlCd'],
-                'msdbItem' => $workTmp['msdbItem'],
-                'workFormatId' => $workTmp['workFormatId'],
-            ];
+            // 20181214サーバー上にて追加
+            if (!empty($workTmp['workId'])) {
+                $ids[$idsIndex]['id'] = $workTmp['workId'];
+                $works[] = [
+                    'workId' => $workTmp['workId'],
+                    'urlCd' => $workTmp['urlCd'],
+                    'msdbItem' => $workTmp['msdbItem'],
+                    'workFormatId' => $workTmp['workFormatId'],
+                ];
+            }
         }
         // 検索がヒットしなかった場合はfalseを返却
         if (empty($works)) {
