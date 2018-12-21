@@ -201,8 +201,7 @@ class Product extends Model
                     ->on('p1.product_type_id','=','p2.product_type_id')
                     ->on('p1.item_cd_right_2', '=', 'p2.item_cd_right_2');
                 if ($isAudio) {
-                    $join->on('p1.base_product_code','=','p2.base_product_code')
-                    ;
+                    $join->on('p1.base_product_code','=','p2.base_product_code');
                 }
             })
             ->select(DB::raw('p2.*'))
