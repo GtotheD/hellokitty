@@ -332,7 +332,11 @@ class ProductRepository extends BaseRepository
         $productBase['product_unique_id'] = $product['id'];
         $productBase['product_id'] = $product['product_id'];
         $productBase['product_code'] = $product['product_code'];
-        $productBase['base_product_code'] = preg_replace('/([A-Z]|[a-z]){1,2}$/','' ,$product['product_code']);
+        // 元となるプロダクトコードを取得する
+        $baseProductCode = preg_replace('/([A-Z]|[a-z]){1,2}$/','' ,$product['product_code']);
+        // 手運用で無駄なスペースが入って来る為、削除する。
+        $baseProductCode = mb_ereg_replace('( |　)', '', $baseProductCode);
+        $productBase['base_product_code'] = $baseProductCode;
         $productBase['is_dummy'] = preg_match('/([A-Z]|[a-z]){1,2}$/', $product['product_code'], $matches);
         $productBase['jan'] = $product['jan'];
         $productBase['game_model_id'] = $product['game_model_id'];
