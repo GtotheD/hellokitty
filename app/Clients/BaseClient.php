@@ -140,6 +140,9 @@ class BaseClient
      */
     private function getLocal($path, $jsonResponseType = true)
     {
+        if (!realpath($path)) {
+            return null;
+        }
         $file = file_get_contents($path);
         if($jsonResponseType) {
             return json_decode($file);

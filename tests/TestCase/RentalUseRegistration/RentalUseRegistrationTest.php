@@ -8,7 +8,17 @@ class RentalUseRegistrationTest extends TestCase
 
     /**
      * @test
-     * テストケース
+     *
+     */
+    public function パターン項番1()
+    {
+
+    }
+
+
+
+    /**
+     * テストケース抽出用
      */
     public function createPattern()
     {

@@ -22,6 +22,9 @@ class RentalUseRegistrationRepository extends BaseRepository
 
     public function get()
     {
+        /*
+         * いずれか取得できなかった場合は処理を継続しない
+         */
         // 会員照会API mmc200
         $tolMemberDetailModel = new TolMemberDetail($this->memId);
         $tolMemberDetailCollection = $tolMemberDetailModel->getDetail();
@@ -33,21 +36,35 @@ class RentalUseRegistrationRepository extends BaseRepository
         // C会員リスト検索 mmc208
         $tolCMemberDetailModel = new TolCMemberDetail($this->memId);
         $tolCMemberDetailCollection = $tolCMemberDetailModel->getDetail();
+        if (empty($tolCMemberDetailCollection)) {
+            return false;
+        }
         $tolCMemberDetail = current($tolCMemberDetailCollection->all());
 
         // 定額レンタル操作 mfr001
         $tolFlatRentalOperationModel = new TolFlatRentalOperation($this->memId);
         $tolFlatRentalOperationCollection = $tolFlatRentalOperationModel->getDetail();
+        if (empty($tolFlatRentalOperationCollection)) {
+            return false;
+        }
         $tolFlatRentalOperation = current($tolFlatRentalOperationCollection->all());
 
         // レンタル関連申請API mre001
         $tolRentalApplicationModel = new TolRentalApplication($this->memId);
         $tolRentalApplicationCollection = $tolRentalApplicationModel->getDetail();
+        if (empty($tolRentalApplicationCollection)) {
+            return false;
+        }
         $tolRentalApplication = current($tolRentalApplicationCollection->all());
 
         // TOL会員状態取得
         $tapRepository = new TAPRepository;
         $tolMembershipStatus = $tapRepository->getMemberStatus($this->memId);
+        if (empty($tolMembershipStatus)) {
+            return false;
+        }
+
+        $tolMembershipStatus = $tolMembershipStatus['entry']['memberStatus'];
 
         // 当日
         $nowDatetime = Carbon::now();
