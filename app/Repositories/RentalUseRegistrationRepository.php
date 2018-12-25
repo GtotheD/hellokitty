@@ -56,7 +56,7 @@ class RentalUseRegistrationRepository extends BaseRepository
             return false;
         }
         $tolRentalApplication = current($tolRentalApplicationCollection->all());
-
+dd($tolRentalApplication);
         // TOL会員状態取得
         $tapRepository = new TAPRepository;
         $tolMembershipStatus = $tapRepository->getMemberStatus($this->memId);
@@ -67,7 +67,7 @@ class RentalUseRegistrationRepository extends BaseRepository
         $tolMembershipStatus = $tolMembershipStatus['entry']['memberStatus'];
 
         // 当日
-        $nowDatetime = Carbon::now();
+        $nowDatetime = Carbon::now()->format('Ymd');
 
         /**
          * 非表示の項番・その他情報は返さない
@@ -89,14 +89,16 @@ class RentalUseRegistrationRepository extends BaseRepository
         }
 
         // C会員リストにいる(25~27,73~75)-6
-        if ($tolCMemberDetail['cMemberType'] != 'w2') {
+        // なし or W2
+        if ($tolCMemberDetail['cMemberType'] !== 'w2' &&
+            $tolCMemberDetail['cMemberType'] !== '') {
             return [
                 'itemNumber' => 6,
                 'rentalExpirationDate' => ''
             ];
         }
         // ネットT会員(91)-17
-        if ($tolMembershipStatus['tmflg'] === 2) {
+        if ($tolMembershipStatus['tmflg'] !== 2) {
             return [
                 'itemNumber' => 17,
                 'rentalExpirationDate' => ''
@@ -181,13 +183,13 @@ class RentalUseRegistrationRepository extends BaseRepository
             // レンタル会員だけどどこにも入らなかった場合は空でOK?
             return $statusDetails;
         }
-
         /**
          * 物販
          */
         if (($prevMonth1st > $nowDatetime) ||
             ($prevMonth1st <= $nowDatetime && $nowDatetime <= $tolMemberDetail['expirationDate'])) {
             // レンタル登録申請：処理中
+            dd($tolRentalApplication['identificationConfirmationNecessityFlag']);
             if ($tolRentalApplication['rentalRegistrationApplicationStatus'] === 1) {
                 // 本人確認必要(3)(15)-2
                 if ($tolRentalApplication['identificationConfirmationNecessityFlag'] === 1) {

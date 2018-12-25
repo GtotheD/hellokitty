@@ -30,7 +30,7 @@
             <!--<directory suffix="Test.php">./tests/TestCase/Release</directory>-->
             <!--<directory suffix="Test.php">./tests/TestCase/ReleaseCalender</directory>-->
             <!--<directory suffix="Test.php">./tests/TestCase/Search</directory>-->
-            <directory suffix="Test.php">./tests/TestCase/RentalUseRegistration</directory>
+            <directory suffix="Test.php">./tests/TestCase/MemberRentalStatus</directory>
         </testsuite>
     </testsuites>
     <filter>
