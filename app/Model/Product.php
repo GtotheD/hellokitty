@@ -197,7 +197,8 @@ class Product extends Model
     {
         $this->dbObject = DB::table($this->table . ' AS p1')
             ->join($this->table . ' AS p2', function($join) use($isAudio){
-                $join->on('p1.product_name','=','p2.product_name')
+                $join->on('p1.work_id','=','p2.work_id')
+                    ->on('p1.product_name','=','p2.product_name')
                     ->on('p1.product_type_id','=','p2.product_type_id')
                     ->on('p1.item_cd_right_2', '=', 'p2.item_cd_right_2');
                 if ($isAudio) {
