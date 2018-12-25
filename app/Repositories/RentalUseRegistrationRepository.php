@@ -51,12 +51,11 @@ class RentalUseRegistrationRepository extends BaseRepository
 
         // レンタル関連申請API mre001
         $tolRentalApplicationModel = new TolRentalApplication($this->memId);
-        $tolRentalApplicationCollection = $tolRentalApplicationModel->getDetail();
-        if (empty($tolRentalApplicationCollection)) {
+        $tolRentalApplication = $tolRentalApplicationModel->getDetail();
+        if (empty($tolRentalApplication)) {
             return false;
         }
-        $tolRentalApplication = current($tolRentalApplicationCollection->all());
-dd($tolRentalApplication);
+
         // TOL会員状態取得
         $tapRepository = new TAPRepository;
         $tolMembershipStatus = $tapRepository->getMemberStatus($this->memId);
@@ -189,7 +188,6 @@ dd($tolRentalApplication);
         if (($prevMonth1st > $nowDatetime) ||
             ($prevMonth1st <= $nowDatetime && $nowDatetime <= $tolMemberDetail['expirationDate'])) {
             // レンタル登録申請：処理中
-            dd($tolRentalApplication['identificationConfirmationNecessityFlag']);
             if ($tolRentalApplication['rentalRegistrationApplicationStatus'] === 1) {
                 // 本人確認必要(3)(15)-2
                 if ($tolRentalApplication['identificationConfirmationNecessityFlag'] === 1) {

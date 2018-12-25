@@ -26,11 +26,11 @@ class TolRentalApplication extends TolBaseModel
         }
 //        $csv = current($memberDetailXml->responseData);
         $detail = $memberDetailXml->responseData->response->detail;
+        dd($detail->rentaltorokushinseistatus);
         return [
-            $detail->rentaltorokushinseistatus,
-            $detail->rentalkoshinshinseistatus,
-            identificationConfirmationNecessityFlag $detail->honninkakuninyohi
-
-        ]
+            'rentalRegistrationApplicationStatus' => $detail->rentaltorokushinseistatus,
+            'rentalUpdateApplicationStatus' => $detail->rentalkoshinshinseistatus,
+            'identificationConfirmationNecessityFlag' => $detail->honninkakuninyohi
+        ];
     }
 }
