@@ -15,8 +15,8 @@ use App\Model\Work;
 class Product extends Model
 {
     const TABLE = 'ts_products';
-    const PRODUCT_TYPE_ID_SELL = 1;
-    const PRODUCT_TYPE_ID_RENTAL = 2;
+    const PRODUCT_TYPE_ID_SELL = '1';
+    const PRODUCT_TYPE_ID_RENTAL = '2';
 
     const DUMMY_DATA_IS_NOT_DUMMY = 0;
     const DUMMY_DATA_IS_DUMMY = 1;
