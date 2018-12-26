@@ -11,35 +11,161 @@ class MemberRentalStatusTest extends TestCase
         $this->testDir = __DIR__;
     }
 
-    /**
-     * @test
-     */
-    public function パターン項番1()
+    public function data()
     {
-        $id = '1';
-        $json = json_encode([
-            'tolId' => $id,
-        ]);
-
-        $url = '/member/rental/status';
-        $actual = $this->postWithAuth($url, $json);
-        $this->actualDifference($id, $actual);
+        return [
+//            '項番1' => [
+//                'memid' => '1',
+//                'itemNumber' => 1,
+//                'rentalExpirationDate' => ''
+//            ],
+//            '項番2' => [
+//                'memid' => '2',
+//                'itemNumber' => 2,
+//                'rentalExpirationDate' => ''
+//            ],
+//            '項番3' => [
+//                'memid' => '3',
+//                'itemNumber' => 3,
+//                'rentalExpirationDate' => ''
+//            ],
+//            '項番4' => [
+//                'memid' => '4',
+//                'itemNumber' => 4,
+//                'rentalExpirationDate' => ''
+//            ],
+//            '項番5' => [
+//                'memid' => '5',
+//                'itemNumber' => 5,
+//                'rentalExpirationDate' => ''
+//            ],
+//            '項番6' => [
+//                'memid' => '6',
+//                'itemNumber' => 1,
+//                'rentalExpirationDate' => ''
+//            ],
+//            '項番7' => [
+//                'memid' => '7',
+//                'itemNumber' => 2,
+//                'rentalExpirationDate' => ''
+//            ],
+//            '項番8' => [
+//                'memid' => '8',
+//                'itemNumber' => 3,
+//                'rentalExpirationDate' => ''
+//            ],
+//            '項番9' => [
+//                'memid' => '9',
+//                'itemNumber' => 4,
+//                'rentalExpirationDate' => ''
+//            ],
+//            '項番10' => [
+//                'memid' => '10',
+//                'itemNumber' => 5,
+//                'rentalExpirationDate' => ''
+//            ],
+            '項番11' => [
+                'memid' => '11',
+                'itemNumber' => 6,
+                'rentalExpirationDate' => ''
+            ],
+            '項番12' => [
+                'memid' => '12',
+                'itemNumber' => 7,
+                'rentalExpirationDate' => ''
+            ],
+            '項番13' => [
+                'memid' => '13',
+                'itemNumber' => 8,
+                'rentalExpirationDate' => ''
+            ],
+            '項番14' => [
+                'memid' => '14',
+                'itemNumber' => 8,
+                'rentalExpirationDate' => ''
+            ],
+//            '項番15' => [
+//                'memid' => '15',
+//                'itemNumber' => 15,
+//                'rentalExpirationDate' => ''
+//            ],
+//            '項番16' => [
+//                'memid' => '16',
+//                'itemNumber' => 16,
+//                'rentalExpirationDate' => ''
+//            ],
+//            '項番17' => [
+//                'memid' => '17',
+//                'itemNumber' => 17,
+//                'rentalExpirationDate' => ''
+//            ],
+//            '項番18' => [
+//                'memid' => '18',
+//                'itemNumber' => 18,
+//                'rentalExpirationDate' => ''
+//            ],
+//            '項番19' => [
+//                'memid' => '19',
+//                'itemNumber' => 19,
+//                'rentalExpirationDate' => ''
+//            ],
+//            '項番20' => [
+//                'memid' => '20',
+//                'itemNumber' => 20,
+//                'rentalExpirationDate' => ''
+//            ],
+//            '項番21' => [
+//                'memid' => '21',
+//                'itemNumber' => 21,
+//                'rentalExpirationDate' => ''
+//            ],
+//            '項番22' => [
+//                'memid' => '22',
+//                'itemNumber' => 22,
+//                'rentalExpirationDate' => ''
+//            ],
+//            '項番23' => [
+//                'memid' => '23',
+//                'itemNumber' => 23,
+//                'rentalExpirationDate' => ''
+//            ],
+//            '項番24' => [
+//                'memid' => '24',
+//                'itemNumber' => 24,
+//                'rentalExpirationDate' => ''
+//            ],
+//            '項番25' => [
+//                'memid' => '25',
+//                'itemNumber' => 25,
+//                'rentalExpirationDate' => ''
+//            ],
+//            '項番26' => [
+//                'memid' => '26',
+//                'itemNumber' => 26,
+//                'rentalExpirationDate' => ''
+//            ],
+        ];
     }
 
     /**
      * @test
+     * @dataProvider data
      */
-    public function パターン項番2()
+    public function パターンチェック($memid,$itemNumber, $rentalExpirationDate)
     {
-        $id = '2';
         $json = json_encode([
-            'tolId' => $id,
+            'tolId' => $memid,
         ]);
 
         $url = '/member/rental/status';
-        $actual = $this->postWithAuth($url, $json);
-        $this->actualDifference($id, $actual);
+        $response = $this->postWithAuth($url, $json);
+        $actual = json_decode($response->getContent(), true);
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertEquals($actual['itemNumber'], $itemNumber);
+        $this->assertEquals($actual['rentalExpirationDate'], $rentalExpirationDate);
+
     }
+
 
 
     /**
