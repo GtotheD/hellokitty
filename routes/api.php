@@ -823,7 +823,7 @@ $router->group([
     });
 
     // メンバー利用登録　
-    $router->post('member/status/rental', function (Request $request) {
+    $router->post('member/rental/status', function (Request $request) {
         $bodyObj = json_decode($request->getContent(), true);
         $tolId = isset($bodyObj['tolId']) ? $bodyObj['tolId'] : '';
         if(empty($tolId)) {
@@ -831,6 +831,9 @@ $router->group([
         }
         $rentalUseRegistrationRepository = new RentalUseRegistrationRepository($tolId);
         $result = $rentalUseRegistrationRepository->get();
+        if (empty($result)) {
+            throw new NoContentsException;
+        }
         $response = [
             'itemNumber' => $result['itemNumber'],
             'rentalExpirationDate' => $result['rentalExpirationDate']
@@ -841,7 +844,7 @@ $router->group([
 
 
     // 期間固定Tポイント
-    $router->post('point', function (Request $request) {
+    $router->post('member/tpoint', function (Request $request) {
         $bodyObj = json_decode($request->getContent(), true);
         $memId = isset($bodyObj['tolId']) ? $bodyObj['tolId'] : '';
         $systemId = isset($bodyObj['systemId']) ? $bodyObj['systemId'] : '';

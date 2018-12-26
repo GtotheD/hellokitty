@@ -2009,10 +2009,10 @@
 
 /**
  * @SWG\Post(
- *     path="/point",
+ *     path="/member/tpoint",
  *     description="期間固定Tポイント情報取得",
  *     produces={"application/json"},
- *     tags={"Point"},
+ *     tags={"Member"},
  *     security={{"api_key":{}}},
  *     @SWG\Parameter(
  *       name="body",
@@ -2079,7 +2079,7 @@
 
 /**
  * @SWG\Post(
- *     path="/member/status/rental",
+ *     path="/member/rental/status",
  *     description="レンタル利用登録(モバT画面出し分け用)",
  *     produces={"application/json"},
  *     tags={"Member"},

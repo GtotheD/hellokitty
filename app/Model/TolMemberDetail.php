@@ -69,11 +69,16 @@ class TolMemberDetail extends TolBaseModel
         'optoutFlag', // オプトアウトフラグ
     ];
 
+    /**
+     * @return bool|\Illuminate\Support\Collection
+     * @throws \App\Exceptions\NoContentsException
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
     public function getDetail() {
         $xml = $this->tolClient->getMemberDetail();
         $memberDetailXml = simplexml_load_string($xml);
         // レスポンスステータスが0でなかった場合はエラーとしてfalseを返却
-        if (current($memberDetailXml->status) !== '0') {
+        if ($memberDetailXml === false || current($memberDetailXml->status) !== '0') {
             return false;
         }
         $csv = current($memberDetailXml->responseData);

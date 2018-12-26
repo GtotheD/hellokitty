@@ -16,7 +16,7 @@ class PointDetailsTestSeeder extends Seeder
 
         $insertData = [
             [
-                'st' => '0000000000000001',
+                'mem_id' => '1',
                 'membership_type' => 1,
                 'point' => 100,
                 'fixed_point_total' => 100,
@@ -25,7 +25,7 @@ class PointDetailsTestSeeder extends Seeder
                 'updated_at' => '2018-11-21 10:04:00'
             ],
             [
-                'st' => '0000000000000002',
+                'mem_id' => '2',
                 'membership_type' => 2,
                 'point' => 200,
                 'fixed_point_total' => 200,
@@ -34,7 +34,7 @@ class PointDetailsTestSeeder extends Seeder
                 'updated_at' => '2018-10-15 06:00:00'
             ],
             [
-                'st' => '0000000000000003',
+                'mem_id' => '3',
                 'membership_type' => 1,
                 'point' => 0,
                 'fixed_point_total' => 0,

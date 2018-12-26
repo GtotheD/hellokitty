@@ -8,7 +8,14 @@
 
 namespace App\Clients;
 
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\ClientException;
+use App\Exceptions\NoContentsException;
 
+/**
+ * Class BaseClient
+ * @package App\Clients
+ */
 class BaseClient
 {
     protected $apiPath;
@@ -16,21 +23,38 @@ class BaseClient
     protected $method;
     protected $headers = [];
 
+    protected $stubPath;
+
+    /**
+     * BaseClient constructor.
+     */
     public function __construct()
     {
         $this->method = 'GET';
     }
 
+    /**
+     * @param $method
+     */
     public function setMethod($method)
     {
         $this->method = $method;
     }
 
-    /*
-     * 取得の実行
+    /**
+     * GET
+     * @param bool $jsonResponse
+     * @return mixed|string
+     * @throws NoContentsException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function get($jsonResponse = true)
     {
+        // 環境によってスタブで取得するかどうかをきめる
+        if (env('APP_ENV') === 'local' || env('APP_ENV') === 'testing') {
+            return $this->getLocal($this->apiPath, $jsonResponse);
+        }
+
         $url = $this->apiPath;
         $client = new Client();
         if ($this->method === 'POST') {
@@ -60,14 +84,15 @@ class BaseClient
         return $result->getBody()->getContents();
     }
 
+
     /**
-     * post json in body
-     * @param type|bool $jsonResponse
-     * @return string
+     * POST
+     * @param bool $jsonResponse
+     * @return mixed|string
+     * @throws NoContentsException
      */
     public function postBody($jsonResponse = true)
     {
-        $url = $this->apiPath;
         $client = new Client([
             'headers' => [ 'Content-Type' => 'application/json' ]
         ]);
@@ -88,15 +113,42 @@ class BaseClient
         return $result->getBody()->getContents();
     }
 
+    /**
+     * @param $key
+     * @param $value
+     */
     public function setHeader($key, $value)
     {
         $this->headers[$key] = $value;
     }
 
+    /**
+     * @param $params
+     */
     public function setHeaders($params)
     {
         foreach ($params as $key => $value) {
             $this->headers[$key] = $value;
         }
     }
+
+    /**
+     * スタブ用
+     * @param $path
+     * @param bool $jsonResponseType
+     * @return mixed
+     */
+    private function getLocal($path, $jsonResponseType = true)
+    {
+        if (!realpath($path)) {
+            return null;
+        }
+        $file = file_get_contents($path);
+        if($jsonResponseType) {
+            return json_decode($file);
+        } else {
+            return $file;
+        }
+    }
+
 }
