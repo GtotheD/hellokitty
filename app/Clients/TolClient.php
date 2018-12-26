@@ -45,7 +45,7 @@ class TolClient extends BaseClient
     {
         $this->apiPath = $this->createPath(self::MMC200);
         $this->queryParams = [
-            'memId' => $this->memId
+            'memid' => $this->memId
         ];
         return $this->get(false);
     }
@@ -59,7 +59,7 @@ class TolClient extends BaseClient
     {
         $this->apiPath = $this->createPath(self::MMC208);
         $this->queryParams = [
-            'memId' => $this->memId
+            'memid' => $this->memId
         ];
         return $this->get(false);
     }
@@ -73,7 +73,7 @@ class TolClient extends BaseClient
     {
         $this->apiPath = $this->createPath(self::MFR001);
         $this->queryParams = [
-            'memId' => $this->memId
+            'memid' => $this->memId
         ];
         return $this->get(false);
     }
@@ -87,8 +87,9 @@ class TolClient extends BaseClient
     {
         $this->apiPath = $this->createPath(self::MRE001);
         $this->queryParams = [
-            'memId' => $this->memId
+            'memid' => $this->memId
         ];
+        $this->setMethod('POST');
         return $this->get(false);
     }
 
@@ -98,10 +99,10 @@ class TolClient extends BaseClient
      */
     private function createPath($api)
     {
-        if (env('APP_ENV') === 'local' && env('APP_ENV') === 'testing') {
-            return $this->tolApiHost . $api;
-        } else {
+        if (env('APP_ENV') === 'local' || env('APP_ENV') === 'testing') {
             return $this->testTolApiPath . $api . DIRECTORY_SEPARATOR . $this->memId;
+        } else {
+            return $this->tolApiHost . $api;
         }
     }
 }
