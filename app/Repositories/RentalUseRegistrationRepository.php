@@ -80,6 +80,14 @@ class RentalUseRegistrationRepository extends BaseRepository
         /**
          * 非表示の項番・その他情報は返さない
          */
+        // ネットT会員(91)-17
+        if ($tolMembershipStatus['tmflg'] !== 2) {
+            return [
+                'itemNumber' => 17,
+                'rentalExpirationDate' => ''
+            ];
+        }
+
         // 削除済み会員(37~39,43~45,79~81)-8
         if ($tolMemberDetail['deleteFlag'] === '1') {
             return [
@@ -104,13 +112,6 @@ class RentalUseRegistrationRepository extends BaseRepository
                 'rentalExpirationDate' => ''
             ];
         }
-        // ネットT会員(91)-17
-        if ($tolMembershipStatus['tmflg'] !== 2) {
-            return [
-                'itemNumber' => 17,
-                'rentalExpirationDate' => ''
-            ];
-        }
 
         // 有効期限満了日の前月1日
         $prevMonthCarbon = new Carbon($tolMemberDetail['expirationDate']);
@@ -123,37 +124,37 @@ class RentalUseRegistrationRepository extends BaseRepository
         /**
          * レンタル会員
          */
-        if ($tolMemberDetail['memberType'] == '2') {
+        if ($tolMemberDetail['memberType'] == '1') {
             // まだ更新期間に入ってない(レンタル利用可)
             if ($prevMonth1st > $nowDatetime) {
                 // 本人確認不要(49)-9
                 if ($tolRentalApplication['identificationConfirmationNecessityFlag'] === '0') {
                     return [
                         'itemNumber' => 9,
-                        'rentalExpirationDate' => $tolRentalApplication['expirationDate']
+                        'rentalExpirationDate' => $tolMemberDetail['expirationDate']
                     ];
                     // 本人確認必要(55)-10
                 } else {
                     return [
                         'itemNumber' => 10,
-                        'rentalExpirationDate' => $tolRentalApplication['expirationDate']
+                        'rentalExpirationDate' => $tolMemberDetail['expirationDate']
                     ];
                 }
             // 更新期間に入っている(レンタル利用可)
             } elseif ($prevMonth1st <= $nowDatetime && $nowDatetime <= $tolMemberDetail['expirationDate']) {
                 // 「レンタル登録済み」：Wカード or プレミアム会員
-                if (($tolMemberDetail['wCardFlag'] != '00') || ($tolFlatRentalOperation['responseStatus1'] == '00')) {
+                if ($tolMemberDetail['wCardFlag'] !== '00' || $tolFlatRentalOperation['responseStatus1'] === '00') {
                     // 本人確認不要(61-2,3,4)-11
                     if ($tolRentalApplication['identificationConfirmationNecessityFlag'] === '0') {
                         return [
                             'itemNumber' => 11,
-                            'rentalExpirationDate' => $tolRentalApplication['expirationDate']
+                            'rentalExpirationDate' => $tolMemberDetail['expirationDate']
                         ];
                         // 本人確認必要(67-2,3,4)-15
                     } else {
                         return [
                             'itemNumber' => 15,
-                            'rentalExpirationDate' => $tolRentalApplication['expirationDate']
+                            'rentalExpirationDate' => $tolMemberDetail['expirationDate']
                         ];
                     }
                     // レンタル更新処理中
@@ -162,13 +163,13 @@ class RentalUseRegistrationRepository extends BaseRepository
                     if ($tolRentalApplication['identificationConfirmationNecessityFlag'] === '0') {
                         return [
                             'itemNumber' => 13,
-                            'rentalExpirationDate' => $tolRentalApplication['expirationDate']
+                            'rentalExpirationDate' => $tolMemberDetail['expirationDate']
                         ];
                         // 本人確認必要(65)-14
                     } else {
                         return [
                             'itemNumber' => 14,
-                            'rentalExpirationDate' => $tolRentalApplication['expirationDate']
+                            'rentalExpirationDate' => $tolMemberDetail['expirationDate']
                         ];
                     }
                     // 非Wカード＆非プレミアム会員
@@ -177,13 +178,13 @@ class RentalUseRegistrationRepository extends BaseRepository
                     if ($tolRentalApplication['identificationConfirmationNecessityFlag'] === '0') {
                         return [
                             'itemNumber' => 12,
-                            'rentalExpirationDate' => $tolRentalApplication['expirationDate']
+                            'rentalExpirationDate' => $tolMemberDetail['expirationDate']
                         ];
                         // 本人確認必要(67-5)-16
                     } else {
                         return [
                             'itemNumber' => 16,
-                            'rentalExpirationDate' => $tolRentalApplication['expirationDate']
+                            'rentalExpirationDate' => $tolMemberDetail['expirationDate']
                         ];
                     }
                 }
