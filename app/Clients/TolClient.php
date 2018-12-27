@@ -14,6 +14,7 @@ namespace App\Clients;
  */
 class TolClient extends BaseClient
 {
+    protected $key;
     protected $memId;
     protected $tolApiHost;
     protected $testTolApiPath;
@@ -28,12 +29,14 @@ class TolClient extends BaseClient
      * TolClient constructor.
      * @param $memId
      */
-    public function __construct($memId)
+    public function __construct($tolid)
     {
         parent::__construct();
-        $this->memId = $memId;
+        $this->key = env('TOL_ENCRYPT_KEY');
         $this->tolApiHost = env('TOL_API_HOST');
         $this->testTolApiPath = base_path(self::TEST_API_PATH);
+        $memId = $this->decodeMemid($tolid);
+        $this->memId = $memId;
     }
 
     /**
@@ -87,6 +90,7 @@ class TolClient extends BaseClient
     {
         $this->apiPath = $this->createPath(self::MRE001);
         $this->queryParams = [
+            'shori_kbn' => 2,
             'memid' => $this->memId
         ];
         $this->setMethod('POST');
@@ -104,5 +108,16 @@ class TolClient extends BaseClient
         } else {
             return $this->tolApiHost . $api;
         }
+    }
+
+    public function decodeMemid($tolid)
+    {
+        $encodedMemId = $this->decryptFromBase64String($key, urldecode($tolid));
+        return intval(substr($encodedMemId, 0, 10));
+    }
+
+    public function decryptFromBase64String($key, $target)
+    {
+        return openssl_decrypt(base64_decode($target), 'aes-128-ecb', $key, OPENSSL_RAW_DATA);
     }
 }

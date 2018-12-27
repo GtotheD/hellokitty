@@ -69,7 +69,7 @@ class RentalUseRegistrationRepository extends BaseRepository
             return false;
         }
 
-        $tolMembershipStatus = $tolMembershipStatus['entry']['memberStatus'];
+        $tolMembershipStatus = $tolMembershipStatus['entry']['memberStetus'];
 
         // 当日
         $nowDatetime = Carbon::now()->format('Ymd');
