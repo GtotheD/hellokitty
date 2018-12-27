@@ -17,19 +17,20 @@ use App\Clients\TolClient;
  */
 class TolRentalApplication extends TolBaseModel
 {
-    public function getDetail() {
+    public function getDetail()
+    {
         $xml = $this->tolClient->getRentalApplication();
         $memberDetailXml = simplexml_load_string($xml);
         // レスポンスステータスが0でなかった場合はエラーとしてfalseを返却
         if (current($memberDetailXml->status) !== '0') {
             return false;
         }
-//        $csv = current($memberDetailXml->responseData);
-        $detail = $memberDetailXml->responseData->response->detail;
+        $json = json_decode(urldecode($memberDetailXml->responseData));
+        $detail = $json->response->detail;
         return [
-            'rentalRegistrationApplicationStatus' => current($detail->rentaltorokushinseistatus),
-            'rentalUpdateApplicationStatus' => current($detail->rentalkoshinshinseistatus),
-            'identificationConfirmationNecessityFlag' => current($detail->honninkakuninyohi)
+            'rentalRegistrationApplicationStatus' => $detail->rentaltorokushinseistatus,
+            'rentalUpdateApplicationStatus' => $detail->rentalkoshinshinseistatus,
+            'identificationConfirmationNecessityFlag' => $detail->honninkakuninyohi
         ];
     }
 }
