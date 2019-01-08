@@ -307,7 +307,8 @@ class Product extends Model
             ->whereRaw(DB::raw(' item_cd not like \'__20\' '))
             ->where([
                 'work_id' => $workId,
-            ]);
+            ])
+            ->where('service_id', 'tol');
         if($saleType) {
             $this->dbObject->where('product_type_id', $this->convertSaleType($saleType));
         }
