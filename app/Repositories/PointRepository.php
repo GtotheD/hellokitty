@@ -7,6 +7,7 @@ use App\Model\TolPoint;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Log;
 use App\Libraries\Security;
+use Exception;
 
 /**
  * Class PointRepository
@@ -18,6 +19,7 @@ class PointRepository
     private $tolId;
     private $memId;
     private $key;
+    private $responseCode;
     private $membershipType;
     private $point;
     private $fixedPointTotal;
@@ -41,8 +43,10 @@ class PointRepository
 
     /**
      * PointRepository constructor.
-     * TLSCは必須の為コンストラクタで取得し、DBから取得する
-     * @param $tlsc
+     * @param $systemId
+     * @param $tolId
+     * @param $refreshFlg
+     * @throws Exception
      */
     public function __construct($systemId, $tolId, $refreshFlg)
     {
@@ -54,8 +58,11 @@ class PointRepository
 
         // TolID→MemID変換用キー
         $this->key = env('TOL_ENCRYPT_KEY');
+        Log::info('Fixed Point API tolId : ' . $this->tolId);
+        $this->memId = $this->decodeMemid($this->key, $this->tolId);
+        Log::info('Fixed Point API convert tolId : ' . $this->tolId . ' -> ' . $this->memId );
 
-        // STをもとにDBから値を取得してセットする。
+        // MemIdをもとにDBから値を取得してセットする。
         $isSet = $this->setPointDetail();
 
         // 初回でセット出来なった場合
@@ -68,6 +75,14 @@ class PointRepository
             $this->setPointDetail();
         }
 
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getResponseCode()
+    {
+        return $this->responseCode;
     }
 
     /**
@@ -127,6 +142,7 @@ class PointRepository
         if (empty($result)) {
             return false;
         }
+        $this->responseCode = $result->response_code;
         $this->membershipType = $result->membership_type;
         $this->point = $result->point;
         $this->fixedPointTotal = $result->fixed_point_total;
@@ -145,14 +161,16 @@ class PointRepository
         $pointDetailsModel = new PointDetails();
         // Marsからポイント詳細情報を取得する
         $pointDetail = $this->getPointDetails();
+        $nowDateTime = Carbon::now();
         $updateParam = [
                 [
                     'mem_id' => $this->memId,
+                    'response_code' => $pointDetail['responseCode'],
                     'membership_type' => $pointDetail['membershipType'],
                     'point' => $pointDetail['point'],
                     'fixed_point_total' => $pointDetail['fixedPointTotal'],
                     'fixed_point_min_limit_time' => $pointDetail['fixedPointMinLimitTime'],
-                    'updated_at' => $pointDetail['updatedAt']
+                    'updated_at' => $nowDateTime
                 ]
         ];
         $pointDetailsModel->insertBulk($updateParam);
@@ -164,39 +182,21 @@ class PointRepository
      */
     private function getPointDetails()
     {
-        $shopCode = '';
-        // memidを利用
-        $this->memId;
         // NTだった場合のみ指定。それ以外はすべてTAPとして処理。
         if ($this->systemId === self::SYSTEM_ID_NT) {
             $shopCode = self::SHOP_CODE_NT;
         } else {
             $shopCode = self::SHOP_CODE_TAP;
         }
-
-        Log::info('Fixed Point API tolId : ' . $this->tolId);
-        $this->memId = $this->decodeMemid($this->key, $this->tolId);
-        Log::info('Fixed Point API convert tolId : ' . $this->tolId . ' -> ' . $this->memId );
-
-        // todo:　API完成後に実装
-//        $tolPointModel = new TolPoint($this->memId);
-//        $tolPointResponse = $tolPointModel->getDetail();
-//
-//        return [
-//            'membershipType' => $tolPointResponse[''],
-//            'point' => $tolPointResponse[''],
-//            'fixedPointTotal' => $tolPointResponse[''],
-//            'fixedPointMinLimitTime' => $tolPointResponse[''],
-//            'updatedAt' => $tolPointResponse[''],
-//        ];
-
-        // todo スタブデータ
+        $tolPointModel = new TolPoint($this->memId);
+        $tolPointResponse = $tolPointModel->getDetail($shopCode);
+        $tolPointResponse = current($tolPointResponse->all());
         return [
-            'membershipType' => 1,
-            'point' => rand(1, 9999),
-            'fixedPointTotal' => rand(1, 999),
-            'fixedPointMinLimitTime' => '2018-12-01 00:00:00',
-            'updatedAt' => carbon::now(),
+            'responseCode' => $tolPointResponse['responseCode'],
+            'membershipType' => $tolPointResponse['membershipType'],
+            'point' => $tolPointResponse['point'],
+            'fixedPointTotal' => $tolPointResponse['fixedPointTotal'],
+            'fixedPointMinLimitTime' => date('Y-m-d H:i:s', strtotime($tolPointResponse['fixedPointMinLimitTime'])),
         ];
     }
 

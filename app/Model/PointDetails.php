@@ -69,11 +69,13 @@ class PointDetails extends Model
             }
             $insertData[$key]['created_at'] = date('Y-m-d H:i:s');
         }
-        $update = 'membership_type = VALUES(membership_type),' .
-        'point = VALUES(point),' .
-        'fixed_point_total = VALUES(fixed_point_total),' .
-        'fixed_point_min_limit_time = VALUES(fixed_point_min_limit_time),' .
-        'updated_at = VALUES(updated_at)';
+        $update =
+            'response_code = VALUES(response_code),' .
+            'membership_type = VALUES(membership_type),' .
+            'point = VALUES(point),' .
+            'fixed_point_total = VALUES(fixed_point_total),' .
+            'fixed_point_min_limit_time = VALUES(fixed_point_min_limit_time),' .
+            'updated_at = VALUES(updated_at)';
         return $this->bulkInsertOnDuplicateKey($insertData, $update);
     }
 }
