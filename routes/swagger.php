@@ -2029,7 +2029,7 @@
  *         @SWG\Property(
  *             property="tolId",
  *             type="integer",
- *             example="1234567890",
+ *             example="aNVWg%2BgjAUmvOb31UptcjPGEpF%2BOYv7wkTIdfk0qJlc%3D",
  *             description="アカウントID",
  *         ),
  *         @SWG\Property(
@@ -2044,6 +2044,12 @@
  *         response=200,
  *         description="success",
  *         @SWG\Schema(
+ *             @SWG\Property(
+ *                 property="responseCd",
+ *                 type="string",
+ *                 example="00",
+ *                 description="TOL-APIが呼んでいるAPIのレスポンス"
+ *              ),
  *             @SWG\Property(
  *                 property="membershipType",
  *                 type="string",
@@ -2079,7 +2085,7 @@
 
 /**
  * @SWG\Post(
- *     path="/member/rental/status",
+ *     path="/member/status/rental",
  *     description="レンタル利用登録(モバT画面出し分け用)",
  *     produces={"application/json"},
  *     tags={"Member"},

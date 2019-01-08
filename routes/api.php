@@ -823,7 +823,7 @@ $router->group([
     });
 
     // メンバー利用登録　
-    $router->post('member/rental/status', function (Request $request) {
+    $router->post('member/status/rental', function (Request $request) {
         $bodyObj = json_decode($request->getContent(), true);
         $tolId = isset($bodyObj['tolId']) ? $bodyObj['tolId'] : '';
         if(empty($tolId)) {
@@ -854,6 +854,7 @@ $router->group([
         }
         $pointRepository = new PointRepository($systemId, $memId, $refreshFlg);
         $response = [
+            'responseCode' => $pointRepository->getResponseCode(),
             'membershipType' => $pointRepository->getMembershipType(),
             'point' => $pointRepository->getPoint(),
             'fixedPointTotal' => $pointRepository->getFixedPointTotal(),
