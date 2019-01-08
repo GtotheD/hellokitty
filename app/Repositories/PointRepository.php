@@ -3,7 +3,10 @@
 namespace App\Repositories;
 
 use App\Model\PointDetails;
+use App\Model\TolPoint;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Log;
+use App\Libraries\Security;
 
 /**
  * Class PointRepository
@@ -12,7 +15,9 @@ use Illuminate\Support\Carbon;
 class PointRepository
 {
     private $systemId;
+    private $tolId;
     private $memId;
+    private $key;
     private $membershipType;
     private $point;
     private $fixedPointTotal;
@@ -31,18 +36,24 @@ class PointRepository
     const SHOP_CODE_TAP = '8998';
     const SHOP_CODE_NT = '8999';
 
+    // Trait
+    use Security;
+
     /**
      * PointRepository constructor.
      * TLSCは必須の為コンストラクタで取得し、DBから取得する
      * @param $tlsc
      */
-    public function __construct($systemId, $memId, $refreshFlg)
+    public function __construct($systemId, $tolId, $refreshFlg)
     {
         // envからキャッシュ有効期限を取得する。
         // 取得できなかった場合はデフォルトで180分を設定する。
         $this->fixedPointCacheLimitMinute = env('FIXED_POINT_CACHE_LIMIT_MINUTE', self::DEFAULT_LIMIT_MINUTE);
-        $this->memId = $memId;
+        $this->tolId = $tolId;
         $this->systemId = $systemId;
+
+        // TolID→MemID変換用キー
+        $this->key = env('TOL_ENCRYPT_KEY');
 
         // STをもとにDBから値を取得してセットする。
         $isSet = $this->setPointDetail();
@@ -154,7 +165,6 @@ class PointRepository
     private function getPointDetails()
     {
         $shopCode = '';
-
         // memidを利用
         $this->memId;
         // NTだった場合のみ指定。それ以外はすべてTAPとして処理。
@@ -163,6 +173,22 @@ class PointRepository
         } else {
             $shopCode = self::SHOP_CODE_TAP;
         }
+
+        Log::info('Fixed Point API tolId : ' . $this->tolId);
+        $this->memId = $this->decodeMemid($this->key, $this->tolId);
+        Log::info('Fixed Point API convert tolId : ' . $this->tolId . ' -> ' . $this->memId );
+
+        // todo:　API完成後に実装
+//        $tolPointModel = new TolPoint($this->memId);
+//        $tolPointResponse = $tolPointModel->getDetail();
+//
+//        return [
+//            'membershipType' => $tolPointResponse[''],
+//            'point' => $tolPointResponse[''],
+//            'fixedPointTotal' => $tolPointResponse[''],
+//            'fixedPointMinLimitTime' => $tolPointResponse[''],
+//            'updatedAt' => $tolPointResponse[''],
+//        ];
 
         // todo スタブデータ
         return [

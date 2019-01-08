@@ -24,18 +24,18 @@ class TolClient extends BaseClient
     const MMC208 = '/ms/resources/ap08mmc208';
     const MFR001 = '/ms/resources/ap10mfr001';
     const MRE001 = '/ms/resources/ap07mre001';
+    const SP101 = '/ms/resources/ap11sp101';
+
 
     /**
      * TolClient constructor.
      * @param $memId
      */
-    public function __construct($tolid)
+    public function __construct($memId)
     {
         parent::__construct();
-        $this->key = env('TOL_ENCRYPT_KEY');
         $this->tolApiHost = env('TOL_API_HOST');
         $this->testTolApiPath = base_path(self::TEST_API_PATH);
-        $memId = $this->decodeMemid($tolid);
         $this->memId = $memId;
     }
 
@@ -98,6 +98,22 @@ class TolClient extends BaseClient
     }
 
     /**
+     * @param $shopCode
+     * @return mixed|string
+     * @throws \App\Exceptions\NoContentsException
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function getPoint($shopCode)
+    {
+        $this->apiPath = $this->createPath(self::SP101);
+        $this->queryParams = [
+            'tenpo_cd' => $shopCode,
+            'memid' => $this->memId
+        ];
+        return $this->get(false);
+    }
+
+    /**
      * @param $api
      * @return string
      */
@@ -108,16 +124,5 @@ class TolClient extends BaseClient
         } else {
             return $this->tolApiHost . $api;
         }
-    }
-
-    public function decodeMemid($tolid)
-    {
-        $encodedMemId = $this->decryptFromBase64String($key, urldecode($tolid));
-        return intval(substr($encodedMemId, 0, 10));
-    }
-
-    public function decryptFromBase64String($key, $target)
-    {
-        return openssl_decrypt(base64_decode($target), 'aes-128-ecb', $key, OPENSSL_RAW_DATA);
     }
 }
