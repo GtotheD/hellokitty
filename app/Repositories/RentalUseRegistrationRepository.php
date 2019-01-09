@@ -150,7 +150,7 @@ class RentalUseRegistrationRepository extends BaseRepository
         /**
          * レンタル
          */
-        if ($tolMemberDetail['memberType'] == '1') {
+        if ($tolMemberDetail['memberType'] === '1') {
             // まだ更新期間に入ってない(レンタル利用可)
             if ($prevMonth1st > $nowDatetime) {
                 // 本人確認不要(49)-9
