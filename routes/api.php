@@ -853,6 +853,10 @@ $router->group([
             throw new BadRequestHttpException;
         }
         $pointRepository = new PointRepository($systemId, $memId, $refreshFlg);
+        if (empty($pointRepository)) {
+            throw new NoContentsException;
+        }
+
         $response = [
             'responseCode' => $pointRepository->getResponseCode(),
             'membershipType' => $pointRepository->getMembershipType(),

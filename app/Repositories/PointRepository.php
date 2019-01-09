@@ -70,7 +70,10 @@ class PointRepository
         // 期限切れだった場合はリフレッシュ
         if ($isSet === false || $refreshFlg === true || $this->checkLimitTime()) {
             // 強制的にリフレッシュ
-            $this->refresh();
+            $refreshResult =  $this->refresh();
+            if ($refreshResult === false) {
+                return false;
+            }
             // 再セット
             $this->setPointDetail();
         }
@@ -161,6 +164,12 @@ class PointRepository
         $pointDetailsModel = new PointDetails();
         // Marsからポイント詳細情報を取得する
         $pointDetail = $this->getPointDetails();
+        if (
+            $pointDetail['responseStatus1'] !== '00' ||
+            $pointDetail['responseStatus1'] !== '14'
+        ) {
+            return false;
+        }
         $nowDateTime = Carbon::now();
         $updateParam = [
                 [
@@ -174,6 +183,7 @@ class PointRepository
                 ]
         ];
         $pointDetailsModel->insertBulk($updateParam);
+        return true;
     }
 
     /**
