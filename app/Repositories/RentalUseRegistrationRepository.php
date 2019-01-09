@@ -10,6 +10,10 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Log;
 use \App\Libraries\Security;
 
+/**
+ * Class RentalUseRegistrationRepository
+ * @package App\Repositories
+ */
 class RentalUseRegistrationRepository extends BaseRepository
 {
     private $tolId;
@@ -17,6 +21,13 @@ class RentalUseRegistrationRepository extends BaseRepository
     private $key;
     use Security;
 
+    /**
+     * RentalUseRegistrationRepository constructor.
+     * @param $tolId
+     * @param string $sort
+     * @param int $offset
+     * @param int $limit
+     */
     public function __construct($tolId, string $sort = 'asc', int $offset = 0, int $limit = 10)
     {
         $this->tolId = $tolId;
@@ -24,6 +35,13 @@ class RentalUseRegistrationRepository extends BaseRepository
         $this->key = env('TOL_ENCRYPT_KEY');
     }
 
+    /**
+     * レンタル利用登録項番取得
+     * アプリ利用登録概要書_201801217.xlsx アプリ上におけるボタンを表示判定 の表を参照
+     * @return array|bool
+     * @throws \App\Exceptions\NoContentsException
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
     public function get()
     {
         Log::info('rental use registration tolId : ' . $this->tolId);
@@ -148,9 +166,9 @@ class RentalUseRegistrationRepository extends BaseRepository
         Log::info("mem_id:" . $this->memId . "\tprev date: ".$prevMonth1st);
 
         /**
-         * 物販
+         * レンタル
          */
-        if ($tolMemberDetail['memberType'] == '1') {
+        if ($tolMemberDetail['memberType'] === '1') {
             // まだ更新期間に入ってない(レンタル利用可)
             if ($prevMonth1st > $nowDatetime) {
                 // 本人確認不要(49)-9
@@ -216,11 +234,9 @@ class RentalUseRegistrationRepository extends BaseRepository
                 }
 
             }
-            // レンタル会員だけどどこにも入らなかった場合は空でOK?
-            return null;
         }
         /**
-         * レンタル
+         * 物販
          */
         if (($prevMonth1st > $nowDatetime) ||
             ($prevMonth1st <= $nowDatetime && $nowDatetime <= $tolMemberDetail['expirationDate'])) {
@@ -247,7 +263,6 @@ class RentalUseRegistrationRepository extends BaseRepository
                         'itemNumber' => 4,
                         'rentalExpirationDate' => ''];
                 }
-                // その他
             }
             // 本人確認必要(7)(19)(物販落ちのケース)-5
             if ($tolRentalApplication['identificationConfirmationNecessityFlag'] === '1') {
