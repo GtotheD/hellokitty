@@ -148,7 +148,7 @@ class RentalUseRegistrationRepository extends BaseRepository
         Log::info("mem_id:" . $this->memId . "\tprev date: ".$prevMonth1st);
 
         /**
-         * 物販
+         * レンタル
          */
         if ($tolMemberDetail['memberType'] == '1') {
             // まだ更新期間に入ってない(レンタル利用可)
@@ -220,7 +220,7 @@ class RentalUseRegistrationRepository extends BaseRepository
             return null;
         }
         /**
-         * レンタル
+         * 物販
          */
         if (($prevMonth1st > $nowDatetime) ||
             ($prevMonth1st <= $nowDatetime && $nowDatetime <= $tolMemberDetail['expirationDate'])) {
