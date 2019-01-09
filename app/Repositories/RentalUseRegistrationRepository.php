@@ -245,7 +245,6 @@ class RentalUseRegistrationRepository extends BaseRepository
                         'itemNumber' => 4,
                         'rentalExpirationDate' => ''];
                 }
-                // その他
             }
             // 本人確認必要(7)(19)(物販落ちのケース)-5
             if ($tolRentalApplication['identificationConfirmationNecessityFlag'] === '1') {
