@@ -152,7 +152,7 @@ class MemberRentalStatusTest extends TestCase
             'tolId' => $memid,
         ]);
 
-        $url = '/member/rental/status';
+        $url = '/member/status/rental';
         $response = $this->postWithAuth($url, $json);
         $actual = json_decode($response->getContent(), true);
         $this->assertEquals(200, $response->getStatusCode());
