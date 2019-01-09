@@ -188,15 +188,24 @@ class PointRepository
         } else {
             $shopCode = self::SHOP_CODE_TAP;
         }
-        $tolPointModel = new TolPoint($this->memId);
-        $tolPointResponse = $tolPointModel->getDetail($shopCode);
-        $tolPointResponse = current($tolPointResponse->all());
+        // todo: HOSOL実装完了後に適用
+//        $tolPointModel = new TolPoint($this->memId);
+//        $tolPointResponse = $tolPointModel->getDetail($shopCode);
+//        $tolPointResponse = current($tolPointResponse->all());
+//        return [
+//            'responseCode' => $tolPointResponse['responseCode'],
+//            'membershipType' => $tolPointResponse['membershipType'],
+//            'point' => $tolPointResponse['point'],
+//            'fixedPointTotal' => $tolPointResponse['fixedPointTotal'],
+//            'fixedPointMinLimitTime' => date('Y-m-d H:i:s', strtotime($tolPointResponse['fixedPointMinLimitTime'])),
+//        ];
         return [
-            'responseCode' => $tolPointResponse['responseCode'],
-            'membershipType' => $tolPointResponse['membershipType'],
-            'point' => $tolPointResponse['point'],
-            'fixedPointTotal' => $tolPointResponse['fixedPointTotal'],
-            'fixedPointMinLimitTime' => date('Y-m-d H:i:s', strtotime($tolPointResponse['fixedPointMinLimitTime'])),
+            'responseCode' => '00',
+            'membershipType' => 1,
+            'point' => rand(1, 9999),
+            'fixedPointTotal' => rand(1, 999),
+            'fixedPointMinLimitTime' => '2018-12-01 00:00:00',
+            'updatedAt' => carbon::now(),
         ];
     }
 
