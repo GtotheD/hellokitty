@@ -216,8 +216,6 @@ class RentalUseRegistrationRepository extends BaseRepository
                 }
 
             }
-            // レンタル会員だけどどこにも入らなかった場合は空でOK?
-            return null;
         }
         /**
          * 物販
