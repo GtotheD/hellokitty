@@ -26,6 +26,7 @@ class PointRepository
     private $fixedPointMinLimitTime;
     private $fixedPointCacheLimitMinute;
     private $updatedAt;
+    private $isMaintenance = false;
 
     // 3時間をデフォルトにする
     const DEFAULT_LIMIT_MINUTE = 180;
@@ -72,7 +73,7 @@ class PointRepository
             // 強制的にリフレッシュ
             $refreshResult =  $this->refresh();
             if ($refreshResult === false) {
-                return false;
+                $this->isMaintenance = true;
             }
             // 再セット
             $this->setPointDetail();
@@ -134,6 +135,14 @@ class PointRepository
     }
 
     /**
+     * @return bool
+     */
+    public function isMaintenance(): bool
+    {
+        return $this->isMaintenance;
+    }
+
+    /**
      * Private
      * DBから取得し書くパラメーターにセットする
      * @return mixed
@@ -164,9 +173,12 @@ class PointRepository
         $pointDetailsModel = new PointDetails();
         // Marsからポイント詳細情報を取得する
         $pointDetail = $this->getPointDetails();
+        if ($pointDetail === false) {
+            return false;
+        }
         if (
-            $pointDetail['responseStatus1'] !== '00' ||
-            $pointDetail['responseStatus1'] !== '14'
+            $pointDetail['responseCode'] !== '00' &&
+            $pointDetail['responseCode'] !== '14'
         ) {
             return false;
         }

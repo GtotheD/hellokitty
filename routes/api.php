@@ -853,7 +853,7 @@ $router->group([
             throw new BadRequestHttpException;
         }
         $pointRepository = new PointRepository($systemId, $memId, $refreshFlg);
-        if (empty($pointRepository)) {
+        if ($pointRepository->isMaintenance() === true) {
             throw new NoContentsException;
         }
 
