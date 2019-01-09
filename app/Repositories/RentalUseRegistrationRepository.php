@@ -10,6 +10,10 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Log;
 use \App\Libraries\Security;
 
+/**
+ * Class RentalUseRegistrationRepository
+ * @package App\Repositories
+ */
 class RentalUseRegistrationRepository extends BaseRepository
 {
     private $tolId;
@@ -17,6 +21,13 @@ class RentalUseRegistrationRepository extends BaseRepository
     private $key;
     use Security;
 
+    /**
+     * RentalUseRegistrationRepository constructor.
+     * @param $tolId
+     * @param string $sort
+     * @param int $offset
+     * @param int $limit
+     */
     public function __construct($tolId, string $sort = 'asc', int $offset = 0, int $limit = 10)
     {
         $this->tolId = $tolId;
@@ -24,6 +35,13 @@ class RentalUseRegistrationRepository extends BaseRepository
         $this->key = env('TOL_ENCRYPT_KEY');
     }
 
+    /**
+     * レンタル利用登録項番取得
+     * アプリ利用登録概要書_201801217.xlsx アプリ上におけるボタンを表示判定 の表を参照
+     * @return array|bool
+     * @throws \App\Exceptions\NoContentsException
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
     public function get()
     {
         Log::info('rental use registration tolId : ' . $this->tolId);
