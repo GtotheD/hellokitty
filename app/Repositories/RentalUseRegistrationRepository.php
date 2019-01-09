@@ -38,7 +38,8 @@ class RentalUseRegistrationRepository extends BaseRepository
             Log::info('tol membership status can\'t get　MemId：' . $this->memId);
             return false;
         }
-        $tolMembershipStatus = $tolMembershipStatus['entry']['memberStatus'];
+        // stetusのスペルが違うのはレスポンスがタイポされている為
+        $tolMembershipStatus = $tolMembershipStatus['entry']['memberStetus'];
 
         /**
          * 非表示の項番・その他情報は返さない
