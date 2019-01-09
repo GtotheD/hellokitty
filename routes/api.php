@@ -296,6 +296,9 @@ $router->group([
         $work = new WorkRepository();
         $tapRepository = new TAPRepository();
         $workData = $work->get($workId);
+        if (empty($workData['filmarksId'])) {
+            throw new NoContentsException;
+        }
         $tapRepository->setLimit($request->input('limit', 10));
         $response = $tapRepository->getReview($workData['filmarksId']);
         if (empty($response)) {
@@ -327,6 +330,9 @@ $router->group([
     $router->get('work/{workId}/review/tol', function (Request $request, $workId) {
         $work = new WorkRepository();
         $workData = $work->get($workId);
+        if (empty($workData['urlCd'])) {
+            throw new NoContentsException;
+        }
 
         $twsRepository = new TWSRepository();
         $twsRepository->setLimit($request->input('limit', 10));
