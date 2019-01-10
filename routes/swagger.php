@@ -2299,20 +2299,83 @@
  *          description="success",
  *          @SWG\Schema(
  *              @SWG\Property(
- *                  property="itemNumber",
- *                  type="integer",
- *                  description="処理項番 項番1~17の内の一つを返す",
+ *                  property="premium",
+ *                  type="boolean",
+ *                  description="プレミアム会員かどうか（true=プレミアム会員、false=非プレミアム会員）",
  *              ),
- *              @SWG\Property(
- *                  property="rentalExpirationDate",
- *                  type="string",
- *                  description="有効期限 (yyyy-mm-dd 00:00:00) / ユーザーごとのレンタル利用登録の有効期限を返す",
- *              )
  *          )
  *      ),
  *     @SWG\Response(response=204, description="Contents not found"),
  *     @SWG\Response(response=400, description="Bad Request"),
  *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+
+/**
+ * @SWG\Post(
+ *     path="/member/status/ttv",
+ *     description="",
+ *     produces={"application/json"},
+ *     tags={"Member"},
+ *     security={{"api_key":{}}},
+ *     @SWG\Parameter(
+ *       name="body",
+ *       in="body",
+ *       description="",
+ *       type="array",
+ *       @SWG\Schema(
+ *         @SWG\Property(
+ *             property="tolId",
+ *             type="integer",
+ *             example="1234567890",
+ *             description="アカウントID",
+ *         )
+ *       )
+ *     ),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="ttvId",
+ *                  type="boolean",
+ *                  description="TsutayaTV利用者ID",
+ *              ),
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(
+ *          response=400,
+ *          description="",
+ *          @SWG\Property(
+ *              property="rows",
+ *              type="object",
+ *              @SWG\Property(property="status",type="string",description="ステータスコード（error）"),
+ *              description="ttv apiのバリデーションエラー",
+ *          ),
+ *     ),
+ *     @SWG\Response(
+ *          response=401,
+ *          description="",
+ *          @SWG\Property(
+ *              property="rows",
+ *              type="object",
+ *              @SWG\Property(property="status",type="string",description="ステータスコード（error）"),
+ *              description="エラー情報",
+ *          ),
+ *     ),
+ *     @SWG\Response(
+ *          response=403,
+ *          description="",
+ *          @SWG\Property(
+ *              property="rows",
+ *              type="object",
+ *              @SWG\Property(property="status",type="string",description="ステータスコード（error）"),
+ *              description="認証失敗（TTV側と本システム）",
+ *          ),
+ *     ),
  *     @SWG\Response(response=404, description="Page not found"),
  *     @SWG\Response(response=500, description="Server error")
  * )
