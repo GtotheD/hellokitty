@@ -63,7 +63,7 @@ class RentalUseRegistrationRepository extends BaseRepository
          * 非表示の項番・その他情報は返さない
          */
         // ネットT会員(91)-17
-        if ($tolMembershipStatus['tmflg'] !== 2) {
+        if ($tolMembershipStatus['tmflg'] !== '2') {
             return [
                 'itemNumber' => 17,
                 'rentalExpirationDate' => ''
