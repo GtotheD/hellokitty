@@ -15,7 +15,7 @@
         "goodby/csv": "*",
         "ext-json": "*",
         "ext-SimpleXML": "*",
-        "ext-openssl": "*"
+        "ext-openssl": "*",
         "ext-mbstring": "*"
     },
     "require-dev": {
