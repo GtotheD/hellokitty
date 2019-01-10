@@ -82,7 +82,7 @@ class RentalUseRegistrationRepository extends BaseRepository
         }
         $tolMemberDetail = current($tolMemberDetailCollection->all());
         // 正常終了でなかった場合は、NoContentsにする為にfalseリターンする。
-        if ( $tolMemberDetail['responseStatus1'] !== '00') {
+        if ($tolMemberDetail['responseStatus1'] !== '00') {
             return false;
         }
 
@@ -94,7 +94,7 @@ class RentalUseRegistrationRepository extends BaseRepository
             return false;
         }
         $tolCMemberDetail = current($tolCMemberDetailCollection->all());
-        if ( $tolMemberDetail['responseStatus1'] !== '00') {
+        if ($tolMemberDetail['responseStatus1'] !== '00') {
             return false;
         }
 
@@ -106,7 +106,7 @@ class RentalUseRegistrationRepository extends BaseRepository
             return false;
         }
         $tolFlatRentalOperation = current($tolFlatRentalOperationCollection->all());
-        if ( $tolMemberDetail['responseStatus1'] !== '00' &&
+        if ($tolMemberDetail['responseStatus1'] !== '00' &&
             $tolMemberDetail['responseStatus1'] !== '01') {
             return false;
         }
@@ -118,7 +118,7 @@ class RentalUseRegistrationRepository extends BaseRepository
             Log::info('mre001 can\'t get　MemId：' . $this->memId);
             return false;
         }
-        if ( $tolMemberDetail['responseStatus1'] !== '00') {
+        if ($tolMemberDetail['responseStatus1'] !== '00') {
             return false;
         }
 
