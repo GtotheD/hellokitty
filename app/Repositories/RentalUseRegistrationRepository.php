@@ -63,7 +63,7 @@ class RentalUseRegistrationRepository extends BaseRepository
          * 非表示の項番・その他情報は返さない
          */
         // ネットT会員(91)-17
-        if ($tolMembershipStatus['tmflg'] !== 2) {
+        if ($tolMembershipStatus['tmflg'] !== '2') {
             return [
                 'itemNumber' => 17,
                 'rentalExpirationDate' => ''
@@ -82,10 +82,9 @@ class RentalUseRegistrationRepository extends BaseRepository
         }
         $tolMemberDetail = current($tolMemberDetailCollection->all());
         // 正常終了でなかった場合は、NoContentsにする為にfalseリターンする。
-        // todo:要件決まり次第対応
-//        if ( $tolMemberDetail['responseStatus1'] !== '00') {
-//            return false;
-//        }
+        if ($tolMemberDetail['responseStatus1'] !== '00') {
+            return false;
+        }
 
         // C会員リスト検索 mmc208
         $tolCMemberDetailModel = new TolCMemberDetail($this->memId);
@@ -95,10 +94,9 @@ class RentalUseRegistrationRepository extends BaseRepository
             return false;
         }
         $tolCMemberDetail = current($tolCMemberDetailCollection->all());
-        // todo:要件決まり次第対応
-//        if ( $tolMemberDetail['responseStatus1'] !== '00') {
-//            return false;
-//        }
+        if ($tolMemberDetail['responseStatus1'] !== '00') {
+            return false;
+        }
 
         // 定額レンタル操作 mfr001
         $tolFlatRentalOperationModel = new TolFlatRentalOperation($this->memId);
@@ -108,11 +106,10 @@ class RentalUseRegistrationRepository extends BaseRepository
             return false;
         }
         $tolFlatRentalOperation = current($tolFlatRentalOperationCollection->all());
-        // todo:要件決まり次第対応
-//        if ( $tolMemberDetail['responseStatus1'] !== '00' &&
-//            $tolMemberDetail['responseStatus1'] !== '01') {
-//            return false;
-//        }
+        if ($tolMemberDetail['responseStatus1'] !== '00' &&
+            $tolMemberDetail['responseStatus1'] !== '01') {
+            return false;
+        }
 
         // レンタル関連申請API mre001
         $tolRentalApplicationModel = new TolRentalApplication($this->memId);
@@ -121,10 +118,9 @@ class RentalUseRegistrationRepository extends BaseRepository
             Log::info('mre001 can\'t get　MemId：' . $this->memId);
             return false;
         }
-        // todo:要件決まり次第対応
-//        if ( $tolMemberDetail['responseStatus1'] !== '00') {
-//            return false;
-//        }
+        if ($tolMemberDetail['responseStatus1'] !== '00') {
+            return false;
+        }
 
         // 当日
         $nowDatetime = Carbon::now()->format('Ymd');
