@@ -51,7 +51,7 @@ class RentalUseRegistrationRepository extends BaseRepository
 
         // TOL会員状態取得
         $tapRepository = new TAPRepository;
-        $tolMembershipStatus = $tapRepository->getMemberStatus($this->memId);
+        $tolMembershipStatus = $tapRepository->getMemberStatus($this->tolId);
         if (empty($tolMembershipStatus)) {
             Log::info('tol membership status can\'t get　MemId：' . $this->memId);
             return false;
