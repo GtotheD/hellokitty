@@ -69,12 +69,20 @@
 
 <script src="./swagger-ui-bundle.js"> </script>
 <script src="./swagger-ui-standalone-preset.js"> </script>
+<?php
+require_once __DIR__.'/../../vendor/autoload.php';
+try {
+    (new Dotenv\Dotenv(__DIR__.'/../../'))->load();
+} catch (Dotenv\Exception\InvalidPathException $e) {
+    echo 'env file read error';
+}
+?>
 <script>
 window.onload = function() {
   
   // Build a system
   const ui = SwaggerUIBundle({
-    url: "/tapp/api/v3/docs/swagger.json",
+    url: "<?php echo '/' . env('URL_PATH_PREFIX') . env('API_VERSION') . '/'; ?>docs/swagger.json",
     dom_id: '#swagger-ui',
     deepLinking: true,
     presets: [
