@@ -122,7 +122,8 @@ class TAPRepository extends ApiRequesterRepository
 
     /**
      * TOL会員状態取得
-     * @return mixed|string
+     * @param $tolid
+     * @return mixed|null|string
      * @throws \App\Exceptions\NoContentsException
      */
     public function getMemberStatus($tolid)
@@ -131,10 +132,9 @@ class TAPRepository extends ApiRequesterRepository
         $this->id = $tolid;
         $this->apiPath ='/tsutayaappapi/tm/memberStatus';
         $this->apiPath = $this->apiHost . $this->apiPath;
-        $this->queryParams = [
-            'api_key' => $this->apiKey,
-            'tolid' => $tolid,
-        ];
+        // パラメーターで指定するとエンコードがかかって変なリクエストになる為
+        $this->apiPath = $this->apiPath . '?api_key=' . $this->apiKey;
+        $this->apiPath = $this->apiPath . '&tolid=' . $tolid;
         return $this->get();
     }
 
