@@ -129,7 +129,7 @@ class Model
         $columnList = implode(',', $columns);
         $insertList = implode(',', $insertValues);
         if (empty($updateIdString)) {
-            $query = sprintf("INSERT INTO `%s`(%s) VALUE %s ON DUPLICATE KEY UPDATE id = id;", $this->table, $columnList, $insertList);
+            $query = sprintf("INSERT INTO `%s`(%s) VALUE %s ON DUPLICATE KEY UPDATE updated_at = now();", $this->table, $columnList, $insertList);
         } else {
             $query = sprintf("INSERT INTO `%s`(%s) VALUE %s ON DUPLICATE KEY UPDATE %s;", $this->table, $columnList, $insertList, $updateIdString);
         }

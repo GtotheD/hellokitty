@@ -16,6 +16,7 @@
         "ext-json": "*",
         "ext-SimpleXML": "*",
         "ext-openssl": "*"
+        "ext-mbstring": "*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

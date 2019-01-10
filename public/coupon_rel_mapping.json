@@ -1,0 +1,142 @@
+{
+	"data": [{
+		"label": "レンタルDVD",
+		"itemId": 1,
+		"matchGroups": [{
+			"excludeItemWords": ["CD", "コミック", "本", "BOOK"],
+			"itemWords": ["全品"]
+		}, {
+			"excludeItemWords": [],
+			"itemWords": ["全品", "DVD"]
+		}, {
+			"excludeItemWords": ["プレミアム"],
+			"itemWords": ["DVD"]
+		}, {
+			"excludeItemWords": [],
+			"itemWords": ["ブルーレイ"]
+		}, {
+			"excludeItemWords": [],
+			"itemWords": ["ドラマ"]
+		}, {
+			"excludeItemWords": [],
+			"itemWords": ["アニメ"]
+		}, {
+			"excludeItemWords": [],
+			"itemWords": ["韓流"]
+		}, {
+			"excludeItemWords": [],
+			"itemWords": ["洋画"]
+		}, {
+			"excludeItemWords": [],
+			"itemWords": ["キッズ"]
+		}],
+		"fcItemWord": "レンタル"
+	}, {
+		"label": "レンタルコミック",
+		"itemId": 2,
+		"matchGroups": [{
+			"excludeItemWords": ["DVD", "ドラマ", "アニメ", "韓流", "洋画", "キッズ", "CD"],
+			"itemWords": ["全品"]
+		}, {
+			"excludeItemWords": [],
+			"itemWords": ["全品", "コミック"]
+		}, {
+			"excludeItemWords": [],
+			"itemWords": ["全品", "本"]
+		}, {
+			"excludeItemWords": [],
+			"itemWords": ["全品", "BOOK"]
+		}, {
+			"excludeItemWords": ["プレミアム"],
+			"itemWords": ["コミック"]
+		}, {
+			"excludeItemWords": [],
+			"itemWords": ["本"]
+		}, {
+			"excludeItemWords": [],
+			"itemWords": ["BOOK"]
+		}],
+		"fcItemWord": "レンタル"
+	}, {
+		"label": "レンタルCD",
+		"itemId": 3,
+		"matchGroups": [{
+			"excludeItemWords": ["DVD", "ドラマ", "アニメ", "韓流", "洋画", "キッズ", "コミック", "本", "BOOK"],
+			"itemWords": ["全品"]
+		}, {
+			"excludeItemWords": [],
+			"itemWords": ["全品", "CD"]
+		}, {
+			"excludeItemWords": ["プレミアム"],
+			"itemWords": ["CD"]
+		}, {
+			"excludeItemWords": [],
+			"itemWords": ["シングル"]
+		}],
+		"fcItemWord": "レンタル"
+	}, {
+		"label": "販売DVD",
+		"itemId": 4,
+		"matchGroups": [{
+			"excludeItemWords": ["CD"],
+			"itemWords": ["全品"]
+		}, {
+			"excludeItemWords": [],
+			"itemWords": ["全品", "DVD"]
+		}, {
+			"excludeItemWords": [],
+			"itemWords": ["DVD"]
+		}, {
+			"excludeItemWords": [],
+			"itemWords": ["ブルーレイ"]
+		}, {
+			"excludeItemWords": [],
+			"itemWords": ["ドラマ"]
+		}, {
+			"excludeItemWords": [],
+			"itemWords": ["アニメ"]
+		}, {
+			"excludeItemWords": [],
+			"itemWords": ["キッズ"]
+		}],
+		"fcItemWord": "販売CD・DVD"
+	}, {
+		"label": "販売本・コミック",
+		"itemId": 5,
+		"matchGroups": [{
+			"excludeItemWords": [],
+			"itemWords": []
+		}],
+		"fcItemWord": "販売BOOK"
+	}, {
+		"label": "販売CD",
+		"itemId": 6,
+		"matchGroups": [{
+			"excludeItemWords": ["DVD", "ドラマ", "アニメ", "キッズ"],
+			"itemWords": ["全品"]
+		}, {
+			"excludeItemWords": [],
+			"itemWords": ["全品", "CD"]
+		}, {
+			"excludeItemWords": [],
+			"itemWords": ["CD"]
+		}],
+		"fcItemWord": "販売CD・DVD"
+	}, {
+		"label": "ゲーム",
+		"itemId": 7,
+		"matchGroups": [{
+			"excludeItemWords": [],
+			"itemWords": []
+		}],
+		"fcItemWord": "販売GAME"
+	}, {
+		"label": "店頭買取",
+		"itemId": 8,
+		"matchGroups": [{
+			"excludeItemWords": ["スマホ", "スマートフォン", "タブレット", "iPhone"],
+			"itemWords": []
+		}],
+		"fcItemWord": "中古"
+	}]
+}
