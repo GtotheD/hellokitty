@@ -125,8 +125,23 @@ class RentalUseRegistrationRepository extends BaseRepository
         // 当日
         $nowDatetime = Carbon::now()->format('Ymd');
 
-        Log::info("mem_id:" . $this->memId . "\texpire date: ".$tolMemberDetail['expirationDate']);
-        Log::info("mem_id:" . $this->memId . "\tnow date: ".$nowDatetime);
+        // 有効期限満了日の前月1日
+        $prevMonthCarbon = new Carbon($tolMemberDetail['expirationDate']);
+        // 31の場合31ない月でバグるので、startofMonthで1日にしてから前月を取得する
+        $prevMonthCarbon->startofMonth()->subMonth();
+        $prevMonth1st = $prevMonthCarbon->format('Ym01');
+
+        Log::info("mem_id:" . $this->memId . "\t現在時刻: ".$nowDatetime);
+        Log::info("mem_id:" . $this->memId . "\tMMC200 削除済みフラグ: ".$tolMemberDetail['deleteFlag']);
+        Log::info("mem_id:" . $this->memId . "\tMMC200 有効期限: ".$tolMemberDetail['expirationDate']);
+        Log::info("mem_id:" . $this->memId . "\tMMC200 有効期限一ヶ月前の1日: ".$prevMonth1st);
+        Log::info("mem_id:" . $this->memId . "\tMMC200 会員種別: ".$tolMemberDetail['memberType']);
+        Log::info("mem_id:" . $this->memId . "\tMMC200 Wカードフラグ: ".$tolMemberDetail['wCardFlag']);
+        Log::info("mem_id:" . $this->memId . "\tMMC208 C会員: ".$tolCMemberDetail['cMemberType']);
+        Log::info("mem_id:" . $this->memId . "\tMFR001 プレミアム会員: ".$tolFlatRentalOperation['responseStatus1']);
+        Log::info("mem_id:" . $this->memId . "\tMRE001 レンタル登録申請: ".$tolRentalApplication['rentalRegistrationApplicationStatus']);
+        Log::info("mem_id:" . $this->memId . "\tMRE001 レンタル更新申請: ".$tolRentalApplication['rentalUpdateApplicationStatus']);
+        Log::info("mem_id:" . $this->memId . "\tMRE001 本人確認フラグ: ".$tolRentalApplication['identificationConfirmationNecessityFlag']);
 
         // 削除済み会員(37~39,43~45,79~81)-8
         if ($tolMemberDetail['deleteFlag'] === '1') {
@@ -152,14 +167,6 @@ class RentalUseRegistrationRepository extends BaseRepository
                 'rentalExpirationDate' => ''
             ];
         }
-
-        // 有効期限満了日の前月1日
-        $prevMonthCarbon = new Carbon($tolMemberDetail['expirationDate']);
-        // 31の場合31ない月でバグるので、startofMonthで1日にしてから前月を取得する
-        $prevMonthCarbon->startofMonth()->subMonth();
-        $prevMonth1st = $prevMonthCarbon->format('Ym01');
-
-        Log::info("mem_id:" . $this->memId . "\tprev date: ".$prevMonth1st);
 
         /**
          * レンタル
@@ -236,7 +243,7 @@ class RentalUseRegistrationRepository extends BaseRepository
          */
         if (($prevMonth1st > $nowDatetime) ||
             ($prevMonth1st <= $nowDatetime && $nowDatetime <= $tolMemberDetail['expirationDate'])) {
-            // レンタル登録申請：処理中
+                // レンタル登録申請：処理中
             if ($tolRentalApplication['rentalRegistrationApplicationStatus'] === '1') {
                 // 本人確認必要(3)(15)-2
                 if ($tolRentalApplication['identificationConfirmationNecessityFlag'] === '1') {

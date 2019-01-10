@@ -90,7 +90,7 @@ class TolClient extends BaseClient
     {
         $this->apiPath = $this->createPath(self::MRE001);
         $this->queryParams = [
-            'shori_kbn' => 2,
+            'syorikbn' => 2,
             'memid' => $this->memId
         ];
         $this->setMethod('POST');
