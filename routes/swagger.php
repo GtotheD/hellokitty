@@ -2007,3 +2007,123 @@
  * )
  */
 
+/**
+ * @SWG\Post(
+ *     path="/member/tpoint",
+ *     description="期間固定Tポイント情報取得",
+ *     produces={"application/json"},
+ *     tags={"Member"},
+ *     security={{"api_key":{}}},
+ *     @SWG\Parameter(
+ *       name="body",
+ *       in="body",
+ *       description="",
+ *       type="array",
+ *       @SWG\Schema(
+ *         @SWG\Property(
+ *             property="systemId",
+ *             type="string",
+ *             example="TAP",
+ *             description="システムID（NTにて利用する為に、システムIDを指定）",
+ *         ),
+ *         @SWG\Property(
+ *             property="tolId",
+ *             type="integer",
+ *             example="aNVWg%2BgjAUmvOb31UptcjPGEpF%2BOYv7wkTIdfk0qJlc%3D",
+ *             description="アカウントID",
+ *         ),
+ *         @SWG\Property(
+ *             property="refreshFlg",
+ *             type="boolean",
+ *             example=false,
+ *             description="リフレッシュフラグ（true:リフレッシュ、falseまたは未指定：キャッシュ参照）",
+ *         )
+ *       )
+ *     ),
+ *     @SWG\Response(
+ *         response=200,
+ *         description="success",
+ *         @SWG\Schema(
+ *             @SWG\Property(
+ *                 property="responseCd",
+ *                 type="string",
+ *                 example="00",
+ *                 description="TOL-APIが呼んでいるAPIのレスポンス"
+ *              ),
+ *             @SWG\Property(
+ *                 property="membershipType",
+ *                 type="string",
+ *                 example="1",
+ *                 description="会員種別（1:レンタル会員, 2:物販会員）"
+ *              ),
+ *             @SWG\Property(
+ *                 property="point",
+ *                 type="integer",
+ *                 example="9999999999",
+ *                 description="ポイント"
+ *             ),
+ *             @SWG\Property(
+ *                 property="fixedPointTotal",
+ *                 type="integer",
+ *                 example="9999999999",
+ *                 description="期間固定情報：期間固定ポイント数合計"
+ *             ),
+ *             @SWG\Property(
+ *                 property="fixedPointMinLimitTime",
+ *                 type="string",
+ *                 example="2018-01-01 00:00:00",
+ *                 description="期間固定情報：期間固定ポイント最短有効期限"
+ *             )
+ *         )
+ *     ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+*/
+
+/**
+ * @SWG\Post(
+ *     path="/member/status/rental",
+ *     description="レンタル利用登録(モバT画面出し分け用)",
+ *     produces={"application/json"},
+ *     tags={"Member"},
+ *     security={{"api_key":{}}},
+ *     @SWG\Parameter(
+ *       name="body",
+ *       in="body",
+ *       description="",
+ *       type="array",
+ *       @SWG\Schema(
+ *         @SWG\Property(
+ *             property="tolId",
+ *             type="integer",
+ *             example="1234567890",
+ *             description="アカウントID",
+ *         )
+ *       )
+ *     ),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="itemNumber",
+ *                  type="integer",
+ *                  description="処理項番 項番1~17の内の一つを返す",
+ *              ),
+ *              @SWG\Property(
+ *                  property="rentalExpirationDate",
+ *                  type="string",
+ *                  description="有効期限 (yyyy-mm-dd 00:00:00) / ユーザーごとのレンタル利用登録の有効期限を返す",
+ *              )
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=400, description="Bad Request"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */

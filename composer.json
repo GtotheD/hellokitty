@@ -14,6 +14,8 @@
         "doctrine/dbal": "^2.5",
         "goodby/csv": "*",
         "ext-json": "*",
+        "ext-SimpleXML": "*",
+        "ext-openssl": "*"
         "ext-mbstring": "*"
     },
     "require-dev": {
