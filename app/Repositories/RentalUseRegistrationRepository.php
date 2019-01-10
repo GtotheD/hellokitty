@@ -243,7 +243,7 @@ class RentalUseRegistrationRepository extends BaseRepository
          */
         if (($prevMonth1st > $nowDatetime) ||
             ($prevMonth1st <= $nowDatetime && $nowDatetime <= $tolMemberDetail['expirationDate'])) {
-                // レンタル登録申請：処理中
+             // レンタル登録申請：処理中
             if ($tolRentalApplication['rentalRegistrationApplicationStatus'] === '1') {
                 // 本人確認必要(3)(15)-2
                 if ($tolRentalApplication['identificationConfirmationNecessityFlag'] === '1') {
