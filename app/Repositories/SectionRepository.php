@@ -322,7 +322,6 @@ class SectionRepository extends BaseRepository
             // 商品情報の取得
             $productModel = new Product();
             $product = $productModel->setConditionByWorkIdSaleTypeSaleStartDate($row->work_id, $saleType, $from, $to)->getOne();
-//            dd($product);
             if (!empty($product)) {
 
                 $productName = $product->product_name;
@@ -331,7 +330,6 @@ class SectionRepository extends BaseRepository
                     (substr($product->item_cd, -2) === '76' && !empty($product->number_of_volume))) {
                     $productName = $product->product_name . "（{$product->number_of_volume}）";
                 }
-
                 $formattedRow =
                     [
                         'imageUrl' => $product->jacket_l,
