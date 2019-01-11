@@ -100,6 +100,20 @@ class SectionRepository extends BaseRepository
         } else {
             $this->hasNext = false;
         }
+        // プレミアムフラグを取得するためにキャッシュからデータを取得する。
+        // IDのみ抽出
+        foreach ($sections as $section) {
+            $workIds[] = $section->work_id;
+        }
+        // DBまたはHIMOへ問い合わせ（基本はキャッシュにある）
+        $workRepository = new WorkRepository();
+        $workList = $workRepository->getWorkList($workIds);
+        // 店舗プレミアムフラグを取得する
+        $workListPremium = [];
+        foreach ($workList['rows'] as $workRow) {
+            $workListPremium[$workRow['workId']] = $workRow['isPremiumShop'];
+        }
+
         foreach ($sections as $section) {
             // saleTypeは基本リクエストのものをそのまま渡すが、
             if($section->sale_type == WorkRepository::SALE_TYPE_THEATER) {
@@ -117,7 +131,15 @@ class SectionRepository extends BaseRepository
                 'saleType' => $saleTypeTmp,
             ];
             // Himoに切り替わって、saleType別にてsale_start_dateをアップデートしているのでsale_start_dateに統一
-                $row['saleStartDate'] = $structureList->is_release_date == 1 ? $this->dateFormat($section->sale_start_date) : null;
+            $row['saleStartDate'] = $structureList->is_release_date == 1 ? $this->dateFormat($section->sale_start_date) : null;
+
+            // 取得できたら設定する
+            if(array_key_exists($section->work_id, $workListPremium)) {
+                $row['is_premium'] = ($workListPremium[$section->work_id] === 1)? true: false;
+            } else {
+                $row['is_premium'] = false;
+            }
+
             $rows[] = $row;
         }
         $this->rows = $rows;
