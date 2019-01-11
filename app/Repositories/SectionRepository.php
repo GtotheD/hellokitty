@@ -133,11 +133,14 @@ class SectionRepository extends BaseRepository
             // Himoに切り替わって、saleType別にてsale_start_dateをアップデートしているのでsale_start_dateに統一
             $row['saleStartDate'] = $structureList->is_release_date == 1 ? $this->dateFormat($section->sale_start_date) : null;
 
-            // 取得できたら設定する
-            if(array_key_exists($section->work_id, $workListPremium)) {
-                $row['is_premium'] = ($workListPremium[$section->work_id] === 1)? true: false;
-            } else {
-                $row['is_premium'] = false;
+            // todo: 一旦はDVDレンタルのみフラグを付与
+            if ($goodsType === 1 && $saleType === 1) {
+                // 取得できたら設定する
+                if(array_key_exists($section->work_id, $workListPremium)) {
+                    $row['is_premium'] = ($workListPremium[$section->work_id] === 1)? true: false;
+                } else {
+                    $row['is_premium'] = false;
+                }
             }
 
             $rows[] = $row;
