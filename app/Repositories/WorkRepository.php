@@ -318,11 +318,8 @@ class WorkRepository extends BaseRepository
     }
 
     /**
-     *
-     *
      * @param $workIds, $selectColumns
      * @return null
-     *
      * @throws NoContentsException
      */
     public function getWorkList($workIds, $selectColumns = null, $idType = null, $workOnly = false, $saleType = null)
