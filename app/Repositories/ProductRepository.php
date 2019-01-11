@@ -253,6 +253,8 @@ class ProductRepository extends BaseRepository
             }
             // VHSのみだった場合のメッセージ
             $product['message'] = $message;
+
+            // レコードを一つの配列にまとめる
             $reformatResult[] = $product;
         }
         return $reformatResult;
@@ -405,6 +407,14 @@ class ProductRepository extends BaseRepository
         $productBase['maker_cd'] = $product['maker_cd'];
         $productBase['maker_name'] = $product['maker_name'];
         $productBase['media_format_id'] = $product['media_format_id'];
+
+        // プレミアムフラグ カラム名を変換
+        if (array_key_exists('premium_flg_shop', $product)) {
+            $productBase['is_premium_shop'] = $product['premium_flg_shop'];
+        }
+        if (array_key_exists('premium_flg_net', $product)) {
+            $productBase['is_premium_net'] = $product['premium_flg_net'];
+        }
 
         return $productBase;
     }
