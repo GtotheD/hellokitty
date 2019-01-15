@@ -14,6 +14,15 @@ class Structure extends Model
 {
     const TABLE = 'ts_structures';
 
+    const SECTION_TYPE_BANNER = 1;
+    const SECTION_TYPE_SPECIAL = 2;
+    const SECTION_TYPE_FAVORITE = 3;
+    const SECTION_TYPE_HISTORY = 4;
+    const SECTION_TYPE_PDMP = 5;
+    const SECTION_TYPE_PREMIUM_RECOMMEND = 6;
+    const SECTION_TYPE_PREMIUM_PICKLE = 7;
+
+
     function __construct()
     {
         parent::__construct(self::TABLE);
@@ -50,12 +59,12 @@ class Structure extends Model
         return $this;
     }
 
-    public function conditionFindFilenameWithDispTime($goodsType, $saleType, $fileName)
+    public function conditionFindFilenameWithDispTime($goodsType, $saleType, $fileName, $sectionType = null)
     {
         $this->dbObject = DB::table($this->table)
             ->where([
                 'goods_type' => $goodsType,
-                'sale_type' => $saleType
+                'sale_type' => $saleType,
             ])
             ->whereRaw("(ts_structures.display_start_date <= ". DB::raw('now()') .
                 " or ts_structures.display_start_date = '0000-00-00 00:00:00')" )
@@ -63,6 +72,9 @@ class Structure extends Model
                 " or ts_structures.display_end_date = '0000-00-00 00:00:00')" );
         if ($fileName) {
             $this->dbObject->where('section_file_name', $fileName);
+        }
+        if ($sectionType) {
+            $this->dbObject->where('section_type', $sectionType);
         }
         return $this;
     }

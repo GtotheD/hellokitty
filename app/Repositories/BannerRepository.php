@@ -134,7 +134,7 @@ class BannerRepository
         $this->banner->setLoginType($loginType);
         $structure = new structure();
         $structures = $structure->setConditionFindBySectionfilenameWithDispTime($bannerName)->getOne();
-        if (count($structures) == 0) {
+        if (!isset($structures)) {
             return $this;
         }
         if ($isFixBanner) {

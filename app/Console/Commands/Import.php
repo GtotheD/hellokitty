@@ -62,6 +62,10 @@ class Import extends Command
      */
     const CATEGORY_DIR = 'category';
 
+    /*
+     * category
+     */
+    const PREMIUM_DIR = 'premium';
 
     /**
      * structure table name
@@ -79,7 +83,7 @@ class Import extends Command
     const BANNER_TABLE = 'ts_banners';
 
     const CONTROL_FILE = 'import_control';
-    const BIG_CATEGORY_LIST = ['dvd', 'book', 'cd', 'game', 'banner'];
+    const BIG_CATEGORY_LIST = ['dvd', 'book', 'cd', 'game', 'banner', 'premium'];
     const SUB_CATEGORY_LIST = ['rental', 'sell'];
 
     /**
@@ -251,6 +255,7 @@ class Import extends Command
                     'timestamp' => $timestamp
                 ];
             } else if ($explodeFilePath[0] === self::CATEGORY_DIR) {
+
                 if (
                     array_key_exists(1, $explodeFilePath) &&
                     array_search($explodeFilePath[1], self::BIG_CATEGORY_LIST) === false
@@ -272,6 +277,21 @@ class Import extends Command
                         'timestamp' => $timestamp
                     ];
                 } else {
+                    if($explodeFilePath[1] === self::PREMIUM_DIR) {
+                        $goodTypeCode = $this->structureRepository->convertGoodsTypeToId($explodeFilePath[2]);
+                        $saleTypeCode = $this->structureRepository->convertSaleTypeToId($explodeFilePath[3]);
+                        $fileList['category']['section'][] = [
+                            'relative' => $file->getRelativePathname(),
+                            'absolute' => $file->getPathname(),
+                            'filename' => $file->getFilename(),
+                            'goodType' => $explodeFilePath[2],
+                            'saleType' => $explodeFilePath[3],
+                            'goodTypeCode' => $goodTypeCode,
+                            'saleTypeCode' => $saleTypeCode,
+                            'timestamp' => $timestamp
+                        ];
+                    }
+
                     if (
                         array_key_exists(2, $explodeFilePath) &&
                         array_search($explodeFilePath[2], self::SUB_CATEGORY_LIST) === false
@@ -279,6 +299,7 @@ class Import extends Command
                         continue;
                     }
                 }
+
                 if (array_key_exists(3, $explodeFilePath) &&
                     $explodeFilePath[3] === self::SECTION_DIR_NAME
                     && preg_match('/.*\.json$/', $explodeFilePath[4], $match) === 1
@@ -340,6 +361,12 @@ class Import extends Command
     private
     function importCheck($file)
     {
+        // なかった場合はfalse
+        if (!file_exists($file['absolute'])) {
+            $this->infoMessage('file not exists.');
+            return false;
+        }
+
         // 実行有無の確認
         if (!$this->checkImportDate($file['absolute'])) {
             $this->infoMessage('not the execution time.');
@@ -597,7 +624,6 @@ class Import extends Command
             'goods_type' => $file['goodTypeCode'],
             'sale_type' => $file['saleTypeCode']
         ])->get();
-
         $oldId = [];
         if (count($structureList) > 0) {
             foreach ($structureList as $structure) {
@@ -618,10 +644,8 @@ class Import extends Command
             'goods_type' => $file['goodTypeCode'],
             'sale_type' => $file['saleTypeCode']
         ])->delete();
-
         foreach ($dataBase['rows'] as $row) {
             if ($row['disp'] == 0) continue;
-
             $structureArray = [
                 'goods_type' => $file['goodTypeCode'],
                 'sale_type' => $file['saleTypeCode'],
@@ -655,7 +679,9 @@ class Import extends Command
             $insertId = $structureTable->insertGetId($structureArray);
 
             // 特集セクションの取り込み
-            if ($row['sectionType'] == 2 && !empty($row['sectionFileName'])) {
+            // プレミアムも含む
+            if (($row['sectionType'] === 2 || $row['sectionType'] === 7)
+                && !empty($row['sectionFileName'])) {
                 $this->infoMessage('Begin Import section by base.json [file Name]: ' . $row['sectionFileName']);
                 $filePath = $this->searchSectionFile($file['goodType'], $file['saleType'], $row['sectionFileName']);
                 $checkResult = $this->importCheck($filePath, $filePath['timestamp']);
@@ -726,11 +752,12 @@ class Import extends Command
         foreach ($dataSection['rows'] as $row) {
             $sectionArray[] = [
                 'code' => $row['jan'],
-//                'work_id' => $row['workId'],
                 'image_url' => (array_key_exists('imageUrl', $row) ? $row['imageUrl'] : ""),
                 'display_start_date' => $row['displayStartDate'],
                 'display_end_date' => $row['displayEndDate'],
                 'ts_structure_id' => $tsStructureId,
+                // プレミアム用で増設
+                'data' => json_encode(['subtitle' => $row['subtitle'], 'text' => $row['text']]),
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ];
@@ -775,7 +802,6 @@ class Import extends Command
         }
         $banner = json_decode($this->fileGetContentsUtf8($filePath), true);
         $fileBaseName = $this->getBaseName($filePath);
-
         // 初回だけ作るため存在した場合は再作成しない。IDは変更されない。
         $fixedBannerStructureCount = $structureTable->where([
             'goods_type' => 0,
@@ -838,6 +864,9 @@ class Import extends Command
      */
     function fileGetContentsUtf8($fn)
     {
+        if (!isset($fn)) {
+            return false;
+        }
         $content = file_get_contents($fn);
         return mb_convert_encoding($content, 'UTF-8',
             mb_detect_encoding($content, 'UTF-8, SJIS', true));
