@@ -78,7 +78,7 @@ class SectionRepository extends BaseRepository
         }
     }
 
-    public function normal($goodsType, $saleType, $sectionFileName)
+    public function normal($goodsType, $saleType, $sectionFileName, $isPremium = false)
     {
         $rows = null;
         $sections = [];
@@ -87,7 +87,11 @@ class SectionRepository extends BaseRepository
         $goodsType = $structureRepository->convertGoodsTypeToId($goodsType);
         $saleTypeRequest = $saleType;
         $saleType = $structureRepository->convertSaleTypeToId($saleType);
-        $structureList = $structure->conditionFindFilenameWithDispTime($goodsType, $saleType, $sectionFileName)->getOne();
+        if($isPremium) {
+            $structureList = $structure->conditionFindFilenameWithDispTime($goodsType, $saleType, $sectionFileName, Structure::SECTION_TYPE_PREMIUM_PICKLE)->getOne();
+        } else {
+            $structureList = $structure->conditionFindFilenameWithDispTime($goodsType, $saleType, $sectionFileName, Structure::SECTION_TYPE_SPECIAL)->getOne();
+        }
         if (empty($structureList)) {
             $this->totalCount = 0;
         } else {
@@ -105,6 +109,10 @@ class SectionRepository extends BaseRepository
         foreach ($sections as $section) {
             $workIds[] = $section->work_id;
         }
+
+        if(empty($workIds)) {
+            return $this;
+        }
         // DBまたはHIMOへ問い合わせ（基本はキャッシュにある）
         $workRepository = new WorkRepository();
         $workList = $workRepository->getWorkList($workIds);
@@ -121,6 +129,7 @@ class SectionRepository extends BaseRepository
             } else {
                 $saleTypeTmp = $saleTypeRequest;
             }
+            $jsonData = json_decode($section->data, true);
             $row = [
                 'imageUrl' => $section->image_url,
                 'title' => $section->title,
@@ -130,6 +139,10 @@ class SectionRepository extends BaseRepository
                 'workId' => $section->work_id,
                 'saleType' => $saleTypeTmp,
             ];
+            if($isPremium) {
+                $row['subtile'] = $jsonData['subtitle'];
+                $row['text'] = $jsonData['text'];
+            }
             // Himoに切り替わって、saleType別にてsale_start_dateをアップデートしているのでsale_start_dateに統一
             $row['saleStartDate'] = $structureList->is_release_date == 1 ? $this->dateFormat($section->sale_start_date) : null;
 

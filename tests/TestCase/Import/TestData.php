@@ -69,10 +69,33 @@ class TestData
         }
     }
 
+    public function jsonInitializePremium()
+    {
+        $jsonDir = [
+            'category/premium',
+            'category/premium/dvd',
+            'category/premium/dvd/rental',
+            'category/premium/dvd/rental/section',
+        ];
+        foreach ($jsonDir as $dir) {
+            File::makeDirectory($this->testDir . $dir);
+        }
+
+
+        $baseJsonDir = [
+            'category/premium/dvd/rental' => ['goodsType' => 1, 'saleType' => 1],
+        ];
+        foreach ($baseJsonDir as $keyDir => $param) {
+            File::put($this->testDir . $keyDir . '/base.json', json_encode($this->createBaseJson($param['goodsType'], $param['saleType'])));
+            File::put($this->testDir . $keyDir . '/section/' . $param['goodsType'] . '_' . $param['saleType'] . '_7.json',
+                json_encode($this->createSectionJson($param['goodsType'], $param['saleType'])));
+        }
+    }
+
     public function import()
     {
         Artisan::call('import', [
-            '--test' => 'default',
+//            '--test' => 'default',
             '--dir' => $this->testDir
         ]);
         return true;
@@ -218,6 +241,39 @@ class TestData
                     'isTapOn' => 0,
                     'isRanking' => 0,
                     'apiUrl' => 'PDMPAPI'
+                ],
+                [
+                    'masterType' => 2,
+                    'no' => 1,
+                    'disp' => 1,
+                    'sort' => 5,
+                    'isAuto' => 1,
+                    'manualFileName' => '',
+                    'sectionType' => 6,
+                    'displayStartDate' => '2017/11/24 12:00:00',
+                    'displayEndDate' => '2025/12/31 23:59:59',
+                    'title' => $goodsType . '_' . $saleType . '_6' . $updateSuffix,
+                    'linkUrl' => '',
+                    'isTapOn' => 0,
+                    'isRanking' => 0,
+                    'apiUrl' => 'section/premium/dvd/rental/recommend',
+                ],
+                [
+                    'masterType' => 2,
+                    'no' => 1,
+                    'disp' => 1,
+                    'sort' => 5,
+                    'isAuto' => 1,
+                    'manualFileName' => '',
+                    'sectionType' => 7,
+                    'displayStartDate' => '2017/11/24 12:00:00',
+                    'displayEndDate' => '2025/12/31 23:59:59',
+                    'title' => $goodsType . '_' . $saleType . '_7' . $updateSuffix,
+                    'linkUrl' => '',
+                    'isTapOn' => 0,
+                    'isRanking' => 0,
+                    'apiUrl' => 'section/premium/dvd/rental/',
+                    'sectionFileName' => $goodsType . '_' . $saleType . '_7'
                 ]
             ]
         ];
@@ -225,7 +281,59 @@ class TestData
 
     private static function createSectionJson($goodsType, $saleType, $updateSuffix = null, $addRows = false)
     {
-         $data = [
+        if ($goodsType === 1) {
+            if ($saleType === 1) {
+                $jan[0] = '089937132'; // キングダム 19
+                $jan[1] = '082394367'; // 黒子のバスケ 9
+                $jan[2] = '089939640'; // 尾根のかなたに ～父と息子の日航機墜落事故～ 後編
+                $text = 'text_1_1';
+                $subtitle = 'subtitle_1_1';
+            } else {
+                $jan[0] = '4988142453822'; // ダイ・ハード 2
+                $jan[1] = '4988111144690'; // ウォーキング・デッド3 Blu-ray BOX-2
+                $jan[2] = '4959241980366'; // 千と千尋の神隠し
+                $text = 'text_1_2';
+                $subtitle = 'subtitle_1_2';
+            }
+        } elseif ($goodsType === 2) {
+            if ($saleType === 1) {
+                $jan[0] = '005634334'; // スリラー
+                $jan[1] = '005773147'; // 和と洋
+                $jan[2] = '005841435'; // 11月のアンクレット(通常盤A)
+                $text = 'text_2_1';
+                $subtitle = 'subtitle_2_1';
+            } else {
+                $jan[0] = '4988003508821'; // #好きなんだ(A)
+                $jan[1] = '4547366354164'; // シンクロニシティ(C)
+                $jan[2] = '4547366377972'; // レイメイ(期間生産限定盤)
+                $text = 'text_2_2';
+                $subtitle = 'subtitle_2_2';
+            }
+
+        } elseif ($goodsType === 3) {
+            if ($saleType === 1) {
+                $jan[0] = '102421256'; // ジョジョの奇妙な冒険 Part6 ストーンオーシャン11
+                $jan[1] = '103390522'; // キングダム
+                $jan[2] = '103388956'; // 進撃の巨人
+                $text = 'text_3_1';
+                $subtitle = 'subtitle_3_1';
+            } else {
+                $jan[0] = '9784063970494'; // 進撃の巨人<限定版> DVD付き
+                $jan[1] = '9784088814964'; // ONE PIECE
+                $jan[2] = '9784592144403'; // ベルセルク
+                $text = 'text_3_2';
+                $subtitle = 'subtitle_3_2';
+            }
+
+        } elseif ($goodsType === 4) {
+            $jan[0] = '4976219095631'; // モンスターハンター:ワールド BestPrice
+            $jan[1] = '4938833022950'; // Battlefield V
+            $jan[2] = '4571237660672'; // 妖怪ウォッチバスターズ 白犬隊
+            $text = 'text_4_1';
+            $subtitle = 'subtitle_4_1';
+        }
+
+        $data = [
             'goodsType' => $goodsType,
             'saleType' => $saleType,
             'specialTitle' => ' リリース情報_コミックレンタル',
@@ -235,30 +343,33 @@ class TestData
                 [
                     'sort' => 1,
                     'no' => 1,
-                    'productTitle' => '',
-                    'jan' => $goodsType . $saleType . '0000001' . $updateSuffix,
-                    'himoId'=> $goodsType . $saleType . '0000011' . $updateSuffix,
+                    'productTitle' => $goodsType . $saleType . '0000001' . $updateSuffix,
+                    'jan' => $jan[0],
                     'imageUrl' => '',
+                    'text' => $text . '_01',
+                    'subtitle' => $subtitle . '_01',
                     'displayStartDate' => '2017/12/01 00:00:00',
                     'displayEndDate' => '2025/12/31 23:59:59'
                 ],
                 [
                     'sort' => 2,
                     'no' => 2,
-                    'productTitle' => '',
-                    'jan' => $goodsType . $saleType . '0000002',
-                    'himoId' => $goodsType . $saleType . '0000012',
+                    'productTitle' => $goodsType . $saleType . '0000002',
+                    'jan' => $jan[1],
                     'imageUrl' => '',
+                    'text' => $text . '_02',
+                    'subtitle' => $subtitle . '_02',
                     'displayStartDate' => '2017/12/01 00:00:00',
                     'displayEndDate' => '2025/12/31 23:59:59'
                 ],
                 [
                     'sort' => 3,
                     'no' => 3,
-                    'productTitle' => '',
-                    'jan' => $goodsType . $saleType . '0000003' . $updateSuffix,
-                    'himoId' => $goodsType . $saleType . '0000013' . $updateSuffix,
+                    'productTitle' => $goodsType . $saleType . '0000003' . $updateSuffix,
+                    'jan' => $jan[2],
                     'imageUrl' => '',
+                    'text' => $text . '_03',
+                    'subtitle' => $subtitle . '_03',
                     'displayStartDate' => '2017/12/01 00:00:00',
                     'displayEndDate' => '2025/12/31 23:59:59'
                 ]
@@ -270,7 +381,6 @@ class TestData
                 'no' => 4,
                 'productTitle' => '',
                 'jan' => $goodsType . $saleType . '0000004',
-                'himoId' => $goodsType . $saleType . '0000014',
                 'imageUrl' => '',
                 'displayStartDate' => '2017/12/01 00:00:00',
                 'displayEndDate' => '2025/12/31 23:59:59'
@@ -312,15 +422,15 @@ class TestData
         ];
         if ($addRows) {
             $data['rows'][] = [
-                    'no' => 3,
-                    'sort' => 3,
-                    'projectName' => '',
-                    'imageUrl' => 'banner_3_' . $goodsType . '_' . $saleType . $updateSuffix,
-                    'linkUrl' => '',
-                    'isTapOn' => 1,
-                    'loginType' => 2,
-                    'displayStartDate' => '2017/12/01 10:00:00',
-                    'displayEndDate' => '2025/12/31 23:59:59'
+                'no' => 3,
+                'sort' => 3,
+                'projectName' => '',
+                'imageUrl' => 'banner_3_' . $goodsType . '_' . $saleType . $updateSuffix,
+                'linkUrl' => '',
+                'isTapOn' => 1,
+                'loginType' => 2,
+                'displayStartDate' => '2017/12/01 10:00:00',
+                'displayEndDate' => '2025/12/31 23:59:59'
             ];
         }
         return $data;
@@ -345,7 +455,7 @@ class TestData
                     'isTapOn' => 1,
                     'loginType' => 0,
                     'displayStartDate' => '2017/12/01 10:00:00',
-                    'displayEndDate' => '2019/01/09 10:00:00'
+                    'displayEndDate' => '2025/01/09 10:00:00'
                 ],
                 [
                     'no' => 2,
@@ -356,7 +466,7 @@ class TestData
                     'isTapOn' => 0,
                     'loginType' => 1,
                     'displayStartDate' => '2017/12/01 10:00:00',
-                    'displayEndDate' => '2019/01/09 10:00:00'
+                    'displayEndDate' => '2025/01/09 10:00:00'
                 ],
                 [
                     'no' => 2,
@@ -367,7 +477,7 @@ class TestData
                     'isTapOn' => 0,
                     'loginType' => 2,
                     'displayStartDate' => '2017/12/01 10:00:00',
-                    'displayEndDate' => '2019/01/09 10:00:00'
+                    'displayEndDate' => '2025/01/09 10:00:00'
                 ]
             ]
         ];

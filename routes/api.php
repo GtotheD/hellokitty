@@ -107,6 +107,28 @@ $router->group([
         return response()->json($response)->header('X-Accel-Expires', '600');
     });
 
+    // 通常セクション取得API
+    $router->get('section/premium/{goodsType:dvd|book|cd|game}/{saleType:rental|sell}/{sectionName}', function (Request $request, $goodsType, $saleType, $sectionName) {
+        $sectionRepository = new SectionRepository;
+        $sectionRepository->setLimit($request->input('limit', 10));
+        $sectionRepository->setOffset($request->input('offset', 0));
+        if ($goodsType === 'dvd') {
+            $sectionRepository->setSupplementVisible(true);
+        }
+
+        // プレミアムフラグを渡して取得
+        $section = $sectionRepository->normal($goodsType, $saleType, $sectionName, true);
+        if ($section->getTotalCount() == 0) {
+            throw new NoContentsException;
+        }
+        $response = [
+            'hasNext' => $section->getHasNext(),
+            'totalCount' => $section->getTotalCount(),
+            'rows' => $section->getRows()
+        ];
+        return response()->json($response)->header('X-Accel-Expires', '600');
+    });
+
     // バナーセクション取得API
     $router->get('section/banner/{sectionName}', function (Request $request, $sectionName) {
         $bannerRepository = new BannerRepository;

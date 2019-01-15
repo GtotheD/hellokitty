@@ -41,6 +41,7 @@ abstract class TestCase extends Laravel\Lumen\Testing\TestCase
             Artisan::call('db:seed', ['--class' => 'WorkRecommendOtherTestSeeder']);
             Artisan::call('db:seed', ['--class' => 'ReleaseTestSeeder']);
             Artisan::call('db:seed', ['--class' => 'PointDetailsTestSeeder']);
+            $this->importAllData();
             self::$isSetup = true;
         }
     }
