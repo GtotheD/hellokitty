@@ -22,7 +22,7 @@ class TolMembershipStatus extends TolBaseModel
         $xml = $this->tolClient->getMembershipStatus();
         $memberDetailXml = simplexml_load_string($xml);
         // レスポンスステータスが0でなかった場合はエラーとしてfalseを返却
-        if (current($memberDetailXml->status) !== 'SUCCESS') {
+        if ($memberDetailXml === false || current($memberDetailXml->status) !== 'SUCCESS') {
             return false;
         }
         return collect(json_decode(json_encode($memberDetailXml), true));

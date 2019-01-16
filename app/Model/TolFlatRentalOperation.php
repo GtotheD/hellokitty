@@ -48,7 +48,7 @@ class TolFlatRentalOperation extends TolBaseModel
         $xml = $this->tolClient->getFlatRentalOperation();
         $memberDetailXml = simplexml_load_string($xml);
         // レスポンスステータスが0でなかった場合はエラーとしてfalseを返却
-        if (current($memberDetailXml->status) !== '0') {
+        if ($memberDetailXml === false || current($memberDetailXml->status) !== '0') {
             return false;
         }
         $csv = current($memberDetailXml->responseData);
