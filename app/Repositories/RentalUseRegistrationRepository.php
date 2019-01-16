@@ -85,18 +85,6 @@ class RentalUseRegistrationRepository extends BaseRepository
         if ($tolMemberDetail['responseStatus1'] !== '00') {
             return false;
         }
-        // Cメンバー状態を取得
-        $cMemberCount = (int)$tolMemberDetail['cMemberInformationSetNumber'];
-        // デフォルトはC会員以外でfalse
-        $isCMember = false;
-        if ($cMemberCount >= 0) {
-            for($i = 1; $i <= $cMemberCount; $i++) {
-                $cMemberType = $tolMemberDetail['cMemberType'. (string)$i];
-                if ($cMemberType !== 'W2' && $cMemberType !== '') {
-                    $isCMember = true;
-                }
-            }
-        }
 
         // 定額レンタル操作 mfr001
         $tolFlatRentalOperationModel = new TolFlatRentalOperation($this->memId);
@@ -161,11 +149,18 @@ class RentalUseRegistrationRepository extends BaseRepository
         // C会員リストにいる(25~27,73~75)-6
         // なし（C会員ではない） or W2（クレカ機能のみ止まっている）
         // (W1だった場合は、Tカード機能とクレジットを停止している会員の為レンタルさせない
-        if ($isCMember) {
-            return [
-                'itemNumber' => 6,
-                'rentalExpirationDate' => ''
-            ];
+        // Cメンバー状態を取得
+        $cMemberCount = (int)$tolMemberDetail['cMemberInformationSetNumber'];
+        if ($cMemberCount > 0) {
+            for($i = 1; $i <= $cMemberCount; $i++) {
+                $cMemberType = $tolMemberDetail['cMemberType'. (string)$i];
+                if ($cMemberType !== 'W2' && $cMemberType !== '') {
+                    return [
+                        'itemNumber' => 6,
+                        'rentalExpirationDate' => ''
+                    ];
+                }
+            }
         }
 
         /**
