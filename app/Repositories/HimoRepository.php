@@ -399,6 +399,37 @@ class HimoRepository extends ApiRequesterRepository
         return $this;
     }
 
+    public function premiumRentalVideoRecommend($ignoreUrlCd)
+    {
+        $this->api = 'crossworks';
+        if (env('APP_ENV') === 'local') {
+            return $this;
+        }
+        foreach ($ignoreUrlCd as $id) {
+            if (!empty($id)) {
+                $queryId[] = '-0105:' . $id;
+            }
+        }
+        $this->apiPath = $this->apiHost . '/search/crossworks';
+        $this->queryParams = [
+            '_system' => 'TsutayaApp',
+            'service_id' => 'tol',
+            'msdb_item' => 'video',
+            'products_sell_rental_flg' => '1',
+            'premium' => '1',
+            'adult_flg' => '2',
+            'response_level' => '9',
+            'offset' => $this->offset,
+            'limit' => $this->limit,
+            'sort_by' => 'auto:asc',
+            'scene_limit' => '20',
+        ];
+        if (!empty($queryId)) {
+            $this->queryParams['id_value'] = implode(' || ', $queryId);
+        }
+        return $this;
+    }
+
     // override
     // getが実行された際に、キャッシュへ問い合わせを行う。
     // データ存在していれば、DBから値を取得
