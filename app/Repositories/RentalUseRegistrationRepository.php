@@ -86,18 +86,6 @@ class RentalUseRegistrationRepository extends BaseRepository
             return false;
         }
 
-        // C会員リスト検索 mmc208
-        $tolCMemberDetailModel = new TolCMemberDetail($this->memId);
-        $tolCMemberDetailCollection = $tolCMemberDetailModel->getDetail();
-        if (empty($tolCMemberDetailCollection)) {
-            Log::info('mmc208 can\'t get　MemId：' . $this->memId);
-            return false;
-        }
-        $tolCMemberDetail = current($tolCMemberDetailCollection->all());
-        if ($tolMemberDetail['responseStatus1'] !== '00') {
-            return false;
-        }
-
         // 定額レンタル操作 mfr001
         $tolFlatRentalOperationModel = new TolFlatRentalOperation($this->memId);
         $tolFlatRentalOperationCollection = $tolFlatRentalOperationModel->getDetail();
@@ -137,7 +125,7 @@ class RentalUseRegistrationRepository extends BaseRepository
         Log::info("mem_id:" . $this->memId . "\tMMC200 有効期限一ヶ月前の1日: ".$prevMonth1st);
         Log::info("mem_id:" . $this->memId . "\tMMC200 会員種別: ".$tolMemberDetail['memberType']);
         Log::info("mem_id:" . $this->memId . "\tMMC200 Wカードフラグ: ".$tolMemberDetail['wCardFlag']);
-        Log::info("mem_id:" . $this->memId . "\tMMC208 C会員: ".$tolCMemberDetail['cMemberType']);
+        Log::info("mem_id:" . $this->memId . "\tMMC200 C会員: ". (string)$isCMember);
         Log::info("mem_id:" . $this->memId . "\tMFR001 プレミアム会員: ".$tolFlatRentalOperation['responseStatus1']);
         Log::info("mem_id:" . $this->memId . "\tMRE001 レンタル登録申請: ".$tolRentalApplication['rentalRegistrationApplicationStatus']);
         Log::info("mem_id:" . $this->memId . "\tMRE001 レンタル更新申請: ".$tolRentalApplication['rentalUpdateApplicationStatus']);
@@ -159,13 +147,20 @@ class RentalUseRegistrationRepository extends BaseRepository
         }
 
         // C会員リストにいる(25~27,73~75)-6
-        // なし or W2
-        if ($tolCMemberDetail['cMemberType'] !== 'w2' &&
-            $tolCMemberDetail['cMemberType'] !== '') {
-            return [
-                'itemNumber' => 6,
-                'rentalExpirationDate' => ''
-            ];
+        // なし（C会員ではない） or W2（クレカ機能のみ止まっている）
+        // (W1だった場合は、Tカード機能とクレジットを停止している会員の為レンタルさせない
+        // Cメンバー状態を取得
+        $cMemberCount = (int)$tolMemberDetail['cMemberInformationSetNumber'];
+        if ($cMemberCount > 0) {
+            for($i = 1; $i <= $cMemberCount; $i++) {
+                $cMemberType = $tolMemberDetail['cMemberType'. (string)$i];
+                if ($cMemberType !== 'W2' && $cMemberType !== '') {
+                    return [
+                        'itemNumber' => 6,
+                        'rentalExpirationDate' => ''
+                    ];
+                }
+            }
         }
 
         /**

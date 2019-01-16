@@ -12,13 +12,14 @@ use App\Clients\TolClient;
 
 /**
  * MMC200
+ * ヘッダの数が変動する。
  * Class MintMemberDetail
  * @package App\Model
  *
  */
 class TolMemberDetail extends TolBaseModel
 {
-    private $header = [
+    private $baseHeader = [
         'messageClass', // 1 伝文区分
         'messageVer', // 2 伝文Ver
         'companyCode', // 3 企業コード
@@ -50,23 +51,27 @@ class TolMemberDetail extends TolBaseModel
         'dmStopClassification', // 29 DM停止区分
         'memberType', // 30 会員種別
         'wCardFlag', // 31 Wカードフラグ
-        'rentalAddedStoreCode', // レンタル付与店舗コード
-        'rentalGrantDate', // レンタル付与日付
-        'updateStoreCode', // 更新店舗コード
-        'informationChangeStoreCode', // 情報変更店コード
-        'informationChangeDate', // 情報変更日
-        'updateShopRegistrationDate', // 更新店システム登録日時
-        'c8LastUpdateDate', // 最終更新システム登録日時
-        'cMemberInformationSetNumber', // C会員情報セット件数
-        'cMemberType', // C会員区分
-        'headquartersRegistrationProcessingDate', // 本部登録処理日付
-        'headquartersRegistrationProcessingTime', // 本部登録処理時刻
-        'applicantStoreCode', // 申請店コード
-        'applicationDatetime', // 申請日時z
-        'cMemberRemarks1', // C会員備考1
-        'cmemberRemarks2', // C会員備考2
-        'freeRentalRegistrationControlFlag', // 無料レンタル登録制御フラグ
-        'optoutFlag', // オプトアウトフラグ
+        'rentalAddedStoreCode', // 32 レンタル付与店舗コード
+        'rentalGrantDate', // 33 レンタル付与日付
+        'updateStoreCode', // 34 更新店舗コード
+        'informationChangeStoreCode', // 35 情報変更店コード
+        'informationChangeDate', // 36 情報変更日
+        'updateShopRegistrationDate', // 37 更新店システム登録日時
+        'c8LastUpdateDate', // 38 最終更新システム登録日時
+        'cMemberInformationSetNumber', // 39 C会員情報セット件数
+    ];
+    private $repeatHeader = [
+        'cMemberType', // 40 C会員区分
+        'headquartersRegistrationProcessingDate', // 41 本部登録処理日付
+        'headquartersRegistrationProcessingTime', // 42 本部登録処理時刻
+        'applicantStoreCode', // 43 申請店コード
+        'applicationDatetime', // 44 申請日時z
+        'cMemberRemarks1', // 45 C会員備考1
+        'cmemberRemarks2', // 46 C会員備考2
+    ];
+    private $lastHeader = [
+        'freeRentalRegistrationControlFlag', // 47 無料レンタル登録制御フラグ
+        'optoutFlag', // 48 オプトアウトフラグ
     ];
 
     /**
@@ -74,7 +79,8 @@ class TolMemberDetail extends TolBaseModel
      * @throws \App\Exceptions\NoContentsException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function getDetail() {
+    public function getDetail()
+    {
         $xml = $this->tolClient->getMemberDetail();
         $memberDetailXml = simplexml_load_string($xml);
         // レスポンスステータスが0でなかった場合はエラーとしてfalseを返却
@@ -82,6 +88,31 @@ class TolMemberDetail extends TolBaseModel
             return false;
         }
         $csv = current($memberDetailXml->responseData);
-        return $this->getCollectionFromCSV($this->header, $csv);
+        // C会員情報セット件数を取得してヘッダの数を変更する
+        $csvObj = current($this->getCollectionFromCSV($this->baseHeader, $csv)->all());
+        // 1以上だった場合は、数分$repeatHeaderを付与する
+        $recordCount = (int)$csvObj['cMemberInformationSetNumber'];
+        // 1件以上だった場合は数分生成
+        if ($recordCount >= 1) {
+            for($i = 1; $i <= (int)$csvObj['cMemberInformationSetNumber']; $i++) {
+                foreach($this->repeatHeader as $columnName) {
+                    $editColumnName[] = $columnName . (string)$i;
+                }
+            }
+        } else {
+        // 0件だった場合は1のみ生成
+            foreach($this->repeatHeader as $columnName) {
+                $editColumnName[] = $columnName . '1';
+            }
+        }
+        // ヘッダの結合
+        $header = array_merge($this->baseHeader, $editColumnName, $this->lastHeader);
+        // 再取得
+        return $this->getCollectionFromCSV($header, $csv);
+    }
+
+    public function getRepeatHeader()
+    {
+        return $this->repeatHeader;
     }
 }

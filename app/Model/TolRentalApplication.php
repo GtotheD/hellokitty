@@ -22,7 +22,7 @@ class TolRentalApplication extends TolBaseModel
         $xml = $this->tolClient->getRentalApplication();
         $memberDetailXml = simplexml_load_string($xml);
         // レスポンスステータスが0でなかった場合はエラーとしてfalseを返却
-        if (current($memberDetailXml->status) !== '0') {
+        if ($memberDetailXml === false || current($memberDetailXml->status) !== '0') {
             return false;
         }
         $json = json_decode(urldecode($memberDetailXml->responseData));
