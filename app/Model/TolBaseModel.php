@@ -22,7 +22,7 @@ class TolBaseModel
     public function getCollectionFromCSV($header, $csv)
     {
         // 文字コードがSJISでくるので変換する。
-//        $csv = mb_convert_encoding(urldecode($csv), "UTF-8", "SJIS");
+        $csv = mb_convert_encoding(urldecode($csv), "UTF-8", "SJIS");
         $reader = Reader::createFromString($csv);
         $results = $reader->getRecords($header);
         foreach ($results as $row) {
