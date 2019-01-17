@@ -704,7 +704,7 @@ class WorkRepository extends BaseRepository
         } catch (\Exception $exception) {
             \Log::error("Error while update work. Error message:{$exception->getMessage()} Line: {$exception->getLine()}");
             DB::rollback();
-            throw new $exception;
+            throw $exception;
         }
 
     }

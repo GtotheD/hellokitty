@@ -47,7 +47,11 @@ class TAPRepository extends ApiRequesterRepository
     /*
      * 日付ベースの検索結果を取得するAPIをセットする
      */
-    public function release($category, $releaseDateTo) {
+    public function release($category, $releaseDateTo)
+    {
+        $this->api = 'Release';
+        $this->id = $category;
+
         $this->apiPath = $this->apiHost . '/tsutayaappapi/Release';
         $this->queryParams = [
             'apiKey' => $this->apiKey,
@@ -59,7 +63,6 @@ class TAPRepository extends ApiRequesterRepository
 
     public function getReview($filmarksId)
     {
-
         $apiResult = $this->tapReviewApi($filmarksId);
         $reviews = [
             'totalCount' => 0,
@@ -82,16 +85,13 @@ class TAPRepository extends ApiRequesterRepository
                 return $reviews;
             }
         }
-
         return null;
     }
 
 
     public function tapReviewApi($filmarksId)
     {
-
         $this->apiPath ='/tsutayaappapi/works/fm/review';
-       
         $this->apiPath = $this->apiHost . $this->apiPath;
         $this->queryParams = [
             'api_key' => $this->apiKey,
@@ -105,9 +105,7 @@ class TAPRepository extends ApiRequesterRepository
 
     public function getCoupon($storeCd, $tokuban, $deliveryId, $deliveryStartDate, $deliveryEndDate)
     {
-
         $this->apiPath ='/tsutayaappapi/tm/cpn/qr';
-
         $this->apiPath = $this->apiHost . $this->apiPath;
         $this->queryParams = [
             'api_key' => $this->apiKey,
@@ -165,7 +163,7 @@ class TAPRepository extends ApiRequesterRepository
         }
         $file = file_get_contents($path . '/' . $filename);
         // Remove new line character
-        return \GuzzleHttp\json_decode(str_replace(["\n","\r\n","\r", PHP_EOL], '', $file), true);
+        return json_decode(str_replace(["\n","\r\n","\r", PHP_EOL], '', $file), true);
         // return json_decode($file, TRUE);
     }
 
