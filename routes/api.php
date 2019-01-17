@@ -34,6 +34,7 @@ use App\Repositories\CouponRepository;
 use App\Repositories\RentalUseRegistrationRepository;
 use App\Repositories\PointRepository;
 use App\Repositories\SectionPremiumRecommend;
+use App\Repositories\StatusPremium;
 use App\Exceptions\AgeLimitException;
 use App\Exceptions\ContentsException;
 use App\Exceptions\NoContentsException;
@@ -940,6 +941,21 @@ $router->group([
             'fixedPointMinLimitTime' => $pointRepository->getFixedPointMinLimitTime(),
         ];
         return response()->json($response)->header('X-Accel-Expires', '0');
+    });
+
+    // 　プレミアム会員状態取得API
+    $router->post('member/status/premium', function (Request $request) {
+        $bodyObj = json_decode($request->getContent(), true);
+        $tolId = isset($bodyObj['tolId']) ? $bodyObj['tolId'] : '';
+        $statusPremium = new StatusPremium($tolId);
+        $hoge = $statusPremium->get();
+        dd($hoge);
+    });
+
+    // 　プレミアム会員状態取得API
+    $router->post('member/status/ttv', function (Request $request) {
+        $bodyObj = json_decode($request->getContent(), true);
+        $tolId = isset($bodyObj['tolId']) ? $bodyObj['tolId'] : '';
     });
 
     // 検証環境まで有効にするテスト用
