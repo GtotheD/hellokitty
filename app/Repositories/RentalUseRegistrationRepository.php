@@ -117,7 +117,7 @@ class RentalUseRegistrationRepository extends BaseRepository
             );
             return false;
         }
-        // リターンコードを確認して、正常または、対象レコードなしの場合は処理を継続しない
+        // リターンコードを確認して、正常または、対象レコードなし以外の場合は処理を継続しない
         if ($tolRentalApplication['returnCd'] !== 'C1001' &&
             $tolRentalApplication['returnCd'] !== 'C2003'
         ) {
@@ -189,13 +189,13 @@ class RentalUseRegistrationRepository extends BaseRepository
                 if ($tolRentalApplication['identificationConfirmationNecessityFlag'] === '1') {
                     return [
                         'itemNumber' => 10,
-                        'rentalExpirationDate' => $tolMemberDetail['expirationDate']
+                        'rentalExpirationDate' =>  $this->dateFormat($tolMemberDetail['expirationDate'])
                     ];
                 // 本人確認不要(49)-9
                 } else {
                     return [
                         'itemNumber' => 9,
-                        'rentalExpirationDate' => $tolMemberDetail['expirationDate']
+                        'rentalExpirationDate' => $this->dateFormat($tolMemberDetail['expirationDate'])
                     ];
                 }
             // 更新期間に入っている(レンタル利用可)
@@ -206,13 +206,13 @@ class RentalUseRegistrationRepository extends BaseRepository
                     if ($tolRentalApplication['identificationConfirmationNecessityFlag'] === '1') {
                         return [
                             'itemNumber' => 15,
-                            'rentalExpirationDate' => $tolMemberDetail['expirationDate']
+                            'rentalExpirationDate' => $this->dateFormat($tolMemberDetail['expirationDate'])
                         ];
                     // 本人確認不要(61-2,3,4)-11
                     } else {
                         return [
                             'itemNumber' => 11,
-                            'rentalExpirationDate' => $tolMemberDetail['expirationDate']
+                            'rentalExpirationDate' => $this->dateFormat($tolMemberDetail['expirationDate'])
                         ];
                     }
                     // レンタル更新処理中
@@ -221,13 +221,13 @@ class RentalUseRegistrationRepository extends BaseRepository
                     if ($tolRentalApplication['identificationConfirmationNecessityFlag'] === '1') {
                         return [
                             'itemNumber' => 14,
-                            'rentalExpirationDate' => $tolMemberDetail['expirationDate']
+                            'rentalExpirationDate' => $this->dateFormat($tolMemberDetail['expirationDate'])
                         ];
                     // 本人確認不要(64)-13
                     } else {
                         return [
                             'itemNumber' => 13,
-                            'rentalExpirationDate' => $tolMemberDetail['expirationDate']
+                            'rentalExpirationDate' => $this->dateFormat($tolMemberDetail['expirationDate'])
                         ];
                     }
                     // 非Wカード＆非プレミアム会員
@@ -236,13 +236,13 @@ class RentalUseRegistrationRepository extends BaseRepository
                     if ($tolRentalApplication['identificationConfirmationNecessityFlag'] === '1') {
                         return [
                             'itemNumber' => 16,
-                            'rentalExpirationDate' => $tolMemberDetail['expirationDate']
+                            'rentalExpirationDate' => $this->dateFormat($tolMemberDetail['expirationDate'])
                         ];
                     // 本人確認不要(61-5)-12
                     } else {
                         return [
                             'itemNumber' => 12,
-                            'rentalExpirationDate' => $tolMemberDetail['expirationDate']
+                            'rentalExpirationDate' => $this->dateFormat($tolMemberDetail['expirationDate'])
                         ];
                     }
                 }
@@ -298,5 +298,10 @@ class RentalUseRegistrationRepository extends BaseRepository
     private function log($title, $message)
     {
         Log::info("MEM_ID:" . $this->memId . " → " . $title . " : " . $message);
+    }
+
+    private function dateFormat($date)
+    {
+        return  date('Y-m-d H:i:s' ,strtotime($date));
     }
 }
