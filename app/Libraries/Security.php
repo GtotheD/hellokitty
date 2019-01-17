@@ -22,7 +22,6 @@ trait Security
         if (empty($encodedMemId)) {
             throw new Exception('Can\'t Convert TolID to MemID');
         }
-
         return intval(substr($encodedMemId, 0, 10));
     }
 
@@ -35,4 +34,21 @@ trait Security
     {
         return openssl_decrypt(base64_decode($target), 'aes-128-ecb', $key, OPENSSL_RAW_DATA);
     }
+
+    /**
+     * @param $key
+     * @param $target
+     * @return string
+     */
+    public function encrypt($key, $target)
+    {
+        $randNumber = '';
+        for ($i = 0; $i < 6; $i++) {
+            $randNumber .= mt_rand(0, 9);
+        }
+        $strings = sprintf('%010s%s', $target, $randNumber);
+        return openssl_encrypt($strings, 'aes-128-ecb', $key, OPENSSL_RAW_DATA);
+    }
+
+
 }

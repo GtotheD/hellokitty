@@ -26,8 +26,10 @@ class TolRentalApplication extends TolBaseModel
             return false;
         }
         $json = json_decode(urldecode($memberDetailXml->responseData));
+        $common = $json->response->common;
         $detail = $json->response->detail;
         return [
+            'returnCd' => $common->return_cd,
             'rentalRegistrationApplicationStatus' => $detail->rentaltorokushinseistatus,
             'rentalUpdateApplicationStatus' => $detail->rentalkoshinshinseistatus,
             'identificationConfirmationNecessityFlag' => $detail->honninkakuninyohi
