@@ -693,6 +693,13 @@
  *       description="出演者・アーティスト・著者・機種等を表示/非表示を切り替える為のフラグ。trueにすると非表示になる。",
  *       type="boolean"
  *     ),
+ *     @SWG\Parameter(
+ *       name="premium",
+ *       in="query",
+ *       description="プレミアムフラグの出力要否。
+ * 出力しない：false（デフォルト）、出力する：true",
+ *       type="boolean"
+ *     ),
  *     @SWG\Response(
  *          response=200,
  *          description="success",
@@ -741,6 +748,14 @@
  *       name="supplementVisible",
  *       in="query",
  *       description="出演者・アーティスト・著者・機種等を表示/非表示を切り替える為のフラグ。trueにすると非表示になる。",
+ *       type="boolean"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="premium",
+ *       in="query",
+ *       description="プレミアムフラグの出力要否。
+ * 出力しない：false（デフォルト）
+ * 出力する：true",
  *       type="boolean"
  *     ),
  *     @SWG\Response(

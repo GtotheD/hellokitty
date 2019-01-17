@@ -15,6 +15,7 @@ use App\Model\TopReleaseNewest;
 use App\Model\TopReleaseLastest;
 use App\Model\Product;
 use App\Exceptions\NoContentsException;
+use Illuminate\Support\Facades\Log;
 
 /**
  * Created by PhpStorm.
@@ -423,6 +424,8 @@ class SectionRepository extends BaseRepository
             } else {
                 $formattedRow['supplement'] = null;
             }
+            $formattedRow['isPremium'] = ($work['isPremiumShop'] === 1)? true: false;
+
             $formattedRows[] = $formattedRow;
 
         }
@@ -510,6 +513,7 @@ class SectionRepository extends BaseRepository
             $rowUnit['adultFlg'] = $work['adultFlg'];
 //            $rowUnit['saleStartDate'] = $work['saleStartDate'];
             $rowUnit['saleStartDate'] = null;
+            $rowUnit['isPremium'] = ($work['isPremiumShop'] === 1)? true: false;
 
             // modelNameがあったゲームなので、ゲーム名を取得するようにする。
             if (!$this->supplementVisible) {

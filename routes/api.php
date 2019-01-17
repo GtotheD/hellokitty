@@ -108,7 +108,7 @@ $router->group([
         return response()->json($response)->header('X-Accel-Expires', '600');
     });
 
-    // 通常セクション取得API
+    // 映画漬けセクション取得API
     $router->get('section/premium/dvd/rental/{sectionName}', function (Request $request, $sectionName) {
         $sectionRepository = new SectionRepository;
         $sectionRepository->setLimit($request->input('limit', 10));
@@ -121,9 +121,7 @@ $router->group([
             throw new NoContentsException;
         }
         $response = [
-            'hasNext' => $section->getHasNext(),
-            'totalCount' => $section->getTotalCount(),
-            'rows' => $section->getRows()
+            'data' => current($section->getRows())
         ];
         return response()->json($response)->header('X-Accel-Expires', '600');
     });
@@ -177,9 +175,17 @@ $router->group([
         $sectionRepository = new SectionRepository;
         $sectionRepository->setLimit(20);
         $sectionRepository->setSupplementVisible($request->input('supplementVisibleFlg', false));
+        $premiumFlag = $request->input('premium', false);
         $rows = $sectionRepository->ranking($codeType, $code, $period);
         if (empty($rows)) {
             throw new NoContentsException;
+        }
+        // プレミアムフラグを返却しないようにする。
+        // 現状はDVDレンタルの為、臨時対応として取得元で制御は行わない
+        if ($premiumFlag !== 'true') {
+            foreach ($rows as $rowKey => $row) {
+                unset($rows[$rowKey]['isPremium']);
+            }
         }
         $response = [
             'hasNext' => $sectionRepository->getHasNext(),
@@ -198,9 +204,17 @@ $router->group([
         if (empty($releaseDateTo)) {
             $releaseDateTo = date('Ymd', strtotime('next sunday'));
         }
+        $premiumFlag = $request->input('premium', false);
         $sectionRepository = new SectionRepository;
         $sectionRepository->setSupplementVisible($request->input('supplementVisibleFlg', false));
         $sectionData = $sectionRepository->releaseManual($tapCategoryId, $releaseDateTo);
+        // プレミアムフラグを返却しないようにする。
+        // 現状はDVDレンタルの為、臨時対応として取得元で制御は行わない
+        if ($premiumFlag !== 'true') {
+            foreach ($sectionData['rows'] as $rowKey => $row) {
+                unset($sectionData['rows'][$rowKey]['isPremium']);
+            }
+        }
         return response()->json($sectionData)->header('X-Accel-Expires', '600');
     });
 
