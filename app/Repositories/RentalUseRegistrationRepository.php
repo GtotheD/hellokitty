@@ -46,14 +46,13 @@ class RentalUseRegistrationRepository extends BaseRepository
     {
         Log::info('rental use registration tolId : ' . $this->tolId);
         $this->memId = $this->decodeMemid($this->key, $this->tolId);
-
         Log::info('convert tolId : ' . $this->tolId . ' -> ' . $this->memId );
 
         // TOL会員状態取得
         $tapRepository = new TAPRepository;
         $tolMembershipStatus = $tapRepository->getMemberStatus($this->tolId);
         if (empty($tolMembershipStatus)) {
-            Log::info('tol membership status can\'t get　MemId：' . $this->memId);
+            $this->log('Request TAP-API MemberStatus', 'Data acquisition error.');
             return false;
         }
         // stetusのスペルが違うのはレスポンスがタイポされている為
@@ -77,12 +76,17 @@ class RentalUseRegistrationRepository extends BaseRepository
         $tolMemberDetailModel = new TolMemberDetail($this->memId);
         $tolMemberDetailCollection = $tolMemberDetailModel->getDetail();
         if (empty($tolMemberDetailCollection)) {
-            Log::info('mmc200 can\'t get　MemId：' . $this->memId);
+            $this->log('Request TOL-API MMC200',
+                'Data acquisition error.'
+            );
             return false;
         }
         $tolMemberDetail = current($tolMemberDetailCollection->all());
         // 正常終了でなかった場合は、NoContentsにする為にfalseリターンする。
         if ($tolMemberDetail['responseStatus1'] !== '00') {
+            $this->log('Request TOL-API MMC200',
+                'Error Response (' . $tolMemberDetail['responseStatus1'] . ')'
+            );
             return false;
         }
 
@@ -90,12 +94,17 @@ class RentalUseRegistrationRepository extends BaseRepository
         $tolFlatRentalOperationModel = new TolFlatRentalOperation($this->memId);
         $tolFlatRentalOperationCollection = $tolFlatRentalOperationModel->getDetail();
         if (empty($tolFlatRentalOperationCollection)) {
-            Log::info('mfr001 can\'t get　MemId：' . $this->memId);
+            $this->log('Request TOL-API MMC200',
+                'Data acquisition error.'
+            );
             return false;
         }
         $tolFlatRentalOperation = current($tolFlatRentalOperationCollection->all());
-        if ($tolMemberDetail['responseStatus1'] !== '00' &&
-            $tolMemberDetail['responseStatus1'] !== '01') {
+        if ($tolFlatRentalOperation['responseStatus1'] !== '00' &&
+            $tolFlatRentalOperation['responseStatus1'] !== '01') {
+            $this->log('Request TOL-API MFR001',
+                'Error Response (' . $tolFlatRentalOperation['responseStatus1'] . ')'
+            );
             return false;
         }
 
@@ -103,10 +112,18 @@ class RentalUseRegistrationRepository extends BaseRepository
         $tolRentalApplicationModel = new TolRentalApplication($this->memId);
         $tolRentalApplication = $tolRentalApplicationModel->getDetail();
         if (empty($tolRentalApplication)) {
-            Log::info('mre001 can\'t get　MemId：' . $this->memId);
+            $this->log('Request TOL-API MRE001',
+                'Data acquisition error.'
+            );
             return false;
         }
-        if ($tolMemberDetail['responseStatus1'] !== '00') {
+        // リターンコードを確認して、正常または、対象レコードなし以外の場合は処理を継続しない
+        if ($tolRentalApplication['returnCd'] !== 'C1001' &&
+            $tolRentalApplication['returnCd'] !== 'C2003'
+        ) {
+            $this->log('Request TOL-API MRE001',
+                'Error Response (' . $tolRentalApplication['returnCd'] . ')'
+            );
             return false;
         }
 
@@ -118,18 +135,17 @@ class RentalUseRegistrationRepository extends BaseRepository
         // 31の場合31ない月でバグるので、startofMonthで1日にしてから前月を取得する
         $prevMonthCarbon->startofMonth()->subMonth();
         $prevMonth1st = $prevMonthCarbon->format('Ym01');
-
-        Log::info("mem_id:" . $this->memId . "\t現在時刻: ".$nowDatetime);
-        Log::info("mem_id:" . $this->memId . "\tMMC200 削除済みフラグ: ".$tolMemberDetail['deleteFlag']);
-        Log::info("mem_id:" . $this->memId . "\tMMC200 有効期限: ".$tolMemberDetail['expirationDate']);
-        Log::info("mem_id:" . $this->memId . "\tMMC200 有効期限一ヶ月前の1日: ".$prevMonth1st);
-        Log::info("mem_id:" . $this->memId . "\tMMC200 会員種別: ".$tolMemberDetail['memberType']);
-        Log::info("mem_id:" . $this->memId . "\tMMC200 Wカードフラグ: ".$tolMemberDetail['wCardFlag']);
-        Log::info("mem_id:" . $this->memId . "\tMMC200 C会員: ". (string)$isCMember);
-        Log::info("mem_id:" . $this->memId . "\tMFR001 プレミアム会員: ".$tolFlatRentalOperation['responseStatus1']);
-        Log::info("mem_id:" . $this->memId . "\tMRE001 レンタル登録申請: ".$tolRentalApplication['rentalRegistrationApplicationStatus']);
-        Log::info("mem_id:" . $this->memId . "\tMRE001 レンタル更新申請: ".$tolRentalApplication['rentalUpdateApplicationStatus']);
-        Log::info("mem_id:" . $this->memId . "\tMRE001 本人確認フラグ: ".$tolRentalApplication['identificationConfirmationNecessityFlag']);
+        $this->log('Run Time', $nowDatetime);
+        $this->log('Response MMC200 Deleted flag', $tolMemberDetail['deleteFlag']);
+        $this->log('Response MMC200 Expiration date', $tolMemberDetail['expirationDate']);
+        $this->log('Response MMC200 One day before expiration date', $prevMonth1st);
+        $this->log('Response MMC200 Member Type', $tolMemberDetail['memberType']);
+        $this->log('Response MMC200 W-Card flag', $tolMemberDetail['wCardFlag']);
+        $this->log('Response MFR001 Premium Member Status', $tolFlatRentalOperation['responseStatus1']);
+        $this->log('Response MRE001 Rental registration status', $tolRentalApplication['rentalRegistrationApplicationStatus']);
+        $this->log('Response MRE001 Rental update status', $tolRentalApplication['rentalUpdateApplicationStatus']);
+        $this->log('Response MRE001 Rental update status', $tolRentalApplication['rentalUpdateApplicationStatus']);
+        $this->log('Response MRE001 Identification flag', $tolRentalApplication['identificationConfirmationNecessityFlag']);
 
         // 削除済み会員(37~39,43~45,79~81)-8
         if ($tolMemberDetail['deleteFlag'] === '1') {
@@ -164,69 +180,69 @@ class RentalUseRegistrationRepository extends BaseRepository
         }
 
         /**
-         * レンタル
+         * レンタル会員
          */
         if ($tolMemberDetail['memberType'] === '1') {
             // まだ更新期間に入ってない(レンタル利用可)
             if ($prevMonth1st > $nowDatetime) {
-                // 本人確認不要(49)-9
-                if ($tolRentalApplication['identificationConfirmationNecessityFlag'] === '0') {
-                    return [
-                        'itemNumber' => 9,
-                        'rentalExpirationDate' => $tolMemberDetail['expirationDate']
-                    ];
-                    // 本人確認必要(55)-10
-                } else {
+                // 本人確認必要(55)-10
+                if ($tolRentalApplication['identificationConfirmationNecessityFlag'] === '1') {
                     return [
                         'itemNumber' => 10,
-                        'rentalExpirationDate' => $tolMemberDetail['expirationDate']
+                        'rentalExpirationDate' =>  $this->dateFormat($tolMemberDetail['expirationDate'])
+                    ];
+                // 本人確認不要(49)-9
+                } else {
+                    return [
+                        'itemNumber' => 9,
+                        'rentalExpirationDate' => $this->dateFormat($tolMemberDetail['expirationDate'])
                     ];
                 }
             // 更新期間に入っている(レンタル利用可)
             } elseif ($prevMonth1st <= $nowDatetime && $nowDatetime <= $tolMemberDetail['expirationDate']) {
                 // 「レンタル登録済み」：Wカード or プレミアム会員
                 if ($tolMemberDetail['wCardFlag'] !== '00' || $tolFlatRentalOperation['responseStatus1'] === '00') {
-                    // 本人確認不要(61-2,3,4)-11
-                    if ($tolRentalApplication['identificationConfirmationNecessityFlag'] === '0') {
-                        return [
-                            'itemNumber' => 11,
-                            'rentalExpirationDate' => $tolMemberDetail['expirationDate']
-                        ];
-                        // 本人確認必要(67-2,3,4)-15
-                    } else {
+                    // 本人確認必要(67-2,3,4)-15
+                    if ($tolRentalApplication['identificationConfirmationNecessityFlag'] === '1') {
                         return [
                             'itemNumber' => 15,
-                            'rentalExpirationDate' => $tolMemberDetail['expirationDate']
+                            'rentalExpirationDate' => $this->dateFormat($tolMemberDetail['expirationDate'])
+                        ];
+                    // 本人確認不要(61-2,3,4)-11
+                    } else {
+                        return [
+                            'itemNumber' => 11,
+                            'rentalExpirationDate' => $this->dateFormat($tolMemberDetail['expirationDate'])
                         ];
                     }
                     // レンタル更新処理中
                 } elseif ($tolRentalApplication['rentalUpdateApplicationStatus'] === '1') {
-                    // 本人確認不要(64)-13
-                    if ($tolRentalApplication['identificationConfirmationNecessityFlag'] === '0') {
-                        return [
-                            'itemNumber' => 13,
-                            'rentalExpirationDate' => $tolMemberDetail['expirationDate']
-                        ];
-                        // 本人確認必要(65)-14
-                    } else {
+                    // 本人確認必要(65)-14
+                    if ($tolRentalApplication['identificationConfirmationNecessityFlag'] === '1') {
                         return [
                             'itemNumber' => 14,
-                            'rentalExpirationDate' => $tolMemberDetail['expirationDate']
+                            'rentalExpirationDate' => $this->dateFormat($tolMemberDetail['expirationDate'])
+                        ];
+                    // 本人確認不要(64)-13
+                    } else {
+                        return [
+                            'itemNumber' => 13,
+                            'rentalExpirationDate' => $this->dateFormat($tolMemberDetail['expirationDate'])
                         ];
                     }
                     // 非Wカード＆非プレミアム会員
                 } else {
-                    // 本人確認不要(61-5)-12
-                    if ($tolRentalApplication['identificationConfirmationNecessityFlag'] === '0') {
-                        return [
-                            'itemNumber' => 12,
-                            'rentalExpirationDate' => $tolMemberDetail['expirationDate']
-                        ];
-                        // 本人確認必要(67-5)-16
-                    } else {
+                    // 本人確認必要(67-5)-16
+                    if ($tolRentalApplication['identificationConfirmationNecessityFlag'] === '1') {
                         return [
                             'itemNumber' => 16,
-                            'rentalExpirationDate' => $tolMemberDetail['expirationDate']
+                            'rentalExpirationDate' => $this->dateFormat($tolMemberDetail['expirationDate'])
+                        ];
+                    // 本人確認不要(61-5)-12
+                    } else {
+                        return [
+                            'itemNumber' => 12,
+                            'rentalExpirationDate' => $this->dateFormat($tolMemberDetail['expirationDate'])
                         ];
                     }
                 }
@@ -234,7 +250,7 @@ class RentalUseRegistrationRepository extends BaseRepository
             }
         }
         /**
-         * 物販
+         * 物販会員
          */
         if (($prevMonth1st > $nowDatetime) ||
             ($prevMonth1st <= $nowDatetime && $nowDatetime <= $tolMemberDetail['expirationDate'])) {
@@ -247,19 +263,19 @@ class RentalUseRegistrationRepository extends BaseRepository
                         'rentalExpirationDate' => ''
                     ];
                 }
-                // レンタル更新申請：処理中
+            // レンタル更新申請：処理中
             } elseif ($tolRentalApplication['rentalUpdateApplicationStatus'] === '1') {
+                // 本人確認必要(5)(17)-4
+                if ($tolRentalApplication['identificationConfirmationNecessityFlag'] === '1') {
+                    return [
+                        'itemNumber' => 4,
+                        'rentalExpirationDate' => ''];
                 // 本人確認不要(4)(16)-3
-                if ($tolRentalApplication['identificationConfirmationNecessityFlag'] === '0') {
+                } else {
                     return [
                         'itemNumber' => 3,
                         'rentalExpirationDate' => ''
                     ];
-                    // 本人確認必要(5)(17)-4
-                } else {
-                    return [
-                        'itemNumber' => 4,
-                        'rentalExpirationDate' => ''];
                 }
             }
             // 本人確認必要(7)(19)(物販落ちのケース)-5
@@ -275,9 +291,17 @@ class RentalUseRegistrationRepository extends BaseRepository
                 'rentalExpirationDate' => ''
             ];
         }
-
         // 上記すべてが対応しない場合は、204で返却する為にfalseリターンする。
         return false;
+    }
 
+    private function log($title, $message)
+    {
+        Log::info("MEM_ID:" . $this->memId . " → " . $title . " : " . $message);
+    }
+
+    private function dateFormat($date)
+    {
+        return  date('Y-m-d H:i:s' ,strtotime($date));
     }
 }
