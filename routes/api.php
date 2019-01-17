@@ -228,11 +228,19 @@ $router->group([
 
     // レコメンドセクション取得API
     $router->get('section/release/himo/{periodType}/{tapGenreId}', function (Request $request, $periodType, $genreId) {
+        $premiumFlag = $request->input('premium', false);
         $sectionRepository = new SectionRepository;
         $sectionRepository->setSupplementVisible($request->input('supplementVisibleFlg', false));
         $sectionData = $sectionRepository->releaseHimo($periodType, $genreId);
         if (empty($sectionData)) {
             throw new NoContentsException;
+        }
+        // プレミアムフラグを返却しないようにする。
+        // 現状はDVDレンタルの為、臨時対応として取得元で制御は行わない
+        if ($premiumFlag !== 'true') {
+            foreach ($sectionData['rows'] as $rowKey => $row) {
+                unset($sectionData['rows'][$rowKey]['isPremium']);
+            }
         }
         return response()->json($sectionData)->header('X-Accel-Expires', '86400');
     });
