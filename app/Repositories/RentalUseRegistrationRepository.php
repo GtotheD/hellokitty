@@ -44,7 +44,6 @@ class RentalUseRegistrationRepository extends BaseRepository
      */
     public function get()
     {
-//dd(urlencode(base64_encode($this->encrypt($this->key, '1'))));
         Log::info('rental use registration tolId : ' . $this->tolId);
         $this->memId = $this->decodeMemid($this->key, $this->tolId);
         Log::info('convert tolId : ' . $this->tolId . ' -> ' . $this->memId );
