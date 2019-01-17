@@ -954,8 +954,10 @@ $router->group([
         $bodyObj = json_decode($request->getContent(), true);
         $tolId = isset($bodyObj['tolId']) ? $bodyObj['tolId'] : '';
         $statusPremium = new StatusPremium($tolId);
-        $hoge = $statusPremium->get();
-        dd($hoge);
+        $response = [
+            'premium' => $statusPremium->get()
+        ];
+        return response()->json($response)->header('X-Accel-Expires', '0');
     });
 
     // 　プレミアム会員状態取得API
