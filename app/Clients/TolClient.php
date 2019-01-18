@@ -107,7 +107,7 @@ class TolClient extends BaseClient
     {
         $this->apiPath = $this->createPath(self::SP101);
         $this->queryParams = [
-            'tenpo_cd' => $shopCode,
+            'tenpoCd' => $shopCode,
             'memid' => $this->memId
         ];
         return $this->get(false);
