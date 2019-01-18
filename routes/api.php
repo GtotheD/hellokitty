@@ -955,9 +955,23 @@ $router->group([
     });
 
     // 　プレミアム会員状態取得API
-    $router->post('member/status/ttv', function (Request $request) {
-        $bodyObj = json_decode($request->getContent(), true);
-        $tolId = isset($bodyObj['tolId']) ? $bodyObj['tolId'] : '';
+    $router->get('member/status/ttv', function (Request $request) {
+        $lv2LoginToken = $request->input('lv2LoginTkn');
+        $discasRepository = new DiscasRepository();
+        try {
+            $response = $discasRepository->customer($lv2LoginToken)->get();
+            $response = [
+                'ttvId' => $response['ttvId']
+            ];
+        } catch (ClientException $e) {
+            $statusCode = $e->getResponse()->getStatusCode();
+dd($statusCode);
+            $response = [
+                'status' => $statusCode
+            ];
+        }
+        return response()->json($response)->header('X-Accel-Expires', '0');
+
     });
 
     // 検証環境まで有効にするテスト用
