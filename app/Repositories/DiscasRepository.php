@@ -2,11 +2,8 @@
 
 namespace App\Repositories;
 
-use GuzzleHttp\Client;
+use GuzzleHttp\Cookie\CookieJar;
 use GuzzleHttp\Exception\ClientException;
-use App\Repositories\WorkRepository;
-use App\Model\Work;
-
 
 class DiscasRepository extends ApiRequesterRepository
 {
@@ -17,6 +14,7 @@ class DiscasRepository extends ApiRequesterRepository
     protected $apiHost;
 
     const DISCAS_REVIEW_API = '/netdvd/sp/webapi/review/reviewInfo'; // 作品詳細用
+    const DISCAS_CUSTOMER_API = '/v2/customer'; // 作品詳細用
 
     public function __construct($sort = 'asc', $offset = 0, $limit = 10)
     {
@@ -122,5 +120,49 @@ class DiscasRepository extends ApiRequesterRepository
         }
     }
 
+    public function customer($lv2Token)
+    {
+        $this->apiPath = $this->apiHost . self::DISCAS_CUSTOMER_API;
+        $this->id = $lv2Token;
+        $cookieJar = CookieJar::fromArray([
+            'lv2LoginTkn' => $lv2Token
+        ], $this->apiHost);
+        $this->queryParams = [
+            'cookies' => $cookieJar
+        ];
+        return $this;
+    }
+
+    /**
+     * @param bool $jsonResponse
+     * @return mixed|null|string
+     * @throws \App\Exceptions\NoContentsException
+     */
+    public function get($jsonResponse = true)
+    {
+        if(env('APP_ENV') !== 'local' && env('APP_ENV') !== 'testing' ){
+            return parent::get($jsonResponse);
+        }
+        return $this->stub($this->api, $this->id);
+    }
+
+    /**
+     * @param $apiName
+     * @param $filename
+     * @return mixed|null
+     */
+    private function stub($apiName, $filename)
+    {
+        throw new ClientException();
+        $path = base_path('tests/Data/discas');
+        $path = $path . $apiName . '/' . $filename;
+        if(!realpath($path)) {
+            return null;
+        }
+        $file = file_get_contents($path);
+        // Remove new line character
+        return json_decode(str_replace(["\n","\r\n","\r", PHP_EOL], '', $file), true);
+        // return json_decode($file, TRUE);
+    }
 
 }

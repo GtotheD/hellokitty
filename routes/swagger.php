@@ -2337,25 +2337,17 @@
  */
 
 /**
- * @SWG\Post(
+ * @SWG\Get(
  *     path="/member/status/ttv",
  *     description="",
  *     produces={"application/json"},
  *     tags={"Member"},
  *     security={{"api_key":{}}},
  *     @SWG\Parameter(
- *       name="body",
- *       in="body",
- *       description="",
- *       type="array",
- *       @SWG\Schema(
- *         @SWG\Property(
- *             property="tolId",
- *             type="integer",
- *             example="1234567890",
- *             description="アカウントID",
- *         )
- *       )
+ *       name="lv2LoginTkn",
+ *       in="query",
+ *       type="string",
+ *       description="ST内部管理番号をT-Authで暗号化したもの（32バイト文字列）"
  *     ),
  *     @SWG\Response(
  *          response=200,
