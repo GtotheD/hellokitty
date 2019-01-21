@@ -113,10 +113,10 @@ $router->group([
         $sectionRepository = new SectionRepository;
         $sectionRepository->setLimit($request->input('limit', 10));
         $sectionRepository->setOffset($request->input('offset', 0));
+        $premiumFlag = $request->input('premium', false);
         if ($goodsType === 'dvd') {
             $sectionRepository->setSupplementVisible(true);
         }
-
         $section = $sectionRepository->normal($goodsType, $saleType, $sectionName);
         if ($section->getTotalCount() == 0) {
             throw new NoContentsException;
@@ -126,6 +126,11 @@ $router->group([
             'totalCount' => $section->getTotalCount(),
             'rows' => $section->getRows()
         ];
+        if ($premiumFlag !== 'true') {
+            foreach ($response['rows'] as $rowKey => $row) {
+                unset($response['rows'][$rowKey]['isPremium']);
+            }
+        }
         return response()->json($response)->header('X-Accel-Expires', '600');
     });
 

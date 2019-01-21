@@ -151,9 +151,9 @@ class SectionRepository extends BaseRepository
             if ($goodsType === 1 && $saleType === 1) {
                 // 取得できたら設定する
                 if(array_key_exists($section->work_id, $workListPremium)) {
-                    $row['is_premium'] = ($workListPremium[$section->work_id] === 1)? true: false;
+                    $row['isPremium'] = ($workListPremium[$section->work_id] === 1)? true: false;
                 } else {
-                    $row['is_premium'] = false;
+                    $row['isPremium'] = false;
                 }
             }
 

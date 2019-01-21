@@ -331,6 +331,12 @@
  *       description="オフセット",
  *       type="integer"
  *     ),
+ *     @SWG\Parameter(
+ *       name="premium",
+ *       in="query",
+ *       description="プレミアムセクション出力有無",
+ *       type="boolean"
+ *     ),
  *     @SWG\Response(
  *          response=200,
  *          description="success",
