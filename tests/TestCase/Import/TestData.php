@@ -83,7 +83,7 @@ class TestData
 
 
         $baseJsonDir = [
-            'category/premium/dvd/rental' => ['goodsType' => 1, 'saleType' => 1],
+            'category/premium/dvd/rental' => ['goodsType' => 5, 'saleType' => 1],
         ];
         foreach ($baseJsonDir as $keyDir => $param) {
             File::put($this->testDir . $keyDir . '/base.json', json_encode($this->createBaseJson($param['goodsType'], $param['saleType'])));
@@ -155,7 +155,7 @@ class TestData
 
     private static function createBaseJson($goodsType, $saleType, $updateSuffix = null)
     {
-        return [
+        $data = [
             'goodsType' => $goodsType,
             'saleType' => $saleType,
             'importDateTime' => '2017/12/03 19:00:00',
@@ -277,6 +277,7 @@ class TestData
                 ]
             ]
         ];
+        return $data;
     }
 
     private static function createSectionJson($goodsType, $saleType, $updateSuffix = null, $addRows = false)
@@ -331,8 +332,13 @@ class TestData
             $jan[2] = '4571237660672'; // 妖怪ウォッチバスターズ 白犬隊
             $text = 'text_4_1';
             $subtitle = 'subtitle_4_1';
+        } elseif ($goodsType === 5) {
+            $jan[0] = '089937132'; // キングダム 19
+            $jan[1] = '082394367'; // 黒子のバスケ 9
+            $jan[2] = '089939640'; // 尾根のかなたに ～父と息子の日航機墜落事故～ 後編
+            $text = 'text_5_1';
+            $subtitle = 'subtitle_5_1';
         }
-
         $data = [
             'goodsType' => $goodsType,
             'saleType' => $saleType,
