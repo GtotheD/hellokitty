@@ -74,6 +74,12 @@
  *       description="オフセット",
  *       type="integer"
  *     ),
+ *     @SWG\Parameter(
+ *       name="premium",
+ *       in="query",
+ *       description="プレミアムセクション出力有無",
+ *       type="boolean"
+ *     ),
  *     @SWG\Response(response=200, description="Success"),
  *     @SWG\Response(response=204, description="Contents not found"),
  *     @SWG\Response(response=401, description="Auth error"),
