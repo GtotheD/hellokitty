@@ -266,6 +266,9 @@ class WorkRepository extends BaseRepository
                     if($tempData['itemType'] == 'book') {
                         $tempData['bookSeriesName'] = $itemWork['bookSeriesName'];
                     }
+                    // プレミアムフラグ(作品ベースの情報)
+                    $tempData['isPremium'] = $itemWork['isPremium'];
+
                     array_push($workDataFormat, $tempData);
                     $count ++;
                     continue;
@@ -402,7 +405,6 @@ class WorkRepository extends BaseRepository
         } else {
             $workArray = $this->work->selectCamel($selectColumns)->getAll();
         }
-        // productsからとってくるが、仮データ
         foreach ($workArray as $workItem) {
             $row = (array)$workItem;
             if ($workOnly) {
@@ -587,6 +589,12 @@ class WorkRepository extends BaseRepository
         if ($response['workTypeId'] === self::WORK_TYPE_THEATER) {
             $response['saleType'] = self::SALE_TYPE_THEATER;
         }
+
+        // プレミアムフラグ(作品ベースの情報)
+        $response['isPremium'] = ($response['isPremiumShop'] === 1)? true: false;
+        // もとの情報は削除
+        unset($response['isPremiumNet']);
+        unset($response['isPremiumShop']);
 
         if ($addSaleTypeHas) {
             if($response['workTypeId'] === self::WORK_TYPE_THEATER) {

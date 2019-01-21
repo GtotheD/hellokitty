@@ -142,7 +142,7 @@ $router->group([
         $sectionRepository->setSupplementVisible(true);
 
         // プレミアムフラグを渡して取得
-        $section = $sectionRepository->normal('dvd', 'rental', $sectionName, true);
+        $section = $sectionRepository->normal('premiumDvd', 'rental', $sectionName, true);
         if ($section->getTotalCount() == 0) {
             throw new NoContentsException;
         }
@@ -803,6 +803,7 @@ $router->group([
 
     // Favorite works
     $router->post('/work/bulk', function (Request $request) {
+        $premiumFlag = $request->input('premium', false);
         $body_obj = json_decode($request->getContent(), true);
         $saleType = isset($body_obj['saleType']) ? $body_obj['saleType'] : '';
         // Check if have no data for input saleType
@@ -818,6 +819,7 @@ $router->group([
         // Covert urlCd to id if have
         $workIdsArray = $workRepository->convertUrlCdToWorkId($idsArray);
         $ageLimitCheck = isset($body_obj['ageLimitCheck']) ? $body_obj['ageLimitCheck'] : false;
+        $ageLimitCheck = isset($body_obj['ageLimitCheck']) ? $body_obj['ageLimitCheck'] : false;
         $workRepository->setAgeLimitCheck($ageLimitCheck);
         $workRepository->setSaleType($saleType);
         // Get work data
@@ -827,6 +829,13 @@ $router->group([
         }
         // Format output work data
         $workDataFormat = $workRepository->formatOutputBulk($workIdsArray, $workData);
+        // プレミアムフラグを返却しないようにする。
+        // 現状はDVDレンタルの為、臨時対応として取得元で制御は行わない
+        if ($premiumFlag !== 'true') {
+            foreach ($workDataFormat as $rowKey => $row) {
+                unset($workDataFormat[$rowKey]['isPremium']);
+            }
+        }
         $response = [
             'hasNext' => false,
             'totalCount' => count($workDataFormat),
