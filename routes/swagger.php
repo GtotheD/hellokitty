@@ -991,14 +991,14 @@
  *             @SWG\Items(
  *                  type="string",
  *             ),
- *         ),
- *         @SWG\Property(
- *             property="premium",
- *             type="boolean",
- *             example= false,
- *             description="プレミアムフラグ出力要否 false = 出力しない（デフォルト及び無指定）,出力する = true"
  *         )
  *       )
+ *     ),
+ *     @SWG\Parameter(
+ *       name="premium",
+ *       in="query",
+ *       description="プレミアムセクション出力有無",
+ *       type="boolean"
  *     ),
  *     @SWG\Response(
  *          response=200,

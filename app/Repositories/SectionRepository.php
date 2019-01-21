@@ -148,7 +148,7 @@ class SectionRepository extends BaseRepository
             $row['saleStartDate'] = $structureList->is_release_date == 1 ? $this->dateFormat($section->sale_start_date) : null;
 
             // todo: 一旦はDVDレンタルのみフラグを付与
-            if ($goodsType === 1 && $saleType === 1) {
+            if (($goodsType === 5 || $goodsType === 1) && $saleType === 1) {
                 // 取得できたら設定する
                 if(array_key_exists($section->work_id, $workListPremium)) {
                     $row['isPremium'] = ($workListPremium[$section->work_id] === 1)? true: false;

@@ -11,10 +11,10 @@ use Illuminate\Support\Facades\Log;
 use \App\Libraries\Security;
 
 /**
- * Class RentalUseRegistrationRepository
+ * Class StatusPremiumRepository
  * @package App\Repositories
  */
-class StatusPremium extends BaseRepository
+class StatusPremiumRepository extends BaseRepository
 {
     private $tolId;
     private $memId;
