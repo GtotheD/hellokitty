@@ -58,7 +58,9 @@ $router->group([
         $structureRepository = new StructureRepository;
         $structureRepository->setLimit($request->input('limit', 10));
         $structureRepository->setOffset($request->input('offset', 0));
-        $structures = $structureRepository->get($goodsType, $saleType);
+        // プレミアム対応にてAPIバージョンをv4にあげない為、旧アプリへsectionType=6を出さないようにする対応
+        $isPremium = (bool)$request->input('premium', false);
+        $structures = $structureRepository->get($goodsType, $saleType, $isPremium);
         if ($structures->getTotalCount() == 0) {
             throw new NoContentsException;
         }
@@ -122,7 +124,9 @@ $router->group([
             throw new NoContentsException;
         }
         $response = [
-            'data' => current($section->getRows())
+            'hasNext' => $section->getHasNext(),
+            'totalCount' => $section->getTotalCount(),
+            'rows' => $section->getRows()
         ];
         return response()->json($response)->header('X-Accel-Expires', '600');
     });
