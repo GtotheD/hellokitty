@@ -72,6 +72,24 @@ $router->group([
         return response()->json($response)->header('X-Accel-Expires', '600');
     });
 
+    // コンテンツ構成取得API
+    $router->get('structure/premium/dvd/rental', function (Request $request) {
+        $structureRepository = new StructureRepository;
+        $structureRepository->setLimit($request->input('limit', 10));
+        $structureRepository->setOffset($request->input('offset', 0));
+        $structures = $structureRepository->get('premiumDvd', 'rental', true);
+
+        if ($structures->getTotalCount() == 0) {
+            throw new NoContentsException;
+        }
+        $response = [
+            'hasNext' => $structures->getHasNext(),
+            'totalCount' => $structures->getTotalCount(),
+            'rows' => $structures->getRows(),
+        ];
+        return response()->json($response)->header('X-Accel-Expires', '600');
+    });
+
     // 固定コンテンツ取得API
     $router->get('fixed/banner', function (Request $request) {
         $bannerRepository = new BannerRepository;

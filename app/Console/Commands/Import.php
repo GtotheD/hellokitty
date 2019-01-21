@@ -254,6 +254,23 @@ class Import extends Command
                     'saleTypeCode' => $saleTypeCode,
                     'timestamp' => $timestamp
                 ];
+            } else if ($explodeFilePath[0] === self::CATEGORY_DIR &&
+                $explodeFilePath[1] === self::PREMIUM_DIR &&
+                (array_key_exists(4, $explodeFilePath) &&
+                    $explodeFilePath[4] === self::BASE_FILE_NAME)
+            ) {
+                $goodTypeCode = $this->structureRepository->convertGoodsTypeToId($explodeFilePath[2]);
+                $saleTypeCode = $this->structureRepository->convertSaleTypeToId($explodeFilePath[3]);
+                $fileList['category']['base'][] = [
+                    'relative' => $file->getRelativePathname(),
+                    'absolute' => $file->getPathname(),
+                    'filename' => $file->getFilename(),
+                    'goodType' => $explodeFilePath[2],
+                    'saleType' => $explodeFilePath[3],
+                    'goodTypeCode' => 5,
+                    'saleTypeCode' => $saleTypeCode,
+                    'timestamp' => $timestamp
+                ];
             } else if ($explodeFilePath[0] === self::CATEGORY_DIR) {
 
                 if (
@@ -277,29 +294,14 @@ class Import extends Command
                         'timestamp' => $timestamp
                     ];
                 } else {
-                    if($explodeFilePath[1] === self::PREMIUM_DIR) {
-                        $goodTypeCode = $this->structureRepository->convertGoodsTypeToId($explodeFilePath[2]);
-                        $saleTypeCode = $this->structureRepository->convertSaleTypeToId($explodeFilePath[3]);
-                        $fileList['category']['section'][] = [
-                            'relative' => $file->getRelativePathname(),
-                            'absolute' => $file->getPathname(),
-                            'filename' => $file->getFilename(),
-                            'goodType' => $explodeFilePath[2],
-                            'saleType' => $explodeFilePath[3],
-                            'goodTypeCode' => $goodTypeCode,
-                            'saleTypeCode' => $saleTypeCode,
-                            'timestamp' => $timestamp
-                        ];
-                    }
-
                     if (
                         array_key_exists(2, $explodeFilePath) &&
-                        array_search($explodeFilePath[2], self::SUB_CATEGORY_LIST) === false
+                        array_search($explodeFilePath[2], self::SUB_CATEGORY_LIST) === false &&
+                        $explodeFilePath[1] !== self::PREMIUM_DIR
                     ) {
                         continue;
                     }
                 }
-
                 if (array_key_exists(3, $explodeFilePath) &&
                     $explodeFilePath[3] === self::SECTION_DIR_NAME
                     && preg_match('/.*\.json$/', $explodeFilePath[4], $match) === 1
@@ -313,6 +315,24 @@ class Import extends Command
                         'goodType' => $explodeFilePath[1],
                         'saleType' => $explodeFilePath[2],
                         'goodTypeCode' => $goodTypeCode,
+                        'saleTypeCode' => $saleTypeCode,
+                        'timestamp' => $timestamp
+                    ];
+                } elseif (
+                    $explodeFilePath[1] === self::PREMIUM_DIR &&
+                    array_key_exists(4, $explodeFilePath) &&
+                    $explodeFilePath[4] === self::SECTION_DIR_NAME &&
+                    preg_match('/.*\.json$/', $explodeFilePath[5], $match) === 1
+                ) {
+                    $goodTypeCode = $this->structureRepository->convertGoodsTypeToId($explodeFilePath[2]);
+                    $saleTypeCode = $this->structureRepository->convertSaleTypeToId($explodeFilePath[3]);
+                    $fileList['category']['section'][] = [
+                        'relative' => $file->getRelativePathname(),
+                        'absolute' => $file->getPathname(),
+                        'filename' => $file->getFilename(),
+                        'goodType' => $explodeFilePath[2],
+                        'saleType' => $explodeFilePath[3],
+                        'goodTypeCode' => 5,
                         'saleTypeCode' => $saleTypeCode,
                         'timestamp' => $timestamp
                     ];

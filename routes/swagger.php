@@ -89,6 +89,32 @@
  */
 /**
  * @SWG\Get(
+ *     path="/structure/premium/dvd/rental",
+ *     description="プレミアム用のDVD-セルのTOP構造を返却する",
+ *     produces={"application/json"},
+ *     tags={"Top"},
+ *     security={{"api_key":{}}},
+ *     @SWG\Parameter(
+ *       name="limit",
+ *       in="query",
+ *       description="表示件数",
+ *       type="integer"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="offset",
+ *       in="query",
+ *       description="オフセット",
+ *       type="integer"
+ *     ),
+ *     @SWG\Response(response=200, description="Success"),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+/**
+ * @SWG\Get(
  *     path="/structure/dvd/sell",
  *     description="DVD-セルのTOP構造を返却する",
  *     produces={"application/json"},
@@ -945,6 +971,7 @@
  *             property="saleType",
  *             type="string",
  *             description="セルレンタル区分（sell, rental）",
+ *             example= "rental",
  *         ),
  *         @SWG\Property(
  *             property="ageLimitCheck",
@@ -958,6 +985,12 @@
  *             @SWG\Items(
  *                  type="string",
  *             ),
+ *         ),
+ *         @SWG\Property(
+ *             property="premium",
+ *             type="boolean",
+ *             example= false,
+ *             description="プレミアムフラグ出力要否 false = 出力しない（デフォルト及び無指定）,出力する = true"
  *         )
  *       )
  *     ),

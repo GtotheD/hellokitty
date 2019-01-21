@@ -16,6 +16,7 @@ class StructureRepository
     const CD = 2;
     const BOOK = 3;
     const GAME = 4;
+    const PREMIUM_DVD = 5;
 
     const RENTAL = 1;
     const SELL = 2;
@@ -120,6 +121,11 @@ class StructureRepository
             } else {
                 $apiUrl = $structure->api_url;
             }
+            // プレミアムの構成には、apiUrlにフラグを付与する
+            if ($goodsType === self::PREMIUM_DVD &&
+                $structure->section_type !== 1) {
+                $apiUrl .= '?premium=true';
+            }
             $unit = [
                 'sectionType' => $structure->section_type,
                 'title' => $structure->title,
@@ -147,6 +153,8 @@ class StructureRepository
         switch ($goodsType) {
             case 'dvd':
                 return self::DVD;
+            case 'premiumDvd':
+                return self::PREMIUM_DVD;
             case 'book':
                 return self::BOOK;
             case 'cd':
