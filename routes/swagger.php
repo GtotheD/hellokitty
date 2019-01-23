@@ -2045,7 +2045,7 @@
  *         description="success",
  *         @SWG\Schema(
  *             @SWG\Property(
- *                 property="responseCd",
+ *                 property="responseCode",
  *                 type="string",
  *                 example="00",
  *                 description="TOL-APIが呼んでいるAPIのレスポンス"
