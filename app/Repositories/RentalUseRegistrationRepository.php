@@ -94,7 +94,7 @@ class RentalUseRegistrationRepository extends BaseRepository
         $tolFlatRentalOperationModel = new TolFlatRentalOperation($this->memId);
         $tolFlatRentalOperationCollection = $tolFlatRentalOperationModel->getDetail();
         if (empty($tolFlatRentalOperationCollection)) {
-            $this->log('Request TOL-API MMC200',
+            $this->log('Request TOL-API MFR001',
                 'Data acquisition error.'
             );
             return false;
@@ -141,6 +141,7 @@ class RentalUseRegistrationRepository extends BaseRepository
         $this->log('Response MMC200 One day before expiration date', $prevMonth1st);
         $this->log('Response MMC200 Member Type', $tolMemberDetail['memberType']);
         $this->log('Response MMC200 W-Card flag', $tolMemberDetail['wCardFlag']);
+        $this->log('Response MMC200 C Member Count', $tolMemberDetail['cMemberInformationSetNumber']);
         $this->log('Response MFR001 Premium Member Status', $tolFlatRentalOperation['responseStatus1']);
         $this->log('Response MRE001 Rental registration status', $tolRentalApplication['rentalRegistrationApplicationStatus']);
         $this->log('Response MRE001 Rental update status', $tolRentalApplication['rentalUpdateApplicationStatus']);
