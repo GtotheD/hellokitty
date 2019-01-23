@@ -8,87 +8,15 @@ use App\Model\Product;
 use App\Model\Work;
 use App\Repositories\WorkRepository;
 
-class PeopleRepository
+class PeopleRepository extends BaseRepository
 {
 
-    protected $sort;
-    protected $offset;
-    protected $limit;
     protected $apiHost;
     protected $apiKey;
-    protected $saleType;
-    protected $totalCount;
 
     public function __construct($sort = 'asc', $offset = 0, $limit = 10)
     {
-        $this->sort = $sort;
-        $this->offset = $offset;
-        $this->limit = $limit;
-    }
-
-
-    /**
-     * @return mixed
-     */
-    public function getHasNext()
-    {
-        return $this->hasNext;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getLimit()
-    {
-        return (int)$this->limit;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getOffset()
-    {
-        return (int)$this->offset;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getTotalCount()
-    {
-        return $this->totalCount;
-    }
-
-    /**
-     * @return Array
-     */
-    public function getRows()
-    {
-        return $this->rows;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPage()
-    {
-        return $this->page;
-    }
-
-    /**
-     * @param mixed $limit
-     */
-    public function setLimit($limit)
-    {
-        $this->limit = $limit;
-    }
-
-    /**
-     * @param mixed $offset
-     */
-    public function setOffset($offset)
-    {
-        $this->offset = $offset;
+        parent::__construct($sort, $offset, $limit);
     }
 
     public function getNarrow($workId, $saleType)
