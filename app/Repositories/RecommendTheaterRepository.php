@@ -133,7 +133,7 @@ class RecommendTheaterRepository extends BaseRepository
         $workRepository->setLimit($this->limit);
         $workRepository->setOffset($this->offset);
         // ソート：お薦め（nullを設定）、アイテム：DVD
-        $response = $workRepository->person($person->personId, $sort, 'dvd' , ['tol']);
+        $response = $workRepository->person($person->person_id, $sort, 'dvd' , ['tol']);
         $this->hasNext = $workRepository->getHasNext();
         $this->totalCount = $workRepository->getTotalCount();
         return $response;

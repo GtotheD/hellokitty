@@ -21,13 +21,6 @@ class PeopleRepository extends BaseRepository
 
     public function getNarrow($workId, $saleType)
     {
-        $ignoreColumn = [
-            'id',
-            'product_unique_id',
-            'created_at',
-            'updated_at'
-        ];
-
         $productRepository = new ProductRepository();
         $work = new Work();
         $workData = $work->setConditionByWorkId($workId)->getOne();
@@ -39,57 +32,16 @@ class PeopleRepository extends BaseRepository
         if (!$newestProduct) {
             throw new NoContentsException();
         }
-        $peopleModel = new People();
-        $column = [
-            'person_id',
-            'person_name',
-            'role_id',
-            'role_name',
-        ];
-
-        $peopleCount = $peopleModel->setConditionByProduct($newestProduct->product_unique_id)->count();
-
-        $this->totalCount = $peopleCount ?: 0;
-        if ($this->totalCount === 0) return null;
-
-        $people = $peopleModel->setConditionByProduct($newestProduct->product_unique_id)
-            ->select($column)
-            ->toCamel($ignoreColumn)
-            ->limit($this->limit)
-            ->offset($this->offset)
-            ->get($this->limit, $this->offset);
-        if (count($people) + $this->offset < $this->totalCount) {
+        $peopleCollection = collect(json_decode($newestProduct->people));
+        $this->totalCount = $peopleCollection->count();
+        $this->rows = $peopleCollection->splice($this->offset, $this->limit);
+        if (count($this->rows) + $this->offset < $this->totalCount) {
             $this->hasNext = true;
         } else {
             $this->hasNext = false;
         }
-        $response = [
-            'hasNext' => $this->hasNext,
-            'totalCount' => $this->totalCount ,
-            'rows' => $people
-        ];
 
-
-        return $response;
-    }
-
-    public function insert($productId,  $people)
-    {
-        $peopleModel = new People();
-        $peopleBase = $this->format($productId,  $people);
-        return $peopleModel->insert($peopleBase);
-    }
-
-    public function format($productId, $people)
-    {
-        $peopleBase = [];
-        $peopleBase['product_unique_id'] = $productId;
-        $peopleBase['person_id'] = $people['person_id'];
-        $peopleBase['person_name'] = $people['person_name'];
-        $peopleBase['role_id'] = $people['role_id'];
-        $peopleBase['role_name'] = $people['role_name'];
-
-        return $peopleBase;
+        return $this;
     }
 
     /**
@@ -103,21 +55,17 @@ class PeopleRepository extends BaseRepository
      * @throws NoContentsException
      */
     public function getNewsPeople($workId, $saleType = null, $roleId = null) {
-        $people = new People();
         $productRepository = new ProductRepository();
         $newestProduct = $productRepository->getNewestProductByWorkId($workId, $saleType)->getOne();
         if(!$newestProduct) {
             throw new NoContentsException();
         }
-        $peopleConditions = [
-            'product_unique_id'  => $newestProduct->product_unique_id
-        ];
+        $peopleCollection = collect(json_decode($newestProduct->people));
         if($roleId) {
-            $peopleConditions['role_id'] = $roleId;
+            $person = $peopleCollection->where('role_id', $roleId)->first();
+        } else {
+            $person = $peopleCollection->first();
         }
-        return $people->getNewestPeople($peopleConditions);
+        return $person;
     }
-
-
-
 }

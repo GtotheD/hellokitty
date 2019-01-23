@@ -34,7 +34,8 @@ class PeopleRelatedWorksRepository extends BaseRepository
         if (empty($productResult)) {
             return null;
         }
-        $people = $people->setConditionByProduct($productResult->product_unique_id)->getOne();
+        $peopleCollection = collect(json_decode($productResult->people));
+        $people = $peopleCollection->first();
         if (empty($people)) {
             return null;
         }
