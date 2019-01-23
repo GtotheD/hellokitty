@@ -3,15 +3,10 @@
 namespace App\Repositories;
 
 use App\Exceptions\NoContentsException;
-use App\Model\People;
 use App\Model\Work;
 use Log;
 use App\Model\PeopleRelatedWork;
 use App\Model\Product;
-use App\Repositories\HimoRepository;
-use App\Repositories\WorkRepository;
-use App\Repositories\PeopleRepository;
-use App\Repositories\ProductRepository;
 
 class PeopleRelatedWorksRepository extends BaseRepository
 {
@@ -26,9 +21,7 @@ class PeopleRelatedWorksRepository extends BaseRepository
     public function getWorks($workId)
     {
         $product = new Product();
-        $people = new People();
         $himoRepository = new HimoRepository();
-        $workModel = new WorkRepository();
 
         $productResult = $product->setConditionByWorkIdNewestProduct($workId)->getOne();
         if (empty($productResult)) {

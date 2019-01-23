@@ -2,7 +2,6 @@
 
 namespace App\Repositories;
 
-use App\Model\People;
 use App\Model\Product;
 
 class RecommendTheaterRepository extends BaseRepository

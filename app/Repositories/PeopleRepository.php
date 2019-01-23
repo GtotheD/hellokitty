@@ -3,7 +3,6 @@
 namespace App\Repositories;
 
 use App\Exceptions\NoContentsException;
-use App\Model\People;
 use App\Model\Product;
 use App\Model\Work;
 use App\Repositories\WorkRepository;

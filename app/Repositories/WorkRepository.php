@@ -5,7 +5,6 @@ namespace App\Repositories;
 use App\Exceptions\AgeLimitException;
 use App\Model\DiscasProduct;
 use App\Model\MusicoUrl;
-use App\Model\People;
 use App\Model\Work;
 use App\Model\Product;
 use App\Exceptions\NoContentsException;

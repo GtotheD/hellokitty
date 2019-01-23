@@ -6,7 +6,6 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use App\Model\Work;
 use App\Model\Product;
-use App\Model\People;
 use App\Model\PeopleRelatedWork;
 use App\Model\RelatedPeople;
 use App\Model\RelateadWork;
