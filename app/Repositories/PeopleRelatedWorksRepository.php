@@ -73,7 +73,7 @@ class PeopleRelatedWorksRepository extends BaseRepository
         if (!$newestProduct) {
             throw new NoContentsException;
         }
-        $people = $workRepository->getPerson($newestProduct->msdb_item, $newestProduct->product_unique_id);
+        $people = $workRepository->getPerson($newestProduct->msdb_item, $newestProduct->people);
         if (!$people) {
             throw new NoContentsException;
         }

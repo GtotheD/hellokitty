@@ -43,7 +43,6 @@ class TruncateTables extends Command
         $tables = [
             Work::TABLE,
             Product::TABLE,
-            People::TABLE,
             PeopleRelatedWork::TABLE,
             RelatedPeople::TABLE,
             RelateadWork::TABLE,

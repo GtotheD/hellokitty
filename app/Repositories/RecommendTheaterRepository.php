@@ -124,8 +124,8 @@ class RecommendTheaterRepository extends BaseRepository
     {
         $workRepository = new WorkRepository();
         $productModel = new Product();
-        $product = $productModel->setConditionByWorkId($workId)->selectCamel(['product_unique_id'])->getOne();
-        $person = $this->getPerson($personIds, $product->productUniqueId);
+        $product = $productModel->setConditionByWorkId($workId)->selectCamel(['people'])->getOne();
+        $person = $this->getPerson($personIds, $product->people);
         if(empty($person)) {
             return null;
         }
@@ -142,12 +142,12 @@ class RecommendTheaterRepository extends BaseRepository
     /*
      * ロールID順にキャストスタップを取得する。
      */
-    public function getPerson($roleIds, $productUniqueId)
+    public function getPerson($roleIds, $peopleJson)
     {
-        $people = new People();
+        $peopleCollection = collect(json_decode($peopleJson));
         $person = null;
         foreach ($roleIds as $roleId) {
-            $person = $people->setConditionByRoleId($productUniqueId, $roleId)->toCamel()->getOne();
+            $person = $peopleCollection->where('role_id', $roleId)->first();
             if (!empty($person)) break;
         }
         return $person;

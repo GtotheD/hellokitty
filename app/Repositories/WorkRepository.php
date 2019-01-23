@@ -459,7 +459,7 @@ class WorkRepository extends BaseRepository
             if ($product['msdbItem'] === 'game') {
                 $response['supplement'] = $product['gameModelName'];
             } else {
-                $person = $this->getPerson($product['msdbItem'], $product['productUniqueId']);
+                $person = $this->getPerson($product['msdbItem'], $product['people']);
                 if (!empty($person)) {
                     $response['personId'] = $person->person_id;
                     $response['supplement'] = $person->person_name;
@@ -607,24 +607,25 @@ class WorkRepository extends BaseRepository
         return $response;
     }
 
-    function getPerson($msdbItem, $productUniqueId)
+    function getPerson($msdbItem, $peopleJson)
     {
-        $people = new People;
         $roleId = null;
         $person = null;
+        $peopleCollection = collect(json_decode($peopleJson));
 
         if ($msdbItem === 'book') {
-            foreach (self::HIMO_ROLE_ID_BOOK as $id) {
-                $person = $people->setConditionByRoleId($productUniqueId, $id)->getOne();
-                if (!empty($person)) break;
-            }
+            $roleIds = self::HIMO_ROLE_ID_BOOK;
         } elseif ($msdbItem === 'audio' || $msdbItem === 'video') {
-            foreach (self::HIMO_ROLE_ID_MUSIC as $id) {
-                $person = $people->setConditionByRoleId($productUniqueId, $id)->getOne();
+            $roleIds = self::HIMO_ROLE_ID_MUSIC;
+        }
+        if (!empty($roleIds)) {
+            foreach ($roleIds as $roleId) {
+                $person = $peopleCollection->where('role_id', $roleId)->first();
                 if (!empty($person)) break;
             }
+            return $person;
         }
-        return $person;
+        return null;
     }
 
 
@@ -640,13 +641,11 @@ class WorkRepository extends BaseRepository
     public function insertWorkData($himoResult)
     {
         $productRepository = new ProductRepository();
-        $peopleRepository = new PeopleRepository();
         // Create transaction for insert multiple tables
         DB::beginTransaction();
         try {
             $workData = [];
             $productData = [];
-            $peopleData = [];
             $musicoUrlInsertArray = [];
             $discasCCCprodctIdInsertArray = [];
             foreach ($himoResult['results']['rows'] as $row) {
@@ -656,7 +655,6 @@ class WorkRepository extends BaseRepository
                 $isMusicVideo = false;
                 $discasCCCprodctId = null;
                 $hasTol = false;
-                $deleteProduct = [];
                 foreach ($row['products'] as $product) {
                     // ダウンロード用のデータ生成
                     // 単一想定
@@ -677,14 +675,6 @@ class WorkRepository extends BaseRepository
                         $isMusicVideo = true;
                     }
                     $productData[] = $productRepository->format($row['work_id'], $product, $isMusicVideo);
-                    // 削除対象のIDを抽出
-                    $deleteProduct[] = $product['id'];
-                    // Insert people
-                    if ($people = array_get($product, 'people')) {
-                        foreach ($people as $person) {
-                            $peopleData[] = $peopleRepository->format($product['id'], $person);
-                        }
-                    }
                 }
                 $workData[] = $this->format($row, false, $hasTol);
 
@@ -702,17 +692,11 @@ class WorkRepository extends BaseRepository
                 }
             }
             $productModel = new Product();
-            $peopleModel = new People();
             $musicoUrl = new MusicoUrl();
             $discasProduct = new DiscasProduct();
 
             $this->work->insertBulk($workData, $insertWorkId);
-
-            // デッドロックがDELETEで起こっていた。
-            // 一日一回DBをTRUNCATEしている為、削除処理はなくす。
-
             $productModel->insertBulk($productData);
-            $peopleModel->insertBulk($peopleData);
             $musicoUrl->insertBulk($musicoUrlInsertArray);
             $discasProduct->insertBulk($discasCCCprodctIdInsertArray);
 
