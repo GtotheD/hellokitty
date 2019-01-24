@@ -4,7 +4,6 @@ namespace App\Model;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
-use App\Model\Product;
 
 /**
  * Created by PhpStorm.
@@ -42,14 +41,16 @@ class Work extends Model
     const WORK_TYPE_MUSIC_UNIT = '6';
     const WORK_TYPE_THEATER = '7';
 
-    function __construct()
+    function __construct($connection = null)
     {
         parent::__construct(self::TABLE);
+        $this->setConnection($connection);
     }
 
     public function setConditionByWorkId($workId)
     {
-        $this->dbObject = DB::table($this->table)
+        // コネクションを切り替えるために、メンバ変数のコネクションを利用する。
+        $this->dbObject = $this->connection->table($this->table)
             ->where([
                 'work_id' => $workId,
             ]);
@@ -101,12 +102,14 @@ class Work extends Model
     }
 
     /**
-     * Get all work_id not in workdIds array
-     *
-     * @param $workIds
-    */
-    public function getWorkIdsIn($workIds = []) {
-        $this->dbObject = DB::table($this->table)
+     * 作品をINで検索する。
+     * @param array $workIds
+     * @return $this
+     */
+    public function getWorkIdsIn($workIds = [])
+    {
+        // コネクションを切り替えるために、メンバ変数のコネクションを利用する。
+        $this->dbObject = $this->connection->table($this->table)
             ->whereIn('work_id', $workIds);
         return $this;
     }

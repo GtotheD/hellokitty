@@ -2,14 +2,13 @@
 
 namespace App\Repositories;
 
-use App\Exceptions\AgeLimitException;
 use App\Model\DiscasProduct;
 use App\Model\MusicoUrl;
 use App\Model\People;
 use App\Model\Work;
 use App\Model\Product;
 use App\Exceptions\NoContentsException;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Created by PhpStorm.
@@ -162,6 +161,8 @@ class WorkRepository extends BaseRepository
     public function get($workId, $selectColumns = null, $idType = '0102', $addSaleTypeHas = true)
     {
         $product = new Product;
+        // workでのコネクションをwriteに切り替える
+        $this->work->setConnection('mysql::write');
         $response = [];
         $productResult = null;
         switch ($idType) {
@@ -285,6 +286,7 @@ class WorkRepository extends BaseRepository
     public function getWorkByUrlCd($workId, $selectColumns = null, $idType)
     {
         $product = new Product;
+        $this->work->setConnection('mysql::write');
         $response = [];
         $productResult = null;
         $productResult = (array)$this->work->setConditionByUrlCd($workId, $this->saleType)->getOne();
@@ -327,6 +329,7 @@ class WorkRepository extends BaseRepository
     public function getWorkList($workIds, $selectColumns = null, $idType = null, $workOnly = false, $saleType = null)
     {
         $himo = new HimoRepository();
+        $this->work->setConnection('mysql::write');
         $workIdsExistedArray = [];
         switch ($idType) {
             case '0105':
