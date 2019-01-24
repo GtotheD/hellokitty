@@ -66,6 +66,7 @@ return [
             'prefix'    => env('DB_PREFIX', ''),
             'strict'    => env('DB_STRICT_MODE', false),
             'options'   => [PDO::MYSQL_ATTR_LOCAL_INFILE=>true],
+            'sticky'    => true,
         ]
     ],
 

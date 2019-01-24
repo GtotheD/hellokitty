@@ -1,23 +1,31 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: ayumu
- * Date: 2017/11/13
- * Time: 18:34
- */
 namespace App\Model;
+
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
+
 class Model
 {
     protected $table;
     protected $dbObject;
     protected $limit;
     protected $offset;
+    protected $connection;
+
     function __construct($table)
     {
         $this->table = $table;
     }
+
+    public function setConnection($connectionName = null)
+    {
+        if(empty($connectionName)) {
+            $this->connection = DB::connection();
+        } else {
+            $this->connection = DB::connection($connectionName);
+        }
+    }
+
     public function getDbObject()
     {
         return $this->dbObject;
@@ -109,9 +117,13 @@ class Model
     }
     public function bulkInsertOnDuplicateKey($insertData, $updateIdString = null)
     {
+        // databaseコンフィグでsticky設定していた場合に有効になるように設定。
+        // 更新系だと認識させる。
+        DB::recordsHaveBeenModified();
         if (empty($insertData)){
             return null;
         }
+        // 常にWriteの見る為、getPdoにて取得（readのみならgetReadPdoになる）
         $pdo = DB::connection()->getPdo();
         // 一行目からキーを取得
         foreach ($insertData[0] as $columnName => $value) {
