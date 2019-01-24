@@ -389,6 +389,8 @@ class ProductRepository extends BaseRepository
         $productBase['play_time'] = $product['play_time'];
         $productBase['jacket_l'] = trimImageTag($product['jacket_l']);
         $productBase['docs'] = json_encode($product['docs']);
+        // peopleテーブルのインサートが遅い為、productsテーブルに集約
+        $productBase['people'] = json_encode($product['people']);
         $productBase['sale_start_date'] = $product['sale_start_date'];
         if ($product['msdb_item'] === 'audio') {
             $productBase['contents'] = $this->getDetail($product['product_id'], $product['product_type_id']);
