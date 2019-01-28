@@ -44,6 +44,9 @@ class RentalUseRegistrationRepository extends BaseRepository
      */
     public function get()
     {
+//        $csv = '201,4.0.0,0000,9000,9000,9000,20190117,111001,00,,,0000916000110317,V,つたや　たろう,蔦屋　太郎,東京都渋谷区南平台町,１６−１７,150-0036,03-1234-5678,080-2345-6789,19801122,1,20180823,20190822,0,,,,0,2,00,,,9160,9160,20180823,20180823170418,20180823170418,0,,,,,,,,0,00';
+//        dd(urlencode(mb_convert_encoding($csv, "SJIS", "UTF-8")));
+
         Log::info('rental use registration tolId : ' . $this->tolId);
         $this->memId = $this->decodeMemid($this->key, $this->tolId);
         Log::info('convert tolId : ' . $this->tolId . ' -> ' . $this->memId );
@@ -89,7 +92,6 @@ class RentalUseRegistrationRepository extends BaseRepository
             );
             return false;
         }
-
         // 定額レンタル操作 mfr001
         $tolFlatRentalOperationModel = new TolFlatRentalOperation($this->memId);
         $tolFlatRentalOperationCollection = $tolFlatRentalOperationModel->getDetail();
@@ -144,7 +146,6 @@ class RentalUseRegistrationRepository extends BaseRepository
         $this->log('Response MMC200 C Member Count', $tolMemberDetail['cMemberInformationSetNumber']);
         $this->log('Response MFR001 Premium Member Status', $tolFlatRentalOperation['responseStatus1']);
         $this->log('Response MRE001 Rental registration status', $tolRentalApplication['rentalRegistrationApplicationStatus']);
-        $this->log('Response MRE001 Rental update status', $tolRentalApplication['rentalUpdateApplicationStatus']);
         $this->log('Response MRE001 Rental update status', $tolRentalApplication['rentalUpdateApplicationStatus']);
         $this->log('Response MRE001 Identification flag', $tolRentalApplication['identificationConfirmationNecessityFlag']);
 
