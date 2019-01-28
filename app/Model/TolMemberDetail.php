@@ -88,8 +88,6 @@ class TolMemberDetail extends TolBaseModel
             return false;
         }
         $csv = current($memberDetailXml->responseData);
-//        dd(mb_convert_encoding(urldecode($csv), "UTF-8", "SJIS"));
-
         // C会員情報セット件数を取得してヘッダの数を変更する
         $csvObj = current($this->getCollectionFromCSV($this->baseHeader, $csv)->all());
         // 1以上だった場合は、数分$repeatHeaderを付与する
