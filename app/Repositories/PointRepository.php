@@ -172,7 +172,7 @@ class PointRepository
     private function refresh()
     {
         $pointDetailsModel = new PointDetails();
-        // Marsからポイント詳細情報を取得する
+        // AQUAからポイント詳細情報を取得する
         $this->log('TPOINT Sysytem ID', $this->systemId);
 
         $pointDetail = $this->getPointDetails();
@@ -181,7 +181,7 @@ class PointRepository
             $this->log('TPOINT Request', 'Data acquisition error.');
             return false;
         }
-        $this->log('TPOINT Request ResponseCode', $pointDetail['responseCode']);
+        $this->log('TPOINT Response ResponseCode', $pointDetail['responseCode']);
         if (
             $pointDetail['responseCode'] !== '00' &&
             $pointDetail['responseCode'] !== '14'
@@ -245,9 +245,9 @@ class PointRepository
         $fromDb = new Carbon();
         $addHour = new Carbon($this->updatedAt);
         $this->log('TPOINT Check Cache Now Time', $fromDb);
-        $this->log('TPOINT Check Cache Cache Last Update Time', $addHour);
+        $this->log('TPOINT Check Cache Last Update Time', $addHour);
         $addHour = $addHour->addMinutes($this->fixedPointCacheLimitMinute);
-        $this->log('TPOINT Check Cache Cache Next Update Time', $addHour->addMinutes($this->fixedPointCacheLimitMinute));
+        $this->log('TPOINT Check Cache Next Update Time', $addHour->addMinutes($this->fixedPointCacheLimitMinute));
 
         if ($fromDb->gte($addHour)) {
             $this->log('TPOINT Limit Time', 'TRUE');
