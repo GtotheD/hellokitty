@@ -50,7 +50,6 @@ class TruncateTables extends Command
             Series::TABLE,
             MusicoUrl::TABLE,
             DiscasProduct::TABLE,
-            PointDetails::TABLE
         ];
 
         $tpointOnly = $this->option('tpoint-only');
