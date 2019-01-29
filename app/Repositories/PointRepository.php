@@ -65,11 +65,11 @@ class PointRepository
 
         // MemIdをもとにDBから値を取得してセットする。
         $isSet = $this->setPointDetail();
-
         // 初回でセット出来なった場合
         // リフレッシュフラグがtrueだった場合
         // 期限切れだった場合はリフレッシュ
         if ($isSet === false || $refreshFlg === true || $this->checkLimitTime()) {
+            $this->log('TPOINT', ' Refresh.');
             // 強制的にリフレッシュ
             $refreshResult =  $this->refresh();
             if ($refreshResult === false) {
@@ -77,8 +77,9 @@ class PointRepository
             }
             // 再セット
             $this->setPointDetail();
+        } else {
+            $this->log('TPOINT', 'Use Cache.');
         }
-
     }
 
     /**
@@ -172,17 +173,27 @@ class PointRepository
     {
         $pointDetailsModel = new PointDetails();
         // Marsからポイント詳細情報を取得する
+        $this->log('TPOINT Sysytem ID', $this->systemId);
+
         $pointDetail = $this->getPointDetails();
+
         if ($pointDetail === false) {
+            $this->log('TPOINT Request', 'Data acquisition error.');
             return false;
         }
+        $this->log('TPOINT Request ResponseCode', $pointDetail['responseCode']);
         if (
             $pointDetail['responseCode'] !== '00' &&
             $pointDetail['responseCode'] !== '14'
         ) {
+            $this->log('TPOINT', 'Is Maintenance.');
             return false;
         }
         $nowDateTime = Carbon::now();
+        $this->log('TPOINT Response Membership Type', $pointDetail['membershipType']);
+        $this->log('TPOINT Response T-Point', $pointDetail['point']);
+        $this->log('TPOINT Response Fixed T-Point Total', $pointDetail['fixedPointTotal']);
+        $this->log('TPOINT Response Fixed T-Point Min Limit Time', $pointDetail['fixedPointMinLimitTime']);
         $updateParam = [
                 [
                     'mem_id' => $this->memId,
@@ -210,6 +221,7 @@ class PointRepository
         } else {
             $shopCode = self::SHOP_CODE_TAP;
         }
+        $this->log('TPOINT Request Shop Code', $shopCode);
         $tolPointModel = new TolPoint($this->memId);
         $tolPointResponse = $tolPointModel->getDetail($shopCode);
         if (empty($tolPointResponse)) {
@@ -232,10 +244,22 @@ class PointRepository
     {
         $fromDb = new Carbon();
         $addHour = new Carbon($this->updatedAt);
-        if ($fromDb->gte($addHour->addMinutes($this->fixedPointCacheLimitMinute))) {
+        $this->log('TPOINT Check Cache Now Time', $fromDb);
+        $this->log('TPOINT Check Cache Cache Last Update Time', $addHour);
+        $addHour = $addHour->addMinutes($this->fixedPointCacheLimitMinute);
+        $this->log('TPOINT Check Cache Cache Next Update Time', $addHour->addMinutes($this->fixedPointCacheLimitMinute));
+
+        if ($fromDb->gte($addHour)) {
+            $this->log('TPOINT Limit Time', 'TRUE');
             return true;
         }
+        $this->log('TPOINT Limit Time', 'FALSE');
         return false;
+    }
+
+    private function log($title, $message)
+    {
+        Log::info("MEM_ID:" . $this->memId . " → " . $title . " : " . $message);
     }
 
 }
