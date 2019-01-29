@@ -89,7 +89,6 @@ class RentalUseRegistrationRepository extends BaseRepository
             );
             return false;
         }
-
         // 定額レンタル操作 mfr001
         $tolFlatRentalOperationModel = new TolFlatRentalOperation($this->memId);
         $tolFlatRentalOperationCollection = $tolFlatRentalOperationModel->getDetail();
@@ -144,7 +143,6 @@ class RentalUseRegistrationRepository extends BaseRepository
         $this->log('Response MMC200 C Member Count', $tolMemberDetail['cMemberInformationSetNumber']);
         $this->log('Response MFR001 Premium Member Status', $tolFlatRentalOperation['responseStatus1']);
         $this->log('Response MRE001 Rental registration status', $tolRentalApplication['rentalRegistrationApplicationStatus']);
-        $this->log('Response MRE001 Rental update status', $tolRentalApplication['rentalUpdateApplicationStatus']);
         $this->log('Response MRE001 Rental update status', $tolRentalApplication['rentalUpdateApplicationStatus']);
         $this->log('Response MRE001 Identification flag', $tolRentalApplication['identificationConfirmationNecessityFlag']);
 

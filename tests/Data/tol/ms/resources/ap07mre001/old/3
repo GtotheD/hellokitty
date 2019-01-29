@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+      <status>0</status>
+      <requestParam1>denbunkbn = xxxxx</requestParam1>
+      <requestParam2>ver = xxxxx</requestParam2>
+      <requestParam3>response_type = xxxxx</requestParam3>
+      <requestParam4>shori_seq = xxxxx</requestParam4>
+      <requestParam5>shori_timestamp = xxxxx</requestParam5>
+      <requestParam6>return_cd = xxxxx</requestParam6>
+      <requestParam7>return_cd_error_detail = xxxxx</requestParam7>
+      <requestParam8>message = xxxxx</requestParam8>
+      <requestParam9>kigyocd = xxxxx</requestParam9>
+      <requestParam10>miseno = xxxxx</requestParam10>
+      <requestParam11>wsno = xxxxx</requestParam11>
+      <requestParam12>atsukaicd = xxxxx</requestParam12>
+      <requestParam13>requestdate = xxxxx</requestParam13>
+      <requestParam14>requesttime = xxxxx</requestParam14>
+      <requestParam15>kaino = xxxxx</requestParam15>
+      <requestParam16>oldkaino = xxxxx</requestParam16>
+      <requestParam17>stnaibukanrino = xxxxx</requestParam17>
+      <requestParam18>accountid = xxxxx</requestParam18>
+      <requestParam19>rentaltorokushinseistatus = xxxxx</requestParam19>
+      <requestParam20>rentalkoshinshinseistatus = xxxxx</requestParam20>
+      <requestParam21>johohenkoshinseistatus = xxxxx</requestParam21>
+      <requestParam22>honninkakuninyohi = xxxxx</requestParam22>
+      <requestParam23>honninkakunindate = xxxxx</requestParam23>
+      <requestParam24>syorikigyocd = xxxxx</requestParam24>
+      <requestParam25>shinseitenpocd = xxxxx</requestParam25>
+      <requestParam26>syoridate = xxxxx</requestParam26>
+      <requestParam27>kanjimei = xxxxx</requestParam27>
+      <requestParam28>kanamei = xxxxx</requestParam28>
+      <requestParam29>yubinno = xxxxx</requestParam29>
+      <requestParam30>jusho1 = xxxxx</requestParam30>
+      <requestParam31>denwano1 = xxxxx</requestParam31>
+      <requestParam32>denwano2 = xxxxx</requestParam32>
+      <requestParam33>tanjoubi = xxxxx</requestParam33>
+      <requestParam34>seibetsu = xxxxx</requestParam34>
+      <requestParam35>kairank = xxxxx</requestParam35>
+      <requestParam36>nyukaibi = xxxxx</requestParam36>
+      <requestParam37>yukokigen = xxxxx</requestParam37>
+      <requestParam38>kaishubetsu = xxxxx</requestParam38>
+      <requestParam39>dmstopkbn = xxxxx</requestParam39>
+      <requestParam40>koshintimestamp = xxxxx</requestParam40>
+      <responseData>
+            <response>
+                  <common>
+                        <denbunkbn>241</denbunkbn>
+                        <ver>1.0.0</ver>
+                        <response_type>xml</response_type>
+                        <shori_seq>wQm40G9Qe0</shori_seq>
+                        <shori_timestamp>20181101120059999</shori_timestamp>
+                        <return_cd>C1001</return_cd>
+                        <return_cd_error_detail></return_cd_error_detail>
+                        <message>successful completion</message>
+                    </common>
+                    <detail>
+                        <kigyocd></kigyocd>
+                        <miseno></miseno>
+                        <wsno></wsno>
+                        <atsukaicd></atsukaicd>
+                        <requestdate></requestdate>
+                        <requesttime></requesttime>
+                        <kaino>1234567890123456</kaino>
+                        <oldkaino></oldkaino>
+                        <stnaibukanrino>1234567890123456</stnaibukanrino>
+                        <accountid>1234567890</accountid>
+                        <rentaltorokushinseistatus>2</rentaltorokushinseistatus>
+                        <rentalkoshinshinseistatus>1</rentalkoshinshinseistatus>
+                        <johohenkoshinseistatus>2</johohenkoshinseistatus>
+                        <honninkakuninyohi>0</honninkakuninyohi>
+                        <honninkakunindate>20181101120059</honninkakunindate>
+                        <syorikigyocd>1234</syorikigyocd>
+                        <shinseitenpocd>1234</shinseitenpocd>
+                        <syoridate>20181101120059</syoridate>
+                        <kanjimei>漢字氏名</kanjimei>
+                        <kanamei>かなしめい</kanamei>
+                        <yubinno>123-4567</yubinno>
+                        <jusho1>住所</jusho1>
+                        <denwano1>012-3456-7890</denwano1>
+                        <denwano2></denwano2>
+                        <tanjoubi></tanjoubi>
+                        <seibetsu></seibetsu>
+                        <kairank></kairank>
+                        <nyukaibi></nyukaibi>
+                        <yukokigen></yukokigen>
+                        <kaishubetsu></kaishubetsu>
+                        <dmstopkbn></dmstopkbn>
+                        <koshintimestamp>20181101120059999</koshintimestamp>
+                  </detail>
+            </response>
+      </responseData>
+</root>

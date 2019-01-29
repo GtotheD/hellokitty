@@ -2,6 +2,7 @@
 
 use League\Csv;
 use League\Csv\Writer;
+use Illuminate\Support\Carbon;
 
 class MemberRentalStatusTest extends TestCase
 {
@@ -9,133 +10,160 @@ class MemberRentalStatusTest extends TestCase
     {
         parent::__construct($name, $data, $dataName);
         $this->testDir = __DIR__;
+        Carbon::setTestNow(new Carbon('2018-10-01 00:00:00'));
     }
-
+    /*
+        1 : j5vhV9s8gYTuP4nbYx%2FgvPGEpF%2BOYv7wkTIdfk0qJlc%3D
+        2 : qA7l7%2FoSjyHRjaL7p9k4jPGEpF%2BOYv7wkTIdfk0qJlc%3D
+        3 : zI1eyTYGzH53jae7uc8yhvGEpF%2BOYv7wkTIdfk0qJlc%3D
+        4 : k4ZfPxkZEOast9bDqbnYzfGEpF%2BOYv7wkTIdfk0qJlc%3D
+        5 : AHuaOGkiIRVX%2BBZYQvPMzvGEpF%2BOYv7wkTIdfk0qJlc%3D
+        6 : FaQtl8LeIjey6t5hu7CDcvGEpF%2BOYv7wkTIdfk0qJlc%3D
+        7 : f2NMiQbgQ2sAR6VwylPen%2FGEpF%2BOYv7wkTIdfk0qJlc%3D
+        8 : YC9Dk3IHc1sqIGUGBFxCwvGEpF%2BOYv7wkTIdfk0qJlc%3D
+        9 : ELjrCnorPEOzMcoct6uLhfGEpF%2BOYv7wkTIdfk0qJlc%3D
+        10 : n4vlx5%2FDJoKheOYYNFuPbvGEpF%2BOYv7wkTIdfk0qJlc%3D
+        11 : uyfcqotdA3UEPq6FRhmutPGEpF%2BOYv7wkTIdfk0qJlc%3D
+        12 : Ec%2BXPR9JqRMYZb%2B7OQcWTvGEpF%2BOYv7wkTIdfk0qJlc%3D
+        13 : RTt6G3UbVxzZpIfs86T6avGEpF%2BOYv7wkTIdfk0qJlc%3D
+        14 : XVK8OHWvANbEKsQqF4rGXfGEpF%2BOYv7wkTIdfk0qJlc%3D
+        15 : yZYgLWBBk4RMHXsFaxb1xvGEpF%2BOYv7wkTIdfk0qJlc%3D
+        16 : 9v9W6VweqVmiIK2PyIx50%2FGEpF%2BOYv7wkTIdfk0qJlc%3D
+        17 : UOCJDoHmRGMNGHNj9HXw8vGEpF%2BOYv7wkTIdfk0qJlc%3D
+        18 : GeW6EXlYsG1oEqzoNIWfZ%2FGEpF%2BOYv7wkTIdfk0qJlc%3D
+        19 : eNe27HGNMNHy%2BDavpLl3UfGEpF%2BOYv7wkTIdfk0qJlc%3D
+        20 : KRaA4Dwrv5qt1harfz%2F6CvGEpF%2BOYv7wkTIdfk0qJlc%3D
+        21 : N2GWGHu4TdIQCLrLBRov9PGEpF%2BOYv7wkTIdfk0qJlc%3D
+        22 : xahcuu4%2B9y5Fsj%2BBXNMWkvGEpF%2BOYv7wkTIdfk0qJlc%3D
+        23 : WAZN%2FD72oQuSuJPouaJpk%2FGEpF%2BOYv7wkTIdfk0qJlc%3D
+        24 : Xle3jYSSMsFVCxlGQf83p%2FGEpF%2BOYv7wkTIdfk0qJlc%3D
+        25 : Y%2FJXhpmHjN5mvwNb%2Fp6bXPGEpF%2BOYv7wkTIdfk0qJlc%3D
+   */
     public function data()
     {
         return [
             '項番1' => [
-                'memid' => '1',
+                'tolId' => 'j5vhV9s8gYTuP4nbYx%2FgvPGEpF%2BOYv7wkTIdfk0qJlc%3D',
                 'itemNumber' => 1,
                 'rentalExpirationDate' => ''
             ],
             '項番2' => [
-                'memid' => '2',
+                'tolId' => 'qA7l7%2FoSjyHRjaL7p9k4jPGEpF%2BOYv7wkTIdfk0qJlc%3D',
                 'itemNumber' => 2,
                 'rentalExpirationDate' => ''
             ],
             '項番3' => [
-                'memid' => '3',
+                'tolId' => 'zI1eyTYGzH53jae7uc8yhvGEpF%2BOYv7wkTIdfk0qJlc%3D',
                 'itemNumber' => 3,
                 'rentalExpirationDate' => ''
             ],
             '項番4' => [
-                'memid' => '4',
+                'tolId' => 'k4ZfPxkZEOast9bDqbnYzfGEpF%2BOYv7wkTIdfk0qJlc%3D',
                 'itemNumber' => 4,
                 'rentalExpirationDate' => ''
             ],
             '項番5' => [
-                'memid' => '5',
+                'tolId' => 'AHuaOGkiIRVX%2BBZYQvPMzvGEpF%2BOYv7wkTIdfk0qJlc%3D',
                 'itemNumber' => 5,
                 'rentalExpirationDate' => ''
             ],
             '項番6' => [
-                'memid' => '6',
+                'tolId' => 'FaQtl8LeIjey6t5hu7CDcvGEpF%2BOYv7wkTIdfk0qJlc%3D',
                 'itemNumber' => 1,
                 'rentalExpirationDate' => ''
             ],
             '項番7' => [
-                'memid' => '7',
+                'tolId' => 'f2NMiQbgQ2sAR6VwylPen%2FGEpF%2BOYv7wkTIdfk0qJlc%3D',
                 'itemNumber' => 2,
                 'rentalExpirationDate' => ''
             ],
             '項番8' => [
-                'memid' => '8',
+                'tolId' => 'YC9Dk3IHc1sqIGUGBFxCwvGEpF%2BOYv7wkTIdfk0qJlc%3D',
                 'itemNumber' => 3,
                 'rentalExpirationDate' => ''
             ],
             '項番9' => [
-                'memid' => '9',
+                'tolId' => 'ELjrCnorPEOzMcoct6uLhfGEpF%2BOYv7wkTIdfk0qJlc%3D',
                 'itemNumber' => 4,
                 'rentalExpirationDate' => ''
             ],
             '項番10' => [
-                'memid' => '10',
+                'tolId' => 'n4vlx5%2FDJoKheOYYNFuPbvGEpF%2BOYv7wkTIdfk0qJlc%3D',
                 'itemNumber' => 5,
                 'rentalExpirationDate' => ''
             ],
             '項番11' => [
-                'memid' => '11',
+                'tolId' => 'uyfcqotdA3UEPq6FRhmutPGEpF%2BOYv7wkTIdfk0qJlc%3D',
                 'itemNumber' => 6,
                 'rentalExpirationDate' => ''
             ],
             '項番12' => [
-                'memid' => '12',
+                'tolId' => 'Ec%2BXPR9JqRMYZb%2B7OQcWTvGEpF%2BOYv7wkTIdfk0qJlc%3D',
                 'itemNumber' => 7,
                 'rentalExpirationDate' => ''
             ],
             '項番13' => [
-                'memid' => '13',
+                'tolId' => 'RTt6G3UbVxzZpIfs86T6avGEpF%2BOYv7wkTIdfk0qJlc%3D',
                 'itemNumber' => 8,
                 'rentalExpirationDate' => ''
             ],
             '項番14' => [
-                'memid' => '14',
+                'tolId' => 'XVK8OHWvANbEKsQqF4rGXfGEpF%2BOYv7wkTIdfk0qJlc%3D',
                 'itemNumber' => 8,
                 'rentalExpirationDate' => ''
             ],
             '項番15' => [
-                'memid' => '15',
+                'tolId' => 'yZYgLWBBk4RMHXsFaxb1xvGEpF%2BOYv7wkTIdfk0qJlc%3D',
                 'itemNumber' => 9,
-                'rentalExpirationDate' => '20181215'
+                'rentalExpirationDate' => '2018-12-15 00:00:00'
             ],
             '項番16' => [
-                'memid' => '16',
+                'tolId' => '9v9W6VweqVmiIK2PyIx50%2FGEpF%2BOYv7wkTIdfk0qJlc%3D',
                 'itemNumber' => 10,
-                'rentalExpirationDate' => '20181215'
+                'rentalExpirationDate' => '2018-12-15 00:00:00'
             ],
             '項番17' => [
-                'memid' => '17',
+                'tolId' => 'UOCJDoHmRGMNGHNj9HXw8vGEpF%2BOYv7wkTIdfk0qJlc%3D',
                 'itemNumber' => 11,
-                'rentalExpirationDate' => '20181115'
+                'rentalExpirationDate' => '2018-11-15 00:00:00'
             ],
             '項番18' => [
-                'memid' => '18',
+                'tolId' => 'GeW6EXlYsG1oEqzoNIWfZ%2FGEpF%2BOYv7wkTIdfk0qJlc%3D',
                 'itemNumber' => 12,
-                'rentalExpirationDate' => '20181115'
+                'rentalExpirationDate' => '2018-11-15 00:00:00'
             ],
             '項番19' => [
-                'memid' => '19',
+                'tolId' => 'eNe27HGNMNHy%2BDavpLl3UfGEpF%2BOYv7wkTIdfk0qJlc%3D',
                 'itemNumber' => 13,
-                'rentalExpirationDate' => '20181115'
+                'rentalExpirationDate' => '2018-11-15 00:00:00'
             ],
             '項番20' => [
-                'memid' => '20',
+                'tolId' => 'KRaA4Dwrv5qt1harfz%2F6CvGEpF%2BOYv7wkTIdfk0qJlc%3D',
                 'itemNumber' => 14,
-                'rentalExpirationDate' => '20181115'
+                'rentalExpirationDate' => '2018-11-15 00:00:00'
             ],
             '項番21' => [
-                'memid' => '21',
+                'tolId' => 'N2GWGHu4TdIQCLrLBRov9PGEpF%2BOYv7wkTIdfk0qJlc%3D',
                 'itemNumber' => 15,
-                'rentalExpirationDate' => '20181115'
+                'rentalExpirationDate' => '2018-11-15 00:00:00'
             ],
             '項番22' => [
-                'memid' => '22',
+                'tolId' => 'xahcuu4%2B9y5Fsj%2BBXNMWkvGEpF%2BOYv7wkTIdfk0qJlc%3D',
                 'itemNumber' => 16,
-                'rentalExpirationDate' => '20181115'
+                'rentalExpirationDate' => '2018-11-15 00:00:00'
             ],
             '項番23' => [
-                'memid' => '23',
+                'tolId' => 'WAZN%2FD72oQuSuJPouaJpk%2FGEpF%2BOYv7wkTIdfk0qJlc%3D',
                 'itemNumber' => 6,
                 'rentalExpirationDate' => ''
             ],
             '項番24' => [
-                'memid' => '24',
+                'tolId' => 'Xle3jYSSMsFVCxlGQf83p%2FGEpF%2BOYv7wkTIdfk0qJlc%3D',
                 'itemNumber' => 8,
                 'rentalExpirationDate' => ''
             ],
             '項番25' => [
-                'memid' => '25',
+                'tolId' => 'Y%2FJXhpmHjN5mvwNb%2Fp6bXPGEpF%2BOYv7wkTIdfk0qJlc%3D',
                 'itemNumber' => 17,
                 'rentalExpirationDate' => ''
             ],
@@ -146,10 +174,10 @@ class MemberRentalStatusTest extends TestCase
      * @test
      * @dataProvider data
      */
-    public function パターンチェック($memid,$itemNumber, $rentalExpirationDate)
+    public function パターンチェック($tolid,$itemNumber, $rentalExpirationDate)
     {
         $json = json_encode([
-            'tolId' => $memid,
+            'tolId' => $tolid,
         ]);
 
         $url = '/member/status/rental';
