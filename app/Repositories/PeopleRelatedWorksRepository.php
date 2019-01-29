@@ -3,15 +3,10 @@
 namespace App\Repositories;
 
 use App\Exceptions\NoContentsException;
-use App\Model\People;
 use App\Model\Work;
 use Log;
 use App\Model\PeopleRelatedWork;
 use App\Model\Product;
-use App\Repositories\HimoRepository;
-use App\Repositories\WorkRepository;
-use App\Repositories\PeopleRepository;
-use App\Repositories\ProductRepository;
 
 class PeopleRelatedWorksRepository extends BaseRepository
 {
@@ -26,15 +21,14 @@ class PeopleRelatedWorksRepository extends BaseRepository
     public function getWorks($workId)
     {
         $product = new Product();
-        $people = new People();
         $himoRepository = new HimoRepository();
-        $workModel = new WorkRepository();
 
         $productResult = $product->setConditionByWorkIdNewestProduct($workId)->getOne();
         if (empty($productResult)) {
             return null;
         }
-        $people = $people->setConditionByProduct($productResult->product_unique_id)->getOne();
+        $peopleCollection = collect(json_decode($productResult->people));
+        $people = $peopleCollection->first();
         if (empty($people)) {
             return null;
         }
@@ -73,7 +67,7 @@ class PeopleRelatedWorksRepository extends BaseRepository
         if (!$newestProduct) {
             throw new NoContentsException;
         }
-        $people = $workRepository->getPerson($newestProduct->msdb_item, $newestProduct->product_unique_id);
+        $people = $workRepository->getPerson($newestProduct->msdb_item, $newestProduct->people);
         if (!$people) {
             throw new NoContentsException;
         }

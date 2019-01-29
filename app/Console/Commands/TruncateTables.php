@@ -2,17 +2,18 @@
 
 namespace App\Console\Commands;
 
+use App\Model\PointDetails;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use App\Model\Work;
 use App\Model\Product;
-use App\Model\People;
 use App\Model\PeopleRelatedWork;
 use App\Model\RelatedPeople;
 use App\Model\RelateadWork;
 use App\Model\Series;
 use App\Model\MusicoUrl;
 use App\Model\DiscasProduct;
+use App\Model\TolPoint;
 
 class TruncateTables extends Command
 {
@@ -21,7 +22,7 @@ class TruncateTables extends Command
      *
      * @var string
      */
-    protected $signature = 'TruncateTables';
+    protected $signature = 'TruncateTables {--tpoint-only}';
 
     /**
      * /**
@@ -43,18 +44,23 @@ class TruncateTables extends Command
         $tables = [
             Work::TABLE,
             Product::TABLE,
-            People::TABLE,
             PeopleRelatedWork::TABLE,
             RelatedPeople::TABLE,
             RelateadWork::TABLE,
             Series::TABLE,
             MusicoUrl::TABLE,
-            DiscasProduct::TABLE
+            DiscasProduct::TABLE,
         ];
 
-        foreach ($tables as $table) {
-            $this->info('Truncate　→　'. $table);
-            DB::table($table)->truncate();
+        $tpointOnly = $this->option('tpoint-only');
+        if ($tpointOnly === true) {
+            $this->info('Truncate　→　' . PointDetails::TABLE);
+            DB::table(PointDetails::TABLE)->truncate();
+        } else {
+            foreach ($tables as $table) {
+                $this->info('Truncate　→　' . $table);
+                DB::table($table)->truncate();
+            }
         }
         $this->info('Finish Truncate.');
         return true;

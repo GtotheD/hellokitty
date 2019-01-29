@@ -1,9 +1,9 @@
 {
     "result": 0,
     "entry": {
-        "memberStatus" : {
+        "memberStetus" : {
             "stat" : 2,
-            "tmflg": 2,
+            "tmflg": "1",
             "isStMember" : true,
             "optoutCCC": 0
         },

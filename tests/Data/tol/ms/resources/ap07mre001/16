@@ -41,52 +41,5 @@
       <requestParam38>kaishubetsu = xxxxx</requestParam38>
       <requestParam39>dmstopkbn = xxxxx</requestParam39>
       <requestParam40>koshintimestamp = xxxxx</requestParam40>
-      <responseData>
-            <response>
-                  <common>
-                        <denbunkbn>241</denbunkbn>
-                        <ver>1.0.0</ver>
-                        <response_type>xml</response_type>
-                        <shori_seq>wQm40G9Qe0</shori_seq>
-                        <shori_timestamp>20181101120059999</shori_timestamp>
-                        <return_cd>C1001</return_cd>
-                        <return_cd_error_detail></return_cd_error_detail>
-                        <message>successful completion</message>
-                    </common>
-                    <detail>
-                        <kigyocd></kigyocd>
-                        <miseno></miseno>
-                        <wsno></wsno>
-                        <atsukaicd></atsukaicd>
-                        <requestdate></requestdate>
-                        <requesttime></requesttime>
-                        <kaino>1234567890123456</kaino>
-                        <oldkaino></oldkaino>
-                        <stnaibukanrino>1234567890123456</stnaibukanrino>
-                        <accountid>1234567890</accountid>
-                        <rentaltorokushinseistatus>0</rentaltorokushinseistatus>
-                        <rentalkoshinshinseistatus>0</rentalkoshinshinseistatus>
-                        <johohenkoshinseistatus>2</johohenkoshinseistatus>
-                        <honninkakuninyohi>1</honninkakuninyohi>
-                        <honninkakunindate>20181101120059</honninkakunindate>
-                        <syorikigyocd>1234</syorikigyocd>
-                        <shinseitenpocd>1234</shinseitenpocd>
-                        <syoridate>20181101120059</syoridate>
-                        <kanjimei>漢字氏名</kanjimei>
-                        <kanamei>かなしめい</kanamei>
-                        <yubinno>123-4567</yubinno>
-                        <jusho1>住所</jusho1>
-                        <denwano1>012-3456-7890</denwano1>
-                        <denwano2></denwano2>
-                        <tanjoubi></tanjoubi>
-                        <seibetsu></seibetsu>
-                        <kairank></kairank>
-                        <nyukaibi></nyukaibi>
-                        <yukokigen></yukokigen>
-                        <kaishubetsu></kaishubetsu>
-                        <dmstopkbn></dmstopkbn>
-                        <koshintimestamp>20181101120059999</koshintimestamp>
-                  </detail>
-            </response>
-      </responseData>
+      <responseData>%7B%22response%22%3A%7B%22common%22%3A%7B%22return_cd%22%3A%22C1001%22%7D%2C%22detail%22%3A%7B%22rentaltorokushinseistatus%22%3A%220%22%2C%22rentalkoshinshinseistatus%22%3A%220%22%2C%22honninkakuninyohi%22%3A%221%22%7D%7D%7D</responseData>
 </root>

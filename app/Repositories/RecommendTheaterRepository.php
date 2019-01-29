@@ -2,7 +2,6 @@
 
 namespace App\Repositories;
 
-use App\Model\People;
 use App\Model\Product;
 
 class RecommendTheaterRepository extends BaseRepository
@@ -124,8 +123,8 @@ class RecommendTheaterRepository extends BaseRepository
     {
         $workRepository = new WorkRepository();
         $productModel = new Product();
-        $product = $productModel->setConditionByWorkId($workId)->selectCamel(['product_unique_id'])->getOne();
-        $person = $this->getPerson($personIds, $product->productUniqueId);
+        $product = $productModel->setConditionByWorkId($workId)->selectCamel(['people'])->getOne();
+        $person = $this->getPerson($personIds, $product->people);
         if(empty($person)) {
             return null;
         }
@@ -133,7 +132,7 @@ class RecommendTheaterRepository extends BaseRepository
         $workRepository->setLimit($this->limit);
         $workRepository->setOffset($this->offset);
         // ソート：お薦め（nullを設定）、アイテム：DVD
-        $response = $workRepository->person($person->personId, $sort, 'dvd' , ['tol']);
+        $response = $workRepository->person($person->person_id, $sort, 'dvd' , ['tol']);
         $this->hasNext = $workRepository->getHasNext();
         $this->totalCount = $workRepository->getTotalCount();
         return $response;
@@ -142,12 +141,12 @@ class RecommendTheaterRepository extends BaseRepository
     /*
      * ロールID順にキャストスタップを取得する。
      */
-    public function getPerson($roleIds, $productUniqueId)
+    public function getPerson($roleIds, $peopleJson)
     {
-        $people = new People();
+        $peopleCollection = collect(json_decode($peopleJson));
         $person = null;
         foreach ($roleIds as $roleId) {
-            $person = $people->setConditionByRoleId($productUniqueId, $roleId)->toCamel()->getOne();
+            $person = $peopleCollection->where('role_id', $roleId)->first();
             if (!empty($person)) break;
         }
         return $person;

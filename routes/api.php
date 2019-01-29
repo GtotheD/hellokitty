@@ -273,7 +273,13 @@ $router->group([
         $peopleRepository->setLimit($request->input('limit', 10));
         $peopleRepository->setOffset($request->input('offset', 0));
         $saleType = $request->input('saleType');
-        $response = $peopleRepository->getNarrow($workId, $saleType);
+        $people = $peopleRepository->getNarrow($workId, $saleType);
+        $response = [
+            'hasNext' => $people->getHasNext(),
+            'totalCount' => $people->getTotalCount(),
+            'rows' => $people->getRows()
+        ];
+
         if (empty($response)) {
             throw new NoContentsException;
         }
