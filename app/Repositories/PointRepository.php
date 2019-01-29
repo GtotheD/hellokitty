@@ -211,7 +211,7 @@ class PointRepository
 
     /**
      * Private
-     * Marsからポイント詳細情報を取得する
+     * AQUAからポイント詳細情報を取得する
      */
     private function getPointDetails()
     {
