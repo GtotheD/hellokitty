@@ -777,7 +777,12 @@ class Import extends Command
                 'display_end_date' => $row['displayEndDate'],
                 'ts_structure_id' => $tsStructureId,
                 // プレミアム用で増設
-                'data' => json_encode(['subtitle' => $row['subtitle'], 'text' => $row['text']]),
+                'data' => json_encode([
+                        'subtitle' => $row['subtitle'],
+                        'text' => $row['text'],
+                        'link_url' => $row['linkUrl'],
+                        'is_tap_on' => $row['isTapOn'],
+                    ]),
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ];

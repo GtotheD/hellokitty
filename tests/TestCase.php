@@ -37,11 +37,11 @@ abstract class TestCase extends Laravel\Lumen\Testing\TestCase
         parent::setUp();
         if (self::$isSetup === false) {
             Artisan::call('migrate');
-//            Artisan::call('truncateTable');
+            Artisan::call('truncateTable');
 //            Artisan::call('db:seed', ['--class' => 'WorkRecommendOtherTestSeeder']);
 //            Artisan::call('db:seed', ['--class' => 'ReleaseTestSeeder']);
 //            Artisan::call('db:seed', ['--class' => 'PointDetailsTestSeeder']);
-//            $this->importAllData();
+            $this->importAllData();
             self::$isSetup = true;
         }
     }

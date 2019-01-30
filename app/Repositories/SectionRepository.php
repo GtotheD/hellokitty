@@ -143,6 +143,8 @@ class SectionRepository extends BaseRepository
             if($isPremium) {
                 $row['subtile'] = $jsonData['subtitle'];
                 $row['text'] = $jsonData['text'];
+                $row['isTapOn'] = $jsonData['is_tap_on'];
+                $row['linkUrl'] = $jsonData['link_url'];
             }
             // Himoに切り替わって、saleType別にてsale_start_dateをアップデートしているのでsale_start_dateに統一
             $row['saleStartDate'] = $structureList->is_release_date == 1 ? $this->dateFormat($section->sale_start_date) : null;

@@ -289,12 +289,16 @@ class TestData
                 $jan[2] = '089939640'; // 尾根のかなたに ～父と息子の日航機墜落事故～ 後編
                 $text = 'text_1_1';
                 $subtitle = 'subtitle_1_1';
+                $linkUrl = 'linkUrl_1_1';
+                $isTapOn = 'isTapOn_1_1';
             } else {
                 $jan[0] = '4988142453822'; // ダイ・ハード 2
                 $jan[1] = '4988111144690'; // ウォーキング・デッド3 Blu-ray BOX-2
                 $jan[2] = '4959241980366'; // 千と千尋の神隠し
                 $text = 'text_1_2';
                 $subtitle = 'subtitle_1_2';
+                $linkUrl = 'linkUrl_1_2';
+                $isTapOn = 'isTapOn_1_2';
             }
         } elseif ($goodsType === 2) {
             if ($saleType === 1) {
@@ -303,12 +307,16 @@ class TestData
                 $jan[2] = '005841435'; // 11月のアンクレット(通常盤A)
                 $text = 'text_2_1';
                 $subtitle = 'subtitle_2_1';
+                $linkUrl = 'linkUrl_2_1';
+                $isTapOn = 'isTapOn_2_1';
             } else {
                 $jan[0] = '4988003508821'; // #好きなんだ(A)
                 $jan[1] = '4547366354164'; // シンクロニシティ(C)
                 $jan[2] = '4547366377972'; // レイメイ(期間生産限定盤)
                 $text = 'text_2_2';
                 $subtitle = 'subtitle_2_2';
+                $linkUrl = 'linkUrl_2_2';
+                $isTapOn = 'isTapOn_2_2';
             }
 
         } elseif ($goodsType === 3) {
@@ -318,12 +326,16 @@ class TestData
                 $jan[2] = '103388956'; // 進撃の巨人
                 $text = 'text_3_1';
                 $subtitle = 'subtitle_3_1';
+                $linkUrl = 'linkUrl_3_1';
+                $isTapOn = 'isTapOn_3_1';
             } else {
                 $jan[0] = '9784063970494'; // 進撃の巨人<限定版> DVD付き
                 $jan[1] = '9784088814964'; // ONE PIECE
                 $jan[2] = '9784592144403'; // ベルセルク
                 $text = 'text_3_2';
                 $subtitle = 'subtitle_3_2';
+                $linkUrl = 'linkUrl_3_2';
+                $isTapOn = 'isTapOn_3_2';
             }
 
         } elseif ($goodsType === 4) {
@@ -332,12 +344,16 @@ class TestData
             $jan[2] = '4571237660672'; // 妖怪ウォッチバスターズ 白犬隊
             $text = 'text_4_1';
             $subtitle = 'subtitle_4_1';
+            $linkUrl = 'linkUrl_4_1';
+            $isTapOn = 'isTapOn_4_1';
         } elseif ($goodsType === 5) {
             $jan[0] = '089937132'; // キングダム 19
             $jan[1] = '082394367'; // 黒子のバスケ 9
             $jan[2] = '089939640'; // 尾根のかなたに ～父と息子の日航機墜落事故～ 後編
             $text = 'text_5_1';
             $subtitle = 'subtitle_5_1';
+            $linkUrl = 'linkUrl_5_1';
+            $isTapOn = 'isTapOn_5_1';
         }
         $data = [
             'goodsType' => $goodsType,
@@ -354,6 +370,8 @@ class TestData
                     'imageUrl' => '',
                     'text' => $text . '_01',
                     'subtitle' => $subtitle . '_01',
+                    'linkUrl' => $linkUrl . '_01',
+                    'isTapOn' => $isTapOn . '_01',
                     'displayStartDate' => '2017/12/01 00:00:00',
                     'displayEndDate' => '2025/12/31 23:59:59'
                 ],
@@ -365,6 +383,8 @@ class TestData
                     'imageUrl' => '',
                     'text' => $text . '_02',
                     'subtitle' => $subtitle . '_02',
+                    'linkUrl' => $linkUrl . '_02',
+                    'isTapOn' => $isTapOn . '_02',
                     'displayStartDate' => '2017/12/01 00:00:00',
                     'displayEndDate' => '2025/12/31 23:59:59'
                 ],
@@ -376,6 +396,8 @@ class TestData
                     'imageUrl' => '',
                     'text' => $text . '_03',
                     'subtitle' => $subtitle . '_03',
+                    'linkUrl' => $linkUrl . '_03',
+                    'isTapOn' => $isTapOn . '_03',
                     'displayStartDate' => '2017/12/01 00:00:00',
                     'displayEndDate' => '2025/12/31 23:59:59'
                 ]
@@ -388,6 +410,10 @@ class TestData
                 'productTitle' => '',
                 'jan' => $goodsType . $saleType . '0000004',
                 'imageUrl' => '',
+                'text' => $text . '_04',
+                'subtitle' => $subtitle . '_04',
+                'linkUrl' => $linkUrl . '_04',
+                'isTapOn' => $isTapOn . '_04',
                 'displayStartDate' => '2017/12/01 00:00:00',
                 'displayEndDate' => '2025/12/31 23:59:59'
             ];
