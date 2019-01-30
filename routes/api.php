@@ -179,6 +179,50 @@ $router->group([
         return response()->json($response)->header('X-Accel-Expires', '600');
     });
 
+    // 映画漬けセクション取得API
+    $router->get('section/premium/dvd/rental/{sectionName}', function (Request $request, $sectionName) {
+        $sectionRepository = new SectionRepository;
+        $sectionRepository->setLimit($request->input('limit', 10));
+        $sectionRepository->setOffset($request->input('offset', 0));
+        $sectionRepository->setSupplementVisible(true);
+
+        // プレミアムフラグを渡して取得
+        $section = $sectionRepository->normal('premiumDvd', 'rental', $sectionName, true);
+        if ($section->getTotalCount() == 0) {
+            throw new NoContentsException;
+        }
+        $response = [
+            'hasNext' => $section->getHasNext(),
+            'totalCount' => $section->getTotalCount(),
+            'rows' => $section->getRows()
+        ];
+        return response()->json($response)->header('X-Accel-Expires', '600');
+    });
+
+    // TOP用プレミアムリコメンドAPI
+    $router->post('section/premium/dvd/rental/recommend', function (Request $request) {
+        $body = json_decode($request->getContent(), true);
+        $urlCd = isset($body['urlCd']) ? $body['urlCd'] : '';
+        // Check if have no data for input saleType
+        if(empty($urlCd)) {
+            throw new BadRequestHttpException;
+        }
+
+        $sectionPremiumRecommend = new SectionPremiumRecommend;
+        $sectionPremiumRecommend->setLimit($request->input('limit', 10));
+        $sectionPremiumRecommend->setOffset($request->input('offset', 0));
+        $sectionPremiumRecommend->getWorks($urlCd);
+        // プレミアムフラグを渡して取得
+        if ($sectionPremiumRecommend->getTotalCount() == 0) {
+            throw new NoContentsException;
+        }
+        $response = [
+            'hasNext' => $sectionPremiumRecommend->getHasNext(),
+            'totalCount' => $sectionPremiumRecommend->getTotalCount(),
+            'rows' => $sectionPremiumRecommend->getRows()
+        ];
+        return response()->json($response)->header('X-Accel-Expires', '600');
+    });
 
     // バナーセクション取得API
     $router->get('section/banner/{sectionName}', function (Request $request, $sectionName) {
@@ -1007,7 +1051,6 @@ $router->group([
             ];
         } catch (ClientException $e) {
             $statusCode = $e->getResponse()->getStatusCode();
-dd($statusCode);
             $response = [
                 'status' => $statusCode
             ];
