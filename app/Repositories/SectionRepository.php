@@ -120,7 +120,7 @@ class SectionRepository extends BaseRepository
         // 店舗プレミアムフラグを取得する
         $workListPremium = [];
         foreach ($workList['rows'] as $workRow) {
-            $workListPremium[$workRow['workId']] = $workRow['isPremiumShop'];
+            $workListPremium[$workRow['workId']] = $workRow['isPremium'];
         }
 
         foreach ($sections as $section) {
@@ -143,7 +143,7 @@ class SectionRepository extends BaseRepository
             if($isPremium) {
                 $row['subtile'] = $jsonData['subtitle'];
                 $row['text'] = $jsonData['text'];
-                $row['isTapOn'] = $jsonData['is_tap_on'];
+                $row['isTapOn'] = ($jsonData['is_tap_on'] === 1)? true: false;
                 $row['linkUrl'] = $jsonData['link_url'];
             }
             // Himoに切り替わって、saleType別にてsale_start_dateをアップデートしているのでsale_start_dateに統一
