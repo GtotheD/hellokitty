@@ -11,6 +11,7 @@
 |
 */
 
+use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 use App\Repositories\StructureRepository;
 use App\Repositories\SectionRepository;
@@ -846,6 +847,7 @@ $router->group([
         if (empty($result)) {
             throw new NoContentsException;
         }
+        Log::info("Response itemNumber[" . $result['itemNumber'] . "] rentalExpirationDate[" . $result['rentalExpirationDate'] . "]");
         $response = [
             'itemNumber' => $result['itemNumber'],
             'rentalExpirationDate' => $result['rentalExpirationDate']
