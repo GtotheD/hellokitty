@@ -129,12 +129,13 @@ class BannerRepository
     public function banner($bannerName, $isFixBanner = false)
     {
         $rows = null;
+        $structures = [];
         $this->banner = new Banner;
         $loginType = $this->loginType === 'true' ? 1 : 0;
         $this->banner->setLoginType($loginType);
         $structure = new structure();
         $structures = $structure->setConditionFindBySectionfilenameWithDispTime($bannerName)->getOne();
-        if (count($structures) == 0) {
+        if (empty($structures)) {
             return $this;
         }
         if ($isFixBanner) {
