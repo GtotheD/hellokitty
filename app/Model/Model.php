@@ -25,6 +25,15 @@ class Model
             $this->connection = DB::connection($connectionName);
         }
     }
+    public function setTable($tableName)
+    {
+        $this->table = $tableName;
+    }
+
+    public function getTable()
+    {
+        return $this->table;
+    }
 
     public function getDbObject()
     {
