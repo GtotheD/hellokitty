@@ -81,10 +81,14 @@ class Section extends Model
         return $this;
     }
 
+    /**
+     * テンポラリテーブルのみを見る
+     * @return $this
+     */
     public function conditionNoWorkIdActiveRow()
     {
         $this->dbObject = DB::table($this->table . ' AS t1')
-            ->join('ts_structures AS t2', function ($join) {
+            ->join('ts_structures_tmp AS t2', function ($join) {
                 $join->on('t1.ts_structure_id', '=', 't2.id');
             })
             ->where('code', '<>', '')

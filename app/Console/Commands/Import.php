@@ -66,17 +66,20 @@ class Import extends Command
     /**
      * structure table name
      */
-    const STRUCTURE_TALBE = 'ts_structures';
+    const STRUCTURE_TABLE = 'ts_structures';
+    const STRUCTURE_TABLE_TMP = 'ts_structures_tmp';
 
     /*
      * section table name
      */
     const SECTION_TABLE = 'ts_sections';
+    const SECTION_TABLE_TMP = 'ts_sections_tmp';
 
     /*
      * section table name
      */
     const BANNER_TABLE = 'ts_banners';
+    const BANNER_TABLE_TMP = 'ts_banners_tmp';
 
     const CONTROL_FILE = 'import_control';
     const BIG_CATEGORY_LIST = ['dvd', 'book', 'cd', 'game', 'banner'];
@@ -88,10 +91,6 @@ class Import extends Command
      */
     private $structureRepository;
     private $importControl = [];
-
-    private $structureTable;
-    private $sectionTable;
-    private $bannerTable;
 
     private $root;
 
@@ -170,7 +169,7 @@ class Import extends Command
                 if ($file['goodType'] == self::BANNER_DIR) {
                     $this->infoMessage('Import Banner....');
                     // 一度関連のIDのものを全て削除
-                    $bannerTable = DB::table(self::BANNER_TABLE);
+                    $bannerTable = DB::table(self::BANNER_TABLE_TMP);
                     $bannerTable->whereIn('ts_structure_id', $tsStructureIds)->delete();
                     foreach ($tsStructureIds as $tsStructureId) {
                         $result = $this->importBanner($file['absolute'], $tsStructureId);
@@ -181,7 +180,7 @@ class Import extends Command
                     }
                 } else {
                     // 一度関連のIDのものを全て削除
-                    $sectionTable = DB::table(self::SECTION_TABLE);
+                    $sectionTable = DB::table(self::SECTION_TABLE_TMP);
                     $sectionTable->whereIn('ts_structure_id', $tsStructureIds)->delete();
                     foreach ($tsStructureIds as $tsStructureId) {
                         $result = $this->importSection($file['absolute'], $tsStructureId);
@@ -201,12 +200,43 @@ class Import extends Command
                 }
                 $this->importFixedBanner($file['absolute']);
             }
-            $this->infoH1('Update Structure Table Data.');
-            if ($isTest === false) {
-                $this->updateSectionsDataFromHimo();
-            }
             $this->commitImportControlInfo();
         });
+
+        // マスタースレーブに切り分けた場合、トランザクションをネストすると
+        // 別コネクションで別トランザクションになるためトランザクション外でアップデートを行う。
+        $this->infoH1('Update Structure Table Data.');
+        if ($isTest === false) {
+            $this->updateSectionsDataFromHimo();
+        }
+
+        // テンポラリテーブルから移動させる。
+        $this->infoH1('Move from temporary tables.');
+        $tables = [
+            [
+                'from' => self::SECTION_TABLE_TMP,
+                'to' => self::SECTION_TABLE,
+            ],
+            [
+                'from' => self::STRUCTURE_TABLE_TMP,
+                'to' => self::STRUCTURE_TABLE,
+            ],
+            [
+                'from' => self::BANNER_TABLE_TMP,
+                'to' => self::BANNER_TABLE,
+            ],
+        ];
+        foreach ($tables as $table) {
+            // 移動先のテーブルデータを削除
+            $this->infoH2('Truncate table:' . $table['to']);
+            DB::table($table['to'])->truncate();
+            // tmpテーブルからインサートかける
+            $this->infoH2('Insert data from:' . $table['from']);
+            $this->infoH2('Insert data to:' . $table['to']);
+            $replaceViewQuery = sprintf("INSERT INTO %s SELECT * FROM %s", $table['to'], $table['from']);
+            // マスターへ登録
+            DB::connection('mysql::write')->getPdo()->exec($replaceViewQuery);
+        }
 
         $this->info('Finish!');
         return true;
@@ -306,6 +336,7 @@ class Import extends Command
     {
         $fileBaseName = str_replace('.json', '', $fileBaseName);
         $structure = new Structure;
+        $structure->setTable(self::STRUCTURE_TABLE_TMP);
         if ($goodType === false || $goodType === self::BANNER_DIR) {
             $structureObj = $structure->conditionFindBannerWithSectionFileName($fileBaseName)->getOne();
             if (count($structureObj) == 0) {
@@ -509,6 +540,7 @@ class Import extends Command
     {
         $workRepository = new WorkRepository;
         $section = new Section;
+        $section->setTable(self::SECTION_TABLE_TMP);
         $structureRepository = new StructureRepository();
         // 全件を対象
         $sections = $section->conditionNoWorkIdActiveRow()->select(
@@ -581,7 +613,7 @@ class Import extends Command
     private
     function importBaseJson($file)
     {
-        $structureTable = DB::table(self::STRUCTURE_TALBE);
+        $structureTable = DB::table(self::STRUCTURE_TABLE_TMP);
 
         $filePath = $file['absolute'];
         if (!is_file($filePath)) {
@@ -662,7 +694,7 @@ class Import extends Command
                 if (!$checkResult) {
                     if (count($oldId) != 0 && array_key_exists($row['sectionFileName'], $oldId)) {
                         $this->infoMessage('Update #section.ts_structure_id from : ' . $oldId[$row['sectionFileName']] . ' to: ' . $insertId);
-                        $sectionTable = DB::table(self::SECTION_TABLE);
+                        $sectionTable = DB::table(self::SECTION_TABLE_TMP);
                         $updateCount = $sectionTable->where('ts_structure_id', $oldId[$row['sectionFileName']])
                             ->update(['ts_structure_id' => $insertId]);
                         $this->infoMessage('Update count : ' . $updateCount);
@@ -686,7 +718,7 @@ class Import extends Command
                 if (!$checkResult) {
                     if (count($oldId) != 0 && array_key_exists($row['sectionFileName'], $oldId)) {
                         $this->infoMessage('Update #banner.ts_structure_id from : ' . $oldId[$row['sectionFileName']] . ' to: ' . $insertId);
-                        $bannerTable = DB::table(self::BANNER_TABLE);
+                        $bannerTable = DB::table(self::BANNER_TABLE_TMP);
                         $updateCount = $bannerTable->where('ts_structure_id', $oldId[$row['sectionFileName']])
                             ->update(['ts_structure_id' => $insertId]);
                         $this->infoMessage('Update count : ' . $updateCount);
@@ -708,7 +740,7 @@ class Import extends Command
     private
     function importSection($filePath, $tsStructureId, $onlyUpdateIsReleaseDate = false)
     {
-        $sectionTable = DB::table(self::SECTION_TABLE);
+        $sectionTable = DB::table(self::SECTION_TABLE_TMP);
         if (!file_exists($filePath)) {
             return false;
         }
@@ -717,6 +749,7 @@ class Import extends Command
         // 日付表示フラグを更新する。
         if (array_key_exists('isReleaseDate', $dataSection)) {
             $structure = new Structure();
+            $structure->setTable(self::STRUCTURE_TABLE_TMP);
             $structure->update($tsStructureId, ['is_release_date' => $dataSection['isReleaseDate']]);
         }
         if ($onlyUpdateIsReleaseDate === true) {
@@ -742,7 +775,7 @@ class Import extends Command
     private
     function importBanner($filePath, $tsStructureId)
     {
-        $bannerTable = DB::table(self::BANNER_TABLE);
+        $bannerTable = DB::table(self::BANNER_TABLE_TMP);
         if (!file_exists($filePath)) {
             return false;
         }
@@ -767,8 +800,8 @@ class Import extends Command
     private
     function importFixedBanner($filePath)
     {
-        $structureTable = DB::table(self::STRUCTURE_TALBE);
-        $bannerTable = DB::table(self::BANNER_TABLE);
+        $structureTable = DB::table(self::STRUCTURE_TABLE_TMP);
+        $bannerTable = DB::table(self::BANNER_TABLE_TMP);
 
         if (!file_exists($filePath)) {
             return false;
@@ -803,6 +836,7 @@ class Import extends Command
 
         $bannerArray = [];
         $structure = new Structure;
+        $structure->setTable(self::STRUCTURE_TABLE_TMP);
         $structureObj = $structure->conditionFindBannerWithSectionFileName($fileBaseName)->getOne();
         if (is_object($structureObj)) {
             if (property_exists($structureObj, 'id')) {

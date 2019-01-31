@@ -328,9 +328,9 @@ class ReleaseCalenderRepository extends BaseRepository
     public function hasRecommend()
     {
         $himoReleaseOrder = new HimoReleaseOrder;
-        $month['last'] = date('Y-m-01', strtotime('-1 months'));
+        $month['last'] = date('Y-m-01', mktime(0, 0, 0, date('n') - 1, 1, date('Y')));
         $month['this'] = date('Y-m-01');
-        $month['next'] = date('Y-m-01', strtotime('+1 months'));
+        $month['next'] = date('Y-m-01', mktime(0, 0, 0, date('n') + 1, 1, date('Y')));
         $recommendList = [];
         $listArray = config('release_genre_map');
         foreach ($listArray as $key => $genre) {
