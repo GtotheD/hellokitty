@@ -256,12 +256,11 @@ class RentalUseRegistrationRepository extends BaseRepository
              // レンタル登録申請：処理中
             if ($tolRentalApplication['rentalRegistrationApplicationStatus'] === '1') {
                 // 本人確認必要(3)(15)-2
-                if ($tolRentalApplication['identificationConfirmationNecessityFlag'] === '1') {
-                    return [
-                        'itemNumber' => 2,
-                        'rentalExpirationDate' => ''
-                    ];
-                }
+                // 登録申請中でも本人確認が不要になるパターンがある為2を返却するように変更。
+                return [
+                    'itemNumber' => 2,
+                    'rentalExpirationDate' => ''
+                ];
             // レンタル更新申請：処理中
             } elseif ($tolRentalApplication['rentalUpdateApplicationStatus'] === '1') {
                 // 本人確認必要(5)(17)-4

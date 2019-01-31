@@ -41,5 +41,5 @@
       <requestParam38>kaishubetsu = xxxxx</requestParam38>
       <requestParam39>dmstopkbn = xxxxx</requestParam39>
       <requestParam40>koshintimestamp = xxxxx</requestParam40>
-      <responseData>%7B%22response%22%3A%7B%22common%22%3A%7B%22return_cd%22%3A%22C1001%22%7D%2C%22detail%22%3A%7B%22rentaltorokushinseistatus%22%3A%220%22%2C%22rentalkoshinshinseistatus%22%3A%220%22%2C%22honninkakuninyohi%22%3A%220%22%7D%7D%7D</responseData>
+      <responseData>%7B%22response%22%3A%7B%22common%22%3A%7B%22return_cd%22%3A%22C1001%22%7D%2C%22detail%22%3A%7B%22rentaltorokushinseistatus%22%3A%221%22%2C%22rentalkoshinshinseistatus%22%3A%221%22%2C%22honninkakuninyohi%22%3A%220%22%7D%7D%7D</responseData>
 </root>

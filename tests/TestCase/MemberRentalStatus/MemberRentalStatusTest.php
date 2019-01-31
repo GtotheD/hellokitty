@@ -167,6 +167,11 @@ class MemberRentalStatusTest extends TestCase
                 'itemNumber' => 17,
                 'rentalExpirationDate' => ''
             ],
+            '項番26' => [
+                'tolId' => 'YQgmWzc0Fb7JY3Ys1I1wK%2FGEpF%2BOYv7wkTIdfk0qJlc%3D',
+                'itemNumber' => 2,
+                'rentalExpirationDate' => ''
+            ],
         ];
     }
 
