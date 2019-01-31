@@ -155,6 +155,10 @@ class PointRepository
         if (empty($result)) {
             return false;
         }
+        // 0000-00-00 00:00:00だった場合はブランクに変換
+        if ($result->fixed_point_min_limit_time === '0000-00-00 00:00:00') {
+            $result->fixed_point_min_limit_time = '';
+        }
         $this->responseCode = $result->response_code;
         $this->membershipType = $result->membership_type;
         $this->point = $result->point;
@@ -228,12 +232,16 @@ class PointRepository
             return false;
         }
         $tolPointResponse = current($tolPointResponse->all());
+        $date = '';
+        if (!empty($tolPointResponse['fixedPointMinLimitTime'])) {
+            $date = date('Y-m-d H:i:s', strtotime($tolPointResponse['fixedPointMinLimitTime']));
+        }
         return [
             'responseCode' => $tolPointResponse['responseCode'],
             'membershipType' => $tolPointResponse['membershipType'],
             'point' => $tolPointResponse['point'],
             'fixedPointTotal' => $tolPointResponse['fixedPointTotal'],
-            'fixedPointMinLimitTime' => date('Y-m-d H:i:s', strtotime($tolPointResponse['fixedPointMinLimitTime'])),
+            'fixedPointMinLimitTime' => $date,
         ];
     }
 
