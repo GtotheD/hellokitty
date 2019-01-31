@@ -11,6 +11,7 @@
 |
 */
 
+use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 use App\Repositories\StructureRepository;
 use App\Repositories\SectionRepository;
@@ -846,6 +847,7 @@ $router->group([
         if (empty($result)) {
             throw new NoContentsException;
         }
+        Log::info("Response itemNumber[" . $result['itemNumber'] . "] rentalExpirationDate[" . $result['rentalExpirationDate'] . "]");
         $response = [
             'itemNumber' => $result['itemNumber'],
             'rentalExpirationDate' => $result['rentalExpirationDate']
@@ -858,17 +860,17 @@ $router->group([
     // 期間固定Tポイント
     $router->post('member/tpoint', function (Request $request) {
         $bodyObj = json_decode($request->getContent(), true);
-        $memId = isset($bodyObj['tolId']) ? $bodyObj['tolId'] : '';
+        $tolId = isset($bodyObj['tolId']) ? $bodyObj['tolId'] : '';
         $systemId = isset($bodyObj['systemId']) ? $bodyObj['systemId'] : '';
         $refreshFlg = isset($bodyObj['refreshFlg']) ? $bodyObj['refreshFlg'] : false;
-        if(empty($memId) || empty($systemId)) {
+        if(empty($tolId) || empty($systemId)) {
             throw new BadRequestHttpException;
         }
-        $pointRepository = new PointRepository($systemId, $memId, $refreshFlg);
-        if ($pointRepository->isMaintenance() === true) {
+        $pointRepository = new PointRepository($systemId, $tolId, $refreshFlg);
+        $point = $pointRepository->get();
+        if ($point === false) {
             throw new NoContentsException;
         }
-
         $response = [
             'responseCode' => $pointRepository->getResponseCode(),
             'membershipType' => $pointRepository->getMembershipType(),
