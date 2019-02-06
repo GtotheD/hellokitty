@@ -1041,11 +1041,16 @@ $router->group([
     });
 
     // 　プレミアム会員状態取得API
-    $router->get('member/status/ttv', function (Request $request) {
-        $lv2LoginToken = $request->input('lv2LoginTkn');
+    $router->post('member/status/ttv', function (Request $request) {
+        $bodyObj = json_decode($request->getContent(), true);
+        $tlsc = isset($bodyObj['tlsc']) ? $bodyObj['tlsc'] : '';
+        // Check tlsc and $workId
+        if(empty($tlsc)) {
+            throw new BadRequestHttpException;
+        }
         $discasRepository = new DiscasRepository();
         try {
-            $response = $discasRepository->customer($lv2LoginToken)->get();
+            $response = $discasRepository->customer($tlsc)->get();
             $response = [
                 'ttvId' => $response['ttvId']
             ];

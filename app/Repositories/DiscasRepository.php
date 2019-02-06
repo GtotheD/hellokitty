@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use GuzzleHttp\Cookie\CookieJar;
 use GuzzleHttp\Exception\ClientException;
+use App\Libraries\TlscEncryption;
 
 class DiscasRepository extends ApiRequesterRepository
 {
@@ -15,6 +16,8 @@ class DiscasRepository extends ApiRequesterRepository
 
     const DISCAS_REVIEW_API = '/netdvd/sp/webapi/review/reviewInfo'; // 作品詳細用
     const DISCAS_CUSTOMER_API = '/v2/customer'; // 作品詳細用
+
+    use TlscEncryption;
 
     public function __construct($sort = 'asc', $offset = 0, $limit = 10)
     {
@@ -120,17 +123,47 @@ class DiscasRepository extends ApiRequesterRepository
         }
     }
 
-    public function customer($lv2Token)
+    public function customer($tlsc)
     {
+        $userAgent = 'jieri fang ti/1.0.0 (iPhone; iOS 10.2; Scale/3.00) ;DISCAS/6.0';
         $this->apiPath = $this->apiHost . self::DISCAS_CUSTOMER_API;
+        $lv2Token = $this->getLv2LoginTokenFromTlsc($tlsc);
         $this->id = $lv2Token;
         $cookieJar = CookieJar::fromArray([
             'lv2LoginTkn' => $lv2Token
         ], $this->apiHost);
+        $this->setHeaders([
+            'User-Agent' => $userAgent,
+        ]);
         $this->queryParams = [
             'cookies' => $cookieJar
         ];
         return $this;
+    }
+
+    public function getLv2LoginTokenFromTlsc($tlsc)
+    {
+        $tlscConfig = config('tlsc_encryption');
+        $this->convertKeys = $tlscConfig['convert_keys'];
+        $this->checkDegitWeight = $tlscConfig['check_degit_weight'];
+
+        // envファイルから環境毎の値を取得
+        $key = env('LV2TOKEN_ENCRYPT_KEY');
+        $iv = env('LV2TOKEN_INIT_VECTOR');
+
+        // traitにて実装されているファンクションにてST内部管理番号を取得
+        $stId = $this->decrypt($tlsc);
+
+        //2. ST内部管理番号＋現在時刻の120分後の値を作成 (＝レベル２認証トークン)
+        $now = date('YmdHis', strtotime('+120 minute'));
+        $value = $stId . $now;
+
+        //3. レベル2認証トークンの暗号化キー、初期化ベクトルを用意
+        $hashed = md5($key, true);
+        $generatedKey = $hashed . md5($hashed, true);
+
+        //4. レベル2認証トークンを暗号化 AES-256-CBC > base64×2
+        return base64_encode(base64_encode(openssl_encrypt($value, 'AES-256-CBC', $generatedKey, true, $iv)));
     }
 
     /**
@@ -153,7 +186,6 @@ class DiscasRepository extends ApiRequesterRepository
      */
     private function stub($apiName, $filename)
     {
-        throw new ClientException();
         $path = base_path('tests/Data/discas');
         $path = $path . $apiName . '/' . $filename;
         if(!realpath($path)) {

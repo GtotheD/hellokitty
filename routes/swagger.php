@@ -2382,17 +2382,24 @@
  */
 
 /**
- * @SWG\Get(
+ * @SWG\Post(
  *     path="/member/status/ttv",
  *     description="",
  *     produces={"application/json"},
  *     tags={"Member"},
  *     security={{"api_key":{}}},
  *     @SWG\Parameter(
- *       name="lv2LoginTkn",
- *       in="query",
- *       type="string",
- *       description="ST内部管理番号をT-Authで暗号化したもの（32バイト文字列）"
+ *       name="body",
+ *       in="body",
+ *       description="",
+ *       type="array",
+ *       @SWG\Schema(
+ *         @SWG\Property(
+ *             property="tlsc",
+ *             type="string",
+ *             description="ユーザー識別番号(TLSC)",
+ *         )
+ *       )
  *     ),
  *     @SWG\Response(
  *          response=200,
