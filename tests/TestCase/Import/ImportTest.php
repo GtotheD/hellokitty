@@ -27,17 +27,6 @@ class ImportTest extends TestCase
     }
 
     /**
-     * @test
-     */
-    public function checkApiAuth()
-    {
-        $response = $this->call('GET',
-            env('URL_PATH_PREFIX') . env('API_VERSION') . '/structure/dvd/rental');
-        $this->assertEquals(401, $response->getStatusCode());
-
-    }
-
-    /**
      * @return array
      */
     public function fixedBannerProvider()
@@ -189,17 +178,6 @@ class ImportTest extends TestCase
         $this->assertEquals(count($expected), count($responseData['rows']));
         $this->assertEquals($expected[0], $responseData['rows'][0]['imageUrl']);
         $this->assertEquals($expected[1], $responseData['rows'][1]['imageUrl']);
-    }
-
-    /**
-     * @test
-     * @group update
-     */
-    public function updateStructureJson()
-    {
-        $testData = new TestData;
-        $testData->updateBaseJson();
-        $this->assertTrue($testData->import());
     }
 
     /**
