@@ -2407,7 +2407,7 @@
  *          @SWG\Schema(
  *              @SWG\Property(
  *                  property="ttvId",
- *                  type="boolean",
+ *                  type="string",
  *                  description="TsutayaTV利用者ID",
  *              ),
  *          )
@@ -2419,7 +2419,8 @@
  *          @SWG\Property(
  *              property="rows",
  *              type="object",
- *              @SWG\Property(property="status",type="string",description="ステータスコード（error）"),
+ *              @SWG\Property(property="httpcode",type="string",description="htttpステータスコード"),
+ *              @SWG\Property(property="status",type="string",description="接続先APIのエラーステータスコード"),
  *              description="ttv apiのバリデーションエラー",
  *          ),
  *     ),
@@ -2429,7 +2430,8 @@
  *          @SWG\Property(
  *              property="rows",
  *              type="object",
- *              @SWG\Property(property="status",type="string",description="ステータスコード（error）"),
+ *              @SWG\Property(property="httpcode",type="string",description="htttpステータスコード"),
+ *              @SWG\Property(property="status",type="string",description="接続先APIのエラーステータスコード"),
  *              description="エラー情報",
  *          ),
  *     ),
@@ -2439,7 +2441,8 @@
  *          @SWG\Property(
  *              property="rows",
  *              type="object",
- *              @SWG\Property(property="status",type="string",description="ステータスコード（error）"),
+ *              @SWG\Property(property="httpcode",type="string",description="htttpステータスコード"),
+ *              @SWG\Property(property="status",type="string",description="接続先APIのエラーステータスコード"),
  *              description="認証失敗（TTV側と本システム）",
  *          ),
  *     ),
