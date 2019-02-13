@@ -13,6 +13,7 @@ class DiscasRepository extends ApiRequesterRepository
     protected $offset;
     protected $limit;
     protected $apiHost;
+    protected $apiNewHost;
 
     const DISCAS_REVIEW_API = '/netdvd/sp/webapi/review/reviewInfo'; // 作品詳細用
     const DISCAS_CUSTOMER_API = '/v2/customer'; // 作品詳細用
@@ -26,6 +27,7 @@ class DiscasRepository extends ApiRequesterRepository
         $this->offset = $offset;
         $this->limit = $limit;
         $this->apiHost = env('DISCAS_API_HOST');
+        $this->apiNewHost = env('DISCAS_NEW_API_HOST');
     }
 
     /*
@@ -125,19 +127,17 @@ class DiscasRepository extends ApiRequesterRepository
 
     public function customer($tlsc)
     {
-        $userAgent = 'jieri fang ti/1.0.0 (iPhone; iOS 10.2; Scale/3.00) ;DISCAS/6.0';
-        $this->apiPath = $this->apiHost . self::DISCAS_CUSTOMER_API;
+        $userAgent = 'GuzzleHttp/6.2.0 curl/7.29.0 PHP/7.0.14';
+        $this->apiPath = $this->apiNewHost . self::DISCAS_CUSTOMER_API;
         $lv2Token = $this->getLv2LoginTokenFromTlsc($tlsc);
         $this->id = $lv2Token;
-        $cookieJar = CookieJar::fromArray([
-            'lv2LoginTkn' => $lv2Token
-        ], $this->apiHost);
         $this->setHeaders([
             'User-Agent' => $userAgent,
+    	    'host' => parse_url($this->apiNewHost, PHP_URL_HOST),
+            'X-Requested-With' => 'XMLHttpRequest',
+            'content-type' => 'application/json; charset=utf-8',
+    	    'cookie' => 'lv2LoginTkn=' . $lv2Token
         ]);
-        $this->queryParams = [
-            'cookies' => $cookieJar
-        ];
         return $this;
     }
 

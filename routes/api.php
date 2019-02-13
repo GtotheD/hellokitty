@@ -34,7 +34,7 @@ use App\Repositories\CouponRepository;
 use App\Repositories\RentalUseRegistrationRepository;
 use App\Repositories\PointRepository;
 use App\Repositories\SectionPremiumRecommend;
-use App\Repositories\StatusPremium;
+use App\Repositories\StatusPremiumRepository;
 use App\Exceptions\AgeLimitException;
 use App\Exceptions\ContentsException;
 use App\Exceptions\NoContentsException;
@@ -1033,7 +1033,7 @@ $router->group([
     $router->post('member/status/premium', function (Request $request) {
         $bodyObj = json_decode($request->getContent(), true);
         $tolId = isset($bodyObj['tolId']) ? $bodyObj['tolId'] : '';
-        $statusPremium = new StatusPremium($tolId);
+        $statusPremium = new StatusPremiumRepository($tolId);
         $response = [
             'premium' => $statusPremium->get()
         ];
@@ -1054,10 +1054,13 @@ $router->group([
             $response = [
                 'ttvId' => $response['ttvId']
             ];
-        } catch (ClientException $e) {
-            $statusCode = $e->getResponse()->getStatusCode();
+        } catch (\Exception $e) {
+            $exceptionResponse  = $e->getResponse();
+            $statusCode = $exceptionResponse->getStatusCode();
+            $errorCode = json_decode($exceptionResponse->getBody()->getContents(), true);
             $response = [
-                'status' => $statusCode
+                'httpcode' => (string)$statusCode,
+                'status' => $errorCode['error']
             ];
         }
         return response()->json($response)->header('X-Accel-Expires', '0');
