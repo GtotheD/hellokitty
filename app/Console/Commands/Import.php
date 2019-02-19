@@ -797,11 +797,7 @@ class Import extends Command
                     'is_tap_on' => $row['isTapOn'],
                 ]);
             } else {
-                $sectionArrayTemp['data'] = json_encode([
-                    'text' => $row['text'],
-                    'link_url' => $row['linkUrl'],
-                    'is_tap_on' => $row['isTapOn'],
-                ]);
+                $sectionArrayTemp['data'] = json_encode([]);
             }
             $sectionArray[] = $sectionArrayTemp;
         }
