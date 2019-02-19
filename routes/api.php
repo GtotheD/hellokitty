@@ -59,7 +59,8 @@ $router->group([
         $structureRepository->setLimit($request->input('limit', 10));
         $structureRepository->setOffset($request->input('offset', 0));
         // プレミアム対応にてAPIバージョンをv4にあげない為、旧アプリへsectionType=6を出さないようにする対応
-        $isPremium = (bool)$request->input('premium', false);
+        $isPremium = $request->input('premium', false);
+        $isPremium = ($isPremium !== 'true')? false: true;
         $structures = $structureRepository->get($goodsType, $saleType, $isPremium);
         if ($structures->getTotalCount() == 0) {
             throw new NoContentsException;
