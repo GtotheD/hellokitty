@@ -166,7 +166,8 @@ class Import extends Command
                     $this->infoMessage('No import');
                     continue;
                 }
-                $tsStructureIds = $this->searchTsStructureId($file['goodTypeCode'], $file['saleTypeCode'], $file['filename']);
+                $structure = $this->searchTsStructureId($file['goodTypeCode'], $file['saleTypeCode'], $file['filename']);
+                $tsStructureIds = $structure['structureIds'];
                 if (!$tsStructureIds) {
                     $this->infoMessage('No import');
                     continue;
@@ -188,7 +189,7 @@ class Import extends Command
                     $sectionTable = DB::table(self::SECTION_TABLE);
                     $sectionTable->whereIn('ts_structure_id', $tsStructureIds)->delete();
                     foreach ($tsStructureIds as $tsStructureId) {
-                        $result = $this->importSection($file['absolute'], $tsStructureId);
+                        $result = $this->importSection($file['absolute'], $tsStructureId, false, $structure['sectionType']);
                         if (!$result) {
                             $this->infoMessage('No import');
                             continue;
@@ -345,27 +346,31 @@ class Import extends Command
     private
     function searchTsStructureId($goodType, $saleType, $fileBaseName)
     {
+        $tsStructureId = [];
         $fileBaseName = str_replace('.json', '', $fileBaseName);
         $structure = new Structure;
         if ($goodType === false || $goodType === self::BANNER_DIR) {
             $structureObj = $structure->conditionFindBannerWithSectionFileName($fileBaseName)->getOne();
-            if (count($structureObj) == 0) {
+            if (empty($structureObj)) {
                 $this->infoMessage('Not found structure id.');
                 $this->infoMessage('GoodType: ' . $goodType);
                 $this->infoMessage('SaleType: ' . $saleType);
                 $this->infoMessage('FileName: ' . $fileBaseName);
                 return false;
             }
-            return [$structureObj->id];
+            $tsStructureId[] = $structureObj->id;
+            $sectionType = $structureObj->section_type;
         } else {
             $structureObj = $structure->conditionFindFilename($goodType, $saleType, $fileBaseName)->get();
-            if (count($structureObj) == 0) {
+            if (empty($structureObj)) {
                 $this->infoMessage('Not found structure id.');
                 $this->infoMessage('GoodType: ' . $goodType);
                 $this->infoMessage('SaleType: ' . $saleType);
                 $this->infoMessage('FileName: ' . $fileBaseName);
                 return false;
             }
+            $section = current($structureObj->all());
+            $sectionType = $section->section_type;
             foreach ($structureObj as $structure) {
                 if (property_exists($structure, 'id')) {
                     $tsStructureId[] = $structure->id;
@@ -375,7 +380,10 @@ class Import extends Command
                 }
             }
         }
-        return $tsStructureId;
+        return [
+            'sectionType' => $sectionType,
+            'structureIds' => $tsStructureId
+        ];
     }
 
     private
@@ -701,7 +709,7 @@ class Import extends Command
             // 特集セクションの取り込み
             // プレミアムも含む
             if (($row['sectionType'] === 2 || $row['sectionType'] === 7)
-                && !empty($row['sectionFileName'])) {
+            && !empty($row['sectionFileName'])) {
                 $this->infoMessage('Begin Import section by base.json [file Name]: ' . $row['sectionFileName']);
                 $filePath = $this->searchSectionFile($file['goodType'], $file['saleType'], $row['sectionFileName']);
                 $checkResult = $this->importCheck($filePath, $filePath['timestamp']);
@@ -714,17 +722,17 @@ class Import extends Command
                         $this->infoMessage('Update count : ' . $updateCount);
                         if ($updateCount < 1) {
                             $this->infoMessage('Error!! Can not update.');
-                            $this->importSection($filePath['absolute'], $insertId);
+                            $this->importSection($filePath['absolute'], $insertId, false, $row['sectionType']);
                         } else {
                             // リリース日表示フラグだけの更新を行う
-                            $this->importSection($filePath['absolute'], $insertId, true);
+                            $this->importSection($filePath['absolute'], $insertId, true, $row['sectionType']);
                         }
                     } else {
-                        $this->importSection($filePath['absolute'], $insertId);
+                        $this->importSection($filePath['absolute'], $insertId, false, $row['sectionType']);
                     }
                     continue;
                 }
-                $this->importSection($filePath['absolute'], $insertId);
+                $this->importSection($filePath['absolute'], $insertId, false, $row['sectionType']);
             } else if ($row['sectionType'] == 1 && !empty($row['sectionFileName'])) {
                 $this->infoMessage('Import banner: ' . $row['sectionFileName']);
                 $filePath = $this->searchBannerFile($row['sectionFileName']);
@@ -752,7 +760,7 @@ class Import extends Command
     }
 
     private
-    function importSection($filePath, $tsStructureId, $onlyUpdateIsReleaseDate = false)
+    function importSection($filePath, $tsStructureId, $onlyUpdateIsReleaseDate = false, $sectionType = null)
     {
         $sectionTable = DB::table(self::SECTION_TABLE);
         if (!file_exists($filePath)) {
@@ -770,22 +778,32 @@ class Import extends Command
             return true;
         }
         foreach ($dataSection['rows'] as $row) {
-            $sectionArray[] = [
+            $sectionArrayTemp = [
                 'code' => $row['jan'],
                 'image_url' => (array_key_exists('imageUrl', $row) ? $row['imageUrl'] : ""),
                 'display_start_date' => $row['displayStartDate'],
                 'display_end_date' => $row['displayEndDate'],
                 'ts_structure_id' => $tsStructureId,
-                // プレミアム用で増設
-                'data' => json_encode([
-                        'subtitle' => $row['subtitle'],
-                        'text' => $row['text'],
-                        'link_url' => $row['linkUrl'],
-                        'is_tap_on' => $row['isTapOn'],
-                    ]),
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ];
+            // プレミアム用で増設
+            if ($sectionType === Structure::SECTION_TYPE_PREMIUM_PICKLE) {
+                // section typeが7のときだけプsubtitleを含める
+                $sectionArrayTemp['data'] = json_encode([
+                    'subtitle' => $row['subtitle'],
+                    'text' => $row['text'],
+                    'link_url' => $row['linkUrl'],
+                    'is_tap_on' => $row['isTapOn'],
+                ]);
+            } else {
+                $sectionArrayTemp['data'] = json_encode([
+                    'text' => $row['text'],
+                    'link_url' => $row['linkUrl'],
+                    'is_tap_on' => $row['isTapOn'],
+                ]);
+            }
+            $sectionArray[] = $sectionArrayTemp;
         }
         $this->infoMessage('Execute Import section. tsStructureId: ' . $tsStructureId);
         return $sectionTable->insert($sectionArray);
