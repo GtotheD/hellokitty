@@ -1623,6 +1623,51 @@
  *     @SWG\Response(response=500, description="Server error")
  * )
  */
+
+/**
+ * @SWG\Get(
+ *     path="/release/static/{month}/{genreId}",
+ *     description="リリース情報（商品名を出す為、対象の商品を特定時に、ジャンルIDからセルレンタル区分を判別し特定する）",
+ *     tags={"Release"},
+ *     security={{"api_key":{}}},
+ *     produces={"application/json"},
+ *     @SWG\Parameter(
+ *       name="month",
+ *       in="path",
+ *       description="月（前月=last、今月=this、来月=next）",
+ *       type="string"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="genreId",
+ *       in="path",
+ *       description="ジャンルID（このAPI独自のID）",
+ *       type="string"
+ *     ),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          ref="$/responses/ListJson",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="baseMonth",
+ *                  type="string",
+ *                  description="基準月（yyyy-m 2018-09）",
+ *              ),
+ *              @SWG\Property(
+ *                  property="rows",
+ *                  type="array",
+ *                  @SWG\Items(ref="#/definitions/WorkNarrowRelease"),
+ *                  description="作品情報",
+ *              ),
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+
 /**
  * @SWG\Get(
  *     path="/ranking/{codeType}/{code}/{period}",

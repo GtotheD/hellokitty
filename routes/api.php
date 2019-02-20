@@ -642,6 +642,14 @@ $router->group([
         }
         return response()->json($response)->header('X-Accel-Expires', '86400');
     });
+    $router->get('release/static/{month}/{genreId}', function (Request $request, $month, $genreId) {
+        $response = [
+            // 常に当月を出力するように変更
+            'baseMonth' => \Carbon\Carbon::now()->format('Y-m'),
+            'rows' => []
+        ];
+        return response()->json($response)->header('X-Accel-Expires', '86400');
+    });
 
     $router->get('ranking/{codeType:himo|agg}/{code}[/{period}]', function (Request $request, $codeType, $code, $period = null) {
         $sectionRepository = new SectionRepository;
