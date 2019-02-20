@@ -37,6 +37,7 @@ use App\Exceptions\AgeLimitException;
 use App\Exceptions\ContentsException;
 use App\Exceptions\NoContentsException;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
+use Carbon\Carbon;
 
 // Api Group
 $router->group([
@@ -634,6 +635,11 @@ $router->group([
             'baseMonth' => \Carbon\Carbon::now()->format('Y-m'),
             'rows' => $rows
         ];
+        if ($genreId >= 29 && $genreId <= 38) {
+            $carbon = new carbon;
+            $nextWednesday = $carbon->next(Carbon::WEDNESDAY);
+            $response['updateDate'] = $nextWednesday->toDateString();
+        }
         return response()->json($response)->header('X-Accel-Expires', '86400');
     });
 
