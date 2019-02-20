@@ -646,8 +646,10 @@ $router->group([
         $releaseCalenderRepository = new ReleaseCalenderRepository();
         $releaseCalenderRepository->setMonth($month);
         $releaseCalenderRepository->setGenreId($genreId);
-
         $rows = $releaseCalenderRepository->getStatic();
+        if (empty($rows)) {
+            throw new NoContentsException;
+        }
         $response = [
             // 常に当月を出力するように変更
             'baseMonth' => \Carbon\Carbon::now()->format('Y-m'),
