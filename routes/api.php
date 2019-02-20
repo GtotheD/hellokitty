@@ -643,10 +643,15 @@ $router->group([
         return response()->json($response)->header('X-Accel-Expires', '86400');
     });
     $router->get('release/static/{month}/{genreId}', function (Request $request, $month, $genreId) {
+        $releaseCalenderRepository = new ReleaseCalenderRepository();
+        $releaseCalenderRepository->setMonth($month);
+        $releaseCalenderRepository->setGenreId($genreId);
+
+        $rows = $releaseCalenderRepository->getStatic();
         $response = [
             // 常に当月を出力するように変更
             'baseMonth' => \Carbon\Carbon::now()->format('Y-m'),
-            'rows' => []
+            'rows' => $rows
         ];
         return response()->json($response)->header('X-Accel-Expires', '86400');
     });
