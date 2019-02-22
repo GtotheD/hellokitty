@@ -28,7 +28,6 @@ class PointRepository
     private $updatedAt;
     private $refreshFlg;
 
-
     // 3時間をデフォルトにする
     const DEFAULT_LIMIT_MINUTE = 180;
 
@@ -65,7 +64,6 @@ class PointRepository
         $this->memId = $this->decodeMemid($this->key, $this->tolId);
         Log::info('Fixed Point API convert tolId : ' . $this->tolId . ' -> ' . $this->memId );
     }
-
 
     /**
      * @return bool
@@ -205,6 +203,7 @@ class PointRepository
             $pointDetail['responseCode'] !== '14'
         ) {
             $this->log('TPOINT', 'Other than status code 00 and 14.');
+            $this->cacheClear();
             return $pointDetail['responseCode'];
         }
         $nowDateTime = Carbon::now();
@@ -225,6 +224,16 @@ class PointRepository
         ];
         $pointDetailsModel->insertBulk($updateParam);
         return true;
+    }
+
+    /**
+     * キャッシュをクリア（削除）する
+     * @return mixed
+     */
+    private function cacheClear()
+    {
+        $pointDetailsModel = new PointDetails();
+        return $pointDetailsModel->setConditionBySt($this->memId)->delete();
     }
 
     /**
