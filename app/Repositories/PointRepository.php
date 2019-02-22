@@ -158,7 +158,7 @@ class PointRepository
 
     /**
      * Private
-     * DBから取得し書くパラメーターにセットする
+     * DBから取得し各パラメーターにセットする
      * @return mixed
      */
     private function setPointDetail()
