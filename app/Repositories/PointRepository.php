@@ -193,6 +193,7 @@ class PointRepository
         // API問い合わせで失敗
         if ($pointDetail === false) {
             $this->log('TPOINT Request', 'Data acquisition Error ( xml parse error or response status is 9).');
+            $this->cacheClear();
             return false;
         }
         $this->log('TPOINT Response ResponseCode', $pointDetail['responseCode']);
