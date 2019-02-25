@@ -38,7 +38,7 @@ class RecommendArtistRepository extends BaseRepository
         ];
 
         // STEP 1: Get newest people from workId in system
-        $newestPeople = $peopleReposiroty->getNewsPeople($workId, null, self::ROLE_ID_ARTIST)->getOne();
+        $newestPeople = $peopleReposiroty->getNewsPeople($workId, null, self::ROLE_ID_ARTIST);
         if (!$newestPeople) {
             throw new NoContentsException();
         }
