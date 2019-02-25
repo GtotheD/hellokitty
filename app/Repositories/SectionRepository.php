@@ -15,6 +15,7 @@ use App\Model\TopReleaseNewest;
 use App\Model\TopReleaseLastest;
 use App\Model\Product;
 use App\Exceptions\NoContentsException;
+use Illuminate\Support\Facades\Log;
 
 /**
  * Created by PhpStorm.
@@ -297,7 +298,6 @@ class SectionRepository extends BaseRepository
             // 商品情報の取得
             $productModel = new Product();
             $product = $productModel->setConditionByWorkIdSaleTypeSaleStartDate($row->work_id, $saleType, $from, $to)->getOne();
-//            dd($product);
             if (!empty($product)) {
 
                 $productName = $product->product_name;
