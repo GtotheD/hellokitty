@@ -370,6 +370,9 @@ class Import extends Command
                 return false;
             }
             $section = current($structureObj->all());
+            if(empty($section)) {
+                    return false;
+            }
             $sectionType = $section->section_type;
             foreach ($structureObj as $structure) {
                 if (property_exists($structure, 'id')) {
