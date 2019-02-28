@@ -516,7 +516,7 @@ class SectionRepository extends BaseRepository
             $rowUnit['adultFlg'] = $work['adultFlg'];
 //            $rowUnit['saleStartDate'] = $work['saleStartDate'];
             $rowUnit['saleStartDate'] = null;
-            $rowUnit['isPremium'] = ($work['isPremiumShop'] === 1)? true: false;
+            $rowUnit['isPremium'] = ($work['isPremium'] === 1)? true: false;
 
             // modelNameがあったゲームなので、ゲーム名を取得するようにする。
             if (!$this->supplementVisible) {
