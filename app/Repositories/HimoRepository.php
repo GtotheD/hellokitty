@@ -427,6 +427,7 @@ class HimoRepository extends ApiRequesterRepository
         if (!empty($queryId)) {
             $this->queryParams['id_value'] = implode(' || ', $queryId);
         }
+        dd($this->queryParams);
         return $this;
     }
 
