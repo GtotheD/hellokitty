@@ -427,7 +427,7 @@ class SectionRepository extends BaseRepository
             } else {
                 $formattedRow['supplement'] = null;
             }
-            $formattedRow['isPremium'] = ($work['isPremiumShop'] === 1)? true: false;
+            $formattedRow['isPremium'] = ($work['isPremium'] === 1)? true: false;
 
             $formattedRows[] = $formattedRow;
 
