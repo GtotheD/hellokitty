@@ -86,7 +86,7 @@ class CouponRepository
                     try {
                         $response = $tapRepository->getCoupon(
                             $storeCd,
-                            sprintf('%03d', $row->tokuban),
+                            sprintf('%05d', $row->tokuban),
                             $row->delivery_id,
                             $validFrom,
                             $validTo);
