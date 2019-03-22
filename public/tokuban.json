@@ -53,5 +53,27 @@
 		"bannerImageV2AltText": "Tポイント10倍",
 		"loginInductionAnnotation": "クーポン有効期間：ログイン後30日間",
 		"attentionMessage": "https://www.tsutaya.co.jp/tsearch/cl/img/onetime/caution/740.html"
+	},
+	{
+		"tokuban": 5628,
+		"itemName": "クーポン対象：当店でTポイントが貯まる商品",
+		"bannerImageLoggedIn": "https://www.tsutaya.co.jp/tsearch/cl/img/onetime/img/bannerImageLoggedIn5628.png",
+		"bannerImageNotLoggedIn": "https://www.tsutaya.co.jp/tsearch/cl/img/onetime/img/bannerImageNotLoggedIn5628.png",
+		"detailImage": "https://www.tsutaya.co.jp/tsearch/cl/img/onetime/img/detailImage5628.png",
+		"bannerImageV2": "https://www.tsutaya.co.jp/tsearch/cl/img/onetime/img/v2/bannerImageV2_5628.png",
+		"bannerImageV2AltText": "Tポイント20倍",
+		"loginInductionAnnotation": "クーポン有効期間：ログイン後30日間",
+		"attentionMessage": "https://www.tsutaya.co.jp/tsearch/cl/img/onetime/caution/5628.html"
+	},
+	{
+		"tokuban": 5629,
+		"itemName": "クーポン対象：当店でTポイントが貯まる商品",
+		"bannerImageLoggedIn": "https://www.tsutaya.co.jp/tsearch/cl/img/onetime/img/bannerImageLoggedIn5629.png",
+		"bannerImageNotLoggedIn": "https://www.tsutaya.co.jp/tsearch/cl/img/onetime/img/bannerImageNotLoggedIn5629.png",
+		"detailImage": "https://www.tsutaya.co.jp/tsearch/cl/img/onetime/img/detailImage5629.png",
+		"bannerImageV2": "https://www.tsutaya.co.jp/tsearch/cl/img/onetime/img/v2/bannerImageV2_5629.png",
+		"bannerImageV2AltText": "Tポイント10倍",
+		"loginInductionAnnotation": "クーポン有効期間：ログイン後30日間",
+		"attentionMessage": "https://www.tsutaya.co.jp/tsearch/cl/img/onetime/caution/5629.html"
 	}
 ]
