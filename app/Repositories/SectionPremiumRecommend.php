@@ -67,21 +67,21 @@ class SectionPremiumRecommend extends BaseRepository
                 'workId' => $base['work_id'],
                 'urlCd' => $base['url_cd'],
                 'cccWorkCd' => $base['ccc_work_cd'],
-                'workTitle' => $base['work_title'],
+                'title' => $base['work_title'],
                 // 最新巻及び最新日のものを取得する。
-                'jacketL' => ($displayImage) ? trimImageTag($saleTypeHas['pickupProduct']['jacket_l']) : '',
+                'imageUrl' => ($displayImage) ? trimImageTag($saleTypeHas['pickupProduct']['jacket_l']) : '',
                 'newFlg' => newFlg($base['sale_start_date']),
                 'adultFlg' => ($base['adult_flg'] === 1) ? true : $isAdult,
                 'itemType' => $itemType,
                 // レンタルで問い合わせている為、レンタルに固定
                 'saleType' => 'rental',
                 // todo:プレミアムフラグができたら渡す
-                'is_premium' => true,
+                'isPremium' => true,
                 // DVDの場合は空にする。
                 'supplement' => ($itemType === 'dvd') ? '' : $saleTypeHas['supplement'],
-                'saleStartDate' => ($saleTypeHas['pickupProduct']['sale_start_date']) ? date('Y-m-d 00:00:00', strtotime($saleTypeHas['pickupProduct']['sale_start_date'])) : '',
-                'saleStartDateSell' => ($row['sale_start_date_sell']) ? date('Y-m-d 00:00:00', strtotime($row['sale_start_date_sell'])) : '',
-                'saleStartDateRental' => ($row['sale_start_date_rental']) ? date('Y-m-d 00:00:00', strtotime($row['sale_start_date_rental'])) : '',
+                'saleStartDate' => null,
+                'saleStartDateSell' => ($row['sale_start_date_sell']) ? date('Y-m-d', strtotime($row['sale_start_date_sell'])) : '',
+                'saleStartDateRental' => ($row['sale_start_date_rental']) ? date('Y-m-d', strtotime($row['sale_start_date_rental'])) : '',
             ];
         }
         $this->rows = $result;
