@@ -393,6 +393,52 @@
 
 /**
  * @SWG\Get(
+ *     path="/section/premium/dvd/rental/{sectionName}",
+ *     description="プレミアムDVD-レンタルのリスト情報を返却する",
+ *     produces={"application/json"},
+ *     tags={"Top"},
+ *     security={{"api_key":{}}},
+ *     @SWG\Parameter(
+ *       name="sectionName",
+ *       in="path",
+ *       description="セクション名",
+ *       required=true,
+ *       type="string"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="limit",
+ *       in="query",
+ *       description="表示件数",
+ *       type="integer"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="offset",
+ *       in="query",
+ *       description="オフセット",
+ *       type="integer"
+ *     ),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          ref="$/responses/ListJson",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="rows",
+ *                  type="array",
+ *                  @SWG\Items(ref="#/definitions/WorkForSection"),
+ *                  description="作品情報",
+ *              ),
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+
+/**
+ * @SWG\Get(
  *     path="/section/book/rental/{sectionName}",
  *     description="DVD-セルのリスト情報を返却する",
  *     produces={"application/json"},
@@ -562,7 +608,7 @@
  */
 /**
  * @SWG\Get(
- *     path="/section/premium/dvd/rental/{sectionName}",
+ *     path="/section/premium/dvd/rental/movie/{sectionName}",
  *     description="プレミアム用　プレミアムで映画漬け情報を返却。単一の商品のみ返却。",
  *     produces={"application/json"},
  *     tags={"Top"},
