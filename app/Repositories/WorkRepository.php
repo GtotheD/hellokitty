@@ -1273,12 +1273,23 @@ class WorkRepository extends BaseRepository
             $base['only_other'] = self::ONLY_OTHER;
         }
 
-        // プレミアムフラグ カラム名を変換
-        if (array_key_exists('premium_flg_shop', $row)) {
-            $base['is_premium_shop'] = $row['premium_flg_shop'];
-        }
-        if (array_key_exists('premium_flg_net', $row)) {
-            $base['is_premium_net'] = $row['premium_flg_net'];
+        $base['is_premium_shop'] = 0;
+        $base['is_premium_net'] = 0;
+
+        if(isset($row['premium_plan']) && is_array($row['premium_plan'])) {
+            foreach ($row['premium_plan'] as $plan) {
+                if(isset($plan['premium_plan_cd'])) {
+                    switch ((int)$plan['premium_plan_cd']) {
+                        case Work::PREMIUM_FLG_SHOP:
+                            $base['is_premium_shop'] = 1;
+                            break;
+                        case Work::PREMIUM_FLG_NET:
+                            $base['is_premium_net'] = 1;
+                            break;
+                        default: break;
+                    }
+                }
+            }
         }
 
         return $base;
