@@ -414,12 +414,20 @@ class ProductRepository extends BaseRepository
         $productBase['maker_name'] = $product['maker_name'];
         $productBase['media_format_id'] = $product['media_format_id'];
 
-        // プレミアムフラグ カラム名を変換
-        if (array_key_exists('premium_flg_shop', $product)) {
-            $productBase['is_premium_shop'] = $product['premium_flg_shop'];
-        }
-        if (array_key_exists('premium_flg_net', $product)) {
-            $productBase['is_premium_net'] = $product['premium_flg_net'];
+        $productBase['is_premium_shop'] = 0;
+        $productBase['is_premium_net'] = 0;
+
+        if (isset($product['premium_plan_cd'])) {
+            switch ((int)$product['premium_plan_cd']) {
+                case Product::PREMIUM_FLG_SHOP:
+                    $productBase['is_premium_shop'] = 1;
+                    break;
+                case Product::PREMIUM_FLG_NET:
+                    $productBase['is_premium_net'] = 1;
+                    break;
+                default:
+                    break;
+            }
         }
 
         return $productBase;

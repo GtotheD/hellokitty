@@ -41,6 +41,11 @@ class Work extends Model
     const WORK_TYPE_MUSIC_UNIT = '6';
     const WORK_TYPE_THEATER = '7';
 
+    // プレミアムフラグ 1=店舗、2=ネット
+    const PREMIUM_FLG_SHOP = 1;
+    const PREMIUM_FLG_NET = 2;
+
+
     function __construct($connection = null)
     {
         parent::__construct(self::TABLE);

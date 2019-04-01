@@ -21,6 +21,10 @@ class Product extends Model
     const DUMMY_DATA_IS_NOT_DUMMY = 0;
     const DUMMY_DATA_IS_DUMMY = 1;
 
+    // プレミアムフラグ 1=店舗、2=ネット
+    const PREMIUM_FLG_SHOP = 1;
+    const PREMIUM_FLG_NET = 2;
+
     function __construct()
     {
         parent::__construct(self::TABLE);

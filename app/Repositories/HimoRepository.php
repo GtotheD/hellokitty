@@ -399,15 +399,35 @@ class HimoRepository extends ApiRequesterRepository
         return $this;
     }
 
-    public function premiumRentalVideoRecommend($ignoreUrlCd)
+    public function premiumRentalVideoRecommend($ignoreUrlCd, $genreId = null)
     {
         $this->api = 'crossworks';
         if (env('APP_ENV') === 'local') {
             return $this;
         }
-        foreach ($ignoreUrlCd as $id) {
-            if (!empty($id)) {
-                $queryId[] = '-0105:' . $id;
+        
+        if (!empty($genreId)) {
+            $listArray = config('release_genre_map');
+            $listString = null;
+ 
+            if ($genreId >= 51 && $genreId <= 55) {
+                $listString = $listArray[$genreId][0];
+            } else {
+                if (count($listArray[$genreId]) == 1) {
+                    if ($listArray[$genreId][0] === self::HIMO_TAP_RECOMMEND) {
+                        $listString = self::HIMO_TAP_RECOMMEND;
+                    } else {
+                        $listString = $listArray[$genreId][0] . '::';
+                    }
+                } else {
+                    $listString = implode(':: || ', $listArray[$genreId]) . '::';
+                }
+            } 
+         } else {
+            foreach ($ignoreUrlCd as $id) {
+                if (!empty($id)) {
+                    $queryId[] = '-0105:' . $id;
+                }
             }
         }
         $this->apiPath = $this->apiHost . '/search/crossworks';
@@ -426,7 +446,13 @@ class HimoRepository extends ApiRequesterRepository
         ];
         if (!empty($queryId)) {
             $this->queryParams['id_value'] = implode(' || ', $queryId);
+            $this->queryParams['work_tags'] = 'riricaleinfo';
         }
+        if (!empty($listString)) {
+            $this->queryParams['genre_id'] = $listString;
+        }
+
+
         return $this;
     }
 
