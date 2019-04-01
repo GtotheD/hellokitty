@@ -16,12 +16,12 @@ class SectionPremiumRecommend extends BaseRepository
      * @param $ignoreUrlCd
      * @return $this|bool
      */
-    public function getWorks($ignoreUrlCd)
+    public function getWorks($ignoreUrlCd, $genre = null)
     {
         $himoRepository = new HimoRepository('asc', $this->offset, $this->limit);
         $workRepository = new WorkRepository();
 
-        $data = $himoRepository->premiumRentalVideoRecommend($ignoreUrlCd)->get();
+        $data = $himoRepository->premiumRentalVideoRecommend($ignoreUrlCd, $genre)->get();
         // レスポンスがなかった場合または、ステータスが200以外（正常にとれなかった場合）
         if (empty($data['status']) && $data['status'] !== '200') {
             return false;
