@@ -26,6 +26,7 @@ class HimoRepository extends ApiRequesterRepository
     const ID_TYPE = '0102';
     const INTEGRATION_API = '/search/crossworks';
     const MEDIA_FORMAT_ID_VHS = 'EXT00001Q3OJ';
+    const HIMO_TAP_RECOMMEND = 'recommendation';
 
     public function __construct($sort = 'asc', $offset = 0, $limit = 10)
     {
