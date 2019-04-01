@@ -134,6 +134,7 @@ class ProductRepository extends BaseRepository
             "t2.jacket_l AS jacketL",
             "t2.sale_start_date AS saleStartDate",
             "t2.ccc_family_cd AS cccFamilyCd",
+            "t2.is_premium_shop AS isPremiumShop",
         ];
         $itemCount = $this->product->rentalItemCount($workId)->getOne();
         $ignoreFlag = false;
@@ -153,6 +154,9 @@ class ProductRepository extends BaseRepository
             )->select($columnOutput)->getOne();
             $tmp->dvd = $result->dvd;
             $tmp->bluray = $result->bluray;
+            // プレミアムフラグ
+            $tmp->isPremium = ($result->is_premium_shop === 1)? true: false;
+            unset($tmp->isPremiumShop);
             $response[] = $tmp;
         }
         if (empty($response)) {
@@ -253,6 +257,8 @@ class ProductRepository extends BaseRepository
             }
             // VHSのみだった場合のメッセージ
             $product['message'] = $message;
+
+            // レコードを一つの配列にまとめる
             $reformatResult[] = $product;
         }
         return $reformatResult;
@@ -407,6 +413,22 @@ class ProductRepository extends BaseRepository
         $productBase['maker_cd'] = $product['maker_cd'];
         $productBase['maker_name'] = $product['maker_name'];
         $productBase['media_format_id'] = $product['media_format_id'];
+
+        $productBase['is_premium_shop'] = 0;
+        $productBase['is_premium_net'] = 0;
+
+        if (isset($product['premium_plan_cd'])) {
+            switch ((int)$product['premium_plan_cd']) {
+                case Product::PREMIUM_FLG_SHOP:
+                    $productBase['is_premium_shop'] = 1;
+                    break;
+                case Product::PREMIUM_FLG_NET:
+                    $productBase['is_premium_net'] = 1;
+                    break;
+                default:
+                    break;
+            }
+        }
 
         return $productBase;
     }

@@ -79,7 +79,7 @@ class SectionRepository extends BaseRepository
         }
     }
 
-    public function normal($goodsType, $saleType, $sectionFileName)
+    public function normal($goodsType, $saleType, $sectionFileName, $isPremium = false)
     {
         $rows = null;
         $sections = [];
@@ -88,7 +88,11 @@ class SectionRepository extends BaseRepository
         $goodsType = $structureRepository->convertGoodsTypeToId($goodsType);
         $saleTypeRequest = $saleType;
         $saleType = $structureRepository->convertSaleTypeToId($saleType);
-        $structureList = $structure->conditionFindFilenameWithDispTime($goodsType, $saleType, $sectionFileName)->getOne();
+        if($isPremium) {
+            $structureList = $structure->conditionFindFilenameWithDispTime($goodsType, $saleType, $sectionFileName, Structure::SECTION_TYPE_PREMIUM_PICKLE)->getOne();
+        } else {
+            $structureList = $structure->conditionFindFilenameWithDispTime($goodsType, $saleType, $sectionFileName, Structure::SECTION_TYPE_SPECIAL)->getOne();
+        }
         if (empty($structureList)) {
             $this->totalCount = 0;
         } else {
@@ -101,6 +105,24 @@ class SectionRepository extends BaseRepository
         } else {
             $this->hasNext = false;
         }
+        // プレミアムフラグを取得するためにキャッシュからデータを取得する。
+        // IDのみ抽出
+        foreach ($sections as $section) {
+            $workIds[] = $section->work_id;
+        }
+
+        if(empty($workIds)) {
+            return $this;
+        }
+        // DBまたはHIMOへ問い合わせ（基本はキャッシュにある）
+        $workRepository = new WorkRepository();
+        $workList = $workRepository->getWorkList($workIds);
+        // 店舗プレミアムフラグを取得する
+        $workListPremium = [];
+        foreach ($workList['rows'] as $workRow) {
+            $workListPremium[$workRow['workId']] = $workRow['isPremium'];
+        }
+
         foreach ($sections as $section) {
             // saleTypeは基本リクエストのものをそのまま渡すが、
             if($section->sale_type == WorkRepository::SALE_TYPE_THEATER) {
@@ -108,6 +130,7 @@ class SectionRepository extends BaseRepository
             } else {
                 $saleTypeTmp = $saleTypeRequest;
             }
+            $jsonData = json_decode($section->data, true);
             $row = [
                 'imageUrl' => $section->image_url,
                 'title' => $section->title,
@@ -117,8 +140,25 @@ class SectionRepository extends BaseRepository
                 'workId' => $section->work_id,
                 'saleType' => $saleTypeTmp,
             ];
+            if($isPremium) {
+                $row['subtitle'] = $jsonData['subtitle'];
+                $row['text'] = $jsonData['text'];
+                $row['isTapOn'] = ($jsonData['is_tap_on'] === 1)? true: false;
+                $row['linkUrl'] = $jsonData['link_url'];
+            }
             // Himoに切り替わって、saleType別にてsale_start_dateをアップデートしているのでsale_start_dateに統一
-                $row['saleStartDate'] = $structureList->is_release_date == 1 ? $this->dateFormat($section->sale_start_date) : null;
+            $row['saleStartDate'] = $structureList->is_release_date == 1 ? $this->dateFormat($section->sale_start_date) : null;
+
+            // todo: 一旦はDVDレンタルのみフラグを付与
+            if (($goodsType === 5 || $goodsType === 1) && $saleType === 1) {
+                // 取得できたら設定する
+                if(array_key_exists($section->work_id, $workListPremium)) {
+                    $row['isPremium'] = ($workListPremium[$section->work_id] === 1)? true: false;
+                } else {
+                    $row['isPremium'] = false;
+                }
+            }
+
             $rows[] = $row;
         }
         $this->rows = $rows;
@@ -306,7 +346,6 @@ class SectionRepository extends BaseRepository
                     (substr($product->item_cd, -2) === '76' && !empty($product->number_of_volume))) {
                     $productName = $product->product_name . "（{$product->number_of_volume}）";
                 }
-
                 $formattedRow =
                     [
                         'imageUrl' => $product->jacket_l,
@@ -324,6 +363,7 @@ class SectionRepository extends BaseRepository
                 } else {
                     $formattedRow['supplement'] = null;
                 }
+                $formattedRow['isPremium'] = ($work['isPremium'] === 1)? true: false;
                 $formattedRows[] = $formattedRow;
                 $count++;
             }
@@ -387,6 +427,8 @@ class SectionRepository extends BaseRepository
             } else {
                 $formattedRow['supplement'] = null;
             }
+            $formattedRow['isPremium'] = ($work['isPremium'] === 1)? true: false;
+
             $formattedRows[] = $formattedRow;
 
         }
@@ -474,6 +516,7 @@ class SectionRepository extends BaseRepository
             $rowUnit['adultFlg'] = $work['adultFlg'];
 //            $rowUnit['saleStartDate'] = $work['saleStartDate'];
             $rowUnit['saleStartDate'] = null;
+            $rowUnit['isPremium'] = ($work['isPremium'] === 1)? true: false;
 
             // modelNameがあったゲームなので、ゲーム名を取得するようにする。
             if (!$this->supplementVisible) {
