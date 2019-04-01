@@ -123,7 +123,9 @@ class StructureRepository
             }
             // プレミアムの構成には、apiUrlにフラグを付与する
             if ($goodsType === self::PREMIUM_DVD &&
-                $structure->section_type !== 1) {
+                $structure->section_type !== 1 &&
+                !empty($apiUrl)
+            ) {
                 $apiUrl .= '?premium=true';
             }
             $unit = [

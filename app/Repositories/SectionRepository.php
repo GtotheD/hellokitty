@@ -141,7 +141,7 @@ class SectionRepository extends BaseRepository
                 'saleType' => $saleTypeTmp,
             ];
             if($isPremium) {
-                $row['subtile'] = $jsonData['subtitle'];
+                $row['subtitle'] = $jsonData['subtitle'];
                 $row['text'] = $jsonData['text'];
                 $row['isTapOn'] = ($jsonData['is_tap_on'] === 1)? true: false;
                 $row['linkUrl'] = $jsonData['link_url'];
@@ -363,7 +363,7 @@ class SectionRepository extends BaseRepository
                 } else {
                     $formattedRow['supplement'] = null;
                 }
-                $formattedRow['isPremium'] = ($work['isPremiumShop'] === 1)? true: false;
+                $formattedRow['isPremium'] = ($work['isPremium'] === 1)? true: false;
                 $formattedRows[] = $formattedRow;
                 $count++;
             }
@@ -427,7 +427,7 @@ class SectionRepository extends BaseRepository
             } else {
                 $formattedRow['supplement'] = null;
             }
-            $formattedRow['isPremium'] = ($work['isPremiumShop'] === 1)? true: false;
+            $formattedRow['isPremium'] = ($work['isPremium'] === 1)? true: false;
 
             $formattedRows[] = $formattedRow;
 
@@ -516,7 +516,7 @@ class SectionRepository extends BaseRepository
             $rowUnit['adultFlg'] = $work['adultFlg'];
 //            $rowUnit['saleStartDate'] = $work['saleStartDate'];
             $rowUnit['saleStartDate'] = null;
-            $rowUnit['isPremium'] = ($work['isPremiumShop'] === 1)? true: false;
+            $rowUnit['isPremium'] = ($work['isPremium'] === 1)? true: false;
 
             // modelNameがあったゲームなので、ゲーム名を取得するようにする。
             if (!$this->supplementVisible) {
