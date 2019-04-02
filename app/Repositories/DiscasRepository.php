@@ -2,11 +2,9 @@
 
 namespace App\Repositories;
 
-use GuzzleHttp\Client;
+use GuzzleHttp\Cookie\CookieJar;
 use GuzzleHttp\Exception\ClientException;
-use App\Repositories\WorkRepository;
-use App\Model\Work;
-
+use App\Libraries\TlscEncryption;
 
 class DiscasRepository extends ApiRequesterRepository
 {
@@ -15,8 +13,12 @@ class DiscasRepository extends ApiRequesterRepository
     protected $offset;
     protected $limit;
     protected $apiHost;
+    protected $apiNewHost;
 
     const DISCAS_REVIEW_API = '/netdvd/sp/webapi/review/reviewInfo'; // 作品詳細用
+    const DISCAS_CUSTOMER_API = '/v2/customer'; // 作品詳細用
+
+    use TlscEncryption;
 
     public function __construct($sort = 'asc', $offset = 0, $limit = 10)
     {
@@ -25,6 +27,7 @@ class DiscasRepository extends ApiRequesterRepository
         $this->offset = $offset;
         $this->limit = $limit;
         $this->apiHost = env('DISCAS_API_HOST');
+        $this->apiNewHost = env('DISCAS_NEW_API_HOST');
     }
 
     /*
@@ -122,5 +125,76 @@ class DiscasRepository extends ApiRequesterRepository
         }
     }
 
+    public function customer($tlsc)
+    {
+        $userAgent = 'GuzzleHttp/6.2.0 curl/7.29.0 PHP/7.0.14';
+        $this->apiPath = $this->apiNewHost . self::DISCAS_CUSTOMER_API;
+        $lv2Token = $this->getLv2LoginTokenFromTlsc($tlsc);
+        $this->id = $lv2Token;
+        $this->setHeaders([
+            'User-Agent' => $userAgent,
+    	    'host' => parse_url($this->apiNewHost, PHP_URL_HOST),
+            'X-Requested-With' => 'XMLHttpRequest',
+            'content-type' => 'application/json; charset=utf-8',
+    	    'cookie' => 'lv2LoginTkn=' . $lv2Token
+        ]);
+        return $this;
+    }
+
+    public function getLv2LoginTokenFromTlsc($tlsc)
+    {
+        $tlscConfig = config('tlsc_encryption');
+        $this->convertKeys = $tlscConfig['convert_keys'];
+        $this->checkDegitWeight = $tlscConfig['check_degit_weight'];
+
+        // envファイルから環境毎の値を取得
+        $key = env('LV2TOKEN_ENCRYPT_KEY');
+        $iv = env('LV2TOKEN_INIT_VECTOR');
+
+        // traitにて実装されているファンクションにてST内部管理番号を取得
+        $stId = $this->decrypt($tlsc);
+
+        //2. ST内部管理番号＋現在時刻の120分後の値を作成 (＝レベル２認証トークン)
+        $now = date('YmdHis', strtotime('+120 minute'));
+        $value = $stId . $now;
+
+        //3. レベル2認証トークンの暗号化キー、初期化ベクトルを用意
+        $hashed = md5($key, true);
+        $generatedKey = $hashed . md5($hashed, true);
+
+        //4. レベル2認証トークンを暗号化 AES-256-CBC > base64×2
+        return base64_encode(base64_encode(openssl_encrypt($value, 'AES-256-CBC', $generatedKey, true, $iv)));
+    }
+
+    /**
+     * @param bool $jsonResponse
+     * @return mixed|null|string
+     * @throws \App\Exceptions\NoContentsException
+     */
+    public function get($jsonResponse = true)
+    {
+        if(env('APP_ENV') !== 'local' && env('APP_ENV') !== 'testing' ){
+            return parent::get($jsonResponse);
+        }
+        return $this->stub($this->api, $this->id);
+    }
+
+    /**
+     * @param $apiName
+     * @param $filename
+     * @return mixed|null
+     */
+    private function stub($apiName, $filename)
+    {
+        $path = base_path('tests/Data/discas');
+        $path = $path . $apiName . '/' . $filename;
+        if(!realpath($path)) {
+            return null;
+        }
+        $file = file_get_contents($path);
+        // Remove new line character
+        return json_decode(str_replace(["\n","\r\n","\r", PHP_EOL], '', $file), true);
+        // return json_decode($file, TRUE);
+    }
 
 }

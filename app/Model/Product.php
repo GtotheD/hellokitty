@@ -21,6 +21,10 @@ class Product extends Model
     const DUMMY_DATA_IS_NOT_DUMMY = 0;
     const DUMMY_DATA_IS_DUMMY = 1;
 
+    // プレミアムフラグ 1=店舗、2=ネット
+    const PREMIUM_FLG_SHOP = 1;
+    const PREMIUM_FLG_NET = 2;
+
     function __construct()
     {
         parent::__construct(self::TABLE);
@@ -387,12 +391,15 @@ class Product extends Model
         $groupingColumn = 'work_id, product_name, ccc_family_cd';
 //        $saleStartDate = 'MAX(sale_start_date) AS sale_start_date';
         $saleStartDate = 'MIN(sale_start_date) AS sale_start_date';
+        // premiumが一つでもあればtrue
+        $isPremium = 'MAX(is_premium_shop) AS is_premium_shop';
         $dvdQuery = 'MAX(CASE WHEN (item_cd = \'0021\' OR item_cd = \'0121\') THEN rental_product_cd ELSE NULL END) AS dvd';
         $blurayQuery = 'MAX(CASE WHEN (item_cd = \'0022\' OR item_cd = \'0122\') THEN rental_product_cd ELSE NULL END) AS bluray';
         $selectQuery = $groupingColumn. ','.
             $saleStartDate. ','.
             $dvdQuery. ','.
-            $blurayQuery;
+            $blurayQuery. ','.
+            $isPremium;
         $subQuery = DB::table($this->table)->select(DB::raw($selectQuery))
             ->whereRaw(DB::raw('work_id = \''.$workId . '\''))
             ->whereRaw(DB::raw(' product_type_id = 2 '))

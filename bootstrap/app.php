@@ -115,6 +115,7 @@ $app->configure('hidden_video_map');
 $app->configure('himo_tables');
 $app->configure('messages');
 $app->configure('errors');
+$app->configure('tlsc_encryption');
 
 /*
 |--------------------------------------------------------------------------

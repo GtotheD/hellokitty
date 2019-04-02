@@ -266,6 +266,9 @@ class WorkRepository extends BaseRepository
                     if($tempData['itemType'] == 'book') {
                         $tempData['bookSeriesName'] = $itemWork['bookSeriesName'];
                     }
+                    // プレミアムフラグ(作品ベースの情報)
+                    $tempData['isPremium'] = $itemWork['isPremium'];
+
                     array_push($workDataFormat, $tempData);
                     $count ++;
                     continue;
@@ -318,11 +321,8 @@ class WorkRepository extends BaseRepository
     }
 
     /**
-     *
-     *
      * @param $workIds, $selectColumns
      * @return null
-     *
      * @throws NoContentsException
      */
     public function getWorkList($workIds, $selectColumns = null, $idType = null, $workOnly = false, $saleType = null)
@@ -405,7 +405,6 @@ class WorkRepository extends BaseRepository
         } else {
             $workArray = $this->work->selectCamel($selectColumns)->getAll();
         }
-        // productsからとってくるが、仮データ
         foreach ($workArray as $workItem) {
             $row = (array)$workItem;
             if ($workOnly) {
@@ -591,6 +590,12 @@ class WorkRepository extends BaseRepository
             $response['saleType'] = self::SALE_TYPE_THEATER;
         }
 
+        // プレミアムフラグ(作品ベースの情報)
+        $response['isPremium'] = ($response['isPremiumShop'] === 1)? true: false;
+        // もとの情報は削除
+        unset($response['isPremiumNet']);
+        unset($response['isPremiumShop']);
+
         if ($addSaleTypeHas) {
             if($response['workTypeId'] === self::WORK_TYPE_THEATER) {
                 $response['saleTypeHas'] = [
@@ -707,7 +712,7 @@ class WorkRepository extends BaseRepository
         } catch (\Exception $exception) {
             \Log::error("Error while update work. Error message:{$exception->getMessage()} Line: {$exception->getLine()}");
             DB::rollback();
-            throw new $exception;
+            throw $exception;
         }
 
     }
@@ -1266,6 +1271,25 @@ class WorkRepository extends BaseRepository
         // TOLが存在していた場合
         if ($hasTol === false) {
             $base['only_other'] = self::ONLY_OTHER;
+        }
+
+        $base['is_premium_shop'] = 0;
+        $base['is_premium_net'] = 0;
+
+        if(isset($row['premium_plan']) && is_array($row['premium_plan'])) {
+            foreach ($row['premium_plan'] as $plan) {
+                if(isset($plan['premium_plan_cd'])) {
+                    switch ((int)$plan['premium_plan_cd']) {
+                        case Work::PREMIUM_FLG_SHOP:
+                            $base['is_premium_shop'] = 1;
+                            break;
+                        case Work::PREMIUM_FLG_NET:
+                            $base['is_premium_net'] = 1;
+                            break;
+                        default: break;
+                    }
+                }
+            }
         }
 
         return $base;

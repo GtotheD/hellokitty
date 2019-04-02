@@ -226,6 +226,221 @@
  *              type="boolean",
  *              description="アダルトフラグ"
  *          ),
+ *          @SWG\Property(
+ *              property="isPremium",
+ *              type="boolean",
+ *              description="プレミアムフラグ"
+ *          )
+ *  )
+ * */
+/**
+ *  @SWG\Definition(
+ *          definition="WorkForSection",
+ *          @SWG\Property(
+ *              property="imageUrl",
+ *              type="string",
+ *              description="ジャケ写"
+ *          ),
+ *          @SWG\Property(
+ *              property="title",
+ *              type="string",
+ *              description="タイトル"
+ *          ),
+ *          @SWG\Property(
+ *              property="supplement",
+ *              type="string",
+ *              description="著者・作者・機種等"
+ *          ),
+ *          @SWG\Property(
+ *              property="code",
+ *              type="string",
+ *              description="レンタル商品コード・JANコード(マクロで指定したコード)"
+ *          ),
+ *          @SWG\Property(
+ *              property="urlCd",
+ *              type="string",
+ *              description="URLコード"
+ *          ),
+ *          @SWG\Property(
+ *              property="workId",
+ *              type="string",
+ *              description="HiMO作品ID"
+ *          ),
+ *          @SWG\Property(
+ *              property="saleType",
+ *              type="string",
+ *              description="販売タイプ（sell, rental, theater(上映映画), other(EC/配信等)）"
+ *          ),
+ *          @SWG\Property(
+ *              property="saleStartDate",
+ *              type="string",
+ *              description="販売開始日"
+ *          ),
+ *          @SWG\Property(
+ *              property="isPremium",
+ *              type="boolean",
+ *              description="プレミアムフラグ"
+ *          )
+ *  )
+ * */
+/**
+ *  @SWG\Definition(
+ *          definition="WorkForPickled",
+ *          @SWG\Property(
+ *              property="imageUrl",
+ *              type="string",
+ *              description="ジャケ写"
+ *          ),
+ *          @SWG\Property(
+ *              property="title",
+ *              type="string",
+ *              description="タイトル"
+ *          ),
+ *          @SWG\Property(
+ *              property="supplement",
+ *              type="string",
+ *              description="著者・作者・機種等"
+ *          ),
+ *          @SWG\Property(
+ *              property="code",
+ *              type="string",
+ *              description="レンタル商品コード・JANコード(マクロで指定したコード)"
+ *          ),
+ *          @SWG\Property(
+ *              property="urlCd",
+ *              type="string",
+ *              description="URLコード"
+ *          ),
+ *          @SWG\Property(
+ *              property="workId",
+ *              type="string",
+ *              description="HiMO作品ID"
+ *          ),
+ *          @SWG\Property(
+ *              property="saleType",
+ *              type="string",
+ *              description="販売タイプ（sell, rental, theater(上映映画), other(EC/配信等)）"
+ *          ),
+ *          @SWG\Property(
+ *              property="saleStartDate",
+ *              type="string",
+ *              description="販売開始日"
+ *          ),
+ *          @SWG\Property(
+ *              property="isPremium",
+ *              type="boolean",
+ *              description="プレミアムフラグ"
+ *          ),
+ *          @SWG\Property(
+ *              property="text",
+ *              type="string",
+ *              description="テキスト",
+ *          ),
+ *          @SWG\Property(
+ *              property="subTitle",
+ *              type="string",
+ *              description="サブタイトル",
+ *          )
+ *  )
+ * */
+/**
+ *  @SWG\Definition(
+ *          definition="WorkForReleaseAuto",
+ *          @SWG\Property(
+ *              property="saleStartDate",
+ *              type="string",
+ *              description="作品ID"
+ *          ),
+ *          @SWG\Property(
+ *              property="imageUrl",
+ *              type="string",
+ *              description="商品画像"
+ *          ),
+ *          @SWG\Property(
+ *              property="title",
+ *              type="string",
+ *              description="商品タイトル"
+ *          ),
+ *          @SWG\Property(
+ *              property="code",
+ *              type="string",
+ *              description="レンタル商品コード・JANコード(マクロで指定したコード)"
+ *          ),
+ *          @SWG\Property(
+ *              property="urlCd",
+ *              type="boolean",
+ *              description="URLコード"
+ *          ),
+ *          @SWG\Property(
+ *              property="supplement",
+ *              type="string",
+ *              description="著者・作者・機種"
+ *          ),
+ *          @SWG\Property(
+ *              property="isPremium",
+ *              type="boolean",
+ *              description="プレミアムフラグ"
+ *          )
+ *  )
+ * */
+/**
+ *  @SWG\Definition(
+ *          definition="WorkForReleaseHimo",
+ *          @SWG\Property(
+ *              property="imageUrl",
+ *              type="string",
+ *              description="商品画像"
+ *          ),
+ *          @SWG\Property(
+ *              property="title",
+ *              type="string",
+ *              description="商品タイトル"
+ *          ),
+ *          @SWG\Property(
+ *              property="workTitle",
+ *              type="string",
+ *              description="作品タイトル"
+ *          ),
+ *          @SWG\Property(
+ *              property="workId",
+ *              type="string",
+ *              description="作品ID"
+ *          ),
+ *          @SWG\Property(
+ *              property="code",
+ *              type="string",
+ *              description="レンタル商品コード・JANコード(マクロで指定したコード)"
+ *          ),
+ *          @SWG\Property(
+ *              property="urlCd",
+ *              type="boolean",
+ *              description="URLコード"
+ *          ),
+ *          @SWG\Property(
+ *              property="sort",
+ *              type="integer",
+ *              description="ソート順"
+ *          ),
+ *          @SWG\Property(
+ *              property="msdbItem",
+ *              type="string",
+ *              description="HIMO MSDBアイテムコード(audio, movie, book, game等)"
+ *          ),
+ *          @SWG\Property(
+ *              property="saleStartDate",
+ *              type="string",
+ *              description="販売開始日"
+ *          ),
+ *          @SWG\Property(
+ *              property="supplement",
+ *              type="string",
+ *              description="著者・作者・機種"
+ *          ),
+ *          @SWG\Property(
+ *              property="isPremium",
+ *              type="boolean",
+ *              description="プレミアムフラグ"
+ *          )
  *  )
  * */
 /**
@@ -304,7 +519,7 @@
  * */
 /**
  *  @SWG\Definition(
- *          definition="WorkNarrowRelease",
+ *          definition="WorkNarrowRanking",
  *          @SWG\Property(
  *              property="workId",
  *              type="string",
@@ -369,6 +584,11 @@
  *              property="adultFlg",
  *              type="boolean",
  *              description="アダルトフラグ"
+ *          ),
+ *          @SWG\Property(
+ *              property="isPremium",
+ *              type="boolean",
+ *              description="プレミアムフラグ"
  *          ),
  *  )
  * */

@@ -34,6 +34,8 @@ use App\Repositories\FavoriteRepository;
 use App\Repositories\CouponRepository;
 use App\Repositories\RentalUseRegistrationRepository;
 use App\Repositories\PointRepository;
+use App\Repositories\SectionPremiumRecommend;
+use App\Repositories\StatusPremiumRepository;
 use App\Exceptions\AgeLimitException;
 use App\Exceptions\ContentsException;
 use App\Exceptions\NoContentsException;
@@ -57,7 +59,28 @@ $router->group([
         $structureRepository = new StructureRepository;
         $structureRepository->setLimit($request->input('limit', 10));
         $structureRepository->setOffset($request->input('offset', 0));
-        $structures = $structureRepository->get($goodsType, $saleType);
+        // プレミアム対応にてAPIバージョンをv4にあげない為、旧アプリへsectionType=6を出さないようにする対応
+        $isPremium = $request->input('premium', false);
+        $isPremium = ($isPremium !== 'true')? false: true;
+        $structures = $structureRepository->get($goodsType, $saleType, $isPremium);
+        if ($structures->getTotalCount() == 0) {
+            throw new NoContentsException;
+        }
+        $response = [
+            'hasNext' => $structures->getHasNext(),
+            'totalCount' => $structures->getTotalCount(),
+            'rows' => $structures->getRows(),
+        ];
+        return response()->json($response)->header('X-Accel-Expires', '600');
+    });
+
+    // コンテンツ構成取得API
+    $router->get('structure/premium/dvd/rental', function (Request $request) {
+        $structureRepository = new StructureRepository;
+        $structureRepository->setLimit($request->input('limit', 10));
+        $structureRepository->setOffset($request->input('offset', 0));
+        $structures = $structureRepository->get('premiumDvd', 'rental', true);
+
         if ($structures->getTotalCount() == 0) {
             throw new NoContentsException;
         }
@@ -92,10 +115,10 @@ $router->group([
         $sectionRepository = new SectionRepository;
         $sectionRepository->setLimit($request->input('limit', 10));
         $sectionRepository->setOffset($request->input('offset', 0));
+        $premiumFlag = $request->input('premium', false);
         if ($goodsType === 'dvd') {
             $sectionRepository->setSupplementVisible(true);
         }
-
         $section = $sectionRepository->normal($goodsType, $saleType, $sectionName);
         if ($section->getTotalCount() == 0) {
             throw new NoContentsException;
@@ -104,6 +127,96 @@ $router->group([
             'hasNext' => $section->getHasNext(),
             'totalCount' => $section->getTotalCount(),
             'rows' => $section->getRows()
+        ];
+        if ($premiumFlag !== 'true') {
+            foreach ($response['rows'] as $rowKey => $row) {
+                unset($response['rows'][$rowKey]['isPremium']);
+            }
+        }
+        return response()->json($response)->header('X-Accel-Expires', '600');
+    });
+
+    // プレミアム通常セクション取得API
+    $router->get('section/premium/dvd/rental/{sectionName}', function (Request $request, $sectionName) {
+        $sectionRepository = new SectionRepository;
+        $sectionRepository->setLimit($request->input('limit', 10));
+        $sectionRepository->setOffset($request->input('offset', 0));
+        $sectionRepository->setSupplementVisible(true);
+
+        $section = $sectionRepository->normal('premiumDvd', 'rental', $sectionName);
+
+        if ($section->getTotalCount() == 0) {
+            throw new NoContentsException;
+        }
+        $response = [
+            'hasNext' => $section->getHasNext(),
+            'totalCount' => $section->getTotalCount(),
+            'rows' => $section->getRows()
+        ];
+
+        return response()->json($response)->header('X-Accel-Expires', '600');
+    });
+
+
+
+    // 映画漬けセクション取得API
+    $router->get('section/premium/dvd/rental/movie/{sectionName}', function (Request $request, $sectionName) {
+        $sectionRepository = new SectionRepository;
+        $sectionRepository->setLimit($request->input('limit', 10));
+        $sectionRepository->setOffset($request->input('offset', 0));
+        $sectionRepository->setSupplementVisible(true);
+
+        // プレミアムフラグを渡して取得
+        $section = $sectionRepository->normal('premiumDvd', 'rental', $sectionName, true);
+        if ($section->getTotalCount() == 0) {
+            throw new NoContentsException;
+        }
+        $response = [
+            'hasNext' => $section->getHasNext(),
+            'totalCount' => $section->getTotalCount(),
+            'rows' => $section->getRows()
+        ];
+        return response()->json($response)->header('X-Accel-Expires', '600');
+    });
+
+
+    // TOP用ジャンル特定版プレミアムリコメンドAPI
+    $router->get('section/premium/dvd/rental/{genre}/recommend', function (Request $request, $genre) {
+        $urlCd = [];
+
+        $sectionPremiumRecommend = new SectionPremiumRecommend;
+        $sectionPremiumRecommend->setLimit($request->input('limit', 10));
+        $sectionPremiumRecommend->setOffset($request->input('offset', 0));
+        $sectionPremiumRecommend->getWorks($urlCd, $genre);
+        // プレミアムフラグを渡して取得
+        if ($sectionPremiumRecommend->getTotalCount() == 0) {
+            throw new NoContentsException;
+        }
+        $response = [
+            'hasNext' => $sectionPremiumRecommend->getHasNext(),
+            'totalCount' => $sectionPremiumRecommend->getTotalCount(),
+            'rows' => $sectionPremiumRecommend->getRows()
+        ];
+        return response()->json($response)->header('X-Accel-Expires', '600');
+    });
+   
+    // TOP用プレミアムリコメンドAPI
+    $router->post('section/premium/dvd/rental/recommend', function (Request $request) {
+        $body = json_decode($request->getContent(), true);
+        $urlCd = isset($body['urlCd']) ? $body['urlCd'] : '';
+
+        $sectionPremiumRecommend = new SectionPremiumRecommend;
+        $sectionPremiumRecommend->setLimit($request->input('limit', 10));
+        $sectionPremiumRecommend->setOffset($request->input('offset', 0));
+        $sectionPremiumRecommend->getWorks($urlCd);
+        // プレミアムフラグを渡して取得
+        if ($sectionPremiumRecommend->getTotalCount() == 0) {
+            throw new NoContentsException;
+        }
+        $response = [
+            'hasNext' => $sectionPremiumRecommend->getHasNext(),
+            'totalCount' => $sectionPremiumRecommend->getTotalCount(),
+            'rows' => $sectionPremiumRecommend->getRows()
         ];
         return response()->json($response)->header('X-Accel-Expires', '600');
     });
@@ -131,9 +244,17 @@ $router->group([
         $sectionRepository = new SectionRepository;
         $sectionRepository->setLimit(20);
         $sectionRepository->setSupplementVisible($request->input('supplementVisibleFlg', false));
+        $premiumFlag = $request->input('premium', false);
         $rows = $sectionRepository->ranking($codeType, $code, $period);
         if (empty($rows)) {
             throw new NoContentsException;
+        }
+        // プレミアムフラグを返却しないようにする。
+        // 現状はDVDレンタルの為、臨時対応として取得元で制御は行わない
+        if ($premiumFlag !== 'true') {
+            foreach ($rows as $rowKey => $row) {
+                unset($rows[$rowKey]['isPremium']);
+            }
         }
         $response = [
             'hasNext' => $sectionRepository->getHasNext(),
@@ -152,9 +273,17 @@ $router->group([
         if (empty($releaseDateTo)) {
             $releaseDateTo = date('Ymd', strtotime('next sunday'));
         }
+        $premiumFlag = $request->input('premium', false);
         $sectionRepository = new SectionRepository;
         $sectionRepository->setSupplementVisible($request->input('supplementVisibleFlg', false));
         $sectionData = $sectionRepository->releaseManual($tapCategoryId, $releaseDateTo);
+        // プレミアムフラグを返却しないようにする。
+        // 現状はDVDレンタルの為、臨時対応として取得元で制御は行わない
+        if ($premiumFlag !== 'true') {
+            foreach ($sectionData['rows'] as $rowKey => $row) {
+                unset($sectionData['rows'][$rowKey]['isPremium']);
+            }
+        }
         return response()->json($sectionData)->header('X-Accel-Expires', '600');
     });
 
@@ -168,11 +297,19 @@ $router->group([
 
     // レコメンドセクション取得API
     $router->get('section/release/himo/{periodType}/{tapGenreId}', function (Request $request, $periodType, $genreId) {
+        $premiumFlag = $request->input('premium', false);
         $sectionRepository = new SectionRepository;
         $sectionRepository->setSupplementVisible($request->input('supplementVisibleFlg', false));
         $sectionData = $sectionRepository->releaseHimo($periodType, $genreId);
         if (empty($sectionData)) {
             throw new NoContentsException;
+        }
+        // プレミアムフラグを返却しないようにする。
+        // 現状はDVDレンタルの為、臨時対応として取得元で制御は行わない
+        if ($premiumFlag !== 'true') {
+            foreach ($sectionData['rows'] as $rowKey => $row) {
+                unset($sectionData['rows'][$rowKey]['isPremium']);
+            }
         }
         return response()->json($sectionData)->header('X-Accel-Expires', '86400');
     });
@@ -707,6 +844,7 @@ $router->group([
 
     // Favorite works
     $router->post('/work/bulk', function (Request $request) {
+        $premiumFlag = $request->input('premium', false);
         $body_obj = json_decode($request->getContent(), true);
         $saleType = isset($body_obj['saleType']) ? $body_obj['saleType'] : '';
         // Check if have no data for input saleType
@@ -731,6 +869,13 @@ $router->group([
         }
         // Format output work data
         $workDataFormat = $workRepository->formatOutputBulk($workIdsArray, $workData);
+        // プレミアムフラグを返却しないようにする。
+        // 現状はDVDレンタルの為、臨時対応として取得元で制御は行わない
+        if ($premiumFlag !== 'true') {
+            foreach ($workDataFormat as $rowKey => $row) {
+                unset($workDataFormat[$rowKey]['isPremium']);
+            }
+        }
         $response = [
             'hasNext' => false,
             'totalCount' => count($workDataFormat),
@@ -879,6 +1024,44 @@ $router->group([
             'fixedPointMinLimitTime' => $pointRepository->getFixedPointMinLimitTime(),
         ];
         return response()->json($response)->header('X-Accel-Expires', '0');
+    });
+
+    // 　プレミアム会員状態取得API
+    $router->post('member/status/premium', function (Request $request) {
+        $bodyObj = json_decode($request->getContent(), true);
+        $tolId = isset($bodyObj['tolId']) ? $bodyObj['tolId'] : '';
+        $statusPremium = new StatusPremiumRepository($tolId);
+        $response = [
+            'premium' => $statusPremium->get()
+        ];
+        return response()->json($response)->header('X-Accel-Expires', '0');
+    });
+
+    // 　プレミアム会員状態取得API
+    $router->post('member/status/ttv', function (Request $request) {
+        $bodyObj = json_decode($request->getContent(), true);
+        $tlsc = isset($bodyObj['tlsc']) ? $bodyObj['tlsc'] : '';
+        // Check tlsc and $workId
+        if(empty($tlsc)) {
+            throw new BadRequestHttpException;
+        }
+        $discasRepository = new DiscasRepository();
+        try {
+            $response = $discasRepository->customer($tlsc)->get();
+            $response = [
+                'ttvId' => $response['ttvId']
+            ];
+        } catch (\Exception $e) {
+            $exceptionResponse  = $e->getResponse();
+            $statusCode = $exceptionResponse->getStatusCode();
+            $errorCode = json_decode($exceptionResponse->getBody()->getContents(), true);
+            $response = [
+                'httpcode' => (string)$statusCode,
+                'status' => $errorCode['error']
+            ];
+        }
+        return response()->json($response)->header('X-Accel-Expires', '0');
+
     });
 
     // 検証環境まで有効にするテスト用

@@ -103,6 +103,8 @@
                         "shikiriban_name": ""
                     }
                 ],
+                "premium_flg_shop": 1,
+                "premium_flg_net": 1,
                 "products": [
                     {
                         "id": "PDT0000QL8J8",
@@ -321,7 +323,9 @@
                                 "role_name": "演出"
                             }
                         ],
-                        "need_age_auth_flg": 0
+                        "need_age_auth_flg": 0,
+                        "premium_flg_shop": 1,
+                        "premium_flg_net": 1
                     },
                     {
                         "id": "PDT0000QYCR3",
