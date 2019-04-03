@@ -61,7 +61,7 @@ class ApiRequesterRepository
             if ($statusCode == '404') {
                 throw new NoContentsException();
             }
-            throw new $e;
+            throw $e;
         }
         if ($jsonResponse) {
             return json_decode($result->getBody()->getContents(), true);

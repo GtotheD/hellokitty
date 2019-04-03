@@ -74,6 +74,38 @@
  *       description="オフセット",
  *       type="integer"
  *     ),
+ *     @SWG\Parameter(
+ *       name="premium",
+ *       in="query",
+ *       description="プレミアムセクション出力有無",
+ *       type="boolean"
+ *     ),
+ *     @SWG\Response(response=200, description="Success"),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+/**
+ * @SWG\Get(
+ *     path="/structure/premium/dvd/rental",
+ *     description="プレミアム用のDVD-セルのTOP構造を返却する",
+ *     produces={"application/json"},
+ *     tags={"Top"},
+ *     security={{"api_key":{}}},
+ *     @SWG\Parameter(
+ *       name="limit",
+ *       in="query",
+ *       description="表示件数",
+ *       type="integer"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="offset",
+ *       in="query",
+ *       description="オフセット",
+ *       type="integer"
+ *     ),
  *     @SWG\Response(response=200, description="Success"),
  *     @SWG\Response(response=204, description="Contents not found"),
  *     @SWG\Response(response=401, description="Auth error"),
@@ -299,7 +331,25 @@
  *       description="オフセット",
  *       type="integer"
  *     ),
- *     @SWG\Response(response=200, description="Success"),
+ *     @SWG\Parameter(
+ *       name="premium",
+ *       in="query",
+ *       description="プレミアムセクション出力有無",
+ *       type="boolean"
+ *     ),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          ref="$/responses/ListJson",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="rows",
+ *                  type="array",
+ *                  @SWG\Items(ref="#/definitions/WorkForSection"),
+ *                  description="作品情報",
+ *              ),
+ *          )
+ *      ),
  *     @SWG\Response(response=204, description="Contents not found"),
  *     @SWG\Response(response=401, description="Auth error"),
  *     @SWG\Response(response=404, description="Page not found"),
@@ -334,6 +384,52 @@
  *       type="integer"
  *     ),
  *     @SWG\Response(response=200, description="Success"),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+
+/**
+ * @SWG\Get(
+ *     path="/section/premium/dvd/rental/{sectionName}",
+ *     description="プレミアムDVD-レンタルのリスト情報を返却する",
+ *     produces={"application/json"},
+ *     tags={"Top"},
+ *     security={{"api_key":{}}},
+ *     @SWG\Parameter(
+ *       name="sectionName",
+ *       in="path",
+ *       description="セクション名",
+ *       required=true,
+ *       type="string"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="limit",
+ *       in="query",
+ *       description="表示件数",
+ *       type="integer"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="offset",
+ *       in="query",
+ *       description="オフセット",
+ *       type="integer"
+ *     ),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          ref="$/responses/ListJson",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="rows",
+ *                  type="array",
+ *                  @SWG\Items(ref="#/definitions/WorkForSection"),
+ *                  description="作品情報",
+ *              ),
+ *          )
+ *      ),
  *     @SWG\Response(response=204, description="Contents not found"),
  *     @SWG\Response(response=401, description="Auth error"),
  *     @SWG\Response(response=404, description="Page not found"),
@@ -510,7 +606,105 @@
  *     @SWG\Response(response=500, description="Server error")
  * )
  */
-
+/**
+ * @SWG\Get(
+ *     path="/section/premium/dvd/rental/movie/{sectionName}",
+ *     description="プレミアム用　プレミアムで映画漬け情報を返却。単一の商品のみ返却。",
+ *     produces={"application/json"},
+ *     tags={"Top"},
+ *     security={{"api_key":{}}},
+ *     @SWG\Parameter(
+ *       name="sectionName",
+ *       in="path",
+ *       description="セクション名",
+ *       required=true,
+ *       type="string"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="limit",
+ *       in="query",
+ *       description="表示件数",
+ *       type="integer"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="offset",
+ *       in="query",
+ *       description="オフセット",
+ *       type="integer"
+ *     ),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          ref="$/responses/ListJson",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="rows",
+ *                  type="array",
+ *                  @SWG\Items(ref="#/definitions/WorkForPickled"),
+ *                  description="作品情報",
+ *              ),
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+/**
+ * @SWG\Post(
+ *     path="/section/premium/dvd/rental/recommend",
+ *     description="プレミアム用　SectionType=6のコンテンツ時に、対応する作品を返する。",
+ *     produces={"application/json"},
+ *     tags={"Top"},
+ *     security={{"api_key":{}}},
+ *     @SWG\Parameter(
+ *       name="body",
+ *       in="body",
+ *       description="レンタルしたurlCd。ここで指定されたurlCdの作品は返却から除外される。",
+ *       type="array",
+ *       @SWG\Schema(
+ *         @SWG\Property(
+ *             property="urlCd",
+ *             type="array",
+ *             description="「urlCd」を渡し、該当のurlCdは返却リストから除外する",
+ *             @SWG\Items(
+ *                  type="string",
+ *             ),
+ *         )
+ *       )
+ *     ),
+ *     @SWG\Parameter(
+ *       name="limit",
+ *       in="query",
+ *       description="表示件数",
+ *       type="integer"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="offset",
+ *       in="query",
+ *       description="オフセット",
+ *       type="integer"
+ *     ),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          ref="$/responses/ListJson",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="rows",
+ *                  type="array",
+ *                  @SWG\Items(ref="#/definitions/WorkForSection"),
+ *                  description="作品情報",
+ *              ),
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
 /**
  * @SWG\Get(
  *     path="/section/banner/{sectionName}",
@@ -583,6 +777,13 @@
  *       description="出演者・アーティスト・著者・機種等を表示/非表示を切り替える為のフラグ。trueにすると非表示になる。",
  *       type="boolean"
  *     ),
+ *     @SWG\Parameter(
+ *       name="premium",
+ *       in="query",
+ *       description="プレミアムフラグの出力要否。
+ * 出力しない：false（デフォルト）、出力する：true",
+ *       type="boolean"
+ *     ),
  *     @SWG\Response(
  *          response=200,
  *          description="success",
@@ -596,7 +797,7 @@
  *              @SWG\Property(
  *                  property="rows",
  *                  type="array",
- *                  @SWG\Items(ref="#/definitions/WorkNarrowRelease"),
+ *                  @SWG\Items(ref="#/definitions/WorkNarrowRanking"),
  *                  description="作品情報",
  *              ),
  *          )
@@ -633,7 +834,27 @@
  *       description="出演者・アーティスト・著者・機種等を表示/非表示を切り替える為のフラグ。trueにすると非表示になる。",
  *       type="boolean"
  *     ),
- *     @SWG\Response(response=200, description="Success"),
+ *     @SWG\Parameter(
+ *       name="premium",
+ *       in="query",
+ *       description="プレミアムフラグの出力要否。
+ * 出力しない：false（デフォルト）
+ * 出力する：true",
+ *       type="boolean"
+ *     ),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          ref="$/responses/ListJson",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="rows",
+ *                  type="array",
+ *                  @SWG\Items(ref="#/definitions/WorkForSection"),
+ *                  description="作品情報",
+ *              ),
+ *          )
+ *      ),
  *     @SWG\Response(response=204, description="Contents not found"),
  *     @SWG\Response(response=401, description="Auth error"),
  *     @SWG\Response(response=404, description="Page not found"),
@@ -667,7 +888,19 @@
  *       description="出演者・アーティスト・著者・機種等を表示/非表示を切り替える為のフラグ。trueにすると非表示になる。",
  *       type="boolean"
  *     ),
- *     @SWG\Response(response=200, description="Success"),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          ref="$/responses/ListJson",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="rows",
+ *                  type="array",
+ *                  @SWG\Items(ref="#/definitions/WorkForReleaseAuto"),
+ *                  description="作品情報",
+ *              ),
+ *          )
+ *      ),
  *     @SWG\Response(response=204, description="Contents not found"),
  *     @SWG\Response(response=401, description="Auth error"),
  *     @SWG\Response(response=404, description="Page not found"),
@@ -701,7 +934,27 @@
  *       description="出演者・アーティスト・著者・機種等を表示/非表示を切り替える為のフラグ。trueにすると非表示になる。",
  *       type="boolean"
  *     ),
- *     @SWG\Response(response=200, description="Success"),
+ *     @SWG\Parameter(
+ *       name="premium",
+ *       in="query",
+ *       description="プレミアムフラグの出力要否。
+ * 出力しない：false（デフォルト）
+ * 出力する：true",
+ *       type="boolean"
+ *     ),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          ref="$/responses/ListJson",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="rows",
+ *                  type="array",
+ *                  @SWG\Items(ref="#/definitions/WorkForReleaseHimo"),
+ *                  description="作品情報",
+ *              ),
+ *          )
+ *      ),
  *     @SWG\Response(response=204, description="Contents not found"),
  *     @SWG\Response(response=401, description="Auth error"),
  *     @SWG\Response(response=404, description="Page not found"),
@@ -770,6 +1023,7 @@
  *             property="saleType",
  *             type="string",
  *             description="セルレンタル区分（sell, rental）",
+ *             example= "rental",
  *         ),
  *         @SWG\Property(
  *             property="ageLimitCheck",
@@ -785,6 +1039,12 @@
  *             ),
  *         )
  *       )
+ *     ),
+ *     @SWG\Parameter(
+ *       name="premium",
+ *       in="query",
+ *       description="プレミアムセクション出力有無",
+ *       type="boolean"
  *     ),
  *     @SWG\Response(
  *          response=200,
@@ -1612,7 +1872,7 @@
  *              @SWG\Property(
  *                  property="rows",
  *                  type="array",
- *                  @SWG\Items(ref="#/definitions/WorkNarrowRelease"),
+ *                  @SWG\Items(ref="#/definitions/WorkNarrowRanking"),
  *                  description="作品情報",
  *              ),
  *          )
@@ -1726,7 +1986,7 @@
  *              @SWG\Property(
  *                  property="rows",
  *                  type="array",
- *                  @SWG\Items(ref="#/definitions/WorkNarrowRelease"),
+ *                  @SWG\Items(ref="#/definitions/WorkNarrowRanking"),
  *                  description="作品情報",
  *              ),
  *          )
@@ -2051,7 +2311,6 @@
  *     @SWG\Response(response=500, description="Server error")
  * )
  */
-
 /**
  * @SWG\Post(
  *     path="/member/tpoint",
@@ -2168,6 +2427,116 @@
  *     @SWG\Response(response=204, description="Contents not found"),
  *     @SWG\Response(response=400, description="Bad Request"),
  *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+
+/**
+ * @SWG\Post(
+ *     path="/member/status/premium",
+ *     description="",
+ *     produces={"application/json"},
+ *     tags={"Member"},
+ *     security={{"api_key":{}}},
+ *     @SWG\Parameter(
+ *       name="body",
+ *       in="body",
+ *       description="",
+ *       type="array",
+ *       @SWG\Schema(
+ *         @SWG\Property(
+ *             property="tolId",
+ *             type="integer",
+ *             example="1234567890",
+ *             description="アカウントID",
+ *         )
+ *       )
+ *     ),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="premium",
+ *                  type="boolean",
+ *                  description="プレミアム会員かどうか（true=プレミアム会員、false=非プレミアム会員）",
+ *              ),
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=400, description="Bad Request"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+
+/**
+ * @SWG\Post(
+ *     path="/member/status/ttv",
+ *     description="",
+ *     produces={"application/json"},
+ *     tags={"Member"},
+ *     security={{"api_key":{}}},
+ *     @SWG\Parameter(
+ *       name="body",
+ *       in="body",
+ *       description="",
+ *       type="array",
+ *       @SWG\Schema(
+ *         @SWG\Property(
+ *             property="tlsc",
+ *             type="string",
+ *             description="ユーザー識別番号(TLSC)",
+ *         )
+ *       )
+ *     ),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="ttvId",
+ *                  type="string",
+ *                  description="TsutayaTV利用者ID",
+ *              ),
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(
+ *          response=400,
+ *          description="",
+ *          @SWG\Property(
+ *              property="rows",
+ *              type="object",
+ *              @SWG\Property(property="httpcode",type="string",description="htttpステータスコード"),
+ *              @SWG\Property(property="status",type="string",description="接続先APIのエラーステータスコード"),
+ *              description="ttv apiのバリデーションエラー",
+ *          ),
+ *     ),
+ *     @SWG\Response(
+ *          response=401,
+ *          description="",
+ *          @SWG\Property(
+ *              property="rows",
+ *              type="object",
+ *              @SWG\Property(property="httpcode",type="string",description="htttpステータスコード"),
+ *              @SWG\Property(property="status",type="string",description="接続先APIのエラーステータスコード"),
+ *              description="エラー情報",
+ *          ),
+ *     ),
+ *     @SWG\Response(
+ *          response=403,
+ *          description="",
+ *          @SWG\Property(
+ *              property="rows",
+ *              type="object",
+ *              @SWG\Property(property="httpcode",type="string",description="htttpステータスコード"),
+ *              @SWG\Property(property="status",type="string",description="接続先APIのエラーステータスコード"),
+ *              description="認証失敗（TTV側と本システム）",
+ *          ),
+ *     ),
  *     @SWG\Response(response=404, description="Page not found"),
  *     @SWG\Response(response=500, description="Server error")
  * )

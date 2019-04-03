@@ -34,11 +34,23 @@ class PeopleRepository extends BaseRepository
         $peopleCollection = collect(json_decode($newestProduct->people));
         $this->totalCount = $peopleCollection->count();
         $this->rows = $peopleCollection->splice($this->offset, $this->limit);
+
         if (count($this->rows) + $this->offset < $this->totalCount) {
             $this->hasNext = true;
         } else {
             $this->hasNext = false;
         }
+        // スネークで格納されているのでキャメルに変換する。
+        $result = [];
+        foreach ($this->rows as $row) {
+            $result[] = [
+                'personId' => $row->person_id,
+                'personName' => $row->person_name,
+                'roleId' => $row->role_id,
+                'roleName' => $row->role_name,
+            ];
+        }
+        $this->rows = $result;
 
         return $this;
     }
@@ -53,7 +65,8 @@ class PeopleRepository extends BaseRepository
      *
      * @throws NoContentsException
      */
-    public function getNewsPeople($workId, $saleType = null, $roleId = null) {
+    public function getNewsPeople($workId, $saleType = null, $roleId = null)
+    {
         $productRepository = new ProductRepository();
         $newestProduct = $productRepository->getNewestProductByWorkId($workId, $saleType)->getOne();
         if(!$newestProduct) {

@@ -26,7 +26,7 @@ class PointRepository
     private $fixedPointMinLimitTime;
     private $fixedPointCacheLimitMinute;
     private $updatedAt;
-    private $isMaintenance = false;
+    private $refreshFlg;
 
     // 3時間をデフォルトにする
     const DEFAULT_LIMIT_MINUTE = 180;
@@ -49,37 +49,56 @@ class PointRepository
      * @param $refreshFlg
      * @throws Exception
      */
-    public function __construct($systemId, $tolId, $refreshFlg)
+    public function __construct($systemId, $tolId, $refreshFlg = false)
     {
         // envからキャッシュ有効期限を取得する。
         // 取得できなかった場合はデフォルトで180分を設定する。
         $this->fixedPointCacheLimitMinute = env('FIXED_POINT_CACHE_LIMIT_MINUTE', self::DEFAULT_LIMIT_MINUTE);
         $this->tolId = $tolId;
         $this->systemId = $systemId;
+        $this->refreshFlg = $refreshFlg;
 
         // TolID→MemID変換用キー
         $this->key = env('TOL_ENCRYPT_KEY');
         Log::info('Fixed Point API tolId : ' . $this->tolId);
         $this->memId = $this->decodeMemid($this->key, $this->tolId);
         Log::info('Fixed Point API convert tolId : ' . $this->tolId . ' -> ' . $this->memId );
+    }
 
+    /**
+     * @return bool
+     */
+    public function get() {
         // MemIdをもとにDBから値を取得してセットする。
         $isSet = $this->setPointDetail();
         // 初回でセット出来なった場合
         // リフレッシュフラグがtrueだった場合
         // 期限切れだった場合はリフレッシュ
-        if ($isSet === false || $refreshFlg === true || $this->checkLimitTime()) {
+        if ($isSet === false || $this->refreshFlg === true || $this->checkLimitTime()) {
             $this->log('TPOINT', ' Refresh.');
             // 強制的にリフレッシュ
-            $refreshResult =  $this->refresh();
+            $refreshResult = $this->refresh();
+            // リフレッシュに失敗した場合は204にすすためfalseリターン
             if ($refreshResult === false) {
-                $this->isMaintenance = true;
+                return false;
+            } elseif ($refreshResult === true) {
+                // 取得に成功しリフレッシュしDBを更新した場合は
+                // DBから再取得しメンバ変数に再設定
+                $this->setPointDetail();
+            } else {
+                // falseとtrue以外はレスポンスコードが返却される為
+                // そのレスポンスコードをセット
+                $this->responseCode = $refreshResult;
+                $this->membershipType = '';
+                $this->point = '';
+                $this->fixedPointTotal = '';
+                $this->fixedPointMinLimitTime = '';
+                $this->updatedAt = '';
             }
-            // 再セット
-            $this->setPointDetail();
         } else {
             $this->log('TPOINT', 'Use Cache.');
         }
+        return true;
     }
 
     /**
@@ -136,16 +155,8 @@ class PointRepository
     }
 
     /**
-     * @return bool
-     */
-    public function isMaintenance(): bool
-    {
-        return $this->isMaintenance;
-    }
-
-    /**
      * Private
-     * DBから取得し書くパラメーターにセットする
+     * DBから取得し各パラメーターにセットする
      * @return mixed
      */
     private function setPointDetail()
@@ -154,6 +165,10 @@ class PointRepository
         $result = $pointDetailsModel->setConditionBySt($this->memId)->getOne();
         if (empty($result)) {
             return false;
+        }
+        // 0000-00-00 00:00:00だった場合はブランクに変換
+        if ($result->fixed_point_min_limit_time === '0000-00-00 00:00:00') {
+            $result->fixed_point_min_limit_time = '';
         }
         $this->responseCode = $result->response_code;
         $this->membershipType = $result->membership_type;
@@ -165,9 +180,8 @@ class PointRepository
     }
 
     /**
-     * Private
      * TOLからデータを取得して書き換える
-     * @param $tlsc
+     * @return bool|mixed
      */
     private function refresh()
     {
@@ -176,18 +190,22 @@ class PointRepository
         $this->log('TPOINT Sysytem ID', $this->systemId);
 
         $pointDetail = $this->getPointDetails();
-
+        // API問い合わせで失敗
         if ($pointDetail === false) {
-            $this->log('TPOINT Request', 'Data acquisition error.');
+            $this->log('TPOINT Request', 'Data acquisition Error ( xml parse error or response status is 9).');
+            $this->cacheClear();
             return false;
         }
         $this->log('TPOINT Response ResponseCode', $pointDetail['responseCode']);
+        // 取得が成功した場合はレスポンスコードを返却する為、メンバ変数にセットする。
+        // 00と14以外はキャッシュをさせない為falseリターン
         if (
             $pointDetail['responseCode'] !== '00' &&
             $pointDetail['responseCode'] !== '14'
         ) {
-            $this->log('TPOINT', 'Is Maintenance.');
-            return false;
+            $this->log('TPOINT', 'Other than status code 00 and 14.');
+            $this->cacheClear();
+            return $pointDetail['responseCode'];
         }
         $nowDateTime = Carbon::now();
         $this->log('TPOINT Response Membership Type', $pointDetail['membershipType']);
@@ -210,6 +228,16 @@ class PointRepository
     }
 
     /**
+     * キャッシュをクリア（削除）する
+     * @return mixed
+     */
+    private function cacheClear()
+    {
+        $pointDetailsModel = new PointDetails();
+        return $pointDetailsModel->setConditionBySt($this->memId)->delete();
+    }
+
+    /**
      * Private
      * AQUAからポイント詳細情報を取得する
      */
@@ -224,16 +252,20 @@ class PointRepository
         $this->log('TPOINT Request Shop Code', $shopCode);
         $tolPointModel = new TolPoint($this->memId);
         $tolPointResponse = $tolPointModel->getDetail($shopCode);
-        if (empty($tolPointResponse)) {
+        if ($tolPointResponse === false) {
             return false;
         }
         $tolPointResponse = current($tolPointResponse->all());
+        $date = '';
+        if (!empty($tolPointResponse['fixedPointMinLimitTime'])) {
+            $date = date('Y-m-d H:i:s', strtotime($tolPointResponse['fixedPointMinLimitTime']));
+        }
         return [
             'responseCode' => $tolPointResponse['responseCode'],
             'membershipType' => $tolPointResponse['membershipType'],
             'point' => $tolPointResponse['point'],
             'fixedPointTotal' => $tolPointResponse['fixedPointTotal'],
-            'fixedPointMinLimitTime' => date('Y-m-d H:i:s', strtotime($tolPointResponse['fixedPointMinLimitTime'])),
+            'fixedPointMinLimitTime' => $date,
         ];
     }
 
@@ -247,7 +279,7 @@ class PointRepository
         $this->log('TPOINT Check Cache Now Time', $fromDb);
         $this->log('TPOINT Check Cache Last Update Time', $addHour);
         $addHour = $addHour->addMinutes($this->fixedPointCacheLimitMinute);
-        $this->log('TPOINT Check Cache Next Update Time', $addHour->addMinutes($this->fixedPointCacheLimitMinute));
+        $this->log('TPOINT Check Cache Next Update Time', $addHour);
 
         if ($fromDb->gte($addHour)) {
             $this->log('TPOINT Limit Time', 'TRUE');

@@ -16,6 +16,7 @@ class StructureRepository
     const CD = 2;
     const BOOK = 3;
     const GAME = 4;
+    const PREMIUM_DVD = 5;
 
     const RENTAL = 1;
     const SELL = 2;
@@ -100,11 +101,11 @@ class StructureRepository
     /**
      * @return object
      */
-    public function get($goodsType, $saleType)
+    public function get($goodsType, $saleType, $isPremium = false)
     {
         $goodsType = $this->convertGoodsTypeToId($goodsType);
         $saleType = $this->convertSaleTypeToId($saleType);
-        $this->structure->setConditionTypes($goodsType, $saleType);
+        $this->structure->setConditionTypes($goodsType, $saleType, null, $isPremium);
         $this->totalCount = $this->structure->count();
         $structures = $this->structure->get($this->limit, $this->offset);
         if (count($structures) + $this->offset < $this->totalCount) {
@@ -119,6 +120,32 @@ class StructureRepository
                 $apiUrl = $structure->api_url . $structure->section_file_name;
             } else {
                 $apiUrl = $structure->api_url;
+            }
+            // プレミアムの構成には、apiUrlにフラグを付与する
+            if ($goodsType === self::PREMIUM_DVD &&
+                $structure->section_type !== 1 &&
+                $structure->section_type !== 6 &&
+                $structure->section_type !== 7 &&
+                !empty($apiUrl))
+            {
+                //$apiUrl .= '?premium=true';
+                if (strpos($apiUrl, '?') !== false) {
+                    $apiUrl .= '&premium=true';
+                } else {
+                    $apiUrl .= '?premium=true';
+                }
+            } else if ($isPremium === true &&
+                       $structure->section_type !== 1 &&
+                       $structure->section_type !== 6 &&
+                       $structure->section_type !== 7 &&
+                       !empty($apiUrl)) 
+            {
+                //$apiUrl .= '?premium=true';
+                if (strpos($apiUrl, '?') !== false) {
+                    $apiUrl .= '&premium=true';
+                } else {
+                    $apiUrl .= '?premium=true';
+                }
             }
             $unit = [
                 'sectionType' => $structure->section_type,
@@ -147,6 +174,8 @@ class StructureRepository
         switch ($goodsType) {
             case 'dvd':
                 return self::DVD;
+            case 'premiumDvd':
+                return self::PREMIUM_DVD;
             case 'book':
                 return self::BOOK;
             case 'cd':

@@ -26,6 +26,7 @@ class HimoRepository extends ApiRequesterRepository
     const ID_TYPE = '0102';
     const INTEGRATION_API = '/search/crossworks';
     const MEDIA_FORMAT_ID_VHS = 'EXT00001Q3OJ';
+    const HIMO_TAP_RECOMMEND = 'recommendation';
 
     public function __construct($sort = 'asc', $offset = 0, $limit = 10)
     {
@@ -396,6 +397,63 @@ class HimoRepository extends ApiRequesterRepository
             'limit' => $this->limit,
             // 'sort_by' => 'auto:asc',
         ];
+        return $this;
+    }
+
+    public function premiumRentalVideoRecommend($ignoreUrlCd, $genreId = null)
+    {
+        $this->api = 'crossworks';
+        if (env('APP_ENV') === 'local') {
+            return $this;
+        }
+        
+        if (!empty($genreId)) {
+            $listArray = config('release_genre_map');
+            $listString = null;
+ 
+            if ($genreId >= 51 && $genreId <= 55) {
+                $listString = $listArray[$genreId][0];
+            } else {
+                if (count($listArray[$genreId]) == 1) {
+                    if ($listArray[$genreId][0] === self::HIMO_TAP_RECOMMEND) {
+                        $listString = self::HIMO_TAP_RECOMMEND;
+                    } else {
+                        $listString = $listArray[$genreId][0] . '::';
+                    }
+                } else {
+                    $listString = implode(':: || ', $listArray[$genreId]) . '::';
+                }
+            } 
+         } else {
+            foreach ($ignoreUrlCd as $id) {
+                if (!empty($id)) {
+                    $queryId[] = '-0105:' . $id;
+                }
+            }
+        }
+        $this->apiPath = $this->apiHost . '/search/crossworks';
+        $this->queryParams = [
+            '_system' => 'TsutayaApp',
+            'service_id' => 'tol',
+            'msdb_item' => 'video',
+            'products_sell_rental_flg' => '2',
+            'premium_plan_cd' => '1',
+            'adult_flg' => '2',
+            'response_level' => '9',
+            'offset' => $this->offset,
+            'limit' => $this->limit,
+            'sort_by' => 'auto:asc',
+            'scene_limit' => '20',
+        ];
+        if (!empty($queryId)) {
+            $this->queryParams['id_value'] = implode(' || ', $queryId);
+            $this->queryParams['work_tags'] = 'riricaleinfo';
+        }
+        if (!empty($listString)) {
+            $this->queryParams['genre_id'] = $listString;
+        }
+
+
         return $this;
     }
 
