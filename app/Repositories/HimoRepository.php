@@ -447,10 +447,11 @@ class HimoRepository extends ApiRequesterRepository
         ];
         if (!empty($queryId)) {
             $this->queryParams['id_value'] = implode(' || ', $queryId);
-            $this->queryParams['work_tags'] = 'riricaleinfo';
         }
         if (!empty($listString)) {
             $this->queryParams['genre_id'] = $listString;
+        }else{
+            $this->queryParams['work_tags'] = 'riricaleinfo';
         }
 
 
