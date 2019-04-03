@@ -762,21 +762,42 @@ $router->group([
         $releaseCalenderRepository->setMediaFormat($request->input('cdFormatType'));
         $releaseCalenderRepository->setOnlyReleased($request->input('onlyReleased', 'false'));
         $releaseCalenderRepository->setAgeLimitCheck($request->input('ageLimitCheck', false));
+        // rowが無くても、200で返す
+        $withUpdate = $request->input('update', false);
+
         $rows = $releaseCalenderRepository->get();
-        if (empty($rows)) {
-            throw new NoContentsException;
-        }
-        $response = [
-            'hasNext' => $releaseCalenderRepository->getHasNext(),
-            'totalCount' => $releaseCalenderRepository->getTotalCount(),
-            // 常に当月を出力するように変更
-            'baseMonth' => \Carbon\Carbon::now()->format('Y-m'),
-            'rows' => $rows
-        ];
-        if ($genreId >= 29 && $genreId <= 38) {
+        // コミックレンタルだった場合は、204を返却しない
+        if ($withUpdate === 'true') {
             $carbon = new carbon;
             $nextWednesday = $carbon->next(Carbon::WEDNESDAY);
-            $response['updateDate'] = $nextWednesday->toDateString();
+            if (empty($rows)) {
+                $response = [
+                    'hasNext' => false,
+                    'totalCount' => 0,
+                    'updateDate' => $nextWednesday->toDateString(),
+                    'baseMonth' => \Carbon\Carbon::now()->format('Y-m'),
+                    'rows' => []
+                ];
+            } else {
+                $response = [
+                    'hasNext' => $releaseCalenderRepository->getHasNext(),
+                    'totalCount' => $releaseCalenderRepository->getTotalCount(),
+                    'updateDate' => $nextWednesday->toDateString(),
+                    'baseMonth' => \Carbon\Carbon::now()->format('Y-m'),
+                    'rows' => $rows
+                ];
+            }
+        } else {
+            if (empty($rows)) {
+                throw new NoContentsException;
+            }
+            $response = [
+                'hasNext' => $releaseCalenderRepository->getHasNext(),
+                'totalCount' => $releaseCalenderRepository->getTotalCount(),
+                // 常に当月を出力するように変更
+                'baseMonth' => \Carbon\Carbon::now()->format('Y-m'),
+                'rows' => $rows
+            ];
         }
         return response()->json($response)->header('X-Accel-Expires', '86400');
     });

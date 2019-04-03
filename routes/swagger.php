@@ -1857,6 +1857,12 @@
  *       description="並び順（お薦め(デフォルト)、新しい順 = new、 古い順 = old）",
  *       type="string"
  *     ),
+ *     @SWG\Parameter(
+ *       name="update",
+ *       in="query",
+ *       description="trueの場合、updateを付加及び、結果が0件でも200で返却する。（デフォルトはfalse）",
+ *       type="boolean"
+ *     ),
  *     @SWG\Parameter(ref="#/parameters/limit"),
  *     @SWG\Parameter(ref="#/parameters/offset"),
  *     @SWG\Response(
