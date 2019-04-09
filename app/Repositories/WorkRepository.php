@@ -591,7 +591,12 @@ class WorkRepository extends BaseRepository
         }
 
         // プレミアムフラグ(作品ベースの情報)
-        $response['isPremium'] = ($response['isPremiumShop'] === 1)? true: false;
+        if (!empty($response['isPremiumShop'])) {
+            $response['isPremium'] = ($response['isPremiumShop'] === 1)? true: false;
+        } else {
+            $response['isPremium'] = false;
+        }
+
         // もとの情報は削除
         unset($response['isPremiumNet']);
         unset($response['isPremiumShop']);
