@@ -1194,6 +1194,38 @@ class WorkRepository extends BaseRepository
                 $idCode = '0206';
                 break;
         }
+                           
+        $columns = [
+            'work_id',
+            'work_type_id',
+            'work_format_id',
+            'work_title',
+            'scene_l',
+            'rating_id',
+            'big_genre_id',
+            'medium_genre_id',
+            'small_genre_id',
+            'url_cd',
+            'ccc_work_cd',
+            'jacket_l',
+            'sale_start_date',
+            'adult_flg',
+            'msdb_item'
+        ];
+
+        $response = $this->get($id, $columns, $idCode);
+        if (empty($response)) {
+            return null;
+        }
+
+        $workRepository = new WorkRepository();
+        $result['workId'] = $response['workId'];
+        $result['itemType'] = $workRepository->convertWorkTypeIdToStr($response['workTypeId']);
+        if ($response['workFormatId'] == self::WORK_FORMAT_ID_MUSICVIDEO) {
+            $result['itemType'] = 'dvd';
+        }
+        
+        /*
         $himoRepository = new HimoRepository();
         $workRepository = new WorkRepository();
         $himoResult = $himoRepository->crosswork([$id], $idCode, '1')->get();
@@ -1206,6 +1238,7 @@ class WorkRepository extends BaseRepository
         if ($himoResult['results']['rows'][0]['work_format_id'] == self::WORK_FORMAT_ID_MUSICVIDEO) {
             $result['itemType'] = 'dvd';
         }
+        */
         return $result;
     }
 
