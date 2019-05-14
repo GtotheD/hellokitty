@@ -45,7 +45,8 @@ class SectionPremiumRecommend extends BaseRepository
             if ($base['work_format_id'] == $workRepository::WORK_FORMAT_ID_MUSICVIDEO) {
                 $itemType = 'dvd';
             }
-            $saleTypeHas = $workRepository->parseFromArray($row['products'], $itemType);
+
+            $saleTypeHas = $workRepository->parseFromArrayPremium($row['products'], $itemType);
             $displayImage = true;
             $displayImage = checkAgeLimit(
                 $this->ageLimitCheck,
