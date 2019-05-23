@@ -272,27 +272,37 @@ class ReleaseCalenderRepository extends BaseRepository
         $month = $carbon->format('Ym');
         $fileName = $genreId . '_' . $month;
         $basePath = env('RELEASE_STATIC_DATA_FOLDER_PATH');
-        $filePath = $basePath . DIRECTORY_SEPARATOR . $fileName;
+        $filePath = $basePath . DIRECTORY_SEPARATOR . $fileName . '.json';
         if(!file_exists($filePath)) {
             return false;
         }
         $json = File::get($filePath);
         $json = json_decode( $json, true);
+
+        $saleType = $workRepository::SALE_TYPE_SELL;
+        $workRepository->setSaleType($saleType);
+
         foreach ($json['rows'] as $product) {
             $work = $workRepository->get($product['jan'], null, '0205');
             $result[] = [
                 'saleStartDate' => $product['saleStartDate'],
                 'ssFlg' => $product['ssFlg'],
                 'workTitle' => $product['workTitle'],
-                'productName' => $product['workTitle']. '(' . $product['numberOfVolume'] . ')',
+                'productTitle' => $product['workTitle']. '(' . $product['numberOfVolume'] . ')',
                 'supplement' => $product['author'],
                 'makerName' => $product['makerName'],
                 'bookSeriesName' => $product['bookSeriesName'],
                 'jacketL' => $work['jacketL'],
             ];
         }
-        return $result;
 
+        foreach ($result as $k => $v) {
+          if ($result[$k]['ssFlg'] === false) {
+              unset($result[$k]['jacketL']);
+          } 
+        }
+        
+        return $result;
     }
 
     public function genreMapping($genreId)
