@@ -1026,6 +1026,12 @@
  *             example= "rental",
  *         ),
  *         @SWG\Property(
+ *             property="idType",
+ *             type="string",
+ *             description="jan又はrentalProductId",
+ *             example= "rentalProductId",
+ *         ),
+ *         @SWG\Property(
  *             property="ageLimitCheck",
  *             type="boolean",
  *             description="既に年齢認証済みかどうか。認証済み=true、未認証=false",
