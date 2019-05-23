@@ -237,6 +237,45 @@ class WorkRepository extends BaseRepository
     }
     /**
      * Description
+     * @param type|array $idsArray
+     * @param $idType
+     * @return type|array $workIdsArray
+     */
+    public function convertWorkId($idsArray = [], $idType) {
+        $workIdsArray = [];
+        $idCode = null;
+        switch ($idType) {
+            case 'workId':
+                $idCode = '0102';
+                break;
+            case 'urlCd':
+                $idCode = '0105';
+                break;
+            case 'jan':
+                $idCode = '0205';
+                break;
+            case 'rentalProductId':
+                $idCode = '0206';
+                break;
+            default:
+                break;
+        }
+
+        foreach ($idsArray as $idElement) {
+            if ($idType != 'workId'){
+                $convertData = $this->getWorkByUrlCd($idElement,['work_id'], $idCode);
+                if(!empty($convertData) && isset($convertData['workId'])) {
+                    $idElement = $convertData['workId'];
+                    array_push($workIdsArray, $idElement);
+                }
+                continue;
+            }
+            array_push($workIdsArray, $idElement);
+        }
+        return $workIdsArray;
+    }
+    /**
+     * Description
      * @param type $workData 
      * @param type|int $maxElement 
      * @return type|array $workData
@@ -260,7 +299,7 @@ class WorkRepository extends BaseRepository
                     $tempData['itemType'] = $itemWork['itemType'];
                     $tempData['adultFlg'] = $itemWork['adultFlg'];
                     $tempData['priceTaxOut'] = isset($itemWork['priceTaxOut']) ? $itemWork['priceTaxOut']: '';
-                    $tempData['workFormatName'] = $tempData['itemType'] == 'cd' ? $itemWork['workFormatName']: '';
+                    $tempData['workFormatName'] = ($tempData['itemType'] == 'cd' || $tempData['itemType'] == 'dvd') ? $itemWork['workFormatName']: '';
                     $tempData['makerName'] = isset($itemWork['makerName']) ? $itemWork['makerName']: '';
                     $tempData['saleStartDate'] = $itemWork['saleStartDate'];
                     if($tempData['itemType'] == 'book') {
@@ -291,7 +330,19 @@ class WorkRepository extends BaseRepository
         $this->work->setConnection('mysql::write');
         $response = [];
         $productResult = null;
-        $productResult = (array)$this->work->setConditionByUrlCd($workId, $this->saleType)->getOne();
+        switch ($idType) {
+            case '0105':
+                $productResult = (array)$this->work->setConditionByUrlCd($workId, $this->saleType)->getOne();
+                break;
+            case '0205':
+                $productResult = (array)$product->setConditionByJan($workId, $this->saleType)->getOne();
+                break;
+            case '0206':
+                $productResult = (array)$product->setConditionByRentalProductCd($workId, $this->saleType)->getOne();
+                break;
+            default:
+                break;
+        }
         if ($productResult) {
             $workId = $productResult['work_id'];
         }

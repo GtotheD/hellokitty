@@ -40,6 +40,7 @@ use App\Exceptions\AgeLimitException;
 use App\Exceptions\ContentsException;
 use App\Exceptions\NoContentsException;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
+use Carbon\Carbon;
 
 // Api Group
 $router->group([
@@ -761,13 +762,54 @@ $router->group([
         $releaseCalenderRepository->setMediaFormat($request->input('cdFormatType'));
         $releaseCalenderRepository->setOnlyReleased($request->input('onlyReleased', 'false'));
         $releaseCalenderRepository->setAgeLimitCheck($request->input('ageLimitCheck', false));
+        // rowが無くても、200で返す
+        $withUpdate = $request->input('update', false);
+
         $rows = $releaseCalenderRepository->get();
+        // コミックレンタルだった場合は、204を返却しない
+        if ($withUpdate === 'true') {
+            $carbon = new carbon;
+            $nextWednesday = $carbon->next(Carbon::WEDNESDAY);
+            if (empty($rows)) {
+                $response = [
+                    'hasNext' => false,
+                    'totalCount' => 0,
+                    'updateDate' => $nextWednesday->toDateString(),
+                    'baseMonth' => \Carbon\Carbon::now()->format('Y-m'),
+                    'rows' => []
+                ];
+            } else {
+                $response = [
+                    'hasNext' => $releaseCalenderRepository->getHasNext(),
+                    'totalCount' => $releaseCalenderRepository->getTotalCount(),
+                    'updateDate' => $nextWednesday->toDateString(),
+                    'baseMonth' => \Carbon\Carbon::now()->format('Y-m'),
+                    'rows' => $rows
+                ];
+            }
+        } else {
+            if (empty($rows)) {
+                throw new NoContentsException;
+            }
+            $response = [
+                'hasNext' => $releaseCalenderRepository->getHasNext(),
+                'totalCount' => $releaseCalenderRepository->getTotalCount(),
+                // 常に当月を出力するように変更
+                'baseMonth' => \Carbon\Carbon::now()->format('Y-m'),
+                'rows' => $rows
+            ];
+        }
+        return response()->json($response)->header('X-Accel-Expires', '86400');
+    });
+    $router->get('release/static/{month}/{genreId}', function (Request $request, $month, $genreId) {
+        $releaseCalenderRepository = new ReleaseCalenderRepository();
+        $releaseCalenderRepository->setMonth($month);
+        $releaseCalenderRepository->setGenreId($genreId);
+        $rows = $releaseCalenderRepository->getStatic();
         if (empty($rows)) {
             throw new NoContentsException;
         }
         $response = [
-            'hasNext' => $releaseCalenderRepository->getHasNext(),
-            'totalCount' => $releaseCalenderRepository->getTotalCount(),
             // 常に当月を出力するように変更
             'baseMonth' => \Carbon\Carbon::now()->format('Y-m'),
             'rows' => $rows
@@ -847,6 +889,7 @@ $router->group([
         $premiumFlag = $request->input('premium', false);
         $body_obj = json_decode($request->getContent(), true);
         $saleType = isset($body_obj['saleType']) ? $body_obj['saleType'] : '';
+        $idType = isset($body_obj['idType']) ? $body_obj['idType'] : '';
         // Check if have no data for input saleType
         if(empty($saleType)) {
             throw new BadRequestHttpException;
@@ -857,8 +900,13 @@ $router->group([
             throw new BadRequestHttpException;
         }
         $workRepository = new WorkRepository();
-        // Covert urlCd to id if have
-        $workIdsArray = $workRepository->convertUrlCdToWorkId($idsArray);
+        if (empty($idType)) {
+            // Covert urlCd to id if have
+            $workIdsArray = $workRepository->convertUrlCdToWorkId($idsArray);
+        } else {
+            $workIdsArray = $workRepository->convertWorkId($idsArray, $idType);
+        }       
+        
         $ageLimitCheck = isset($body_obj['ageLimitCheck']) ? $body_obj['ageLimitCheck'] : false;
         $workRepository->setAgeLimitCheck($ageLimitCheck);
         $workRepository->setSaleType($saleType);
