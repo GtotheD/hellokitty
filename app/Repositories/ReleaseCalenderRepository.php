@@ -6,6 +6,8 @@ use App\Model\Product;
 use DB;
 use Illuminate\Support\Carbon;
 use App\Model\HimoReleaseOrder;
+use Illuminate\Support\Facades\File;
+use App\Repositories\WorkRepository;
 
 class ReleaseCalenderRepository extends BaseRepository
 {
@@ -252,6 +254,45 @@ class ReleaseCalenderRepository extends BaseRepository
             return null;
         }
         return $formatedData;
+    }
+
+
+    public function getStatic()
+    {
+        $workRepository = new WorkRepository;
+        $genreId = $this->genreId;
+        // 対象月の抽出
+        if ($this->month === 'last') {
+            $carbon = Carbon::now()->startOfMonth()->subMonth();
+        } else if ($this->month === 'next') {
+            $carbon = Carbon::now()->startOfMonth()->addMonth();
+        } else {
+            $carbon = Carbon::now()->startOfMonth()->startOfMonth();
+        }
+        $month = $carbon->format('Ym');
+        $fileName = $genreId . '_' . $month;
+        $basePath = env('RELEASE_STATIC_DATA_FOLDER_PATH');
+        $filePath = $basePath . DIRECTORY_SEPARATOR . $fileName;
+        if(!file_exists($filePath)) {
+            return false;
+        }
+        $json = File::get($filePath);
+        $json = json_decode( $json, true);
+        foreach ($json['rows'] as $product) {
+            $work = $workRepository->get($product['jan'], null, '0205');
+            $result[] = [
+                'saleStartDate' => $product['saleStartDate'],
+                'ssFlg' => $product['ssFlg'],
+                'workTitle' => $product['workTitle'],
+                'productName' => $product['workTitle']. '(' . $product['numberOfVolume'] . ')',
+                'supplement' => $product['author'],
+                'makerName' => $product['makerName'],
+                'bookSeriesName' => $product['bookSeriesName'],
+                'jacketL' => $work['jacketL'],
+            ];
+        }
+        return $result;
+
     }
 
     public function genreMapping($genreId)
