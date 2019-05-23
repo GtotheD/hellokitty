@@ -1,0 +1,64 @@
+{
+  "rental":{
+    "item":[
+      {
+        "title": "TSUTAYA総合ランキング：レンタルDVD",
+        "apiUrl":"section/ranking/agg/W057?supplementVisibleFlg=true",
+        "linkUrl":"tsutayaapp://ranking_dvdrental/?code=W057",
+        "itemType": "dvd"
+      },
+      {
+        "title":"TSUTAYA総合ランキング：レンタルCDアルバム",
+        "apiUrl":"section/ranking/agg/W001",
+        "linkUrl":"tsutayaapp://ranking_cdrental_albam/?code=W001",
+        "itemType": "cd"
+      },
+      {
+        "title":"TSUTAYA総合ランキング：レンタルCDシングル",
+        "apiUrl":"section/ranking/agg/W002",
+        "linkUrl":"tsutayaapp://ranking_cdrental/?code=W002",
+        "itemType": "cd"
+      },
+      {
+        "title":"TSUTAYA総合ランキング：レンタルコミック",
+        "apiUrl":"section/ranking/agg/W078",
+        "linkUrl":"tsutayaapp://ranking_comicrental/?code=W078",
+        "itemType": "book"
+      }
+    ]
+  },
+  "sell":{
+    "item":[
+      {
+        "title":"TSUTAYA総合ランキング：DVD",
+        "apiUrl":"section/ranking/agg/W066?supplementVisibleFlg=true",
+        "linkUrl":"tsutayaapp://ranking_dvdsell/?code=W066",
+        "itemType": "dvd"
+      },
+      {
+        "title":"TSUTAYA総合ランキング：書籍",
+        "apiUrl":"section/ranking/agg/W083",
+        "linkUrl":"tsutayaapp://ranking_booksell/?code=W083",
+        "itemType": "book"
+      },
+      {
+        "title":"TSUTAYA総合ランキング：CDアルバム",
+        "apiUrl":"section/ranking/agg/W032",
+        "linkUrl":"tsutayaapp://ranking_cdsell_albam/?code=W032",
+        "itemType": "cd"
+      },
+      {
+        "title":"TSUTAYA総合ランキング：CDシングル",
+        "apiUrl":"section/ranking/agg/W033",
+        "linkUrl":"tsutayaapp://ranking_cdsell/?code=W033",
+        "itemType": "cd"
+      },
+      {
+        "title":"TSUTAYA総合ランキング：ゲーム",
+        "apiUrl":"section/ranking/agg/W090",
+        "linkUrl":"tsutayaapp://ranking_gamesell/?code=W090",
+        "itemType": "game"
+      }
+    ]
+  }
+}

@@ -889,6 +889,7 @@ $router->group([
         $premiumFlag = $request->input('premium', false);
         $body_obj = json_decode($request->getContent(), true);
         $saleType = isset($body_obj['saleType']) ? $body_obj['saleType'] : '';
+        $idType = isset($body_obj['idType']) ? $body_obj['idType'] : '';
         // Check if have no data for input saleType
         if(empty($saleType)) {
             throw new BadRequestHttpException;
@@ -899,8 +900,13 @@ $router->group([
             throw new BadRequestHttpException;
         }
         $workRepository = new WorkRepository();
-        // Covert urlCd to id if have
-        $workIdsArray = $workRepository->convertUrlCdToWorkId($idsArray);
+        if (empty($idType)) {
+            // Covert urlCd to id if have
+            $workIdsArray = $workRepository->convertUrlCdToWorkId($idsArray);
+        } else {
+            $workIdsArray = $workRepository->convertWorkId($idsArray, $idType);
+        }       
+        
         $ageLimitCheck = isset($body_obj['ageLimitCheck']) ? $body_obj['ageLimitCheck'] : false;
         $workRepository->setAgeLimitCheck($ageLimitCheck);
         $workRepository->setSaleType($saleType);
