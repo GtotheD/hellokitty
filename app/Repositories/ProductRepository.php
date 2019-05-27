@@ -50,7 +50,7 @@ class ProductRepository extends BaseRepository
 
     public function get($productUniqueId)
     {
-        $product = $this->product->setConditionByProductUniqueId($productUniqueId)->toCamel(['id','base_product_code','is_dummy'])->getOne();
+        $product = $this->product->setConditionByProductUniqueId($productUniqueId)->toCamel(['id', 'base_product_code', 'is_dummy'])->getOne();
         if (empty($product)) {
             return null;
         }
@@ -70,7 +70,7 @@ class ProductRepository extends BaseRepository
 
         $isAudio = false;
         $products = $this->product->setConditionByWorkIdNewestProduct($workId)->select('msdb_item')->getOne();
-        if(empty($products)) {
+        if (empty($products)) {
             return null;
         }
         $column = [
@@ -86,9 +86,12 @@ class ProductRepository extends BaseRepository
             "t2.sale_start_date",
             "t2.price_tax_out",
         ];
+
         // レンタルCDだった場合
         if ($products->msdb_item === 'audio' && $this->saleType === 'rental') {
-            $this->totalCount = $this->product->setConditionForCd($workId, $this->saleType, $this->sort)->count();
+            // #104199 edit start
+            $this->totalCount = $this->product->setConditionForCd($workId, $this->saleType, $this->sort, $this->getIsDummy())->count();
+            // #104199 edit end
             $results = $this->product->selectCamel($column)->get($this->limit, $this->offset);
         } else if ($products->msdb_item === 'audio' && $this->saleType === 'sell') {
             $column = [
@@ -104,17 +107,21 @@ class ProductRepository extends BaseRepository
                 "sale_start_date",
                 "price_tax_out",
             ];
+            // #104199 edit start
             $this->totalCount = $this->product->setConditionForSellCd($workId, $this->sort)->count();
+            // #104199 edit end
             $results = $this->product->selectCamel($column)->get($this->limit, $this->offset);
         } else {
-            $this->totalCount = $this->product->setConditionProductGroupingByWorkIdSaleType($workId, $this->saleType, $this->sort, $isAudio)->count();
+            // #104199 edit start　Dummyの前にtrueを渡すようにしてください
+            $this->totalCount = $this->product->setConditionProductGroupingByWorkIdSaleType($workId, $this->saleType, $this->sort, $isAudio, true, $this->getIsDummy())->count();
+            // #104199 edit end
             $results = $this->product->selectCamel($column)->get($this->limit, $this->offset);
         }
         if (count($results) === 0) {
             return null;
         }
         // ビデオのときだけ処理を行う
-        if($products->msdb_item === 'video') {
+        if ($products->msdb_item === 'video') {
             $results = $this->pptProductFilter($results);
         }
         if (count($results) + $this->offset < $this->totalCount) {
@@ -155,7 +162,7 @@ class ProductRepository extends BaseRepository
             $tmp->dvd = $result->dvd;
             $tmp->bluray = $result->bluray;
             // プレミアムフラグ
-            $tmp->isPremium = ($result->is_premium_shop === 1)? true: false;
+            $tmp->isPremium = ($result->is_premium_shop === 1) ? true : false;
             unset($tmp->isPremiumShop);
             $response[] = $tmp;
         }
@@ -228,7 +235,7 @@ class ProductRepository extends BaseRepository
                         $product['contents'] = getProductContents(DOC_TABLE_BOOK['tol'], DOC_TYPE_ID_SCENE, $docs);
                     } else if ($product['msdbItem'] === 'audio') {
                     } else if ($product['msdbItem'] === 'game') {
-                        }
+                    }
 
                     if ($product['msdbItem'] === 'video') {
                         $product['privilege'] = getProductContents(DOC_TABLE_MOVIE['tol'], DOC_TYPE_ID_BONUS, $docs);
@@ -238,7 +245,7 @@ class ProductRepository extends BaseRepository
                         $product['privilege'] = getProductContents(DOC_TABLE_MUSIC['tol'], DOC_TYPE_ID_BONUS, $docs);
                     } else if ($product['msdbItem'] === 'game') {
                         $product['privilege'] = getProductContents(DOC_TABLE_GAME['tol'], DOC_TYPE_ID_BONUS, $docs);
-                        }
+                    }
 
                 }
                 unset($product['docs']);
@@ -253,7 +260,7 @@ class ProductRepository extends BaseRepository
 
             // best_album_flg の 状況に応じて文字列（ベスト盤）を返す
             if (array_key_exists('bestAlbumFlg', $product)) {
-                $product['bestAlbumFlg'] =  ($product['bestAlbumFlg'] == '1') ? 'ベスト盤' : '';
+                $product['bestAlbumFlg'] = ($product['bestAlbumFlg'] == '1') ? 'ベスト盤' : '';
             }
             // VHSのみだった場合のメッセージ
             $product['message'] = $message;
@@ -331,7 +338,7 @@ class ProductRepository extends BaseRepository
      * @param $product
      * @return array
      */
-    public function format($workId, $product,bool $isVideo = false)
+    public function format($workId, $product, bool $isVideo = false)
     {
         $productBase = [];
         $productBase['work_id'] = $workId;
@@ -339,7 +346,7 @@ class ProductRepository extends BaseRepository
         $productBase['product_id'] = $product['product_id'];
         $productBase['product_code'] = $product['product_code'];
         // 元となるプロダクトコードを取得する
-        $baseProductCode = preg_replace('/([A-Z]|[a-z]){1,2}$/','' ,$product['product_code']);
+        $baseProductCode = preg_replace('/([A-Z]|[a-z]){1,2}$/', '', $product['product_code']);
         // 手運用で無駄なスペースが入って来る為、削除する。
         $baseProductCode = mb_ereg_replace('( |　)', '', $baseProductCode);
         $productBase['base_product_code'] = $baseProductCode;
@@ -356,7 +363,7 @@ class ProductRepository extends BaseRepository
         $productBase['sale_start_date'] = $product['sale_start_date'];
         $productBase['service_id'] = $product['service_id'];
         $productBase['service_name'] = $product['service_name'];
-        if ($isVideo ) {
+        if ($isVideo) {
             $productBase['msdb_item'] = 'video';
         } else {
             $productBase['msdb_item'] = $product['msdb_item'];
@@ -365,7 +372,7 @@ class ProductRepository extends BaseRepository
         // media_format_idでblurayかどうか判定して入れ替える
         if (self::MEDIA_FORMAT_ID_BLURAY === $product['media_format_id']) {
             // 頭の２桁（販売タイプとPPT判別部分）はそのまま
-            $itemCdHead = substr($product['item_cd'], 0,2);
+            $itemCdHead = substr($product['item_cd'], 0, 2);
             $product['item_cd'] = $itemCdHead . self::ITEM_CD_BLURAY_BASE_CODE;
             switch ($product['item_cd']) {
                 case self::ITEM_CD_BLURAY:
@@ -380,7 +387,7 @@ class ProductRepository extends BaseRepository
             }
         }
         // 上映映画でnullの場合は集約できないので、DBインサート時はDummyコードを入れる。
-        if ( $product['media_format_id'] === self::MEDIA_FORMAT_ID_THEATER) {
+        if ($product['media_format_id'] === self::MEDIA_FORMAT_ID_THEATER) {
             $product['item_cd'] = self::ITEM_CD_THEATER_DUMMY;
         }
         $productBase['item_cd'] = $product['item_cd'];
@@ -457,8 +464,8 @@ class ProductRepository extends BaseRepository
         if ($length === 9) {
 
             // CDかどうか確認する為に対象媒体を一度検索
-            $products =  $this->product->setConditionByRentalProductCd($productKey)->select('msdb_item')->getOne();
-            if(empty($products)) {
+            $products = $this->product->setConditionByRentalProductCd($productKey)->select('msdb_item')->getOne();
+            if (empty($products)) {
                 return null;
             }
             if ($products->msdb_item === 'audio') {
@@ -472,7 +479,7 @@ class ProductRepository extends BaseRepository
             }
             foreach ($res as $item) {
                 // 頭二桁
-                $rentalProductCodePrefix = substr($item->rental_product_cd, 0,2);
+                $rentalProductCodePrefix = substr($item->rental_product_cd, 0, 2);
                 // 頭二桁以降
                 $rentalProductCodeNoPrefix = substr($item->rental_product_cd, 2);
 
@@ -490,7 +497,7 @@ class ProductRepository extends BaseRepository
                     }
                 }
                 // 頭2桁と後ろのコードを結合させてコードを生成する
-                foreach($searchItemCode as $rentalProductCodePrefixNew) {
+                foreach ($searchItemCode as $rentalProductCodePrefixNew) {
                     $createdRentalProductCode = $rentalProductCodePrefixNew . $rentalProductCodeNoPrefix;
                     // 存在しなければ入れる
                     if (array_search($createdRentalProductCode, $queryIdList) === false) {
@@ -499,11 +506,11 @@ class ProductRepository extends BaseRepository
                 }
             }
 
-        // JANで渡ってきた場合は、販売商品の為単一検索
+            // JANで渡ってきた場合は、販売商品の為単一検索
         } elseif ($length === 13) {
             // videoの場合
-            $products =  $this->product->setConditionByJan($productKey)->select('msdb_item')->getOne();
-            if(empty($products)) {
+            $products = $this->product->setConditionByJan($productKey)->select('msdb_item')->getOne();
+            if (empty($products)) {
                 return null;
             }
             // CDのみjanでばらされているので、それ以外は通常集約
@@ -661,7 +668,8 @@ class ProductRepository extends BaseRepository
     }
 
 
-    public function pptProductFilter ($products) {
+    public function pptProductFilter($products)
+    {
         // 一旦全てループし、PPTを除外したものとしていないものを生成
         $normalProducts = [];
         $otherProducts = [];

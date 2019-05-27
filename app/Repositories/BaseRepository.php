@@ -12,6 +12,7 @@ abstract class BaseRepository
     protected $rows;
     protected $page;
     protected $ageLimitCheck;
+    protected $isDummy;
 
     public function __construct($sort = 'asc', $offset = 0, $limit = 10)
     {
@@ -103,6 +104,14 @@ abstract class BaseRepository
     public function setSort($sort)
     {
         $this->sort = $sort;
+    }
+
+    public function setIsDummy($isDummy) {
+            $this->isDummy = $isDummy;
+    }
+
+    public function getIsDummy() {
+        return $this->isDummy;
     }
 
 }
