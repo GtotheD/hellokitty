@@ -769,12 +769,27 @@ $router->group([
         // コミックレンタルだった場合は、204を返却しない
         if ($withUpdate === 'true') {
             $carbon = new carbon;
-            $nextWednesday = $carbon->next(Carbon::WEDNESDAY);
+            $nextWednesday = date('Y-m-d', strtotime('next WEDNESDAY'));
+            $nextWednesdayMonth = date('Y-m', strtotime('next WEDNESDAY'));
+            
+            //月を比較
+            $nowMonth = \Carbon\Carbon::now()->format('Y-m');
+
+            if ($nextWednesdayMonth != $nowMonth) {
+                $updateDate = '';
+            } else {
+                if (date('Y-m-d', strtotime('WEDNESDAY')) === date('Y-m-d')) {
+                  $updateDate = date('Y-m-d');
+                } else {
+                  $updateDate = $nextWednesday;
+                } 
+            }
+
             if (empty($rows)) {
                 $response = [
                     'hasNext' => false,
                     'totalCount' => 0,
-                    'updateDate' => $nextWednesday->toDateString(),
+                    'updateDate' => $updateDate,
                     'baseMonth' => \Carbon\Carbon::now()->format('Y-m'),
                     'rows' => []
                 ];
@@ -782,7 +797,7 @@ $router->group([
                 $response = [
                     'hasNext' => $releaseCalenderRepository->getHasNext(),
                     'totalCount' => $releaseCalenderRepository->getTotalCount(),
-                    'updateDate' => $nextWednesday->toDateString(),
+                    'updateDate' => $updateDate,
                     'baseMonth' => \Carbon\Carbon::now()->format('Y-m'),
                     'rows' => $rows
                 ];

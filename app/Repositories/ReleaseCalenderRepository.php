@@ -284,16 +284,29 @@ class ReleaseCalenderRepository extends BaseRepository
 
         foreach ($json['rows'] as $product) {
             $work = $workRepository->get($product['jan'], null, '0205');
-            $result[] = [
-                'saleStartDate' => $product['saleStartDate'],
-                'ssFlg' => $product['ssFlg'],
-                'workTitle' => $product['workTitle'],
-                'productTitle' => $product['workTitle']. '(' . $product['numberOfVolume'] . ')',
-                'supplement' => $product['author'],
-                'makerName' => $product['makerName'],
-                'bookSeriesName' => $product['bookSeriesName'],
-                'jacketL' => $work['jacketL'],
-            ];
+            if ($product['numberOfVolume'] != '0'){
+              $result[] = [
+                  'saleStartDate' => $product['saleStartDate'],
+                  'ssFlg' => $product['ssFlg'],
+                  'workTitle' => $product['workTitle'],
+                  'productTitle' => $product['workTitle']. '(' . $product['numberOfVolume'] . ')',
+                  'supplement' => $product['author'],
+                  'makerName' => $product['makerName'],
+                  'bookSeriesName' => $product['bookSeriesName'],
+                  'jacketL' => $work['jacketL'],
+              ];
+            } else {
+              $result[] = [
+                  'saleStartDate' => $product['saleStartDate'],
+                  'ssFlg' => $product['ssFlg'],
+                  'workTitle' => $product['workTitle'],
+                  'productTitle' => $product['workTitle'],
+                  'supplement' => $product['author'],
+                  'makerName' => $product['makerName'],
+                  'bookSeriesName' => $product['bookSeriesName'],
+                  'jacketL' => $work['jacketL'],
+              ];
+            }
         }
 
         foreach ($result as $k => $v) {
