@@ -1928,7 +1928,7 @@
  *              @SWG\Property(
  *                  property="rows",
  *                  type="array",
- *                  @SWG\Items(ref="#/definitions/WorkNarrowRelease"),
+ *                  @SWG\Items(ref="#/definitions/WorkNarrowRanking"),
  *                  description="作品情報",
  *              ),
  *          )
