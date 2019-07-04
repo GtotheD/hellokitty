@@ -36,6 +36,7 @@ use App\Repositories\RentalUseRegistrationRepository;
 use App\Repositories\PointRepository;
 use App\Repositories\SectionPremiumRecommend;
 use App\Repositories\StatusPremiumRepository;
+use App\Repositories\NotificationRepository;
 use App\Exceptions\AgeLimitException;
 use App\Exceptions\ContentsException;
 use App\Exceptions\NoContentsException;
@@ -1125,6 +1126,68 @@ $router->group([
         }
         return response()->json($response)->header('X-Accel-Expires', '0');
 
+    });
+
+    // 「予約・注文・定期購読 商品入荷連絡 登録状況」取得　
+    $router->post('/member/status/arrival/notification', function (Request $request) {
+        $bodyObj = json_decode($request->getContent(), true);
+        $tolId = isset($bodyObj['tolId']) ? $bodyObj['tolId'] : '';
+        if (empty($tolId)) {
+            throw new BadRequestHttpException;
+        }
+
+        $getNotificationRepository = new NotificationRepository($tolId);
+        $result = $getNotificationRepository->getNotificationStatus();
+        if (empty($result)) {
+            throw new NoContentsException;
+        }
+
+        $response = [
+            'results' => (array)$result
+        ];
+
+        $status = isset($response['results']['status']) ? $response['results']['status'] : 'ERROR';
+        if ($status === 'ERROR') {
+            throw new NoContentsException;
+        }
+        $response['results']['registerStatus'] = $response['results']['registerStatus'] === '1';
+
+        return response()->json($response)->header('X-Accel-Expires', '0');
+    });
+
+    // 「予約・注文・定期購読 商品入荷連絡 登録状況」更新
+    $router->post('member/status/arrival/notification/update', function (Request $request) {
+        $bodyObj = json_decode($request->getContent(), true);
+        $tolId = isset($bodyObj['tolId']) ? $bodyObj['tolId'] : '';
+        if (isset($bodyObj['chkReservation']) && $bodyObj['chkReservation']) {
+            $chkReservation = 1;
+        } else {
+            $chkReservation = 0;
+        }
+        
+        // Check tolId
+        if (empty($tolId)) {
+            throw new BadRequestHttpException;
+        }
+
+        $getNotificationRepository = new NotificationRepository($tolId);
+        $result = $getNotificationRepository->updateNotification($chkReservation);
+
+        if (empty($result)) {
+            throw new NoContentsException;
+        }
+
+        $response = [
+            'results' => (array)$result
+        ];
+
+        $status = isset($response['results']['status']) ? $response['results']['status'] : 'ERROR';
+        if ($status === 'ERROR') {
+            throw new NoContentsException;
+        }
+        $response['results']['registerStatus'] = $response['results']['registerStatus'] === '1';
+
+        return response()->json($response)->header('X-Accel-Expires', '0');
     });
 
     // 検証環境まで有効にするテスト用

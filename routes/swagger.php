@@ -2553,3 +2553,119 @@
  *     @SWG\Response(response=500, description="Server error")
  * )
  */
+
+/**
+ * @SWG\Post(
+ *     path="/member/status/arrival/notification",
+ *     description="",
+ *     produces={"application/json"},
+ *     tags={"Member"},
+ *     security={{"api_key":{}}},
+ *     @SWG\Parameter(
+ *       name="body",
+ *       in="body",
+ *       description="",
+ *       type="array",
+ *       @SWG\Schema(
+ *         @SWG\Property(
+ *             property="tolId",
+ *             type="string",
+ *             description="",
+ *         ),
+ *       ),
+ *     ),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="results",
+ *                  type="object",
+ *                  @SWG\Property(property="status",type="string",description="SUCCESS|ERROR"),
+ *                  @SWG\Property(property="registerStatus",type="boolean",description="true|false"),
+ *              )
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=400, description="Bad Request"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+
+/**
+ * @SWG\Post(
+ *     path="/member/status/arrival/notification/update",
+ *     description="",
+ *     produces={"application/json"},
+ *     tags={"Member"},
+ *     security={{"api_key":{}}},
+ *     @SWG\Parameter(
+ *       name="body",
+ *       in="body",
+ *       description="",
+ *       type="array",
+ *       @SWG\Schema(
+ *         @SWG\Property(
+ *             property="tolId",
+ *             type="string",
+ *             description="",
+ *         ),
+ *         @SWG\Property(
+ *             property="chkReservation",
+ *             type="boolean",
+ *             description=""
+ *         )
+ *       )
+ *     ),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="results",
+ *                  type="object",
+ *                  @SWG\Property(property="status",type="string",description="SUCCESS"),
+ *                  @SWG\Property(property="registerStatus",type="boolean",description="true|false"),
+ *              )
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(
+ *          response=400,
+ *          description="",
+ *          @SWG\Property(
+ *              property="rows",
+ *              type="object",
+ *              @SWG\Property(property="httpcode",type="string",description="htttpステータスコード"),
+ *              @SWG\Property(property="status",type="string",description="接続先APIのエラーステータスコード"),
+ *              description="ttv apiのバリデーションエラー",
+ *          ),
+ *     ),
+ *     @SWG\Response(
+ *          response=401,
+ *          description="",
+ *          @SWG\Property(
+ *              property="rows",
+ *              type="object",
+ *              @SWG\Property(property="httpcode",type="string",description="htttpステータスコード"),
+ *              @SWG\Property(property="status",type="string",description="接続先APIのエラーステータスコード"),
+ *              description="エラー情報",
+ *          ),
+ *     ),
+ *     @SWG\Response(
+ *          response=403,
+ *          description="",
+ *          @SWG\Property(
+ *              property="rows",
+ *              type="object",
+ *              @SWG\Property(property="httpcode",type="string",description="htttpステータスコード"),
+ *              @SWG\Property(property="status",type="string",description="接続先APIのエラーステータスコード"),
+ *              description="認証失敗（TTV側と本システム）",
+ *          ),
+ *     ),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
