@@ -2582,7 +2582,7 @@
  *                  property="results",
  *                  type="object",
  *                  @SWG\Property(property="status",type="string",description="SUCCESS|ERROR"),
- *                  @SWG\Property(property="registerStatus",type="boolean",description="true|false"),
+ *                  @SWG\Property(property="isRegistered",type="boolean",description="true|false"),
  *              )
  *          )
  *      ),
@@ -2613,7 +2613,7 @@
  *             description="",
  *         ),
  *         @SWG\Property(
- *             property="chkReservation",
+ *             property="isRegistered",
  *             type="boolean",
  *             description=""
  *         )
@@ -2627,7 +2627,7 @@
  *                  property="results",
  *                  type="object",
  *                  @SWG\Property(property="status",type="string",description="SUCCESS"),
- *                  @SWG\Property(property="registerStatus",type="boolean",description="true|false"),
+ *                  @SWG\Property(property="isRegistered",type="boolean",description="true|false"),
  *              )
  *          )
  *      ),

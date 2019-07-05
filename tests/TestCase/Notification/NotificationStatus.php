@@ -16,7 +16,9 @@ class NotificationStatus extends \Laravel\Lumen\Testing\TestCase
         $tolId = "9v9W6VweqVmiIK2PyIx50%2FGEpF%2BOYv7wkTIdfk0qJlc%3D";
         $NotificationStatus = new \App\Repositories\NotificationRepository($tolId);
         $result = (array)$NotificationStatus->getNotificationStatus();
-        $output =["status"=>"SUCCESS","registerStatus"=>true];
+        $result['isRegistered'] = $result['registerStatus'] === '1';
+        unset($result['registerStatus']);
+        $output =["status"=>"SUCCESS","isRegistered"=>true];
 
         $this->assertEquals($output, $result);
     }

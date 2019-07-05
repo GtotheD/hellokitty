@@ -22,7 +22,7 @@ class ChangeNotificationStatus extends \Laravel\Lumen\Testing\TestCase
     {
         $params = [
             'tolId' => '9v9W6VweqVmiIK2PyIx50%2FGEpF%2BOYv7wkTIdfk0qJlc%3D',
-            'chkReservation' => 0
+            'isRegistered ' => false
         ];
         $this->json('POST',
             $this->basePath . '/member/status/arrival/notification/update',
