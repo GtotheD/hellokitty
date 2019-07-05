@@ -1150,7 +1150,10 @@ $router->group([
         if ($status === 'ERROR') {
             throw new NoContentsException;
         }
-        $response['results']['registerStatus'] = $response['results']['registerStatus'] === '1';
+
+        // 返却項目名の変更、値をbooleanへ変更
+        $response['results']['isRegistered'] = $response['results']['registerStatus'] === '1';
+        unset($response['results']['registerStatus']);
 
         return response()->json($response)->header('X-Accel-Expires', '0');
     });
@@ -1159,19 +1162,20 @@ $router->group([
     $router->post('member/status/arrival/notification/update', function (Request $request) {
         $bodyObj = json_decode($request->getContent(), true);
         $tolId = isset($bodyObj['tolId']) ? $bodyObj['tolId'] : '';
-        if (isset($bodyObj['chkReservation']) && $bodyObj['chkReservation']) {
-            $chkReservation = 1;
+
+        if (isset($bodyObj['isRegistered']) && $bodyObj['isRegistered']) {
+            $isRegistered = 1;
         } else {
-            $chkReservation = 0;
+            $isRegistered = 0;
         }
-        
+
         // Check tolId
         if (empty($tolId)) {
             throw new BadRequestHttpException;
         }
 
         $getNotificationRepository = new NotificationRepository($tolId);
-        $result = $getNotificationRepository->updateNotification($chkReservation);
+        $result = $getNotificationRepository->updateNotification($isRegistered);
 
         if (empty($result)) {
             throw new NoContentsException;
@@ -1185,7 +1189,10 @@ $router->group([
         if ($status === 'ERROR') {
             throw new NoContentsException;
         }
-        $response['results']['registerStatus'] = $response['results']['registerStatus'] === '1';
+
+        // 返却項目名の変更、値をbooleanへ変更
+        $response['results']['isRegistered'] = $response['results']['registerStatus'] === '1';
+        unset($response['results']['registerStatus']);
 
         return response()->json($response)->header('X-Accel-Expires', '0');
     });
@@ -1200,6 +1207,7 @@ $router->group([
 
     }
 });
+
 $router->group(['prefix' => env('URL_PATH_PREFIX') . env('API_VERSION')], function () use ($router) {
     // APIドキュメント
     $router->get('docs/swagger.json', function () {
