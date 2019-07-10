@@ -70,7 +70,8 @@ class SectionPremiumRecommend extends BaseRepository
                 'cccWorkCd' => $base['ccc_work_cd'],
                 'title' => $base['work_title'],
                 // 最新巻及び最新日のものを取得する。
-                'imageUrl' => ($displayImage) ? trimImageTag($saleTypeHas['pickupProduct']['jacket_l']) : '',
+                //'imageUrl' => ($displayImage) ? trimImageTag($saleTypeHas['pickupProduct']['jacket_l']) : '',
+                'imageUrl' => trimImageTag($saleTypeHas['pickupProduct']['jacket_l']),
                 'newFlg' => newFlg($base['sale_start_date']),
                 'adultFlg' => ($base['adult_flg'] === 1) ? true : $isAdult,
                 'itemType' => $itemType,
