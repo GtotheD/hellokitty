@@ -749,7 +749,7 @@ $router->group([
         $response = [
             'data' => $response
         ];
-        return response()->json($response)->header('X-Accel-Expires', '86400');
+        return response()->json($response)->header('X-Accel-Expires', '3600');
     });
 
     $router->get('release/{month}/{genreId}', function (Request $request, $month, $genreId) {
@@ -829,7 +829,7 @@ $router->group([
             'baseMonth' => \Carbon\Carbon::now()->format('Y-m'),
             'rows' => $rows
         ];
-        return response()->json($response)->header('X-Accel-Expires', '86400');
+        return response()->json($response)->header('X-Accel-Expires', '3600');
     });
 
     $router->get('ranking/{codeType:himo|agg}/{code}[/{period}]', function (Request $request, $codeType, $code, $period = null) {
