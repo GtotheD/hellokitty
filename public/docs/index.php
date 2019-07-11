@@ -85,6 +85,7 @@ window.onload = function() {
     url: "<?php echo '/' . env('URL_PATH_PREFIX') . env('API_VERSION') . '/'; ?>docs/swagger.json",
     dom_id: '#swagger-ui',
     deepLinking: true,
+    validatorUrl: null,
     presets: [
       SwaggerUIBundle.presets.apis,
       SwaggerUIStandalonePreset

@@ -36,6 +36,7 @@ use App\Repositories\RentalUseRegistrationRepository;
 use App\Repositories\PointRepository;
 use App\Repositories\SectionPremiumRecommend;
 use App\Repositories\StatusPremiumRepository;
+use App\Repositories\NotificationRepository;
 use App\Exceptions\AgeLimitException;
 use App\Exceptions\ContentsException;
 use App\Exceptions\NoContentsException;
@@ -1127,6 +1128,75 @@ $router->group([
 
     });
 
+    // 「予約・注文・定期購読 商品入荷連絡 登録状況」取得　
+    $router->post('/member/status/arrival/notification', function (Request $request) {
+        $bodyObj = json_decode($request->getContent(), true);
+        $tolId = isset($bodyObj['tolId']) ? $bodyObj['tolId'] : '';
+        if (empty($tolId)) {
+            throw new BadRequestHttpException;
+        }
+
+        $getNotificationRepository = new NotificationRepository($tolId);
+        $result = $getNotificationRepository->getNotificationStatus();
+        if (empty($result)) {
+            throw new NoContentsException;
+        }
+
+        $response = [
+            'results' => (array)$result
+        ];
+
+        $status = isset($response['results']['status']) ? $response['results']['status'] : 'ERROR';
+        if ($status === 'ERROR') {
+            throw new NoContentsException;
+        }
+
+        // 返却項目名の変更、値をbooleanへ変更
+        $response['results']['isRegistered'] = $response['results']['registerStatus'] === '1';
+        unset($response['results']['registerStatus']);
+
+        return response()->json($response)->header('X-Accel-Expires', '0');
+    });
+
+    // 「予約・注文・定期購読 商品入荷連絡 登録状況」更新
+    $router->post('member/status/arrival/notification/update', function (Request $request) {
+        $bodyObj = json_decode($request->getContent(), true);
+        $tolId = isset($bodyObj['tolId']) ? $bodyObj['tolId'] : '';
+
+        if (isset($bodyObj['isRegistered']) && $bodyObj['isRegistered']) {
+            $isRegistered = 1;
+        } else {
+            $isRegistered = 0;
+        }
+
+        // Check tolId
+        if (empty($tolId)) {
+            throw new BadRequestHttpException;
+        }
+
+        $getNotificationRepository = new NotificationRepository($tolId);
+        $result = $getNotificationRepository->updateNotification($isRegistered);
+
+        if (empty($result)) {
+            throw new NoContentsException;
+        }
+
+        $response = [
+            'results' => (array)$result
+        ];
+
+        $status = isset($response['results']['status']) ? $response['results']['status'] : 'ERROR';
+        if ($status === 'ERROR') {
+            throw new NoContentsException;
+        }
+
+        // 返却項目名の変更、値をbooleanへ変更
+        $response['results']['isRegistered'] = $response['results']['registerStatus'] === '1';
+        unset($response['results']['registerStatus']);
+
+        return response()->json($response)->header('X-Accel-Expires', '0');
+    });
+
     // 検証環境まで有効にするテスト用
     if (env('APP_ENV') === 'local' || env('APP_ENV') === 'develop' || env('APP_ENV') === 'staging') {
         $router->get('himo/{workId}', function (Request $request, $workId) {
@@ -1137,6 +1207,7 @@ $router->group([
 
     }
 });
+
 $router->group(['prefix' => env('URL_PATH_PREFIX') . env('API_VERSION')], function () use ($router) {
     // APIドキュメント
     $router->get('docs/swagger.json', function () {
