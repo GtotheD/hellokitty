@@ -42,6 +42,8 @@ class ProductRepository extends BaseRepository
     const STOCK_RENTAL_PRODUCT_CODE_MAPPING_BR = ['06', '23'];
     const STOCK_RENTAL_PRODUCT_CODE_MAPPING_BOOK = ['10', '22'];
 
+    const TAX_RATE = 1.1;
+
     public function __construct($sort = 'asc', $offset = 0, $limit = 10)
     {
         parent::__construct($sort, $offset, $limit);
