@@ -1056,7 +1056,7 @@
  *       name="taxIn",
  *       in="query",
  *       description="税込金額（true, false)",
- *       type="string"
+ *       type="boolean"
  *     ),
  *     @SWG\Response(
  *          response=200,
@@ -1093,7 +1093,7 @@
  *       name="taxIn",
  *       in="query",
  *       description="税込金額（true, false)",
- *       type="string"
+ *       type="boolean"
  *     ),
  *     @SWG\Response(
  *          response=200,
@@ -1676,7 +1676,7 @@
  *       name="taxIn",
  *       in="query",
  *       description="税込金額（true, false)",
- *       type="string"
+ *       type="boolean"
  *     ),
  *     @SWG\Response(
  *          response=200,
