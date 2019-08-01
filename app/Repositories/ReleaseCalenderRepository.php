@@ -407,10 +407,17 @@ class ReleaseCalenderRepository extends BaseRepository
 
         foreach ($month as $target => $targetMonth) {
             foreach ($recommendList as $genreId) {
-                $result[$target][] = [
-                    'genreId' => (string)$genreId,
-                    'exist' => ($himoReleaseOrder->setConditionByGenreIdAndMonth($genreId, $targetMonth)->count() > 0) ? true : false,
-                ];
+                if ($target === 'this' && $genreId === 28) {
+                  $result[$target][] = [
+                      'genreId' => (string)$genreId,
+                      'exist' =>  false,
+                  ];
+                } else {
+                  $result[$target][] = [
+                      'genreId' => (string)$genreId,
+                      'exist' => ($himoReleaseOrder->setConditionByGenreIdAndMonth($genreId, $targetMonth)->count() > 0) ? true : false,
+                  ];
+                }
             }
         }
         return $result;
