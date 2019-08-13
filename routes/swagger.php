@@ -1052,12 +1052,6 @@
  *       description="プレミアムセクション出力有無",
  *       type="boolean"
  *     ),
- *     @SWG\Parameter(
- *       name="taxIn",
- *       in="query",
- *       description="税込金額（true, false)",
- *       type="string"
- *     ),
  *     @SWG\Response(
  *          response=200,
  *          description="success",
@@ -1089,12 +1083,6 @@
  *     @SWG\Parameter(ref="#/parameters/offset"),
  *     @SWG\Parameter(ref="#/parameters/saleType"),
  *     @SWG\Parameter(ref="#/parameters/sort"),
- *     @SWG\Parameter(
- *       name="taxIn",
- *       in="query",
- *       description="税込金額（true, false)",
- *       type="string"
- *     ),
  *     @SWG\Response(
  *          response=200,
  *          description="success",
@@ -1671,12 +1659,6 @@
  *       description="商品ID(product.id でproduct.product_idではない)",
  *       type="string",
  *       required=true
- *     ),
- *     @SWG\Parameter(
- *       name="taxIn",
- *       in="query",
- *       description="税込金額（true, false)",
- *       type="string"
  *     ),
  *     @SWG\Response(
  *          response=200,
