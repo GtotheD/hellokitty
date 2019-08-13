@@ -833,7 +833,7 @@ $router->group([
                 'rows' => $rows
             ];
         }
-        return response()->json($response)->header('X-Accel-Expires', '86400');
+        return response()->json($response)->header('X-Accel-Expires', '3600');
     });
     $router->get('release/static/{month}/{genreId}', function (Request $request, $month, $genreId) {
         $releaseCalenderRepository = new ReleaseCalenderRepository();
