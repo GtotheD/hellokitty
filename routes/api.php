@@ -201,7 +201,7 @@ $router->group([
         ];
         return response()->json($response)->header('X-Accel-Expires', '600');
     });
-   
+
     // TOP用プレミアムリコメンドAPI
     $router->post('section/premium/dvd/rental/recommend', function (Request $request) {
         $body = json_decode($request->getContent(), true);
@@ -360,7 +360,6 @@ $router->group([
     });
     // 商品一覧情報取得
     $router->get('work/{workId}/products', function (Request $request, $workId) {
-        $taxIn = $request->get('taxIn', '');
         $product = new ProductRepository();
         $product->setLimit($request->input('limit', 10));
         $product->setOffset($request->input('offset', 0));
@@ -371,14 +370,12 @@ $router->group([
             throw new NoContentsException;
         }
 
-        // START 107489
-        if ($taxIn === 'true') {
-            foreach ($result as &$item) {
-                $taxOut_key = array_search('priceTaxOut', array_keys($item));
-                $item = array_slice($item, 0, $taxOut_key + 1, true) +
-                    ['priceTaxIn' => (string) floor((int)$item['priceTaxOut'] * ProductRepository::TAX_RATE)] +
-                    array_slice($item, $taxOut_key + 1, count($item) - 1, true);
-            }
+        // START 107489 - update in 108871
+        foreach ($result as &$item) {
+            $taxOut_key = array_search('priceTaxOut', array_keys($item));
+            $item = array_slice($item, 0, $taxOut_key + 1, true) +
+                ['priceTaxIn' => (string) floor((int)$item['priceTaxOut'] * ProductRepository::TAX_RATE)] +
+                array_slice($item, $taxOut_key + 1, count($item) - 1, true);
         }
         // END 107489
 
@@ -645,20 +642,17 @@ $router->group([
 
     // 変換
     $router->get('product/{productUniqueId}', function (Request $request, $productUniqueId) {
-        $taxIn = $request->get('taxIn', '');
         $productRepository = new ProductRepository();
         $result = $productRepository->get($productUniqueId);
         if(empty($result)){
             throw new NoContentsException;
         }
 
-        // START 107489
-        if ($taxIn === 'true') {
-            $taxOut_key = array_search('priceTaxOut', array_keys($result));
-            $result = array_slice($result, 0, $taxOut_key + 1, true) +
-                ['priceTaxIn' => (string)floor((int)$result['priceTaxOut'] * ProductRepository::TAX_RATE)] +
-                array_slice($result, $taxOut_key + 1, count($result) - 1, true);
-        }
+        // START 107489 - update in 108871
+        $taxOut_key = array_search('priceTaxOut', array_keys($result));
+        $result = array_slice($result, 0, $taxOut_key + 1, true) +
+            ['priceTaxIn' => (string)floor((int)$result['priceTaxOut'] * ProductRepository::TAX_RATE)] +
+            array_slice($result, $taxOut_key + 1, count($result) - 1, true);
         // END 107489
 
         $response = [
@@ -796,7 +790,7 @@ $router->group([
             $carbon = new carbon;
             $nextWednesday = date('Y-m-d', strtotime('next WEDNESDAY'));
             $nextWednesdayMonth = date('Y-m', strtotime('next WEDNESDAY'));
-            
+
             //月を比較
             $nowMonth = \Carbon\Carbon::now()->format('Y-m');
 
@@ -807,7 +801,7 @@ $router->group([
                   $updateDate = date('Y-m-d');
                 } else {
                   $updateDate = $nextWednesday;
-                } 
+                }
             }
 
             if (empty($rows)) {
@@ -922,12 +916,11 @@ $router->group([
         $response = $favoriteRepository->formatData($response);
         $response['version'] = $versionResponse;
         return response()->json($response);
-    });  
+    });
 
     // Favorite works
     $router->post('/work/bulk', function (Request $request) {
         $premiumFlag = $request->input('premium', false);
-        $taxIn = $request->get('taxIn', '');
         $body_obj = json_decode($request->getContent(), true);
         $saleType = isset($body_obj['saleType']) ? $body_obj['saleType'] : '';
         $idType = isset($body_obj['idType']) ? $body_obj['idType'] : '';
@@ -946,8 +939,8 @@ $router->group([
             $workIdsArray = $workRepository->convertUrlCdToWorkId($idsArray);
         } else {
             $workIdsArray = $workRepository->convertWorkId($idsArray, $idType);
-        }       
-        
+        }
+
         $ageLimitCheck = isset($body_obj['ageLimitCheck']) ? $body_obj['ageLimitCheck'] : false;
         $workRepository->setAgeLimitCheck($ageLimitCheck);
         $workRepository->setSaleType($saleType);
@@ -966,14 +959,12 @@ $router->group([
             }
         }
 
-        // START 107489
-        if ($taxIn === 'true') {
-            foreach ($workDataFormat as &$item) {
-                $taxOut_key = array_search('priceTaxOut', array_keys($item));
-                $item = array_slice($item, 0, $taxOut_key + 1, true) +
-                    ['priceTaxIn' => (string) floor((int)$item['priceTaxOut'] * ProductRepository::TAX_RATE)] +
-                    array_slice($item, $taxOut_key + 1, count($item) - 1, true);
-            }
+        // START 107489 - update in 108871
+        foreach ($workDataFormat as &$item) {
+            $taxOut_key = array_search('priceTaxOut', array_keys($item));
+            $item = array_slice($item, 0, $taxOut_key + 1, true) +
+                ['priceTaxIn' => (string) floor((int)$item['priceTaxOut'] * ProductRepository::TAX_RATE)] +
+                array_slice($item, $taxOut_key + 1, count($item) - 1, true);
         }
         // END 107489
 
