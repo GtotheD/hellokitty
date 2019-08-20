@@ -753,6 +753,7 @@
  *     security={{"api_key":{}}},
  *     @SWG\Parameter(
  *       name="image",
+ *       required=true,
  *       in="query",
  *       description="BOOKレコメンド用バナー画像名",
  *       type="string"
