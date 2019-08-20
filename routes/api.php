@@ -241,6 +241,19 @@ $router->group([
         return response()->json($response)->header('X-Accel-Expires', '600');
     });
 
+    // 【API】レコメンドバナー用API
+    $router->get('section/banner/recommend', function (Request $request) {
+        $image = $request->get('image', '');
+        $imageNew = $request->get('imageNew', '');
+
+        $recommendImageHost = env('RECOMMEND_IMAGE_HOST');
+
+        return response()->json([
+            'imageUrl' => $recommendImageHost . $image,
+            'imageWithBadgeUrl' => $recommendImageHost . $imageNew
+        ])->header('X-Accel-Expires', '86400');
+    });
+
     // レコメンドセクション取得API
     $router->get('section/ranking/{codeType:himo|agg}/{code}[/{period}]', function (Request $request, $codeType, $code, $period = null) {
         $sectionRepository = new SectionRepository;
