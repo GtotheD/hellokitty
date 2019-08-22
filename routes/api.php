@@ -247,6 +247,10 @@ $router->group([
         $image = $request->get('image', '');
         $imageNew = $request->get('imageNew', '');
 
+        if($image == '') {
+            throw new NoContentsException;
+        }
+
         $recommendImageHost = env('RECOMMEND_IMAGE_HOST');
 
         return response()->json([
