@@ -746,6 +746,30 @@
  */
 /**
  * @SWG\Get(
+ *     path="/section/banner/recommend",
+ *     description="【API】レコメンドバナー用API",
+ *     produces={"application/json"},
+ *     tags={"Top"},
+ *     security={{"api_key":{}}},
+ *     @SWG\Parameter(
+ *       name="image",
+ *       required=true,
+ *       in="query",
+ *       description="BOOKレコメンド用バナー画像名",
+ *       type="string"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="imageNew",
+ *       in="query",
+ *       description="BOOKレコメンド用バナー画像名（新着あり）",
+ *       type="string"
+ *     ),
+ *     @SWG\Response(response=200, description="Success"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+/**
+ * @SWG\Get(
  *     path="/section/ranking/{codeType}/{code}/{period}",
  *     description="DVD-セルのTOP構造を返却する（hasNextは最終レスポンスがlimit以下だった場合にfalseとする）",
  *     produces={"application/json"},
