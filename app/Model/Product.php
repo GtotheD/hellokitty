@@ -337,7 +337,7 @@ class Product extends Model
      * $isAudio
      * $withPpt 含める場合はTrue、含めない場合はFalse
      */
-    public function setConditionProductGroupingByWorkIdSaleType($workId, $saleType = null, $order = null ,$isAudio, $withPpt = true)
+    public function setConditionProductGroupingByWorkIdSaleType($workId, $saleType = null, $order = null ,$isAudio, $withPpt = true, $isDummy = true)
     {
         $selectSubGrouping = 'item_cd_right_2,'
             .'product_type_id,'
@@ -350,9 +350,13 @@ class Product extends Model
             // プロダクトは上映映画の時は呼ばないのでtolのみで絞る
             ->whereRaw(DB::raw(' service_id in  (\'tol\')'))
             ->groupBy(DB::raw($selectSubGrouping));
-        if ($isAudio && $saleType === 'rental') {
-            $subQueryBase->whereRaw(DB::raw(' is_dummy = 0 '));
+        // #104199 edit start
+        if ($isDummy === false) {
+            if ($isAudio && $saleType === 'rental') {
+                $subQueryBase->whereRaw(DB::raw(' is_dummy = 0 '));
+            }
         }
+        // #104199 edit end
         $subQuerySelect = 'item_cd_right_2,'
             .'product_type_id,'
             .'product_name,'
@@ -532,7 +536,7 @@ class Product extends Model
      * ダミー品番は完全除外
      * 発売日が被った場合は
      */
-    public function setConditionForCd($workId, $saleType, $order)
+    public function setConditionForCd($workId, $saleType, $order, $isDummy = false)
     {
         $selectSubGrouping = 'item_cd_right_2,'
             .'rental_product_cd,'
@@ -545,9 +549,13 @@ class Product extends Model
             // プロダクトは上映映画の時は呼ばないのでtolのみで絞る
             ->whereRaw(DB::raw(' service_id in  (\'tol\')'))
             ->groupBy(DB::raw($selectSubGrouping));
-        if ($saleType === 'rental') {
-            $subQueryBase->whereRaw(DB::raw(' is_dummy = 0 '));
+        // #104199 edit start
+        if ($isDummy === false) {
+            if ($saleType === 'rental') {
+                $subQueryBase->whereRaw(DB::raw(' is_dummy = 0 '));
+            }
         }
+        // #104199 edit end
         $subQuerySelect = 'item_cd_right_2,'
             .'product_type_id,'
             .'ccc_family_cd,'

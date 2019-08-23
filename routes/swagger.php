@@ -158,6 +158,12 @@
  *       description="オフセット",
  *       type="integer"
  *     ),
+ *     @SWG\Parameter(
+ *       name="recommend",
+ *       in="query",
+ *       description="recommendセクション表示フラグ",
+ *       type="boolean"
+ *     ),
  *     @SWG\Response(response=200, description="Success"),
  *     @SWG\Response(response=204, description="Contents not found"),
  *     @SWG\Response(response=401, description="Auth error"),
@@ -183,6 +189,12 @@
  *       in="query",
  *       description="オフセット",
  *       type="integer"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="recommend",
+ *       in="query",
+ *       description="recommendセクション表示フラグ",
+ *       type="boolean"
  *     ),
  *     @SWG\Response(response=200, description="Success"),
  *     @SWG\Response(response=204, description="Contents not found"),
@@ -1107,6 +1119,18 @@
  *     @SWG\Parameter(ref="#/parameters/offset"),
  *     @SWG\Parameter(ref="#/parameters/saleType"),
  *     @SWG\Parameter(ref="#/parameters/sort"),
+ *     @SWG\Parameter(
+ *       name="isDummy",
+ *       in="query",
+ *       description="dummyデータを含める",
+ *       type="boolean"
+ *     ), 
+ *     @SWG\Parameter(
+ *       name="taxIn",
+ *       in="query",
+ *       description="税込金額（true, false)",
+ *       type="string"
+ *     ),
  *     @SWG\Response(
  *          response=200,
  *          description="success",

@@ -65,7 +65,12 @@ $router->group([
             // プレミアム対応にてAPIバージョンをv4にあげない為、旧アプリへsectionType=6を出さないようにする対応
             $isPremium = $request->input('premium', false);
             $isPremium = ($isPremium !== 'true') ? false : true;
-            $structures = $structureRepository->get($goodsType, $saleType, $isPremium);
+            
+            // プレミアム対応にてAPIバージョンをv4にあげない為、旧アプリへsectionType=6を出さないようにする対応
+            $isRecommend = $request->input('recommend', false);
+            $isRecommend = ($isRecommend !== 'true')? false: true;
+            
+            $structures = $structureRepository->get($goodsType, $saleType, $isPremium, $isRecommend);
             if ($structures->getTotalCount() == 0) {
                 throw new NoContentsException;
             }
@@ -386,6 +391,13 @@ $router->group([
         $product->setOffset($request->input('offset', 0));
         $product->setSaleType($request->input('saleType'));
         $product->setSort($request->input('sort', 'new'));
+
+        // #104199 edit start　ここ追加
+        $isDummy = $request->input('isDummy', false);
+        $isDummy = ($isDummy !== 'true')? false: true;
+        $product->setIsDummy($isDummy);
+        // #104199 edit end
+
         $result = $product->getNarrow($workId);
         if (empty($result)) {
             throw new NoContentsException;
