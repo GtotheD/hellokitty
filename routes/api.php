@@ -370,14 +370,15 @@ $router->group([
             throw new NoContentsException;
         }
 
-        // START 107489 - update in 108871
+        // START 109341
         foreach ($result as &$item) {
             $taxOut_key = array_search('priceTaxOut', array_keys($item));
+            $priceTaxIn = floor((int)$item['priceTaxOut'] * ProductRepository::TAX_RATE);
             $item = array_slice($item, 0, $taxOut_key + 1, true) +
-                ['priceTaxIn' => (string) floor((int)$item['priceTaxOut'] * ProductRepository::TAX_RATE)] +
+                ['priceTaxIn' => (string) ($priceTaxIn == 0 ? '' : $priceTaxIn)] +
                 array_slice($item, $taxOut_key + 1, count($item) - 1, true);
         }
-        // END 107489
+        // END 109341
 
         $response = [
             'hasNext' => $product->getHasNext(),
@@ -648,12 +649,13 @@ $router->group([
             throw new NoContentsException;
         }
 
-        // START 107489 - update in 108871
+        // START 109341
         $taxOut_key = array_search('priceTaxOut', array_keys($result));
+        $priceTaxIn = floor((int)$result['priceTaxOut'] * ProductRepository::TAX_RATE);
         $result = array_slice($result, 0, $taxOut_key + 1, true) +
-            ['priceTaxIn' => (string)floor((int)$result['priceTaxOut'] * ProductRepository::TAX_RATE)] +
+            ['priceTaxIn' => (string)($priceTaxIn == 0 ? '' : $priceTaxIn)] +
             array_slice($result, $taxOut_key + 1, count($result) - 1, true);
-        // END 107489
+        // END 109341
 
         $response = [
             'data' => $result
@@ -959,14 +961,15 @@ $router->group([
             }
         }
 
-        // START 107489 - update in 108871
+        // START 109341
         foreach ($workDataFormat as &$item) {
             $taxOut_key = array_search('priceTaxOut', array_keys($item));
+            $priceTaxIn = floor((int)$item['priceTaxOut'] * ProductRepository::TAX_RATE);
             $item = array_slice($item, 0, $taxOut_key + 1, true) +
-                ['priceTaxIn' => (string) floor((int)$item['priceTaxOut'] * ProductRepository::TAX_RATE)] +
+                ['priceTaxIn' => (string) ($priceTaxIn == 0 ? '' : $priceTaxIn)] +
                 array_slice($item, $taxOut_key + 1, count($item) - 1, true);
         }
-        // END 107489
+        // END 109341
 
         $response = [
             'hasNext' => false,
