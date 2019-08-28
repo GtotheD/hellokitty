@@ -1,0 +1,26 @@
+{
+    "rental": {
+        "rows": [
+            {
+                "altText": "コミックレンタル新刊リスト",
+                "linkUrl": "https://tsutaya.tsite.jp/feature/book/release/comic/",
+                "imageUrl": "https://www.tsutaya.co.jp/tsearch/cl/img/booklist/bn_list_newbooks_rent.jpg",
+                "isTapOn": true,
+                "width": 375,
+                "height": 56
+            }
+        ]
+    },
+    "sell": {
+        "rows": [
+            {
+                "altText": "コミックレンタル新刊リスト",
+                "linkUrl": "https://tsutaya.tsite.jp/feature/book/release/comic/",
+                "imageUrl": "https://www.tsutaya.co.jp/tsearch/cl/img/booklist/bn_list_newbooks_sell.jpg",
+                "isTapOn": true,
+                "width": 375,
+                "height": 56
+            }
+        ]
+    }
+}
