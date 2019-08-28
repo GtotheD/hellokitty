@@ -248,15 +248,13 @@ $router->group([
     });
 
     // 【API】レコメンドバナー用API
-    $router->get('section/banner/recommend', function (Request $request) {
-        $image = $request->get('image', '');
-        $imageNew = $request->get('imageNew', '');
-
+    $router->get('section/banner/recommend/{image}', function (Request $request, $image) {
         if($image == '') {
             throw new NoContentsException;
         }
 
         $recommendImageHost = env('RECOMMEND_IMAGE_HOST');
+        $imageNew = str_replace('.jpg', '_notice.jpg', $image);
 
         return response()->json([
             'imageUrl' => $recommendImageHost . $image,
