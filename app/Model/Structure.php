@@ -28,7 +28,7 @@ class Structure extends Model
         parent::__construct(self::TABLE);
     }
 
-    public function setConditionTypes($goodsType, $saleType, $fileName = null, $isPremium = false)
+    public function setConditionTypes($goodsType, $saleType, $fileName = null, $isPremium = false, $isRecommend = false)
     {
         $this->dbObject = DB::table($this->table)
             ->where([
@@ -45,6 +45,10 @@ class Structure extends Model
         if ($isPremium === false) {
             $this->dbObject->where('section_type', '<>', 6)
                 ->where('section_type', '<>', 7);
+        }
+
+        if ($isRecommend === false) {
+            $this->dbObject->where('section_type', '<>', 8);
         }
 
         $this->dbObject->orderBy('sort', 'asc');

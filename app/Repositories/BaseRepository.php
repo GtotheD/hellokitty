@@ -104,5 +104,13 @@ abstract class BaseRepository
     {
         $this->sort = $sort;
     }
+    
+    public function setIsDummy($isDummy) {
+        $this->isDummy = $isDummy;
+    }
+
+    public function getIsDummy() {
+        return $this->isDummy;
+    }
 
 }

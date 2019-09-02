@@ -90,7 +90,9 @@ class ProductRepository extends BaseRepository
         ];
         // レンタルCDだった場合
         if ($products->msdb_item === 'audio' && $this->saleType === 'rental') {
-            $this->totalCount = $this->product->setConditionForCd($workId, $this->saleType, $this->sort)->count();
+            // #104199 edit start
+            $this->totalCount = $this->product->setConditionForCd($workId, $this->saleType, $this->sort, $this->getIsDummy())->count();
+            // #104199 edit end
             $results = $this->product->selectCamel($column)->get($this->limit, $this->offset);
         } else if ($products->msdb_item === 'audio' && $this->saleType === 'sell') {
             $column = [
@@ -109,7 +111,9 @@ class ProductRepository extends BaseRepository
             $this->totalCount = $this->product->setConditionForSellCd($workId, $this->sort)->count();
             $results = $this->product->selectCamel($column)->get($this->limit, $this->offset);
         } else {
-            $this->totalCount = $this->product->setConditionProductGroupingByWorkIdSaleType($workId, $this->saleType, $this->sort, $isAudio)->count();
+            // #104199 edit start　Dummyの前にtrueを渡すようにしてください
+            $this->totalCount = $this->product->setConditionProductGroupingByWorkIdSaleType($workId, $this->saleType, $this->sort, $isAudio, true, $this->getIsDummy())->count();
+            // #104199 edit end
             $results = $this->product->selectCamel($column)->get($this->limit, $this->offset);
         }
         if (count($results) === 0) {

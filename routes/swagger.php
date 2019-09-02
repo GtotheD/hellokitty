@@ -158,6 +158,12 @@
  *       description="オフセット",
  *       type="integer"
  *     ),
+ *     @SWG\Parameter(
+ *       name="recommend",
+ *       in="query",
+ *       description="recommendセクション表示フラグ",
+ *       type="boolean"
+ *     ),
  *     @SWG\Response(response=200, description="Success"),
  *     @SWG\Response(response=204, description="Contents not found"),
  *     @SWG\Response(response=401, description="Auth error"),
@@ -183,6 +189,12 @@
  *       in="query",
  *       description="オフセット",
  *       type="integer"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="recommend",
+ *       in="query",
+ *       description="recommendセクション表示フラグ",
+ *       type="boolean"
  *     ),
  *     @SWG\Response(response=200, description="Success"),
  *     @SWG\Response(response=204, description="Contents not found"),
@@ -746,6 +758,30 @@
  */
 /**
  * @SWG\Get(
+ *     path="/section/banner/recommend",
+ *     description="【API】レコメンドバナー用API",
+ *     produces={"application/json"},
+ *     tags={"Top"},
+ *     security={{"api_key":{}}},
+ *     @SWG\Parameter(
+ *       name="image",
+ *       required=true,
+ *       in="query",
+ *       description="BOOKレコメンド用バナー画像名",
+ *       type="string"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="imageNew",
+ *       in="query",
+ *       description="BOOKレコメンド用バナー画像名（新着あり）",
+ *       type="string"
+ *     ),
+ *     @SWG\Response(response=200, description="Success"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+/**
+ * @SWG\Get(
  *     path="/section/ranking/{codeType}/{code}/{period}",
  *     description="DVD-セルのTOP構造を返却する（hasNextは最終レスポンスがlimit以下だった場合にfalseとする）",
  *     produces={"application/json"},
@@ -1083,6 +1119,18 @@
  *     @SWG\Parameter(ref="#/parameters/offset"),
  *     @SWG\Parameter(ref="#/parameters/saleType"),
  *     @SWG\Parameter(ref="#/parameters/sort"),
+ *     @SWG\Parameter(
+ *       name="isDummy",
+ *       in="query",
+ *       description="dummyデータを含める",
+ *       type="boolean"
+ *     ), 
+ *     @SWG\Parameter(
+ *       name="taxIn",
+ *       in="query",
+ *       description="税込金額（true, false)",
+ *       type="string"
+ *     ),
  *     @SWG\Response(
  *          response=200,
  *          description="success",
