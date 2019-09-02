@@ -101,11 +101,11 @@ class StructureRepository
     /**
      * @return object
      */
-    public function get($goodsType, $saleType, $isPremium = false)
+    public function get($goodsType, $saleType, $isPremium = false, $isRecommend = false)
     {
         $goodsType = $this->convertGoodsTypeToId($goodsType);
         $saleType = $this->convertSaleTypeToId($saleType);
-        $this->structure->setConditionTypes($goodsType, $saleType, null, $isPremium);
+        $this->structure->setConditionTypes($goodsType, $saleType, null, $isPremium, $isRecommend);
         $this->totalCount = $this->structure->count();
         $structures = $this->structure->get($this->limit, $this->offset);
         if (count($structures) + $this->offset < $this->totalCount) {
@@ -155,7 +155,7 @@ class StructureRepository
                 'isTapOn' => $structure->is_tap_on ? true : false,
                 'isRanking' => $structure->is_ranking ? true : false,
             ];
-            if ($structure->section_type == 1) {
+            if ($structure->section_type == 1 || $structure->section_type == 8) {
                 $unit['width'] = $structure->banner_width;
                 $unit['height'] =$structure->banner_height;
             }
