@@ -110,10 +110,11 @@ class ProductRepository extends BaseRepository
             ];
             $this->totalCount = $this->product->setConditionForSellCd($workId, $this->sort)->count();
             $results = $this->product->selectCamel($column)->get($this->limit, $this->offset);
+        } else if ($products->msdb_item === 'video' && $this->saleType === 'sell') {
+            $this->totalCount = $this->product->setConditionProductGroupingByWorkIdSaleType($workId, $this->saleType, $this->sort, $isAudio, true, $this->getIsDummy(), true)->count();
+            $results = $this->product->selectCamel($column)->get($this->limit, $this->offset);
         } else {
-            // #104199 edit start　Dummyの前にtrueを渡すようにしてください
             $this->totalCount = $this->product->setConditionProductGroupingByWorkIdSaleType($workId, $this->saleType, $this->sort, $isAudio, true, $this->getIsDummy())->count();
-            // #104199 edit end
             $results = $this->product->selectCamel($column)->get($this->limit, $this->offset);
         }
         if (count($results) === 0) {
@@ -513,7 +514,7 @@ class ProductRepository extends BaseRepository
                 return null;
             }
             // CDのみjanでばらされているので、それ以外は通常集約
-            if ($products->msdb_item !== 'audio') {
+            if ($products->msdb_item !== 'audio' && $products->msdb_item !== 'video') {
                 $res = $this->product->setConditionWorkGroupByJan($productKey)->select('p2.jan')->get();
                 foreach ($res as $item) {
                     $queryIdList[] = $item->jan;
