@@ -338,12 +338,17 @@ class Product extends Model
      * $isAudio
      * $withPpt 含める場合はTrue、含めない場合はFalse
      */
-    public function setConditionProductGroupingByWorkIdSaleType($workId, $saleType = null, $order = null ,$isAudio, $withPpt = true, $isDummy = true)
+    public function setConditionProductGroupingByWorkIdSaleType($workId, $saleType = null, $order = null ,$isAudio, $withPpt = true, $isDummy = true, $isJanGrouping = false)
     {
         $selectSubGrouping = 'item_cd_right_2,'
             .'product_type_id,'
             .'product_name,'
             .'ccc_family_cd ';
+
+        if ($isJanGrouping === true){
+            $selectSubGrouping = $selectSubGrouping . ',jan ';
+        }
+
         $selectSub = ',MAX(CASE WHEN SUBSTRING(item_cd, 2, 1) = \'0\' THEN product_unique_id END) AS no_ppt,'
             .'MAX(CASE WHEN SUBSTRING(item_cd, 2, 1) = \'1\' THEN product_unique_id END) AS ppt ';
         $subQueryBase = DB::table($this->table)->select(DB::raw($selectSubGrouping.$selectSub))
