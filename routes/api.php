@@ -65,12 +65,16 @@ $router->group([
             // プレミアム対応にてAPIバージョンをv4にあげない為、旧アプリへsectionType=6を出さないようにする対応
             $isPremium = $request->input('premium', false);
             $isPremium = ($isPremium !== 'true') ? false : true;
-            
+
             // プレミアム対応にてAPIバージョンをv4にあげない為、旧アプリへsectionType=6を出さないようにする対応
             $isRecommend = $request->input('recommend', false);
-            $isRecommend = ($isRecommend !== 'true')? false: true;
-            
-            $structures = $structureRepository->get($goodsType, $saleType, $isPremium, $isRecommend);
+            $isRecommend = ($isRecommend !== 'true') ? false : true;
+
+            // ThousandTags
+            $isThousandTag = $request->input('thousandtag', false);
+            $isThousandTag = ($isThousandTag !== 'true') ? false : true;
+
+            $structures = $structureRepository->get($goodsType, $saleType, $isPremium, $isRecommend, $isThousandTag);
             if ($structures->getTotalCount() == 0) {
                 throw new NoContentsException;
             }
@@ -249,7 +253,7 @@ $router->group([
 
     // 【API】レコメンドバナー用API
     $router->get('section/banner/recommend/{image}', function (Request $request, $image) {
-        if($image == '') {
+        if ($image == '') {
             throw new NoContentsException;
         }
 
@@ -392,7 +396,7 @@ $router->group([
 
         // #104199 edit start　ここ追加
         $isDummy = $request->input('isDummy', false);
-        $isDummy = ($isDummy !== 'true')? false: true;
+        $isDummy = ($isDummy !== 'true') ? false : true;
         $product->setIsDummy($isDummy);
         // #104199 edit end
 
@@ -406,7 +410,7 @@ $router->group([
             $taxOut_key = array_search('priceTaxOut', array_keys($item));
             $priceTaxIn = floor((int)$item['priceTaxOut'] * ProductRepository::TAX_RATE);
             $item = array_slice($item, 0, $taxOut_key + 1, true) +
-                ['priceTaxIn' => (string) ($priceTaxIn == 0 ? '' : $priceTaxIn)] +
+                ['priceTaxIn' => (string)($priceTaxIn == 0 ? '' : $priceTaxIn)] +
                 array_slice($item, $taxOut_key + 1, count($item) - 1, true);
         }
         // END 109341
@@ -998,7 +1002,7 @@ $router->group([
             $taxOut_key = array_search('priceTaxOut', array_keys($item));
             $priceTaxIn = floor((int)$item['priceTaxOut'] * ProductRepository::TAX_RATE);
             $item = array_slice($item, 0, $taxOut_key + 1, true) +
-                ['priceTaxIn' => (string) ($priceTaxIn == 0 ? '' : $priceTaxIn)] +
+                ['priceTaxIn' => (string)($priceTaxIn == 0 ? '' : $priceTaxIn)] +
                 array_slice($item, $taxOut_key + 1, count($item) - 1, true);
         }
         // END 109341

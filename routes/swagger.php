@@ -80,6 +80,12 @@
  *       description="プレミアムセクション出力有無",
  *       type="boolean"
  *     ),
+ *     @SWG\Parameter(
+ *       name="thousandtag",
+ *       in="query",
+ *       description="Thousand tag",
+ *       type="boolean"
+ *     ),
  *     @SWG\Response(response=200, description="Success"),
  *     @SWG\Response(response=204, description="Contents not found"),
  *     @SWG\Response(response=401, description="Auth error"),
@@ -221,6 +227,12 @@
  *       in="query",
  *       description="オフセット",
  *       type="integer"
+ *     ),
+ *     @SWG\Parameter(
+ *       name="thousandtag",
+ *       in="query",
+ *       description="Thousand tag",
+ *       type="boolean"
  *     ),
  *     @SWG\Response(response=200, description="Success"),
  *     @SWG\Response(response=204, description="Contents not found"),

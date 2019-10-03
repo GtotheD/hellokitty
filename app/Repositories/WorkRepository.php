@@ -179,6 +179,7 @@ class WorkRepository extends BaseRepository
             $workId = $productResult['work_id'];
         }
         $this->work->setConditionByWorkId($workId);
+
         if ($this->work->count() == 0) {
             $himo = new HimoRepository();
             $himoResult = $himo->crosswork([$workId], $idType)->get();
@@ -667,6 +668,17 @@ class WorkRepository extends BaseRepository
                 ];
             }
         }
+
+        /**
+         * Start process for thousand tag
+         */
+        $tags = $this->convertTagToName(json_decode($response['thousandtags'], true));
+        unset($response['thousandtags']);
+        $response['thousandTgs'] = $tags;
+        /**
+         * End process for thousand tag
+         */
+
         return $response;
     }
 
@@ -1604,5 +1616,30 @@ class WorkRepository extends BaseRepository
             'w1.msdb_item',
             't1.product_type_id'
         ];
+    }
+
+    /**
+     * Developing ...
+     * @param array $tagArr ex: ["move_00878", "move_00879"]
+     * @return array
+     */
+    public function convertTagToName($tagArr = [])
+    {
+        // Data and example return
+        $result = [
+            [
+                'tag' => 'move_00878',
+                'tagName' => '誰かに話したくなる映画'
+            ],
+            [
+                'tag' => 'audio_00879',
+                'tagName' => '感動する映画'
+            ]
+        ];
+
+        // Process convert here
+        // ...
+
+        return $result;
     }
 }
