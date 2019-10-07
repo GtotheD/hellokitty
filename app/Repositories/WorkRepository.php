@@ -674,7 +674,7 @@ class WorkRepository extends BaseRepository
          */
         $tags = $this->convertTagToName(json_decode($response['thousandtags'], true));
         unset($response['thousandtags']);
-        $response['thousandTgs'] = $tags;
+        $response['thousandTags'] = $tags;
         /**
          * End process for thousand tag
          */
@@ -1625,20 +1625,30 @@ class WorkRepository extends BaseRepository
      */
     public function convertTagToName($tagArr = [])
     {
-        // Data and example return
-        $result = [
-            [
-                'tag' => 'move_00878',
-                'tagName' => '誰かに話したくなる映画'
-            ],
-            [
-                'tag' => 'audio_00879',
-                'tagName' => '感動する映画'
-            ]
-        ];
+        $result = [];
 
-        // Process convert here
-        // ...
+        // Read thousand tags data from csv
+        $file = base_path() . DIRECTORY_SEPARATOR . env('WORK_TAG_LOCATION');
+        if (file_exists($file)) {
+            setlocale(LC_ALL, 'ja_JP.sjis');
+            $fp = fopen($file, 'r');
+            while ($line = fgetcsv($fp)) {
+                if (empty($tagArr)) {
+                    break; // Stop read file when all tag has been found
+                }
+                mb_convert_variables('utf-8', 'sjis-win', $line);
+                foreach ($tagArr as $k => $item) {
+                    if ($item === $line[0]) {
+                        $result[] = [
+                            'tag' => $item,
+                            'tagName' => $line[2]
+                        ];
+                        unset($tagArr[$k]);
+                    }
+                }
+            }
+            fclose($fp);
+        }
 
         return $result;
     }
