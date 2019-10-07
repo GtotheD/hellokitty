@@ -171,6 +171,23 @@
  *                  description="上映映画の有無",
  *              ),
  *          ),
+ *          @SWG\Property(
+ *              property="thousandTags",
+ *              type="array",
+ *              @SWG\items(
+ *                  type="object",
+ *                  @SWG\Property(
+ *                      property="tag",
+ *                      type="string",
+ *                      description="キーワード",
+ *                  ),
+ *                  @SWG\Property(
+ *                      property="tagName",
+ *                      type="string",
+ *                      description="メッセージ",
+ *                  )
+ *              ),
+ *          )
  * )
  * */
 /**
