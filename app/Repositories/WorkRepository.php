@@ -1641,6 +1641,7 @@ class WorkRepository extends BaseRepository
                     if ($item === $line[0]) {
                         $result[] = [
                             'tag' => $item,
+                            'tagTitle' => $line[1],
                             'tagName' => $line[2]
                         ];
                         unset($tagArr[$k]);

@@ -686,6 +686,27 @@
  * */
 /**
  *  @SWG\Definition(
+ *          definition="WorkConvertTag",
+ *          @SWG\Property(
+ *              property="tag",
+ *              type="string",
+ *              description="タグ"
+ *          ),
+ *          definition="WorkConvertTag",
+ *          @SWG\Property(
+ *              property="tagTitle",
+ *              type="string",
+ *              description="タグタイトル"
+ *          ),
+ *          @SWG\Property(
+ *              property="tagName",
+ *              type="string",
+ *              description="タグ名"
+ *          ),
+ *  )
+ * */
+/**
+ *  @SWG\Definition(
  *          definition="Review",
  *          @SWG\Property(
  *              property="rating",

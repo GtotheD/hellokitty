@@ -1120,6 +1120,45 @@
  * )
  */
 /**
+ * @SWG\Post(
+ *     path="/convert/tag",
+ *     description="タグ名変換",
+ *     produces={"application/json"},
+ *     tags={"Work"},
+ *     security={{"api_key":{}}},
+ *     @SWG\Parameter(
+ *       name="body",
+ *       in="body",
+ *       description="",
+ *       type="array",
+ *       @SWG\Schema(
+ *         @SWG\Property(
+ *             property="tags",
+ *             type="array",
+ *             description="タグ名",
+ *             @SWG\Items(
+ *                  type="string",
+ *             ),
+ *         )
+ *       )
+ *     ),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="rows",
+ *                  type="array",
+ *                  @SWG\Items(ref="#/definitions/WorkConvertTag"),
+ *                  description="レスポンス情報",
+ *              ),
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+/**
  * @SWG\Get(
  *     path="/work/{workId}/products",
  *     description="商品一覧情報取得",
@@ -1136,7 +1175,7 @@
  *       in="query",
  *       description="dummyデータを含める",
  *       type="boolean"
- *     ), 
+ *     ),
  *     @SWG\Parameter(
  *       name="taxIn",
  *       in="query",

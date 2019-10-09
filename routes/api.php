@@ -1015,6 +1015,22 @@ $router->group([
         return response()->json($response);
     });
 
+    // タグ名変換
+    $router->post('/convert/tag', function (Request $request) {
+        $body_obj = json_decode($request->getContent(), true);
+        $arrTags = isset($body_obj['tags']) ? $body_obj['tags'] : '';
+        if (empty($arrTags)) {
+            throw new BadRequestHttpException;
+        }
+        $workRepository = new WorkRepository();
+        $results = $workRepository->convertTagToName($arrTags);
+
+        $response = [
+            'rows' => $results
+        ];
+        return response()->json($response);
+    });
+
     // Favorite add
     $router->post('favorite/add', function (Request $request) {
         $bodyObj = json_decode($request->getContent(), true);
