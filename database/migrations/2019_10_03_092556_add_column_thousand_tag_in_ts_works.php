@@ -13,9 +13,9 @@ class AddColumnThousandTagInTsWorks extends Migration
      */
     public function up()
     {
-        if (!Schema::hasColumn('ts_works', 'thousandTags')) {
+        if (!Schema::hasColumn('ts_works', 'thousandtags')) {
             Schema::table('ts_works', function (Blueprint $table) {
-                $table->json('thousandTags')->after('only_other');
+                $table->json('thousandtags')->after('only_other');
             });
         }
     }
