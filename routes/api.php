@@ -1016,14 +1016,14 @@ $router->group([
     });
 
     // タグ名変換
-    $router->post('/convert/tag', function (Request $request) {
+    $router->post('/convert/tags', function (Request $request) {
         $body_obj = json_decode($request->getContent(), true);
         $arrTags = isset($body_obj['tags']) ? $body_obj['tags'] : '';
         if (empty($arrTags)) {
             throw new BadRequestHttpException;
         }
         $workRepository = new WorkRepository();
-        $results = $workRepository->convertTagToName($arrTags);
+        $results = $workRepository->convertTagToNameThousandTag($arrTags);
 
         $response = [
             'rows' => $results

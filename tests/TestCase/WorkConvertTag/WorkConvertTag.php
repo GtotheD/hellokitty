@@ -14,7 +14,7 @@ class WorkConvertTag extends TestCase
      */
     public function testConvertTag()
     {
-        $url = '/convert/tag';
+        $url = '/convert/tags';
         $json = json_encode([
             'tags' => [
                 'movie_00049',

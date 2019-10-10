@@ -1121,7 +1121,7 @@
  */
 /**
  * @SWG\Post(
- *     path="/convert/tag",
+ *     path="/convert/tags",
  *     description="タグ名変換",
  *     produces={"application/json"},
  *     tags={"Work"},

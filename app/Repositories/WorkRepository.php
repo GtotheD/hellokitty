@@ -1641,6 +1641,41 @@ class WorkRepository extends BaseRepository
                     if ($item === $line[0]) {
                         $result[] = [
                             'tag' => $item,
+                            'tagName' => $line[2]
+                        ];
+                        unset($tagArr[$k]);
+                    }
+                }
+            }
+            fclose($fp);
+        }
+
+        return $result;
+    }
+
+    /**
+     * Developing ...
+     * @param array $tagArr ex: ["move_00878", "move_00879"]
+     * @return array
+     */
+    public function convertTagToNameThousandTag($tagArr = [])
+    {
+        $result = [];
+
+        // Read thousand tags data from csv
+        $file = base_path() . DIRECTORY_SEPARATOR . env('WORK_TAG_LOCATION');
+        if (file_exists($file)) {
+            setlocale(LC_ALL, 'ja_JP.sjis');
+            $fp = fopen($file, 'r');
+            while ($line = fgetcsv($fp)) {
+                if (empty($tagArr)) {
+                    break; // Stop read file when all tag has been found
+                }
+                mb_convert_variables('utf-8', 'sjis-win', $line);
+                foreach ($tagArr as $k => $item) {
+                    if ($item === $line[0]) {
+                        $result[] = [
+                            'tag' => $item,
                             'tagTitle' => $line[1],
                             'tagName' => $line[2]
                         ];
