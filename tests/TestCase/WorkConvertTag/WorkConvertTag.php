@@ -14,14 +14,8 @@ class WorkConvertTag extends TestCase
      */
     public function testConvertTag()
     {
-        $url = '/convert/tags';
-        $json = json_encode([
-            'tags' => [
-                'movie_00049',
-                'movie_00180',
-            ],
-        ]);
-        $response = $this->postWithAuth($url, $json);
+        $url = '/convert/tags?tags[]=movie_00049&tags[]=movie_00180';
+        $response = $this->getWithAuth($url);
         $actual = json_decode($response->getContent(), true);
         $expected = json_decode(file_get_contents(__DIR__ . '/expected/convertTag_1'), true);
         $this->assertEquals($expected, $actual);

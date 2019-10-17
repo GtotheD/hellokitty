@@ -6,6 +6,8 @@ use App\Model\DiscasProduct;
 use App\Model\MusicoUrl;
 use App\Model\Work;
 use App\Model\Product;
+use App\Model\RecommendTag;
+use App\Model\RecommendTagWork;
 use App\Exceptions\NoContentsException;
 use Illuminate\Support\Facades\DB;
 
@@ -45,8 +47,8 @@ class WorkRepository extends BaseRepository
     const WORK_TYPE_MUSIC_UNIT = '6';
     const WORK_TYPE_THEATER = '7';
 
-    const HIMO_REQUEAST_MAX = 2000;
-    const HIMO_REQUEAST_PER_ONCE = 20;
+    const HIMO_REQUEST_MAX = 2000;
+    const HIMO_REQUEST_PER_ONCE = 20;
 
     const HIMO_ROLE_ID_MUSIC = array(
         'EXT00000000D', 'EXT0000176TD', 'EXT0000177YD', 'EXT0000000UM',
@@ -319,6 +321,35 @@ class WorkRepository extends BaseRepository
     }
 
     /**
+     * Description
+     * @param type $workData
+     * @return type|array $workData
+     */
+    public function formatOutputThousandTag($workData)
+    {
+        $workDataFormat = [];
+        foreach ($workData['rows'] as $itemWork) {
+            $tempData['workId'] = $itemWork['workId'];
+            $tempData['urlCd'] = $itemWork['urlCd'];
+            $tempData['cccWorkCd'] = $itemWork['cccWorkCd'];
+            $tempData['workTitle'] = $itemWork['workTitle'];
+            $tempData['newFlg'] = $itemWork['newFlg'];
+            $tempData['jacketL'] = $itemWork['jacketL'];
+            $tempData['supplement'] = $itemWork['supplement'];
+            $tempData['saleType'] = isset($itemWork['saleType']) ? $itemWork['saleType']: '';
+            $tempData['itemType'] = $itemWork['itemType'];
+            $tempData['adultFlg'] = $itemWork['adultFlg'];
+            $tempData['workFormatName'] = ($tempData['itemType'] == 'cd' || $tempData['itemType'] == 'dvd') ? $itemWork['workFormatName']: '';
+            $tempData['makerName'] = isset($itemWork['makerName']) ? $itemWork['makerName']: '';
+            $tempData['saleStartDate'] = $itemWork['saleStartDate'];
+
+            array_push($workDataFormat, $tempData);
+        }
+
+        return $workDataFormat;
+    }
+
+    /**
      * Get work data by input urlcd
      * @param type $workId 
      * @param type|null $selectColumns 
@@ -465,6 +496,53 @@ class WorkRepository extends BaseRepository
                 $response['rows'][] = $this->formatAddOtherData($row);
             }
         }
+        return $response;
+    }
+
+    public function getWorkListByThousandTag($thousandTag)
+    {
+        $tagWork = new RecommendTagWork();
+        $workIdList = $tagWork->setConditionGetWorkIdByTag($thousandTag)->get($this->limit, $this->offset)->pluck('work_id');
+        if (empty($workIdList)) {
+            return null;
+        }
+
+        $workIdsExistedArray = DB::table('ts_works')->get()->pluck('work_id')->toArray();
+
+        $workIdsNew = [];
+        foreach ($workIdList as $workId) {
+            if (!in_array($workId, $workIdsExistedArray)) {
+                $workIdsNew[] = $workId;
+            }
+        }
+        // request Himo for new work_id
+        if ($workIdsNew) {
+            $himoResult = [];
+            $himo = new HimoRepository();
+
+            foreach ($workIdsNew as $workId) {
+                $himoResult = $himo->crossworkWorkForThousandTag($workId, $thousandTag)->get();
+                // Himoから取得できなかった場合はスキップする
+                if (!empty($himoResult) && $himoResult['status'] !== 204) {
+                    $insertResult = $this->insertWorkData($himoResult);return $insertResult;
+                }
+            }
+        }
+
+        $this->work->setConnection('mysql::write');
+        $this->work->getWorkIdsIn($workIdList);
+
+        $this->totalCount = $this->work->count();
+        if (!$this->totalCount) {
+            return null;
+        }
+
+        $workArray = $this->work->toCamel(['id'])->getAll();
+        foreach ($workArray as $workItem) {
+            $row = (array) $workItem;
+            $response['rows'][] = $this->formatAddOtherData($row);
+        }
+        
         return $response;
     }
 
@@ -654,7 +732,7 @@ class WorkRepository extends BaseRepository
         unset($response['isPremiumShop']);
 
         if ($addSaleTypeHas) {
-            if($response['workTypeId'] === self::WORK_TYPE_THEATER) {
+            if ($response['workTypeId'] === self::WORK_TYPE_THEATER) {
                 $response['saleTypeHas'] = [
                     'sell' => false,
                     'rental' => false,
@@ -752,7 +830,6 @@ class WorkRepository extends BaseRepository
                     $productData[] = $productRepository->format($row['work_id'], $product, $isMusicVideo);
                 }
                 $workData[] = $this->format($row, false, $hasTol);
-
                 if (!empty($musicoUrl)) {
                     $musicoUrlInsertArray[] = [
                         'work_id' => $row['work_id'],
@@ -1422,6 +1499,9 @@ class WorkRepository extends BaseRepository
         if (array_key_exists('docs', $row)) {
             $base['doc_text'] = json_encode($row['docs']);
         }
+        $row['1000_tags'] = (array_key_exists('1000_tags', $row)) ? $row['1000_tags'] : null;
+        $base['thousandtags'] = json_encode($row['1000_tags']);
+
         if ($isNarrow === false) {
             if (!empty($row['genres'])) {
                 $base['big_genre_id'] = $row['genres'][0]['big_genre_id'];
@@ -1462,9 +1542,9 @@ class WorkRepository extends BaseRepository
         $base['is_premium_shop'] = 0;
         $base['is_premium_net'] = 0;
 
-        if(isset($row['premium_plan']) && is_array($row['premium_plan'])) {
+        if (isset($row['premium_plan']) && is_array($row['premium_plan'])) {
             foreach ($row['premium_plan'] as $plan) {
-                if(isset($plan['premium_plan_cd'])) {
+                if (isset($plan['premium_plan_cd'])) {
                     switch ((int)$plan['premium_plan_cd']) {
                         case Work::PREMIUM_FLG_SHOP:
                             $base['is_premium_shop'] = 1;
@@ -1472,7 +1552,8 @@ class WorkRepository extends BaseRepository
                         case Work::PREMIUM_FLG_NET:
                             $base['is_premium_net'] = 1;
                             break;
-                        default: break;
+                        default:
+                            break;
                     }
                 }
             }
@@ -1626,64 +1707,14 @@ class WorkRepository extends BaseRepository
     public function convertTagToName($tagArr = [])
     {
         $result = [];
-
-        // Read thousand tags data from csv
-        $file = base_path() . DIRECTORY_SEPARATOR . env('WORK_TAG_LOCATION');
-        if (file_exists($file)) {
-            setlocale(LC_ALL, 'ja_JP.sjis');
-            $fp = fopen($file, 'r');
-            while ($line = fgetcsv($fp)) {
-                if (empty($tagArr)) {
-                    break; // Stop read file when all tag has been found
-                }
-                mb_convert_variables('utf-8', 'sjis-win', $line);
-                foreach ($tagArr as $k => $item) {
-                    if ($item === $line[0]) {
-                        $result[] = [
-                            'tag' => $item,
-                            'tagName' => $line[2]
-                        ];
-                        unset($tagArr[$k]);
-                    }
+        if (!empty($tagArr)) {
+            $recommendTag = new RecommendTag();
+            foreach ($tagArr as $tag) {
+                $tagInfo = $recommendTag->setConditionByTag($tag)->selectCamel(['tag', 'tag_title', 'tag_message'])->getOne();
+                if ($tagInfo) {
+                    $result[] = $tagInfo;
                 }
             }
-            fclose($fp);
-        }
-
-        return $result;
-    }
-
-    /**
-     * Developing ...
-     * @param array $tagArr ex: ["move_00878", "move_00879"]
-     * @return array
-     */
-    public function convertTagToNameThousandTag($tagArr = [])
-    {
-        $result = [];
-
-        // Read thousand tags data from csv
-        $file = base_path() . DIRECTORY_SEPARATOR . env('WORK_TAG_LOCATION');
-        if (file_exists($file)) {
-            setlocale(LC_ALL, 'ja_JP.sjis');
-            $fp = fopen($file, 'r');
-            while ($line = fgetcsv($fp)) {
-                if (empty($tagArr)) {
-                    break; // Stop read file when all tag has been found
-                }
-                mb_convert_variables('utf-8', 'sjis-win', $line);
-                foreach ($tagArr as $k => $item) {
-                    if ($item === $line[0]) {
-                        $result[] = [
-                            'tag' => $item,
-                            'tagTitle' => $line[1],
-                            'tagName' => $line[2]
-                        ];
-                        unset($tagArr[$k]);
-                    }
-                }
-            }
-            fclose($fp);
         }
 
         return $result;

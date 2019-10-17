@@ -182,7 +182,12 @@
  *                      description="キーワード",
  *                  ),
  *                  @SWG\Property(
- *                      property="tagName",
+ *                      property="tagTitle",
+ *                      type="string",
+ *                      description="タイトル",
+ *                  ),
+ *                  @SWG\Property(
+ *                      property="tagMessage",
  *                      type="string",
  *                      description="メッセージ",
  *                  )
@@ -686,22 +691,81 @@
  * */
 /**
  *  @SWG\Definition(
+ *          definition="WorkThousandTag",
+ *          @SWG\Property(
+ *              property="workId",
+ *              type="string",
+ *              description="作品ID"
+ *          ),
+ *          @SWG\Property(
+ *              property="urlCd",
+ *              type="string",
+ *              description="URLコード"
+ *          ),
+ *          @SWG\Property(
+ *              property="cccWorkCd",
+ *              type="string",
+ *              description="ccc作品コード"
+ *          ),
+ *          @SWG\Property(
+ *              property="workTitle",
+ *              type="string",
+ *              description="作品タイトル"
+ *          ),
+ *          @SWG\Property(
+ *              property="newFlg",
+ *              type="boolean",
+ *              description="新しいフラグ"
+ *          ),
+ *          @SWG\Property(
+ *              property="jacketL",
+ *              type="string",
+ *              description="ジャケ写"
+ *          ),
+ *          @SWG\Property(
+ *              property="supplement",
+ *              type="string",
+ *              description="著者・作者"
+ *          ),
+ *          @SWG\Property(
+ *              property="adultFlg",
+ *              type="boolean",
+ *              description="アダルトフラグ"
+ *          ),
+ *          @SWG\Property(
+ *              property="workFormatName",
+ *              type="string",
+ *              description="アルバム"
+ *          ),
+ *          @SWG\Property(
+ *              property="makerName",
+ *              type="string",
+ *              description="エイベックス・ミュージック・クリエイティヴ"
+ *          ),
+ *          @SWG\Property(
+ *              property="saleStartDate",
+ *              type="string",
+ *              description="販売・レンタル開始日"
+ *          ),
+ *  )
+ * */
+/**
+ *  @SWG\Definition(
  *          definition="WorkConvertTag",
  *          @SWG\Property(
  *              property="tag",
  *              type="string",
  *              description="タグ"
  *          ),
- *          definition="WorkConvertTag",
  *          @SWG\Property(
  *              property="tagTitle",
  *              type="string",
  *              description="タグタイトル"
  *          ),
  *          @SWG\Property(
- *              property="tagName",
+ *              property="tagMessage",
  *              type="string",
- *              description="タグ名"
+ *              description="タグメッセージ"
  *          ),
  *  )
  * */

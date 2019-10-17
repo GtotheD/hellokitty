@@ -71,7 +71,7 @@ $router->group([
             $isRecommend = ($isRecommend !== 'true') ? false : true;
 
             // ThousandTags
-            $isThousandTag = $request->input('thousandtag', false);
+            $isThousandTag = $request->input('thousandTag', false);
             $isThousandTag = ($isThousandTag !== 'true') ? false : true;
 
             $structures = $structureRepository->get($goodsType, $saleType, $isPremium, $isRecommend, $isThousandTag);
@@ -1015,16 +1015,45 @@ $router->group([
         return response()->json($response);
     });
 
+    // タグ作品取得
+    $router->get('/work/tag/{thousandTag}', function (Request $request, $thousandTag) {
+        $workRepository = new WorkRepository();
+        $workRepository->setLimit($request->input('limit', 10));
+        $workRepository->setOffset($request->input('offset', 0));
+
+        // Get work data
+        $workData = $workRepository->getWorkListByThousandTag($thousandTag);
+
+        if (empty($workData)) {
+            throw new NoContentsException;
+        }
+        // Format output work data
+        $workDataFormat = $workRepository->formatOutputThousandTag($workData);
+        
+        $tagInfo = $workRepository->convertTagToName((array) $thousandTag);
+        $response = [
+            'hasNext' => false,
+            'totalCount' => count($workDataFormat),
+            'tag' => $tagInfo[0]->tag,
+            'tagTitle' => $tagInfo[0]->tagTitle,
+            'tagMessage' => $tagInfo[0]->tagMessage,
+            'rows' => $workDataFormat
+        ];
+        return response()->json($response);
+    });
+
     // タグ名変換
-    $router->post('/convert/tags', function (Request $request) {
-        $body_obj = json_decode($request->getContent(), true);
-        $arrTags = isset($body_obj['tags']) ? $body_obj['tags'] : '';
+    $router->get('/convert/tags', function (Request $request) {
+        $arrTags = $request->input('tags', null);
         if (empty($arrTags)) {
             throw new BadRequestHttpException;
         }
         $workRepository = new WorkRepository();
-        $results = $workRepository->convertTagToNameThousandTag($arrTags);
-
+        $results = $workRepository->convertTagToName($arrTags);
+        if (empty($results)) {
+            throw new NoContentsException;
+        }
+        
         $response = [
             'rows' => $results
         ];

@@ -81,9 +81,9 @@
  *       type="boolean"
  *     ),
  *     @SWG\Parameter(
- *       name="thousandtag",
+ *       name="thousandTag",
  *       in="query",
- *       description="Thousand tag",
+ *       description="1000タグ",
  *       type="boolean"
  *     ),
  *     @SWG\Response(response=200, description="Success"),
@@ -229,9 +229,9 @@
  *       type="integer"
  *     ),
  *     @SWG\Parameter(
- *       name="thousandtag",
+ *       name="thousandTag",
  *       in="query",
- *       description="Thousand tag",
+ *       description="1000タグ",
  *       type="boolean"
  *     ),
  *     @SWG\Response(response=200, description="Success"),
@@ -1120,27 +1120,55 @@
  * )
  */
 /**
- * @SWG\Post(
+ * @SWG\Get(
+ *     path="/work/tag/{thousandTag}",
+ *     description="タグ作品取得",
+ *     tags={"Work"},
+ *     produces={"application/json"},
+ *     security={{"api_key":{}}},
+ *     @SWG\Parameter(
+ *          name="thousandTag",
+ *          description="1000タグ",
+ *          in="path",
+ *          required=true,
+ *          type="string"
+ *     ),
+ *     @SWG\Parameter(ref="#/parameters/limit"),
+ *     @SWG\Parameter(ref="#/parameters/offset"),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          ref="$/responses/ListJsonThousandTag",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="rows",
+ *                  type="array",
+ *                  @SWG\Items(ref="#/definitions/WorkThousandTag"),
+ *                  description="1000タグ作品取得",
+ *              ),
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+/**
+ * @SWG\Get(
  *     path="/convert/tags",
  *     description="タグ名変換",
  *     produces={"application/json"},
  *     tags={"Work"},
  *     security={{"api_key":{}}},
  *     @SWG\Parameter(
- *       name="body",
- *       in="body",
- *       description="",
- *       type="array",
- *       @SWG\Schema(
- *         @SWG\Property(
- *             property="tags",
- *             type="array",
- *             description="タグ名",
- *             @SWG\Items(
- *                  type="string",
- *             ),
- *         )
- *       )
+ *          in="query",
+ *          name="tags[]",
+ *          description="タグ名",
+ *          required=true,
+ *          type="array",
+ *          collectionFormat="multi",
+ *          @SWG\Items(
+ *              type = "string",
+ *          ),
  *     ),
  *     @SWG\Response(
  *          response=200,

@@ -156,6 +156,34 @@
  */
 /**
  * @SWG\Response(
+ *      response="ListJsonThousandTag",
+ *      description="リストレスポンス",
+ *      @SWG\Schema(
+ *          @SWG\Property(
+ *              type="boolean",
+ *              property="hasNext"
+ *          ),
+ *          @SWG\Property(
+ *              type="integer",
+ *              property="totalCount"
+ *          ),
+ *          @SWG\Property(
+ *              type="string",
+ *              property="tag"
+ *          ),
+ *          @SWG\Property(
+ *              type="string",
+ *              property="tagTitle"
+ *          ),
+ *          @SWG\Property(
+ *              type="string",
+ *              property="tagMassage"
+ *          ),
+ *      )
+ * )
+ */
+/**
+ * @SWG\Response(
  *      response="ReviewFormat",
  *      description="リストレスポンス",
  *      @SWG\Schema(
