@@ -524,7 +524,7 @@ class WorkRepository extends BaseRepository
                 $himoResult = $himo->crossworkWorkForThousandTag($workId, $thousandTag)->get();
                 // Himoから取得できなかった場合はスキップする
                 if (!empty($himoResult) && $himoResult['status'] !== 204) {
-                    $insertResult = $this->insertWorkData($himoResult);return $insertResult;
+                    $insertResult = $this->insertWorkData($himoResult);
                 }
             }
         }
