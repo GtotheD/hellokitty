@@ -1020,6 +1020,7 @@ $router->group([
         $workRepository = new WorkRepository();
         $workRepository->setLimit($request->input('limit', 10));
         $workRepository->setOffset($request->input('offset', 0));
+        $workRepository->setSaleType($request->input('saleType', $workRepository::SALE_TYPE_RENTAL));
 
         // Get work data
         $workData = $workRepository->getWorkListByThousandTag($thousandTag);

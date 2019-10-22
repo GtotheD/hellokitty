@@ -506,9 +506,7 @@ class WorkRepository extends BaseRepository
         if (empty($workIdList)) {
             return null;
         }
-
         $workIdsExistedArray = DB::table('ts_works')->get()->pluck('work_id')->toArray();
-
         $workIdsNew = [];
         foreach ($workIdList as $workId) {
             if (!in_array($workId, $workIdsExistedArray)) {
@@ -519,7 +517,6 @@ class WorkRepository extends BaseRepository
         if ($workIdsNew) {
             $himoResult = [];
             $himo = new HimoRepository();
-
             foreach ($workIdsNew as $workId) {
                 $himoResult = $himo->crossworkWorkForThousandTag($workId, $thousandTag)->get();
                 // Himoから取得できなかった場合はスキップする
@@ -531,7 +528,6 @@ class WorkRepository extends BaseRepository
 
         $this->work->setConnection('mysql::write');
         $this->work->getWorkIdsIn($workIdList);
-
         $this->totalCount = $this->work->count();
         if (!$this->totalCount) {
             return null;

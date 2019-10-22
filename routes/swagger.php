@@ -1133,6 +1133,7 @@
  *          required=true,
  *          type="string"
  *     ),
+ *     @SWG\Parameter(ref="#/parameters/saleType"),
  *     @SWG\Parameter(ref="#/parameters/limit"),
  *     @SWG\Parameter(ref="#/parameters/offset"),
  *     @SWG\Response(

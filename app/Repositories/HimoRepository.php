@@ -352,20 +352,17 @@ class HimoRepository extends ApiRequesterRepository
         return $this;
     }
 
-    public function crossworkWorkForThousandTag($ids, $thousandTag)
+    public function crossworkWorkForThousandTag($id, $thousandTag)
     {
-        $this->api = 'thousandTag';
-        $this->id = $ids;
+        $this->api = 'crossworks';
+        $this->id = $id;
         if (env('APP_ENV') === 'local') {
             return $this;
         }
         $this->apiPath = $this->apiHost . '/search/crossworks';
-        foreach ($ids as $id) {
-            $queryId[] = self::ID_TYPE . ':' . $id;
-        }
         $this->queryParams = [
             '_system' => 'TsutayaApp',
-            'id_value' => implode(' || ', $queryId),
+            'id_value' => self::ID_TYPE . ':' . $id,
             'service_id' => 'tol',
             'offset' => $this->offset,
             'limit' => $this->limit,
