@@ -366,7 +366,6 @@ class HimoRepository extends ApiRequesterRepository
             'service_id' => 'tol',
             'offset' => $this->offset,
             'limit' => $this->limit,
-            'product_sell_rental_flg' => '1',
             'response_level' => '9',
             '1000_tags' => $thousandTag,
         ];
