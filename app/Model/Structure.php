@@ -21,6 +21,7 @@ class Structure extends Model
     const SECTION_TYPE_PDMP = 5;
     const SECTION_TYPE_PREMIUM_RECOMMEND = 6;
     const SECTION_TYPE_PREMIUM_PICKLE = 7;
+    const SECTION_TYPE_THOUSAND_TAG = 9;
 
 
     function __construct()
@@ -28,7 +29,7 @@ class Structure extends Model
         parent::__construct(self::TABLE);
     }
 
-    public function setConditionTypes($goodsType, $saleType, $fileName = null, $isPremium = false, $isRecommend = false)
+    public function setConditionTypes($goodsType, $saleType, $fileName = null, $isPremium = false, $isRecommend = false, $isThousandTag = false)
     {
         $this->dbObject = DB::table($this->table)
             ->where([
@@ -49,6 +50,10 @@ class Structure extends Model
 
         if ($isRecommend === false) {
             $this->dbObject->where('section_type', '<>', 8);
+        }
+
+        if ($isThousandTag === false) {
+            $this->dbObject->where('section_type', '<>', self::SECTION_TYPE_THOUSAND_TAG);
         }
 
         $this->dbObject->orderBy('sort', 'asc');

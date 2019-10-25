@@ -65,12 +65,16 @@ $router->group([
             // プレミアム対応にてAPIバージョンをv4にあげない為、旧アプリへsectionType=6を出さないようにする対応
             $isPremium = $request->input('premium', false);
             $isPremium = ($isPremium !== 'true') ? false : true;
-            
+
             // プレミアム対応にてAPIバージョンをv4にあげない為、旧アプリへsectionType=6を出さないようにする対応
             $isRecommend = $request->input('recommend', false);
-            $isRecommend = ($isRecommend !== 'true')? false: true;
-            
-            $structures = $structureRepository->get($goodsType, $saleType, $isPremium, $isRecommend);
+            $isRecommend = ($isRecommend !== 'true') ? false : true;
+
+            // ThousandTags
+            $isThousandTag = $request->input('thousandTag', false);
+            $isThousandTag = ($isThousandTag !== 'true') ? false : true;
+
+            $structures = $structureRepository->get($goodsType, $saleType, $isPremium, $isRecommend, $isThousandTag);
             if ($structures->getTotalCount() == 0) {
                 throw new NoContentsException;
             }
@@ -249,7 +253,7 @@ $router->group([
 
     // 【API】レコメンドバナー用API
     $router->get('section/banner/recommend/{image}', function (Request $request, $image) {
-        if($image == '') {
+        if ($image == '') {
             throw new NoContentsException;
         }
 
@@ -392,7 +396,7 @@ $router->group([
 
         // #104199 edit start　ここ追加
         $isDummy = $request->input('isDummy', false);
-        $isDummy = ($isDummy !== 'true')? false: true;
+        $isDummy = ($isDummy !== 'true') ? false : true;
         $product->setIsDummy($isDummy);
         // #104199 edit end
 
@@ -406,7 +410,7 @@ $router->group([
             $taxOut_key = array_search('priceTaxOut', array_keys($item));
             $priceTaxIn = floor((int)$item['priceTaxOut'] * ProductRepository::TAX_RATE);
             $item = array_slice($item, 0, $taxOut_key + 1, true) +
-                ['priceTaxIn' => (string) ($priceTaxIn == 0 ? '' : $priceTaxIn)] +
+                ['priceTaxIn' => (string)($priceTaxIn == 0 ? '' : $priceTaxIn)] +
                 array_slice($item, $taxOut_key + 1, count($item) - 1, true);
         }
         // END 109341
@@ -998,7 +1002,7 @@ $router->group([
             $taxOut_key = array_search('priceTaxOut', array_keys($item));
             $priceTaxIn = floor((int)$item['priceTaxOut'] * ProductRepository::TAX_RATE);
             $item = array_slice($item, 0, $taxOut_key + 1, true) +
-                ['priceTaxIn' => (string) ($priceTaxIn == 0 ? '' : $priceTaxIn)] +
+                ['priceTaxIn' => (string)($priceTaxIn == 0 ? '' : $priceTaxIn)] +
                 array_slice($item, $taxOut_key + 1, count($item) - 1, true);
         }
         // END 109341
@@ -1007,6 +1011,52 @@ $router->group([
             'hasNext' => false,
             'totalCount' => count($workDataFormat),
             'rows' => $workDataFormat
+        ];
+        return response()->json($response);
+    });
+
+    // タグ作品取得
+    $router->get('/work/tag/{thousandTag}', function (Request $request, $thousandTag) {
+        $workRepository = new WorkRepository();
+        $workRepository->setLimit($request->input('limit', 10));
+        $workRepository->setOffset($request->input('offset', 0));
+        $workRepository->setSaleType($request->input('saleType', $workRepository::SALE_TYPE_RENTAL));
+
+        // Get work data
+        $workData = $workRepository->getWorkListByThousandTag($thousandTag);
+
+        if (empty($workData)) {
+            throw new NoContentsException;
+        }
+        // Format output work data
+        $workDataFormat = $workRepository->formatOutputThousandTag($workData);
+        
+        $tagInfo = $workRepository->convertTagToName((array) $thousandTag);
+        $response = [
+            'hasNext' => false,
+            'totalCount' => count($workDataFormat),
+            'tag' => $tagInfo[0]->tag,
+            'tagTitle' => $tagInfo[0]->tagTitle,
+            'tagMessage' => $tagInfo[0]->tagMessage,
+            'rows' => $workDataFormat
+        ];
+        return response()->json($response);
+    });
+
+    // タグ名変換
+    $router->get('/convert/tags', function (Request $request) {
+        $arrTags = $request->input('tags', null);
+        if (empty($arrTags)) {
+            throw new BadRequestHttpException;
+        }
+        $workRepository = new WorkRepository();
+        $results = $workRepository->convertTagToName($arrTags);
+        if (empty($results)) {
+            throw new NoContentsException;
+        }
+        
+        $response = [
+            'rows' => $results
         ];
         return response()->json($response);
     });
