@@ -22,6 +22,7 @@ class Kernel extends ConsoleKernel
         \App\Console\Commands\CreateTopRelease::class,
         \App\Console\Commands\TruncateTables::class,
         \App\Console\Commands\CreateOneTimeCoupon::class,
+        \App\Console\Commands\CreateRecommendTag::class,
     ];
 
     /**
