@@ -87,7 +87,7 @@ class PointRepository
                 $this->setPointDetail();
             } else {
                 // falseとtrue以外(00と14以外)はレスポンスコードが返却される為
-                // そのレスポンスコードのみをセット＆返却
+                // そのレスポンスコードのみをセット&返却
                 $this->responseCode = $refreshResult;
             }
         } else {
