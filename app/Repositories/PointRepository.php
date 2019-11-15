@@ -78,7 +78,7 @@ class PointRepository
             $this->log('TPOINT', ' Refresh.');
             // 強制的にリフレッシュ
             $refreshResult = $this->refresh();
-            // リフレッシュに失敗した場合は204にすすためfalseリターン
+            // リフレッシュに失敗した場合は204にするためfalseリターン
             if ($refreshResult === false) {
                 return false;
             } elseif ($refreshResult === true) {
@@ -86,14 +86,9 @@ class PointRepository
                 // DBから再取得しメンバ変数に再設定
                 $this->setPointDetail();
             } else {
-                // falseとtrue以外はレスポンスコードが返却される為
-                // そのレスポンスコードをセット
+                // falseとtrue以外(00と14以外)はレスポンスコードが返却される為
+                // そのレスポンスコードのみをセット＆返却
                 $this->responseCode = $refreshResult;
-                $this->membershipType = '';
-                $this->point = '';
-                $this->fixedPointTotal = '';
-                $this->fixedPointMinLimitTime = '';
-                $this->updatedAt = '';
             }
         } else {
             $this->log('TPOINT', 'Use Cache.');
