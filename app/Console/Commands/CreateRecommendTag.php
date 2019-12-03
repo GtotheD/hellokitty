@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: inoue
- * Date: 2018/03/27
- * Time: 18:06
- */
 
 namespace App\Console\Commands;
 
@@ -55,7 +49,7 @@ class CreateRecommendTag extends Command
         if (!file_exists($this->storageDir)) {
             if (@mkdir($this->storageDir, '0777', true)) {
                 $this->info('Create subfolder recommendTag in storage/app.');
-            } else {                
+            } else {
                 throw new Exception('failed mkdir : ' . $this->storageDir);
             }
         }
@@ -101,7 +95,8 @@ class CreateRecommendTag extends Command
     /**
      * Delete and insert data from file.
      */
-    public function deleteAndInsert($fp){
+    public function deleteAndInsert($fp)
+    {
         $tagArray = [];
         $itemArray = [];
         while ($line = fgetcsv($fp)) {
@@ -109,7 +104,7 @@ class CreateRecommendTag extends Command
             $tagArray[] = $line[0];
 
             $item = [];
-            $item['tag'] = $line[0];    
+            $item['tag'] = $line[0];
             $item['tag_title'] = $line[1];
             $item['tag_message'] = $line[2];
             $now = Carbon::now();

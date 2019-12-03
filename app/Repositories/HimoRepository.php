@@ -372,6 +372,23 @@ class HimoRepository extends ApiRequesterRepository
         return $this;
     }
 
+    public function crossworkForTagWorks($thousandTag)
+    {
+        $this->api = 'crossworks';
+        $this->id = $thousandTag;
+        if (env('APP_ENV') === 'local') {
+            return $this;
+        }
+        $this->apiPath = $this->apiHost . '/search/crossworks';
+        $this->queryParams = [
+            '_system' => 'TsutayaApp',
+            'service_id' => 'tol',
+            'response_level' => '1',
+            '1000_tags' => $thousandTag,
+        ];
+        return $this;
+    }
+
 
     public function searchPeople($ids, $idType, $msdbItem = null, $responseLevel = 9)
     {
