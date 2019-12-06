@@ -502,7 +502,7 @@ class WorkRepository extends BaseRepository
     public function getWorkListByThousandTag($thousandTag)
     {
         $tagWork = new RecommendTagWork();
-        $workIdList = $tagWork->setConditionGetWorkIdByTag($thousandTag)->get($this->limit, $this->offset)->pluck('work_id');
+        $workIdList = $tagWork->setConditionGetWorkIdByTag($thousandTag)->get()->pluck('work_id');
         if (empty($workIdList)) {
             return null;
         }
@@ -533,12 +533,19 @@ class WorkRepository extends BaseRepository
             return null;
         }
 
-        $workArray = $this->work->toCamel(['id'])->getAll();
+        $workArray = $this->work->toCamel(['id'])->get($this->limit, $this->offset);
+        $response = [];
         foreach ($workArray as $workItem) {
             $row = (array) $workItem;
             $response['rows'][] = $this->formatAddOtherData($row);
         }
-        
+
+        if (count($workArray) + $this->offset < $this->totalCount) {
+            $this->hasNext = true;
+        } else {
+            $this->hasNext = false;
+        }
+
         return $response;
     }
 

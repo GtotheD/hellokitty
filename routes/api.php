@@ -1033,8 +1033,8 @@ $router->group([
         
         $tagInfo = $workRepository->convertTagToName((array) $thousandTag);
         $response = [
-            'hasNext' => false,
-            'totalCount' => count($workDataFormat),
+            'hasNext' => $workRepository->getHasNext(),
+            'totalCount' => $workRepository->getTotalCount(),
             'tag' => $tagInfo[0]->tag,
             'tagTitle' => $tagInfo[0]->tagTitle,
             'tagMessage' => $tagInfo[0]->tagMessage,
