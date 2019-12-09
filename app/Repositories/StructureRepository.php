@@ -101,11 +101,11 @@ class StructureRepository
     /**
      * @return object
      */
-    public function get($goodsType, $saleType, $isPremium = false, $isRecommend = false)
+    public function get($goodsType, $saleType, $isPremium = false, $isRecommend = false, $isThousandTag = false)
     {
         $goodsType = $this->convertGoodsTypeToId($goodsType);
         $saleType = $this->convertSaleTypeToId($saleType);
-        $this->structure->setConditionTypes($goodsType, $saleType, null, $isPremium, $isRecommend);
+        $this->structure->setConditionTypes($goodsType, $saleType, null, $isPremium, $isRecommend, $isThousandTag);
         $this->totalCount = $this->structure->count();
         $structures = $this->structure->get($this->limit, $this->offset);
         if (count($structures) + $this->offset < $this->totalCount) {
