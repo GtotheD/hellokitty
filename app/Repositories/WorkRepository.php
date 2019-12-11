@@ -436,8 +436,8 @@ class WorkRepository extends BaseRepository
         // STEP 4: 既存データから取ってこれなかったものをHimoから取得し格納する。
         // Get data by list workIds and return
         if ($workIdsNew) {
-            $max = self::HIMO_REQUEAST_MAX;
-            $limitOnceMax = self::HIMO_REQUEAST_PER_ONCE;
+            $max = self::HIMO_REQUEST_MAX;
+            $limitOnceMax = self::HIMO_REQUEST_PER_ONCE;
             $loopCount = 0;
             $limitOnce = 0;
             $mergeWorks = [];
