@@ -302,6 +302,16 @@
  *              property="isPremium",
  *              type="boolean",
  *              description="プレミアムフラグ"
+ *          ),
+ *          @SWG\Property(
+ *              property="isPremiumNet",
+ *              type="boolean",
+ *              description=""
+ *          ),
+ *          @SWG\Property(
+ *              property="allPremiumNet",
+ *              type="boolean",
+ *              description=""
  *          )
  *  )
  * */
@@ -462,6 +472,16 @@
  *              property="isPremium",
  *              type="boolean",
  *              description="プレミアムフラグ"
+ *          ),
+ *          @SWG\Property(
+ *              property="isPremiumNet",
+ *              type="boolean",
+ *              description=""
+ *          ),
+ *          @SWG\Property(
+ *              property="allPremiumNet",
+ *              type="boolean",
+ *              description=""
  *          )
  *  )
  * */
@@ -612,6 +632,16 @@
  *              type="boolean",
  *              description="プレミアムフラグ"
  *          ),
+ *          @SWG\Property(
+ *              property="isPremiumNet",
+ *              type="boolean",
+ *              description=""
+ *          ),
+ *          @SWG\Property(
+ *              property="allPremiumNet",
+ *              type="boolean",
+ *              description=""
+ *          ),
  *  )
  * */
 /**
@@ -686,6 +716,21 @@
  *              property="saleStartDate",
  *              type="string",
  *              description="販売・レンタル開始日"
+ *          ),
+ *          @SWG\Property(
+ *              property="isPremium",
+ *              type="boolean",
+ *              description=""
+ *          ),
+ *          @SWG\Property(
+ *              property="isPremiumNet",
+ *              type="boolean",
+ *              description=""
+ *          ),
+ *          @SWG\Property(
+ *              property="allPremiumNet",
+ *              type="boolean",
+ *              description=""
  *          ),
  *  )
  * */
@@ -1036,6 +1081,21 @@
  *              property="newFlg",
  *              type="boolean",
  *              description="NEW表示フラグ"
+ *          ),
+ *          @SWG\Property(
+ *              property="isPremium",
+ *              type="boolean",
+ *              description=""
+ *          ),
+ *          @SWG\Property(
+ *              property="isPremiumNet",
+ *              type="boolean",
+ *              description=""
+ *          ),
+ *          @SWG\Property(
+ *              property="allPremiumNet",
+ *              type="boolean",
+ *              description=""
  *          )
  *  )
  * */

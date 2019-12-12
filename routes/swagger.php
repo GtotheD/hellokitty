@@ -2797,3 +2797,85 @@
  *     @SWG\Response(response=500, description="Server error")
  * )
  */
+
+/**
+ * @SWG\Post(
+ *     path="/member/status/premium/rental",
+ *     description="",
+ *     produces={"application/json"},
+ *     tags={"Member"},
+ *     security={{"api_key":{}}},
+ *     @SWG\Parameter(
+ *       name="body",
+ *       in="body",
+ *       description="",
+ *       type="array",
+ *       @SWG\Schema(
+ *         @SWG\Property(
+ *             property="tlsc",
+ *             type="string",
+ *             description="ユーザー識別番号(TLSC)",
+ *         )
+ *       )
+ *     ),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="rows",
+ *                  type="array",
+ *                  @SWG\Items(
+ *                      @SWG\Property(
+ *                          property="storeName",
+ *                          type="string",
+ *                          description="店舗名"
+ *                      ),
+ *                      @SWG\Property(
+ *                          property="rentCnt",
+ *                          type="integer",
+ *                          description="レンタル枚数"
+ *                      ),
+ *                  ),
+ *                  description="会員情報の拡充"
+ *              ),
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(
+ *          response=400,
+ *          description="",
+ *          @SWG\Property(
+ *              property="rows",
+ *              type="object",
+ *              @SWG\Property(property="httpcode",type="string",description="htttpステータスコード"),
+ *              @SWG\Property(property="status",type="string",description="接続先APIのエラーステータスコード"),
+ *              description="ttv apiのバリデーションエラー",
+ *          ),
+ *     ),
+ *     @SWG\Response(
+ *          response=401,
+ *          description="",
+ *          @SWG\Property(
+ *              property="rows",
+ *              type="object",
+ *              @SWG\Property(property="httpcode",type="string",description="htttpステータスコード"),
+ *              @SWG\Property(property="status",type="string",description="接続先APIのエラーステータスコード"),
+ *              description="エラー情報",
+ *          ),
+ *     ),
+ *     @SWG\Response(
+ *          response=403,
+ *          description="",
+ *          @SWG\Property(
+ *              property="rows",
+ *              type="object",
+ *              @SWG\Property(property="httpcode",type="string",description="htttpステータスコード"),
+ *              @SWG\Property(property="status",type="string",description="接続先APIのエラーステータスコード"),
+ *              description="認証失敗（TTV側と本システム）",
+ *          ),
+ *     ),
+ *     @SWG\Response(response=500, description="Server error"),
+ *     @SWG\Response(response=503, description="Service temporarily unavailable")
+ * )
+ */

@@ -403,13 +403,16 @@ class Product extends Model
         $saleStartDate = 'MIN(sale_start_date) AS sale_start_date';
         // premiumが一つでもあればtrue
         $isPremium = 'MAX(is_premium_shop) AS is_premium_shop';
+        // Add is_premium_net in response
+        $isPremiumNet = 'MAX(is_premium_net) AS is_premium_net';
         $dvdQuery = 'MAX(CASE WHEN (item_cd = \'0021\' OR item_cd = \'0121\') THEN rental_product_cd ELSE NULL END) AS dvd';
         $blurayQuery = 'MAX(CASE WHEN (item_cd = \'0022\' OR item_cd = \'0122\') THEN rental_product_cd ELSE NULL END) AS bluray';
         $selectQuery = $groupingColumn. ','.
             $saleStartDate. ','.
             $dvdQuery. ','.
             $blurayQuery. ','.
-            $isPremium;
+            $isPremium . ',' .
+            $isPremiumNet;
         $subQuery = DB::table($this->table)->select(DB::raw($selectQuery))
             ->whereRaw(DB::raw('work_id = \''.$workId . '\''))
             ->whereRaw(DB::raw(' product_type_id = 2 '))
@@ -460,8 +463,6 @@ class Product extends Model
             });
         return $this;
     }
-
-
 
     public function insert($data)
     {
@@ -621,5 +622,31 @@ class Product extends Model
             ;
         }
         return $this;
+    }
+
+    public function setCondition($condition = []) {
+        $this->dbObject = DB::table($this->table)
+            ->where($condition);
+        return $this;
+    }
+
+    /**
+     * Check item is allPremiumNet or not
+     * @param $work_id
+     * @return bool
+     */
+    public function processAllPremiumNet($work_id) {
+        $products = $this->setCondition(['work_id' => $work_id, 'service_id' => 'ttv'])->getAll();
+        if(count($products)) {
+            foreach ($products as $product) {
+                if (!$product->is_premium_net) {
+                    return false;
+                }
+            }
+        } else {
+            return false;
+        }
+
+        return true;
     }
 }

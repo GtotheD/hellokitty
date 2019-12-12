@@ -17,6 +17,7 @@ class DiscasRepository extends ApiRequesterRepository
 
     const DISCAS_REVIEW_API = '/netdvd/sp/webapi/review/reviewInfo'; // 作品詳細用
     const DISCAS_CUSTOMER_API = '/v2/customer'; // 作品詳細用
+    const HASDIS_CUSTOMER_API = '/v2/customer/hasDisc'; // 会員情報の拡充 API
 
     use TlscEncryption;
 
@@ -129,14 +130,48 @@ class DiscasRepository extends ApiRequesterRepository
     {
         $userAgent = 'GuzzleHttp/6.2.0 curl/7.29.0 PHP/7.0.14';
         $this->apiPath = $this->apiNewHost . self::DISCAS_CUSTOMER_API;
-        $lv2Token = $this->getLv2LoginTokenFromTlsc($tlsc);
+
+        /**
+         * Add process for convert loginToken from Tlsc in local
+         */
+        if(env('APP_ENV') !== 'local' && env('APP_ENV') !== 'testing' ){
+            $lv2Token = $this->getLv2LoginTokenFromTlsc($tlsc);
+        } else {
+            $lv2Token = $tlsc;
+        }
         $this->id = $lv2Token;
+
         $this->setHeaders([
             'User-Agent' => $userAgent,
     	    'host' => parse_url($this->apiNewHost, PHP_URL_HOST),
             'X-Requested-With' => 'XMLHttpRequest',
             'content-type' => 'application/json; charset=utf-8',
     	    'cookie' => 'lv2LoginTkn=' . $lv2Token
+        ]);
+        return $this;
+    }
+
+    public function customerRental($tlsc)
+    {
+        $userAgent = 'GuzzleHttp/6.2.0 curl/7.29.0 PHP/7.0.14';
+        $this->apiPath = $this->apiNewHost . self::HASDIS_CUSTOMER_API;
+
+        /**
+         * Add process for convert loginToken from Tlsc in local
+         */
+        if(env('APP_ENV') !== 'local' && env('APP_ENV') !== 'testing' ){
+            $lv2Token = $this->getLv2LoginTokenFromTlsc($tlsc);
+        } else {
+            $lv2Token = $tlsc;
+        }
+        $this->id = $lv2Token;
+
+        $this->setHeaders([
+            'User-Agent' => $userAgent,
+            'host' => parse_url($this->apiNewHost, PHP_URL_HOST),
+            'X-Requested-With' => 'XMLHttpRequest',
+            'content-type' => 'application/json; charset=utf-8',
+            'cookie' => 'lv2LoginTkn=' . $lv2Token
         ]);
         return $this;
     }

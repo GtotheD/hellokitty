@@ -282,6 +282,8 @@ $router->group([
             if ($premiumFlag !== 'true') {
                 foreach ($rows as $rowKey => $row) {
                     unset($rows[$rowKey]['isPremium']);
+                    unset($rows[$rowKey]['isPremiumNet']);
+                    unset($rows[$rowKey]['allPremiumNet']);
                 }
             }
             $response = [
@@ -311,6 +313,8 @@ $router->group([
             if ($premiumFlag !== 'true') {
                 foreach ($sectionData['rows'] as $rowKey => $row) {
                     unset($sectionData['rows'][$rowKey]['isPremium']);
+                    unset($sectionData['rows'][$rowKey]['isPremiumNet']);
+                    unset($sectionData['rows'][$rowKey]['allPremiumNet']);
                 }
             }
             return response()->json($sectionData)->header('X-Accel-Expires', '600');
@@ -339,6 +343,8 @@ $router->group([
         if ($premiumFlag !== 'true') {
             foreach ($sectionData['rows'] as $rowKey => $row) {
                 unset($sectionData['rows'][$rowKey]['isPremium']);
+                unset($sectionData['rows'][$rowKey]['isPremiumNet']);
+                unset($sectionData['rows'][$rowKey]['allPremiumNet']);
             }
         }
         return response()->json($sectionData)->header('X-Accel-Expires', '86400');
@@ -355,6 +361,10 @@ $router->group([
         if (empty($result)) {
             throw new NoContentsException;
         }
+
+        // Add allPremiumNet in response
+        $productModel = new \App\Model\Product();
+        $result['allPremiumNet'] = $productModel->processAllPremiumNet($workId);
 
         // 映画リクエストでレスポンスがなかった場合
         if (
@@ -1030,8 +1040,8 @@ $router->group([
         }
         // Format output work data
         $workDataFormat = $workRepository->formatOutputThousandTag($workData);
-        
-        $tagInfo = $workRepository->convertTagToName((array) $thousandTag);
+
+        $tagInfo = $workRepository->convertTagToName((array)$thousandTag);
         $response = [
             'hasNext' => $workRepository->getHasNext(),
             'totalCount' => $workRepository->getTotalCount(),
@@ -1054,7 +1064,7 @@ $router->group([
         if (empty($results)) {
             throw new NoContentsException;
         }
-        
+
         $response = [
             'rows' => $results
         ];
@@ -1307,6 +1317,40 @@ $router->group([
         $response['results']['isRegistered'] = $response['results']['registerStatus'] === '1';
         unset($response['results']['registerStatus']);
 
+        return response()->json($response)->header('X-Accel-Expires', '0');
+    });
+
+    $router->post('member/status/premium/rental', function (Request $request) {
+        $bodyObj = json_decode($request->getContent(), true);
+        $tlsc = isset($bodyObj['tlsc']) ? $bodyObj['tlsc'] : '';
+        // Check tlsc and $workId
+        if (empty($tlsc)) {
+            throw new BadRequestHttpException;
+        }
+        $discasRepository = new DiscasRepository();
+        try {
+            $response = [
+                'rows' => []
+            ];
+            $apiData = $discasRepository->customerRental($tlsc)->get();
+            // Process data response from API
+            if (isset($apiData['hasDiscList'])) {
+                foreach ($apiData['hasDiscList'] as $item) {
+                    $response['rows'][] = [
+                        'storeName' => $item['tenpoName'],
+                        'rentCnt' => $item['discNum']
+                    ];
+                }
+            }
+        } catch (\Exception $e) {
+            $exceptionResponse = $e->getResponse();
+            $statusCode = $exceptionResponse->getStatusCode();
+            $errorCode = json_decode($exceptionResponse->getBody()->getContents(), true);
+            $response = [
+                'httpcode' => (string)$statusCode,
+                'status' => $errorCode['error']
+            ];
+        }
         return response()->json($response)->header('X-Accel-Expires', '0');
     });
 
