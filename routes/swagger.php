@@ -2641,6 +2641,16 @@
  *                  type="string",
  *                  description="TsutayaTV利用者ID",
  *              ),
+ *              @SWG\Property(
+ *                  property="tenpoPlanFee",
+ *                  type="string",
+ *                  description="店プラン金額（税込）",
+ *              ),
+ *              @SWG\Property(
+ *                  property="nextUpdateDate",
+ *                  type="string",
+ *                  description="次回契約更新日",
+ *              )
  *          )
  *      ),
  *     @SWG\Response(response=204, description="Contents not found"),
