@@ -506,7 +506,7 @@ class WorkRepository extends BaseRepository
         if (empty($workIdList)) {
             return null;
         }
-        $workIdsExistedArray = DB::table('ts_works')->get()->pluck('work_id')->toArray();
+        $workIdsExistedArray = DB::table('ts_works')->whereIn('work_id', $workIdList)->get()->pluck('work_id')->toArray();
         $workIdsNew = [];
         foreach ($workIdList as $workId) {
             if (!in_array($workId, $workIdsExistedArray)) {
