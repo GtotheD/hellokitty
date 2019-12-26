@@ -757,7 +757,7 @@ class WorkRepository extends BaseRepository
             !empty($response['thousandtags'])
             && !empty($response['saleType'])
             && $response['saleType'] === 'rental'
-            &&  ($response['itemType'] === 'cd' || $response['itemType'] === 'dvd')
+            && ($response['itemType'] === 'cd' || $response['itemType'] === 'dvd')
         ) {
             $tags = $this->convertTagToName(json_decode($response['thousandtags'], true));
             $response['thousandTags'] = $tags;
