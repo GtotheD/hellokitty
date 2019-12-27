@@ -753,7 +753,12 @@ class WorkRepository extends BaseRepository
         /**
          * Start process for thousand tag
          */
-        if ($response['saleType'] === 'rental' &&  ($response['itemType'] === 'cd' || $response['itemType'] === 'dvd')) {
+        if (
+            !empty($response['thousandtags'])
+            && !empty($response['saleType'])
+            && $response['saleType'] === 'rental'
+            && ($response['itemType'] === 'cd' || $response['itemType'] === 'dvd')
+        ) {
             $tags = $this->convertTagToName(json_decode($response['thousandtags'], true));
             $response['thousandTags'] = $tags;
         }
