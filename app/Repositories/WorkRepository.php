@@ -341,7 +341,7 @@ class WorkRepository extends BaseRepository
             $tempData['adultFlg'] = $itemWork['adultFlg'];
             $tempData['workFormatName'] = ($tempData['itemType'] == 'cd' || $tempData['itemType'] == 'dvd') ? $itemWork['workFormatName']: '';
             $tempData['makerName'] = isset($itemWork['makerName']) ? $itemWork['makerName']: '';
-            $tempData['saleStartDate'] = $itemWork['saleStartDate'];
+            //$tempData['saleStartDate'] = $itemWork['saleStartDate'];
 
             array_push($workDataFormat, $tempData);
         }
@@ -501,18 +501,28 @@ class WorkRepository extends BaseRepository
 
     public function getWorkListByThousandTag($thousandTag)
     {
+        
         $tagWork = new RecommendTagWork();
-        $workIdList = $tagWork->setConditionGetWorkIdByTag($thousandTag)->get()->pluck('work_id');
+        $tagWork->setConditionGetWorkIdByTag($thousandTag);
+
+        $this->totalCount = $tagWork->count();
+
+        $workIdList = $tagWork->setConditionGetWorkIdByTag($thousandTag)->get($this->limit, $this->offset)->pluck('work_id');
+
         if (empty($workIdList)) {
             return null;
         }
+
         $workIdsExistedArray = DB::table('ts_works')->whereIn('work_id', $workIdList)->get()->pluck('work_id')->toArray();
         $workIdsNew = [];
+
         foreach ($workIdList as $workId) {
             if (!in_array($workId, $workIdsExistedArray)) {
                 $workIdsNew[] = $workId;
             }
         }
+
+
         // request Himo for new work_id
         if ($workIdsNew) {
             $himoResult = [];
@@ -528,22 +538,21 @@ class WorkRepository extends BaseRepository
 
         $this->work->setConnection('mysql::write');
         $this->work->getWorkIdsIn($workIdList);
-        $this->totalCount = $this->work->count();
+        //$this->totalCount = $this->work->count();
         if (!$this->totalCount) {
             return null;
         }
 
-        $workArray = $this->work->toCamel(['id'])->get($this->limit, $this->offset);
-        $response = [];
-        foreach ($workArray as $workItem) {
-            $row = (array) $workItem;
-            $response['rows'][] = $this->formatAddOtherData($row);
-        }
-
-        if (count($workArray) + $this->offset < $this->totalCount) {
+        if ($this->work->count() + $this->offset < $this->totalCount) {
             $this->hasNext = true;
         } else {
             $this->hasNext = false;
+        }
+
+        $workArray = $this->work->toCamel(['id'])->getAll();
+        foreach ($workArray as $workItem) {
+            $row = (array) $workItem;
+            $response['rows'][] = $this->formatAddOtherData($row);
         }
 
         return $response;
@@ -578,7 +587,6 @@ class WorkRepository extends BaseRepository
             }
         }
         if (!empty($product)) {
-
             if ((substr($product['itemCd'], -2) === '75' && !empty($product['numberOfVolume'])) ||
                 (substr($product['itemCd'], -2) === '76' && !empty($product['numberOfVolume']))) {
                 $response['productName'] = $product['productName'] . "（{$product['numberOfVolume']}）";
@@ -654,7 +662,8 @@ class WorkRepository extends BaseRepository
             );
 
             // ジャケ写の挿入
-            $response['jacketL'] = ($displayImage) ? $product['jacketL'] : '';
+            //$response['jacketL'] = ($displayImage) ? $product['jacketL'] : '';
+            $response['jacketL'] = $product['jacketL'];
             // 映画の場合の処理
             // 再生時間を返却するが上映映画の時の為だけなのでここでは初期化のみ
             $response['playTime'] = '';
