@@ -1226,7 +1226,9 @@ $router->group([
         try {
             $response = $discasRepository->customer($tlsc)->get();
             $response = [
-                'ttvId' => $response['ttvId']
+                'ttvId' => $response['ttvId'],
+                'tenpoPlanFee' => $response['tenpoPlanFee'],
+                'nextUpdateDate' => date("Y-m-d", strtotime($response['nextUpdateDate']))
             ];
         } catch (\Exception $e) {
             $exceptionResponse = $e->getResponse();
@@ -1238,7 +1240,6 @@ $router->group([
             ];
         }
         return response()->json($response)->header('X-Accel-Expires', '0');
-
     });
 
     // 「予約・注文・定期購読 商品入荷連絡 登録状況」取得　

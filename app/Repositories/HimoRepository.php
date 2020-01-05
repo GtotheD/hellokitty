@@ -383,6 +383,7 @@ class HimoRepository extends ApiRequesterRepository
         $this->queryParams = [
             '_system' => 'TsutayaApp',
             'service_id' => 'tol',
+            'limit' => '100',
             'response_level' => '1',
             '1000_tags' => $thousandTag,
         ];
