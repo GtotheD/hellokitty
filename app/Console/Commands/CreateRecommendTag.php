@@ -28,7 +28,7 @@ class CreateRecommendTag extends Command
     const RECOMMEND_TAG_DIR = 'recommendTag';
     const FILE_IMPORT_ABSOLUTE_DIR = '/export/home/tol/tp/data/xml/osusume1000';
     const RECOMMEND_TAG_TABLE = 'ts_recommend_tag';
-    const RECOMMEND_TAG_FILE_NAME = 'work_tags2.csv';
+    const RECOMMEND_TAG_FILE_NAME = 'work_tag.csv';
 
     /**
      * Create a new command instance.
@@ -100,13 +100,13 @@ class CreateRecommendTag extends Command
         $tagArray = [];
         $itemArray = [];
         while ($line = fgetcsv($fp)) {
-            mb_convert_variables('utf-8', 'sjis-win', $line);
+            //mb_convert_variables('utf-8', 'sjis-win', $line);
             $tagArray[] = $line[0];
 
             $item = [];
             $item['tag'] = $line[0];
-            $item['tag_title'] = $line[1];
-            $item['tag_message'] = $line[2];
+            //$item['tag_title'] = $line[1];
+            $item['tag_message'] = $line[1];
             $now = Carbon::now();
             $item['updated_at'] = $now;
             $item['created_at'] = $now;

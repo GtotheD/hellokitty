@@ -520,6 +520,12 @@ class SectionRepository extends BaseRepository
             } else if ($row['rankNo'] > $row['lastRankNo']) {
                 $comparison = 'down';
             }
+            
+            //tws - HiMOの差異によるエラー防止
+            if (empty($work['saleType'])) {
+                continue;
+            }            
+
             $rowUnit['title'] = $row['productTitle'];
             $rowUnit['productTitle'] = $row['productTitle'];
             $rowUnit['workTitle'] = $work['workTitle'];

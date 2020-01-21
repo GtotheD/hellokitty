@@ -1,6 +1,6 @@
-# TSUTAYAアプリ　リニューアルAPI
+# TSUTAYAアプリ リニューアルAPI
 
-
+## 1．APIについて
 ## API Document
 
 本システムのAPIドキュメントはインタラクティブドキュメント OpenAPI仕様（OAS）のSwaggerを使用しています。  
@@ -43,3 +43,43 @@ TOP関連のインポートと、在庫関連各APIへの500エラーが出な�
 メソッドの引数は、極力メソッド独自の引数としない。
 同じクラス内のメソッド似たようなパラメーターなのに違う指定を行う可能性が高く統一されない。<br>
 よって、Setter,Getterを使い、メンバ変数を使うことで、メソッドの使いかたを統一化する。
+
+
+## 2．運用ルール
+
+※ブランチとチケットはセットで作成するように！
+
+## ブランチについて
+### 構成
+`release_v3` (商用リリースブランチ) <br>
+　∟ `develop_v3` (←※ここから作業ブランチ切る) <br>
+ 　　∟ `featur/XXXXXX_XXXXX_XXXXXX`
+
+### ブランチの命名
+
+```
+feature/{edit || bugfix}_{チケット番号}_{短いタイトル}
+```
+
+・feature/edit_：新規・追加実装 <br>
+・feature/bugfix_：バグの改修 <br>
+
+
+```
+例)【TSUTAYAアプリ】商品一覧情報取得APIの除外条件解除対応
+チケット：https://redmine.tsutaya.co.jp/redmine/issues/104199
+⇒ feature/edit_104199_products_api
+```
+
+## プルリクエスト(PR)について
+①PRとチケットのタイトルは合わせる。 <br>
+②PRのメモには「チケットのURL」と、「内容」を記載する。 <br>
+③コミットは、ある程度こまめに。 <br>
+④コミット時には、コメントを付ける(日本語 or 英語)。
+
+```
+例）【TSUTAYAアプリ】商品一覧情報取得APIの除外条件解除対応 <br>
+チケット：https://redmine.tsutaya.co.jp/redmine/issues/104199 <br>
+PR：http://10.80.2.11/tapdev/tap_r_api/pull/627
+```
+
