@@ -10,6 +10,7 @@ use App\Model\RecommendTag;
 use App\Model\RecommendTagWork;
 use App\Exceptions\NoContentsException;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Carbon;
 
 /**
  * Created by PhpStorm.
@@ -509,8 +510,31 @@ class WorkRepository extends BaseRepository
 
         $workIdList = $tagWork->setConditionGetWorkIdByTag($thousandTag)->get($this->limit, $this->offset)->pluck('work_id');
 
-        if (empty($workIdList)) {
-            return null;
+        if (count($workIdList) == 0) {
+            //データが取得できなかった場合は、HiMOから直接取得する
+            $himoResult = [];
+            $himo = new HimoRepository();
+            $himoData = $himo->crossworkForTagWorks($thousandTag)->get();
+
+            if (!empty($himoData) && $himoData['status'] !== 204) {
+                $itemArray = [];
+                $workIds = [];
+                foreach ($himoData['results']['rows'] as $row) {
+                    $item = [];
+                    $item['tag'] = $thousandTag;
+                    $item['work_id'] = $row['work_id'];
+                    $now = Carbon::now();
+                    $item['updated_at'] = $now;
+                    $item['created_at'] = $now;
+                    $itemArray[] = $item;
+                    $workIdList[] = $row['work_id'];
+                }
+            }
+            $tagWork->insert($itemArray);
+        }
+
+        if(count($workIdList) == 0) {
+           return null;
         }
 
         $workIdsExistedArray = DB::table('ts_works')->whereIn('work_id', $workIdList)->get()->pluck('work_id')->toArray();
@@ -538,7 +562,7 @@ class WorkRepository extends BaseRepository
 
         $this->work->setConnection('mysql::write');
         $this->work->getWorkIdsIn($workIdList);
-        //$this->totalCount = $this->work->count();
+        $this->totalCount = $this->work->count();
         if (!$this->totalCount) {
             return null;
         }
@@ -1726,13 +1750,40 @@ class WorkRepository extends BaseRepository
     public function convertTagToName($tagArr = [])
     {
         $result = [];
+        $tagData = [];
+        $save = [];
         if (!empty($tagArr)) {
             $recommendTag = new RecommendTag();
+            $moanaRepository = new MoanaRepository();
+
             foreach ($tagArr as $tag) {
-                $tagInfo = $recommendTag->setConditionByTag($tag)->selectCamel(['tag', 'tag_title', 'tag_message'])->getOne();
+                $tagInfo = $recommendTag->setConditionByTag($tag)->selectCamel([
+                    'tag',
+                    'tag_title',
+                    'tag_message'
+                ])->getOne();
                 if ($tagInfo) {
                     $result[] = $tagInfo;
+                } else {
+                    //ts_recommend_tagから取得できなかった場合はMoanaAPIから取得する
+                    $tags = $moanaRepository->getMasterData($tag);
+
+                    if(!empty($tags) && !in_array($tags->tag, $save, true)) {
+                        $item = [];
+                        $item['tag'] = $tags->tag;
+                        $item['tag_message'] = $tags->tagMessage;
+                        $now = Carbon::now();
+                        $item['updated_at'] = $now;
+                        $item['created_at'] = $now;
+                        $tagData[] = $item;
+                        
+                        $result[] = $tags;
+                        $save[] = $tags->tag;
+                    }
                 }
+            }
+            if (!empty($tagData)) {
+                $recommendTag->insert($tagData);
             }
         }
 

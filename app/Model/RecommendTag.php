@@ -24,4 +24,9 @@ class RecommendTag extends Model
             ]);
         return $this;
     }
+
+    public function insert($data)
+    {
+       DB::table(self::TABLE)->insert($data);
+    }
 }
