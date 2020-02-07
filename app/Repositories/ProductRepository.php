@@ -141,7 +141,7 @@ class ProductRepository extends BaseRepository
             "t2.jacket_l AS jacketL",
             "t2.sale_start_date AS saleStartDate",
             "t2.ccc_family_cd AS cccFamilyCd",
-            "t2.is_premium_shop AS isPremiumShop",
+            "t2.is_premium_shop AS isPremiumShop"
         ];
         $itemCount = $this->product->rentalItemCount($workId)->getOne();
         $ignoreFlag = false;
@@ -163,7 +163,13 @@ class ProductRepository extends BaseRepository
             $tmp->bluray = $result->bluray;
             // プレミアムフラグ
             $tmp->isPremium = ($result->is_premium_shop === 1)? true: false;
+
+            // Add key isPremiumNet to response
+            $tmp->isPremiumNet = ($result->is_premium_net === 1);
+
+            // Unset some data not need in response
             unset($tmp->isPremiumShop);
+
             $response[] = $tmp;
         }
         if (empty($response)) {

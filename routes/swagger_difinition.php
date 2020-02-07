@@ -252,7 +252,12 @@
  *              property="isPremium",
  *              type="boolean",
  *              description="プレミアムフラグ"
- *          )
+ *          ),
+ *          @SWG\Property(
+ *              property="premiumNetStatus",
+ *              type="integer",
+ *              description="SVODステータス"
+ *          ),
  *  )
  * */
 /**
@@ -302,7 +307,12 @@
  *              property="isPremium",
  *              type="boolean",
  *              description="プレミアムフラグ"
- *          )
+ *          ),
+ *          @SWG\Property(
+ *              property="premiumNetStatus",
+ *              type="integer",
+ *              description="SVODステータス"
+ *          ),
  *  )
  * */
 /**
@@ -354,6 +364,11 @@
  *              description="プレミアムフラグ"
  *          ),
  *          @SWG\Property(
+ *              property="premiumNetStatus",
+ *              type="integer",
+ *              description="SVODステータス"
+ *          ),
+ *          @SWG\Property(
  *              property="text",
  *              type="string",
  *              description="テキスト",
@@ -402,6 +417,11 @@
  *              property="isPremium",
  *              type="boolean",
  *              description="プレミアムフラグ"
+ *          ),
+ *          @SWG\Property(
+ *              property="premiumNetStatus",
+ *              type="integer",
+ *              description="SVODステータス"
  *          )
  *  )
  * */
@@ -462,6 +482,11 @@
  *              property="isPremium",
  *              type="boolean",
  *              description="プレミアムフラグ"
+ *          ),
+ *          @SWG\Property(
+ *              property="premiumNetStatus",
+ *              type="integer",
+ *              description="SVODステータス"
  *          )
  *  )
  * */
@@ -612,6 +637,11 @@
  *              type="boolean",
  *              description="プレミアムフラグ"
  *          ),
+ *          @SWG\Property(
+ *              property="premiumNetStatus",
+ *              type="integer",
+ *              description="SVODステータス"
+ *          )
  *  )
  * */
 /**
@@ -686,6 +716,16 @@
  *              property="saleStartDate",
  *              type="string",
  *              description="販売・レンタル開始日"
+ *          ),
+ *          @SWG\Property(
+ *              property="isPremium",
+ *              type="boolean",
+ *              description=""
+ *          ),
+ *          @SWG\Property(
+ *              property="premiumNetStatus",
+ *              type="integer",
+ *              description="SVODステータス"
  *          ),
  *  )
  * */
@@ -1036,7 +1076,17 @@
  *              property="newFlg",
  *              type="boolean",
  *              description="NEW表示フラグ"
- *          )
+ *          ),
+ *          @SWG\Property(
+ *              property="isPremium",
+ *              type="boolean",
+ *              description=""
+ *          ),
+ *          @SWG\Property(
+ *              property="premiumNetStatus",
+ *              type="integer",
+ *              description="SVODステータス"
+ *          ),
  *  )
  * */
 
