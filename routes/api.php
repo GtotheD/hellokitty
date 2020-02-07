@@ -74,7 +74,10 @@ $router->group([
             $isThousandTag = $request->input('thousandTag', false);
             $isThousandTag = ($isThousandTag !== 'true') ? false : true;
 
-            $structures = $structureRepository->get($goodsType, $saleType, $isPremium, $isRecommend, $isThousandTag);
+            // version
+            $app_version = $request->input('version', '0.0.0');
+
+            $structures = $structureRepository->get($goodsType, $saleType, $isPremium, $isRecommend, $isThousandTag, $app_version);
             if ($structures->getTotalCount() == 0) {
                 throw new NoContentsException;
             }
@@ -91,7 +94,9 @@ $router->group([
         $structureRepository = new StructureRepository;
         $structureRepository->setLimit($request->input('limit', 10));
         $structureRepository->setOffset($request->input('offset', 0));
-        $structures = $structureRepository->get('premiumDvd', 'rental', true);
+        // version
+        $appVersion = $request->input('version', '0.0.0');
+        $structures = $structureRepository->get('premiumDvd', 'rental', true, false, false, $appVersion);
 
         if ($structures->getTotalCount() == 0) {
             throw new NoContentsException;
@@ -144,6 +149,9 @@ $router->group([
             if ($premiumFlag !== 'true') {
                 foreach ($response['rows'] as $rowKey => $row) {
                     unset($response['rows'][$rowKey]['isPremium']);
+                    unset($response['rows'][$rowKey]['isPremiumNet']);
+                    unset($response['rows'][$rowKey]['allPremiumNet']);
+                    unset($response['rows'][$rowKey]['premiumNetStatus']);
                 }
             }
             return response()->json($response)->header('X-Accel-Expires', '600');
@@ -282,6 +290,9 @@ $router->group([
             if ($premiumFlag !== 'true') {
                 foreach ($rows as $rowKey => $row) {
                     unset($rows[$rowKey]['isPremium']);
+                    unset($rows[$rowKey]['isPremiumNet']);
+                    unset($rows[$rowKey]['allPremiumNet']);
+                    unset($rows[$rowKey]['premiumNetStatus']);
                 }
             }
             $response = [
@@ -311,6 +322,9 @@ $router->group([
             if ($premiumFlag !== 'true') {
                 foreach ($sectionData['rows'] as $rowKey => $row) {
                     unset($sectionData['rows'][$rowKey]['isPremium']);
+                    unset($sectionData['rows'][$rowKey]['isPremiumNet']);
+                    unset($sectionData['rows'][$rowKey]['allPremiumNet']);
+                    unset($sectionData['rows'][$rowKey]['premiumNetStatus']);
                 }
             }
             return response()->json($sectionData)->header('X-Accel-Expires', '600');
@@ -331,6 +345,7 @@ $router->group([
         $sectionRepository = new SectionRepository;
         $sectionRepository->setSupplementVisible($request->input('supplementVisibleFlg', false));
         $sectionData = $sectionRepository->releaseHimo($periodType, $genreId);
+
         if (empty($sectionData)) {
             throw new NoContentsException;
         }
@@ -339,6 +354,9 @@ $router->group([
         if ($premiumFlag !== 'true') {
             foreach ($sectionData['rows'] as $rowKey => $row) {
                 unset($sectionData['rows'][$rowKey]['isPremium']);
+                unset($sectionData['rows'][$rowKey]['isPremiumNet']);
+                unset($sectionData['rows'][$rowKey]['allPremiumNet']);
+                unset($sectionData['rows'][$rowKey]['premiumNetStatus']);
             }
         }
         return response()->json($sectionData)->header('X-Accel-Expires', '86400');
@@ -355,6 +373,16 @@ $router->group([
         if (empty($result)) {
             throw new NoContentsException;
         }
+ 
+        if ($result['premiumNetStatus'] === 1) {
+            // Add allPremiumNet in response
+            $productModel = new \App\Model\Product();
+            if($productModel->processAllPremiumNet($workId) == true) {
+                $result['premiumNetStatus'] = 2;
+            }
+        }
+        
+        //$result['allPremiumNet'] = $productModel->processAllPremiumNet($workId);
 
         // 映画リクエストでレスポンスがなかった場合
         if (
@@ -994,6 +1022,9 @@ $router->group([
         if ($premiumFlag !== 'true') {
             foreach ($workDataFormat as $rowKey => $row) {
                 unset($workDataFormat[$rowKey]['isPremium']);
+                unset($workDataFormat[$rowKey]['isPremiumNet']);
+                unset($workDataFormat[$rowKey]['allPremiumNet']);
+                unset($workDataFormat[$rowKey]['premiumNetStatus']);
             }
         }
 
@@ -1022,6 +1053,8 @@ $router->group([
         $workRepository->setOffset($request->input('offset', 0));
         $workRepository->setSaleType($request->input('saleType', $workRepository::SALE_TYPE_RENTAL));
 
+        $premiumFlag = $request->input('premium', false);
+
         // Get work data
         $workData = $workRepository->getWorkListByThousandTag($thousandTag);
 
@@ -1030,8 +1063,21 @@ $router->group([
         }
         // Format output work data
         $workDataFormat = $workRepository->formatOutputThousandTag($workData);
+
+        // プレミアムフラグを返却しないようにする。
+        // 現状はDVDレンタルの為、臨時対応として取得元で制御は行わない
+        if ($premiumFlag !== 'true') {
+            foreach ($workDataFormat as $rowKey => $row) {
+                unset($workDataFormat[$rowKey]['isPremium']);
+                unset($workDataFormat[$rowKey]['isPremiumNet']);
+                unset($workDataFormat[$rowKey]['allPremiumNet']);
+                unset($workDataFormat[$rowKey]['premiumNetStatus']);
+            }
+        }
+
         
         $tagInfo = $workRepository->convertTagToName((array) $thousandTag);
+       
         $response = [
             'hasNext' => $workRepository->getHasNext(),
             'totalCount' => $workRepository->getTotalCount(),
@@ -1040,6 +1086,7 @@ $router->group([
             'tagMessage' => $tagInfo[0]->tagMessage,
             'rows' => $workDataFormat
         ];
+         
         return response()->json($response);
     });
 
@@ -1054,7 +1101,7 @@ $router->group([
         if (empty($results)) {
             throw new NoContentsException;
         }
-        
+
         $response = [
             'rows' => $results
         ];
@@ -1226,9 +1273,12 @@ $router->group([
         try {
             $response = $discasRepository->customer($tlsc)->get();
             $response = [
+                'httpcode' => '200',
                 'ttvId' => $response['ttvId'],
-                'tenpoPlanFee' => $response['tenpoPlanFee'],
-                'nextUpdateDate' => date("Y-m-d", strtotime($response['nextUpdateDate']))
+                'tenpoCode' => $response['tenpoCode'],
+                'tenpoName' => $response['tenpoName'],
+                'tenpoPlanFee' => (int)$response['tenpoPlanFee'],
+                'nextUpdateDate' => date("Y-m-d h:i:s", strtotime($response['nextUpdateDate']))
             ];
         } catch (\Exception $e) {
             $exceptionResponse = $e->getResponse();
@@ -1310,6 +1360,56 @@ $router->group([
 
         return response()->json($response)->header('X-Accel-Expires', '0');
     });
+
+    $router->post('member/hasDisc/premium/rental', function (Request $request) {
+        $bodyObj = json_decode($request->getContent(), true);
+        $tlsc = isset($bodyObj['tlsc']) ? $bodyObj['tlsc'] : '';
+        // Check tlsc and $workId
+        if (empty($tlsc)) {
+            throw new BadRequestHttpException;
+        }
+        $discasRepository = new DiscasRepository();
+        try {
+            $response = [
+                'httpcode' => '200',
+                'rows' => []
+            ];
+            $apiData = $discasRepository->customerRental($tlsc)->get();
+            // Process data response from API
+            if (isset($apiData['hasDiscList'])) {
+                foreach ($apiData['hasDiscList'] as $item) {
+                    $response['rows'][] = [
+                        'storeName' => $item['tenpoName'],
+                        'rentCnt' => $item['discNum']
+                    ];
+                }
+            }
+        } catch (\Exception $e) {
+            $exceptionResponse = $e->getResponse();
+            $statusCode = $exceptionResponse->getStatusCode();
+            $errorCode = json_decode($exceptionResponse->getBody()->getContents(), true);
+            $response = [
+                'httpcode' => (string)$statusCode,
+                'status' => $errorCode['error']
+            ];
+        }
+        return response()->json($response)->header('X-Accel-Expires', '0');
+    });
+
+
+    $router->post('member/premium/authKey', function (Request $request) {
+        $bodyObj = json_decode($request->getContent(), true);
+        $tlsc = isset($bodyObj['tlsc']) ? $bodyObj['tlsc'] : ''; 
+
+        if (empty($tlsc)) {
+            throw new BadRequestHttpException;
+        }
+        
+        throw new NoContentsException;
+
+        return null;
+    });
+
 
     // 検証環境まで有効にするテスト用
     if (env('APP_ENV') === 'local' || env('APP_ENV') === 'develop' || env('APP_ENV') === 'staging') {

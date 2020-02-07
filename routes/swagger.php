@@ -86,6 +86,12 @@
  *       description="1000タグ",
  *       type="boolean"
  *     ),
+ *     @SWG\Parameter(
+ *       name="version",
+ *       in="query",
+ *       description="appバージョン(x.x.x)",
+ *       type="string"
+ *     ),
  *     @SWG\Response(response=200, description="Success"),
  *     @SWG\Response(response=204, description="Contents not found"),
  *     @SWG\Response(response=401, description="Auth error"),
@@ -100,6 +106,12 @@
  *     produces={"application/json"},
  *     tags={"Top"},
  *     security={{"api_key":{}}},
+ *     @SWG\Parameter(
+ *       name="version",
+ *       in="query",
+ *       description="appバージョン(x.x.x)",
+ *       type="string"
+ *     ),
  *     @SWG\Parameter(
  *       name="limit",
  *       in="query",
@@ -1136,6 +1148,12 @@
  *     @SWG\Parameter(ref="#/parameters/saleType"),
  *     @SWG\Parameter(ref="#/parameters/limit"),
  *     @SWG\Parameter(ref="#/parameters/offset"),
+ *     @SWG\Parameter(
+ *       name="premium",
+ *       in="query",
+ *       description="プレミアムセクション出力有無",
+ *       type="boolean"
+ *     ),
  *     @SWG\Response(
  *          response=200,
  *          description="success",
@@ -2642,8 +2660,18 @@
  *                  description="TsutayaTV利用者ID",
  *              ),
  *              @SWG\Property(
- *                  property="tenpoPlanFee",
+ *                  property="tenpoCode",
  *                  type="string",
+ *                  description="店舗コード",
+ *              ),
+ *              @SWG\Property(
+ *                  property="tenpoName",
+ *                  type="string",
+ *                  description="店舗名",
+ *              ),
+ *              @SWG\Property(
+ *                  property="tenpoPlanFee",
+ *                  type="integer",
  *                  description="店プラン金額（税込）",
  *              ),
  *              @SWG\Property(
@@ -2803,6 +2831,126 @@
  *              description="認証失敗（TTV側と本システム）",
  *          ),
  *     ),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+
+/**
+ * @SWG\Post(
+ *     path="/member/hasDisc/premium/rental",
+ *     description="",
+ *     produces={"application/json"},
+ *     tags={"Member"},
+ *     security={{"api_key":{}}},
+ *     @SWG\Parameter(
+ *       name="body",
+ *       in="body",
+ *       description="",
+ *       type="array",
+ *       @SWG\Schema(
+ *         @SWG\Property(
+ *             property="tlsc",
+ *             type="string",
+ *             description="ユーザー識別番号(TLSC)",
+ *         )
+ *       )
+ *     ),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="rows",
+ *                  type="array",
+ *                  @SWG\Items(
+ *                      @SWG\Property(
+ *                          property="storeName",
+ *                          type="string",
+ *                          description="店舗名"
+ *                      ),
+ *                      @SWG\Property(
+ *                          property="rentCnt",
+ *                          type="integer",
+ *                          description="レンタル枚数"
+ *                      ),
+ *                  ),
+ *                  description="会員情報の拡充"
+ *              ),
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(
+ *          response=400,
+ *          description="",
+ *          @SWG\Property(
+ *              property="rows",
+ *              type="object",
+ *              @SWG\Property(property="httpcode",type="string",description="htttpステータスコード"),
+ *              @SWG\Property(property="status",type="string",description="接続先APIのエラーステータスコード"),
+ *              description="ttv apiのバリデーションエラー",
+ *          ),
+ *     ),
+ *     @SWG\Response(
+ *          response=401,
+ *          description="",
+ *          @SWG\Property(
+ *              property="rows",
+ *              type="object",
+ *              @SWG\Property(property="httpcode",type="string",description="htttpステータスコード"),
+ *              @SWG\Property(property="status",type="string",description="接続先APIのエラーステータスコード"),
+ *              description="エラー情報",
+ *          ),
+ *     ),
+ *     @SWG\Response(
+ *          response=403,
+ *          description="",
+ *          @SWG\Property(
+ *              property="rows",
+ *              type="object",
+ *              @SWG\Property(property="httpcode",type="string",description="htttpステータスコード"),
+ *              @SWG\Property(property="status",type="string",description="接続先APIのエラーステータスコード"),
+ *              description="認証失敗（TTV側と本システム）",
+ *          ),
+ *     ),
+ *     @SWG\Response(response=500, description="Server error"),
+ *     @SWG\Response(response=503, description="Service temporarily unavailable")
+ * )
+ */
+/**
+ * @SWG\Post(
+ *     path="/member/premium/authKey",
+ *     description="認証キー",
+ *     produces={"application/json"},
+ *     tags={"Member"},
+ *     security={{"api_key":{}}},
+ *     @SWG\Parameter(
+ *       name="body",
+ *       in="body",
+ *       description="",
+ *       type="array",
+ *       @SWG\Schema(
+ *         @SWG\Property(
+ *             property="tlsc",
+ *             type="string",
+ *             description="ユーザー識別番号(TLSC)",
+ *         )
+ *       )
+ *     ),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="authKey",
+ *                  type="string",
+ *                  description="WEB認証キー",
+ *              )
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=400, description="Bad Request"),
+ *     @SWG\Response(response=401, description="Auth error"),
  *     @SWG\Response(response=404, description="Page not found"),
  *     @SWG\Response(response=500, description="Server error")
  * )

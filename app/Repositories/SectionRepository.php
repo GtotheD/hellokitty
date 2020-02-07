@@ -281,6 +281,7 @@ class SectionRepository extends BaseRepository
         } else {
             return null;
         }
+
         $formatRowData = $this->convertFormatFromHiMORelease($rows, $periodType);
         $response = [
             'hasNext' => false,
@@ -364,6 +365,17 @@ class SectionRepository extends BaseRepository
                     $formattedRow['supplement'] = null;
                 }
                 $formattedRow['isPremium'] = ($work['isPremium'] === 1)? true: false;
+
+                // Add isPremiumNet
+                $formattedRow['isPremiumNet'] = isset($work['isPremiumNet']) ? $work['isPremiumNet'] : false;
+
+                // Add allPremiumNet
+                if ($formattedRow['isPremiumNet']) {
+                    $formattedRow['allPremiumNet'] = $this->allPremiumNetProcess($work['workId']);
+                } else {
+                    $formattedRow['allPremiumNet'] = false;
+                }
+
                 $formattedRows[] = $formattedRow;
                 $count++;
             }
@@ -398,6 +410,7 @@ class SectionRepository extends BaseRepository
      */
     private function convertFormatFromTAPRelease($rows)
     {
+        $formattedRows = [];
         foreach ($rows as $row) {
             $workRepository = new WorkRepository;
             if (empty($row)) {
@@ -428,6 +441,16 @@ class SectionRepository extends BaseRepository
                 $formattedRow['supplement'] = null;
             }
             $formattedRow['isPremium'] = ($work['isPremium'] === 1)? true: false;
+
+            // Add isPremiumNet to response
+            $formattedRow['isPremiumNet'] = isset($work['isPremiumNet']) ? $work['isPremiumNet'] : false;
+
+            // Add allPremiumNet
+            if ($formattedRow['isPremiumNet']) {
+                $formattedRow['allPremiumNet'] = $this->allPremiumNetProcess($work['workId']);
+            } else {
+                $formattedRow['allPremiumNet'] = false;
+            }
 
             $formattedRows[] = $formattedRow;
 
@@ -524,6 +547,17 @@ class SectionRepository extends BaseRepository
             $rowUnit['saleStartDate'] = null;
             $rowUnit['isPremium'] = ($work['isPremium'] === 1)? true: false;
 
+            // Process for isPremiumNet
+            $rowUnit['isPremiumNet'] = $work['isPremiumNet'];
+
+            // Process for allPremiumNet
+            if ($work['isPremiumNet']) {
+                $rowUnit['allPremiumNet'] = $this->allPremiumNetProcess($work['workId']);
+            } else {
+                $rowUnit['allPremiumNet'] = false;
+            }
+            // End process for allPremiumNet
+
             // modelNameがあったゲームなので、ゲーム名を取得するようにする。
             if (!$this->supplementVisible) {
                 if (array_key_exists('modelName', $row)) {
@@ -580,5 +614,14 @@ class SectionRepository extends BaseRepository
             $idCode = '0205';
         }
         return $idCode;
+    }
+
+    /**
+     * @param string $work_id
+     * @return bool
+     */
+    private function allPremiumNetProcess($work_id = '') {
+        $productModel = new Product();
+        return $productModel->processAllPremiumNet($work_id);
     }
 }

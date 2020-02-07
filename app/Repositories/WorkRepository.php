@@ -52,55 +52,180 @@ class WorkRepository extends BaseRepository
     const HIMO_REQUEST_PER_ONCE = 20;
 
     const HIMO_ROLE_ID_MUSIC = array(
-        'EXT00000000D', 'EXT0000176TD', 'EXT0000177YD', 'EXT0000000UM',
-        'EXT00000005Y', 'EXT00001EX4U', 'EXT000017B5G', 'EXT00001AMVW',
-        'EXT00000001N', 'EXT0000757LE', 'EXT00000498P', 'EXT00000827U',
-        'EXT0000000LM', 'EXT0000757LN', 'EXT0000757LR', 'EXT0000757LT',
-        'EXT0000757LX', 'EXT00000024X', 'EXT000000225', 'EXT0000757M3',
-        'EXT000000381', 'EXT00000L5JI', 'EXT0000004YL', 'EXT0000001XR',
-        'EXT0000757MG', 'EXT00000L6SD', 'EXT00000GQWQ', 'EXT00005GDYM',
-        'EXT0000000G5', 'EXT000018SON', 'EXT000019UL0', 'EXT00001B3GN',
-        'EXT00001HJNQ', 'EXT000019M1Z', 'EXT0000002JZ', 'EXT000018SOP',
-        'EXT000002WCE', 'EXT00001E707', 'EXT0000196VA', 'EXT000019U64',
-        'EXT00002UZYP', 'EXT0000009L0', 'EXT00001W695', 'EXT00001BASK',
-        'EXT00001GWRV', 'EXT00001GE0F', 'EXT00001SWQ8', 'EXT00001G96T',
-        'EXT00001R6QL', 'EXT00001EQDQ', 'EXT00001RTP9', 'EXT00001ANKG',
-        'EXT0000197JE', 'EXT000021B4J', 'EXT000023248', 'EXT0000197FX',
-        'EXT0000757T4', 'EXT00001G92T', 'EXT0000249EP', 'EXT00001TSTM',
-        'EXT000019PJP', 'EXT00001SQSP', 'EXT0000757SL', 'EXT0000757SO',
-        'EXT0000757SQ', 'EXT0000757SX'
+        'EXT00000000D',
+        'EXT0000176TD',
+        'EXT0000177YD',
+        'EXT0000000UM',
+        'EXT00000005Y',
+        'EXT00001EX4U',
+        'EXT000017B5G',
+        'EXT00001AMVW',
+        'EXT00000001N',
+        'EXT0000757LE',
+        'EXT00000498P',
+        'EXT00000827U',
+        'EXT0000000LM',
+        'EXT0000757LN',
+        'EXT0000757LR',
+        'EXT0000757LT',
+        'EXT0000757LX',
+        'EXT00000024X',
+        'EXT000000225',
+        'EXT0000757M3',
+        'EXT000000381',
+        'EXT00000L5JI',
+        'EXT0000004YL',
+        'EXT0000001XR',
+        'EXT0000757MG',
+        'EXT00000L6SD',
+        'EXT00000GQWQ',
+        'EXT00005GDYM',
+        'EXT0000000G5',
+        'EXT000018SON',
+        'EXT000019UL0',
+        'EXT00001B3GN',
+        'EXT00001HJNQ',
+        'EXT000019M1Z',
+        'EXT0000002JZ',
+        'EXT000018SOP',
+        'EXT000002WCE',
+        'EXT00001E707',
+        'EXT0000196VA',
+        'EXT000019U64',
+        'EXT00002UZYP',
+        'EXT0000009L0',
+        'EXT00001W695',
+        'EXT00001BASK',
+        'EXT00001GWRV',
+        'EXT00001GE0F',
+        'EXT00001SWQ8',
+        'EXT00001G96T',
+        'EXT00001R6QL',
+        'EXT00001EQDQ',
+        'EXT00001RTP9',
+        'EXT00001ANKG',
+        'EXT0000197JE',
+        'EXT000021B4J',
+        'EXT000023248',
+        'EXT0000197FX',
+        'EXT0000757T4',
+        'EXT00001G92T',
+        'EXT0000249EP',
+        'EXT00001TSTM',
+        'EXT000019PJP',
+        'EXT00001SQSP',
+        'EXT0000757SL',
+        'EXT0000757SO',
+        'EXT0000757SQ',
+        'EXT0000757SX'
     );
 
     const HIMO_ROLE_ID_BOOK = array(
-        'EXT00000BWU9', 'EXT0000757Q2', 'EXT0000757OB', 'EXT0000757OE',
-        'EXT000000MM1', 'EXT00001RTP9', 'EXT0000757T9', 'EXT00000RCII',
-        'EXT00004OS05', 'EXT00000QLJ6', 'EXT0000757OJ', 'EXT00002ZE4D',
-        'EXT000014LC2', 'EXT0000757PQ', 'EXT0000757QL', 'EXT00001GBIY',
-        'EXT00000QJOS', 'EXT0000757Q4', 'EXT0000757QC', 'EXT0000757PY',
-        'EXT000070LL5', 'EXT0000757QS', 'EXT0000757QT', 'EXT0000757QW',
-        'EXT0000757P5', 'EXT0000757OY', 'EXT0000757P9', 'EXT0000757PD',
-        'EXT00001GBQX', 'EXT0000757P2', 'EXT0000757QE', 'EXT0000757PU',
-        'EXT000019VYB', 'EXT000019PJP', 'EXT00001AMVW', 'EXT0000757QG',
-        'EXT0000757PH', 'EXT00001G96T', 'EXT00000DSY2', 'EXT00002HEF0',
-        'EXT0000757OW', 'EXT0000197FX', 'EXT0000757RM', 'EXT000018SON',
-        'EXT000019UL0', 'EXT00001B3GN', 'EXT00001HJNQ', 'EXT000019M1Z',
-        'EXT0000757RY', 'EXT000018SOP', 'EXT0000757S3', 'EXT00001E707',
-        'EXT0000196VA', 'EXT000019U64', 'EXT00002UZYP', 'EXT0000176TD',
-        'EXT0000757SD', 'EXT0000757SE', 'EXT00001EX4U', 'EXT000017B5G',
-        'EXT0000177YD', 'EXT00001W695', 'EXT00001BASK', 'EXT00001GWRV',
-        'EXT00001GE0F', 'EXT00001SWQ8', 'EXT000023248', 'EXT0000757T4',
-        'EXT00001TSTM', 'EXT00002RY1U', 'EXT0000757SL', 'EXT0000757SO',
-        'EXT0000757SQ', 'EXT0000757SX'
+        'EXT00000BWU9',
+        'EXT0000757Q2',
+        'EXT0000757OB',
+        'EXT0000757OE',
+        'EXT000000MM1',
+        'EXT00001RTP9',
+        'EXT0000757T9',
+        'EXT00000RCII',
+        'EXT00004OS05',
+        'EXT00000QLJ6',
+        'EXT0000757OJ',
+        'EXT00002ZE4D',
+        'EXT000014LC2',
+        'EXT0000757PQ',
+        'EXT0000757QL',
+        'EXT00001GBIY',
+        'EXT00000QJOS',
+        'EXT0000757Q4',
+        'EXT0000757QC',
+        'EXT0000757PY',
+        'EXT000070LL5',
+        'EXT0000757QS',
+        'EXT0000757QT',
+        'EXT0000757QW',
+        'EXT0000757P5',
+        'EXT0000757OY',
+        'EXT0000757P9',
+        'EXT0000757PD',
+        'EXT00001GBQX',
+        'EXT0000757P2',
+        'EXT0000757QE',
+        'EXT0000757PU',
+        'EXT000019VYB',
+        'EXT000019PJP',
+        'EXT00001AMVW',
+        'EXT0000757QG',
+        'EXT0000757PH',
+        'EXT00001G96T',
+        'EXT00000DSY2',
+        'EXT00002HEF0',
+        'EXT0000757OW',
+        'EXT0000197FX',
+        'EXT0000757RM',
+        'EXT000018SON',
+        'EXT000019UL0',
+        'EXT00001B3GN',
+        'EXT00001HJNQ',
+        'EXT000019M1Z',
+        'EXT0000757RY',
+        'EXT000018SOP',
+        'EXT0000757S3',
+        'EXT00001E707',
+        'EXT0000196VA',
+        'EXT000019U64',
+        'EXT00002UZYP',
+        'EXT0000176TD',
+        'EXT0000757SD',
+        'EXT0000757SE',
+        'EXT00001EX4U',
+        'EXT000017B5G',
+        'EXT0000177YD',
+        'EXT00001W695',
+        'EXT00001BASK',
+        'EXT00001GWRV',
+        'EXT00001GE0F',
+        'EXT00001SWQ8',
+        'EXT000023248',
+        'EXT0000757T4',
+        'EXT00001TSTM',
+        'EXT00002RY1U',
+        'EXT0000757SL',
+        'EXT0000757SO',
+        'EXT0000757SQ',
+        'EXT0000757SX'
     );
 
     const HIMO_SEARCH_VIDEO_GENRE_ID = array(
-        'EXT0000000U9:', 'EXT0000000WP:', 'EXT0000000YC:', 'EXT0000000ZQ:',
-        'EXT00000014Q:', 'EXT00000016A:', 'EXT00000018Q:', 'EXT0000001CL:',
-        'EXT0000001DL:', 'EXT0000001DO:', 'EXT0000001N4:', 'EXT0000001NP:',
-        'EXT0000001WZ:', 'EXT0000001YK:', 'EXT00000022S:', 'EXT0000002G9:',
-        'EXT0000002GE:', 'EXT0000002GF:', 'EXT0000003GW:', 'EXT0000003L8:',
-        'EXT0000003TL:', 'EXT0000004DW:', 'EXT0000007QI:', 'EXT000000DAT:',
-        'EXT000000ECY:', 'EXT000000EVS:', 'EXT000000Q1W:', 'EXT00001T1BJ'
+        'EXT0000000U9:',
+        'EXT0000000WP:',
+        'EXT0000000YC:',
+        'EXT0000000ZQ:',
+        'EXT00000014Q:',
+        'EXT00000016A:',
+        'EXT00000018Q:',
+        'EXT0000001CL:',
+        'EXT0000001DL:',
+        'EXT0000001DO:',
+        'EXT0000001N4:',
+        'EXT0000001NP:',
+        'EXT0000001WZ:',
+        'EXT0000001YK:',
+        'EXT00000022S:',
+        'EXT0000002G9:',
+        'EXT0000002GE:',
+        'EXT0000002GF:',
+        'EXT0000003GW:',
+        'EXT0000003L8:',
+        'EXT0000003TL:',
+        'EXT0000004DW:',
+        'EXT0000007QI:',
+        'EXT000000DAT:',
+        'EXT000000ECY:',
+        'EXT000000EVS:',
+        'EXT000000Q1W:',
+        'EXT00001T1BJ'
     );
 
     //
@@ -216,36 +341,40 @@ class WorkRepository extends BaseRepository
         }
         return $response;
     }
+
     /**
      * Description
-     * @param type|array $idsArray 
+     * @param type|array $idsArray
      * @return type|array $workIdsArray
      */
-    public function convertUrlCdToWorkId($idsArray = []) {
+    public function convertUrlCdToWorkId($idsArray = [])
+    {
         $defineWorkId = 'PTA';
         $workIdsArray = [];
         foreach ($idsArray as $idElement) {
-            if(substr($idElement, 0, strlen($defineWorkId)) !== $defineWorkId) {
+            if (substr($idElement, 0, strlen($defineWorkId)) !== $defineWorkId) {
                 // Convert urlCd to workId
                 // Input idType = '0105' for himo search by urlCd
-                $convertData = $this->getWorkByUrlCd($idElement,['work_id'], '0105');
-                if(!empty($convertData) && isset($convertData['workId'])) {
+                $convertData = $this->getWorkByUrlCd($idElement, ['work_id'], '0105');
+                if (!empty($convertData) && isset($convertData['workId'])) {
                     $idElement = $convertData['workId'];
                     array_push($workIdsArray, $idElement);
                 }
                 continue;
             }
-            array_push($workIdsArray, $idElement);   
+            array_push($workIdsArray, $idElement);
         }
         return $workIdsArray;
     }
+
     /**
      * Description
      * @param type|array $idsArray
      * @param $idType
      * @return type|array $workIdsArray
      */
-    public function convertWorkId($idsArray = [], $idType) {
+    public function convertWorkId($idsArray = [], $idType)
+    {
         $workIdsArray = [];
         $idCode = null;
         switch ($idType) {
@@ -266,9 +395,9 @@ class WorkRepository extends BaseRepository
         }
 
         foreach ($idsArray as $idElement) {
-            if ($idType != 'workId'){
-                $convertData = $this->getWorkByUrlCd($idElement,['work_id'], $idCode);
-                if(!empty($convertData) && isset($convertData['workId'])) {
+            if ($idType != 'workId') {
+                $convertData = $this->getWorkByUrlCd($idElement, ['work_id'], $idCode);
+                if (!empty($convertData) && isset($convertData['workId'])) {
                     $idElement = $convertData['workId'];
                     array_push($workIdsArray, $idElement);
                 }
@@ -278,20 +407,24 @@ class WorkRepository extends BaseRepository
         }
         return $workIdsArray;
     }
+
     /**
      * Description
-     * @param type $workData 
-     * @param type|int $maxElement 
+     * @param type $workData
+     * @param type|int $maxElement
      * @return type|array $workData
      */
-    public function formatOutputBulk($baseArray, $workData, $maxElement = 30) {
+    public function formatOutputBulk($baseArray, $workData, $maxElement = 30)
+    {
         $workDataFormat = [];
         $count = 1;
         foreach ($baseArray as $baseItem) {
             // format output workData
             foreach ($workData['rows'] as $itemWork) {
-                if ($itemWork['workId'] === $baseItem ) {
-                    if($count > $maxElement) break;
+                if ($itemWork['workId'] === $baseItem) {
+                    if ($count > $maxElement) {
+                        break;
+                    }
                     $tempData['workId'] = $itemWork['workId'];
                     $tempData['urlCd'] = $itemWork['urlCd'];
                     $tempData['cccWorkCd'] = $itemWork['cccWorkCd'];
@@ -299,21 +432,39 @@ class WorkRepository extends BaseRepository
                     $tempData['newFlg'] = $itemWork['newFlg'];
                     $tempData['jacketL'] = $itemWork['jacketL'];
                     $tempData['supplement'] = $itemWork['supplement'];
-                    $tempData['saleType'] = isset($itemWork['saleType']) ? $itemWork['saleType']: '';
+                    $tempData['saleType'] = isset($itemWork['saleType']) ? $itemWork['saleType'] : '';
                     $tempData['itemType'] = $itemWork['itemType'];
                     $tempData['adultFlg'] = $itemWork['adultFlg'];
-                    $tempData['priceTaxOut'] = isset($itemWork['priceTaxOut']) ? $itemWork['priceTaxOut']: '';
-                    $tempData['workFormatName'] = ($tempData['itemType'] == 'cd' || $tempData['itemType'] == 'dvd') ? $itemWork['workFormatName']: '';
-                    $tempData['makerName'] = isset($itemWork['makerName']) ? $itemWork['makerName']: '';
+                    $tempData['priceTaxOut'] = isset($itemWork['priceTaxOut']) ? $itemWork['priceTaxOut'] : '';
+                    $tempData['workFormatName'] = ($tempData['itemType'] == 'cd' || $tempData['itemType'] == 'dvd') ? $itemWork['workFormatName'] : '';
+                    $tempData['makerName'] = isset($itemWork['makerName']) ? $itemWork['makerName'] : '';
                     $tempData['saleStartDate'] = $itemWork['saleStartDate'];
-                    if($tempData['itemType'] == 'book') {
+                    if ($tempData['itemType'] == 'book') {
                         $tempData['bookSeriesName'] = $itemWork['bookSeriesName'];
                     }
                     // プレミアムフラグ(作品ベースの情報)
                     $tempData['isPremium'] = $itemWork['isPremium'];
 
+                    // Add isPremiumNet to response
+                    $tempData['isPremiumNet'] = isset($itemWork['isPremiumNet']) ? $itemWork['isPremiumNet'] : false;
+
+                    // Add allPremiumNet to response
+                    $productModel = new Product();
+                    $tempData['allPremiumNet'] = $productModel->processAllPremiumNet($itemWork['workId']);
+
+
+                    $tempData['premiumNetStatus'] = 0;
+                    if ($tempData['isPremiumNet'] === true) {
+                        $tempData['premiumNetStatus'] = 1;
+                        if ($tempData['allPremiumNet'] === true) {
+                            $tempData['premiumNetStatus'] = 2;
+                        }
+                    }
+                    unset($tempData['allPremiumNet']);
+                    unset($tempData['isPremiumNet']);
+
                     array_push($workDataFormat, $tempData);
-                    $count ++;
+                    $count++;
                     continue;
                 }
             }
@@ -337,12 +488,13 @@ class WorkRepository extends BaseRepository
             $tempData['newFlg'] = $itemWork['newFlg'];
             $tempData['jacketL'] = $itemWork['jacketL'];
             $tempData['supplement'] = $itemWork['supplement'];
-            $tempData['saleType'] = isset($itemWork['saleType']) ? $itemWork['saleType']: '';
+            $tempData['saleType'] = isset($itemWork['saleType']) ? $itemWork['saleType'] : '';
             $tempData['itemType'] = $itemWork['itemType'];
             $tempData['adultFlg'] = $itemWork['adultFlg'];
-            $tempData['workFormatName'] = ($tempData['itemType'] == 'cd' || $tempData['itemType'] == 'dvd') ? $itemWork['workFormatName']: '';
-            $tempData['makerName'] = isset($itemWork['makerName']) ? $itemWork['makerName']: '';
-            //$tempData['saleStartDate'] = $itemWork['saleStartDate'];
+            $tempData['workFormatName'] = ($tempData['itemType'] == 'cd' || $tempData['itemType'] == 'dvd') ? $itemWork['workFormatName'] : '';
+            $tempData['makerName'] = isset($itemWork['makerName']) ? $itemWork['makerName'] : '';
+            $tempData['isPremium'] = $itemWork['isPremium'];
+            $tempData['premiumNetStatus'] = $itemWork['premiumNetStatus'];
 
             array_push($workDataFormat, $tempData);
         }
@@ -352,8 +504,8 @@ class WorkRepository extends BaseRepository
 
     /**
      * Get work data by input urlcd
-     * @param type $workId 
-     * @param type|null $selectColumns 
+     * @param type $workId
+     * @param type|null $selectColumns
      * @param idType type off workId
      * @return response
      */
@@ -405,7 +557,7 @@ class WorkRepository extends BaseRepository
     }
 
     /**
-     * @param $workIds, $selectColumns
+     * @param $workIds , $selectColumns
      * @return null
      * @throws NoContentsException
      */
@@ -425,7 +577,7 @@ class WorkRepository extends BaseRepository
                 break;
         }
         foreach ($workIdsExisted as $workIdsExistedItem) {
-                $workIdsExistedArray[] = $workIdsExistedItem->$targetColumn;
+            $workIdsExistedArray[] = $workIdsExistedItem->$targetColumn;
         }
 
         // STEP 3: IDが取得出来なかった場合は全てHimoから新規で詳細情報を取得するためのリストを作成。
@@ -493,7 +645,7 @@ class WorkRepository extends BaseRepository
             $row = (array)$workItem;
             if ($workOnly) {
                 $response['rows'][] = $row;
-            } else  {
+            } else {
                 $response['rows'][] = $this->formatAddOtherData($row);
             }
         }
@@ -705,21 +857,28 @@ class WorkRepository extends BaseRepository
 
                     if ($product['msdbItem'] === 'video') {
                         // 映画の場合は、doc_type_id = 15で取得する。
-                        if($response['workTypeId'] === self::WORK_TYPE_THEATER) {
-                            $response['docText'] = getProductContents(DOC_TABLE_MOVIE['tol'], DOC_TYPE_ID_STINGRAY, $docs);
+                        if ($response['workTypeId'] === self::WORK_TYPE_THEATER) {
+                            $response['docText'] = getProductContents(DOC_TABLE_MOVIE['tol'], DOC_TYPE_ID_STINGRAY,
+                                $docs);
                         } else {
-                        $response['docText'] = getSummaryComment(DOC_TABLE_MOVIE['tol'], $docs);
+                            $response['docText'] = getSummaryComment(DOC_TABLE_MOVIE['tol'], $docs);
                         }
                         $isDocSet = true;
-                    } else if ($product['msdbItem'] === 'book') {
-                        $response['docText'] = getSummaryComment(DOC_TABLE_BOOK['tol'], $docs);
-                        $isDocSet = true;
-                    } else if ($product['msdbItem'] === 'audio') {
-                        $response['docText'] = getSummaryComment(DOC_TABLE_MUSIC['tol'], $docs, true);
-                        $isDocSet = true;
-                    } else if ($product['msdbItem'] === 'game') {
-                        $response['docText'] = getSummaryComment(DOC_TABLE_GAME['tol'], $docs);
-                        $isDocSet = true;
+                    } else {
+                        if ($product['msdbItem'] === 'book') {
+                            $response['docText'] = getSummaryComment(DOC_TABLE_BOOK['tol'], $docs);
+                            $isDocSet = true;
+                        } else {
+                            if ($product['msdbItem'] === 'audio') {
+                                $response['docText'] = getSummaryComment(DOC_TABLE_MUSIC['tol'], $docs, true);
+                                $isDocSet = true;
+                            } else {
+                                if ($product['msdbItem'] === 'game') {
+                                    $response['docText'] = getSummaryComment(DOC_TABLE_GAME['tol'], $docs);
+                                    $isDocSet = true;
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -751,6 +910,14 @@ class WorkRepository extends BaseRepository
             $response['musicDownloadUrl'] = env('MUSICO_URL') . $musicoUrlData->url;
         }
 
+        // ttvUrl
+        if (!empty($response['ttvContentsCd'])) {
+            $response['ttvUrl'] = env('TTV_URL') . '?ttvArtCd=' . $response['ttvContentsCd'];
+        } else {
+            $response['ttvUrl'] = '';
+        }
+        unset($response['ttvContentsCd']);
+
         // 映画作品の場合は固定でいれる
         if ($response['workTypeId'] === self::WORK_TYPE_THEATER) {
             $response['saleType'] = self::SALE_TYPE_THEATER;
@@ -758,9 +925,21 @@ class WorkRepository extends BaseRepository
 
         // プレミアムフラグ(作品ベースの情報)
         if (!empty($response['isPremiumShop'])) {
-            $response['isPremium'] = ($response['isPremiumShop'] === 1)? true: false;
+            $response['isPremium'] = ($response['isPremiumShop'] === 1) ? true : false;
         } else {
             $response['isPremium'] = false;
+        }
+
+
+        // Convert data for isPremiumNet
+        if (!empty($response['isPremiumNet'])) {
+            $response['premiumNetStatus'] = 0;
+
+            if ($response['isPremiumNet'] === 1) {
+                $response['premiumNetStatus'] = 1;
+            }
+        } else {
+            $response['premiumNetStatus'] = 0;
         }
 
         // もとの情報は削除
@@ -776,8 +955,10 @@ class WorkRepository extends BaseRepository
                 ];
             } else {
                 $response['saleTypeHas'] = [
-                    'sell' => ($productModel->setConditionByWorkIdSaleType($response['workId'], 'sell')->count() > 0) ? true : false,
-                    'rental' => ($productModel->setConditionByWorkIdSaleType($response['workId'], 'rental')->count() > 0) ? true : false,
+                    'sell' => ($productModel->setConditionByWorkIdSaleType($response['workId'],
+                            'sell')->count() > 0) ? true : false,
+                    'rental' => ($productModel->setConditionByWorkIdSaleType($response['workId'],
+                            'rental')->count() > 0) ? true : false,
                     'theater' => false,
                 ];
             }
@@ -801,6 +982,7 @@ class WorkRepository extends BaseRepository
          */
 
         return $response;
+
     }
 
     function getPerson($msdbItem, $peopleJson)
@@ -817,7 +999,9 @@ class WorkRepository extends BaseRepository
         if (!empty($roleIds)) {
             foreach ($roleIds as $roleId) {
                 $person = $peopleCollection->where('role_id', $roleId)->first();
-                if (!empty($person)) break;
+                if (!empty($person)) {
+                    break;
+                }
             }
             return $person;
         }
@@ -857,13 +1041,19 @@ class WorkRepository extends BaseRepository
                     if ($product['service_id'] === 'musico') {
                         if ($product['product_type_id'] == self::PRODUCT_TYPE_ID_ALBUM) {
                             $musicoUrl = sprintf(self::MUSICO_LINK_ALBUM, $product['ccc_product_id']);
-                        } else if ($product['product_type_id'] == self::PRODUCT_TYPE_ID_SINGLE) {
-                            $musicoUrl = sprintf(self::MUSICO_LINK_SINGLE, $product['ccc_product_id']);
+                        } else {
+                            if ($product['product_type_id'] == self::PRODUCT_TYPE_ID_SINGLE) {
+                                $musicoUrl = sprintf(self::MUSICO_LINK_SINGLE, $product['ccc_product_id']);
+                            }
                         }
-                    } else if ($product['service_id'] === 'discas') {
-                        $discasCCCprodctId = $product['ccc_product_id'];
-                    } else if ($product['service_id'] === 'tol') {
-                        $hasTol = true;
+                    } else {
+                        if ($product['service_id'] === 'discas') {
+                            $discasCCCprodctId = $product['ccc_product_id'];
+                        } else {
+                            if ($product['service_id'] === 'tol') {
+                                $hasTol = true;
+                            }
+                        }
                     }
 
                     // ミュジックビデオの場合はaudioからvideoに変換するために判定する。
@@ -952,7 +1142,9 @@ class WorkRepository extends BaseRepository
             }
 
             // DVDタブを指定して検索した場合はfacetsで取得した値のかわりにこの値を返却する
-            if ($itemType === 'dvd') $dvdCount = $data['results']['total'];
+            if ($itemType === 'dvd') {
+                $dvdCount = $data['results']['total'];
+            }
 
             $result = [
                 'hasNext' => $this->hasNext,
@@ -1001,16 +1193,18 @@ class WorkRepository extends BaseRepository
 
                 $saleStartDateSell = "";
                 if ($saleTypeHas['sell'] === true) {
-                    $saleStartDateSell = ($row['sale_start_date']) ? date('Y-m-d 00:00:00', strtotime($saleTypeHas['saleStartDateSell'])) : '';
+                    $saleStartDateSell = ($row['sale_start_date']) ? date('Y-m-d 00:00:00',
+                        strtotime($saleTypeHas['saleStartDateSell'])) : '';
                 }
 
                 $saleStartDateRental = "";
                 if ($saleTypeHas['rental'] === true) {
-                    $saleStartDateRental = ($row['sale_start_date']) ? date('Y-m-d 00:00:00', strtotime($saleTypeHas['saleStartDateRental'])) : '';
+                    $saleStartDateRental = ($row['sale_start_date']) ? date('Y-m-d 00:00:00',
+                        strtotime($saleTypeHas['saleStartDateRental'])) : '';
                 }
 
 
-                if($base['work_type_id'] == WorkRepository::WORK_TYPE_THEATER) {
+                if ($base['work_type_id'] == WorkRepository::WORK_TYPE_THEATER) {
                     $jacket = trimImageTag($this->theaterSceneFilter($base['scene_l']), true);
                 } else {
                     $jacket = trimImageTag($saleTypeHas['pickupProduct']['jacket_l']);
@@ -1026,7 +1220,8 @@ class WorkRepository extends BaseRepository
                     'itemType' => $itemTypeVal,
                     'saleType' => '',
                     'supplement' => $saleTypeHas['supplement'],
-                    'saleStartDate' => ($row['sale_start_date']) ? date('Y-m-d 00:00:00', strtotime($row['sale_start_date'])) : '',
+                    'saleStartDate' => ($row['sale_start_date']) ? date('Y-m-d 00:00:00',
+                        strtotime($row['sale_start_date'])) : '',
                     'saleStartDateSell' => $saleStartDateSell,
                     'saleStartDateRental' => $saleStartDateRental,
                     'saleTypeHas' => [
@@ -1050,7 +1245,9 @@ class WorkRepository extends BaseRepository
 
             // DVDタブを指定して検索した場合はジャンルを指定しているが、
             // facetsを取得する際は「すべて」タブ指定時との条件が変わらないようにクリアする
-            if ($itemType === 'dvd') $params['genreId'] = "";
+            if ($itemType === 'dvd') {
+                $params['genreId'] = "";
+            }
 
             $dataCounts = $himoRepository->searchCrossworks($params, $sort)->get();
 
@@ -1101,21 +1298,25 @@ class WorkRepository extends BaseRepository
             // VHSを除外
             if ($product['service_id'] === 'tol' || $product['service_id'] === 'st') {
 
-                if ($product['product_type_id'] === 1 ) { // VHSの条件を除外
+                if ($product['product_type_id'] === 1) { // VHSの条件を除外
                     // 最新の販売開始日を取得する。
                     if ($product['sale_start_date'] > $saleStartDateSell) {
                         $saleStartDateSell = $product['sale_start_date'];
                     }
                     $sell = true;
-                } else if ($product['product_type_id'] === 2 ) { // VHSの条件を除外
-                    // 最新の販売開始日を取得する。
-                    if ($product['sale_start_date'] > $saleStartDateRental) {
-                        $saleStartDateRental = $product['sale_start_date'];
+                } else {
+                    if ($product['product_type_id'] === 2) { // VHSの条件を除外
+                        // 最新の販売開始日を取得する。
+                        if ($product['sale_start_date'] > $saleStartDateRental) {
+                            $saleStartDateRental = $product['sale_start_date'];
+                        }
+                        $rental = true;
+                        // 上映映画
+                    } else {
+                        if (empty($product['product_type_id']) && $product['service_id'] === 'st') {
+                            $theater = true;
+                        }
                     }
-                    $rental = true;
-                // 上映映画
-                } else if (empty($product['product_type_id']) && $product['service_id'] === 'st') {
-                    $theater = true;
                 }
                 if ($itemType === 'game') {
                     $supplement = $product['game_model_name'];
@@ -1123,12 +1324,16 @@ class WorkRepository extends BaseRepository
                     if ($itemType === 'book') {
                         foreach (self::HIMO_ROLE_ID_BOOK as $id) {
                             $supplement = $this->parseSupplement($product['people'], $id);
-                            if (!empty($supplement)) break;
+                            if (!empty($supplement)) {
+                                break;
+                            }
                         }
                     } elseif ($itemType === 'cd') {
                         foreach (self::HIMO_ROLE_ID_MUSIC as $id) {
                             $supplement = $this->parseSupplement($product['people'], $id);
-                            if (!empty($supplement)) break;
+                            if (!empty($supplement)) {
+                                break;
+                            }
                         }
                     }
                 }
@@ -1158,7 +1363,7 @@ class WorkRepository extends BaseRepository
             $productsTmpKeyItemCd, SORT_ASC,
             $productsTmpKeyCccProductId, SORT_ASC,
             $productsTmp
-             );
+        );
         // for Debug
 //        foreach ($productsTmp as $productsTmpValue) {
 //            echo "product_name：". $productsTmpValue['product_name']."\n";
@@ -1197,21 +1402,25 @@ class WorkRepository extends BaseRepository
             // VHSを除外            
             if (($product['service_id'] === 'tol' || $product['service_id'] === 'st') && isset($product['premium_plan_cd']) && $product['premium_plan_cd'] === 1) {
 
-                if ($product['product_type_id'] === 1 ) { // VHSの条件を除外
+                if ($product['product_type_id'] === 1) { // VHSの条件を除外
                     // 最新の販売開始日を取得する。
                     if ($product['sale_start_date'] > $saleStartDateSell) {
                         $saleStartDateSell = $product['sale_start_date'];
                     }
                     $sell = true;
-                } else if ($product['product_type_id'] === 2 ) { // VHSの条件を除外
-                    // 最新の販売開始日を取得する。
-                    if ($product['sale_start_date'] > $saleStartDateRental) {
-                        $saleStartDateRental = $product['sale_start_date'];
+                } else {
+                    if ($product['product_type_id'] === 2) { // VHSの条件を除外
+                        // 最新の販売開始日を取得する。
+                        if ($product['sale_start_date'] > $saleStartDateRental) {
+                            $saleStartDateRental = $product['sale_start_date'];
+                        }
+                        $rental = true;
+                        // 上映映画
+                    } else {
+                        if (empty($product['product_type_id']) && $product['service_id'] === 'st') {
+                            $theater = true;
+                        }
                     }
-                    $rental = true;
-                // 上映映画
-                } else if (empty($product['product_type_id']) && $product['service_id'] === 'st') {
-                    $theater = true;
                 }
                 if ($itemType === 'game') {
                     $supplement = $product['game_model_name'];
@@ -1219,12 +1428,16 @@ class WorkRepository extends BaseRepository
                     if ($itemType === 'book') {
                         foreach (self::HIMO_ROLE_ID_BOOK as $id) {
                             $supplement = $this->parseSupplement($product['people'], $id);
-                            if (!empty($supplement)) break;
+                            if (!empty($supplement)) {
+                                break;
+                            }
                         }
                     } elseif ($itemType === 'cd') {
                         foreach (self::HIMO_ROLE_ID_MUSIC as $id) {
                             $supplement = $this->parseSupplement($product['people'], $id);
-                            if (!empty($supplement)) break;
+                            if (!empty($supplement)) {
+                                break;
+                            }
                         }
                     }
                 }
@@ -1254,7 +1467,7 @@ class WorkRepository extends BaseRepository
             $productsTmpKeyItemCd, SORT_ASC,
             $productsTmpKeyCccProductId, SORT_ASC,
             $productsTmp
-             );
+        );
 
         return [
             'sell' => $sell,
@@ -1314,7 +1527,7 @@ class WorkRepository extends BaseRepository
         $this->getWorkList($workList);
         $this->work->getWorkWithProductIdsIn($workList, $this->saleType, null, $sort);
         $this->totalCount = $this->work->count();
-        if(empty($sort)) {
+        if (empty($sort)) {
             $works = $this->work->selectCamel($this->selectColumn())->get(1000, 0);
         } else {
             $works = $this->work->selectCamel($this->selectColumn())->get($this->limit, $this->offset);
@@ -1367,7 +1580,7 @@ class WorkRepository extends BaseRepository
      * @throws NoContentsException
      */
 
-    public function genre($genreId,  $serviceId = null)
+    public function genre($genreId, $serviceId = null)
     {
         $result = [];
         $himoRepository = new HimoRepository('asc', $this->offset, $this->limit);
@@ -1428,9 +1641,12 @@ class WorkRepository extends BaseRepository
                     'saleType' => $this->saleType,
                     // DVDの場合は空にする。
                     'supplement' => ($itemType === 'dvd') ? '' : $saleTypeHas['supplement'],
-                    'saleStartDate' => ($saleTypeHas['pickupProduct']['sale_start_date']) ? date('Y-m-d 00:00:00', strtotime($saleTypeHas['pickupProduct']['sale_start_date'])) : '',
-                    'saleStartDateSell' => ($row['sale_start_date_sell']) ? date('Y-m-d 00:00:00', strtotime($row['sale_start_date_sell'])) : '',
-                    'saleStartDateRental' => ($row['sale_start_date_rental']) ? date('Y-m-d 00:00:00', strtotime($row['sale_start_date_rental'])) : '',
+                    'saleStartDate' => ($saleTypeHas['pickupProduct']['sale_start_date']) ? date('Y-m-d 00:00:00',
+                        strtotime($saleTypeHas['pickupProduct']['sale_start_date'])) : '',
+                    'saleStartDateSell' => ($row['sale_start_date_sell']) ? date('Y-m-d 00:00:00',
+                        strtotime($row['sale_start_date_sell'])) : '',
+                    'saleStartDateRental' => ($row['sale_start_date_rental']) ? date('Y-m-d 00:00:00',
+                        strtotime($row['sale_start_date_rental'])) : '',
                 ];
             }
 
@@ -1462,7 +1678,7 @@ class WorkRepository extends BaseRepository
                 $idCode = '0206';
                 break;
         }
-                           
+
         $columns = [
             'work_id',
             'work_type_id',
@@ -1492,7 +1708,7 @@ class WorkRepository extends BaseRepository
         if ($response['workFormatId'] == self::WORK_FORMAT_ID_MUSICVIDEO) {
             $result['itemType'] = 'dvd';
         }
-        
+
         /*
         $himoRepository = new HimoRepository();
         $workRepository = new WorkRepository();
@@ -1521,9 +1737,12 @@ class WorkRepository extends BaseRepository
             // HiMO作品ID
             if ($idItem['id_type'] === '0103') {
                 $base['ccc_work_cd'] = $idItem['id_value'];
-                // URLコード
+            // URLコード
             } else if ($idItem['id_type'] === '0105') {
                 $base['url_cd'] = $idItem['id_value'];
+            // ttv_contents_cd
+            } else if ($idItem['id_type'] === '0106') {
+                $base['ttv_contents_cd'] = $idItem['id_value'];
             }
         }
 

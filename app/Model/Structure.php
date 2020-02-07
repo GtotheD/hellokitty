@@ -29,7 +29,7 @@ class Structure extends Model
         parent::__construct(self::TABLE);
     }
 
-    public function setConditionTypes($goodsType, $saleType, $fileName = null, $isPremium = false, $isRecommend = false, $isThousandTag = false)
+    public function setConditionTypes($goodsType, $saleType, $fileName = null, $isPremium = false, $isRecommend = false, $isThousandTag = false, $appVersion)
     {
         $this->dbObject = DB::table($this->table)
             ->where([
@@ -54,6 +54,9 @@ class Structure extends Model
 
         if ($isThousandTag === false) {
             $this->dbObject->where('section_type', '<>', self::SECTION_TYPE_THOUSAND_TAG);
+        }
+        if (version_compare($appVersion, '8.15.0', '<')) {
+            $this->dbObject->where('section_type', '<>', 10);
         }
 
         $this->dbObject->orderBy('sort', 'asc');
