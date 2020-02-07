@@ -252,7 +252,12 @@
  *              property="isPremium",
  *              type="boolean",
  *              description="プレミアムフラグ"
- *          )
+ *          ),
+ *          @SWG\Property(
+ *              property="premiumNetStatus",
+ *              type="integer",
+ *              description="SVODステータス"
+ *          ),
  *  )
  * */
 /**
@@ -304,15 +309,10 @@
  *              description="プレミアムフラグ"
  *          ),
  *          @SWG\Property(
- *              property="isPremiumNet",
- *              type="boolean",
- *              description=""
+ *              property="premiumNetStatus",
+ *              type="integer",
+ *              description="SVODステータス"
  *          ),
- *          @SWG\Property(
- *              property="allPremiumNet",
- *              type="boolean",
- *              description=""
- *          )
  *  )
  * */
 /**
@@ -364,6 +364,11 @@
  *              description="プレミアムフラグ"
  *          ),
  *          @SWG\Property(
+ *              property="premiumNetStatus",
+ *              type="integer",
+ *              description="SVODステータス"
+ *          ),
+ *          @SWG\Property(
  *              property="text",
  *              type="string",
  *              description="テキスト",
@@ -412,6 +417,11 @@
  *              property="isPremium",
  *              type="boolean",
  *              description="プレミアムフラグ"
+ *          ),
+ *          @SWG\Property(
+ *              property="premiumNetStatus",
+ *              type="integer",
+ *              description="SVODステータス"
  *          )
  *  )
  * */
@@ -474,14 +484,9 @@
  *              description="プレミアムフラグ"
  *          ),
  *          @SWG\Property(
- *              property="isPremiumNet",
- *              type="boolean",
- *              description=""
- *          ),
- *          @SWG\Property(
- *              property="allPremiumNet",
- *              type="boolean",
- *              description=""
+ *              property="premiumNetStatus",
+ *              type="integer",
+ *              description="SVODステータス"
  *          )
  *  )
  * */
@@ -633,15 +638,10 @@
  *              description="プレミアムフラグ"
  *          ),
  *          @SWG\Property(
- *              property="isPremiumNet",
- *              type="boolean",
- *              description=""
- *          ),
- *          @SWG\Property(
- *              property="allPremiumNet",
- *              type="boolean",
- *              description=""
- *          ),
+ *              property="premiumNetStatus",
+ *              type="integer",
+ *              description="SVODステータス"
+ *          )
  *  )
  * */
 /**
@@ -723,14 +723,9 @@
  *              description=""
  *          ),
  *          @SWG\Property(
- *              property="isPremiumNet",
- *              type="boolean",
- *              description=""
- *          ),
- *          @SWG\Property(
- *              property="allPremiumNet",
- *              type="boolean",
- *              description=""
+ *              property="premiumNetStatus",
+ *              type="integer",
+ *              description="SVODステータス"
  *          ),
  *  )
  * */
@@ -1088,15 +1083,10 @@
  *              description=""
  *          ),
  *          @SWG\Property(
- *              property="isPremiumNet",
- *              type="boolean",
- *              description=""
+ *              property="premiumNetStatus",
+ *              type="integer",
+ *              description="SVODステータス"
  *          ),
- *          @SWG\Property(
- *              property="allPremiumNet",
- *              type="boolean",
- *              description=""
- *          )
  *  )
  * */
 

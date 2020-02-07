@@ -10,6 +10,7 @@ use App\Model\RecommendTag;
 use App\Model\RecommendTagWork;
 use App\Exceptions\NoContentsException;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Carbon;
 
 /**
  * Created by PhpStorm.
@@ -445,11 +446,22 @@ class WorkRepository extends BaseRepository
                     $tempData['isPremium'] = $itemWork['isPremium'];
 
                     // Add isPremiumNet to response
-                    $tempData['isPremiumNet'] = isset($itemWork['isPremium']) ? $itemWork['isPremium'] : false;
+                    $tempData['isPremiumNet'] = isset($itemWork['isPremiumNet']) ? $itemWork['isPremiumNet'] : false;
 
                     // Add allPremiumNet to response
                     $productModel = new Product();
                     $tempData['allPremiumNet'] = $productModel->processAllPremiumNet($itemWork['workId']);
+
+
+                    $tempData['premiumNetStatus'] = 0;
+                    if ($tempData['isPremiumNet'] === true) {
+                        $tempData['premiumNetStatus'] = 1;
+                        if ($tempData['allPremiumNet'] === true) {
+                            $tempData['premiumNetStatus'] = 2;
+                        }
+                    }
+                    unset($tempData['allPremiumNet']);
+                    unset($tempData['isPremiumNet']);
 
                     array_push($workDataFormat, $tempData);
                     $count++;
@@ -481,7 +493,8 @@ class WorkRepository extends BaseRepository
             $tempData['adultFlg'] = $itemWork['adultFlg'];
             $tempData['workFormatName'] = ($tempData['itemType'] == 'cd' || $tempData['itemType'] == 'dvd') ? $itemWork['workFormatName'] : '';
             $tempData['makerName'] = isset($itemWork['makerName']) ? $itemWork['makerName'] : '';
-            //$tempData['saleStartDate'] = $itemWork['saleStartDate'];
+            $tempData['isPremium'] = $itemWork['isPremium'];
+            $tempData['premiumNetStatus'] = $itemWork['premiumNetStatus'];
 
             array_push($workDataFormat, $tempData);
         }
@@ -649,8 +662,31 @@ class WorkRepository extends BaseRepository
 
         $workIdList = $tagWork->setConditionGetWorkIdByTag($thousandTag)->get($this->limit, $this->offset)->pluck('work_id');
 
-        if (empty($workIdList)) {
-            return null;
+        if (count($workIdList) == 0) {
+            //データが取得できなかった場合は、HiMOから直接取得する
+            $himoResult = [];
+            $himo = new HimoRepository();
+            $himoData = $himo->crossworkForTagWorks($thousandTag)->get();
+
+            if (!empty($himoData) && $himoData['status'] !== 204) {
+                $itemArray = [];
+                $workIds = [];
+                foreach ($himoData['results']['rows'] as $row) {
+                    $item = [];
+                    $item['tag'] = $thousandTag;
+                    $item['work_id'] = $row['work_id'];
+                    $now = Carbon::now();
+                    $item['updated_at'] = $now;
+                    $item['created_at'] = $now;
+                    $itemArray[] = $item;
+                    $workIdList[] = $row['work_id'];
+                }
+            }
+            $tagWork->insert($itemArray);
+        }
+
+        if(count($workIdList) == 0) {
+           return null;
         }
 
         $workIdsExistedArray = DB::table('ts_works')->whereIn('work_id', $workIdList)->get()->pluck('work_id')->toArray();
@@ -714,18 +750,14 @@ class WorkRepository extends BaseRepository
             // 上映映画じゃなかった場合
             if ($response['workTypeId'] !== self::WORK_TYPE_THEATER && $this->saleType === self::SALE_TYPE_THEATER) {
                 return $response;
+            } else if ($response['workTypeId'] === self::WORK_TYPE_THEATER) {
+                $product = (array)$productModel->setConditionByWorkId($response['workId'])->toCamel()->getOne();
             } else {
-                if ($response['workTypeId'] === self::WORK_TYPE_THEATER) {
-                    $product = (array)$productModel->setConditionByWorkId($response['workId'])->toCamel()->getOne();
-                } else {
-                    $product = (array)$productModel->setConditionByWorkIdNewestProduct($response['workId'],
-                        $this->saleType)->toCamel()->getOne();
-                }
+                $product = (array)$productModel->setConditionByWorkIdNewestProduct($response['workId'], $this->saleType)->toCamel()->getOne();
             }
             // 上記で何も拾えなかった場合は、映像のみ  か確認する。
             if ($productModel->isOnlyOtherItem($response['workId'])) {
-                $product = (array)$productModel->setConditionByWorkIdNewestProduct($response['workId'], null, false,
-                    true)->toCamel()->getOne();
+                $product = (array)$productModel->setConditionByWorkIdNewestProduct($response['workId'], null , false, true)->toCamel()->getOne();
                 // 映像のみの作品は固定で入れる
                 $response['saleType'] = self::SALE_TYPE_OTHER;
             }
@@ -811,7 +843,7 @@ class WorkRepository extends BaseRepository
             // 映画の場合の処理
             // 再生時間を返却するが上映映画の時の為だけなのでここでは初期化のみ
             $response['playTime'] = '';
-            if ($response['workTypeId'] === self::WORK_TYPE_THEATER) {
+            if($response['workTypeId'] === self::WORK_TYPE_THEATER) {
                 // 画像はsceneから取得する。
                 $response['jacketL'] = $this->theaterSceneFilter($response['sceneL']);
                 // 再生時間を取得する。
@@ -878,6 +910,14 @@ class WorkRepository extends BaseRepository
             $response['musicDownloadUrl'] = env('MUSICO_URL') . $musicoUrlData->url;
         }
 
+        // ttvUrl
+        if (!empty($response['ttvContentsCd'])) {
+            $response['ttvUrl'] = env('TTV_URL') . '?ttvArtCd=' . $response['ttvContentsCd'];
+        } else {
+            $response['ttvUrl'] = '';
+        }
+        unset($response['ttvContentsCd']);
+
         // 映画作品の場合は固定でいれる
         if ($response['workTypeId'] === self::WORK_TYPE_THEATER) {
             $response['saleType'] = self::SALE_TYPE_THEATER;
@@ -890,11 +930,20 @@ class WorkRepository extends BaseRepository
             $response['isPremium'] = false;
         }
 
+
         // Convert data for isPremiumNet
-        $response['isPremiumNet'] = $response['isPremiumNet'] === 1;
+        if (!empty($response['isPremiumNet'])) {
+            $response['premiumNetStatus'] = 0;
+
+            if ($response['isPremiumNet'] === 1) {
+                $response['premiumNetStatus'] = 1;
+            }
+        } else {
+            $response['premiumNetStatus'] = 0;
+        }
 
         // もとの情報は削除
-        //unset($response['isPremiumNet']);
+        unset($response['isPremiumNet']);
         unset($response['isPremiumShop']);
 
         if ($addSaleTypeHas) {
@@ -933,6 +982,7 @@ class WorkRepository extends BaseRepository
          */
 
         return $response;
+
     }
 
     function getPerson($msdbItem, $peopleJson)
@@ -1687,11 +1737,12 @@ class WorkRepository extends BaseRepository
             // HiMO作品ID
             if ($idItem['id_type'] === '0103') {
                 $base['ccc_work_cd'] = $idItem['id_value'];
-                // URLコード
-            } else {
-                if ($idItem['id_type'] === '0105') {
-                    $base['url_cd'] = $idItem['id_value'];
-                }
+            // URLコード
+            } else if ($idItem['id_type'] === '0105') {
+                $base['url_cd'] = $idItem['id_value'];
+            // ttv_contents_cd
+            } else if ($idItem['id_type'] === '0106') {
+                $base['ttv_contents_cd'] = $idItem['id_value'];
             }
         }
 
@@ -1918,8 +1969,12 @@ class WorkRepository extends BaseRepository
     public function convertTagToName($tagArr = [])
     {
         $result = [];
+        $tagData = [];
+        $save = [];
         if (!empty($tagArr)) {
             $recommendTag = new RecommendTag();
+            $moanaRepository = new MoanaRepository();
+
             foreach ($tagArr as $tag) {
                 $tagInfo = $recommendTag->setConditionByTag($tag)->selectCamel([
                     'tag',
@@ -1928,7 +1983,26 @@ class WorkRepository extends BaseRepository
                 ])->getOne();
                 if ($tagInfo) {
                     $result[] = $tagInfo;
+                } else {
+                    //ts_recommend_tagから取得できなかった場合はMoanaAPIから取得する
+                    $tags = $moanaRepository->getMasterData($tag);
+
+                    if(!empty($tags) && !in_array($tags->tag, $save, true)) {
+                        $item = [];
+                        $item['tag'] = $tags->tag;
+                        $item['tag_message'] = $tags->tagMessage;
+                        $now = Carbon::now();
+                        $item['updated_at'] = $now;
+                        $item['created_at'] = $now;
+                        $tagData[] = $item;
+                        
+                        $result[] = $tags;
+                        $save[] = $tags->tag;
+                    }
                 }
+            }
+            if (!empty($tagData)) {
+                $recommendTag->insert($tagData);
             }
         }
 
