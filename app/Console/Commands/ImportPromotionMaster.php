@@ -175,8 +175,9 @@ class ImportPromotionMaster extends Command
         foreach ($content['work'] as $work) {
             $promotion_work = [];
             $promotion_work['promotion_id'] = $content['id'];
-            $promotion_work['jan'] = $work['jan'];
+            $promotion_work['work_id'] = isset($work['workId']) ? $work['workId'] : '';
             $promotion_work['work_title'] = isset($work['workTitle']) ? $work['workTitle'] : '';
+            $promotion_work['jan'] = $work['jan'];
             $promotion_works[] = $promotion_work;
         }
         $result[self::PROMOTION_WORKS_TABLE] = $promotion_works;

@@ -109,19 +109,13 @@ class PromotionRepository extends BaseRepository
 
         // get data for work
         $result['work'] = [];
-        $promotion_work = new PromotionWork();
-        $jan_arr = $promotion_work->setConditionPromotionId($data['promotion']->id)->get()->pluck('jan')->toArray();
-        $product = new Product();
-        $work_id_arr = $product->setConditionByJans($jan_arr)->select(['work_id', 'jan'])->get()->toArray();
         foreach ($data['promotion_work'] as $work) {
-            foreach ($work_id_arr as $value) {
-                if ($work->jan == $value->jan) {
-                    $result['work'][] = [
-                        'workId' => $value->work_id,
-                        'workTitle' => $work->workTitle
-                    ];
-                }
-            }
+            $saleType = strlen($work->jan) == 13 ? 'Sell' : (strlen($work->jan) == 9 ? 'Rental' : null);
+            $result['work'][] = [
+                'workId' => $work->workId,
+                'workTitle' => $work->workTitle,
+                'saleType' => $saleType
+            ];
         }
 
         $supplements = json_decode($data['promotion']->supplement);
@@ -194,14 +188,17 @@ class PromotionRepository extends BaseRepository
     {
         $results = [];
         foreach ($array as $obj) {
-            $promotion = [];
-            foreach ($obj as $key => $value) {
-                if ($key == 'image') {
-                    $key = 'presentImage';
+            $now = Carbon::now();
+            if (strtotime($obj->promotionStartDate) <= strtotime($now) && strtotime($now) <= strtotime($obj->promotionEndDate)) {
+                $promotion = [];
+                foreach ($obj as $key => $value) {
+                    if ($key == 'image') {
+                        $key = 'presentImage';
+                    }
+                    $promotion[$key] = $value;
                 }
-                $promotion[$key] = $value;
+                $results[] = $promotion;
             }
-            $results[] = $promotion;
         }
 
         return $results;

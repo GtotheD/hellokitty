@@ -16,6 +16,7 @@ class CreateTsMstPromotionWorksTable extends Migration
         Schema::create('ts_mst_promotion_works', function (Blueprint $table) {
             $table->increments('id');
             $table->string('promotion_id', 255);
+            $table->string('work_id', 255)->nullable();
             $table->string('work_title', 255)->nullable();
             $table->string('jan', 255);
             $table->timestamps();
