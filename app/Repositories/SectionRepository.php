@@ -119,8 +119,10 @@ class SectionRepository extends BaseRepository
         $workList = $workRepository->getWorkList($workIds);
         // 店舗プレミアムフラグを取得する
         $workListPremium = [];
+        $workListPremiumNet = [];
         foreach ($workList['rows'] as $workRow) {
             $workListPremium[$workRow['workId']] = $workRow['isPremium'];
+            $workListPremiumNet[$workRow['workId']] = $workRow['premiumNetStatus'];
         }
 
         foreach ($sections as $section) {
@@ -156,6 +158,13 @@ class SectionRepository extends BaseRepository
                     $row['isPremium'] = ($workListPremium[$section->work_id] === true)? true: false;
                 } else {
                     $row['isPremium'] = false;
+                }
+
+                // 取得できたら設定する
+                if(array_key_exists($section->work_id, $workListPremiumNet)) {
+                    $row['premiumNetStatus'] = $workListPremiumNet[$section->work_id];
+                } else {
+                    $row['premiumNetStatus'] = 0;
                 }
             }
 
@@ -370,11 +379,15 @@ class SectionRepository extends BaseRepository
                 $formattedRow['isPremiumNet'] = isset($work['isPremiumNet']) ? $work['isPremiumNet'] : false;
 
                 // Add allPremiumNet
+                $formattedRow['premiumNetStatus'] = $work['premiumNetStatus'];
+
                 if ($formattedRow['isPremiumNet']) {
-                    $formattedRow['allPremiumNet'] = $this->allPremiumNetProcess($work['workId']);
-                } else {
-                    $formattedRow['allPremiumNet'] = false;
+                    $formattedRow['premiumNetStatus'] = 1;
+                    if($this->allPremiumNetProcess($work['workId'])) {
+                        $formattedRow['premiumNetStatus'] = 2;
+                    }
                 }
+                unset($formattedRow['isPremiumNet']);
 
                 $formattedRows[] = $formattedRow;
                 $count++;
@@ -443,14 +456,25 @@ class SectionRepository extends BaseRepository
             $formattedRow['isPremium'] = ($work['isPremium'] === 1)? true: false;
 
             // Add isPremiumNet to response
-            $formattedRow['isPremiumNet'] = isset($work['isPremiumNet']) ? $work['isPremiumNet'] : false;
-
+            //$formattedRow['isPremiumNet'] = isset($work['isPremiumNet']) ? $work['isPremiumNet'] : false;
             // Add allPremiumNet
+            //if ($formattedRow['isPremiumNet']) {
+            //    $formattedRow['allPremiumNet'] = $this->allPremiumNetProcess($work['workId']);
+            //} else {
+            //    $formattedRow['allPremiumNet'] = false;
+            //}
+            
+            // Add allPremiumNet
+            $formattedRow['premiumNetStatus'] = $work['premiumNetStatus'];
             if ($formattedRow['isPremiumNet']) {
-                $formattedRow['allPremiumNet'] = $this->allPremiumNetProcess($work['workId']);
-            } else {
-                $formattedRow['allPremiumNet'] = false;
+                $formattedRow['premiumNetStatus'] = 1;
+                if ($this->allPremiumNetProcess($work['workId'])) {
+                    $formattedRow['premiumNetStatus'] = 2;
+                }
             }
+            unset($formattedRow['isPremiumNet']);
+
+
 
             $formattedRows[] = $formattedRow;
 
@@ -548,14 +572,18 @@ class SectionRepository extends BaseRepository
             $rowUnit['isPremium'] = ($work['isPremium'] === 1)? true: false;
 
             // Process for isPremiumNet
-            $rowUnit['isPremiumNet'] = $work['isPremiumNet'];
+            $rowUnit['premiumNetStatus'] = $work['premiumNetStatus'];
 
             // Process for allPremiumNet
+/*
             if ($work['isPremiumNet']) {
-                $rowUnit['allPremiumNet'] = $this->allPremiumNetProcess($work['workId']);
-            } else {
-                $rowUnit['allPremiumNet'] = false;
+                $rowUnit['premiumNetStatus'] = 1;
+                if($this->allPremiumNetProcess($work['workId'])) {
+                    $rowUnit['premiumNetStatus'] = 2;
+                }
             }
+            unset($rowUnit['isPremiumNet']);
+*/
             // End process for allPremiumNet
 
             // modelNameがあったゲームなので、ゲーム名を取得するようにする。

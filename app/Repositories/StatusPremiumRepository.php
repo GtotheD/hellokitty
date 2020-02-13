@@ -58,4 +58,35 @@ class StatusPremiumRepository extends BaseRepository
         }
         return true;
     }
+
+    /**
+     * プレミアム判定
+     * @return bool
+     * @throws \Exception
+     */
+    public function pre_get()
+    {
+        Log::info('Member Premium Status API tolId : ' . $this->tolId);
+        $this->memId = $this->decodeMemid($this->key, $this->tolId);
+        Log::info('convert tolId : ' . $this->tolId . ' -> ' . $this->memId );
+
+        // 定額レンタル操作 mfr001
+        $tolFlatRentalOperationModel = new TolFlatRentalOperation($this->memId);
+        $tolFlatRentalOperationCollection = $tolFlatRentalOperationModel->getDetail();
+        if (empty($tolFlatRentalOperationCollection)) {
+            return false;
+        }
+        $tolFlatRentalOperation = current($tolFlatRentalOperationCollection->all());
+
+        //T内部管理番号が取れない場合はfalse
+        if (empty($tolFlatRentalOperation['tInternalControlNumber'])) {
+            return false;
+        }
+        
+        $tNaibu = $tolFlatRentalOperation['tInternalControlNumber'];
+        
+        
+        return $tNaibu;
+    }
+
 }
