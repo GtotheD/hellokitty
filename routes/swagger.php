@@ -2931,7 +2931,7 @@
  *       type="array",
  *       @SWG\Schema(
  *         @SWG\Property(
- *             property="tlsc",
+ *             property="tolId",
  *             type="string",
  *             description="ユーザー識別番号(TLSC)",
  *         )

@@ -19,6 +19,7 @@ use App\Repositories\BannerRepository;
 use App\Repositories\WorkRepository;
 use App\Repositories\ProductRepository;
 use App\Repositories\DiscasRepository;
+use App\Repositories\MintRepository;
 use App\Repositories\TAPRepository;
 use App\Repositories\PeopleRepository;
 use App\Repositories\SeriesRepository;
@@ -373,7 +374,7 @@ $router->group([
         if (empty($result)) {
             throw new NoContentsException;
         }
- 
+
         if ($result['premiumNetStatus'] === 1) {
             // Add allPremiumNet in response
             $productModel = new \App\Model\Product();
@@ -381,7 +382,7 @@ $router->group([
                 $result['premiumNetStatus'] = 2;
             }
         }
-        
+
         //$result['allPremiumNet'] = $productModel->processAllPremiumNet($workId);
 
         // 映画リクエストでレスポンスがなかった場合
@@ -1075,9 +1076,9 @@ $router->group([
             }
         }
 
-        
+
         $tagInfo = $workRepository->convertTagToName((array) $thousandTag);
-       
+
         $response = [
             'hasNext' => $workRepository->getHasNext(),
             'totalCount' => $workRepository->getTotalCount(),
@@ -1086,7 +1087,7 @@ $router->group([
             'tagMessage' => $tagInfo[0]->tagMessage,
             'rows' => $workDataFormat
         ];
-         
+
         return response()->json($response);
     });
 
@@ -1399,15 +1400,22 @@ $router->group([
 
     $router->post('member/premium/authKey', function (Request $request) {
         $bodyObj = json_decode($request->getContent(), true);
-        $tlsc = isset($bodyObj['tlsc']) ? $bodyObj['tlsc'] : ''; 
+        $tolId = isset($bodyObj['tolId']) ? $bodyObj['tolId'] : '';
 
-        if (empty($tlsc)) {
-            throw new BadRequestHttpException;
+        $statusPremium = new StatusPremiumRepository($tolId);
+        $tInternalNumber = $statusPremium->pre_get();
+
+        $mintRepository = new MintRepository();
+        try {
+            $response = $mintRepository->authKey($tInternalNumber);
+            $response = [
+                'authKey' => $response['ResultList'][0][0]
+            ];
+        } catch (\Exception $e) {
+            throw new NoContentsException;
         }
-        
-        throw new NoContentsException;
 
-        return null;
+        return response()->json($response)->header('X-Accel-Expires', '86400');
     });
 
 
