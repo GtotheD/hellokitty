@@ -119,26 +119,15 @@ class ImportPromotionMaster extends Command
         $now = Carbon::now();
         foreach ($data as $db => $value) {
             if ($db == self::PROMOTION_TABLE) {
-                $record = DB::table($db)->where('id', $value['id'])->first();
-                if (!empty($record)) {
-                    $this->info(sprintf('Delete existing record in %s table.', $db));
-                    DB::table($db)->where('id', $value['id'])->delete();
-                }
+                DB::table($db)->where('promotion_id', $value['promotion_id'])->delete();
                 $value['created_at'] = $value['updated_at'] = $now;
                 DB::table($db)->insert($value);
-            } elseif ($db == self::PROMOTION_WORKS_TABLE || $db == self::PROMOTION_PRIZE_TABLE) {
-                $existed_ids = DB::table($db)->where('promotion_id', $value[0]['promotion_id'])->get()->pluck('id')->toArray();
-
-                if (!empty($existed_ids)) {
-                    $this->info(sprintf('Delete existing records in %s table.', $db));
-                    DB::table($db)->whereIn('id', $existed_ids)->delete();
-                }
+            } else {
+                DB::table($db)->where('promotion_id', $value[0]['promotion_id'])->delete();
                 foreach ($value as &$v) {
                     $v['created_at'] = $v['updated_at'] = $now;
                 }
                 DB::table($db)->insert($value);
-            } else {
-                $this->importQesAns($value);
             }
         }
     }
@@ -155,7 +144,7 @@ class ImportPromotionMaster extends Command
 
         // PROMOTION_TABLE
         $promotion = [];
-        $promotion['id'] = $content['id'];
+        $promotion['promotion_id'] = $content['id'];
         $promotion['title'] = $content['title'];
         $promotion['main_image'] = isset($content['mainImage']) ? $content['mainImage'] : '';
         $promotion['thumb_image'] = isset($content['thumbImage']) ? $content['thumbImage'] : '';
@@ -172,13 +161,16 @@ class ImportPromotionMaster extends Command
 
         // PROMOTION_WORKS_TABLE
         $promotion_works = [];
+        $i = 1;
         foreach ($content['work'] as $work) {
             $promotion_work = [];
             $promotion_work['promotion_id'] = $content['id'];
+            $promotion_work['sort'] = $i;
             $promotion_work['work_id'] = isset($work['workId']) ? $work['workId'] : '';
             $promotion_work['work_title'] = isset($work['workTitle']) ? $work['workTitle'] : '';
             $promotion_work['jan'] = $work['jan'];
             $promotion_works[] = $promotion_work;
+            $i++;
         }
         $result[self::PROMOTION_WORKS_TABLE] = $promotion_works;
 
@@ -194,60 +186,27 @@ class ImportPromotionMaster extends Command
         $result[self::PROMOTION_PRIZE_TABLE] = $promotion_prizes;
 
         // PROMOTION_QES_TABLE and PROMOTION_ANS_TABLE
-        $promotion_qna = [];
+        $promotion_qeses = $promotion_anses = [];
         foreach ($content['questionnaire'] as $qna) {
             $promotion_qes = [];
             $promotion_qes['promotion_id'] = $content['id'];
             $promotion_qes['sort'] = $qna['sort'];
             $promotion_qes['format'] = $qna['format'];
             $promotion_qes['text'] = $qna['text'];
-            $promotion_anses = [];
+            $promotion_qeses[] = $promotion_qes;
+
             foreach ($qna['answer'] as $ans) {
                 $promotion_ans = [];
+                $promotion_ans['promotion_id'] = $content['id'];
+                $promotion_ans['sort_qes'] = $qna['sort'];
                 $promotion_ans['sort'] = $ans['sort'];
                 $promotion_ans['text'] = $ans['text'];
                 $promotion_anses[] = $promotion_ans;
             }
-            $promotion_qes['answer'] = $promotion_anses;
-            $promotion_qna[] = $promotion_qes;
         }
-        $result['qes_ans'] = $promotion_qna;
+        $result[self::PROMOTION_QES_TABLE] = $promotion_qeses;
+        $result[self::PROMOTION_ANS_TABLE] = $promotion_anses;
 
         return $result;
-    }
-
-    /**
-     * import to db for qes and ans table.
-     */
-    public function importQesAns($data)
-    {
-        $now = Carbon::now();
-        $existed_ids = DB::table(self::PROMOTION_QES_TABLE)->where('promotion_id', $data[0]['promotion_id'])->get()->pluck('id')->toArray();
-        if (!empty($existed_ids)) {
-            $this->info(sprintf('Delete existing records in %s table.', self::PROMOTION_QES_TABLE));
-            DB::table(self::PROMOTION_QES_TABLE)->whereIn('id', $existed_ids)->delete();
-            $this->info(sprintf('Delete existing records in %s table.', self::PROMOTION_ANS_TABLE));
-            DB::table(self::PROMOTION_ANS_TABLE)->whereIn('qes_id', $existed_ids)->delete();
-        }
-        foreach ($data as $value) {
-            $qes = [];
-            $qes['promotion_id'] = $value['promotion_id'];
-            $qes['sort'] = $value['sort'];
-            $qes['format'] = $value['format'];
-            $qes['text'] = $value['text'];
-            $qes['created_at'] = $qes['updated_at'] = $now;
-            $qes_id = DB::table(self::PROMOTION_QES_TABLE)->insertGetId($qes);
-
-            $anses = [];
-            foreach ($value['answer'] as $answer) {
-                $ans = [];
-                $ans['qes_id'] = $qes_id;
-                $ans['sort'] = $answer['sort'];
-                $ans['text'] = $answer['text'];
-                $ans['created_at'] = $ans['updated_at'] = $now;
-                $anses[] = $ans;
-            }
-            DB::table(self::PROMOTION_ANS_TABLE)->insert($anses);
-        }
     }
 }

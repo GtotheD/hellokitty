@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Schema;
 class PromotionWork extends Model
 {
     const TABLE = 'ts_mst_promotion_works';
+    protected $primaryKey = ['promotion_id', 'sort'];
+    public $incrementing = false;
 
     function __construct($connection = null)
     {

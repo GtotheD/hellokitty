@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Schema;
 class PromotionAns extends Model
 {
     const TABLE = 'ts_mst_promotion_ans';
+    protected $primaryKey = ['promotion_id', 'sort_qes', 'sort'];
+    public $incrementing = false;
 
     function __construct($connection = null)
     {
@@ -15,10 +17,12 @@ class PromotionAns extends Model
         $this->setConnection($connection);
     }
 
-    public function setConditionQesIds($qes_id_arr)
+    public function setConditionPromotionId($promotion_id)
     {
         $this->dbObject = $this->connection->table($this->table)
-            ->whereIn('qes_id', $qes_id_arr);
+            ->where([
+                'promotion_id' => $promotion_id,
+            ]);
         return $this;
     }
 }

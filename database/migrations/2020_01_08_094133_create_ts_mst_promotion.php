@@ -14,8 +14,8 @@ class CreateTsMstPromotion extends Migration
     public function up()
     {
         Schema::create('ts_mst_promotion', function (Blueprint $table) {
-            $table->string('id', 255)->primary();
-            $table->string('title', 255)->nullable();
+            $table->string('promotion_id', 255)->primary();
+            $table->string('title', 255);
             $table->string('main_image', 255)->nullable();
             $table->string('thumb_image', 255)->nullable();
             $table->string('outline', 255)->nullable();

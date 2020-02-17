@@ -28,7 +28,7 @@ class PromotionRepository extends BaseRepository
     public function selectColumns()
     {
         $columns = [
-            'id',
+            'promotion_id',
             'outline',
             'title',
             'main_image',
@@ -75,11 +75,13 @@ class PromotionRepository extends BaseRepository
         $promotion_ans = new PromotionAns();
 
         $response['promotion'] = $this->get($promotion_id);
-        $response['promotion_work'] = $promotion_work->setConditionPromotionId($promotion_id)->toCamel(['id', 'created_at', 'updated_at'])->get()->toArray();
-        $response['promotion_prize'] = $promotion_prize->setConditionPromotionId($promotion_id)->toCamel(['id', 'created_at', 'updated_at'])->get()->toArray();
-        $response['promotion_qes'] = $promotion_qes->setConditionPromotionId($promotion_id)->toCamel(['created_at', 'updated_at'])->get()->toArray();
-        $qes_id_arr = $promotion_qes->setConditionPromotionId($promotion_id)->get()->pluck('id')->toArray();
-        $response['promotion_ans'] = $promotion_ans->setConditionQesIds($qes_id_arr)->toCamel(['id', 'created_at', 'updated_at'])->get()->toArray();
+        $arr = ['promotion_work', 'promotion_prize', 'promotion_qes', 'promotion_ans'];
+        foreach ($arr as $table) {
+            $response[$table] = ${$table}->setConditionPromotionId($promotion_id)
+                                                         ->toCamel(['created_at', 'updated_at'])
+                                                         ->get()
+                                                         ->toArray();
+        }
 
         return $this->formatOutputPromotion($response);
     }
@@ -93,14 +95,14 @@ class PromotionRepository extends BaseRepository
     {
         $now = Carbon::now();
         $result = [];
-        $result['id'] = $data['promotion']->id;
+        $result['id'] = $data['promotion']->promotionId;
         $result['title'] = $data['promotion']->title;
         $result['mainImage'] = $data['promotion']->mainImage;
         $result['thumbImage'] = $data['promotion']->thumbImage;
         $result['outline'] = $data['promotion']->outline;
         $startDate = $data['promotion']->promotionStartDate;
         $endDate = $data['promotion']->promotionEndDate;
-        $result['periodFlg'] = (strtotime($startDate) <= strtotime($now) && strtotime($now) <= strtotime($endDate)) ? true : false;
+        $result['periodFlg'] = strtotime($startDate) <= strtotime($now) && strtotime($now) <= strtotime($endDate);
         $result['promotionDates'] = [
             'startDate' => $startDate,
             'endDate' => $endDate
@@ -143,7 +145,7 @@ class PromotionRepository extends BaseRepository
         foreach ($data['promotion_qes'] as $qes) {
             $ans_arr = [];
             foreach ($data['promotion_ans'] as $ans) {
-                if ($qes->id == $ans->qesId) {
+                if ($qes->sort == $ans->sortQes) {
                     $ans_arr[] = [
                         'sort' => $ans->sort,
                         'text' => $ans->text
@@ -189,16 +191,20 @@ class PromotionRepository extends BaseRepository
         $results = [];
         foreach ($array as $obj) {
             $now = Carbon::now();
-            if (strtotime($obj->promotionStartDate) <= strtotime($now) && strtotime($now) <= strtotime($obj->promotionEndDate)) {
-                $promotion = [];
-                foreach ($obj as $key => $value) {
-                    if ($key == 'image') {
-                        $key = 'presentImage';
-                    }
-                    $promotion[$key] = $value;
-                }
-                $results[] = $promotion;
+            if (strtotime($obj->promotionEndDate) < strtotime($now) || strtotime($now) < strtotime($obj->promotionStartDate)) {
+                continue;
             }
+            $promotion = [];
+            foreach ($obj as $key => $value) {
+                if ($key == 'promotionId') {
+                    $key = 'id';
+                }
+                if ($key == 'image') {
+                    $key = 'presentImage';
+                }
+                $promotion[$key] = $value;
+            }
+            $results[] = $promotion;
         }
 
         return $results;

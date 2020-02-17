@@ -18,14 +18,14 @@ class Promotion extends Model
     public function setConditionByPromotionId($prom_id = null)
     {
         $this->dbObject = $this->connection->table($this->table)
-            ->where('id', $prom_id);
+            ->where('promotion_id', $prom_id);
         return $this;
     }
 
     public function setConditionByPromotionIds($prom_ids = null)
     {
         $this->dbObject = $this->connection->table($this->table)
-            ->whereIn('id', $prom_ids);
+            ->whereIn('promotion_id', $prom_ids);
         return $this;
     }
 }

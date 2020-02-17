@@ -14,11 +14,12 @@ class CreateTsMstPromotionAnsTable extends Migration
     public function up()
     {
         Schema::create('ts_mst_promotion_ans', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('qes_id', 255);
+            $table->string('promotion_id', 255);
+            $table->unsignedInteger('sort_qes');
             $table->unsignedInteger('sort');
             $table->string('text', 255);
             $table->timestamps();
+            $table->primary(['promotion_id', 'sort_qes', 'sort']);
         });
     }
 

@@ -1435,6 +1435,7 @@ $router->group([
         if (empty($result)) {
             throw new NoContentsException;
         }
+        
         return response()->json($result)->header('X-Accel-Expires', '86400');
     });
 
