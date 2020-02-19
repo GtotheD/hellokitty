@@ -888,7 +888,7 @@ class WorkRepository extends BaseRepository
             }
             // get promotion info
             $promotion = new PromotionRepository();
-            $promotionData = $promotion->getPromotionDataForWork($product['jan'], true);
+            $promotionData = $promotion->getPromotionDataForWork($response['workId'], $response['saleType'], true);
         }
         $response['newFlg'] = newFlg($response['saleStartDate']);
 

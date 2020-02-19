@@ -112,7 +112,7 @@ class PromotionRepository extends BaseRepository
         // get data for work
         $result['work'] = [];
         foreach ($data['promotion_work'] as $work) {
-            $saleType = strlen($work->jan) == 13 ? 'Sell' : (strlen($work->jan) == 9 ? 'Rental' : null);
+            $saleType = strlen($work->jan) == 13 ? 'sell' : (strlen($work->jan) == 9 ? 'rental' : null);
             $result['work'][] = [
                 'workId' => $work->workId,
                 'workTitle' => $work->workTitle,
@@ -166,15 +166,15 @@ class PromotionRepository extends BaseRepository
 
     /**
      * get promotion data for API work/{workId}
-     * @param string $jan, boolean $multiple, array $selectColumns
+     * @param string $workId, boolean $multiple, array $selectColumns
      * @return array
      */
-    public function getPromotionDataForWork($jan = null, $multiple = false, $selectColumns = null)
+    public function getPromotionDataForWork($workId = null, $saleType = null, $multiple = false, $selectColumns = null)
     {
         $result = [];
-        if (isset($jan)) {
+        if (isset($workId)) {
             $promotionWork = new PromotionWork();
-            $list_prom_ids =  $promotionWork->setConditionByJan($jan)->get()->pluck('promotion_id')->toArray();
+            $list_prom_ids = $promotionWork->setConditionByWorkId($workId, $saleType)->get()->pluck('promotion_id')->toArray();
             $result = $this->get($list_prom_ids, $multiple, $this->selectColumns());
         }
 

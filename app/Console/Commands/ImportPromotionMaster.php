@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Repositories\WorkRepository;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
@@ -138,7 +139,7 @@ class ImportPromotionMaster extends Command
     public function formatPromotionMaster($import_file)
     {
         $content = file_get_contents($import_file);
-        $content = mb_convert_encoding($content, 'UTF-8', 'SHIFT-JIS');
+        //$content = mb_convert_encoding($content, 'UTF-8', 'SHIFT-JIS');
         $content = json_decode($content, true);
         $result = [];
 
@@ -162,12 +163,35 @@ class ImportPromotionMaster extends Command
         // PROMOTION_WORKS_TABLE
         $promotion_works = [];
         $i = 1;
+        $workRepository = new WorkRepository;
         foreach ($content['work'] as $work) {
             $promotion_work = [];
             $promotion_work['promotion_id'] = $content['id'];
             $promotion_work['sort'] = $i;
-            $promotion_work['work_id'] = isset($work['workId']) ? $work['workId'] : '';
-            $promotion_work['work_title'] = isset($work['workTitle']) ? $work['workTitle'] : '';
+
+            $length = strlen($work['jan']);
+            // Item
+            if ($length === 9) {
+                $codeType = '0206';
+                $sale_type = 'rental';
+            } elseif ($length === 13) {
+                $codeType = '0205';
+                $sale_type = 'sell';
+            }
+
+            $this->info('Id Type: ' . $codeType);
+            if (!empty($codeType)) {
+                $workRepository->setSaleType($sale_type);
+                $res = $workRepository->get($work['jan'], [], $codeType);
+                if (empty($res)) {
+                    continue;
+                }
+                $workid = $res['workId'];
+                $title = $res['workTitle'];
+                $sale_type = $res['saleType'];
+            }
+            $promotion_work['work_id'] = $workid;
+            $promotion_work['work_title'] = isset($work['workTitle']) ? $work['workTitle'] : $title;
             $promotion_work['jan'] = $work['jan'];
             $promotion_works[] = $promotion_work;
             $i++;

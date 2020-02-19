@@ -1435,9 +1435,34 @@ $router->group([
         if (empty($result)) {
             throw new NoContentsException;
         }
-        
-        return response()->json($result)->header('X-Accel-Expires', '86400');
+        $response = $result;
+        return response()->json($response)->header('X-Accel-Expires', '86400');
     });
+
+    // キャンペーン応募
+    $router->post('promotion/entry', function (Request $request) {
+        $body = json_decode($request->getContent(), true);
+        
+        $response = [
+            'result' => true
+        ];
+
+        return response()->json($response)->header('X-Accel-Expires', '600');
+    });
+
+    // キャンペーン応募回数
+    $router->post('promotion/entry/check', function (Request $request) {
+        $body = json_decode($request->getContent(), true);
+       
+        throw new NoContentsException;
+     
+        //$response = [
+        //    'count' => 0
+        //];
+
+        return response()->json($response)->header('X-Accel-Expires', '600');
+    });
+
 
     // 検証環境まで有効にするテスト用
     if (env('APP_ENV') === 'local' || env('APP_ENV') === 'develop' || env('APP_ENV') === 'staging') {

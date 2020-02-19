@@ -34,4 +34,17 @@ class PromotionWork extends Model
             ]);
         return $this;
     }
+
+    public function setConditionByWorkId($workId, $saleType)
+    {
+        if ($saleType === 'rental') {
+            $len = 9;
+        } else {
+            $len = 13;
+        }
+        $this->dbObject = $this->connection->table($this->table)
+            ->where('work_Id', $workId)
+            ->whereRaw('char_length(jan) = '. $len);
+        return $this;
+    }
 }
