@@ -38,6 +38,7 @@ use App\Repositories\PointRepository;
 use App\Repositories\SectionPremiumRecommend;
 use App\Repositories\StatusPremiumRepository;
 use App\Repositories\NotificationRepository;
+use App\Repositories\PromotionRepository;
 use App\Exceptions\AgeLimitException;
 use App\Exceptions\ContentsException;
 use App\Exceptions\NoContentsException;
@@ -374,6 +375,16 @@ $router->group([
         if (empty($result)) {
             throw new NoContentsException;
         }
+ 
+        if ($result['premiumNetStatus'] === 1) {
+            // Add allPremiumNet in response
+            $productModel = new \App\Model\Product();
+            if($productModel->processAllPremiumNet($workId) == true) {
+                $result['premiumNetStatus'] = 2;
+            }
+        }
+        
+        //$result['allPremiumNet'] = $productModel->processAllPremiumNet($workId);
 
         if ($result['premiumNetStatus'] === 1) {
             // Add allPremiumNet in response
@@ -1397,7 +1408,6 @@ $router->group([
         return response()->json($response)->header('X-Accel-Expires', '0');
     });
 
-
     $router->post('member/premium/authKey', function (Request $request) {
         $bodyObj = json_decode($request->getContent(), true);
         $tolId = isset($bodyObj['tolId']) ? $bodyObj['tolId'] : '';
@@ -1418,6 +1428,16 @@ $router->group([
         return response()->json($response)->header('X-Accel-Expires', '86400');
     });
 
+    // キャンペーン情報
+    $router->get('/promotion/{promotion_id}', function (Request $request, $promotion_id) {
+        $promotionRepository = new PromotionRepository();
+        $result = $promotionRepository->getPromotionData($promotion_id);
+        if (empty($result)) {
+            throw new NoContentsException;
+        }
+        
+        return response()->json($result)->header('X-Accel-Expires', '86400');
+    });
 
     // 検証環境まで有効にするテスト用
     if (env('APP_ENV') === 'local' || env('APP_ENV') === 'develop' || env('APP_ENV') === 'staging') {

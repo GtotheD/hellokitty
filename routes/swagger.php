@@ -2955,3 +2955,36 @@
  *     @SWG\Response(response=500, description="Server error")
  * )
  */
+
+/**
+ * @SWG\Get(
+ *     path="/promotion/{promotion_id}",
+ *     description="キャンペーン情報",
+ *     tags={"Promotion"},
+ *     produces={"application/json"},
+ *     security={{"api_key":{}}},
+ *     @SWG\Parameter(
+ *          name="promotion_id",
+ *          description="キャンペーンID",
+ *          in="path",
+ *          required=true,
+ *          type="string"
+ *     ),
+ *     @SWG\Parameter(ref="#/parameters/limit"),
+ *     @SWG\Parameter(ref="#/parameters/offset"),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="data",
+ *                  type="object",
+ *                  ref="#/definitions/Promotion",
+ *                  description="キャンペーン情報",
+ *              ),
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
