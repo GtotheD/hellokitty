@@ -8,6 +8,8 @@ use App\Model\Work;
 use App\Model\Product;
 use App\Model\RecommendTag;
 use App\Model\RecommendTagWork;
+use App\Model\Promotion;
+use App\Model\PromotionWork;
 use App\Exceptions\NoContentsException;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
@@ -446,12 +448,12 @@ class WorkRepository extends BaseRepository
                     $tempData['isPremium'] = $itemWork['isPremium'];
 
                     // Add isPremiumNet to response
-                    $tempData['isPremiumNet'] = isset($itemWork['isPremiumNet']) ? $itemWork['isPremiumNet'] : false;
+                    /*$tempData['isPremiumNet'] = isset($itemWork['isPremiumNet']) ? $itemWork['isPremiumNet'] : false;
+
 
                     // Add allPremiumNet to response
                     $productModel = new Product();
                     $tempData['allPremiumNet'] = $productModel->processAllPremiumNet($itemWork['workId']);
-
 
                     $tempData['premiumNetStatus'] = 0;
                     if ($tempData['isPremiumNet'] === true) {
@@ -460,6 +462,8 @@ class WorkRepository extends BaseRepository
                             $tempData['premiumNetStatus'] = 2;
                         }
                     }
+                    */
+                    $tempData['premiumNetStatus'] = $itemWork['premiumNetStatus'];
                     unset($tempData['allPremiumNet']);
                     unset($tempData['isPremiumNet']);
 
@@ -882,6 +886,9 @@ class WorkRepository extends BaseRepository
                     }
                 }
             }
+            // get promotion info
+            $promotion = new PromotionRepository();
+            $promotionData = $promotion->getPromotionDataForWork($response['workId'], $response['saleType'], true);
         }
         $response['newFlg'] = newFlg($response['saleStartDate']);
 
@@ -980,6 +987,9 @@ class WorkRepository extends BaseRepository
         /**
          * End process for thousand tag
          */
+
+        // add promotion data to response
+        $response['promotion'] = isset($promotionData) ? $promotionData : '';
 
         return $response;
 

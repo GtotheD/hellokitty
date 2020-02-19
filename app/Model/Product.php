@@ -279,6 +279,13 @@ class Product extends Model
         return $this;
     }
 
+    public function setConditionByJans($jan_arr)
+    {
+        $this->dbObject = DB::table($this->table)
+            ->whereIn('jan', $jan_arr);
+        return $this;
+    }
+
     public function setConditionByRentalProductCd($rentalProductCd)
     {
         $this->dbObject = DB::table($this->table . ' AS p1')
