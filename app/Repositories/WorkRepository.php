@@ -446,12 +446,12 @@ class WorkRepository extends BaseRepository
                     $tempData['isPremium'] = $itemWork['isPremium'];
 
                     // Add isPremiumNet to response
-                    $tempData['isPremiumNet'] = isset($itemWork['isPremiumNet']) ? $itemWork['isPremiumNet'] : false;
+                    /*$tempData['isPremiumNet'] = isset($itemWork['isPremiumNet']) ? $itemWork['isPremiumNet'] : false;
+
 
                     // Add allPremiumNet to response
                     $productModel = new Product();
                     $tempData['allPremiumNet'] = $productModel->processAllPremiumNet($itemWork['workId']);
-
 
                     $tempData['premiumNetStatus'] = 0;
                     if ($tempData['isPremiumNet'] === true) {
@@ -460,6 +460,8 @@ class WorkRepository extends BaseRepository
                             $tempData['premiumNetStatus'] = 2;
                         }
                     }
+                    */
+                    $tempData['premiumNetStatus'] = $itemWork['premiumNetStatus'];
                     unset($tempData['allPremiumNet']);
                     unset($tempData['isPremiumNet']);
 
