@@ -196,6 +196,12 @@ class PromotionRepository extends BaseRepository
             }
             $promotion = [];
             foreach ($obj as $key => $value) {
+                if ($key == 'promotionStartDate') {
+                    $key = 'startDate';
+                }
+                if ($key == 'promotionEndDate') {
+                    $key = 'endDate';
+                } 
                 if ($key == 'promotionId') {
                     $key = 'id';
                 }
