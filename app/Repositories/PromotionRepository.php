@@ -228,7 +228,7 @@ class PromotionRepository extends BaseRepository
                 }
                 if ($key == 'promotionEndDate') {
                     $key = 'endDate';
-                }                
+                }
                 if ($key == 'promotionId') {
                     $key = 'id';
                 }
