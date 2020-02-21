@@ -56,7 +56,7 @@ class ImportPromotionMaster extends Command
 
         if (!file_exists($storage_path)) {
             if (@mkdir($storage_path, '0777', true)) {
-                $this->info('Create subfolder promotionMaster in storage/app.');
+                $this->info(date("Y/m/d H:i:s") . ':Create subfolder promotionMaster in storage/app.');
             } else {
                 throw new Exception('failed mkdir : ' . $storage_path);
             }
@@ -64,17 +64,17 @@ class ImportPromotionMaster extends Command
         
         $files = glob($absolute_path . DIRECTORY_SEPARATOR . '*.*');
         if (empty($files)) {
-            $this->error(sprintf('There is no file in %s', $absolute_path));
+            $this->error(date("Y/m/d H:i:s") . ':' .sprintf('There is no file in %s', $absolute_path));
             return;
         }
-        $this->info(sprintf('Get file from %s to storage.', $absolute_path));
+        $this->info(date("Y/m/d H:i:s") . ':' . sprintf('Get file from %s to storage.', $absolute_path));
         // backup if old files exist
         $old_files = glob($storage_path . DIRECTORY_SEPARATOR . '*.*');
         if (!empty($old_files)) {
             // create backup folder
             $bk_dir = $storage_path . DIRECTORY_SEPARATOR . 'back_up' . DIRECTORY_SEPARATOR . date('Ymd') . '_' . date('His');
             if (@mkdir($bk_dir, '0777', true)) {
-                $this->info(sprintf('Create backup folder %s', $bk_dir));
+                $this->info(date("Y/m/d H:i:s") . ':' . sprintf('Create backup folder %s', $bk_dir));
             } else {
                 throw new Exception('failed mkdir : ' . $bk_dir);
             }
@@ -93,19 +93,31 @@ class ImportPromotionMaster extends Command
             $this->error(sprintf('There is no file to import in %s', $storage_path));
             return;
         }
-        $this->info('Transaction start!');
+        
+        $this->info(date("Y/m/d H:i:s") . ':' . 'Transaction start!');
+
+
+        $datas = [];
+        foreach ($import_files as $import_file) {
+            $datas[] = $this->formatPromotionMaster($import_file);
+        }
+
+	if (count($datas) == 0) {
+            retuen;
+        }
+
         DB::beginTransaction();
         try {
-            foreach ($import_files as $import_file) {
-                $this->upsertPromotionMaster($import_file);
+            foreach ($datas as $data) {
+                $this->upsertPromotionMaster($data);
             }
 
             DB::commit();
-            $this->info('Transaction end! Upsert successfully!');
+            $this->info(date("Y/m/d H:i:s") . ':' . 'Transaction end! Upsert successfully!');
         } catch (Exception $e) {
             $this->error('Error while inserting promotion master data. Error message:' . $e->getMessage() .'.Line: ' . $e->getLine());
             DB::rollback();
-            $this->info('Transaction end! Rollback!');
+            $this->info(date("Y/m/d H:i:s") . ':' .'Transaction end! Rollback!');
         }
 
         return true;
@@ -114,9 +126,9 @@ class ImportPromotionMaster extends Command
     /**
      * Insert data from file.
      */
-    public function upsertPromotionMaster($import_file)
+    public function upsertPromotionMaster($data)
     {
-        $data = $this->formatPromotionMaster($import_file);
+        //$data = $this->formatPromotionMaster($import_file);
         $now = Carbon::now();
         foreach ($data as $db => $value) {
             if ($db == self::PROMOTION_TABLE) {
@@ -179,7 +191,6 @@ class ImportPromotionMaster extends Command
                 $sale_type = 'sell';
             }
 
-            $this->info('Id Type: ' . $codeType);
             if (!empty($codeType)) {
                 $workRepository->setSaleType($sale_type);
                 $res = $workRepository->get($work['jan'], [], $codeType);
@@ -190,8 +201,11 @@ class ImportPromotionMaster extends Command
                 $title = $res['workTitle'];
                 $sale_type = $res['saleType'];
             }
+            if($work['workTitle'] != '') {
+                $title = $work['workTitle'];
+            }
             $promotion_work['work_id'] = $workid;
-            $promotion_work['work_title'] = isset($work['workTitle']) ? $work['workTitle'] : $title;
+            $promotion_work['work_title'] = $title;
             $promotion_work['jan'] = $work['jan'];
             $promotion_works[] = $promotion_work;
             $i++;
