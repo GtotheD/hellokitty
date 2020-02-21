@@ -137,10 +137,10 @@ class PromotionRepository extends BaseRepository
         $result['target'] = $data['promotion']->target;
 
         // get data for work
-        $result['work'] = [];
+        $result['works'] = [];
         foreach ($data['promotion_work'] as $work) {
             $saleType = strlen($work->jan) == 13 ? 'sell' : (strlen($work->jan) == 9 ? 'rental' : null);
-            $result['work'][] = [
+            $result['works'][] = [
                 'workId' => $work->workId,
                 'workTitle' => $work->workTitle,
                 'saleType' => $saleType
