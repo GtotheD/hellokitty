@@ -151,7 +151,6 @@ class ImportPromotionMaster extends Command
     public function formatPromotionMaster($import_file)
     {
         $content = file_get_contents($import_file);
-        //$content = mb_convert_encoding($content, 'UTF-8', 'SHIFT-JIS');
         $content = json_decode($content, true);
         $result = [];
 
@@ -173,77 +172,84 @@ class ImportPromotionMaster extends Command
         $result[self::PROMOTION_TABLE] = $promotion;
 
         // PROMOTION_WORKS_TABLE
-        $promotion_works = [];
-        $i = 1;
-        $workRepository = new WorkRepository;
-        foreach ($content['work'] as $work) {
-            $promotion_work = [];
-            $promotion_work['promotion_id'] = $content['id'];
-            $promotion_work['sort'] = $i;
+        if (count($content['work']) > 0) {
+            $promotion_works = [];
+            $i = 1;
+            $workRepository = new WorkRepository;
+            foreach ($content['work'] as $work) {
+                $promotion_work = [];
+                $promotion_work['promotion_id'] = $content['id'];
+                $promotion_work['sort'] = $i;
 
-            $length = strlen($work['jan']);
-            // Item
-            if ($length === 9) {
-                $codeType = '0206';
-                $sale_type = 'rental';
-            } elseif ($length === 13) {
-                $codeType = '0205';
-                $sale_type = 'sell';
-            }
-
-            if (!empty($codeType)) {
-                $workRepository->setSaleType($sale_type);
-                $res = $workRepository->get($work['jan'], [], $codeType);
-                if (empty($res)) {
-                    continue;
+                $length = strlen($work['jan']);
+                // Item
+                if ($length === 9) {
+                    $codeType = '0206';
+                    $sale_type = 'rental';
+                } elseif ($length === 13) {
+                    $codeType = '0205';
+                    $sale_type = 'sell';
                 }
-                $workid = $res['workId'];
-                $title = $res['workTitle'];
-                $sale_type = $res['saleType'];
+
+                $this->info($codeType . ':' . $work['jan']);
+                if (!empty($codeType)) {
+                    $workRepository->setSaleType($sale_type);
+                    $res = $workRepository->get($work['jan'], [], $codeType);
+                    if (empty($res)) {
+                        continue;
+                    }
+                    $workid = $res['workId'];
+                    $title = $res['workTitle'];
+                    $sale_type = $res['saleType'];
+                }
+                if($work['workTitle'] != '') {
+                    $title = $work['workTitle'];
+                }
+                $promotion_work['work_id'] = $workid;
+                $promotion_work['work_title'] = $title;
+                $promotion_work['jan'] = $work['jan'];
+                $promotion_works[] = $promotion_work;
+                $i++;
             }
-            if($work['workTitle'] != '') {
-                $title = $work['workTitle'];
-            }
-            $promotion_work['work_id'] = $workid;
-            $promotion_work['work_title'] = $title;
-            $promotion_work['jan'] = $work['jan'];
-            $promotion_works[] = $promotion_work;
-            $i++;
+            $result[self::PROMOTION_WORKS_TABLE] = $promotion_works;
         }
-        $result[self::PROMOTION_WORKS_TABLE] = $promotion_works;
 
         // PROMOTION_PRIZE_TABLE
-        $promotion_prizes = [];
-        foreach ($content['prize'] as $prize) {
-            $promotion_prize = [];
-            $promotion_prize['promotion_id'] = $content['id'];
-            $promotion_prize['sort'] = $prize['sort'];
-            $promotion_prize['text'] = $prize['text'];
-            $promotion_prizes[] = $promotion_prize;
+        if (count($content['prize']) > 0) {
+            $promotion_prizes = [];
+            foreach ($content['prize'] as $prize) {
+                $promotion_prize = [];
+                $promotion_prize['promotion_id'] = $content['id'];
+                $promotion_prize['sort'] = $prize['sort'];
+                $promotion_prize['text'] = $prize['text'];
+                $promotion_prizes[] = $promotion_prize;
+            }
+            $result[self::PROMOTION_PRIZE_TABLE] = $promotion_prizes;
         }
-        $result[self::PROMOTION_PRIZE_TABLE] = $promotion_prizes;
 
         // PROMOTION_QES_TABLE and PROMOTION_ANS_TABLE
-        $promotion_qeses = $promotion_anses = [];
-        foreach ($content['questionnaire'] as $qna) {
-            $promotion_qes = [];
-            $promotion_qes['promotion_id'] = $content['id'];
-            $promotion_qes['sort'] = $qna['sort'];
-            $promotion_qes['format'] = $qna['format'];
-            $promotion_qes['text'] = $qna['text'];
-            $promotion_qeses[] = $promotion_qes;
+        if (count($content['questionnaire']) > 0) {
+            $promotion_qeses = $promotion_anses = [];
+            foreach ($content['questionnaire'] as $qna) {
+                $promotion_qes = [];
+                $promotion_qes['promotion_id'] = $content['id'];
+                $promotion_qes['sort'] = $qna['sort'];
+                $promotion_qes['format'] = $qna['format'];
+                $promotion_qes['text'] = $qna['text'];
+                $promotion_qeses[] = $promotion_qes;
 
-            foreach ($qna['answer'] as $ans) {
-                $promotion_ans = [];
-                $promotion_ans['promotion_id'] = $content['id'];
-                $promotion_ans['sort_qes'] = $qna['sort'];
-                $promotion_ans['sort'] = $ans['sort'];
-                $promotion_ans['text'] = $ans['text'];
-                $promotion_anses[] = $promotion_ans;
+                foreach ($qna['answer'] as $ans) {
+                    $promotion_ans = [];
+                    $promotion_ans['promotion_id'] = $content['id'];
+                    $promotion_ans['sort_qes'] = $qna['sort'];
+                    $promotion_ans['sort'] = $ans['sort'];
+                    $promotion_ans['text'] = $ans['text'];
+                    $promotion_anses[] = $promotion_ans;
+                }
             }
+            $result[self::PROMOTION_QES_TABLE] = $promotion_qeses;
+            $result[self::PROMOTION_ANS_TABLE] = $promotion_anses;
         }
-        $result[self::PROMOTION_QES_TABLE] = $promotion_qeses;
-        $result[self::PROMOTION_ANS_TABLE] = $promotion_anses;
 
         return $result;
     }
