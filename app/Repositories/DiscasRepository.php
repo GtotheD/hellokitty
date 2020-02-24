@@ -14,10 +14,13 @@ class DiscasRepository extends ApiRequesterRepository
     protected $limit;
     protected $apiHost;
     protected $apiNewHost;
+    protected $apiTTVHost;
 
     const DISCAS_REVIEW_API = '/netdvd/sp/webapi/review/reviewInfo'; // 作品詳細用
     const DISCAS_CUSTOMER_API = '/v2/customer'; // 作品詳細用
     const HASDIS_CUSTOMER_API = '/v2/customer/hasDisc'; // 会員情報の拡充 API
+    const TTV_RECOMMEND_API = '/web/v1/vod/recommend?recommend_type=1';
+
 
     use TlscEncryption;
 
@@ -29,6 +32,7 @@ class DiscasRepository extends ApiRequesterRepository
         $this->limit = $limit;
         $this->apiHost = env('DISCAS_API_HOST');
         $this->apiNewHost = env('DISCAS_NEW_API_HOST');
+        $this->apiTTVHost = env('TTV_API_HOST');
     }
 
     /*
@@ -174,6 +178,15 @@ class DiscasRepository extends ApiRequesterRepository
             'cookie' => 'lv2LoginTkn=' . $lv2Token
         ]);
         return $this;
+    }
+
+    //ttvで編成している「TSUTAYAプレミアムのおすすめ」を取得する
+    public function ttvRecommendList()
+    {
+      $userAgent = 'GuzzleHttp/6.2.0 curl/7.29.0 PHP/7.0.14';
+      $this->apiPath = $this->apiTTVHost . self::TTV_RECOMMEND_API;
+
+      return $this;
     }
 
     public function getLv2LoginTokenFromTlsc($tlsc)

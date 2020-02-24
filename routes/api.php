@@ -243,6 +243,25 @@ $router->group([
         return response()->json($response)->header('X-Accel-Expires', '600');
     });
 
+    // TOP用プレミアムレコメンド net見放題API
+    $router->get('section/premium/dvd/rental/recommendNet', function (Request $request) {
+        $sectionPremiumRecommend = new SectionPremiumRecommend;
+        $sectionPremiumRecommend->setLimit($request->input('limit', 10));
+        $sectionPremiumRecommend->setOffset($request->input('offset', 0));
+
+        $sectionPremiumRecommend->getNetWorks();
+
+        if ($sectionPremiumRecommend->getTotalCount() == 0) {
+            throw new NoContentsException;
+        }
+        $response = [
+            'hasNext' => $sectionPremiumRecommend->getHasNext(),
+            'totalCount' => $sectionPremiumRecommend->getTotalCount(),
+            'rows' => $sectionPremiumRecommend->getRows()
+        ];
+        return response()->json($response)->header('X-Accel-Expires', '600');
+    });
+
     // バナーセクション取得API
     $router->get('section/banner/{sectionName}', function (Request $request, $sectionName) {
         $bannerRepository = new BannerRepository;
@@ -375,7 +394,7 @@ $router->group([
         if (empty($result)) {
             throw new NoContentsException;
         }
- 
+
         if ($result['premiumNetStatus'] === 1) {
             // Add allPremiumNet in response
             $productModel = new \App\Model\Product();
@@ -383,7 +402,7 @@ $router->group([
                 $result['premiumNetStatus'] = 2;
             }
         }
-        
+
         //$result['allPremiumNet'] = $productModel->processAllPremiumNet($workId);
 
         if ($result['premiumNetStatus'] === 1) {
@@ -1442,7 +1461,7 @@ $router->group([
     // キャンペーン応募
     $router->post('promotion/entry', function (Request $request) {
         $body = json_decode($request->getContent(), true);
-        
+
         $response = [
             'result' => true
         ];
@@ -1453,9 +1472,9 @@ $router->group([
     // キャンペーン応募回数
     $router->post('promotion/entry/check', function (Request $request) {
         $body = json_decode($request->getContent(), true);
-       
+
         throw new NoContentsException;
-     
+
         //$response = [
         //    'count' => 0
         //];
