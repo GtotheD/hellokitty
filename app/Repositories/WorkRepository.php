@@ -1456,7 +1456,7 @@ class WorkRepository extends BaseRepository
 
             }
         }
-
+      
         foreach ($productsTmp as $productsTmpKey => $productsTmpRow) {
             $productsTmpKeyNumberOfVolume[$productsTmpKey] = (int)$productsTmpRow['number_of_volume'];
             $productsTmpKeySaleStartDate[$productsTmpKey] = $productsTmpRow['sale_start_date'];
@@ -1490,6 +1490,98 @@ class WorkRepository extends BaseRepository
             'pickupProduct' => current($productsTmp),
         ];
 
+    }
+
+    public function parseFromArrayPremiumNet($products, $itemType)
+    {
+        $sell = false;
+        $rental = false;
+        $theater = false;
+        $supplement = '';
+        $mediaFormatId = '';
+        $saleStartDateSell = null;
+        $saleStartDateRental = null;
+        foreach ($products as $product) {
+            // VHSを除外            
+            if (($product['service_id'] === 'ttv' || $product['service_id'] === 'st') && isset($product['premium_plan_cd']) && $product['premium_plan_cd'] === 2) {
+
+                if ($product['product_type_id'] === 1) { // VHSの条件を除外
+                    // 最新の販売開始日を取得する。
+                    if ($product['sale_start_date'] > $saleStartDateSell) {
+                        $saleStartDateSell = $product['sale_start_date'];
+                    }
+                    $sell = true;
+                } else {
+                    if ($product['product_type_id'] === 2) { // VHSの条件を除外
+                        // 最新の販売開始日を取得する。
+                        if ($product['sale_start_date'] > $saleStartDateRental) {
+                            $saleStartDateRental = $product['sale_start_date'];
+                        }
+                        $rental = true;
+                        // 上映映画
+                    } else {
+                        if (empty($product['product_type_id']) && $product['service_id'] === 'st') {
+                            $theater = true;
+                        }
+                    }
+                }
+                if ($itemType === 'game') {
+                    $supplement = $product['game_model_name'];
+                } else {
+                    if ($itemType === 'book') {
+                        foreach (self::HIMO_ROLE_ID_BOOK as $id) {
+                            $supplement = $this->parseSupplement($product['people'], $id);
+                            if (!empty($supplement)) {
+                                break;
+                            }
+                        }
+                    } elseif ($itemType === 'cd') {
+                        foreach (self::HIMO_ROLE_ID_MUSIC as $id) {
+                            $supplement = $this->parseSupplement($product['people'], $id);
+                            if (!empty($supplement)) {
+                                break;
+                            }
+                        }
+                    }
+                }
+                $mediaFormatId = $product['media_format_id'];
+                $productsTmp[] = $product;
+
+            }
+        }
+      
+        foreach ($productsTmp as $productsTmpKey => $productsTmpRow) {
+            $productsTmpKeyNumberOfVolume[$productsTmpKey] = (int)$productsTmpRow['number_of_volume'];
+            $productsTmpKeySaleStartDate[$productsTmpKey] = $productsTmpRow['sale_start_date'];
+            $productsTmpKeyItemCd[$productsTmpKey] = $productsTmpRow['item_cd'];
+            $productsTmpKeyProductTypeId[$productsTmpKey] = $productsTmpRow['product_type_id'];
+            $productsTmpKeyCccProductId[$productsTmpKey] = $productsTmpRow['ccc_product_id'];
+        }
+        // CDは販売を先に出す
+        if ($itemType === 'book') {
+            $productsTmpKeyProductTypeIdOrder = SORT_ASC;
+        } else {
+            $productsTmpKeyProductTypeIdOrder = SORT_DESC;
+        }
+        array_multisort(
+            $productsTmpKeyProductTypeId, $productsTmpKeyProductTypeIdOrder,
+            $productsTmpKeyNumberOfVolume, SORT_DESC, SORT_NUMERIC,
+            $productsTmpKeySaleStartDate, SORT_DESC,
+            $productsTmpKeyItemCd, SORT_ASC,
+            $productsTmpKeyCccProductId, SORT_ASC,
+            $productsTmp
+        );
+
+        return [
+            'sell' => $sell,
+            'rental' => $rental,
+            'theater' => $theater,
+            'supplement' => $supplement,
+            'media_format_id' => $mediaFormatId,
+            'saleStartDateSell' => $saleStartDateSell,
+            'saleStartDateRental' => $saleStartDateRental,
+            'pickupProduct' => current($productsTmp),
+        ];
     }
 
     public function parseSupplement($people, $roleId)
