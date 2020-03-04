@@ -79,6 +79,8 @@ class SectionPremiumRecommend extends BaseRepository
                 'saleType' => 'rental',
                 // todo:プレミアムフラグができたら渡す
                 'isPremium' => true,
+                //topレベルなので、1/0まででOKとする
+                'premiumNetStatus' => $base['is_premium_net'],
                 // DVDの場合は空にする。
                 'supplement' => ($itemType === 'dvd') ? '' : $saleTypeHas['supplement'],
                 'saleStartDate' => null,
@@ -176,6 +178,7 @@ class SectionPremiumRecommend extends BaseRepository
                     'itemType' => $itemType,
                     // レンタルで問い合わせている為、レンタルに固定
                     'saleType' => 'rental',
+                    'isPremium' => ($base['is_premium_shop'] === 1) ? true:false,
                     // todo:プレミアムフラグができたら渡す
                     'premiumNetStatus' => 1,
                     // DVDの場合は空にする。

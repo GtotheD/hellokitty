@@ -244,7 +244,7 @@ $router->group([
     });
 
     // TOP用プレミアムレコメンド net見放題API
-    $router->get('section/premium/dvd/rental/recommendNet', function (Request $request) {
+    $router->get('section/premium/dvd/rental/recommend/net', function (Request $request) {
         $sectionPremiumRecommend = new SectionPremiumRecommend;
         $sectionPremiumRecommend->setLimit($request->input('limit', 10));
         $sectionPremiumRecommend->setOffset($request->input('offset', 0));
@@ -1286,6 +1286,7 @@ $router->group([
         $bodyObj = json_decode($request->getContent(), true);
         $tolId = isset($bodyObj['tolId']) ? $bodyObj['tolId'] : '';
         $statusPremium = new StatusPremiumRepository($tolId);
+
         $response = [
             'premium' => $statusPremium->get()
         ];
@@ -1300,6 +1301,7 @@ $router->group([
         if (empty($tlsc)) {
             throw new BadRequestHttpException;
         }
+
         $discasRepository = new DiscasRepository();
         try {
             $response = $discasRepository->customer($tlsc)->get();
@@ -1311,6 +1313,10 @@ $router->group([
                 'tenpoPlanFee' => (int)$response['tenpoPlanFee'],
                 'nextUpdateDate' => date("Y-m-d h:i:s", strtotime($response['nextUpdateDate']))
             ];
+            //response中に特定店舗があった場合、店舗コードを空にする
+            if ($response['tenpoCode'] === '8811' || $response['tenpoCode'] === '8813') {
+                $response['tenpoCode'] = '';
+            }
         } catch (\Exception $e) {
             $exceptionResponse = $e->getResponse();
             $statusCode = $exceptionResponse->getStatusCode();
@@ -1451,6 +1457,7 @@ $router->group([
     $router->get('/promotion/{promotion_id}', function (Request $request, $promotion_id) {
         $promotionRepository = new PromotionRepository();
         $result = $promotionRepository->getPromotionData($promotion_id);
+        
         if (empty($result)) {
             throw new NoContentsException;
         }

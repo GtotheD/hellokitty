@@ -21,6 +21,43 @@ class StatusPremiumRepository extends BaseRepository
     private $key;
     use Security;
 
+   const EXCLUDE_STORE_CD = array(
+        '0129',
+        '2012',
+        '2129',
+        '4137',
+        '4531',
+        '5216',
+        '5222',
+        '5224',
+        '5227',
+        '7024',
+        '4720',
+        '5123',
+        '5616',
+        '5618',
+        '5802',
+        '5841',
+        '5847',
+        '5201',
+        '7428',
+        '5230',
+        '0310',
+        '0307',
+        '3127',
+        '7638',
+        '2212',
+        '7637',
+        '7650',
+        '0111',
+        '4107',
+        '9945');
+
+    const EXCLUDE_PLANCD = array(
+        '520',
+        '511',
+        '513');
+
     /**
      * RentalUseRegistrationRepository constructor.
      * @param $tolId
@@ -56,6 +93,15 @@ class StatusPremiumRepository extends BaseRepository
         if ( $tolFlatRentalOperation['responseStatus1'] !== '00') {
             return false;
         }
+
+        //特定店舗・申し込みコードの人はプレミアムと判定しない
+        //$storeCd = self::EXCLUDE_STORE_CD;
+        //$planCd = self::EXCLUDE_PLAN_CD;
+        //if (in_array($tolFlatRentalOperation['storeCd'], $storeCd, true)) {
+        //    if(in_array($tolFlatRentalOperation['flatPlanNumber'], $planCd, true)) {
+        //        return false;
+        //    }
+       // }
         return true;
     }
 

@@ -743,7 +743,7 @@
  */
 /**
  * @SWG\Get(
- *     path="/section/premium/dvd/rental/recommendNet",
+ *     path="/section/premium/dvd/rental/recommend/net",
  *     description="DVD-セルのTOP構造を返却する",
  *     produces={"application/json"},
  *     tags={"Top"},

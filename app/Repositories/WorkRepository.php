@@ -911,11 +911,13 @@ class WorkRepository extends BaseRepository
 
         // musicoリンク
         $response['musicDownloadUrl'] = null;
+        /*
         $musicoUrl = new MusicoUrl;
         $musicoUrlData = $musicoUrl->setConditionByWorkId($response['workId'])->toCamel()->getOne();
         if (!empty($musicoUrlData)) {
             $response['musicDownloadUrl'] = env('MUSICO_URL') . $musicoUrlData->url;
         }
+        */
 
         // ttvUrl
         if (!empty($response['ttvContentsCd'])) {
