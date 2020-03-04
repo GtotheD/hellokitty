@@ -71,4 +71,22 @@ class TolNotification extends TolBaseModel
         $xml = $this->tolClient->updateNotification($chkReservation);
         return simplexml_load_string($xml);
     }
+
+    /**
+     * @throws \App\Exceptions\NoContentsException
+     */
+    public function getPromotionStatus($promotionId)
+    {
+        $xml = $this->tolClient->getPromotionStatus($promotionId);
+        return simplexml_load_string($xml);
+    }
+
+    /**
+     * @throws \App\Exceptions\NoContentsException
+     */
+    public function registPromotion($params)
+    {
+        $xml = $this->tolClient->registPromotion($params);
+        return simplexml_load_string($xml);
+    }
 }

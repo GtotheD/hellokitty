@@ -14,6 +14,9 @@ use App\Model\Series;
 use App\Model\MusicoUrl;
 use App\Model\DiscasProduct;
 use App\Model\TolPoint;
+use App\Model\RecommendTag;
+use App\Model\RecommendTagWork;
+
 
 class TruncateTables extends Command
 {
@@ -50,6 +53,8 @@ class TruncateTables extends Command
             Series::TABLE,
             MusicoUrl::TABLE,
             DiscasProduct::TABLE,
+            RecommendTag::TABLE,
+            RecommendTagWork::TABLE
         ];
 
         $tpointOnly = $this->option('tpoint-only');

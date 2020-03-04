@@ -27,6 +27,8 @@ class TolClient extends BaseClient
     const SP101 = '/ms/resources/ap11sp101';
     const NTF001 = '/ms/resources/MA13Reservation01P/get';
     const NTF002 = '/ms/resources/MA13Reservation02P/post';
+    const MCE001 = '/ms/resources/AP13CampaignEntryCountGet01';
+    const MCA001 = '/ms/resources/AP12CampaignAnswerPost01';
 
 
     /**
@@ -147,6 +149,39 @@ class TolClient extends BaseClient
             'tenpoCd' => $shopCode,
             'memid' => $this->memId
         ];
+        return $this->get(false);
+    }
+
+    /**
+     * @return mixed|string
+     * @throws \App\Exceptions\NoContentsException
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function getPromotionStatus($promotionId)
+    {
+        $this->apiPath = $this->createPath(self::MCE001);
+        $this->queryParams = [
+            'memId' => $this->memId,
+            'campId' => $promotionId,
+        ];
+        $this->setMethod('POST');
+        return $this->get(false);
+    }
+
+    /**
+     * @return mixed|string
+     * @throws \App\Exceptions\NoContentsException
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function registPromotion($params)
+    {
+        $this->apiPath = $this->createPath(self::MCA001);
+        $this->setHeaders([
+            'memid' => $this->memId,
+            'X-TOL-Platform-Code' => '00'
+        ]);
+        $this->queryParams = $params;
+        $this->setMethod('POST');
         return $this->get(false);
     }
 

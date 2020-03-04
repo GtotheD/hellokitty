@@ -11,6 +11,9 @@ function trimImageTag($data, $isScene=false)
     // DISCASの場合はCDNを使っていないので除外する。
     if (preg_match('/^\/\/img.discas.net/', $data)) {
         $data = preg_replace('/^\/\//', 'https://', $data);
+    // TTVは初期状態でcdnがついているので除外する
+    } else if (preg_match('/^\/\/cdn.img.tsutaya-tv.net/', $data)) {
+        $data = preg_replace('/^\/\//', 'https://', $data);
     } else {
         $data = preg_replace('/^\/\//', 'https://cdn.', $data);
     }

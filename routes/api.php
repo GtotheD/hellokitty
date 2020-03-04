@@ -244,7 +244,7 @@ $router->group([
     });
 
     // TOP用プレミアムレコメンド net見放題API
-    $router->get('section/premium/dvd/rental/recommendNet', function (Request $request) {
+    $router->get('section/premium/dvd/rental/recommend/net', function (Request $request) {
         $sectionPremiumRecommend = new SectionPremiumRecommend;
         $sectionPremiumRecommend->setLimit($request->input('limit', 10));
         $sectionPremiumRecommend->setOffset($request->input('offset', 0));
@@ -1286,6 +1286,7 @@ $router->group([
         $bodyObj = json_decode($request->getContent(), true);
         $tolId = isset($bodyObj['tolId']) ? $bodyObj['tolId'] : '';
         $statusPremium = new StatusPremiumRepository($tolId);
+
         $response = [
             'premium' => $statusPremium->get()
         ];
@@ -1300,6 +1301,7 @@ $router->group([
         if (empty($tlsc)) {
             throw new BadRequestHttpException;
         }
+
         $discasRepository = new DiscasRepository();
         try {
             $response = $discasRepository->customer($tlsc)->get();
@@ -1311,6 +1313,10 @@ $router->group([
                 'tenpoPlanFee' => (int)$response['tenpoPlanFee'],
                 'nextUpdateDate' => date("Y-m-d h:i:s", strtotime($response['nextUpdateDate']))
             ];
+            //response中に特定店舗があった場合、店舗コードを空にする
+            if ($response['tenpoCode'] === '8811' || $response['tenpoCode'] === '8813') {
+                $response['tenpoCode'] = '';
+            }
         } catch (\Exception $e) {
             $exceptionResponse = $e->getResponse();
             $statusCode = $exceptionResponse->getStatusCode();
@@ -1451,6 +1457,7 @@ $router->group([
     $router->get('/promotion/{promotion_id}', function (Request $request, $promotion_id) {
         $promotionRepository = new PromotionRepository();
         $result = $promotionRepository->getPromotionData($promotion_id);
+        
         if (empty($result)) {
             throw new NoContentsException;
         }
@@ -1460,10 +1467,17 @@ $router->group([
 
     // キャンペーン応募
     $router->post('promotion/entry', function (Request $request) {
-        $body = json_decode($request->getContent(), true);
+        $bodyObj = json_decode($request->getContent(), true);
+        $tolId = isset($bodyObj['tolId']) ? $bodyObj['tolId'] : '';
+        $promotionId = isset($bodyObj['promotionId']) ? $bodyObj['promotionId'] : '';
+        $prizeNo = isset($bodyObj['prizeNo']) ? $bodyObj['prizeNo'] : '';
+        $ques = isset($bodyObj['ques']) ? $bodyObj['ques'] : '';
 
+        $promotionRepository = new PromotionRepository();
+        $result = $promotionRepository->registPromotion($tolId, $promotionId, $prizeNo, $ques);
+        $result = isset($result->returnCode) && current($result->returnCode) === '00';
         $response = [
-            'result' => true
+            'result' => $result
         ];
 
         return response()->json($response)->header('X-Accel-Expires', '600');
@@ -1471,17 +1485,27 @@ $router->group([
 
     // キャンペーン応募回数
     $router->post('promotion/entry/check', function (Request $request) {
-        $body = json_decode($request->getContent(), true);
+        $bodyObj = json_decode($request->getContent(), true);
+        $tolId = isset($bodyObj['tolId']) ? $bodyObj['tolId'] : '';
+        $promotionId = isset($bodyObj['promotionId']) ? $bodyObj['promotionId'] : '';
 
-        throw new NoContentsException;
+        $promotionRepository = new PromotionRepository();
+        $result = (array)$promotionRepository->getPromotionStatus($tolId, $promotionId);
 
-        //$response = [
-        //    'count' => 0
-        //];
+        if (empty($result)) {
+            throw new NoContentsException;
+        }
+
+        if ($result['entryCount'] === '0') {
+            throw new NoContentsException;
+        }
+
+        $response = [
+            'count' => $result['entryCount']
+        ];
 
         return response()->json($response)->header('X-Accel-Expires', '600');
     });
-
 
     // 検証環境まで有効にするテスト用
     if (env('APP_ENV') === 'local' || env('APP_ENV') === 'develop' || env('APP_ENV') === 'staging') {
