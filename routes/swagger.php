@@ -3014,3 +3014,106 @@
  *     @SWG\Response(response=500, description="Server error")
  * )
  */
+
+/**
+ * @SWG\Post(
+ *     path="/promotion/entry",
+ *     description="キャンペーン応募",
+ *     produces={"application/json"},
+ *     tags={"Promotion"},
+ *     security={{"api_key":{}}},
+ *     @SWG\Parameter(
+ *       name="body",
+ *       in="body",
+ *       description="",
+ *       type="array",
+ *       @SWG\Schema(
+ *         @SWG\Property(
+ *             property="tolId",
+ *             type="string",
+ *             description="アカウントID",
+ *         ),
+ *         @SWG\Property(
+ *             property="promotionId",
+ *             type="string",
+ *             description="キャンペーンID"
+ *         ),
+ *         @SWG\Property(
+ *             property="prizeNo",
+ *             type="string",
+ *             description="賞品情報"
+ *         ),
+ *         @SWG\Property(
+ *             property="ques",
+ *             type="array",
+ *             description="アンケート設問",
+ *             @SWG\Items(
+ *                 @SWG\Property(
+ *                     property="no",
+ *                     type="string",
+ *                     example="1"
+ *                 ),
+ *                 @SWG\Property(
+ *                     property="ans",
+ *                     type="string",
+ *                     example="1,2,6"
+ *                 )
+ *             )
+ *         ),
+ *       )
+ *     ),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="result",
+ *                  type="boolean",
+ *                  example="true",
+ *              )
+ *          )
+ *      ),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+
+/**
+ * @SWG\Post(
+ *     path="/promotion/entry/check",
+ *     description="キャンペーン多重応募チェック",
+ *     produces={"application/json"},
+ *     tags={"Promotion"},
+ *     security={{"api_key":{}}},
+ *     @SWG\Parameter(
+ *       name="body",
+ *       in="body",
+ *       description="",
+ *       type="array",
+ *       @SWG\Schema(
+ *         @SWG\Property(
+ *             property="tolId",
+ *             type="string",
+ *             description="アカウントID",
+ *         ),
+ *         @SWG\Property(
+ *             property="promotionId",
+ *             type="string",
+ *             description="キャンペーンID"
+ *         )
+ *       )
+ *     ),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="count",
+ *                  type="string",
+ *                  example="1",
+ *              )
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
