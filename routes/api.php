@@ -1490,12 +1490,18 @@ $router->group([
         $promotionId = isset($bodyObj['promotionId']) ? $bodyObj['promotionId'] : '';
 
         $promotionRepository = new PromotionRepository();
-        $result = $promotionRepository->getPromotionStatus($tolId, $promotionId);
-        if (empty($result) || !isset($result->returnCode) || current($result->returnCode) !== '0') {
+        $result = (array)$promotionRepository->getPromotionStatus($tolId, $promotionId);
+
+        if (empty($result)) {
             throw new NoContentsException;
         }
+
+        if ($result['entryCount'] === '0') {
+            throw new NoContentsException;
+        }
+
         $response = [
-            'count' => current($result->count)
+            'count' => $result['entryCount']
         ];
 
         return response()->json($response)->header('X-Accel-Expires', '600');

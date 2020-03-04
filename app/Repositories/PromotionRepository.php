@@ -269,11 +269,13 @@ class PromotionRepository extends BaseRepository
     public function registPromotion($tolId, $promotionId, $prizeNo, $ques)
     {
         $memId = $this->decodeMemid(env('TOL_ENCRYPT_KEY'), $tolId);
+        
         $notification = new TolNotification($memId);
         $params = [];
-        $params['memid'] = $memId;
-        $params['applyat'] = Carbon::now();
-        $params['campid'] = $promotionId;
+        $params['memId'] = $memId;
+        #$params['apyd'] = Carbon::now();
+        $params['apyd'] = '2020-03-04 17:58:00';
+        $params['campId'] = $promotionId;
         $params['courseNum'] = $prizeNo;
         $params = $this->convertQues($params, $ques);
         $result = $notification->registPromotion($params);

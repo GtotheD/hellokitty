@@ -160,11 +160,11 @@ class TolClient extends BaseClient
     public function getPromotionStatus($promotionId)
     {
         $this->apiPath = $this->createPath(self::MCE001);
-        $this->setHeaders([
-            'memid' => $this->memId,
-            'campid' => $promotionId,
-            'X-TOL-Platform-Code' => '00'
-        ]);
+        $this->queryParams = [
+            'memId' => $this->memId,
+            'campId' => $promotionId,
+        ];
+        $this->setMethod('POST');
         return $this->get(false);
     }
 
