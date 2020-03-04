@@ -8,12 +8,16 @@ use App\Model\PromotionPrize;
 use App\Model\PromotionQes;
 use App\Model\PromotionAns;
 use App\Model\Product;
+use App\Model\TolNotification;
 use App\Exceptions\NoContentsException;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
+use \App\Libraries\Security;
 
 class PromotionRepository extends BaseRepository
 {
+    use Security;
+    private $memId;
     const COMMONCAUTION = '・応募完了時にログインIDに登録されているTカード番号を取得させていただきます。<br>'.
                           '・ログインIDに登録しているTカード番号と当該作品レンタル時にご提示いただいTカード番号が異なる場合は、抽選の対象外となります。<br>'.
                           '&nbsp;&nbsp;&nbsp;ログインIDに登録されているTカード番号の確認は<a href=\'https://tsite.jp/tm/pc/accounts/STKIp0401001.do\'>こちら</a><br>'.
@@ -41,8 +45,8 @@ class PromotionRepository extends BaseRepository
                           '・個人情報の取り扱いに関しては、個人情報保護方針もあわせてご覧ください。<br>'.
                           '&nbsp;&nbsp;&nbsp;&nbsp;-CCCの個人情報保護方針は<a href=\'https://www.ccc.co.jp/customer_management/privacy/index.html\'>こちら</a><br>'.
                           '&nbsp;&nbsp;&nbsp;&nbsp;-「TSUTAYAの個人情報保護方針」「TSUTAYAネットカンパニーの個人情報保護方針」は<a href=\'https://www.tsutaya-ltd.co.jp/privacy/index.html\'>こちら</a><br>'.
-                          '&nbsp;&nbsp;&nbsp;&nbsp;-CEの個人情報保護方針は<a href=\'https://www.culture-ent.co.jp/pdf/privacyStatement.pdf\'>こちら</a><br>';    
-
+                          '&nbsp;&nbsp;&nbsp;&nbsp;-CEの個人情報保護方針は<a href=\'https://www.culture-ent.co.jp/pdf/privacyStatement.pdf\'>こちら</a><br>';
+    
     public function __construct($sort = 'asc', $offset = 0, $limit = 10)
     {
         parent::__construct($sort, $offset, $limit);
@@ -241,5 +245,49 @@ class PromotionRepository extends BaseRepository
         }
 
         return $results;
+    }
+
+    /**
+     * TOLキャンペーン多重応募チェック
+     * @return \SimpleXMLElement
+     * @throws NoContentsException
+     */
+    public function getPromotionStatus($tolId, $promotionId)
+    {
+        $memId = $this->decodeMemid(env('TOL_ENCRYPT_KEY'), $tolId);
+        $notification = new TolNotification($memId);
+        $result = $notification->getPromotionStatus($promotionId);
+
+        return $result;
+    }
+
+    /**
+     * TOLキャンペーン申請ステータスの登録
+     * @return \SimpleXMLElement
+     * @throws NoContentsException
+     */
+    public function registPromotion($tolId, $promotionId, $prizeNo, $ques)
+    {
+        $memId = $this->decodeMemid(env('TOL_ENCRYPT_KEY'), $tolId);
+        $notification = new TolNotification($memId);
+        $params = [];
+        $params['memid'] = $memId;
+        $params['applyat'] = Carbon::now();
+        $params['campid'] = $promotionId;
+        $params['courseNum'] = $prizeNo;
+        $params = $this->convertQues($params, $ques);
+        $result = $notification->registPromotion($params);
+
+        return $result;
+    }
+
+    public function convertQues($params, $ques)
+    {
+        foreach ($ques as $q) {
+            $key = 'no' . str_pad($q['no'], 2, "0", STR_PAD_LEFT);
+            $params[$key] = $q['ans'];
+        }
+
+        return $params;
     }
 }

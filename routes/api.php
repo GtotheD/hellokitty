@@ -1467,10 +1467,17 @@ $router->group([
 
     // キャンペーン応募
     $router->post('promotion/entry', function (Request $request) {
-        $body = json_decode($request->getContent(), true);
+        $bodyObj = json_decode($request->getContent(), true);
+        $tolId = isset($bodyObj['tolId']) ? $bodyObj['tolId'] : '';
+        $promotionId = isset($bodyObj['promotionId']) ? $bodyObj['promotionId'] : '';
+        $prizeNo = isset($bodyObj['prizeNo']) ? $bodyObj['prizeNo'] : '';
+        $ques = isset($bodyObj['ques']) ? $bodyObj['ques'] : '';
 
+        $promotionRepository = new PromotionRepository();
+        $result = $promotionRepository->registPromotion($tolId, $promotionId, $prizeNo, $ques);
+        $result = isset($result->returnCode) && current($result->returnCode) === '00';
         $response = [
-            'result' => true
+            'result' => $result
         ];
 
         return response()->json($response)->header('X-Accel-Expires', '600');
@@ -1478,17 +1485,21 @@ $router->group([
 
     // キャンペーン応募回数
     $router->post('promotion/entry/check', function (Request $request) {
-        $body = json_decode($request->getContent(), true);
+        $bodyObj = json_decode($request->getContent(), true);
+        $tolId = isset($bodyObj['tolId']) ? $bodyObj['tolId'] : '';
+        $promotionId = isset($bodyObj['promotionId']) ? $bodyObj['promotionId'] : '';
 
-        throw new NoContentsException;
-
-        //$response = [
-        //    'count' => 0
-        //];
+        $promotionRepository = new PromotionRepository();
+        $result = $promotionRepository->getPromotionStatus($tolId, $promotionId);
+        if (empty($result) || !isset($result->returnCode) || current($result->returnCode) !== '0') {
+            throw new NoContentsException;
+        }
+        $response = [
+            'count' => current($result->count)
+        ];
 
         return response()->json($response)->header('X-Accel-Expires', '600');
     });
-
 
     // 検証環境まで有効にするテスト用
     if (env('APP_ENV') === 'local' || env('APP_ENV') === 'develop' || env('APP_ENV') === 'staging') {
