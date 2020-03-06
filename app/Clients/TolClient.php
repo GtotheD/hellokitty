@@ -186,6 +186,38 @@ class TolClient extends BaseClient
     }
 
     /**
+     * @return mixed|string
+     * @throws \App\Exceptions\NoContentsException
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function getPushNotification()
+    {
+        $this->apiPath = $this->createPath(self::SP101);
+        $this->setHeaders([
+            'memid' => $this->memId,
+            'X-TOL-Platform-Code' => '00'
+        ]);
+        return $this->get(false);
+    }
+
+    /**
+     * @return mixed|string
+     * @throws \App\Exceptions\NoContentsException
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function registPushNotification($params)
+    {
+        $this->apiPath = $this->createPath(self::SP101);
+        $this->setHeaders([
+            'memid' => $this->memId,
+            'X-TOL-Platform-Code' => '00'
+        ]);
+        $this->queryParams = $params;
+        $this->setMethod('POST');
+        return $this->get(false);
+    }
+
+    /**
      * @param $api
      * @return string
      */

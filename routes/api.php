@@ -1460,6 +1460,37 @@ $router->group([
         return response()->json($response)->header('X-Accel-Expires', '0');
     });
 
+    // プッシュ通知パーミッション取得
+    $router->post('notification/get', function (Request $request) {
+        $bodyObj = json_decode($request->getContent(), true);
+        $tolId = isset($bodyObj['tolId']) ? $bodyObj['tolId'] : '';
+
+        $noti = new NotificationRepository();
+        $result = $noti->getPushNotification($tolId);
+        if (empty($result) || !isset($result->status) || current($result->status) === '9') {
+            throw new NoContentsException;
+        }
+        $response = $noti->formatOutputPushNotification($result);
+
+        return response()->json($response)->header('X-Accel-Expires', '600');
+    });
+
+    // プッシュ通知パーミッション登録・取得
+    $router->post('notification/post', function (Request $request) {
+        $bodyObj = json_decode($request->getContent(), true);
+        $tolId = isset($bodyObj['tolId']) ? $bodyObj['tolId'] : '';
+        $data = isset($bodyObj['data']) ? $bodyObj['data'] : '';
+
+        $noti = new NotificationRepository();
+        $result = $noti->registPushNotification($tolId, $data);
+        if (empty($result) || !isset($result->status) || current($result->status) === '9') {
+            throw new NoContentsException;
+        }
+        $response = $noti->formatOutputPushNotification($result);
+
+        return response()->json($response)->header('X-Accel-Expires', '600');
+    });
+
     $router->post('member/hasDisc/premium/rental', function (Request $request) {
         $bodyObj = json_decode($request->getContent(), true);
         $tlsc = isset($bodyObj['tlsc']) ? $bodyObj['tlsc'] : '';
