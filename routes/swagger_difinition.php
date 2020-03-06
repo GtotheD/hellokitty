@@ -244,6 +244,11 @@
  *                      description="終了日時",
  *                  )
  *              )
+ *          ),
+ *          @SWG\Property(
+ *              property="isComic",
+ *              type="boolean",
+ *              description=""
  *          )
  * )
  * */
@@ -779,6 +784,11 @@
  *              type="integer",
  *              description="SVODステータス"
  *          ),
+ *          @SWG\Property(
+ *              property="isComic",
+ *              type="boolean",
+ *              description=""
+ *          )
  *  )
  * */
 /**
