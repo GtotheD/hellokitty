@@ -1482,6 +1482,33 @@
  */
 /**
  * @SWG\Get(
+ *     path="/work/{workId}/review/comicspace",
+ *     description="Comicspaceレビュー取得",
+ *     tags={"Work"},
+ *     security={{"api_key":{}}},
+ *     produces={"application/json"},
+ *     @SWG\Parameter(ref="#/parameters/workId"),
+ *     @SWG\Parameter(ref="#/parameters/limit"),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          ref="$/responses/ReviewFormat",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="rows",
+ *                  type="array",
+ *                  description="レビュー",
+ *                  @SWG\Items(ref="#/definitions/Review"),
+ *              ),
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+/**
+ * @SWG\Get(
  *     path="/work/{workId}/relation/works",
  *     description="関連作品取得",
  *     tags={"Work"},

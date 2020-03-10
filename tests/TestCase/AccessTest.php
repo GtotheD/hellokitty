@@ -232,6 +232,14 @@ class AccessTest extends TestCase
     /**
      * @test
      */
+//    public function workReviewComicspace()
+//    {
+//        $response = $this->getJsonWithAuth('/work/PTA0000SF309/review/comicspace');
+//        $response->assertResponseStatus(200);
+//    }
+    /**
+     * @test
+     */
     public function workRelationWorks()
     {
         $url = '/work/PTA0000TCHXG';
