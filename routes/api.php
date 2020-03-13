@@ -21,6 +21,7 @@ use App\Repositories\ProductRepository;
 use App\Repositories\DiscasRepository;
 use App\Repositories\MintRepository;
 use App\Repositories\TAPRepository;
+use App\Repositories\TCSRepository;
 use App\Repositories\PeopleRepository;
 use App\Repositories\SeriesRepository;
 use App\Repositories\TWSRepository;
@@ -592,6 +593,23 @@ $router->group([
         $twsRepository->setOffset($request->input('offset', 0));
 
         $response = $twsRepository->getReview($workData['urlCd']);
+        if (empty($response)) {
+            throw new NoContentsException;
+        }
+
+        return response()->json($response)->header('X-Accel-Expires', '86400');
+    });
+    // レビュー情報 comicspace
+    $router->get('work/{workId}/review/comicspace', function (Request $request, $workId) {
+        $work = new WorkRepository();
+        $workData = $work->get($workId);
+        if (empty($workData)) {
+            throw new NoContentsException;
+        }
+
+        $tcsRepository = new TCSRepository();
+        $tcsRepository->setLimit($request->input('limit', 10));
+        $response = $tcsRepository->getReview($workId);
         if (empty($response)) {
             throw new NoContentsException;
         }

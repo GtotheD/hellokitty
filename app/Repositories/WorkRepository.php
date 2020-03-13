@@ -447,6 +447,11 @@ class WorkRepository extends BaseRepository
                     // プレミアムフラグ(作品ベースの情報)
                     $tempData['isPremium'] = $itemWork['isPremium'];
 
+                    // 118688 Start
+                    // Add comic flag
+                    $tempData['isComic'] = isset($itemWork['isComic']) ? $itemWork['isComic'] : false;
+                    // 118688 End
+
                     // Add isPremiumNet to response
                     /*$tempData['isPremiumNet'] = isset($itemWork['isPremiumNet']) ? $itemWork['isPremiumNet'] : false;
 
@@ -658,7 +663,7 @@ class WorkRepository extends BaseRepository
 
     public function getWorkListByThousandTag($thousandTag)
     {
-        
+
         $tagWork = new RecommendTagWork();
         $tagWork->setConditionGetWorkIdByTag($thousandTag);
 
@@ -746,6 +751,12 @@ class WorkRepository extends BaseRepository
 
         $roleId = '';
         $response['supplement'] = '';
+
+        // 118688 Start
+        // Check if comic
+        $response['isComic'] = $response['bigGenreId'] === 'EXT000073X10';
+        // 118688 End
+
         $isAdult = null;
         $isDocSet = false;
         // プロダクトが存在しなかった場合（workベースで取得した場合等）は、各販売種別の最新商品情報で取得する。
@@ -1458,7 +1469,7 @@ class WorkRepository extends BaseRepository
 
             }
         }
-      
+
         foreach ($productsTmp as $productsTmpKey => $productsTmpRow) {
             $productsTmpKeyNumberOfVolume[$productsTmpKey] = (int)$productsTmpRow['number_of_volume'];
             $productsTmpKeySaleStartDate[$productsTmpKey] = $productsTmpRow['sale_start_date'];
@@ -1551,7 +1562,7 @@ class WorkRepository extends BaseRepository
 
             }
         }
-      
+
         foreach ($productsTmp as $productsTmpKey => $productsTmpRow) {
             $productsTmpKeyNumberOfVolume[$productsTmpKey] = (int)$productsTmpRow['number_of_volume'];
             $productsTmpKeySaleStartDate[$productsTmpKey] = $productsTmpRow['sale_start_date'];
@@ -2099,7 +2110,7 @@ class WorkRepository extends BaseRepository
                         $item['updated_at'] = $now;
                         $item['created_at'] = $now;
                         $tagData[] = $item;
-                        
+
                         $result[] = $tags;
                         $save[] = $tags->tag;
                     }
