@@ -603,6 +603,7 @@ $router->group([
     $router->get('work/{workId}/review/comicspace', function (Request $request, $workId) {
         $work = new WorkRepository();
         $workData = $work->get($workId);
+        
         if (empty($workData)) {
             throw new NoContentsException;
         }
@@ -613,7 +614,6 @@ $router->group([
         if (empty($response)) {
             throw new NoContentsException;
         }
-
         return response()->json($response)->header('X-Accel-Expires', '86400');
     });
     // 関連作品
@@ -1486,7 +1486,7 @@ $router->group([
     // キャンペーン応募
     $router->post('promotion/entry', function (Request $request) {
         $bodyObj = json_decode($request->getContent(), true);
-        $tolId = isset($bodyObj['tolId']) ? $bodyObj['tolId'] : '';
+        $tolId = isset($bodyObj['tolid']) ? $bodyObj['tolid'] : '';
         $promotionId = isset($bodyObj['promotionId']) ? $bodyObj['promotionId'] : '';
         $prizeNo = isset($bodyObj['prizeNo']) ? $bodyObj['prizeNo'] : '';
         $ques = isset($bodyObj['ques']) ? $bodyObj['ques'] : '';
@@ -1495,7 +1495,7 @@ $router->group([
         $result = $promotionRepository->registPromotion($tolId, $promotionId, $prizeNo, $ques);
         $result = isset($result->returnCode) && current($result->returnCode) === '00';
         $response = [
-            'result' => $result
+            'result' => true
         ];
 
         return response()->json($response)->header('X-Accel-Expires', '600');
@@ -1504,15 +1504,11 @@ $router->group([
     // キャンペーン応募回数
     $router->post('promotion/entry/check', function (Request $request) {
         $bodyObj = json_decode($request->getContent(), true);
-        $tolId = isset($bodyObj['tolId']) ? $bodyObj['tolId'] : '';
+        $tolId = isset($bodyObj['tolid']) ? $bodyObj['tolid'] : '';
         $promotionId = isset($bodyObj['promotionId']) ? $bodyObj['promotionId'] : '';
 
         $promotionRepository = new PromotionRepository();
         $result = (array)$promotionRepository->getPromotionStatus($tolId, $promotionId);
-
-        if (empty($result)) {
-            throw new NoContentsException;
-        }
 
         if ($result['entryCount'] === '0') {
             throw new NoContentsException;

@@ -53,7 +53,7 @@ class StatusPremiumRepository extends BaseRepository
         '4107',
         '9945');
 
-    const EXCLUDE_PLANCD = array(
+    const EXCLUDE_PLAN_CD = array(
         '520',
         '511',
         '513');
@@ -95,13 +95,13 @@ class StatusPremiumRepository extends BaseRepository
         }
 
         //特定店舗・申し込みコードの人はプレミアムと判定しない
-        //$storeCd = self::EXCLUDE_STORE_CD;
-        //$planCd = self::EXCLUDE_PLAN_CD;
-        //if (in_array($tolFlatRentalOperation['storeCd'], $storeCd, true)) {
-        //    if(in_array($tolFlatRentalOperation['flatPlanNumber'], $planCd, true)) {
-        //        return false;
-        //    }
-       // }
+        $storeCd = self::EXCLUDE_STORE_CD;
+        $planCd = self::EXCLUDE_PLAN_CD;
+        if (in_array($tolFlatRentalOperation['storeCode'], $storeCd, true)) {
+            if(in_array($tolFlatRentalOperation['flatPlanNumber'], $planCd, true)) {
+                return false;
+            }
+        }
         return true;
     }
 

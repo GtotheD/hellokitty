@@ -53,6 +53,8 @@ class TCSRepository extends ApiRequesterRepository
         ];
 
         if (!empty($apiResult) && array_key_exists('comic', $apiResult)) {
+            $reviews['totalCount'] = $apiResult['comic']['yondaCount'];
+
             foreach ($apiResult['comic']['reviews'] as $review) {
                 $reviews['rows'][] = [
                     'rating' => floatval(number_format($review['score'], 1)),
@@ -60,7 +62,6 @@ class TCSRepository extends ApiRequesterRepository
                     'contributeDate' => date('Y-m-d', strtotime($review['createdAt'])),
                     'contents' => $review['review'],
                 ];
-                $reviews['totalCount']++;
             }
             if (!empty($reviews['rows'])) {
                 $reviews['averageRating'] = floatval(number_format($apiResult['comic']['averageScore'], 1));
@@ -79,7 +80,6 @@ class TCSRepository extends ApiRequesterRepository
         $this->api = 'review';
         $this->id = $isbn;
         $this->queryParams = [
-            'api_key' => $this->apiKey,
             'min_review_length' => '1',
             'limit' => $this->limit
         ];
