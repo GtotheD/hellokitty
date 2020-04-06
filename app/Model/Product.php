@@ -643,7 +643,7 @@ class Product extends Model
      * @return bool
      */
     public function processAllPremiumNet($work_id) {
-        $products = $this->setCondition(['work_id' => $work_id, 'service_id' => 'ttv'])->getAll();
+        $products = $this->setCondition(['work_id' => $work_id, 'service_id' => 'ttv', 'product_type_id' => '5'])->getAll();
         if(count($products)) {
             foreach ($products as $product) {
                 if (!$product->is_premium_net) {
