@@ -667,6 +667,8 @@ class WorkRepository extends BaseRepository
         $tagWork = new RecommendTagWork();
         $tagWork->setConditionGetWorkIdByTag($thousandTag);
 
+        $update_count = 0;
+
         $this->totalCount = $tagWork->count();
 
         $workIdList = $tagWork->setConditionGetWorkIdByTag($thousandTag)->get($this->limit, $this->offset)->pluck('work_id');
@@ -689,6 +691,7 @@ class WorkRepository extends BaseRepository
                     $item['created_at'] = $now;
                     $itemArray[] = $item;
                     $workIdList[] = $row['work_id'];
+                    $update_count++;
                 }
             }
             $tagWork->insert($itemArray);
@@ -723,7 +726,10 @@ class WorkRepository extends BaseRepository
 
         $this->work->setConnection('mysql::write');
         $this->work->getWorkIdsIn($workIdList);
-        $this->totalCount = $this->work->count();
+        if ($update_count > 0) {
+            $this->totalCount = $update_count;
+        }
+
         if (!$this->totalCount) {
             return null;
         }
