@@ -13,7 +13,7 @@ class MaintenanceRepository
         if (empty($file_path)) {
             $file_path = self::MAINTENANCE_FILE_PATH;
         }
-        $this->file = base_path($file_path);
+        $this->file = $file_path;
     }
 
     /**
