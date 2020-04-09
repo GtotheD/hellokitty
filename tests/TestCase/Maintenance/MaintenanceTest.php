@@ -26,4 +26,27 @@ class MaintenanceTest extends \Laravel\Lumen\Testing\TestCase
 
         $this->assertEquals($data, $result);
     }
+
+    public function testValidateDate() {
+        $repo = new \App\Repositories\MaintenanceRepository();
+
+        $result = $repo->validateDate('2020-04-09');
+        $this->assertEquals(true, $result);
+        $result = $repo->validateDate('2020-04-09 12:45:16');
+        $this->assertEquals(true, $result);
+
+        $result = $repo->validateDate('2020-4-9');
+        $this->assertEquals(false, $result);
+        $result = $repo->validateDate('2020-14-9');
+        $this->assertEquals(false, $result);
+
+        $result = $repo->validateDate('2020-04-09 12:5:16');
+        $this->assertEquals(false, $result);
+        $result = $repo->validateDate('2020-04-09 26:05:16');
+        $this->assertEquals(false, $result);
+        $result = $repo->validateDate('2020-04-09 16:65:16');
+        $this->assertEquals(false, $result);
+        $result = $repo->validateDate('2020-04-09 16:25:66');
+        $this->assertEquals(false, $result);
+    }
 }

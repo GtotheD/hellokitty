@@ -47,9 +47,12 @@ class MaintenanceRepository
     {
         $isValid = false;
         if (isset($data['dispStartDate']) && isset($data['dispEndDate'])) {
-            $current = time();
-            if ($current >= strtotime($data['dispStartDate']) && $current < strtotime($data['dispEndDate'])) {
-                $isValid = true;
+            // Validate date format
+            if ($this->validateDate($data['dispStartDate']) && $this->validateDate($data['dispEndDate'])) {
+                $current = time();
+                if ($current >= strtotime($data['dispStartDate']) && $current < strtotime($data['dispEndDate'])) {
+                    $isValid = true;
+                }
             }
         }
 
@@ -71,5 +74,12 @@ class MaintenanceRepository
             }
         }
         return $response;
+    }
+
+    public function validateDate($date)
+    {
+        $pattern = '/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2]\d|3[0-1])$|' .
+            '\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2]\d|3[0-1])\s(0[1-9]|1\d|2[0-3]):([0-5]\d):([0-5]\d)$/';
+        return preg_match($pattern, trim($date)) === 1;
     }
 }
