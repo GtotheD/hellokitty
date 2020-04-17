@@ -55,6 +55,20 @@ class Product extends Model
         return $this;
     }
 
+    //
+    // 動画配信作品のみを取得する（間引き無し）
+    //
+    public function setConditionByWorkIdProductSvod($workId)
+    {
+        $this->dbObject = DB::table($this->table)
+            // ttvのみを取るように変更
+            ->whereRaw(DB::raw(' service_id  in  (\'ttv\')'))
+            ->where('work_id', $workId)
+            ->where('product_type_id', 5);
+
+        return $this;
+    }
+
     public function setConditionByWorkIdForRentalCd($workId)
     {
         $this->dbObject = DB::table($this->table . ' AS t2')

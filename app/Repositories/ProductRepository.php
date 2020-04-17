@@ -184,6 +184,56 @@ class ProductRepository extends BaseRepository
         return $this->rentalGroupReformat($response);
     }
 
+    //
+    // 動画配信商品を取得する
+    //
+    public function getSvodProducts($workId)
+    {
+      //レスポンス項目のみに限定する
+      $column = [
+          "item_cd",
+          "item_name",
+          "product_type_id",
+          "jan",
+          "rental_product_cd",
+          "number_of_volume",
+          "price_tax_out",
+          //↑ReFormatに必要な項目
+          "product_name",
+          "product_title_sub",
+          "product_unique_id",
+          "common_vod_code",
+          "jacket_l",
+          "sale_start_date",
+          "is_premium_net"
+      ];
+
+      $this->totalCount = $this->product->setConditionProductSvod($workId, $this->saleType, $this->sort)->count();
+      $results = $this->product->selectCamel($column)->get($this->limit, $this->offset);
+      if (count($results) === 0) {
+          return null;
+      }
+
+      if (count($results) + $this->offset < $this->totalCount) {
+          $this->hasNext = true;
+      } else {
+          $this->hasNext = false;
+      }
+
+      //return $this->productReformat($results);
+      return $this->svodProductReformat($results);
+    }
+
+    //----------------------------------------------------------------------
+    // ttvAPIから、商品を並び変える
+    //----------------------------------------------------------------------
+    private function svodProductReformat($products)
+    {
+        $ttvProduct = null;
+
+
+    }
+
     private function rentalGroupReformat($products)
     {
         $reformatResult = null;
@@ -358,12 +408,16 @@ class ProductRepository extends BaseRepository
         $productBase['base_product_code'] = $baseProductCode;
         $productBase['is_dummy'] = preg_match('/([A-Z]|[a-z]){1,2}$/', $product['product_code'], $matches);
         $productBase['jan'] = $product['jan'];
+        // ttv用の商品IDを追加保存
+        $productBase['common_vod_code'] = $product['common_vod_code'];
         $productBase['game_model_id'] = $product['game_model_id'];
         $productBase['game_model_name'] = $product['game_model_name'];
         $productBase['ccc_family_cd'] = $product['ccc_family_cd'];
         $productBase['ccc_product_id'] = $product['ccc_product_id'];
         $productBase['rental_product_cd'] = $product['rental_product_cd'];
         $productBase['product_name'] = $product['product_name'];
+        // ttv用の話数タイトルを追加保存
+        $productBase['product_title_sub'] = $product['product_title_sub'];
         $productBase['product_type_id'] = $product['product_type_id'];
         $productBase['product_type_name'] = $product['product_type_name'];
         $productBase['sale_start_date'] = $product['sale_start_date'];
