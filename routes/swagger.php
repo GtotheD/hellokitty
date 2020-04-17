@@ -3144,3 +3144,53 @@
  *     @SWG\Response(response=500, description="Server error")
  * )
  */
+
+/**
+ * @SWG\Get(
+ *     path="/system/maintenance",
+ *     description="メンテナンス情報を返します",
+ *     produces={"application/json"},
+ *     tags={"System"},
+ *     security={{"api_key":{}}},
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="title",
+ *                  type="string",
+ *                  example="",
+ *              ),
+ *              @SWG\Property(
+ *                  property="text",
+ *                  type="string",
+ *                  example="",
+ *              ),
+ *              @SWG\Property(
+ *                  property="endDate",
+ *                  type="string",
+ *                  example="",
+ *              ),
+ *              @SWG\Property(
+ *                  property="caution",
+ *                  type="array",
+ *                  @SWG\Items(
+ *                       @SWG\Property(property="title",type="string"),
+ *                       @SWG\Property(property="text",type="string")
+ *                  )
+ *              ),
+ *              @SWG\Property(
+ *                  property="button",
+ *                  type="array",
+ *                  @SWG\Items(
+ *                       @SWG\Property(property="text",type="string"),
+ *                       @SWG\Property(property="link",type="string")
+ *                  )
+ *              )
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */

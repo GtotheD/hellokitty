@@ -1530,6 +1530,17 @@ $router->group([
         });
 
     }
+
+    // 119598 maintenance
+    $router->get("system/maintenance", function (Request $request) {
+        $maintenance = new \App\Repositories\MaintenanceRepository();
+        $content = $maintenance->loadMaintenanceData();
+        if (empty($content)) {
+            throw new NoContentsException;
+        }
+
+        return response()->json($content)->header('X-Accel-Expires', '0');
+    });
 });
 
 $router->group(['prefix' => env('URL_PATH_PREFIX') . env('API_VERSION')], function () use ($router) {
