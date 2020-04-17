@@ -668,6 +668,29 @@ $router->group([
         $response = $recommendArtistRepository->getArtist($workId);
         return response()->json($response)->header('X-Accel-Expires', '86400');
     });
+    // 関連動画
+    $router->get('work/{workId}/relation/trailer', function (Request $request, $workId) {
+        $work = new WorkRepository();
+        $relationTrailers = $work->getTrailerByWorkId($workId);
+        if (empty($relationTrailers)) {
+            throw new NoContentsException;
+        }
+
+        $limit = $request->input('limit', 10);
+        $offset = $request->input('offset', 0);
+        $total = count($relationTrailers);
+        $rows = array_slice($relationTrailers, $offset, $limit);
+        if (empty($rows)) {
+            throw new NoContentsException;
+        }
+        $response = [
+            'hasNext' => ($offset + $limit < $total),
+            'totalCount' => $total,
+            'rows' => $rows
+        ];
+
+        return response()->json($response)->header('X-Accel-Expires', '86400');
+    });
     // キャスト情報
     $router->get('cast/{castId}', function (Request $request, $workId) {
         return response()->json($json)->header('X-Accel-Expires', '86400');

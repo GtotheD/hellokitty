@@ -1,0 +1,381 @@
+{
+    "status": 200,
+    "message": null,
+    "results": {
+        "total": 1,
+        "rows": [
+            {
+                "work_id": "PTA0000GGGGG",
+                "work_type_id": "2",
+                "msdb_item": "video",
+                "work_format_id": null,
+                "work_format_name": "GGGGG",
+                "work_title": "鬼滅の刃",
+                "work_title_kana": "きめつのやいば",
+                "work_title_en": "",
+                "work_title_orig": "",
+                "work_title_sub": "",
+                "work_comment": "",
+                "work_outline": "",
+                "work_copyright": "(C)吾峠呼世晴/集英社・アニプレックス・ufotable",
+                "rating_id": "EXT000000008",
+                "rating_name": "",
+                "adult_flg": 0,
+                "primary_product_source_id": "PDT00012V8LS",
+                "primary_product_service_id": "tol",
+                "primary_product_type_id": 1,
+                "disp_start_date": "2019-04-09 19:00:00",
+                "disp_start_month": "2019-04",
+                "sale_start_date": "2019-04-09",
+                "sale_start_month": "2019-04",
+                "created_year_from": "",
+                "created_year_to": "",
+                "created_year": "2019",
+                "created_countries": "日本",
+                "jacket_s": "//store-tsutaya.tsite.jp/images/jacket/14568/9999206837277_1S.jpg",
+                "jacket_m": "//store-tsutaya.tsite.jp/images/jacket/14568/9999206837277_1M.jpg",
+                "jacket_l": "//store-tsutaya.tsite.jp/images/jacket/14568/9999206837277_1L.jpg",
+                "jacket_l4": "",
+                "scene_s": [
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00247/4534530117564_B001S.jpg",
+                        "no": "001"
+                    },
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00247/4534530117564_B002S.jpg",
+                        "no": "002"
+                    }
+                ],
+                "scene_m": [
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00247/4534530117564_B001M.jpg",
+                        "no": "001"
+                    },
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00247/4534530117564_B002M.jpg",
+                        "no": "002"
+                    }
+                ],
+                "scene_l": [
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00247/4534530117564_B001L.jpg",
+                        "no": "001"
+                    },
+                    {
+                        "url": "//store-tsutaya.tsite.jp/images/bamen/00247/4534530117564_B002L.jpg",
+                        "no": "002"
+                    }
+                ],
+                "trailor_pc": [],
+                "season_name": "",
+                "season_number": null,
+                "book_series_name": "",
+                "book_series_name_kana": "",
+                "feature_keywords": [],
+                "priv_keywords": [],
+                "work_tags": [
+                    "見逃し2019春アニメ特集",
+                    "riricaleinfo202005s",
+                    "アプリ特集１",
+                    "春休みに観たい　おすすめ作品",
+                    "鬼滅の刃"
+                ],
+                "1000_tags": [],
+                "wakati_words": [],
+                "is_compilation": 0,
+                "series_completed": 0,
+                "disable_flg": 0,
+                "delete_flg": 0,
+                "ids": [
+                    {
+                        "id_type": "0103",
+                        "id_value": "10649993"
+                    },
+                    {
+                        "id_type": "0106",
+                        "id_value": "101027710"
+                    },
+                    {
+                        "id_type": "0105",
+                        "id_value": "10643033"
+                    }
+                ],
+                "docs": [],
+                "awards": [],
+                "screens": [],
+                "onairs": [],
+                "magazines": [],
+                "genres": [
+                    {
+                        "big_genre_id": "EXT0000001CL",
+                        "big_genre_name": "アニメ",
+                        "medium_genre_id": "EXT0000002XV",
+                        "medium_genre_name": "コミック",
+                        "small_genre_id": "",
+                        "small_genre_name": "",
+                        "shikiriban_id": "",
+                        "shikiriban_name": ""
+                    }
+                ],
+                "products": [
+                    {
+                        "id": "PDT000GGGGGG",
+                        "product_id": "PPD000GGGGGG",
+                        "product_type_id": 2,
+                        "product_type_name": "レンタル",
+                        "service_id": "tol",
+                        "service_name": "tol",
+                        "msdb_item": "video",
+                        "item_cd": "0021",
+                        "item_name": "ＤＶＤ",
+                        "product_name": "鬼滅の刃 11",
+                        "product_kana": "きめつのやいば11*25-26",
+                        "product_en": "",
+                        "product_title_sub": "",
+                        "product_title_sub_kana": "",
+                        "product_title_orig": "",
+                        "track_testimonials": "",
+                        "family_name": "鬼滅の刃",
+                        "family_name_sub": "１１",
+                        "family_kana": "きめつのやいば",
+                        "family_kana_sub": "１１",
+                        "disp_start_date": "2020-03-11 12:06:45",
+                        "disp_start_month": "2020-03",
+                        "disp_end_date": "2030-12-28 00:00:00",
+                        "disp_end_month": "2030-12",
+                        "sale_start_date": "2020-05-27",
+                        "sale_start_month": "2020-05",
+                        "sale_end_date": "2030-12-28",
+                        "sale_end_month": "2030-12",
+                        "sale_stop_date": "",
+                        "sale_resume_date": "",
+                        "work_id": [
+                            "PTA0000GGGGG"
+                        ],
+                        "tieup": "",
+                        "copyright": "",
+                        "rating_id": "EXT000000008",
+                        "rating_name": "",
+                        "adult_flg": 0,
+                        "created_year_from": "2019",
+                        "created_year_to": "",
+                        "created_year_str": "2019",
+                        "created_countries": "日本",
+                        "maker_cd": "EXT0000000HC",
+                        "maker_name": "ソニー・ミュージックソリューションズ",
+                        "maker_name_kana": "そにーみゆーじつくそりゆーしよんず",
+                        "maker_name_abbrev": "ソニー・ミュージックソリューションズ",
+                        "label_name": "",
+                        "sell_rental_flag": 2,
+                        "view_term": null,
+                        "reservation_flg": 0,
+                        "limited_flg": 0,
+                        "special_gift_flag": 0,
+                        "ccc_work_cd": "10649993",
+                        "ccc_family_cd": "10649993011",
+                        "ccc_product_id": "206807512",
+                        "rental_product_cd": "084560230",
+                        "common_vod_code": "",
+                        "vod_goods_cd": "",
+                        "distribution_cd": "",
+                        "upc": "",
+                        "isrc": "",
+                        "jan": "4534530118325",
+                        "isbn_10": "",
+                        "isbn_13": "",
+                        "magazine_cd": "",
+                        "product_code": "ANRB14791",
+                        "icpn": "",
+                        "media_category_cd": "12",
+                        "media_category_name": "レンタルDVD",
+                        "media_format_id": "EXT000006GPK",
+                        "media_format_name": "DVD",
+                        "distribution_id": "",
+                        "distribution_name": "",
+                        "multi_platform_flg": null,
+                        "game_model_id": "",
+                        "game_model_name": "",
+                        "imported_flg": "0",
+                        "best_album_flg": 0,
+                        "play_time": "004800",
+                        "product_spec": "",
+                        "screen_size": "",
+                        "subtitle_flg": null,
+                        "subtitle": "",
+                        "sound_spec": "",
+                        "region_info": "",
+                        "disc_info": "",
+                        "color_spec": "",
+                        "video_info": "",
+                        "number_of_volume": "11",
+                        "number_of_set": "0",
+                        "number_of_episode": "",
+                        "season_name": "",
+                        "season_number": null,
+                        "is_double_album": 0,
+                        "is_compilation": 0,
+                        "music_disp_title": "",
+                        "music_disp_artist": "",
+                        "book_page_number": "",
+                        "book_size": "",
+                        "book_release_month": "",
+                        "jacket_s": "",
+                        "jacket_m": "",
+                        "jacket_l": "",
+                        "jacket_l4": "",
+                        "scene_s": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00247/4534530117564_B001S.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00247/4534530117564_B002S.jpg",
+                                "no": "002"
+                            }
+                        ],
+                        "scene_m": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00247/4534530117564_B001M.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00247/4534530117564_B002M.jpg",
+                                "no": "002"
+                            }
+                        ],
+                        "scene_l": [
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00247/4534530117564_B001L.jpg",
+                                "no": "001"
+                            },
+                            {
+                                "url": "//store-tsutaya.tsite.jp/images/bamen/00247/4534530117564_B002L.jpg",
+                                "no": "002"
+                            }
+                        ],
+                        "trailor_pc": [],
+                        "book_series_name": "",
+                        "book_series_name_kana": "",
+                        "feature_keywords": [],
+                        "priv_keywords": [],
+                        "package_tags": [],
+                        "product_tags": [],
+                        "price_tax_out": null,
+                        "price_tax_in": null,
+                        "disable_flg": 0,
+                        "delete_flg": 0,
+                        "docs": [],
+                        "devices": [],
+                        "distribution_plans": [],
+                        "awards": [],
+                        "genres": [
+                            {
+                                "big_genre_id": "EXT0000001CL",
+                                "big_genre_name": "アニメ",
+                                "medium_genre_id": "EXT0000002XV",
+                                "medium_genre_name": "コミック",
+                                "small_genre_id": "",
+                                "small_genre_name": "",
+                                "shikiriban_id": "",
+                                "shikiriban_name": ""
+                            }
+                        ],
+                        "screens": [],
+                        "onairs": [],
+                        "magazines": [],
+                        "discas_grade_point": null,
+                        "discas_item": "",
+                        "ttv_trailer_flg": 0,
+                        "cinema_id": [],
+                        "filmarks_id": [],
+                        "dramarks_id": [],
+                        "catch_copy": "",
+                        "premium_plan_cd": 0,
+                        "premium_plan_start_date": "2021-07-01",
+                        "ttv_svod_sale_start_date": "",
+                        "ttv_svod_sale_end_date": "",
+                        "ttv_svod_adult_sale_start_date": "",
+                        "ttv_svod_adult_sale_end_date": "",
+                        "people": [
+                            {
+                                "person_id": "PPS0000Q4GAM",
+                                "person_name": "吾峠呼世晴",
+                                "role_id": "EXT0000000UQ",
+                                "role_name": "原作者"
+                            }
+                        ],
+                        "need_age_auth_flg": 0
+                    }
+                ],
+                "video_relations": [],
+                "discas_grade_point": 387,
+                "discas_item": [
+                    "TTV",
+                    "DiscasMovie"
+                ],
+                "ttv_trailer_flg": 0,
+                "ttv_free_movie_flg": 1,
+                "ttv_sell_rental_flg": [
+                    "2"
+                ],
+                "ttv_low_price": 0,
+                "cinema_id": [],
+                "filmarks_id": [],
+                "dramarks_id": [],
+                "catch_copy": "",
+                "sale_start_date_sell": "2019-07-31",
+                "sale_start_date_rental": "2019-07-31",
+                "trailer_urls": [
+                    {
+                        "trailer_url_id": "PTA0000ZCWBJ_2_001",
+                        "trailer_url": "https://www.youtube.com/watch?v=tleQwJgllw0",
+                        "display_date_start": "2020-04-07 11:24:29",
+                        "display_date_end": "2030-12-28 00:00:00",
+                        "jasrac_license_flg": 0,
+                        "distribution_limit": 0,
+                        "provider": 0,
+                        "trailer_url_kind": 4,
+                        "trailer_url_kind_detail": 2,
+                        "display_title": "鬼滅の刃 - 予告編",
+                        "comment": "",
+                        "copyright": "",
+                        "duration": "00:00:00",
+                        "thumbnail": "https://i.ytimg.com/vi/tleQwJgllw0/maxresdefault.jpg",
+                        "sell_rental": 0,
+                        "adult_flg": 0,
+                        "disable_flg": null
+                    }
+                ],
+                "scenes": [],
+                "filmarks_mark": 0,
+                "filmarks_clip": 0,
+                "filmarks_average": 0,
+                "premium_plan": [
+                    {
+                        "premium_plan_cd": 0,
+                        "premium_plan_start_date": ""
+                    },
+                    {
+                        "premium_plan_cd": 2,
+                        "premium_plan_start_date": ""
+                    }
+                ],
+                "ttv_svod_sale_start_date": "2020-02-28 09:30:00",
+                "ttv_svod_sale_end_date": "2021-02-27 23:59:59",
+                "ttv_svod_adult_sale_start_date": "",
+                "ttv_svod_adult_sale_end_date": "",
+                "people": [
+                    {
+                        "person_id": "PPS0000Q4GAM",
+                        "person_name": "吾峠呼世晴",
+                        "role_id": "EXT0000000UQ",
+                        "role_name": "原作者"
+                    }
+                ],
+                "tracks": [],
+                "merged_from": [],
+                "need_age_auth_flg": 0
+            }
+        ]
+    }
+}
