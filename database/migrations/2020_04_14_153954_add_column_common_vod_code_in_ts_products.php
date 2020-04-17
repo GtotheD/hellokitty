@@ -16,6 +16,7 @@ class AddColumnCommonVodCodeInTsProducts extends Migration
         if (!Schema::hasColumn('ts_products', 'common_vod_code')) {
             Schema::table('ts_products', function (Blueprint $table) {
                 $table->string('common_vod_code', 15)->nullable()->default(null)->after('jan');
+                $table->string('episode_number', 15)->nullable()->default(null)->after('number_of_volume');
             });
         }
         if (!Scheam::hasColumn('ts_products', 'product_sub_title')) {

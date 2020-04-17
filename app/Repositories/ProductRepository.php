@@ -224,12 +224,8 @@ class ProductRepository extends BaseRepository
       return $this->svodProductReformat($results);
     }
 
-    //----------------------------------------------------------------------
-    // ttvAPIから、商品を並び変える
-    //----------------------------------------------------------------------
     private function svodProductReformat($products)
     {
-        $ttvProduct = null;
 
 
     }
@@ -416,7 +412,7 @@ class ProductRepository extends BaseRepository
         $productBase['ccc_product_id'] = $product['ccc_product_id'];
         $productBase['rental_product_cd'] = $product['rental_product_cd'];
         $productBase['product_name'] = $product['product_name'];
-        // ttv用の話数タイトルを追加保存
+        // ttv用のタイトルを追加保存
         $productBase['product_title_sub'] = $product['product_title_sub'];
         $productBase['product_type_id'] = $product['product_type_id'];
         $productBase['product_type_name'] = $product['product_type_name'];
@@ -454,6 +450,7 @@ class ProductRepository extends BaseRepository
         $productBase['item_cd_right_2'] = substr($product['item_cd'], -2);
         $productBase['item_name'] = $product['item_name'];
         $productBase['number_of_volume'] = $product['number_of_volume'];
+        $productBase['episode_number'] = '';
         $productBase['disc_info'] = $product['disc_info'];
         $productBase['subtitle'] = $product['subtitle'];
         $productBase['sound_spec'] = $product['sound_spec'];

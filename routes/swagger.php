@@ -1333,6 +1333,35 @@
  */
 /**
  * @SWG\Get(
+ *     path="/work/{workId}/products/svod",
+ *     description="動画配信商品検索",
+ *     tags={"Work"},
+ *     security={{"api_key":{}}},
+ *     produces={"application/json"},
+ *     @SWG\Parameter(ref="#/parameters/workId"),
+ *     @SWG\Parameter(ref="#/parameters/limit"),
+ *     @SWG\Parameter(ref="#/parameters/offset"),
+ *     @SWG\Parameter(ref="#/parameters/sort"),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="data",
+ *                  type="object",
+ *                  ref="$/definitions/SvodProductNarrow",
+ *                  description="動画配信商品",
+ *              ),
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+/**
+ * @SWG\Get(
  *     path="/work/{workId}/people",
  *     description="キャストスタッフ一覧取得",
  *     tags={"Work"},

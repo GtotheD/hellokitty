@@ -1050,6 +1050,8 @@ class WorkRepository extends BaseRepository
     public function insertWorkData($himoResult)
     {
         $productRepository = new ProductRepository();
+        $discasRepository = new DiscasRepository();
+
         // Create transaction for insert multiple tables
         DB::beginTransaction();
         try {
@@ -1064,6 +1066,7 @@ class WorkRepository extends BaseRepository
                 $isMusicVideo = false;
                 $discasCCCprodctId = null;
                 $hasTol = false;
+                $hasTtv = false; //ttv商品有無の判定
                 foreach ($row['products'] as $product) {
                     // ダウンロード用のデータ生成
                     // 単一想定
@@ -1081,6 +1084,8 @@ class WorkRepository extends BaseRepository
                         } else {
                             if ($product['service_id'] === 'tol') {
                                 $hasTol = true;
+                            } else if ($product['service_id'] === 'ttv') {
+                                $hasTtv = true; //ttvサービスの商品があった場合true
                             }
                         }
                     }
@@ -1091,7 +1096,9 @@ class WorkRepository extends BaseRepository
                     }
                     $productData[] = $productRepository->format($row['work_id'], $product, $isMusicVideo);
                 }
-                $workData[] = $this->format($row, false, $hasTol);
+                $tempData = $this->format($row, false, $hasTol);
+                $workData[] = $tempData;
+                
                 if (!empty($musicoUrl)) {
                     $musicoUrlInsertArray[] = [
                         'work_id' => $row['work_id'],
@@ -1103,6 +1110,24 @@ class WorkRepository extends BaseRepository
                         'work_id' => $row['work_id'],
                         'ccc_product_id' => $discasCCCprodctId
                     ];
+                }
+
+                //ttv商品があった場合は、ttv側のデータを取得して話数をセットする。商品キーはcommon_vod_codeとする。
+                $ttvContentsCd = $tempData['ttv_contents_cd'];
+                if ($hasTtv === true && $ttvContentsCd !== '') {
+                    $ttvContents = $discasRepository->getTTVContents($ttvContentsCd)->get();
+            
+                    if (!empty($ttvContents['content_item_list'])) {
+                        $contentsList = $ttvContents['content_item_list'];
+                        
+                        foreach($productData as &$pd) {
+                            if ($pd['common_vod_code'] !== '') {
+                                $result = $contentsList[array_search($pd['common_vod_code'], array_column($contentsList, 'content_item_id'))];
+                                $pd['episode_number'] = $result['$episode_number'];
+                            }
+                        }
+                        unset($pd);
+                    }
                 }
             }
             $productModel = new Product();

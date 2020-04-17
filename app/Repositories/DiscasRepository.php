@@ -20,6 +20,7 @@ class DiscasRepository extends ApiRequesterRepository
     const DISCAS_CUSTOMER_API = '/v2/customer'; // 作品詳細用
     const HASDIS_CUSTOMER_API = '/v2/customer/hasDisc'; // 会員情報の拡充 API
     const TTV_RECOMMEND_API = '/web/v1/vod/recommend?recommend_type=1';
+    const TTV_CONTENTS_API = '/web/v1/vod/contents?content_title_id=';
 
 
     use TlscEncryption;
@@ -187,6 +188,15 @@ class DiscasRepository extends ApiRequesterRepository
       $this->apiPath = $this->apiTTVHost . self::TTV_RECOMMEND_API;
 
       return $this;
+    }
+
+    //ttv作品・商品データを取得する
+    public function getTTVContents($ttvContentsCd)
+    {
+        $userAgent = 'GuzzleHttp/6.2.0 curl/7.29.0 PHP/7.0.14';
+        $this->apiPath = $this->apiTTVHost . self::TTV_CONTENTS_API . $ttvContentsCd;
+
+        return $this;        
     }
 
     public function getLv2LoginTokenFromTlsc($tlsc)
