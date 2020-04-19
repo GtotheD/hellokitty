@@ -19,7 +19,7 @@ class AddColumnCommonVodCodeInTsProducts extends Migration
                 $table->string('episode_number', 15)->nullable()->default(null)->after('number_of_volume');
             });
         }
-        if (!Scheam::hasColumn('ts_products', 'product_sub_title')) {
+        if (!Schema::hasColumn('ts_products', 'product_sub_title')) {
             Schema::table('ts_products', function (Blueprint $table) {
                 $table->string('product_sub_title', 255)->nullable()->default(null)->after('product_name');
             });
