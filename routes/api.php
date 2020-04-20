@@ -518,14 +518,19 @@ $router->group([
         $product = new ProductRepository();
         $product->setSaleType($request->input('saleType', 'rental'));
         $product->setAgeLimitCheck($request->input('ageLimitCheck', false));
-        $result = $product->getSvodProducts($workId);
+        $product->setSort($request->input('sort', 'old'));
+        $result = $product->getSvodProducts($workId);    
         if (empty($result)) {
             throw new NoContentsException;
         }
+
         $response = [
-            'data' => $result
+            'hasNext' => $product->getHasNext(),
+            'totalCount' => $product->getTotalCount(),
+            'rows' => $result
         ];
         return response()->json($response)->header('X-Accel-Expires', '86400');
+   
     });
     // キャストスタッフ一覧取得
     $router->get('work/{workId}/people', function (Request $request, $workId) {

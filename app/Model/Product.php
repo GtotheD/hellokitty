@@ -58,7 +58,7 @@ class Product extends Model
     //
     // 動画配信作品のみを取得する（間引き無し）
     //
-    public function setConditionByWorkIdProductSvod($workId)
+    public function setConditionByWorkIdProductSvod($workId, $saleType, $order)
     {
         $this->dbObject = DB::table($this->table)
             // ttvのみを取るように変更
@@ -66,6 +66,14 @@ class Product extends Model
             ->where('work_id', $workId)
             ->where('product_type_id', 5);
 
+        //話数順ソートold=古い話数から
+        if ($order === 'old') {
+            $this->dbObject
+                ->orderByRaw(DB::raw('cast(episode_number as UNSIGNED) asc'));
+        } else {
+            $this->dbObject
+                ->orderByRaw(DB::raw('cast(episode_number as UNSIGNED) desc'));
+        }
         return $this;
     }
 

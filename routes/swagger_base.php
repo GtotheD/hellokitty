@@ -92,6 +92,13 @@
  *      type="string",
  * )
  * @SWG\Parameter(
+ *      name="sort(vod)",
+ *      description="並び順（話数の新しい順 = new、 話数の古い順 = old（デフォルト））",
+ *      in="query",
+ *      required=false,
+ *      type="string",
+ * )
+ * @SWG\Parameter(
  *      name="saleType",
  *      description="販売タイプ（sell, rental, theater(上映映画)）",
  *      in="query",

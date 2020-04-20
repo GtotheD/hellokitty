@@ -1121,7 +1121,7 @@ class WorkRepository extends BaseRepository
                         $contentsList = $ttvContents['content_item_list'];
                         
                         foreach($productData as &$pd) {
-                            if ($pd['common_vod_code'] !== '') {
+                            if ($pd['common_vod_code'] !== '' && $pd['service_id'] === 'ttv') {
                                 $result = $contentsList[array_search($pd['common_vod_code'], array_column($contentsList, 'content_item_id'))];
                                 $pd['episode_number'] = $result['episode_number'];
                             }

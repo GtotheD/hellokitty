@@ -191,24 +191,17 @@ class ProductRepository extends BaseRepository
     {
       //レスポンス項目のみに限定する
       $column = [
-          "item_cd",
-          "item_name",
-          "product_type_id",
-          "jan",
-          "rental_product_cd",
-          "number_of_volume",
-          "price_tax_out",
-          //↑ReFormatに必要な項目
           "product_name",
-          "product_title_sub",
           "product_unique_id",
           "common_vod_code",
+          "product_title_sub",
+          "episode_number",
           "jacket_l",
           "sale_start_date",
           "is_premium_net"
       ];
 
-      $this->totalCount = $this->product->setConditionProductSvod($workId, $this->saleType, $this->sort)->count();
+      $this->totalCount = $this->product->setConditionByWorkIdProductSvod($workId, $this->saleType, $this->sort)->count();
       $results = $this->product->selectCamel($column)->get($this->limit, $this->offset);
       if (count($results) === 0) {
           return null;
@@ -219,15 +212,28 @@ class ProductRepository extends BaseRepository
       } else {
           $this->hasNext = false;
       }
-
-      //return $this->productReformat($results);
       return $this->svodProductReformat($results);
     }
 
     private function svodProductReformat($products)
     {
+        $reformatResult = null;
 
+        // reformat data
+        foreach ($products as $product) {
+            $product = (array)$product;
+            $product['jacketL'] = trimImageTag($product['jacketL']);
+            $product['productKey'] = $product['commonVodCode'];
+            $product['premiumNetStatus'] = $product['isPremiumNet'];
+            $product['newFlg'] = newFlg($product['saleStartDate']);
 
+            unset($product['commonVodCode']);
+            unset($product['isPremiumNet']);
+
+            $reformatResult[] = $product;
+        }
+
+        return $reformatResult;
     }
 
     private function rentalGroupReformat($products)
