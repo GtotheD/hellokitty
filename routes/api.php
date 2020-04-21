@@ -671,7 +671,8 @@ $router->group([
     // 関連動画
     $router->get('work/{workId}/relation/trailer', function (Request $request, $workId) {
         $work = new WorkRepository();
-        $relationTrailers = $work->getTrailerByWorkId($workId);
+        $workData = $work->get($workId);
+        $relationTrailers = $work->formatOutputTrailer($workData);
         if (empty($relationTrailers)) {
             throw new NoContentsException;
         }
