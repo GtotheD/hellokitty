@@ -1099,6 +1099,56 @@
  * */
 /**
  *  @SWG\Definition(
+ *          definition="SvodProductNarrow",
+ *          @SWG\Property(
+ *              property="productName",
+ *              type="string",
+ *              description="商品名"
+ *          ),
+ *          @SWG\Property(
+ *              property="productUniqueId",
+ *              type="string",
+ *              description="商品ID(product.id でproduct.product_idではない)"
+ *          ),
+ *          @SWG\Property(
+ *              property="productKey",
+ *              type="string",
+ *              description="レンタルの場合はレンタル商品コード、セルの場合はJANコード"
+ *          ),
+ *          @SWG\Property(
+ *              property="productTitleSub",
+ *              type="string",
+ *              description="商品名サブタイトル"
+ *          ),
+ *          @SWG\Property(
+ *              property="episode_number",
+ *              type="string",
+ *              description="話数"
+ *          ),
+ *          @SWG\Property(
+ *              property="jacketL",
+ *              type="string",
+ *              description="ジャケ写"
+ *          ),
+ *          @SWG\Property(
+ *              property="saleStartDate",
+ *              type="string",
+ *              description="発売日"
+ *          ),
+ *          @SWG\Property(
+ *              property="newFlg",
+ *              type="boolean",
+ *              description="NEW表示フラグ"
+ *          ),
+ *          @SWG\Property(
+ *              property="premiumNetStatus",
+ *              type="integer",
+ *              description="動画見放題フラグ"
+ *          ),
+ *  )
+ * */
+/**
+ *  @SWG\Definition(
  *          definition="ProductGroup",
  *          @SWG\Property(
  *              property="productName",

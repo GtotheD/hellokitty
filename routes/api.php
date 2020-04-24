@@ -513,6 +513,26 @@ $router->group([
         ];
         return response()->json($response)->header('X-Accel-Expires', '86400');
     });
+    // 動画配信商品検索
+    $router->get('work/{workId}/products/svod', function (Request $request, $workId) {
+        $product = new ProductRepository();
+        $product->setSaleType($request->input('saleType', 'rental'));
+        $product->setAgeLimitCheck($request->input('ageLimitCheck', false));
+        $product->setLimit($request->input('limit', 10));
+        $product->setSort($request->input('sort', 'old'));
+        $result = $product->getSvodProducts($workId);    
+        if (empty($result)) {
+            throw new NoContentsException;
+        }
+
+        $response = [
+            'hasNext' => $product->getHasNext(),
+            'totalCount' => $product->getTotalCount(),
+            'rows' => $result
+        ];
+        return response()->json($response)->header('X-Accel-Expires', '86400');
+   
+    });
     // キャストスタッフ一覧取得
     $router->get('work/{workId}/people', function (Request $request, $workId) {
         $peopleRepository = new PeopleRepository();
@@ -603,7 +623,7 @@ $router->group([
     $router->get('work/{workId}/review/comicspace', function (Request $request, $workId) {
         $work = new WorkRepository();
         $workData = $work->get($workId);
-        
+
         if (empty($workData)) {
             throw new NoContentsException;
         }
@@ -1475,7 +1495,7 @@ $router->group([
     $router->get('/promotion/{promotion_id}', function (Request $request, $promotion_id) {
         $promotionRepository = new PromotionRepository();
         $result = $promotionRepository->getPromotionData($promotion_id);
-        
+
         if (empty($result)) {
             throw new NoContentsException;
         }

@@ -184,6 +184,58 @@ class ProductRepository extends BaseRepository
         return $this->rentalGroupReformat($response);
     }
 
+    //
+    // 動画配信商品を取得する
+    //
+    public function getSvodProducts($workId)
+    {
+      //レスポンス項目のみに限定する
+      $column = [
+          "product_name",
+          "product_unique_id",
+          "common_vod_code",
+          "product_title_sub",
+          "episode_number",
+          "jacket_l",
+          "sale_start_date",
+          "is_premium_net"
+      ];
+
+      $this->totalCount = $this->product->setConditionByWorkIdProductSvod($workId, $this->saleType, $this->sort)->count();
+      $results = $this->product->selectCamel($column)->get($this->limit, $this->offset);
+      if (count($results) === 0) {
+          return null;
+      }
+
+      if (count($results) + $this->offset < $this->totalCount) {
+          $this->hasNext = true;
+      } else {
+          $this->hasNext = false;
+      }
+      return $this->svodProductReformat($results);
+    }
+
+    private function svodProductReformat($products)
+    {
+        $reformatResult = null;
+
+        // reformat data
+        foreach ($products as $product) {
+            $product = (array)$product;
+            $product['jacketL'] = trimImageTag($product['jacketL']);
+            $product['productKey'] = $product['commonVodCode'];
+            $product['premiumNetStatus'] = $product['isPremiumNet'];
+            $product['newFlg'] = newFlg($product['saleStartDate']);
+
+            unset($product['commonVodCode']);
+            unset($product['isPremiumNet']);
+
+            $reformatResult[] = $product;
+        }
+
+        return $reformatResult;
+    }
+
     private function rentalGroupReformat($products)
     {
         $reformatResult = null;
@@ -358,12 +410,16 @@ class ProductRepository extends BaseRepository
         $productBase['base_product_code'] = $baseProductCode;
         $productBase['is_dummy'] = preg_match('/([A-Z]|[a-z]){1,2}$/', $product['product_code'], $matches);
         $productBase['jan'] = $product['jan'];
+        // ttv用の商品IDを追加保存
+        $productBase['common_vod_code'] = $product['common_vod_code'];
         $productBase['game_model_id'] = $product['game_model_id'];
         $productBase['game_model_name'] = $product['game_model_name'];
         $productBase['ccc_family_cd'] = $product['ccc_family_cd'];
         $productBase['ccc_product_id'] = $product['ccc_product_id'];
         $productBase['rental_product_cd'] = $product['rental_product_cd'];
         $productBase['product_name'] = $product['product_name'];
+        // ttv用のタイトルを追加保存
+        $productBase['product_title_sub'] = $product['product_title_sub'];
         $productBase['product_type_id'] = $product['product_type_id'];
         $productBase['product_type_name'] = $product['product_type_name'];
         $productBase['sale_start_date'] = $product['sale_start_date'];
@@ -400,6 +456,7 @@ class ProductRepository extends BaseRepository
         $productBase['item_cd_right_2'] = substr($product['item_cd'], -2);
         $productBase['item_name'] = $product['item_name'];
         $productBase['number_of_volume'] = $product['number_of_volume'];
+        $productBase['episode_number'] = '';
         $productBase['disc_info'] = $product['disc_info'];
         $productBase['subtitle'] = $product['subtitle'];
         $productBase['sound_spec'] = $product['sound_spec'];

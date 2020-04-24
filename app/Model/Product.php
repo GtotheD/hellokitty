@@ -55,6 +55,28 @@ class Product extends Model
         return $this;
     }
 
+    //
+    // 動画配信作品のみを取得する（間引き無し）
+    //
+    public function setConditionByWorkIdProductSvod($workId, $saleType, $order)
+    {
+        $this->dbObject = DB::table($this->table)
+            // ttvのみを取るように変更
+            ->whereRaw(DB::raw(' service_id  in  (\'ttv\')'))
+            ->where('work_id', $workId)
+            ->where('product_type_id', 5);
+
+        //話数順ソートold=古い話数から
+        if ($order === 'old') {
+            $this->dbObject
+                ->orderByRaw(DB::raw('cast(episode_number as UNSIGNED) asc'));
+        } else {
+            $this->dbObject
+                ->orderByRaw(DB::raw('cast(episode_number as UNSIGNED) desc'));
+        }
+        return $this;
+    }
+
     public function setConditionByWorkIdForRentalCd($workId)
     {
         $this->dbObject = DB::table($this->table . ' AS t2')
