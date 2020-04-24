@@ -903,6 +903,9 @@ class WorkRepository extends BaseRepository
                     }
                 }
             }
+            if (array_key_exists('trailerUrls', $response)) {
+                $response['trailerUrls'] = json_decode($response['trailerUrls'], true);
+            }
             // get promotion info
             $promotion = new PromotionRepository();
             $promotionData = $promotion->getPromotionDataForWork($response['workId'], $response['saleType'], true);
@@ -1907,6 +1910,9 @@ class WorkRepository extends BaseRepository
         if (array_key_exists('docs', $row)) {
             $base['doc_text'] = json_encode($row['docs']);
         }
+        if (array_key_exists('trailer_urls', $row)) {
+            $base['trailer_urls'] = json_encode($row['trailer_urls']);
+        }
         $row['1000_tags'] = (array_key_exists('1000_tags', $row)) ? $row['1000_tags'] : null;
         $base['thousandtags'] = json_encode($row['1000_tags']);
 
@@ -2153,5 +2159,35 @@ class WorkRepository extends BaseRepository
         }
 
         return $result;
+    }
+
+    public function formatOutputTrailer($data)
+    {
+        $relationTrailers = $data['trailerUrls'];
+        $work_type_id = $data['workTypeId'];
+
+        if (empty($relationTrailers)) {
+            return null;
+        }
+        $response = [];
+        foreach ($relationTrailers as $trailer) {
+            if ($trailer['provider'] !== 0) {
+                continue;
+            }
+
+            if ($work_type_id === self::WORK_TYPE_THEATER &&
+                ($trailer['trailer_url_kind_detail'] == 1 || $trailer['trailer_url_kind_detail'] == 2)) {
+                continue;
+            }
+            parse_str(parse_url($trailer['trailer_url'], PHP_URL_QUERY ), $query);
+            $response[] = [
+                'displayTitle' => $trailer['display_title'],
+                'trailerUrl' => $trailer['trailer_url'],
+                'youtubeId' => isset($query['v'])? $query['v'] : '',
+                'thumbnail' => $trailer['thumbnail']
+            ];
+        }
+
+        return $response;
     }
 }

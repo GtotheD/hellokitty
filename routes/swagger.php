@@ -1637,6 +1637,40 @@
  */
 /**
  * @SWG\Get(
+ *     path="/work/{workId}/relation/trailer",
+ *     description="関連動画",
+ *     tags={"Work"},
+ *     security={{"api_key":{}}},
+ *     produces={"application/json"},
+ *     @SWG\Parameter(ref="#/parameters/workId"),
+ *     @SWG\Parameter(ref="#/parameters/limit"),
+ *     @SWG\Parameter(ref="#/parameters/offset"),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          ref="$/responses/ListJson",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="rows",
+ *                  type="array",
+ *                  @SWG\Items(
+ *                       @SWG\Property(property="displayTitle",type="string"),
+ *                       @SWG\Property(property="trailerUrl",type="string"),
+ *                       @SWG\Property(property="youtubeId",type="string"),
+ *                       @SWG\Property(property="thumbnail",type="string"),
+ *                  ),
+ *                  description="予告編",
+ *              ),
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+/**
+ * @SWG\Get(
  *     path="/people/{personId}",
  *     description="人物関連作品取得",
  *     tags={"People"},

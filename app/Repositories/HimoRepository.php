@@ -77,6 +77,7 @@ class HimoRepository extends ApiRequesterRepository
             'offset' => $this->offset,
             'limit' => $this->limit,
             'sort_by' => 'auto:asc',
+            'trailer_url_limit' => '5',
         ];
         return $this;
     }
@@ -389,7 +390,6 @@ class HimoRepository extends ApiRequesterRepository
         ];
         return $this;
     }
-
 
     public function searchPeople($ids, $idType, $msdbItem = null, $responseLevel = 9)
     {

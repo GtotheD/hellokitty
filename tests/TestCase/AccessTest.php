@@ -266,6 +266,14 @@ class AccessTest extends TestCase
     /**
      * @test
      */
+    public function workRelationTrailer()
+    {
+        $response = $this->getJsonWithAuth('/work/PTA0000GGGGG/relation/trailer');
+        $response->assertResponseStatus(200);
+    }
+    /**
+     * @test
+     */
     public function workRecommendOther()
     {
         $url = '/work/PTA0000G4CSA';
