@@ -518,6 +518,7 @@ $router->group([
         $product = new ProductRepository();
         $product->setSaleType($request->input('saleType', 'rental'));
         $product->setAgeLimitCheck($request->input('ageLimitCheck', false));
+        $product->setLimit($request->input('limit', 10));
         $product->setSort($request->input('sort', 'old'));
         $result = $product->getSvodProducts($workId);    
         if (empty($result)) {
