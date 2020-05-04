@@ -88,13 +88,15 @@ class NotificationRepository extends ApiRequesterRepository
     private function convertParams($data)
     {
         $params = [];
+        $tmp_param = [];
         foreach ($data as $d) {
-            if (isset($d['status'])) {
-                $d['registerStatus'] = $d['status'];
-                unset($d['status']);
-            }
-            $params[] = $d;
+            $tmp_param['applicationKind'][] = $d['applicationKind'];
+            $tmp_param['status'][] = $d['status'] ? 1 : 0;
         }
+        $params = [
+            'applicationKind' => implode(',', $tmp_param['applicationKind']),
+            'registerFlag' => implode(',', $tmp_param['status'])
+        ];
         return $params;
     }
 
@@ -106,8 +108,19 @@ class NotificationRepository extends ApiRequesterRepository
     {
         $result = [];
         $result['status'] = current($data->status);
-        foreach ($data->array as $obj) {
-            $result['data'][] = $obj;
+        foreach ($data->permission as $obj) {
+            if ($obj->registerStatus == '1') {
+                $registerStatus = true;
+            } elseif ($obj->registerStatus == '0') {
+                $registerStatus = false;
+            } else {
+                $registerStatus = null;
+            }
+
+            $result['data'][] = [
+                'applicationKind' => current($obj->applicationKind),
+                'registerStatus' => $registerStatus
+            ];
         }
 
         return $result;

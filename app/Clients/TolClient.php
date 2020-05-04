@@ -25,6 +25,8 @@ class TolClient extends BaseClient
     const MFR001 = '/ms/resources/ap10mfr001';
     const MRE001 = '/ms/resources/ap07mre001';
     const SP101 = '/ms/resources/ap11sp101';
+    const PIG01 = '/ms/resources/AP14PushInfoGet01';
+    const PIP01 = '/ms/resources/AP14PushInfoPost01';
     const NTF001 = '/ms/resources/MA13Reservation01P/get';
     const NTF002 = '/ms/resources/MA13Reservation02P/post';
     const MCE001 = '/ms/resources/AP13CampaignEntryCountGet01';
@@ -192,7 +194,7 @@ class TolClient extends BaseClient
      */
     public function getPushNotification()
     {
-        $this->apiPath = $this->createPath(self::SP101);
+        $this->apiPath = $this->createPath(self::PIG01);
         $this->setHeaders([
             'memid' => $this->memId,
             'X-TOL-Platform-Code' => '00'
@@ -207,13 +209,12 @@ class TolClient extends BaseClient
      */
     public function registPushNotification($params)
     {
-        $this->apiPath = $this->createPath(self::SP101);
+        $this->apiPath = $this->createPath(self::PIP01);
         $this->setHeaders([
             'memid' => $this->memId,
             'X-TOL-Platform-Code' => '00'
         ]);
         $this->queryParams = $params;
-        $this->setMethod('POST');
         return $this->get(false);
     }
 

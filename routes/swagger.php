@@ -3266,7 +3266,7 @@
 
 /**
  * @SWG\Post(
- *     path="/notification/get",
+ *     path="/member/notification/get",
  *     description="プッシュ通知パーミッション取得",
  *     produces={"application/json"},
  *     tags={"Member"},
@@ -3289,16 +3289,20 @@
  *          description="success",
  *          @SWG\Schema(
  *              @SWG\Property(
- *                  property="status",
- *                  type="string",
- *                  description="ステータス",
- *              ),
- *              @SWG\Property(
- *                  property="data",
- *                  type="array",
- *                  @SWG\Items(ref="#/definitions/PushNotification"),
- *                  description="データ",
- *              ),
+ *                  property="results",
+ *                  type="object",
+ *             		@SWG\Property(
+ *                  	property="status",
+ *                  	type="string",
+ *                  	description="ステータス",
+ *              	),
+ *              	@SWG\Property(
+ *                  	property="data",
+ *                  	type="array",
+ *                  	@SWG\Items(ref="#/definitions/PushNotification"),
+ *                  	description="データ",
+ *              	),
+ *              )
  *          )
  *      ),
  *     @SWG\Response(response=204, description="Contents not found"),
@@ -3310,7 +3314,7 @@
 
 /**
  * @SWG\Post(
- *     path="/notification/post",
+ *     path="/member/notification/post",
  *     description="プッシュ通知パーミッション登録・取得",
  *     produces={"application/json"},
  *     tags={"Member"},
@@ -3338,8 +3342,8 @@
  *                 ),
  *                 @SWG\Property(
  *                     property="status",
- *                     type="string",
- *                     example="1"
+ *                     type="boolean",
+ *                     example="true"
  *                 )
  *             )
  *         ),
@@ -3350,16 +3354,19 @@
  *          description="success",
  *          @SWG\Schema(
  *              @SWG\Property(
- *                  property="status",
- *                  type="string",
- *                  description="ステータス",
- *              ),
- *              @SWG\Property(
- *                  property="data",
- *                  type="array",
- *                  @SWG\Items(ref="#/definitions/PushNotification"),
- *                  description="データ",
- *              ),
+ *                  property="results",
+ *                  type="object",
+ *              	@SWG\Property(
+ *                  	property="status",
+ *                  	type="string",
+ *                  	description="ステータス",
+ *              	),
+ *              	@SWG\Property(
+ *                  	property="errCd",
+ *                  	type="string",
+ *                  	description="エラーコード",
+ *              	)
+ *              )
  *          )
  *      ),
  *     @SWG\Response(response=204, description="Contents not found"),

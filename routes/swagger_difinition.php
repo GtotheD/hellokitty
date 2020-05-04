@@ -1483,18 +1483,8 @@
  *              description="申込サービズ種別"
  *          ),
  *          @SWG\Property(
- *              property="sort",
- *              type="string",
- *              description="表示順"
- *          ),
- *          @SWG\Property(
- *              property="name",
- *              type="string",
- *              description="項目名"
- *          ),
- *          @SWG\Property(
  *              property="registerStatus",
- *              type="string",
+ *              type="boolean",
  *              description="登録状況"
  *          )
  *  )
