@@ -429,6 +429,9 @@ $router->group([
             throw new NoContentsException;
         }
 
+        //ここには本来記載したくない
+        unset($result['trailerUrls']);
+        
         $checkAgeLimit = checkAgeLimit(
             $ageLimitCheck,
             $result['ratingId'],
