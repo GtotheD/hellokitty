@@ -50,4 +50,79 @@ class NotificationRepository extends ApiRequesterRepository
         return $result;
     }
 
+    /**
+     * TOLプッシュ通知パーミッション取得
+     * @return \SimpleXMLElement
+     * @throws NoContentsException
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function getPushNotification($tolId)
+    {
+        $memId = $this->decodeMemid(env('TOL_ENCRYPT_KEY'), $tolId);
+        $notification = new TolNotification($memId);
+        $result = $notification->getPushNotification();
+
+        return $result;
+    }
+
+    /**
+     * TOLプッシュ通知パーミッション登録・取得
+     * @return \SimpleXMLElement
+     * @throws NoContentsException
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function registPushNotification($tolId, $data)
+    {
+        $memId = $this->decodeMemid(env('TOL_ENCRYPT_KEY'), $tolId);
+        $notification = new TolNotification($memId);
+        $params = $this->convertParams($data);
+        $result = $notification->registPushNotification($params);
+
+        return $result;
+    }
+
+    /**
+     * 変換パラメータ
+     * @return array
+     */
+    private function convertParams($data)
+    {
+        $params = [];
+        $tmp_param = [];
+        foreach ($data as $d) {
+            $tmp_param['applicationKind'][] = $d['applicationKind'];
+            $tmp_param['status'][] = $d['status'] ? 1 : 0;
+        }
+        $params = [
+            'applicationKind' => implode(',', $tmp_param['applicationKind']),
+            'registerFlag' => implode(',', $tmp_param['status'])
+        ];
+        return $params;
+    }
+
+    /**
+     * プッシュ通知パーミッションAPIのレスポンスのフォーマット
+     * @return array
+     */
+    public function formatOutputPushNotification($data)
+    {
+        $result = [];
+        $result['status'] = current($data->status);
+        foreach ($data->permission as $obj) {
+            if ($obj->registerStatus == '1') {
+                $registerStatus = true;
+            } elseif ($obj->registerStatus == '0') {
+                $registerStatus = false;
+            } else {
+                $registerStatus = null;
+            }
+
+            $result['data'][] = [
+                'applicationKind' => current($obj->applicationKind),
+                'registerStatus' => $registerStatus
+            ];
+        }
+
+        return $result;
+    }
 }

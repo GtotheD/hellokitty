@@ -89,4 +89,22 @@ class TolNotification extends TolBaseModel
         $xml = $this->tolClient->registPromotion($params);
         return simplexml_load_string($xml);
     }
+
+    /**
+     * @throws \App\Exceptions\NoContentsException
+     */
+    public function getPushNotification()
+    {
+        $xml = $this->tolClient->getPushNotification();
+        return simplexml_load_string($xml);
+    }
+
+    /**
+     * @throws \App\Exceptions\NoContentsException
+     */
+    public function registPushNotification($params)
+    {
+        $xml = $this->tolClient->registPushNotification($params);
+        return simplexml_load_string($xml);
+    }
 }

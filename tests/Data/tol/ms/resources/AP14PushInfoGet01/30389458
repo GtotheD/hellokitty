@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<results>			
+　　<status>0</status>
+　　　　<permission>	
+　　　　　　<applicationKind>600</applicationKind>
+　　　　　　<name>レンタル商品返却予定日のお知らせ</name>
+　　　　　　<registerStatus>1</registerStatus>
+　　　　</permission>		
+　　　　<permission>	
+　　　　　　<applicationKind>601</applicationKind>
+　　　　　　<name>返却日の3日前</name>
+　　　　　　<registerStatus>1</registerStatus>
+　　　　</permission>	
+　　　　<permission>	
+　　　　　　<applicationKind>602</applicationKind>
+　　　　　　<name>返却日の前々日</name>
+　　　　　　<registerStatus>0</registerStatus>
+　　　　</permission>
+　　　　<permission>	
+　　　　　　<applicationKind>603</applicationKind>
+　　　　　　<name>返却日の前日</name>
+　　　　　　<registerStatus>0</registerStatus>
+　　　　</permission>
+　　　　<permission>	
+　　　　　　<applicationKind>604</applicationKind>
+　　　　　　<name>返却日当日</name>
+　　　　　　<registerStatus>0</registerStatus>
+　　　　</permission>
+　　　　<permission>	
+　　　　　　<applicationKind>605</applicationKind>
+　　　　　　<name>お知らせ</name>
+　　　　　　<registerStatus>1</registerStatus>
+　　　　</permission>
+</results>

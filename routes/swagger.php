@@ -3263,3 +3263,115 @@
  *     @SWG\Response(response=500, description="Server error")
  * )
  */
+
+/**
+ * @SWG\Post(
+ *     path="/member/notification/get",
+ *     description="プッシュ通知パーミッション取得",
+ *     produces={"application/json"},
+ *     tags={"Member"},
+ *     security={{"api_key":{}}},
+ *     @SWG\Parameter(
+ *       name="body",
+ *       in="body",
+ *       description="",
+ *       type="array",
+ *       @SWG\Schema(
+ *         @SWG\Property(
+ *             property="tolId",
+ *             type="string",
+ *             description="アカウントID",
+ *         )
+ *       )
+ *     ),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="results",
+ *                  type="object",
+ *             		@SWG\Property(
+ *                  	property="status",
+ *                  	type="string",
+ *                  	description="ステータス",
+ *              	),
+ *              	@SWG\Property(
+ *                  	property="data",
+ *                  	type="array",
+ *                  	@SWG\Items(ref="#/definitions/PushNotification"),
+ *                  	description="データ",
+ *              	),
+ *              )
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */
+
+/**
+ * @SWG\Post(
+ *     path="/member/notification/post",
+ *     description="プッシュ通知パーミッション登録・取得",
+ *     produces={"application/json"},
+ *     tags={"Member"},
+ *     security={{"api_key":{}}},
+ *     @SWG\Parameter(
+ *       name="body",
+ *       in="body",
+ *       description="",
+ *       type="array",
+ *       @SWG\Schema(
+ *         @SWG\Property(
+ *             property="tolId",
+ *             type="string",
+ *             description="アカウントID",
+ *         ),
+ *         @SWG\Property(
+ *             property="data",
+ *             type="array",
+ *             description="データ",
+ *             @SWG\Items(
+ *                 @SWG\Property(
+ *                     property="applicationKind",
+ *                     type="string",
+ *                     example="600"
+ *                 ),
+ *                 @SWG\Property(
+ *                     property="status",
+ *                     type="boolean",
+ *                     example="true"
+ *                 )
+ *             )
+ *         ),
+ *       )
+ *     ),
+ *     @SWG\Response(
+ *          response=200,
+ *          description="success",
+ *          @SWG\Schema(
+ *              @SWG\Property(
+ *                  property="results",
+ *                  type="object",
+ *              	@SWG\Property(
+ *                  	property="status",
+ *                  	type="string",
+ *                  	description="ステータス",
+ *              	),
+ *              	@SWG\Property(
+ *                  	property="errCd",
+ *                  	type="string",
+ *                  	description="エラーコード",
+ *              	)
+ *              )
+ *          )
+ *      ),
+ *     @SWG\Response(response=204, description="Contents not found"),
+ *     @SWG\Response(response=401, description="Auth error"),
+ *     @SWG\Response(response=404, description="Page not found"),
+ *     @SWG\Response(response=500, description="Server error")
+ * )
+ */

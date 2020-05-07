@@ -1474,3 +1474,18 @@
  *          )
  *  )
  * */
+/**
+ *  @SWG\Definition(
+ *          definition="PushNotification",
+ *          @SWG\Property(
+ *              property="applicationKind",
+ *              type="string",
+ *              description="申込サービズ種別"
+ *          ),
+ *          @SWG\Property(
+ *              property="registerStatus",
+ *              type="boolean",
+ *              description="登録状況"
+ *          )
+ *  )
+ * */
