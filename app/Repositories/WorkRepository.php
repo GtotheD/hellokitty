@@ -1116,7 +1116,7 @@ class WorkRepository extends BaseRepository
                 }
 
                 //ttv商品があった場合は、ttv側のデータを取得して話数をセットする。商品キーはcommon_vod_codeとする。
-                if (!empty($tempDate['ttv_contents_cd'])) {
+                if (!empty($tempData['ttv_contents_cd'])) {
                     $ttvContentsCd = $tempData['ttv_contents_cd'];
                     if ($hasTtv === true && $ttvContentsCd !== '') {
                         $ttvContents = $discasRepository->getTTVContents($ttvContentsCd)->get();
