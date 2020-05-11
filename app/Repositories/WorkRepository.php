@@ -1116,20 +1116,22 @@ class WorkRepository extends BaseRepository
                 }
 
                 //ttv商品があった場合は、ttv側のデータを取得して話数をセットする。商品キーはcommon_vod_codeとする。
-                $ttvContentsCd = $tempData['ttv_contents_cd'];
-                if ($hasTtv === true && $ttvContentsCd !== '') {
-                    $ttvContents = $discasRepository->getTTVContents($ttvContentsCd)->get();
+                if (!empty($tempDate['ttv_contents_cd'])) {
+                    $ttvContentsCd = $tempData['ttv_contents_cd'];
+                    if ($hasTtv === true && $ttvContentsCd !== '') {
+                        $ttvContents = $discasRepository->getTTVContents($ttvContentsCd)->get();
             
-                    if (!empty($ttvContents['content_item_list'])) {
-                        $contentsList = $ttvContents['content_item_list'];
+                        if (!empty($ttvContents['content_item_list'])) {
+                            $contentsList = $ttvContents['content_item_list'];
                         
-                        foreach($productData as &$pd) {
-                            if ($pd['common_vod_code'] !== '' && $pd['service_id'] === 'ttv') {
-                                $result = $contentsList[array_search($pd['common_vod_code'], array_column($contentsList, 'content_item_id'))];
-                                $pd['episode_number'] = $result['episode_number'];
+                            foreach($productData as &$pd) {
+                                if ($pd['common_vod_code'] !== '' && $pd['service_id'] === 'ttv') {
+                                    $result = $contentsList[array_search($pd['common_vod_code'], array_column($contentsList, 'content_item_id'))];
+                                    $pd['episode_number'] = $result['episode_number'];
+                                }
                             }
+                            unset($pd);
                         }
-                        unset($pd);
                     }
                 }
             }
