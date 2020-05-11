@@ -37,7 +37,7 @@ class PushNotificationRegistTest extends TestCase
             ]
         ]);
 
-        $url = '/member/notification/post';
+        $url = '/member/status/notification/update';
         $response = $this->postWithAuth($url, $json);
         $actual = json_decode($response->getContent(), true);
         $this->assertEquals(200, $response->getStatusCode());

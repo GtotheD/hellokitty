@@ -1464,7 +1464,7 @@ $router->group([
     });
 
     // プッシュ通知パーミッション取得
-    $router->post('member/notification/get', function (Request $request) {
+    $router->post('member/status/notification', function (Request $request) {
         $bodyObj = json_decode($request->getContent(), true);
         $tolId = isset($bodyObj['tolId']) ? $bodyObj['tolId'] : '';
 
@@ -1481,7 +1481,7 @@ $router->group([
     });
 
     // プッシュ通知パーミッション登録・取得
-    $router->post('member/notification/post', function (Request $request) {
+    $router->post('member/status/notification/update', function (Request $request) {
         $bodyObj = json_decode($request->getContent(), true);
         $tolId = isset($bodyObj['tolId']) ? $bodyObj['tolId'] : '';
         $data = isset($bodyObj['data']) ? $bodyObj['data'] : '';

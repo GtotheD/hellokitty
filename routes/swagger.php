@@ -3266,7 +3266,7 @@
 
 /**
  * @SWG\Post(
- *     path="/member/notification/get",
+ *     path="/member/status/notification",
  *     description="プッシュ通知パーミッション取得",
  *     produces={"application/json"},
  *     tags={"Member"},
@@ -3314,7 +3314,7 @@
 
 /**
  * @SWG\Post(
- *     path="/member/notification/post",
+ *     path="/member/status/notification/update",
  *     description="プッシュ通知パーミッション登録・取得",
  *     produces={"application/json"},
  *     tags={"Member"},

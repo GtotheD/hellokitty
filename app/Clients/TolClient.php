@@ -195,10 +195,9 @@ class TolClient extends BaseClient
     public function getPushNotification()
     {
         $this->apiPath = $this->createPath(self::PIG01);
-        $this->setHeaders([
-            'memid' => $this->memId,
-            'X-TOL-Platform-Code' => '00'
-        ]);
+        $this->queryParams = [
+            'memid' => $this->memId
+        ];
         return $this->get(false);
     }
 
@@ -210,11 +209,8 @@ class TolClient extends BaseClient
     public function registPushNotification($params)
     {
         $this->apiPath = $this->createPath(self::PIP01);
-        $this->setHeaders([
-            'memid' => $this->memId,
-            'X-TOL-Platform-Code' => '00'
-        ]);
         $this->queryParams = $params;
+        $this->setMethod('POST');
         return $this->get(false);
     }
 
