@@ -26,7 +26,7 @@ class TolClient extends BaseClient
     const MRE001 = '/ms/resources/ap07mre001';
     const SP101 = '/ms/resources/ap11sp101';
     const PIG01 = '/ms/resources/AP14PushInfoGet01';
-    const PIP01 = '/ms/resources/AP14PushInfoPost01';
+    const PIP01 = '/ms/resources/AP15PushInfoPost01';
     const NTF001 = '/ms/resources/MA13Reservation01P/get';
     const NTF002 = '/ms/resources/MA13Reservation02P/post';
     const MCE001 = '/ms/resources/AP13CampaignEntryCountGet01';
