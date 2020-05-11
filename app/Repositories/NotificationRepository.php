@@ -75,7 +75,7 @@ class NotificationRepository extends ApiRequesterRepository
     {
         $memId = $this->decodeMemid(env('TOL_ENCRYPT_KEY'), $tolId);
         $notification = new TolNotification($memId);
-        $params = $this->convertParams($data);
+        $params = $this->convertParams($data, $memId);
         $result = $notification->registPushNotification($params);
 
         return $result;
@@ -85,7 +85,7 @@ class NotificationRepository extends ApiRequesterRepository
      * 変換パラメータ
      * @return array
      */
-    private function convertParams($data)
+    private function convertParams($data, $memId)
     {
         $params = [];
         $tmp_param = [];
@@ -94,9 +94,11 @@ class NotificationRepository extends ApiRequesterRepository
             $tmp_param['status'][] = $d['status'] ? 1 : 0;
         }
         $params = [
+            'memid' => $memId,
             'applicationKind' => implode(',', $tmp_param['applicationKind']),
             'registerFlag' => implode(',', $tmp_param['status'])
         ];
+        
         return $params;
     }
 

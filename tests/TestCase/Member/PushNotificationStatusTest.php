@@ -52,7 +52,7 @@ class PushNotificationStatusTest extends TestCase
             'tolId' => $tolId
         ]);
 
-        $url = '/member/notification/get';
+        $url = '/member/status/notification';
         $response = $this->postWithAuth($url, $json);
         $actual = json_decode($response->getContent(), true);
         $this->assertEquals(200, $response->getStatusCode());
