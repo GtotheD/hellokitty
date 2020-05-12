@@ -8,7 +8,7 @@ class PushNotificationStatusTest extends TestCase
             [
                 'tolId' => '38pcAMAGbN89rY6DBWS18fGEpF%2BOYv7wkTIdfk0qJlc%3D',
                 'result' => [
-                    "result" => [
+                    "results" => [
                         "status" => "0",
                         "data" => [
                             [
