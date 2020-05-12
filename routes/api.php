@@ -1474,7 +1474,7 @@ $router->group([
             throw new NoContentsException;
         }
         $response = [
-            'result' => $noti->formatOutputPushNotification($result)
+            'results' => $noti->formatOutputPushNotification($result)
         ];
 
         return response()->json($response)->header('X-Accel-Expires', '600');
