@@ -99,9 +99,7 @@ class TCSRepository extends ApiRequesterRepository
         return $this->get();
     }
 
-    /**
-     ���X����get��404�̎��Aexception�ɂ��Ă��܂��̂ŁAnull�ŕԂ��łł�ǉ�
-    **/
+    //元々あるgetは404の時、exceptionにしてしまうので、nullで返す版でを追加
     public function get($jsonResponse = true)
     {
         $url = $this->apiPath;
