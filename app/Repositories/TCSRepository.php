@@ -3,6 +3,11 @@ namespace App\Repositories;
 
 use App\Model\Product;
 
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\ClientException;
+use App\Exceptions\NoContentsException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
 class TCSRepository extends ApiRequesterRepository
 {
 
@@ -35,17 +40,24 @@ class TCSRepository extends ApiRequesterRepository
     public function getReview($workId)
     {
         $productModel = new Product();
-        $product = $productModel->setConditionByWorkIdNewestProduct($workId, null)->toCamel()->getOne();
+        $products = $productModel->setConditionByWorkIdSaleTypeSaleStartDate($workId)->toCamel()->get();
         $isbn = null;
-        if (isset($product->isbn13) && $product->isbn13 !== '') {
-            $isbn = $product->isbn13;
-        } elseif (isset($product->isbn10) && $product->isbn10 !== '') {
-            $isbn = $product->isbn10;
-        } else {
-            return;
+
+        foreach ($products as $product) {
+            if (isset($product->isbn13) && $product->isbn13 !== '') {
+               $isbn = $product->isbn13;
+            } elseif (isset($product->isbn10) && $product->isbn10 !== '') {
+                $isbn = $product->isbn10;
+            } else {
+                continue;
+            }
+            $apiResult = $this->tcsReviewApi($isbn);
+
+            if (!empty($apiResult)){
+                break;
+            }
         }
 
-        $apiResult = $this->tcsReviewApi($isbn);
         $reviews = [
             'totalCount' => 0,
             'averageRating' => 0,
@@ -80,7 +92,7 @@ class TCSRepository extends ApiRequesterRepository
         $this->api = 'review';
         $this->id = $isbn;
         $this->queryParams = [
-            'min_review_length' => '1',
+            'min_review_length' => '50',
             'limit' => $this->limit
         ];
         
@@ -88,11 +100,46 @@ class TCSRepository extends ApiRequesterRepository
     }
 
     /**
+     Œ³X‚ ‚éget‚Í404‚ÌŽžAexception‚É‚µ‚Ä‚µ‚Ü‚¤‚Ì‚ÅAnull‚Å•Ô‚·”Å‚Å‚ð’Ç‰Á
+    **/
+    public function get($jsonResponse = true)
+    {
+        $url = $this->apiPath;
+        $client = new Client();
+        if ($this->method === 'POST') {
+            $requestParamName = 'form_params';
+        } else {
+            $requestParamName = 'query';
+        }
+        try {
+            $result = $client->request(
+                $this->method,
+                $url,
+                [
+                    $requestParamName => $this->queryParams,
+                    'headers' => $this->headers,
+                ]
+            );
+        } catch (ClientException $e) {
+            $statusCode = $e->getResponse()->getStatusCode();
+            if ($statusCode == '404') {
+                return null;
+            }
+            throw $e;
+        }
+        if ($jsonResponse) {
+            return json_decode($result->getBody()->getContents(), true);
+        }
+        return $result->getBody()->getContents();
+    }
+
+
+    /**
      * @param bool $jsonResponse
      * @return mixed|null|string
      * @throws \App\Exceptions\NoContentsException
      */
-    public function get($jsonResponse = true)
+    public function get_test($jsonResponse = true)
     {
         if (env('APP_ENV') !== 'local' && env('APP_ENV') !== 'testing') {
             return parent::get($jsonResponse);
