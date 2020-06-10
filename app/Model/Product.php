@@ -360,6 +360,32 @@ class Product extends Model
         return $this;
     }
 
+    //上に統合したい
+    public function setConditionByWorkIdSaleTypeSaleStartDateAsc($workId, $saleType = null, $saleStartDateFrom = null, $saleStartDateTo = null)
+    {
+        $this->dbObject = DB::table($this->table)
+            ->whereRaw(DB::raw(' item_cd not like \'__20\' '))
+            ->where([
+                'work_id' => $workId,
+            ])
+            ->where('service_id', 'tol');
+        if($saleType) {
+            $this->dbObject->where('product_type_id', $this->convertSaleType($saleType));
+        }
+        $this->dbObject->orderByRaw(DB::raw('cast(number_of_volume as UNSIGNED) asc'))
+        ->orderBy('sale_start_date', 'asc')
+        ->orderBy('item_cd_right_2', 'asc')
+        ->orderBy('item_cd', 'asc') // PPTが上部にくることを抑止する為
+        ->orderBy('ccc_product_id', 'asc');
+        if($saleStartDateFrom) {
+            $this->dbObject->where('sale_start_date', '>=', $saleStartDateFrom);
+        }
+        if($saleStartDateTo) {
+            $this->dbObject->where('sale_start_date', '<=', $saleStartDateTo);
+        }
+        return $this;
+    }
+
     /*
      * $workId
      * $saleType

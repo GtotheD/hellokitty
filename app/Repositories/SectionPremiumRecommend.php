@@ -147,6 +147,10 @@ class SectionPremiumRecommend extends BaseRepository
 
                 $saleTypeHas = $workRepository->parseFromArrayPremiumNet($row['products'], $itemType);
 
+                $netStatus = 0;
+                if ($saleTypeHas['vod'] === false) {
+                    continue;
+                }
                 $displayImage = true;
                 $displayImage = checkAgeLimit(
                     $this->ageLimitCheck,

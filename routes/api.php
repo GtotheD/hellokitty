@@ -626,6 +626,11 @@ $router->group([
     $router->get('work/{workId}/review/comicspace', function (Request $request, $workId) {
         $work = new WorkRepository();
         $workData = $work->get($workId);
+ 
+        $permit = $request->input('permit', false);
+        if ($permit === false) {
+            throw new NoContentsException;
+        }
 
         if (empty($workData)) {
             throw new NoContentsException;
