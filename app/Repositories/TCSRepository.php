@@ -40,8 +40,10 @@ class TCSRepository extends ApiRequesterRepository
     public function getReview($workId)
     {
         $productModel = new Product();
-        $products = $productModel->setConditionByWorkIdSaleTypeSaleStartDate($workId)->toCamel()->get();
+        $products = $productModel->setConditionByWorkIdSaleTypeSaleStartDateAsc($workId)->toCamel()->get();
         $isbn = null;
+
+        $cnt = 0;
 
         foreach ($products as $product) {
             if (isset($product->isbn13) && $product->isbn13 !== '') {
@@ -51,9 +53,14 @@ class TCSRepository extends ApiRequesterRepository
             } else {
                 continue;
             }
+            $cnt++;
             $apiResult = $this->tcsReviewApi($isbn);
 
             if (!empty($apiResult)){
+                break;
+            }
+
+            if ($cnt > 2) {
                 break;
             }
         }

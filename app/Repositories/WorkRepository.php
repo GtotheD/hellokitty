@@ -1546,6 +1546,7 @@ class WorkRepository extends BaseRepository
         $sell = false;
         $rental = false;
         $theater = false;
+        $vod = false;
         $supplement = '';
         $mediaFormatId = '';
         $saleStartDateSell = null;
@@ -1567,6 +1568,9 @@ class WorkRepository extends BaseRepository
                             $saleStartDateRental = $product['sale_start_date'];
                         }
                         $rental = true;
+                        // 動画配信
+                    } else if ($product['product_type_id'] === 5 && $product['service_id'] === 'ttv') {
+                        $vod = true;
                         // 上映映画
                     } else {
                         if (empty($product['product_type_id']) && $product['service_id'] === 'st') {
@@ -1625,6 +1629,7 @@ class WorkRepository extends BaseRepository
             'sell' => $sell,
             'rental' => $rental,
             'theater' => $theater,
+            'vod' => $vod,
             'supplement' => $supplement,
             'media_format_id' => $mediaFormatId,
             'saleStartDateSell' => $saleStartDateSell,
