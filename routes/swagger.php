@@ -1524,6 +1524,12 @@
  *     produces={"application/json"},
  *     @SWG\Parameter(ref="#/parameters/workId"),
  *     @SWG\Parameter(ref="#/parameters/limit"),
+ *     @SWG\Parameter(
+ *       name="permit",
+ *       in="query",
+ *       description="レスポンスフラグ(trueのみレスポンス。省略、falseは204)",
+ *       type="boolean"
+ *     ),
  *     @SWG\Response(
  *          response=200,
  *          description="success",
