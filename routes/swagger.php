@@ -2673,6 +2673,16 @@
  *                  type="boolean",
  *                  description="プレミアム会員かどうか（true=プレミアム会員、false=非プレミアム会員）",
  *              ),
+ *              @SWG\Property(
+ *                  property="comic",
+ *                  type="boolean",
+ *                  description="コミックかどうか（true=コミック）",
+ *              ),
+ *              @SWG\Property(
+ *                  property="plan",
+ *                  type="string",
+ *                  description="規約コードから取得するプラン名",
+ *              ),
  *          )
  *      ),
  *     @SWG\Response(response=204, description="Contents not found"),

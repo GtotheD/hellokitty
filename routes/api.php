@@ -1305,9 +1305,11 @@ $router->group([
         $tolId = isset($bodyObj['tolId']) ? $bodyObj['tolId'] : '';
         $statusPremium = new StatusPremiumRepository($tolId);
 
-        $response = [
-            'premium' => $statusPremium->get()
-        ];
+        $response = $statusPremium->get();
+        if (empty($response)) {
+            throw new NoContentsException;
+        }
+
         return response()->json($response)->header('X-Accel-Expires', '0');
     });
 
