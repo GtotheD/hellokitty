@@ -1569,7 +1569,7 @@ class WorkRepository extends BaseRepository
                         }
                         $rental = true;
                         // 動画配信
-                    } else if ($product['product_type_id'] === 5 && $product['service_id'] === 'ttv') {
+                    } else if (($product['product_type_id'] === 5 || $product['product_type_id'] === 6)  && $product['service_id'] === 'ttv') {
                         $vod = true;
                         // 上映映画
                     } else {

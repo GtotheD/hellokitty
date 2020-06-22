@@ -64,7 +64,8 @@ class Product extends Model
             // ttvのみを取るように変更
             ->whereRaw(DB::raw(' service_id  in  (\'ttv\')'))
             ->where('work_id', $workId)
-            ->where('product_type_id', 5);
+            ->whereRaw(DB::raw(' product_type_id  in  (5, 6)'))
+            ->where('is_premium_net', 1);
 
         //話数順ソートold=古い話数から
         if ($order === 'old') {
@@ -691,7 +692,7 @@ class Product extends Model
      * @return bool
      */
     public function processAllPremiumNet($work_id) {
-        $products = $this->setCondition(['work_id' => $work_id, 'service_id' => 'ttv', 'product_type_id' => '5'])->getAll();
+        $products = $this->setCondition(['work_id' => $work_id, 'service_id' => 'ttv', 'product_type_id' => '5', 'is_premium_net' => '1'])->getAll();
         if(count($products)) {
             foreach ($products as $product) {
                 if (!$product->is_premium_net) {
