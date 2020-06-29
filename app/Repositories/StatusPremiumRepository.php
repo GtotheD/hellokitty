@@ -122,6 +122,15 @@ class StatusPremiumRepository extends BaseRepository
         $result['plan'] = array_key_exists($tolFlatRentalOperation['termsCode'], $termsCode) ?
             $termsCode[$tolFlatRentalOperation['termsCode']] : '';
 
+        //特定店舗・申し込みコードの人はプレミアムと判定しない
+        $storeCd = self::EXCLUDE_STORE_CD;
+        $planCd = self::EXCLUDE_PLAN_CD;
+        if (in_array($tolFlatRentalOperation['storeCode'], $storeCd, true)) {
+            if(in_array($tolFlatRentalOperation['flatPlanNumber'], $planCd, true)) {
+                return false;
+            }
+        }
+        
         return $result;
     }
 
