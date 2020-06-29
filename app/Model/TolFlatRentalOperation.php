@@ -42,6 +42,13 @@ class TolFlatRentalOperation extends TolBaseModel
         'freeTrialUseClass', //フリートライアル利用区分
         'freeTrialEndDate', //フリートライアル終了日
         'registrationRouteId', //登録経路ID
+        'anotherStorePlanNumber', //他店利用時定額プラン番号
+        'settlementType', //決済種別
+        'agreementVer', //規約同意Ver,
+        'agreementDate', //規約同意日時,
+        'agreementStatus', //規約同意ステータス
+        'oldStoreNumber', //元店番
+        'termsCode' //規約コード
     ];
 
     public function getDetail() {
