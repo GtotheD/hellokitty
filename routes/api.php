@@ -1369,6 +1369,7 @@ $router->group([
     $router->post('member/status/ttv', function (Request $request) {
         $bodyObj = json_decode($request->getContent(), true);
         $tlsc = isset($bodyObj['tlsc']) ? $bodyObj['tlsc'] : '';
+        $tolId = isset($bodyObj['tolid']) ? $bodyObj['tolid'] : null;
         // Check tlsc and $workId
         if (empty($tlsc)) {
             throw new BadRequestHttpException;
@@ -1398,6 +1399,13 @@ $router->group([
                 'status' => $errorCode['error']
             ];
         }
+
+        // If has tolid
+        if ($tolId) {
+            $discasRepository->setTolId($tolId);
+            $response = $discasRepository->processTtvWithTolid($response);
+        }
+
         return response()->json($response)->header('X-Accel-Expires', '0');
     });
 

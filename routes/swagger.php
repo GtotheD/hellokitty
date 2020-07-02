@@ -2785,6 +2785,11 @@
  *             property="tlsc",
  *             type="string",
  *             description="ユーザー識別番号(TLSC)",
+ *         ),
+ *         @SWG\Property(
+ *             property="tolid",
+ *             type="string",
+ *             description="アカウントID",
  *         )
  *       )
  *     ),

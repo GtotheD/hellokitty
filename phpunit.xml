@@ -32,6 +32,7 @@
             <directory suffix="Test.php">./tests/TestCase/Search</directory>
             <directory suffix="Test.php">./tests/TestCase/ProductStock</directory>
             <directory suffix="Test.php">./tests/TestCase/MemberRentalStatus</directory>
+            <directory suffix="Test.php">./tests/TestCase/Member/MemberStatusTtvTest.php</directory>
         </testsuite>
     </testsuites>
     <filter>
