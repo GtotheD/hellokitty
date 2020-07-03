@@ -78,8 +78,21 @@ class MaintenanceRepository
 
     public function validateDate($date)
     {
+        $isValid = false;
+
+        // Pattern check format date and time
         $pattern = '/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2]\d|3[0-1])$|' .
             '\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2]\d|3[0-1])\s(0\d|1\d|2[0-3]):([0-5]\d):([0-5]\d)$/';
-        return preg_match($pattern, trim($date)) === 1;
+
+        if (preg_match($pattern, trim($date)) === 1) {
+            // Pattern above already check valid for time, so we just valid date again
+            $date = preg_split('/\s/', trim($date))[0];
+            list ($y, $m, $d) = preg_split('/-/', $date);
+            if (checkdate($m, $d, $y)) {
+                $isValid = true;
+            }
+        }
+
+        return $isValid;
     }
 }

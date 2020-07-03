@@ -80,5 +80,7 @@ class MaintenanceTest extends \Laravel\Lumen\Testing\TestCase
         $this->assertEquals(false, $result);
         $result = $repo->validateDate('2020-04-09 16:25:66');
         $this->assertEquals(false, $result);
+        $result = $repo->validateDate('0000-01-02 16:25:15');
+        $this->assertEquals(false, $result);
     }
 }
