@@ -1369,41 +1369,98 @@ $router->group([
     $router->post('member/status/ttv', function (Request $request) {
         $bodyObj = json_decode($request->getContent(), true);
         $tlsc = isset($bodyObj['tlsc']) ? $bodyObj['tlsc'] : '';
-        $tolId = isset($bodyObj['tolid']) ? $bodyObj['tolid'] : null;
+        $tolId = isset($bodyObj['tolid']) ? $bodyObj['tolid'] : '';
+
         // Check tlsc and $workId
         if (empty($tlsc)) {
             throw new BadRequestHttpException;
         }
 
         $discasRepository = new DiscasRepository();
-        try {
-            $response = $discasRepository->customer($tlsc)->get();
+        if ($tolId == '') {
+            //tolidがないものは、TOLID対応前のアプリリクエストなので、前の仕様でレスポンス
+            try {
+                $response = $discasRepository->customer($tlsc)->get();
+                $response = [
+                    'httpcode' => '200',
+                    'ttvId' => $response['ttvId'],
+                    'tenpoCode' => $response['tenpoCode'],
+                    'tenpoName' => $response['tenpoName'],
+                    'tenpoPlanFee' => (int)$response['tenpoPlanFee'],
+                    'nextUpdateDate' => date("Y-m-d h:i:s", strtotime($response['nextUpdateDate']))
+                ];
+            } catch (\Exception $e) {
+                $exceptionResponse = $e->getResponse();
+                $statusCode = $exceptionResponse->getStatusCode();
+                $errorCode = json_decode($exceptionResponse->getBody()->getContents(), true);
+                $response = [
+                    'httpcode' => (string)$statusCode,
+                    'status' => $errorCode['error']
+                ];
+                return response()->json($response)->header('X-Accel-Expires', '0');
+            }
+        } else {
+            //tolidが存在する場合は、ttv > C8 > TWS > 共通APIでリクエストを実行する
+            //ttv実行
+            $ttvId = '';
+            try{
+                $responseTTV = $discasRepository->customer($tlsc)->get();
+                if (!empty($responseTTV)) {
+                    $ttvId = $responseTTV['ttvId'];
+                }
+            } catch (\Exception $e) {
+                $ttvId = '';
+            }
+            //C8実行
+            $statusPremiumRepository = new StatusPremiumRepository($tolId);
+            $memData = $statusPremiumRepository->member();
+            $storeCode = '';
+            $flatPlanNumber = '';
+            $flatPlanRegistrationDate = '';
+            if (!empty($memData)) {
+                $storeCode = $memData['storeCode'];
+                $flatPlanNumber = $memData['flatPlanNumber'];
+                $flatPlanRegistrationDate = $memData['flatPlanRegistrationDate'];
+            }
+
+            //TWS実行
+            $twsRepository = new TWSRepository();
+            $twsRepository->setLimit($request->input('limit', 10));
+            $twsRepository->setOffset($request->input('offset', 0));
+
+            $twsData = $twsRepository->storeDetail($storeCode)->getNonEx();
+            $storeName = '';
+            if (!empty($twsData)) {
+                $storeName = $twsData['entry']['storeName'];
+            }
+
+            //共通API
+            $mintRepository = new MintRepository();
+            $feeData = $mintRepository->getTenpoPlanInfo($storeCode, $flatPlanNumber);
+            $tenpoPlanFee = '';
+            if (!empty($feeData)) {
+                $tenpoPlanFee = $feeData['ResultList'][0][3];
+            }
+
+            //次回更新日を作成する
+            $nextUpdateDate = '';
+            if ($flatPlanRegistrationDate != '') {
+                $nextUpdateDate = $statusPremiumRepository->getNextUpdateDate($flatPlanRegistrationDate);
+            }
+
             $response = [
                 'httpcode' => '200',
-                'ttvId' => $response['ttvId'],
-                'tenpoCode' => $response['tenpoCode'],
-                'tenpoName' => $response['tenpoName'],
-                'tenpoPlanFee' => (int)$response['tenpoPlanFee'],
-                'nextUpdateDate' => date("Y-m-d h:i:s", strtotime($response['nextUpdateDate']))
-            ];
-            //response中に特定店舗があった場合、店舗コードを空にする
-            if ($response['tenpoCode'] === '8811' || $response['tenpoCode'] === '8813') {
-                $response['tenpoCode'] = '';
-            }
-        } catch (\Exception $e) {
-            $exceptionResponse = $e->getResponse();
-            $statusCode = $exceptionResponse->getStatusCode();
-            $errorCode = json_decode($exceptionResponse->getBody()->getContents(), true);
-            $response = [
-                'httpcode' => (string)$statusCode,
-                'status' => $errorCode['error']
+                'ttvId' => $ttvId,
+                'tenpoCode' => $storeCode,
+                'tenpoName' => $storeName,
+                'tenpoPlanFee' => $tenpoPlanFee,
+                'nextUpdateDate' => date("Y-m-d h:i:s", strtotime($nextUpdateDate))
             ];
         }
 
-        // If has tolid
-        if ($tolId) {
-            $discasRepository->setTolId($tolId);
-            $response = $discasRepository->processTtvWithTolid($response);
+        //response中に特定店舗があった場合、店舗コードを空にする
+        if ($response['tenpoCode'] === '8811' || $response['tenpoCode'] === '8813') {
+            $response['tenpoCode'] = '';
         }
 
         return response()->json($response)->header('X-Accel-Expires', '0');

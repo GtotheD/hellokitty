@@ -2789,7 +2789,7 @@
  *         @SWG\Property(
  *             property="tolid",
  *             type="string",
- *             description="アカウントID",
+ *             description="",
  *         )
  *       )
  *     ),

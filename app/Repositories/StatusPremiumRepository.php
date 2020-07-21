@@ -93,12 +93,11 @@ class StatusPremiumRepository extends BaseRepository
 
     /**
      * プレミアム判定
-     * @return array
+     * @return bool
      * @throws \Exception
      */
     public function get()
     {
-        $result = [];
         Log::info('Member Premium Status API tolId : ' . $this->tolId);
         $this->memId = $this->decodeMemid($this->key, $this->tolId);
         Log::info('convert tolId : ' . $this->tolId . ' -> ' . $this->memId);
@@ -107,9 +106,12 @@ class StatusPremiumRepository extends BaseRepository
         $tolFlatRentalOperationModel = new TolFlatRentalOperation($this->memId);
         $tolFlatRentalOperationCollection = $tolFlatRentalOperationModel->getDetail();
         if (empty($tolFlatRentalOperationCollection)) {
-            return $result;
+            return false;
         }
         $tolFlatRentalOperation = current($tolFlatRentalOperationCollection->all());
+        if ( $tolFlatRentalOperation['responseStatus1'] !== '00') {
+            return false;
+        }
 
         // Check premium
         $result['premium'] = in_array($tolFlatRentalOperation['termsCode'], self::TERMS_CODE_PREMIUM, true);
@@ -164,4 +166,87 @@ class StatusPremiumRepository extends BaseRepository
         return $tNaibu;
     }
 
+    /**
+     * Get member info
+     *
+     * @return bool|mixed
+     * @throws \Exception
+     */
+    public function member()
+    {
+        Log::info('Member Premium Status API tolId : ' . $this->tolId);
+        /**
+         * Add process for convert loginToken from Tlsc in local
+         */
+        if(env('APP_ENV') !== 'local' && env('APP_ENV') !== 'testing') {
+            $this->memId = $this->decodeMemid($this->key, $this->tolId);
+        } else {
+            $this->memId = $this->tolId;
+        }
+        Log::info('convert tolId : ' . $this->tolId . ' -> ' . $this->memId);
+
+        // 定額レンタル操作 mfr001
+        $tolFlatRentalOperationModel = new TolFlatRentalOperation($this->memId);
+        $tolFlatRentalOperationCollection = $tolFlatRentalOperationModel->getDetail();
+        if (empty($tolFlatRentalOperationCollection)) {
+            return false;
+        }
+        $tolFlatRentalOperation = current($tolFlatRentalOperationCollection->all());
+        if ( $tolFlatRentalOperation['responseStatus1'] !== '00') {
+            return false;
+        }
+
+        //T内部管理番号が取れない場合はfalse
+        if (empty($tolFlatRentalOperation['tInternalControlNumber'])) {
+            return false;
+        }
+
+        return $tolFlatRentalOperation;
+    }
+
+    /**
+     * Get next update date by flatPlanRegistrationDate
+     *
+     * @param $flatPlanRegistrationDate
+     * @return false|string
+     */
+    public function getNextUpdateDate($flatPlanRegistrationDate)
+    {
+        //1. 定額プラン登録日を取得
+        $regDay = date('d', strtotime($flatPlanRegistrationDate));
+
+        //2. 本日を取得
+        $nowDate = date('Y-m-d');
+
+        //3. 今月末を取得
+        $lastDate = date('Y-m-d', strtotime('last day of ' . $nowDate));
+        $lastDay = date('d', strtotime('last day of ' . $nowDate));
+
+        //4. 来月を取得
+        $nextDate = date('Y-m-t', strtotime(date('Y-m-01') . '+1 month'));
+        $nextDay = date('t', strtotime(date('Y-m-01') . '+1 month'));
+
+        //5. 登録日（日付）と、末日を比較. 暫定次回更新日を作成する
+        if (intval($regDay) <= intval($lastDay)) {
+            $tmpNextUpdate = date('Y-m-'.$regDay);
+        } else {
+            $tmpNextUpdate = $lastDate;
+        }
+
+        //6. 暫定次回更新日と、本日を比較. 次回更新日を作成する
+        if (strtotime($tmpNextUpdate) > strtotime($nowDate)) {
+            //6-1. 暫定次回更新日が未来
+            $nextUpdateDate = $tmpNextUpdate;
+        } else {
+            //6-2. 暫定次回更新日が本日または過去
+            //6-2-1. 来月の末日と登録日を比較
+            if ($regDay <= $nextDay) {
+                $nextUpdateDate = date('Y-m-' . $regDay, strtotime('+1 month'));
+            } else {
+                $nextUpdateDate = $nextDate;
+            }
+        }
+
+        return $nextUpdateDate;
+    }
 }

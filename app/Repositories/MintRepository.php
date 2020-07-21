@@ -37,4 +37,29 @@ class MintRepository extends ApiRequesterRepository
         $this->queryParams = json_encode($request);
         return $this->postBody(true);
     }
+
+    /**
+     * Get tenpo plan information
+     *
+     * @param $storeCode
+     * @param $flatPlanNumber
+     * @return string
+     * @throws \App\Exceptions\NoContentsException
+     */
+    public function getTenpoPlanInfo($storeCode, $flatPlanNumber)
+    {
+        $this->apiPath = $this->apiHost . self::MINT_API;
+
+        $request = [
+            'AuthId' => env('AUTH_ID'),
+            'AuthPass' => env('AUTH_PASS'),
+            'SqlDiscNumber' => env('SQL_DISC_NUMBER_FEE'),
+            'RequestType' => env('REQUEST_TYPE'),
+            'SqlValueList' => ["'".$storeCode."'", "'".$flatPlanNumber."'"]
+        ];
+
+        $this->queryParams = json_encode($request);
+        return $this->postBody(true);
+    }
+
 }
