@@ -1369,7 +1369,7 @@ $router->group([
     $router->post('member/status/ttv', function (Request $request) {
         $bodyObj = json_decode($request->getContent(), true);
         $tlsc = isset($bodyObj['tlsc']) ? $bodyObj['tlsc'] : '';
-        $tolId = isset($bodyObj['tolid']) ? $bodyObj['tolid'] : '';
+        $tolId = isset($bodyObj['tolId']) ? $bodyObj['tolId'] : '';
 
         // Check tlsc and $workId
         if (empty($tlsc)) {
@@ -1437,9 +1437,11 @@ $router->group([
             //共通API
             $mintRepository = new MintRepository();
             $feeData = $mintRepository->getTenpoPlanInfo($storeCode, $flatPlanNumber);
-            $tenpoPlanFee = '';
+            $tenpoPlanFee = null;
             if (!empty($feeData)) {
-                $tenpoPlanFee = $feeData['ResultList'][0][3];
+                if (count($feeData['ResultList']) > 0) {
+                    $tenpoPlanFee = $feeData['ResultList'][0][3];
+                }
             }
 
             //次回更新日を作成する
