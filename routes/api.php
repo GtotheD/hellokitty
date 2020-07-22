@@ -1609,6 +1609,8 @@ $router->group([
         $bodyObj = json_decode($request->getContent(), true);
         $tolId = isset($bodyObj['tolId']) ? $bodyObj['tolId'] : '';
 
+        throw new NoContentsException;
+        
         $statusPremium = new StatusPremiumRepository($tolId);
         $tInternalNumber = $statusPremium->pre_get();
 
