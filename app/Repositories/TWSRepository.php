@@ -79,6 +79,25 @@ class TWSRepository extends ApiRequesterRepository
         return $this;
     }
 
+    /*
+     * 詳細情報を取得するAPIをセットする
+     */
+    public function storeDetail($storeCode)
+    {
+        $this->apiPath = $this->apiHost . '/store/v0/store/detail.json';
+        $this->api = 'store/v0/store/';
+        $this->id = $storeCode;
+
+        $this->queryParams = [
+            'api_key' => $this->apiKey,
+            'storeId' => $storeCode,
+            'tolPlatformCode' => '00',
+            '_secure' => '1',
+            '_pretty' => '1'
+        ];
+        return $this;
+    }
+
     public function stock($storeId, $productKey)
     {
         $this->apiPath = $this->apiHost . '/store/v0/products/detail.json';
@@ -221,7 +240,7 @@ class TWSRepository extends ApiRequesterRepository
     // 返却した値は、DBに格納する
     public function get($jsonResponse = true)
     {
-        if(env('APP_ENV') !== 'local' && env('APP_ENV') !== 'testing' ){
+        if (env('APP_ENV') !== 'local' && env('APP_ENV') !== 'testing') {
             return parent::get($jsonResponse);
         }
         return $this->stub($this->api, $this->id);

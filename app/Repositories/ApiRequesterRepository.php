@@ -69,6 +69,37 @@ class ApiRequesterRepository
         return $result->getBody()->getContents();
     }
 
+    public function getNonEx($jsonResponse = true)
+    {
+        $url = $this->apiPath;
+        $client = new Client();
+        if ($this->method === 'POST') {
+            $requestParamName = 'form_params';
+        } else {
+            $requestParamName = 'query';
+        }
+        try {
+            $result = $client->request(
+                $this->method,
+                $url,
+                [
+                    $requestParamName => $this->queryParams,
+                    'headers' => $this->headers,
+                ]
+            );
+        } catch (ClientException $e) {
+            $statusCode = $e->getResponse()->getStatusCode();
+            if ($statusCode == '404') {
+                return null;
+            }
+            throw $e;
+        }
+        if ($jsonResponse) {
+            return json_decode($result->getBody()->getContents(), true);
+        }
+        return $result->getBody()->getContents();
+    }
+
     /**
      * post json in body
      * @param type|bool $jsonResponse 

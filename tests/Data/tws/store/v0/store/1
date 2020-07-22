@@ -1,0 +1,285 @@
+{
+  "entry": {
+    "RCLogo": "1",
+    "ELogo": "0",
+    "telephoneNumberList": [
+      {
+        "affiliateNumber": "2000",
+        "areaNumber": "5459",
+        "outAreaNumber": "03"
+      }
+    ],
+    "storeHandlingItemInfo": {
+      "sellCD": {
+        "tPoint": "1",
+        "handlingFlag": "1",
+        "fcAffiliation": "1"
+      },
+      "usedSellBook": {
+        "tPoint": "0",
+        "handlingFlag": "0",
+        "fcAffiliation": "0"
+      },
+      "sellDVD": {
+        "tPoint": "1",
+        "handlingFlag": "1",
+        "fcAffiliation": "1"
+      },
+      "rentalComic": {
+        "tPoint": "0",
+        "handlingFlag": "0",
+        "fcAffiliation": "0"
+      },
+      "usedSellGame": {
+        "tPoint": "1",
+        "handlingFlag": "1",
+        "fcAffiliation": "1"
+      },
+      "usedSellDVD": {
+        "tPoint": "0",
+        "handlingFlag": "0",
+        "fcAffiliation": "0"
+      },
+      "usedBuyBook": {
+        "tPoint": "0",
+        "handlingFlag": "0",
+        "fcAffiliation": "0"
+      },
+      "buy": {
+        "tPoint": "1",
+        "handlingFlag": "0",
+        "fcAffiliation": "0"
+      },
+      "rentalDVD": {
+        "tPoint": "1",
+        "handlingFlag": "1",
+        "fcAffiliation": "1"
+      },
+      "rentalCD": {
+        "tPoint": "1",
+        "handlingFlag": "1",
+        "fcAffiliation": "1"
+      },
+      "usedBuyGame": {
+        "tPoint": "1",
+        "handlingFlag": "1",
+        "fcAffiliation": "1"
+      },
+      "usedItemSell": {
+        "tPoint": "1",
+        "handlingFlag": "0",
+        "fcAffiliation": "0"
+      },
+      "usedBuyDVD": {
+        "tPoint": "0",
+        "handlingFlag": "0",
+        "fcAffiliation": "0"
+      },
+      "sellBook": {
+        "tPoint": "1",
+        "handlingFlag": "1",
+        "fcAffiliation": "1"
+      },
+      "sellGame": {
+        "tPoint": "1",
+        "handlingFlag": "1",
+        "fcAffiliation": "1"
+      },
+      "usedBuyCD": {
+        "tPoint": "0",
+        "handlingFlag": "0",
+        "fcAffiliation": "0"
+      },
+      "usedSellCD": {
+        "tPoint": "0",
+        "handlingFlag": "0",
+        "fcAffiliation": "0"
+      }
+    },
+    "bussinessTimeList": [
+      {
+        "bussinessTimeEndAmPm": "深夜",
+        "bussinessTimeStartAmPm": "朝",
+        "bussinessTimeStart": "10:00",
+        "bussinessTimeType": "TSUTAYA",
+        "bussinessTimeEnd": "02:00"
+      }
+    ],
+    "storeHandlingServiceInfo": {
+      "itemNote": "日本最大のTSUTAYA",
+      "shopReceiptPropriety": "1",
+      "mailDeliveryFlg": "1"
+    },
+    "handlingServiceList": [
+      {
+        "serviceLinkSp": "https://store-tsutaya.tsite.jp/tsutaya_app/store_service/request.html",
+        "serviceDescriptionShort": "店頭にないレンタルＤＶＤをお取り寄せできます。",
+        "serviceName": "レンタルDVDリクエストお取り寄せ",
+        "serviceLink": "http://tsutaya.jp/item_otoriyose/",
+        "serviceId": "0001",
+        "useFlg": "1"
+      },
+      {
+        "serviceLinkSp": "https://store-tsutaya.tsite.jp/tsutaya_app/store_service/request.html",
+        "serviceDescriptionShort": "店頭にないレンタルCＤをお取り寄せできます。",
+        "serviceName": "レンタルCDリクエストお取り寄せ",
+        "serviceLink": "http://tsutaya.jp/item_otoriyose/",
+        "serviceId": "0011",
+        "useFlg": "0"
+      },
+      {
+        "serviceLinkSp": "https://store-tsutaya.tsite.jp/tsutaya_app/store_service/request_sell.html",
+        "serviceDescriptionShort": "店頭にない販売DVD/ブルーレイ、CDをお取り寄せできます。",
+        "serviceName": "販売DVD・CDリクエストお取り寄せ",
+        "serviceLink": "http://tsutaya.jp/item_sellrequest/",
+        "serviceId": "0012",
+        "useFlg": "1"
+      },
+      {
+        "serviceLinkSp": "https://store-tsutaya.tsite.jp/tsutaya_app/store_service/request_sell.html",
+        "serviceDescriptionShort": "店頭にない販売書籍をお取り寄せできます。",
+        "serviceName": "販売書籍リクエストお取り寄せ",
+        "serviceLink": "http://tsutaya.jp/item_sellrequest/",
+        "serviceId": "0013",
+        "useFlg": "1"
+      },
+      {
+        "serviceLinkSp": "",
+        "serviceDescriptionShort": "クレジットカード「Ｔカードプラスα」にお申し込みができます。",
+        "serviceName": "Tカードプラスα",
+        "serviceLink": "http://tsutaya.jp/item_tcard/",
+        "serviceId": "0005",
+        "useFlg": "0"
+      },
+      {
+        "serviceLinkSp": "https://tsutaya.tsite.jp/feature/all/store-event/index#tradingcard",
+        "serviceDescriptionShort": "トレカ対戦スペースがご利用いただけます。",
+        "serviceName": "トレカ対戦スペース",
+        "serviceLink": "http://tsutaya.jp/item_duelspace/",
+        "serviceId": "0004",
+        "useFlg": "0"
+      },
+      {
+        "serviceLinkSp": "https://store-tsutaya.tsite.jp/tsutaya_app/store_service/tmoney.html",
+        "serviceDescriptionShort": "Tカードにチャージして利用できる電子マネーです。",
+        "serviceName": "Tマネー",
+        "serviceLink": "http://tsutaya.jp/item_tmoney/",
+        "serviceId": "0006",
+        "useFlg": "1"
+      },
+      {
+        "serviceLinkSp": "https://store-tsutaya.tsite.jp/tsutaya_app/store_service/airbook.html",
+        "serviceDescriptionShort": "紙の本を購入するとデジタル版ももらえるサービスです。",
+        "serviceName": "Airbook",
+        "serviceLink": "http://tsutaya.jp/item_airbook/",
+        "serviceId": "0007",
+        "useFlg": "1"
+      },
+      {
+        "serviceLinkSp": "https://store-tsutaya.tsite.jp/tsutaya_app/store_service/enchou.html",
+        "serviceDescriptionShort": "新品・中古ゲーム機本体の修理代を、わずかな加入料で保証を延長するサービスです。",
+        "serviceName": "安心ゲーム機本体延長保証",
+        "serviceLink": "http://tsutaya.jp/item_enchou/",
+        "serviceId": "0008",
+        "useFlg": "1"
+      },
+      {
+        "serviceLinkSp": "https://store-tsutaya.tsite.jp/tsutaya_app/store_service/spkaitori.html",
+        "serviceDescriptionShort": "お持ちのスマホ・タブレットを簡単・スピーディーに買取します。",
+        "serviceName": "スマホ・タブレット買取",
+        "serviceLink": "http://tsutaya.jp/spkaitori/",
+        "serviceId": "0009",
+        "useFlg": "1"
+      },
+      {
+        "serviceLinkSp": "https://store-tsutaya.tsite.jp/tsutaya_app/store_service/tone.html",
+        "serviceDescriptionShort": "お子さまや初心者にもあんしんのサポートが充実したスマホです。",
+        "serviceName": "スマートフォン(TONE)",
+        "serviceLink": "http://tsutaya.jp/item_tone/",
+        "serviceId": "0010",
+        "useFlg": "0"
+      },
+      {
+        "serviceLinkSp": "https://tsutaya.tsite.jp/premium/service/?storeID=",
+        "serviceDescriptionShort": "TSUTAYAの月額サービス",
+        "serviceName": "TSUTAYAプレミアム",
+        "serviceLink": "http://tsutaya.tsite.jp/premium/index.html",
+        "serviceId": "0014",
+        "useFlg": "1"
+      }
+    ],
+    "storeName": "SHIBUYA TSUTAYA",
+    "newHandlingItemList": [
+      {
+        "used_purchase": {
+          "use_flg": "0",
+          "kamei_flg": "0",
+          "tused_flg": "0",
+          "itkbn": "04"
+        },
+        "itKdNm": "トレーディングカード",
+        "resale": {
+          "use_flg": "0",
+          "kamei_flg": "0",
+          "tused_flg": "0",
+          "itkbn": "03"
+        },
+        "rental": {
+          "use_flg": "0",
+          "kamei_flg": "0",
+          "tused_flg": "0",
+          "itkbn": "01"
+        },
+        "itemcd": "501",
+        "sell": {
+          "use_flg": "0",
+          "kamei_flg": "0",
+          "tused_flg": "0",
+          "itkbn": "02"
+        }
+      }
+    ],
+    "GLogo": "1",
+    "parkingAreaFlag": "0",
+    "todofuken": "東京都",
+    "link": [
+      {
+        "rel": "alternate",
+        "href": "http://store-tsutaya.tsite.jp/storelocator/detail/2312.html",
+        "type": "text/html"
+      }
+    ],
+    "faxNumberList": [
+      {
+        "faxOutAreaNumber": "03",
+        "faxAreaNumber": "5459",
+        "faxAffiliateNumber": "2001"
+      }
+    ],
+    "zipCode2": "0042",
+    "TLogo": "1",
+    "storeIntroduction": "5/27より全フロア営業中です。\n安心してご利用いただける環境作りも最大限行って参ります。\nご来店のお客様にはマスクの着用・アルコール消毒をお願いします。\n\n営業時間：AM10:00-PM11:00\n\n■6/7F：【販売】BOOK＆CAFE\n■5F：【レンタル】DVD\n■4F：【レンタル】DVD・CD\n■3F：【レンタル】CD\n■2F：【販売】CD・DVD\n■1F：【販売】CD・DVD\n■B1：【販売】COMIC\n■B2：【販売】GAME／アニメ\n\nその他情報は下記HPをご確認ください。\nhttps://ameblo.jp/shibuya-tsutaya/entry-12579374110.html",
+    "houseNumber": "宇田川町21-6",
+    "RLogo": "1",
+    "BLogo": "1",
+    "storeId": "2312",
+    "returnBoxFlag": "1",
+    "zipCode1": "150",
+    "storeFilm": "http://cdn.www.tsutaya.co.jp/shop/imgshop/2312.jpg",
+    "returnBoxExplanation": "営業時間外に西武デパート側入口に設置しております",
+    "handlingItemList": [
+      {
+        "serviceName": "STATIONERY",
+        "serviceId": "5000",
+        "useFlg": "2"
+      },
+      {
+        "serviceName": "エンタメプリペイドカード",
+        "serviceId": "5001",
+        "useFlg": "2"
+      }
+    ],
+    "commune": "渋谷区"
+  },
+  "version": "0.0.1"
+}

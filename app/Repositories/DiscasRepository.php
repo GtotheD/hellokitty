@@ -196,7 +196,7 @@ class DiscasRepository extends ApiRequesterRepository
         $userAgent = 'GuzzleHttp/6.2.0 curl/7.29.0 PHP/7.0.14';
         $this->apiPath = $this->apiTTVHost . self::TTV_CONTENTS_API . $ttvContentsCd;
 
-        return $this;        
+        return $this;
     }
 
     public function getLv2LoginTokenFromTlsc($tlsc)
