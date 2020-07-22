@@ -1609,6 +1609,7 @@ $router->group([
         $bodyObj = json_decode($request->getContent(), true);
         $tolId = isset($bodyObj['tolId']) ? $bodyObj['tolId'] : '';
 
+        // TSUTAYAアプリVer.8.18.0から機能使わなくなるため「204」を返却
         throw new NoContentsException;
         
         $statusPremium = new StatusPremiumRepository($tolId);
