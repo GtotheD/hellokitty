@@ -1358,8 +1358,12 @@ $router->group([
         $statusPremium = new StatusPremiumRepository($tolId);
 
         $response = $statusPremium->get();
-        if (empty($response)) {
-            throw new NoContentsException;
+        if ($response === false) {
+            $response = [
+                'premium' => false,
+                'comic' => false,
+                'plan' => ""
+            ];
         }
 
         return response()->json($response)->header('X-Accel-Expires', '0');
