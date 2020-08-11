@@ -1362,7 +1362,7 @@ $router->group([
             $response = [
                 'premium' => false,
                 'comic' => false,
-                'plan' => ""
+                'plan' => ''
             ];
         }
 
