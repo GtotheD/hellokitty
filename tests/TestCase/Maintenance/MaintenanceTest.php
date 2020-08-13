@@ -35,52 +35,65 @@ class MaintenanceTest extends \Laravel\Lumen\Testing\TestCase
     {
         $repo = new \App\Repositories\MaintenanceRepository();
 
-        /**
-         * Common true
-         */
         // Just date
-        $result = $repo->validateDate('2020-01-01'); // date min
-        $this->assertEquals(true, $result);
-        $result = $repo->validateDate('2020-06-15'); // date middle
-        $this->assertEquals(true, $result);
-        $result = $repo->validateDate('2020-12-31'); // date max
-        $this->assertEquals(true, $result);
+        $actual = $this->invokeMethod(
+            $repo,
+            'validate',
+            [
+                [
+                    'dispStartDate' => '2020-01-01',
+                    'dispEndDate' => '2040-05-01'
+                ]
+            ]
+        );
+        $this->assertEquals(true, $actual);
 
-        // Date and time
-        $result = $repo->validateDate('2020-01-01 00:00:00'); // time min
-        $this->assertEquals(true, $result);
-        $result = $repo->validateDate('2020-06-25 12:30:45'); // time min
-        $this->assertEquals(true, $result);
-        $result = $repo->validateDate('2020-12-31 23:59:59'); // time max
-        $this->assertEquals(true, $result);
+        // Mix date and time
+        $actual = $this->invokeMethod(
+            $repo,
+            'validate',
+            [
+                [
+                    'dispStartDate' => '2020-01-01 15:08:45',
+                    'dispEndDate' => '2040-05-01'
+                ]
+            ]
+        );
+        $this->assertEquals(true, $actual);
 
+        // Just date and time
+        $actual = $this->invokeMethod(
+            $repo,
+            'validate',
+            [
+                [
+                    'dispStartDate' => '2020-01-01 15:08:45',
+                    'dispEndDate' => '2040-05-01 10:25:41'
+                ]
+            ]
+        );
+        $this->assertEquals(true, $actual);
 
-        /**
-         * Common fail
-         */
-        $result = $repo->validateDate('2020-01-00');
-        $this->assertEquals(false, $result);
-        $result = $repo->validateDate('2020-00-01');
-        $this->assertEquals(false, $result);
-        $result = $repo->validateDate('2020-12-32');
-        $this->assertEquals(false, $result);
-        $result = $repo->validateDate('2020-13-31');
-        $this->assertEquals(false, $result);
-        $result = $repo->validateDate('20-04-09');
-        $this->assertEquals(false, $result);
-        $result = $repo->validateDate('2020-4-9');
-        $this->assertEquals(false, $result);
-        $result = $repo->validateDate('2020-14-09');
-        $this->assertEquals(false, $result);
-        $result = $repo->validateDate('2020-04-09 12:5:16');
-        $this->assertEquals(false, $result);
-        $result = $repo->validateDate('2020-04-09 26:05:16');
-        $this->assertEquals(false, $result);
-        $result = $repo->validateDate('2020-04-09 16:65:16');
-        $this->assertEquals(false, $result);
-        $result = $repo->validateDate('2020-04-09 16:25:66');
-        $this->assertEquals(false, $result);
-        $result = $repo->validateDate('0000-01-02 16:25:15');
-        $this->assertEquals(false, $result);
+        // Datetime invalid
+        $actual = $this->invokeMethod(
+            $repo,
+            'validate',
+            [
+                [
+                    'dispStartDate' => '0000-00-00 00:00:00',
+                    'dispEndDate' => '0000-01-01'
+                ]
+            ]
+        );
+        $this->assertEquals(false, $actual);
+    }
+
+    public function invokeMethod(&$object, $methodName, array $parameters = array())
+    {
+        $reflection = new \ReflectionClass(get_class($object));
+        $method = $reflection->getMethod($methodName);
+        $method->setAccessible(true);
+
+        return $method->invokeArgs($object, $parameters);
     }
 }

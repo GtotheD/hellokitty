@@ -2,6 +2,8 @@
 
 namespace App\Repositories;
 
+use Validator;
+
 class MaintenanceRepository
 {
     const MAINTENANCE_FILE_PATH = '/export/home/tol/tp/data/json/maintenance/maintenance.json';
@@ -40,24 +42,39 @@ class MaintenanceRepository
     }
 
     /**
-     * @param $data
+     * Validate data
+     *
+     * @param array $data List data need validate
+     *
      * @return bool
      */
     protected function validate($data)
     {
-        $isValid = false;
-        if (isset($data['dispStartDate']) && isset($data['dispEndDate'])) {
-            // Validate date format
-            if ($this->validateDate($data['dispStartDate']) && $this->validateDate($data['dispEndDate'])) {
-                $current = time();
-                if ($current >= strtotime($data['dispStartDate']) && $current < strtotime($data['dispEndDate'])) {
-                    $isValid = true;
+        // Custom validate multi format for datetime
+        Validator::extend('date_multi_format', function ($attribute, $value, $formats) {
+            // iterate through all formats
+            foreach ($formats as $format) {
+                // parse date with current format
+                $parsed = date_parse_from_format($format, $value);
+                // if value matches given format return true=validation succeeded
+                if ($parsed['error_count'] === 0 && $parsed['warning_count'] === 0) {
+                    return true;
                 }
             }
-        }
+            // value did not match any of the provided formats, so return false=validation failed
+            return false;
+        });
 
-        // No start and end date to validate with current time, so return not valid
-        return $isValid;
+        // Validate date format Y-m-d
+        $now = date('Y-m-d H:i:s');
+        $validator = Validator::make(
+                        $data,
+                        [
+                            'dispStartDate' => 'required|date_multi_format:Y-m-d,Y-m-d H:i:s|before_or_equal:' . $now,
+                            'dispEndDate' => 'required|date_multi_format:Y-m-d,Y-m-d H:i:s|after:' . $now
+                        ]
+                    );
+        return $validator->passes();
     }
 
     /**
@@ -74,25 +91,5 @@ class MaintenanceRepository
             }
         }
         return $response;
-    }
-
-    public function validateDate($date)
-    {
-        $isValid = false;
-
-        // Pattern check format date and time
-        $pattern = '/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2]\d|3[0-1])$|' .
-            '\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2]\d|3[0-1])\s(0\d|1\d|2[0-3]):([0-5]\d):([0-5]\d)$/';
-
-        if (preg_match($pattern, trim($date)) === 1) {
-            // Pattern above already check valid for time, so we just valid date again
-            $date = preg_split('/\s/', trim($date))[0];
-            list ($y, $m, $d) = preg_split('/-/', $date);
-            if (checkdate($m, $d, $y)) {
-                $isValid = true;
-            }
-        }
-
-        return $isValid;
     }
 }
